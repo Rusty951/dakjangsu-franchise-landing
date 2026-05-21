@@ -1,0 +1,112 @@
+.floating-actions {
+  position: fixed;
+  z-index: 24;
+  top: 50%;
+  right: clamp(16px, 2vw, 28px);
+  width: 88px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 42, 77, 0.12);
+  border-left: 2px solid rgba(171, 124, 100, 0.62);
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary-navy);
+  box-shadow: 0 14px 36px rgba(20, 42, 77, 0.1);
+  transform: translateY(-50%);
+  backdrop-filter: blur(14px);
+}
+
+.floating-action {
+  width: 100%;
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 0;
+  border-bottom: 1px solid rgba(20, 42, 77, 0.08);
+  background: transparent;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.floating-action:last-child {
+  border-bottom: 0;
+}
+
+.floating-action:hover {
+  background: rgba(245, 240, 232, 0.76);
+  color: var(--primary-navy);
+}
+
+.floating-action svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.72;
+}
+
+.floating-action span,
+.floating-action small {
+  display: block;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+.floating-action span {
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.floating-action small {
+  margin-top: -3px;
+  color: rgba(20, 42, 77, 0.62);
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.mobile-kakao-bar {
+  position: fixed;
+  z-index: 26;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  min-height: 58px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(20, 42, 77, 0.14);
+  background: var(--kakao-yellow);
+  color: #1d1d1d;
+  box-shadow: 0 16px 34px rgba(20, 42, 77, 0.24);
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+@media (max-width: 1180px) {
+  .floating-actions {
+    right: 12px;
+    width: 84px;
+  }
+
+  .floating-action {
+    min-height: 74px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .floating-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobile-kakao-bar {
+    display: flex;
+  }
+}

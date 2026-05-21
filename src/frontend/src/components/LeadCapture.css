@@ -1,0 +1,155 @@
+.lead-capture-section {
+  padding: var(--section-y) 0 clamp(104px, 7vw, 128px);
+  background:
+    linear-gradient(90deg, rgba(20, 42, 77, 1), rgba(20, 42, 77, 0.96)),
+    var(--primary-navy);
+  color: #ffffff;
+}
+
+.lead-capture-section > .container {
+  display: grid;
+  grid-template-columns: var(--editorial-split);
+  gap: var(--editorial-gap);
+  align-items: start;
+}
+
+.consultation-intro {
+  max-width: 520px;
+}
+
+.consultation-intro span,
+.consultation-checks-header span,
+.consultation-check-list article > span {
+  display: block;
+  color: var(--primary-gold);
+  font-size: var(--type-label);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.consultation-intro span,
+.consultation-checks-header span {
+  margin-bottom: 16px;
+}
+
+.consultation-intro h2 {
+  max-width: 520px;
+  color: #ffffff;
+  font-size: var(--type-section-title);
+  line-height: 1.06;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.promo-desc {
+  max-width: 450px;
+  margin: 24px 0 34px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: var(--type-body-large);
+  line-height: 1.64;
+  font-weight: 760;
+  word-break: keep-all;
+}
+
+.consultation-kakao {
+  width: auto;
+  min-height: 62px;
+  padding: 0 34px;
+}
+
+.consultation-note {
+  max-width: 420px;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 1rem;
+  line-height: 1.68;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+.consultation-checks {
+  padding-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.consultation-checks-header {
+  margin-bottom: 32px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.consultation-checks-header h3 {
+  max-width: 600px;
+  color: #ffffff;
+  font-size: clamp(1.62rem, 2.16vw, 2.02rem);
+  line-height: 1.28;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.consultation-check-list {
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.consultation-check-list article {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  padding: 26px 0 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.consultation-check-list h4 {
+  color: #ffffff;
+  font-size: clamp(1.42rem, 1.88vw, 1.74rem);
+  line-height: 1.28;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.consultation-check-list p {
+  max-width: 470px;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--type-body);
+  line-height: 1.64;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+  .lead-capture-section {
+    padding: 78px 0 92px;
+  }
+
+  .lead-capture-section > .container {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .consultation-kakao {
+    width: 100%;
+  }
+
+  .consultation-intro h2 {
+    font-size: clamp(2.24rem, 9.8vw, 2.86rem);
+    line-height: 1.08;
+  }
+
+  .consultation-checks-header h3 {
+    font-size: clamp(1.48rem, 6.6vw, 1.82rem);
+  }
+
+  .consultation-check-list article {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 26px 0;
+  }
+
+  .consultation-check-list h4 {
+    font-size: clamp(1.34rem, 6vw, 1.66rem);
+  }
+}

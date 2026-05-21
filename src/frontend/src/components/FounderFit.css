@@ -1,0 +1,113 @@
+.founder-fit-section {
+  padding: clamp(68px, 5.4vw, 86px) 0 clamp(58px, 4.8vw, 76px);
+  background: var(--bg-page);
+  border-bottom: 0;
+}
+
+.founder-fit-section .container {
+  display: grid;
+  grid-template-columns: var(--editorial-split);
+  gap: var(--editorial-gap);
+  align-items: start;
+}
+
+.founder-fit-section .brand-section-heading {
+  margin-bottom: 0;
+}
+
+.founder-fit-content {
+  display: grid;
+  max-width: none;
+  margin-left: 0;
+  padding-top: var(--split-content-offset);
+}
+
+.founder-checklist {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+  border-top: 0;
+}
+
+.founder-checklist li {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 0;
+  border-bottom: 0;
+}
+
+.founder-checklist li > span {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.66em;
+  background: var(--primary-gold);
+}
+
+.founder-checklist p {
+  color: var(--primary-navy);
+  font-size: clamp(1.28rem, 1.68vw, 1.54rem);
+  line-height: 1.36;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.founder-reassurance {
+  max-width: 560px;
+  margin-top: 32px;
+  padding-top: 0;
+  border-top: 0;
+  color: var(--text-muted);
+  font-size: var(--type-body-large);
+  line-height: 1.68;
+  font-weight: 760;
+  word-break: keep-all;
+}
+
+.founder-fit-caution {
+  max-width: 560px;
+  margin-top: 18px;
+  padding-left: 18px;
+  border-left: 2px solid rgba(171, 124, 100, 0.52);
+  color: var(--primary-navy);
+  font-size: var(--type-body-large);
+  line-height: 1.62;
+  font-weight: 820;
+  word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+  .founder-fit-section {
+    padding: 60px 0 64px;
+  }
+
+  .founder-fit-section .container {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .founder-fit-content,
+  .founder-checklist {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+  }
+
+  .founder-checklist li {
+    padding: 15px 0;
+  }
+
+  .founder-reassurance {
+    margin-top: 24px;
+  }
+
+  .founder-fit-caution {
+    margin-top: 16px;
+    font-size: 1.12rem;
+  }
+
+  .founder-checklist p {
+    font-size: clamp(1.26rem, 5.8vw, 1.58rem);
+    line-height: 1.34;
+  }
+}

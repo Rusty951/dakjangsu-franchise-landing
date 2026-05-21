@@ -1,0 +1,225 @@
+.owner-interview-section {
+  padding: clamp(76px, 6vw, 98px) 0 clamp(68px, 5.6vw, 86px);
+  background: var(--bg-page);
+  border-bottom: 0;
+}
+
+.owner-interview-section .container {
+  display: grid;
+  grid-template-columns: var(--editorial-split);
+  gap: var(--editorial-gap);
+  align-items: start;
+}
+
+.owner-interview-heading {
+  margin-bottom: 0;
+}
+
+.owner-interview-panel {
+  display: grid;
+  gap: 30px;
+  padding-top: var(--split-content-offset);
+}
+
+.owner-video-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0;
+  background: var(--primary-navy);
+}
+
+.owner-video-card::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 42, 77, 0.16), rgba(20, 42, 77, 0.02) 42%, rgba(20, 42, 77, 0.68)),
+    rgba(20, 42, 77, 0.06);
+  content: "";
+  pointer-events: none;
+}
+
+.owner-video-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.86) contrast(1.05) brightness(0.92);
+}
+
+.owner-video-sample,
+.owner-video-duration {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 14px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  background: rgba(20, 42, 77, 0.54);
+  font-size: 0.78rem;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+}
+
+.owner-video-sample {
+  left: 18px;
+}
+
+.owner-video-duration {
+  right: 18px;
+}
+
+.owner-video-play {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(14px);
+}
+
+.owner-video-play::before {
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #ffffff;
+  content: "";
+}
+
+.owner-video-card figcaption {
+  position: absolute;
+  z-index: 2;
+  left: 28px;
+  right: 28px;
+  bottom: 24px;
+  display: grid;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.owner-video-card figcaption span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: var(--type-label);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.owner-video-card figcaption strong {
+  max-width: 460px;
+  color: #ffffff;
+  font-size: clamp(1.08rem, 1.46vw, 1.28rem);
+  line-height: 1.42;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.owner-interview-quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  border-top: 0;
+}
+
+.owner-interview-quotes blockquote {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 0 0 0 18px;
+  border-left: 2px solid rgba(171, 124, 100, 0.48);
+  border-right: 0;
+}
+
+.owner-interview-quotes blockquote + blockquote {
+  padding-left: 18px;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.owner-interview-quotes p {
+  color: var(--primary-navy);
+  font-size: clamp(1.08rem, 1.42vw, 1.24rem);
+  line-height: 1.5;
+  font-weight: 850;
+  word-break: keep-all;
+}
+
+.owner-interview-quotes cite {
+  color: var(--primary-gold);
+  font-size: var(--type-label);
+  line-height: 1;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 760px) {
+  .owner-interview-section {
+    padding: 72px 0;
+  }
+
+  .owner-interview-section .container {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .owner-interview-panel {
+    padding-top: 0;
+  }
+
+  .owner-video-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .owner-video-sample,
+  .owner-video-duration {
+    top: 14px;
+    min-height: 30px;
+    padding: 0 11px;
+    font-size: 0.72rem;
+  }
+
+  .owner-video-sample {
+    left: 14px;
+  }
+
+  .owner-video-duration {
+    right: 14px;
+  }
+
+  .owner-video-play {
+    width: 58px;
+    height: 58px;
+  }
+
+  .owner-video-card figcaption {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .owner-interview-quotes {
+    grid-template-columns: 1fr;
+  }
+
+  .owner-interview-quotes blockquote,
+  .owner-interview-quotes blockquote + blockquote {
+    padding: 0 0 0 16px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
