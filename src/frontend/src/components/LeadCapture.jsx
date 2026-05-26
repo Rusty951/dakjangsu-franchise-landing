@@ -3,19 +3,19 @@ import { trackEvent } from '../utils/tracking';
 
 const consultationChecks = [
   {
+    label: '재구매',
+    title: '닭장수의 반복 구매 이유',
+    description: '후라이드가 다시 선택될 이유를 먼저 봅니다.'
+  },
+  {
     label: '지역',
-    title: '내 지역 가능성',
-    description: '반복 손님이 생길 장면을 봅니다.'
+    title: '내 지역 포장/방문 장면',
+    description: '동네 손님이 들르고 포장할 장면을 봅니다.'
   },
   {
     label: '운영',
-    title: '운영 방식 적합성',
-    description: '운영 방식이 매장 조건과 맞는지 봅니다.'
-  },
-  {
-    label: '준비',
-    title: '오픈 준비 흐름',
-    description: '오픈 전 준비 순서를 정리합니다.'
+    title: '초보/소형 창업 적합성',
+    description: '매장 조건과 운영 방식이 맞는지 봅니다.'
   }
 ];
 
@@ -32,9 +32,9 @@ const LeadCapture = ({ onKakaoClick }) => {
       <div className="container">
         <div className="consultation-intro">
           <span>06 / 상담</span>
-          <h2>내 동네에서 될지<br />먼저 정리해보세요.</h2>
+          <h2>내 동네에 닭장수가<br />맞는지 먼저 확인하세요.</h2>
           <p className="promo-desc">
-            지역, 운영 방식, 오픈 준비 흐름을 순서대로 봅니다.
+            재구매 이유, 포장 동선, 운영 방식을 순서대로 봅니다.
           </p>
           <button className="primary-cta consultation-kakao" onClick={handleKakaoClick}>
             카카오톡으로 내 지역 확인하기

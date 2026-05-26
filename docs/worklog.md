@@ -1,5 +1,38 @@
 # Worklog
 
+## 2026-05-26 - Brand-Specific Repurchase Pivot
+
+- Reframed the compact brief from generic chicken-founder anxiety toward the brand-specific question: why 닭장수후라이드 gets bought again.
+- Changed the main landing copy so the first screen leads with `동네에서 다시 찾는 프라이드` instead of delivery-app risk.
+- Reworked the hook, answer, menu proof, local-fit, founder-fit, consultation, and alternate hero concept copy around 특제 파우더, 얇은 튀김, 깨끗한 기름 관리, 포장 동선, and repeat-purchase scenes.
+- Kept unsupported hard claims out of the page and left local-store operation claims framed as 상담/확인 language.
+- Ran `npm run lint` and `npm run build` successfully.
+
+## 2026-05-26 - Large Board Texture Assets
+
+- Saved the red large-board texture as `src/frontend/public/images/dakjangsu-board-red-texture.png`.
+- Saved the cream large-board texture as `src/frontend/public/images/dakjangsu-board-cream-texture.png`.
+- Recorded the intended production order in the compact brief: red first, cream next.
+
+## 2026-05-26 - Black Han Sans Font Asset
+
+- Downloaded Black Han Sans / 검은고딕 from the official ZESSTYPE GitHub repository.
+- Stored the available single regular display weight as `src/frontend/public/fonts/black-han-sans/BlackHanSans-Regular.ttf` and `BlackHanSans-Regular.otf`.
+- Stored the upstream `OFL.txt` license and added a local README with source, license, and CSS usage notes.
+- Updated the compact brief so future site work uses Black Han Sans for strong display typography.
+
+## 2026-05-26 - First Page Red Board Hero
+
+- Reworked the main hero as the first page of the landing: red large-board texture background, Black Han Sans display headline, and existing product-box image.
+- Changed the first-screen structure to lead with `배달앱에서 한 번보다 / 동네에서 다시 찾는 프라이드`.
+- Kept the CTA visible in the desktop first viewport and preserved the Kakao consultation flow.
+
+## 2026-05-26 - Second Page Cream Board
+
+- Reworked the second section into a cream large-board page using `dakjangsu-board-cream-texture.png`.
+- Added the message `왜 다시 찾을까요` with three repeat-purchase reasons: 얇은 튀김옷, 특제 파우더, 깨끗한 기름.
+- Hid floating quick actions during the board-style draft so the pages read as clean presentation boards.
+
 ## 2026-05-20 - Project Folder Created
 
 - Created project folder at `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing`.
@@ -92,3 +125,29 @@
   - Add one short declaration block around the middle of the page, such as a strong statement about repeat customers or local demand.
 - Keep safety constraints: avoid revenue, profit, startup-cost, closure-rate, or unsupported numerical claims.
 - Added detailed interpretation and next-pass direction in `docs/handoff/client-feedback-hook-direction-2026-05-21.md`.
+
+## 2026-05-21 - Impact Direction First Pass
+
+- Created `hook/impact-v1` direction planning in `docs/handoff/impact-redesign-plan-2026-05-21.md`.
+- Added a new `ShockHook` section immediately after the hero to create a stronger advertising-style stop point.
+- Reworked the hero with louder visual stickers, stronger contrast, a diagnostic badge, and a larger CTA treatment.
+- Converted the problem section from editorial explanation into larger message-board cards.
+- Strengthened scene, menu, local-fit, founder-fit, and lead-capture sections with higher contrast, heavier borders, yellow/red/mint accents, and larger message blocks.
+- Ran `npm run build` successfully after the redesign pass.
+
+## 2026-05-21 - Red Product Campaign Hero Concept
+
+- Built a separate `?concept=popart` hero concept focused on a premium red food-campaign visual rather than comic-style pop art.
+- Generated and added `src/frontend/public/images/dakjangsu-red-hand-hero-16x9.png`, showing a hand emerging through red paper with a fried chicken box.
+- Reworked the concept hero so the image is a full-bleed background, removing the previous square-image compositing feel.
+- Changed the concept headline toward franchise intent: `배달만 기다리지 않는 치킨집`.
+- Added stronger consultation context with CTA and three check items: 포장 동선, 재방문 장면, 운영 구조.
+- Verified desktop and 390px mobile concept views, and ran `npm run build` successfully.
+
+## 2026-05-21 - Popart Concept Landing Connection QA
+
+- Connected the `?concept=popart` route to the full landing flow after the red campaign hero so it is no longer a one-screen concept only.
+- Adjusted the concept headline to `배달앱만 켜놓으면 손님이 쌓일까요?` to make the founder anxiety more explicit.
+- Aligned the concept CTA and check items with the main consultation path: 카카오톡, 포장 동선, 재방문 장면, 운영 가능 구조.
+- Hid the mobile fixed Kakao bar on the popart concept route so the first-view concept does not show duplicate CTAs.
+- Ran `npm run build` and `npm run lint` successfully after the connection pass.

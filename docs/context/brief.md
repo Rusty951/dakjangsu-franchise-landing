@@ -8,27 +8,28 @@ Main job: convert Instagram/blog/ad traffic into KakaoTalk or form franchise inq
 
 ## Core Message
 
-Do not start with generic chicken taste. Start with the founder anxiety: "손님이 올까?"
+Do not start with generic market anxiety. Start with the brand reason: "왜 닭장수후라이드는 다시 사 먹히는가?"
+
+Core claim:
+
+`닭장수후라이드는 배달용 치킨 브랜드가 아니라, 동네에서 계속 다시 사 먹게 만드는 프라이드 치킨 매장 모델이다.`
 
 Page flow:
 
-1. 손님 문제
-2. 닭장수의 답
-3. 팔릴 메뉴
-4. 내 동네 가능성
-5. 맞는 창업자
-6. 본사 지원
-7. 상담
+1. 왜 닭장수 치킨은 다시 사 먹히는가
+2. 왜 동네 매장에 맞는가
+3. 왜 초보/소형 창업자에게 설명 가능한가
+4. 내 지역에서 가능한지 상담
 
 ## Hero
 
 Headline direction:
 
-`치킨집 창업의 진짜 문제는 손님입니다.`
+`배달앱에서 한 번 팔리는 치킨보다, 동네에서 다시 찾는 프라이드를 만듭니다.`
 
 Support:
 
-배달앱에 올린다고 손님이 알아서 오지 않고, 광고비를 쓴다고 단골이 저절로 생기지도 않는다. 닭장수후라이드는 배달만 기다리는 치킨집이 아니라 포장 손님과 동네 단골을 함께 쌓아가는 후라이드 치킨 창업이다.
+특제 파우더, 얇고 바삭한 튀김, 깨끗한 기름 관리. 닭장수후라이드는 "오늘 주문"보다 "다음 방문"을 생각하는 후라이드 치킨 매장 모델이다.
 
 Primary CTA:
 
@@ -37,9 +38,10 @@ Primary CTA:
 ## Proof Points
 
 - Signature fried chicken.
-- Thin crispy batter, 겉바속촉, savory and tender inside.
 - Brand proof from official site: special powder, clean oil, hand-cutting style.
-- Local-store model: packaging demand, repeat customers, neighborhood fit.
+- Thin crispy batter, 겉바속촉, savory and tender inside.
+- Reasons for repeat purchase: crispness, savory taste, takeout-friendly memory, family/neighborhood eating scenes.
+- Local-store model: packaging demand, repeat customers, neighborhood fit. Use only if the client confirms this is how real stores operate.
 - Franchise fit: small store, one-person or couple operation, first-time founders, conversion from existing store.
 - HQ support: opening preparation, operation management, marketing support.
 
@@ -47,7 +49,8 @@ Primary CTA:
 
 - Primary colors: Navy `#142A4D`, Gold Brown `#AB7C64`.
 - Secondary colors: Mint `#73C6C6`, Roze Pink `#EE806D`.
-- Font direction: Nanum Square, with Pretendard/system sans fallback.
+- Large-board texture order for future production: use red first (`/images/dakjangsu-board-red-texture.png`), then cream (`/images/dakjangsu-board-cream-texture.png`).
+- Font direction: Black Han Sans / 검은고딕 for strong display typography, with Pretendard/system sans fallback for body text. Local files are stored under `/fonts/black-han-sans/`.
 - Logo: use official combination mark when possible. Do not recolor, distort, add shadow, or place on noisy backgrounds.
 
 ## Avoid

@@ -1,5 +1,12 @@
-@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+@font-face {
+  font-family: "Black Han Sans";
+  src: url("/fonts/black-han-sans/BlackHanSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --primary-navy: #142A4D;
@@ -14,7 +21,8 @@
   --text-muted: #4F5B6B;
   --line: rgba(20, 42, 77, 0.16);
   --line-soft: rgba(20, 42, 77, 0.08);
-  --font-sans: 'NanumSquare', 'Nanum Square', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: "Black Han Sans", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --content-width: 1180px;
   --page-gutter: 64px;
   --editorial-gap: clamp(48px, 5vw, 76px);

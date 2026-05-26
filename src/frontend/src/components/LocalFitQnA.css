@@ -1,11 +1,18 @@
 .local-fit-qna-section {
   padding: clamp(52px, 4.8vw, 72px) 0 var(--section-y);
-  background: var(--bg-page);
+  background:
+    linear-gradient(135deg, rgba(20, 42, 77, 0.96), rgba(20, 42, 77, 0.86)),
+    var(--primary-navy);
   border-bottom: 0;
 }
 
 .local-fit-heading {
   max-width: 780px;
+}
+
+.local-fit-heading span,
+.local-fit-heading h2 {
+  color: #ffffff;
 }
 
 .local-scene-layout {
@@ -22,7 +29,8 @@
   overflow: hidden;
   contain: none;
   background: var(--primary-navy);
-  border: 0;
+  border: 4px solid #ffffff;
+  box-shadow: 14px 14px 0 var(--secondary-roze);
 }
 
 .local-fit-visual img {
@@ -95,7 +103,7 @@
 .local-scene-panel > strong {
   max-width: 380px;
   display: block;
-  color: var(--primary-navy);
+  color: #ffffff;
   font-size: clamp(1.42rem, 1.86vw, 1.72rem);
   line-height: 1.28;
   font-weight: 950;
@@ -106,7 +114,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 0;
-  gap: 28px;
+  gap: 16px;
   border-top: 0;
 }
 
@@ -115,12 +123,23 @@
   grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
-  padding: 0;
-  border-bottom: 0;
+  min-height: 188px;
+  padding: 26px;
+  border: 3px solid #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 8px 8px 0 rgba(254, 229, 0, 0.9);
+}
+
+.local-signal-item:nth-child(2) {
+  background: var(--kakao-yellow);
+}
+
+.local-signal-item:nth-child(3) {
+  background: var(--secondary-mint);
 }
 
 .local-signal-item > span {
-  color: var(--primary-gold);
+  color: var(--secondary-roze);
   font-size: var(--type-label);
   line-height: 1;
   font-weight: 900;
@@ -128,11 +147,16 @@
 }
 
 .local-signal-item h3 {
-  color: var(--primary-navy);
+  color: #ffffff;
   font-size: clamp(1.38rem, 1.82vw, 1.68rem);
   line-height: 1.28;
   font-weight: 950;
   word-break: keep-all;
+}
+
+.local-signal-item:nth-child(2) h3,
+.local-signal-item:nth-child(3) h3 {
+  color: #111214;
 }
 
 .local-fit-decision {
@@ -145,6 +169,8 @@
 
 .local-kakao-cta {
   min-width: 280px;
+  border: 3px solid #111214;
+  box-shadow: 8px 8px 0 var(--secondary-roze);
 }
 
 @media (max-width: 860px) {

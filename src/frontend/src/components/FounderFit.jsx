@@ -2,6 +2,10 @@ import './FounderFit.css';
 
 const fitPrinciples = [
   {
+    id: 'fried',
+    title: '후라이드 품질을 꾸준히 지키며 팔고 싶은 분',
+  },
+  {
     id: 'small',
     title: '작은 매장으로 시작하고 싶은 분',
   },
@@ -43,7 +47,7 @@ const FounderFit = () => {
           </ul>
 
           <p className="founder-fit-caution">
-            배달 주문만 기다리기보다, 포장 손님과 동네 단골을 함께 보고 싶은 분께 더 맞습니다.
+            배달 주문만 기다리기보다, 닭장수후라이드의 재구매 이유를 동네에서 쌓고 싶은 분께 더 맞습니다.
           </p>
         </div>
       </div>
