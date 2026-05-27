@@ -7,6 +7,7 @@ import MenuProof from './components/MenuProof';
 import LocalFitQnA from './components/LocalFitQnA';
 import OwnerInterview from './components/OwnerInterview';
 import FounderFit from './components/FounderFit';
+import MenuShowcase from './components/MenuShowcase';
 import OwnerVoice from './components/OwnerVoice';
 import LeadCapture from './components/LeadCapture';
 import SiteFooter from './components/SiteFooter';
@@ -39,6 +40,7 @@ function App() {
         <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
         <OwnerInterview />
         <FounderFit />
+        <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
         <SiteFooter />
@@ -61,6 +63,7 @@ function App() {
         <MenuProof onConsultationClick={handleKakaoConsultation} />
         <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
         <FounderFit />
+        <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
         <SiteFooter />
@@ -79,6 +82,7 @@ function App() {
       <MenuProof onConsultationClick={handleKakaoConsultation} />
       <OwnerInterview />
       <FounderFit />
+      <MenuShowcase />
       <LeadCapture onKakaoClick={handleKakaoConsultation} />
       <SiteFooter />
       <FloatingActions onKakaoClick={handleKakaoConsultation} />

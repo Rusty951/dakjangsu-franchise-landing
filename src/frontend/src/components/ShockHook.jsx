@@ -18,7 +18,6 @@ const ShockHook = () => {
           <strong>
             <span>닭장수의 답은</span>
             <em>포장과 재방문</em>
-            <span>에 있습니다.</span>
           </strong>
           <span className="shock-hook-proof">
             테이크아웃으로 시작한 닭장수는<br />

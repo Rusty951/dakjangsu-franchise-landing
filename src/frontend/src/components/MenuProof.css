@@ -4,38 +4,31 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background-color: #b30808;
+  background-color: #e20a0a;
   background-image:
-    linear-gradient(rgba(179, 8, 8, 0.9), rgba(126, 0, 0, 0.94)),
+    linear-gradient(90deg, rgba(83, 0, 0, 0.26), rgba(226, 10, 10, 0.04) 48%, rgba(83, 0, 0, 0.18)),
     url("/images/dakjangsu-board-red-texture.png");
   background-size: cover, cover;
   background-position: center, center;
-  color: #f5f0e8;
+  color: #fffdf7;
 }
 
 .menu-proof-section::before {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(circle at 74% 36%, rgba(245, 240, 232, 0.14), transparent 38%),
-    linear-gradient(90deg, rgba(69, 0, 0, 0.28), transparent 44%, rgba(69, 0, 0, 0.2)),
-    linear-gradient(0deg, rgba(69, 0, 0, 0.34), transparent 46%, rgba(69, 0, 0, 0.18));
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 253, 247, 0.42) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 253, 247, 0.42) 1px, transparent 1px);
+  background-size: 46px 46px;
   content: "";
   pointer-events: none;
 }
 
 .menu-proof-section::after {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.16;
-  background:
-    linear-gradient(rgba(245, 240, 232, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 240, 232, 0.16) 1px, transparent 1px);
-  background-size: 54px 54px;
-  content: "";
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .menu-proof-copy {
@@ -50,7 +43,7 @@
 .menu-proof-copy h2 {
   display: grid;
   gap: clamp(8px, 0.9vw, 14px);
-  color: #f5f0e8;
+  color: #fffdf7;
   font-family: var(--font-display);
   font-size: clamp(5rem, 7.75vw, 9.15rem);
   line-height: 0.86;
@@ -71,7 +64,7 @@
 .menu-proof-copy p {
   max-width: 760px;
   margin-top: clamp(26px, 3vw, 42px);
-  color: rgba(245, 240, 232, 0.9);
+  color: rgba(255, 253, 247, 0.9);
   font-size: clamp(1.36rem, 1.86vw, 2.02rem);
   line-height: 1.34;
   font-weight: 850;

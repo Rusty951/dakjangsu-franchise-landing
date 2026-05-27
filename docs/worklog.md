@@ -1,5 +1,29 @@
 # Worklog
 
+## 2026-05-27 - Assertive Copy Tone Reference
+
+- Added `docs/context/assertive-copy-tone.md` to lock the next copy direction without changing the landing structure.
+- Captured the agreed tone: short, blunt, poster-like, low on `합니다/입니다`, and safe from unsupported revenue or success claims.
+- Kept Kakao as the single CTA direction.
+
+## 2026-05-27 - Founder Support Red Board Pass
+
+- Reworked the founder support page into a red-board support timeline under `오픈하고 끝? 닭장수는 끝까지`.
+- Organized support content into `4무`, `첫날 지원`, and `끝까지 관리` blocks with a consultation-condition note.
+- Kept the open-event photo as proof context while replacing the previous empty support placeholders.
+
+## 2026-05-27 - Cream Board Menu Showcase Draft
+
+- Copied seven menu images from the desktop 닭장수후라이드 homepage asset folder into `src/frontend/public/images`.
+- Added a cream-board `MenuShowcase` section below the founder support page.
+- Built the first draft as a large headline plus menu-image grid without copying the competitor layout directly.
+
+## 2026-05-27 - Final CTA Consultation Graph
+
+- Reworked the final CTA into a red-board two-column section with a Kakao-only CTA.
+- Added a rising consultation-check graph for `상권`, `포장 수요`, `운영 구조`, and `본사 지원`.
+- Avoided revenue or success claims while borrowing the visual rhythm of a graph-led closing CTA.
+
 ## 2026-05-26 - Brand-Specific Repurchase Pivot
 
 - Reframed the compact brief from generic chicken-founder anxiety toward the brand-specific question: why 닭장수후라이드 gets bought again.
@@ -151,3 +175,19 @@
 - Aligned the concept CTA and check items with the main consultation path: 카카오톡, 포장 동선, 재방문 장면, 운영 가능 구조.
 - Hid the mobile fixed Kakao bar on the popart concept route so the first-view concept does not show duplicate CTAs.
 - Ran `npm run build` and `npm run lint` successfully after the connection pass.
+
+## 2026-05-27 - Final CTA Graph Styling Pass
+
+- Reworked the final consultation CTA from a plain text block into a red-board section with a cream chart sheet.
+- Kept the CTA focused on KakaoTalk and `내 지역에서도 잘 맞을지 먼저 확인`.
+- Used an abstract 상담 체크 graph for `상권`, `포장`, `운영`, and `지원` without presenting it as verified revenue or performance data.
+- Matched the menu-board visual rhythm while keeping the final CTA distinct from the reference site.
+- Ran `npm run build` successfully after the CTA graph update.
+
+## 2026-05-27 - Board Background Consistency Pass
+
+- Standardized cream board sections to the menu-board style: `#fffdf7`, cream texture, 42px grid, and matching grid opacity.
+- Standardized red board sections to the final CTA style: `#e20a0a`, red texture, 46px grid, and matching red overlay.
+- Applied the cream board system to the problem and owner interview sections.
+- Applied the red board system to the menu proof and founder support sections.
+- Verified the default landing flow visually and ran `npm run build` successfully.

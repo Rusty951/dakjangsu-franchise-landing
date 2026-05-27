@@ -2,7 +2,9 @@
   position: relative;
   min-height: 100svh;
   display: grid;
-  place-items: center;
+  grid-template-columns: minmax(380px, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(40px, 5vw, 92px);
   overflow: hidden;
   padding: clamp(44px, 6vw, 96px);
   background-color: #e20a0a;
@@ -31,8 +33,19 @@
   position: relative;
   z-index: 1;
   display: grid;
-  justify-items: center;
-  text-align: center;
+  justify-items: start;
+  text-align: left;
+}
+
+.consultation-label {
+  margin-bottom: clamp(18px, 2vw, 26px);
+  padding: 8px 16px 7px;
+  border: 2px solid rgba(255, 253, 247, 0.6);
+  background: rgba(33, 24, 22, 0.18);
+  color: rgba(255, 253, 247, 0.94);
+  font-size: clamp(0.9rem, 1vw, 1.04rem);
+  line-height: 1;
+  font-weight: 950;
 }
 
 .consultation-intro h2 {
@@ -81,6 +94,236 @@
   box-shadow: 7px 7px 0 rgba(17, 18, 20, 0.72);
 }
 
+.consultation-graph {
+  position: relative;
+  z-index: 1;
+  min-height: clamp(430px, 42vw, 610px);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.consultation-graph::before {
+  position: absolute;
+  right: 3%;
+  top: 8%;
+  width: min(40%, 280px);
+  height: min(40%, 280px);
+  border: 24px solid rgba(244, 216, 61, 0.2);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.consultation-graph::after {
+  position: absolute;
+  left: 4%;
+  bottom: 7%;
+  width: min(34%, 220px);
+  height: 78px;
+  border: 2px solid rgba(255, 253, 247, 0.54);
+  transform: rotate(-8deg);
+  content: "";
+  pointer-events: none;
+}
+
+.consultation-chart-card,
+.consultation-tickers {
+  position: relative;
+  z-index: 1;
+}
+
+.consultation-chart-card {
+  width: min(100%, 620px);
+  display: grid;
+  gap: clamp(22px, 2.6vw, 34px);
+  padding: clamp(28px, 3.4vw, 48px);
+  border: 3px solid rgba(33, 24, 22, 0.2);
+  background:
+    linear-gradient(rgba(255, 253, 247, 0.94), rgba(255, 253, 247, 0.94)),
+    url("/images/dakjangsu-board-cream-texture.png");
+  background-size: cover;
+  color: #211816;
+  box-shadow: 18px 18px 0 rgba(33, 24, 22, 0.2);
+  transform: rotate(-1.8deg);
+}
+
+.consultation-chart-card::before,
+.consultation-chart-card::after {
+  position: absolute;
+  z-index: -1;
+  width: 44%;
+  height: 74%;
+  border: 2px solid rgba(33, 24, 22, 0.16);
+  background: rgba(255, 253, 247, 0.58);
+  content: "";
+}
+
+.consultation-chart-card::before {
+  left: -9%;
+  bottom: 7%;
+  transform: rotate(-8deg);
+}
+
+.consultation-chart-card::after {
+  right: -8%;
+  top: 10%;
+  transform: rotate(8deg);
+}
+
+.consultation-graph-head {
+  align-self: start;
+  display: grid;
+  gap: 8px;
+}
+
+.consultation-graph-head span {
+  width: fit-content;
+  padding: 8px 12px 7px;
+  background: #d90a0a;
+  color: #fffdf7;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1;
+  font-weight: 950;
+}
+
+.consultation-graph-head strong {
+  color: #211816;
+  font-size: clamp(2.4rem, 3.5vw, 4.2rem);
+  line-height: 0.92;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.consultation-bars {
+  min-height: clamp(240px, 24vw, 340px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(14px, 1.8vw, 24px);
+  padding: clamp(18px, 2vw, 26px) clamp(14px, 2vw, 24px) 0;
+  border-bottom: 4px solid #211816;
+  background-image:
+    linear-gradient(rgba(33, 24, 22, 0.08) 1px, transparent 1px);
+  background-size: 100% 48px;
+}
+
+.consultation-bar-item {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.consultation-bar-item span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: #211816;
+  color: #f4d83d;
+  font-size: 0.92rem;
+  line-height: 1;
+  font-weight: 950;
+  transform: rotate(-4deg);
+}
+
+.consultation-bar {
+  position: relative;
+  width: min(100%, 76px);
+  height: clamp(150px, 17vw, 240px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: rgba(33, 24, 22, 0.08);
+}
+
+.consultation-bar i {
+  min-height: 38px;
+  height: var(--bar-height);
+  display: block;
+  background:
+    linear-gradient(180deg, #f4d83d 0%, #f4d83d 18%, #d90a0a 18%, #d90a0a 100%);
+  box-shadow: inset 0 0 0 2px rgba(33, 24, 22, 0.12);
+}
+
+.consultation-bar-item strong {
+  color: #211816;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  line-height: 1;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.consultation-chart-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 14px 16px;
+  background: #211816;
+  color: #fffdf7;
+  transform: rotate(1.2deg);
+}
+
+.consultation-chart-note b {
+  color: #f4d83d;
+  font-size: clamp(1.05rem, 1.3vw, 1.32rem);
+  line-height: 1;
+  font-weight: 950;
+}
+
+.consultation-chart-note span {
+  color: rgba(255, 253, 247, 0.82);
+  font-size: clamp(0.96rem, 1vw, 1.08rem);
+  line-height: 1.2;
+  font-weight: 820;
+  word-break: keep-all;
+}
+
+.consultation-tickers {
+  width: min(96%, 620px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: -4px;
+  transform: rotate(1.2deg);
+}
+
+.consultation-tickers span {
+  min-height: 78px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 13px 10px;
+  border: 2px solid rgba(33, 24, 22, 0.2);
+  background: rgba(255, 253, 247, 0.92);
+  color: #211816;
+  box-shadow: 7px 7px 0 rgba(33, 24, 22, 0.16);
+}
+
+.consultation-tickers b,
+.consultation-tickers em {
+  display: block;
+  text-align: center;
+  font-style: normal;
+}
+
+.consultation-tickers b {
+  color: #d90a0a;
+  font-size: clamp(1.12rem, 1.38vw, 1.44rem);
+  line-height: 1;
+  font-weight: 950;
+}
+
+.consultation-tickers em {
+  color: rgba(33, 24, 22, 0.68);
+  font-size: clamp(0.82rem, 0.94vw, 0.94rem);
+  line-height: 1.1;
+  font-weight: 820;
+}
+
 @media (min-width: 861px) {
   .lead-capture-section {
     min-height: 100svh;
@@ -99,6 +342,7 @@
 
 @media (max-width: 860px) {
   .lead-capture-section {
+    grid-template-columns: 1fr;
     align-content: center;
     padding: 56px 24px;
   }
@@ -118,5 +362,35 @@
 
   .consultation-kakao {
     width: min(100%, 360px);
+  }
+
+  .consultation-graph {
+    width: min(100%, 520px);
+    justify-self: center;
+    min-height: 0;
+  }
+
+  .consultation-chart-card {
+    transform: none;
+  }
+
+  .consultation-tickers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .consultation-bars {
+    gap: 8px;
+    padding-inline: 4px;
+  }
+
+  .consultation-bar {
+    width: min(100%, 56px);
+  }
+
+  .consultation-tickers {
+    grid-template-columns: 1fr;
   }
 }

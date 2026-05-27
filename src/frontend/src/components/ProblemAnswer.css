@@ -6,9 +6,9 @@
   justify-items: center;
   overflow: hidden;
   padding: clamp(72px, 8vw, 96px) 0 clamp(54px, 6vw, 84px);
-  background-color: #f5f0e8;
+  background-color: #fffdf7;
   background-image:
-    linear-gradient(rgba(245, 240, 232, 0.96), rgba(245, 240, 232, 0.96)),
+    linear-gradient(rgba(255, 253, 247, 0.9), rgba(255, 253, 247, 0.9)),
     url("/images/dakjangsu-board-cream-texture.png");
   background-size: cover, cover;
   background-position: center, center;
@@ -16,8 +16,16 @@
 }
 
 .story-section::before {
-  display: none;
-  content: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(33, 24, 22, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 24, 22, 0.2) 1px, transparent 1px);
+  background-size: 42px 42px;
+  content: "";
+  pointer-events: none;
 }
 
 .story-section::after {
