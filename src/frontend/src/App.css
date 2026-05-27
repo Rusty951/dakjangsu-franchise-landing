@@ -15,12 +15,12 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: #c91812;
+  background-color: #e20a0a;
   background-image:
-    linear-gradient(90deg, rgba(83, 0, 0, 0.24), rgba(185, 10, 7, 0.08) 44%, rgba(83, 0, 0, 0.18)),
+    linear-gradient(90deg, rgba(83, 0, 0, 0.26), rgba(226, 10, 10, 0.04) 48%, rgba(83, 0, 0, 0.18)),
     url("/images/dakjangsu-board-red-texture.png");
   background-size: cover, cover;
-  background-position: center top, center top;
+  background-position: center, center;
 }
 
 .opening-flow::before,
@@ -37,13 +37,11 @@
   background-image:
     linear-gradient(rgba(255, 253, 247, 0.42) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 253, 247, 0.42) 1px, transparent 1px);
-  background-size: 46px 46px;
+  background-size: 42px 42px;
 }
 
 .opening-flow::after {
-  background:
-    linear-gradient(90deg, rgba(65, 0, 0, 0.48), transparent 42%, rgba(65, 0, 0, 0.24)),
-    linear-gradient(0deg, rgba(65, 0, 0, 0.24), transparent 34%);
+  display: none;
 }
 
 .landing-app--hand-product {
