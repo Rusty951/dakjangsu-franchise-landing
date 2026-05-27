@@ -11,3 +11,9 @@
 - Decision: keep `AGENT.md` short and route source context through compact docs.
 - Reason: save tokens and keep agent performance stable.
 - Impact: agents first read `AGENT.md` and `docs/context/brief.md`, then load role-specific docs only as needed.
+
+## 2026-05-27 - Copy Rewrite Standard
+
+- Decision: lock the landing copy rewrite standard in `docs/context/copy-direction.md`.
+- Reason: current copy feedback centers on abstract, easy-to-challenge phrases that do not create concrete customer scenes.
+- Impact: before changing page copy, propose line-by-line options against the standard, get user approval, then edit.

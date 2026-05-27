@@ -77,7 +77,6 @@ function App() {
       </div>
       <ShockHook />
       <MenuProof onConsultationClick={handleKakaoConsultation} />
-      <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
       <OwnerInterview />
       <FounderFit />
       <LeadCapture onKakaoClick={handleKakaoConsultation} />

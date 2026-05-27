@@ -4,8 +4,13 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #211816;
-  color: #fffdf7;
+  background-color: #b30808;
+  background-image:
+    linear-gradient(rgba(179, 8, 8, 0.9), rgba(126, 0, 0, 0.94)),
+    url("/images/dakjangsu-board-red-texture.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  color: #f5f0e8;
 }
 
 .menu-proof-section::before {
@@ -13,46 +18,44 @@
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle at 52% 50%, rgba(244, 216, 61, 0.1), rgba(33, 24, 22, 0.5) 66%),
-    linear-gradient(0deg, rgba(24, 15, 12, 0.62), rgba(24, 15, 12, 0.22) 48%, rgba(24, 15, 12, 0.58)),
-    linear-gradient(90deg, rgba(24, 15, 12, 0.66), rgba(24, 15, 12, 0.16) 48%, rgba(24, 15, 12, 0.42));
+    radial-gradient(circle at 74% 36%, rgba(245, 240, 232, 0.14), transparent 38%),
+    linear-gradient(90deg, rgba(69, 0, 0, 0.28), transparent 44%, rgba(69, 0, 0, 0.2)),
+    linear-gradient(0deg, rgba(69, 0, 0, 0.34), transparent 46%, rgba(69, 0, 0, 0.18));
   content: "";
   pointer-events: none;
 }
 
-.menu-proof-photo {
+.menu-proof-section::after {
   position: absolute;
   inset: 0;
-  margin: 0;
-}
-
-.menu-proof-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 58%;
-  filter: saturate(1.04) contrast(1.06) brightness(0.88);
+  z-index: 1;
+  opacity: 0.16;
+  background:
+    linear-gradient(rgba(245, 240, 232, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 240, 232, 0.16) 1px, transparent 1px);
+  background-size: 54px 54px;
+  content: "";
+  pointer-events: none;
 }
 
 .menu-proof-copy {
   position: relative;
   z-index: 2;
-  width: min(100% - 64px, 1220px);
+  width: min(100% - 80px, 1320px);
   display: grid;
-  justify-items: center;
-  text-align: center;
+  justify-items: start;
+  text-align: left;
 }
 
 .menu-proof-copy h2 {
   display: grid;
-  gap: clamp(6px, 0.8vw, 12px);
-  color: #fffdf7;
+  gap: clamp(8px, 0.9vw, 14px);
+  color: #f5f0e8;
   font-family: var(--font-display);
-  font-size: clamp(4.2rem, 7.3vw, 8.2rem);
-  line-height: 0.9;
+  font-size: clamp(5rem, 7.75vw, 9.15rem);
+  line-height: 0.86;
   font-weight: 400;
-  text-shadow: 0 12px 30px rgba(33, 24, 22, 0.54);
+  text-shadow: 0 12px 30px rgba(69, 0, 0, 0.48);
   word-break: keep-all;
 }
 
@@ -67,50 +70,13 @@
 
 .menu-proof-copy p {
   max-width: 760px;
-  margin-top: clamp(22px, 2.6vw, 34px);
-  color: rgba(255, 253, 247, 0.84);
-  font-size: clamp(1.08rem, 1.42vw, 1.34rem);
-  line-height: 1.56;
+  margin-top: clamp(26px, 3vw, 42px);
+  color: rgba(245, 240, 232, 0.9);
+  font-size: clamp(1.36rem, 1.86vw, 2.02rem);
+  line-height: 1.34;
   font-weight: 850;
-  text-shadow: 0 8px 24px rgba(33, 24, 22, 0.46);
+  text-shadow: 0 8px 24px rgba(69, 0, 0, 0.42);
   word-break: keep-all;
-}
-
-.menu-proof-points {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
-  margin-top: clamp(22px, 2.8vw, 34px);
-}
-
-.menu-proof-points span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 clamp(14px, 1.7vw, 22px);
-  border: 0;
-  border-left: 1px solid rgba(255, 253, 247, 0.26);
-  border-radius: 0;
-  background: transparent;
-  color: rgba(255, 253, 247, 0.82);
-  font-size: clamp(0.94rem, 1.08vw, 1.04rem);
-  line-height: 1;
-  font-weight: 900;
-  text-shadow: 0 8px 22px rgba(24, 15, 12, 0.54);
-  word-break: keep-all;
-}
-
-.menu-proof-points span:first-child {
-  border-left: 0;
-}
-
-.menu-proof-points span:nth-child(2) {
-  color: rgba(244, 216, 61, 0.86);
-}
-
-.menu-proof-points span:nth-child(3) {
-  color: rgba(255, 253, 247, 0.72);
 }
 
 @media (max-width: 860px) {
@@ -119,20 +85,11 @@
   }
 
   .menu-proof-copy h2 {
-    font-size: clamp(3rem, 12vw, 5.1rem);
+    font-size: clamp(3.4rem, 13vw, 5.8rem);
   }
 
   .menu-proof-copy h2 span {
     white-space: normal;
   }
 
-  .menu-proof-points {
-    width: min(100%, 360px);
-    display: flex;
-    gap: 12px 0;
-  }
-
-  .menu-proof-points span {
-    width: auto;
-  }
 }

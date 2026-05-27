@@ -5,7 +5,7 @@ const Hero = ({ onKakaoClick }) => {
     <section className="hero-section" id="top">
       <div className="hero-visual-slot">
         <div className="hero-content">
-          <span className="hero-franchise-label">포장과 재방문을 보는 닭장수후라이드 창업</span>
+          <span className="hero-franchise-label">포장과 홀 손님까지 생각한 닭장수후라이드 창업</span>
           <h1 className="hero-title" aria-label="다시 찾는 우리동네 후라이드 치킨">
             <span>다시 찾는</span>
             <span>우리동네</span>
