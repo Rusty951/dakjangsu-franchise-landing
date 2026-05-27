@@ -11,13 +11,13 @@ const ShockHook = () => {
       </figure>
       <div className="shock-hook-copy">
         <h2 id="shock-hook-title">
-          <span>배달앱이 아니어도</span>
-          <span>다시 찾게 만드는 매장</span>
+          <span>동네 손님이</span>
+          <span>직접 찾아오는 매장</span>
         </h2>
         <p className="shock-hook-answer">
           <strong>
             <span>닭장수의 답은</span>
-            <em>포장과 재방문</em>
+            <em>포장과 홀 서비스</em>
           </strong>
           <span className="shock-hook-proof">
             테이크아웃으로 시작한 닭장수는<br />

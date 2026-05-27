@@ -192,3 +192,9 @@
 - Applied the red board system to the menu proof and founder support sections.
 - Verified the default landing flow visually and ran `npm run build` successfully.
 - Follow-up: aligned every red and cream board grid to the same 42px spacing so the board system reads as one family.
+
+## 2026-05-27 - Opening Landing Section Pass
+
+- Finalized the first three opening pages around the hook, delivery-platform cost calculator, and local customer service answer.
+- Reworked the fourth red-board page into overlapping order tickets for takeout, dine-in, and repeat-visit ordering.
+- Kept risky revenue/profit guarantees out of the revised copy and ran `npm run build` successfully.

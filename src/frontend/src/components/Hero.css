@@ -24,27 +24,36 @@
 }
 
 .hero-content {
-  width: min(100%, 980px);
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1080px);
   margin: 0 auto;
   display: grid;
   justify-items: center;
   text-align: center;
   color: #fffdf7;
   text-shadow: 0 10px 24px rgba(60, 0, 0, 0.24);
+  transform: translateY(-8vh);
 }
 
 .hero-franchise-label {
   display: inline-flex;
-  min-height: 50px;
   align-items: center;
-  margin-bottom: clamp(20px, 2.2vw, 30px);
-  padding: 0 24px;
-  border: 2px solid rgba(255, 253, 247, 0.76);
-  background: rgba(255, 253, 247, 0.15);
-  color: #fffdf7;
-  font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+  justify-content: center;
+  width: fit-content;
+  margin-bottom: clamp(28px, 2.6vw, 32px);
+  padding: 8px 14px;
+  border: 2px solid #111111;
+  border-radius: 6px;
+  background: #FFD93D;
+  color: #111111;
+  box-shadow: 2px 2px 0 #111111;
+  font-size: clamp(0.86rem, 0.9vw, 0.94rem);
   line-height: 1;
-  font-weight: 950;
+  font-weight: 800;
+  text-shadow: none;
+  transform: rotate(-1deg);
+  pointer-events: none;
   word-break: keep-all;
 }
 
@@ -53,42 +62,76 @@
   justify-items: center;
   color: #fffdf7;
   font-family: var(--font-display);
-  font-size: clamp(5rem, 10.4vw, 10.8rem);
-  line-height: 0.9;
+  font-size: clamp(5rem, 8.6vw, 9.8rem);
+  line-height: 0.88;
   font-weight: 400;
   word-break: keep-all;
 }
 
-.hero-title span {
+.hero-title-line {
   display: block;
   line-height: 0.9;
   text-align: center;
+}
+
+.hero-title-line:first-child {
+  font-size: 0.72em;
+}
+
+.hero-title-line--focus {
+  font-size: 1em;
+}
+
+.hero-subcopy {
+  max-width: 880px;
+  margin-top: clamp(22px, 2.4vw, 32px);
+  color: rgba(255, 253, 247, 0.92);
+  font-size: clamp(1.16rem, 1.42vw, 1.38rem);
+  line-height: 1.5;
+  font-weight: 820;
+  word-break: keep-all;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: clamp(28px, 3.2vw, 42px);
+  margin-top: clamp(20px, 2.4vw, 30px);
 }
 
 .hero-cta {
-  min-width: min(100%, 408px);
-  min-height: 66px;
-  padding: 0 34px;
-  border: 2px solid #111214;
-  background: #f4d83d;
-  color: #111214;
-  box-shadow: 6px 6px 0 rgba(17, 18, 20, 0.72);
-  font-size: clamp(1.04rem, 1.16vw, 1.14rem);
-  line-height: 1.12;
-  font-weight: 950;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 438px);
+  min-height: 0;
+  padding: 18px 38px;
+  border: 3px solid #111111;
+  border-radius: 4px;
+  background: #FFD93D;
+  color: #111111;
+  box-shadow: 6px 6px 0 #111111;
+  font-size: clamp(1.18rem, 1.28vw, 1.25rem);
+  line-height: 1;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero-caution {
+  max-width: 680px;
+  margin-top: 20px;
+  color: rgba(255, 253, 247, 0.82);
+  font-size: clamp(0.84rem, 0.96vw, 0.96rem);
+  line-height: 1.5;
+  font-weight: 720;
+  word-break: keep-all;
+  text-shadow: 0 5px 14px rgba(60, 0, 0, 0.28);
 }
 
 .hero-cta:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 7px 7px 0 rgba(17, 18, 20, 0.72);
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 #111111;
 }
 
 @media (max-width: 960px) {
@@ -99,42 +142,61 @@
 
   .hero-content {
     width: min(100%, 620px);
+    transform: translateY(-5vh);
   }
 
   .hero-title {
-    font-size: clamp(3.4rem, 12vw, 6.2rem);
+    font-size: clamp(3.45rem, 10.2vw, 6.2rem);
   }
+
 }
 
 @media (max-width: 640px) {
   .hero-visual-slot {
-    padding: 82px var(--page-gutter) 34px;
+    min-height: 88svh;
+    align-content: start;
+    padding: 64px var(--page-gutter) 26px;
+  }
+
+  .hero-content {
+    transform: none;
   }
 
   .hero-franchise-label {
-    min-height: 42px;
-    margin-bottom: 18px;
-    padding: 0 16px;
-    font-size: 0.94rem;
+    margin-bottom: 28px;
+    padding: 8px 12px;
+    font-size: clamp(0.78rem, 3.2vw, 0.88rem);
+    box-shadow: 2px 2px 0 #111111;
   }
 
   .hero-title {
-    font-size: clamp(3.1rem, 14.6vw, 4.72rem);
+    font-size: clamp(2.32rem, 10.4vw, 3.06rem);
     line-height: 0.9;
+  }
+
+  .hero-subcopy {
+    margin-top: 18px;
+    font-size: clamp(0.98rem, 3.4vw, 1.08rem);
+    line-height: 1.5;
   }
 
   .hero-actions {
     width: 100%;
     gap: 10px;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .hero-cta {
     width: 100%;
     min-width: 0;
-    min-height: 62px;
-    padding: 0 16px;
-    box-shadow: 5px 5px 0 rgba(17, 18, 20, 0.72);
-    font-size: 1rem;
+    padding: 18px 16px;
+    box-shadow: 5px 5px 0 #111111;
+    font-size: 1.06rem;
   }
+
+  .hero-caution {
+    margin-top: 18px;
+    font-size: 0.84rem;
+  }
+
 }

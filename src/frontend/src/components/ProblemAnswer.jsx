@@ -38,9 +38,8 @@ const ProblemAnswer = () => {
     <section className="story-section" id="answer">
       <div className="problem-board">
         <h2>
-          팔릴수록<br />
-          빠져나가는<br />
-          비용
+          팔릴 때마다<br />
+          먼저 빠지는 <span>비용</span>
         </h2>
         <div className="problem-cost-card" aria-label="배달앱 주문에 따라붙는 비용 항목">
           <strong>공개 요금제 기준 비용 계산</strong>

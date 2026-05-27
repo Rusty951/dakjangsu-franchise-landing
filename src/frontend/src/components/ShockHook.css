@@ -57,17 +57,18 @@
   justify-items: center;
   padding: 0;
   text-align: center;
+  transform: translateY(-24px);
 }
 
 .shock-hook-copy h2 {
   max-width: min(100%, 1320px);
   display: grid;
-  gap: clamp(8px, 0.9vw, 14px);
+  gap: clamp(4px, 0.56vw, 9px);
   justify-items: center;
   color: #fffdf7;
   font-family: var(--font-display);
   font-size: clamp(4.2rem, 7.2vw, 8.6rem);
-  line-height: 0.92;
+  line-height: 0.88;
   font-weight: 400;
   text-shadow:
     0 3px 0 rgba(48, 12, 8, 0.72),
@@ -132,6 +133,7 @@
     width: min(100% - var(--page-gutter), 640px);
     justify-items: center;
     text-align: center;
+    transform: translateY(-18px);
   }
 
   .shock-hook-copy h2 {
@@ -163,6 +165,7 @@
 @media (max-width: 560px) {
   .shock-hook-copy {
     width: min(100% - var(--page-gutter), 440px);
+    transform: translateY(-12px);
   }
 
   .shock-hook-copy h2 {
