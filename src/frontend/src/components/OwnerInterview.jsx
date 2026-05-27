@@ -1,49 +1,46 @@
 import './OwnerInterview.css';
 
-const interviewQuotes = [
+const localChecks = [
   {
-    quote: '오픈 전에 봐야 할 순서가 분명해졌어요.',
-    source: '점주 인터뷰 예시 문구'
+    label: '지역',
+    title: '내 지역과 잘 맞는가',
+    description: '주변 동선, 주거 밀도, 포장 수요를 함께 봅니다.'
   },
   {
-    quote: '운영 방식과 지역 조건을 함께 점검할 수 있었습니다.',
-    source: '실제 후기 확인 후 교체'
+    label: '운영',
+    title: '꾸준히 운영할 수 있는가',
+    description: '준비 순서, 매장 동선, 인력 운영을 현실적으로 확인합니다.'
+  },
+  {
+    label: '비용',
+    title: '시작 조건이 맞는가',
+    description: '창업 조건과 지원 범위는 지역과 점포 조건에 맞춰 확인합니다.'
   }
 ];
 
 const OwnerInterview = () => {
   return (
     <section className="owner-interview-section" id="owner-interview">
-      <div className="container">
-        <div className="brand-section-heading owner-interview-heading">
-          <span>가맹점주 인터뷰</span>
-          <h2>결정 전에<br />확인할 장면.</h2>
-          <p>창업을 결정하기 전, 실제 운영자가 확인한 준비 과정을 보여줍니다.</p>
-        </div>
+      <div className="owner-interview-content">
+        <figure className="owner-proof-photo">
+          <img
+            src="/images/dakjangsu-owner-interview-real.png"
+            alt="닭장수후라이드 점주 인터뷰 장면"
+          />
+          <figcaption>
+            <span>상담 전 확인할 것</span>
+            <strong>지역, 운영, 비용을 차례로 확인합니다</strong>
+          </figcaption>
+        </figure>
 
-        <div className="owner-interview-panel">
-          <figure className="owner-video-card" aria-label="가맹점주 인터뷰 영상">
-            <img
-              src="/images/dakjangsu-owner-interview-video-example.png"
-              alt="매장 안에서 가맹점주가 인터뷰하는 영상 이미지"
-            />
-            <span className="owner-video-sample">인터뷰 영상</span>
-            <span className="owner-video-duration">90초 구성</span>
-            <span className="owner-video-play" aria-hidden="true" />
-            <figcaption>
-              <span>자막 포함 · 실제 매장 배경</span>
-              <strong>창업 전 확인한 준비 과정과 운영 흐름을 짧게 보여줍니다.</strong>
-            </figcaption>
-          </figure>
-
-          <div className="owner-interview-quotes" aria-label="가맹점주 한 줄 인터뷰">
-            {interviewQuotes.map((item) => (
-              <blockquote key={item.source}>
-                <p>“{item.quote}”</p>
-                <cite>{item.source}</cite>
-              </blockquote>
-            ))}
-          </div>
+        <div className="owner-check-grid" aria-label="창업자가 확인할 세 가지 기준">
+          {localChecks.map((item) => (
+            <article key={item.title}>
+              <span>{item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

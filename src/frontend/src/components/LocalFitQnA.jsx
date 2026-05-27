@@ -1,68 +1,42 @@
 import './LocalFitQnA.css';
-import { trackEvent } from '../utils/tracking';
 
-const localSignals = [
+const ownerReasons = [
   {
-    label: '퇴근길',
-    title: '포장 손님을 만들 동선이 있는가'
+    label: '맛',
+    title: '이유가 있는 맛',
+    description: '얇은 튀김옷과 고소한 끝맛처럼 다시 떠올릴 이유가 있어야 합니다.'
   },
   {
-    label: '주말',
-    title: '가족 식탁에 다시 오를 장면이 있는가'
+    label: '포장',
+    title: '포장해도 생각나는 맛',
+    description: '퇴근길, 집 앞, 가족 식사처럼 포장으로 찾는 장면을 봅니다.'
   },
   {
-    label: '운영',
-    title: '초보/소형 창업자가 설명 가능한 구조인가'
+    label: '재방문',
+    title: '한 번 먹고 끝나지 않도록',
+    description: '배달앱 노출보다 포장 손님과 동네 단골이 쌓이는 매장을 목표로 합니다.'
   }
 ];
 
-const LocalFitQnA = ({ onLocalConsultClick }) => {
-  const handleLocalConsultClick = () => {
-    trackEvent('cta_kakao_click', { section: 'local_fit' });
-    if (onLocalConsultClick) {
-      onLocalConsultClick();
-    }
-  };
-
+const LocalFitQnA = () => {
   return (
-    <section className="local-fit-qna-section" id="local-fit-qna">
-      <div className="container">
-        <div className="brand-section-heading local-fit-heading">
-          <span>04 / 내 동네 가능성</span>
-          <h2>우리 동네에<br />닭장수가 맞을까요?</h2>
-        </div>
+    <section className="local-fit-qna-section" id="local-fit-qna" aria-labelledby="owner-reason-title">
+      <div className="local-fit-copy">
+        <h2 id="owner-reason-title">
+          <span>손님이 먼저</span>
+          <span>찾는 치킨이어야</span>
+          <span>합니다</span>
+        </h2>
+      </div>
 
-        <div className="local-scene-layout">
-          <figure className="local-fit-visual">
-            <img
-              src="/images/dakjangsu-frying-clean-local-fit.png"
-              alt="기름에서 바삭하게 튀겨지는 닭장수후라이드 클로즈업"
-            />
-            <figcaption>
-              <span>좋은 말보다 조건</span>
-              <strong>후라이드가 다시 사 먹히는 장면이 있는지 봅니다.</strong>
-            </figcaption>
-          </figure>
-
-          <div className="local-scene-panel">
-            <strong>상담에서는 세 가지를 먼저 봅니다.</strong>
-            <div className="local-signal-list">
-              {localSignals.map((item) => (
-                <article key={item.title} className="local-signal-item">
-                  <span>{item.label}</span>
-                  <h3>{item.title}</h3>
-                </article>
-              ))}
-            </div>
-
-          </div>
-        </div>
-
-        <div className="local-fit-decision">
-          <button className="primary-cta local-kakao-cta" onClick={handleLocalConsultClick}>
-            카카오톡으로 내 지역 확인하기
-          </button>
-        </div>
+      <div className="local-fit-info" aria-label="점주가 팔기 쉬운 이유">
+        {ownerReasons.map((item) => (
+          <article key={item.title}>
+            <span>{item.label}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
       </div>
     </section>
   );

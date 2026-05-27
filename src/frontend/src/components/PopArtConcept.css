@@ -1,7 +1,7 @@
 .graphic-poster-page {
   min-height: 100vh;
   background: #d71920;
-  color: #fff5df;
+  color: #fffdf7;
 }
 
 .graphic-poster {
@@ -26,7 +26,7 @@
 .graphic-poster-header .brand-logo-link {
   width: clamp(158px, 16vw, 220px);
   padding: 5px 7px;
-  background: rgba(255, 245, 223, 0.96);
+  background: rgba(255, 253, 247, 0.96);
   box-shadow: inset 0 -3px 0 rgba(20, 42, 77, 0.12);
 }
 
@@ -36,7 +36,7 @@
   align-items: center;
   min-height: 34px;
   padding: 0 12px;
-  background: rgba(255, 245, 223, 0.94);
+  background: rgba(255, 253, 247, 0.94);
   color: rgba(20, 42, 77, 0.78);
   font-size: clamp(0.78rem, 1vw, 0.92rem);
   line-height: 1;
@@ -102,7 +102,7 @@
 }
 
 .poster-message h1 {
-  color: #fff5df;
+  color: #fffdf7;
   font-size: clamp(3.24rem, 6.1vw, 6.42rem);
   line-height: 0.96;
   font-weight: 950;
@@ -120,8 +120,8 @@
   align-items: end;
   padding: 8px 10px;
   color: rgba(20, 42, 77, 0.42);
-  background: rgba(255, 245, 223, 0.16);
-  border: 1px solid rgba(255, 245, 223, 0.22);
+  background: rgba(255, 253, 247, 0.16);
+  border: 1px solid rgba(255, 253, 247, 0.22);
   transform: rotate(0.5deg);
   backdrop-filter: blur(4px);
   opacity: 0.74;
@@ -156,7 +156,7 @@
 }
 
 .poster-subcopy p {
-  color: rgba(255, 245, 223, 0.94);
+  color: rgba(255, 253, 247, 0.94);
   font-size: clamp(1.08rem, 1.4vw, 1.26rem);
   line-height: 1.52;
   font-weight: 850;
@@ -167,7 +167,7 @@
   min-height: 66px;
   padding: 0 32px;
   border: 1px solid rgba(20, 42, 77, 0.16);
-  background: #fff5df;
+  background: #fffdf7;
   color: var(--primary-navy);
   box-shadow:
     0 16px 34px rgba(69, 0, 0, 0.36),
@@ -188,8 +188,8 @@
   min-height: 34px;
   align-items: center;
   padding: 0 12px;
-  border: 1px solid rgba(255, 245, 223, 0.48);
-  color: rgba(255, 245, 223, 0.9);
+  border: 1px solid rgba(255, 253, 247, 0.48);
+  color: rgba(255, 253, 247, 0.9);
   font-size: 0.92rem;
   line-height: 1;
   font-weight: 850;

@@ -7,6 +7,7 @@ import MenuProof from './components/MenuProof';
 import LocalFitQnA from './components/LocalFitQnA';
 import OwnerInterview from './components/OwnerInterview';
 import FounderFit from './components/FounderFit';
+import OwnerVoice from './components/OwnerVoice';
 import LeadCapture from './components/LeadCapture';
 import SiteFooter from './components/SiteFooter';
 import FloatingActions from './components/FloatingActions';
@@ -38,6 +39,7 @@ function App() {
         <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
         <OwnerInterview />
         <FounderFit />
+        <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
         <SiteFooter />
         <FloatingActions onKakaoClick={handleKakaoConsultation} />
@@ -59,6 +61,7 @@ function App() {
         <MenuProof onConsultationClick={handleKakaoConsultation} />
         <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
         <FounderFit />
+        <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
         <SiteFooter />
         <FloatingActions onKakaoClick={handleKakaoConsultation} />
@@ -68,10 +71,11 @@ function App() {
 
   return (
     <div className="landing-app">
-      <Hero onKakaoClick={handleKakaoConsultation} />
+      <div className="opening-flow">
+        <Hero onKakaoClick={handleKakaoConsultation} />
+        <ProblemAnswer />
+      </div>
       <ShockHook />
-      <ProblemAnswer />
-      <SuccessScenes />
       <MenuProof onConsultationClick={handleKakaoConsultation} />
       <LocalFitQnA onLocalConsultClick={handleKakaoConsultation} />
       <OwnerInterview />

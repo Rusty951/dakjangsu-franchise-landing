@@ -1,123 +1,154 @@
 .founder-fit-section {
-  padding: clamp(68px, 5.4vw, 86px) 0 clamp(58px, 4.8vw, 76px);
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(254, 229, 0, 0.22)),
-    #ffffff;
-  border-bottom: 0;
-}
-
-.founder-fit-section .container {
+  position: relative;
+  min-height: auto;
   display: grid;
-  grid-template-columns: var(--editorial-split);
-  gap: var(--editorial-gap);
-  align-items: start;
+  grid-template-columns: minmax(420px, 0.86fr) minmax(0, 1.14fr);
+  align-items: center;
+  gap: clamp(36px, 5vw, 84px);
+  overflow: hidden;
+  padding: clamp(28px, 3.6vw, 56px) clamp(44px, 6vw, 96px) clamp(56px, 6vw, 96px);
+  background:
+    linear-gradient(rgba(255, 253, 247, 0.92), rgba(255, 253, 247, 0.92)),
+    url("/images/dakjangsu-board-cream-texture.png") center / cover;
+  color: #211816;
 }
 
-.founder-fit-section .brand-section-heading {
-  margin-bottom: 0;
+.founder-fit-copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+}
+
+.founder-fit-copy h2 {
+  display: grid;
+  gap: clamp(8px, 0.8vw, 12px);
+  color: #211816;
+  font-family: var(--font-display);
+  font-size: clamp(3.7rem, 5.8vw, 6.6rem);
+  line-height: 0.9;
+  font-weight: 400;
+  word-break: keep-all;
+}
+
+.founder-fit-copy h2 span {
+  white-space: nowrap;
 }
 
 .founder-fit-content {
   display: grid;
-  max-width: none;
-  margin-left: 0;
-  padding-top: var(--split-content-offset);
+  align-content: center;
+  gap: 14px;
+}
+
+.founder-support-proof {
+  position: relative;
+  min-height: clamp(210px, 24vw, 320px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(33, 24, 22, 0.28);
+  background: #211816;
+}
+
+.founder-support-proof::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(0deg, rgba(33, 24, 22, 0.28), rgba(33, 24, 22, 0.04) 58%),
+    linear-gradient(90deg, rgba(33, 24, 22, 0.26), rgba(33, 24, 22, 0.02) 48%);
+  content: "";
+  pointer-events: none;
+}
+
+.founder-support-proof img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center 58%;
+  filter: saturate(0.94) contrast(1.04) brightness(0.96);
 }
 
 .founder-checklist {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  border-top: 0;
-}
-
-.founder-checklist li {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
-  align-items: start;
-  min-height: 150px;
-  padding: 24px;
-  border: 3px solid #111214;
-  background: #ffffff;
-  box-shadow: 7px 7px 0 rgba(20, 42, 77, 0.15);
+  gap: 12px;
 }
 
-.founder-checklist li > span {
-  width: 32px;
-  height: 8px;
-  margin-top: 0.66em;
-  background: var(--secondary-roze);
+.founder-checklist article {
+  position: relative;
+  min-height: clamp(124px, 13vw, 172px);
+  padding: clamp(18px, 2vw, 24px);
+  border: 1px solid rgba(33, 24, 22, 0.28);
+  background: rgba(255, 253, 247, 0.52);
 }
 
-.founder-checklist li:nth-child(even) {
-  background: var(--kakao-yellow);
+.founder-checklist article::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: rgba(217, 10, 10, 0.78);
+  content: "";
 }
 
-.founder-checklist p {
-  color: var(--primary-navy);
-  font-size: clamp(1.28rem, 1.68vw, 1.54rem);
-  line-height: 1.36;
-  font-weight: 900;
-  word-break: keep-all;
-}
-
-.founder-reassurance {
-  max-width: 560px;
-  margin-top: 32px;
-  padding-top: 0;
-  border-top: 0;
-  color: var(--text-muted);
-  font-size: var(--type-body-large);
-  line-height: 1.68;
-  font-weight: 760;
-  word-break: keep-all;
-}
-
-.founder-fit-caution {
-  max-width: 560px;
-  margin-top: 18px;
-  padding-left: 18px;
-  border-left: 8px solid var(--secondary-roze);
-  color: var(--primary-navy);
-  font-size: var(--type-body-large);
-  line-height: 1.62;
-  font-weight: 820;
-  word-break: keep-all;
-}
-
-@media (max-width: 760px) {
+@media (min-width: 861px) {
   .founder-fit-section {
-    padding: 60px 0 64px;
+    height: auto;
+    min-height: 0;
+    gap: clamp(30px, 4vw, 64px);
+    padding: clamp(24px, 3vw, 48px) clamp(36px, 4.6vw, 72px) clamp(48px, 4.6vw, 72px);
   }
 
-  .founder-fit-section .container {
+  .founder-fit-copy h2 {
+    font-size: clamp(3.4rem, 5.1vw, 5.9rem);
+  }
+
+  .founder-checklist {
+    gap: 10px;
+  }
+
+  .founder-support-proof {
+    min-height: clamp(190px, 21vw, 260px);
+  }
+
+  .founder-checklist article {
+    min-height: clamp(122px, 13vw, 158px);
+    padding: clamp(16px, 1.7vw, 20px) clamp(18px, 1.9vw, 22px);
+  }
+}
+
+@media (max-width: 860px) {
+  .founder-fit-section {
     grid-template-columns: 1fr;
-    gap: 34px;
+    align-content: center;
+    padding: 36px 24px 56px;
   }
 
-  .founder-fit-content,
+  .founder-fit-copy {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .founder-fit-copy h2 {
+    font-size: clamp(3rem, 11.5vw, 5.6rem);
+  }
+
+  .founder-fit-copy h2 span {
+    white-space: normal;
+  }
+
+  .founder-checklist article {
+    min-height: 128px;
+  }
+
+  .founder-support-proof {
+    min-height: 280px;
+  }
+
   .founder-checklist {
     grid-template-columns: 1fr;
-    padding-top: 0;
-  }
-
-  .founder-checklist li {
-    padding: 15px 0;
-  }
-
-  .founder-reassurance {
-    margin-top: 24px;
-  }
-
-  .founder-fit-caution {
-    margin-top: 16px;
-    font-size: 1.12rem;
-  }
-
-  .founder-checklist p {
-    font-size: clamp(1.26rem, 5.8vw, 1.58rem);
-    line-height: 1.34;
   }
 }

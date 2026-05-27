@@ -1,161 +1,122 @@
 .lead-capture-section {
-  padding: var(--section-y) 0 clamp(104px, 7vw, 128px);
-  background:
-    radial-gradient(circle at 84% 16%, rgba(238, 128, 109, 0.42), transparent 26%),
-    linear-gradient(90deg, rgba(17, 18, 20, 1), rgba(20, 42, 77, 0.98)),
-    var(--primary-navy);
-  color: #ffffff;
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
   overflow: hidden;
+  padding: clamp(44px, 6vw, 96px);
+  background-color: #e20a0a;
+  background-image:
+    linear-gradient(90deg, rgba(83, 0, 0, 0.26), rgba(226, 10, 10, 0.04) 48%, rgba(83, 0, 0, 0.18)),
+    url("/images/dakjangsu-board-red-texture.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  color: #fffdf7;
 }
 
-.lead-capture-section > .container {
-  display: grid;
-  grid-template-columns: var(--editorial-split);
-  gap: var(--editorial-gap);
-  align-items: start;
+.lead-capture-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 253, 247, 0.42) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 253, 247, 0.42) 1px, transparent 1px);
+  background-size: 46px 46px;
+  content: "";
+  pointer-events: none;
 }
 
 .consultation-intro {
-  max-width: 520px;
-}
-
-.consultation-intro span,
-.consultation-checks-header span,
-.consultation-check-list article > span {
-  display: block;
-  color: var(--primary-gold);
-  font-size: var(--type-label);
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-}
-
-.consultation-intro span,
-.consultation-checks-header span {
-  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
 }
 
 .consultation-intro h2 {
-  max-width: 520px;
-  color: #ffffff;
-  font-size: clamp(3.3rem, 5.5vw, 6rem);
-  line-height: 0.98;
-  font-weight: 950;
+  display: grid;
+  gap: clamp(8px, 0.8vw, 12px);
+  color: #fffdf7;
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 6.2vw, 7.1rem);
+  line-height: 0.9;
+  font-weight: 400;
+  text-shadow: 0 10px 28px rgba(33, 24, 22, 0.28);
   word-break: keep-all;
 }
 
-.promo-desc {
-  max-width: 450px;
-  margin: 24px 0 34px;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: var(--type-body-large);
-  line-height: 1.64;
+.consultation-intro h2 span {
+  white-space: nowrap;
+}
+
+.consultation-intro p {
+  max-width: 520px;
+  margin-top: clamp(24px, 3vw, 36px);
+  color: rgba(255, 253, 247, 0.86);
+  font-size: clamp(1.08rem, 1.34vw, 1.28rem);
+  line-height: 1.58;
   font-weight: 760;
   word-break: keep-all;
 }
 
 .consultation-kakao {
-  width: auto;
-  min-height: 72px;
-  padding: 0 38px;
-  border: 3px solid #111214;
-  box-shadow: 8px 8px 0 var(--secondary-roze);
-}
-
-.consultation-note {
-  max-width: 420px;
-  margin-top: 16px;
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 1rem;
-  line-height: 1.68;
-  font-weight: 700;
-  word-break: keep-all;
-}
-
-.consultation-checks {
-  padding: clamp(26px, 3.2vw, 42px);
-  border: 3px solid rgba(255, 255, 255, 0.96);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 12px 12px 0 rgba(254, 229, 0, 0.9);
-}
-
-.consultation-checks-header {
-  margin-bottom: 32px;
-  padding-bottom: 26px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.consultation-checks-header h3 {
-  max-width: 600px;
-  color: #ffffff;
-  font-size: clamp(1.62rem, 2.16vw, 2.02rem);
-  line-height: 1.28;
+  min-height: 58px;
+  margin-top: clamp(28px, 3.2vw, 42px);
+  padding: 0 28px;
+  border: 2px solid #111214;
+  background: #f4d83d;
+  color: #111214;
+  cursor: pointer;
+  box-shadow: 6px 6px 0 rgba(17, 18, 20, 0.72);
+  font-size: clamp(1.05rem, 1.26vw, 1.18rem);
+  line-height: 1;
   font-weight: 950;
-  word-break: keep-all;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.consultation-check-list {
-  display: grid;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.consultation-kakao:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0 rgba(17, 18, 20, 0.72);
 }
 
-.consultation-check-list article {
-  display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
-  padding: 26px 0 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.consultation-check-list h4 {
-  color: #ffffff;
-  font-size: clamp(1.42rem, 1.88vw, 1.74rem);
-  line-height: 1.28;
-  font-weight: 950;
-  word-break: keep-all;
-}
-
-.consultation-check-list p {
-  max-width: 470px;
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: var(--type-body);
-  line-height: 1.64;
-  font-weight: 700;
-  word-break: keep-all;
-}
-
-@media (max-width: 760px) {
+@media (min-width: 861px) {
   .lead-capture-section {
-    padding: 78px 0 92px;
-  }
-
-  .lead-capture-section > .container {
-    grid-template-columns: 1fr;
-    gap: 46px;
-  }
-
-  .consultation-kakao {
-    width: 100%;
+    min-height: 100svh;
+    padding: clamp(36px, 4.6vw, 72px);
   }
 
   .consultation-intro h2 {
-    font-size: clamp(2.24rem, 9.8vw, 2.86rem);
-    line-height: 1.08;
+    font-size: clamp(3.4rem, 5.4vw, 6.2rem);
   }
 
-  .consultation-checks-header h3 {
-    font-size: clamp(1.48rem, 6.6vw, 1.82rem);
+  .consultation-intro p {
+    max-width: 560px;
+    font-size: clamp(1.02rem, 1.18vw, 1.16rem);
+  }
+}
+
+@media (max-width: 860px) {
+  .lead-capture-section {
+    align-content: center;
+    padding: 56px 24px;
   }
 
-  .consultation-check-list article {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 26px 0;
+  .consultation-intro {
+    justify-items: center;
+    text-align: center;
   }
 
-  .consultation-check-list h4 {
-    font-size: clamp(1.34rem, 6vw, 1.66rem);
+  .consultation-intro h2 {
+    font-size: clamp(3rem, 11.5vw, 5.6rem);
+  }
+
+  .consultation-intro h2 span {
+    white-space: normal;
+  }
+
+  .consultation-kakao {
+    width: min(100%, 360px);
   }
 }
