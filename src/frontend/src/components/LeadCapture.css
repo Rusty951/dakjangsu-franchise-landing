@@ -40,9 +40,10 @@
 .consultation-label {
   margin-bottom: clamp(18px, 2vw, 26px);
   padding: 8px 16px 7px;
-  border: 2px solid rgba(255, 253, 247, 0.6);
-  background: rgba(33, 24, 22, 0.18);
-  color: rgba(255, 253, 247, 0.94);
+  border: 2px solid rgba(255, 217, 61, 0.7);
+  border-radius: 4px;
+  background: #211816;
+  color: #fffdf7;
   font-size: clamp(0.9rem, 1vw, 1.04rem);
   line-height: 1;
   font-weight: 950;
@@ -64,6 +65,16 @@
   white-space: nowrap;
 }
 
+.consultation-intro h2 em {
+  color: #ffd93d;
+  font-style: normal;
+  text-shadow:
+    3px 3px 0 #111111,
+    -1px -1px 0 #111111,
+    1px -1px 0 #111111,
+    -1px 1px 0 #111111;
+}
+
 .consultation-intro p {
   max-width: 520px;
   margin-top: clamp(24px, 3vw, 36px);
@@ -74,19 +85,25 @@
   word-break: keep-all;
 }
 
+.consultation-intro p span {
+  display: block;
+}
+
 .consultation-kakao {
-  min-height: 58px;
+  min-height: 64px;
   margin-top: clamp(28px, 3.2vw, 42px);
-  padding: 0 28px;
-  border: 2px solid #111214;
-  background: #f4d83d;
+  padding: 0 34px;
+  border: 3px solid #111214;
+  border-radius: 5px;
+  background: #ffd93d;
   color: #111214;
   cursor: pointer;
   box-shadow: 6px 6px 0 rgba(17, 18, 20, 0.72);
-  font-size: clamp(1.05rem, 1.26vw, 1.18rem);
+  font-size: clamp(1.08rem, 1.34vw, 1.26rem);
   line-height: 1;
   font-weight: 950;
   transition: transform 160ms ease, box-shadow 160ms ease;
+  white-space: nowrap;
 }
 
 .consultation-kakao:hover {
@@ -94,7 +111,17 @@
   box-shadow: 7px 7px 0 rgba(17, 18, 20, 0.72);
 }
 
-.consultation-graph {
+.consultation-caution {
+  max-width: 560px;
+  margin-top: clamp(16px, 1.8vw, 22px);
+  color: rgba(255, 253, 247, 0.72);
+  font-size: clamp(0.82rem, 0.92vw, 0.94rem);
+  line-height: 1.5;
+  font-weight: 720;
+  word-break: keep-all;
+}
+
+.consultation-note-wrap {
   position: relative;
   z-index: 1;
   min-height: clamp(430px, 42vw, 610px);
@@ -103,225 +130,158 @@
   justify-items: center;
 }
 
-.consultation-graph::before {
+.consultation-note-wrap::before {
   position: absolute;
   right: 3%;
-  top: 8%;
-  width: min(40%, 280px);
-  height: min(40%, 280px);
-  border: 24px solid rgba(244, 216, 61, 0.2);
-  border-radius: 50%;
+  top: 13%;
+  width: min(82%, 520px);
+  height: 76%;
+  border: 3px solid rgba(33, 24, 22, 0.24);
+  border-radius: 10px;
+  background: rgba(139, 16, 12, 0.42);
+  box-shadow: 10px 10px 0 rgba(33, 24, 22, 0.16);
   content: "";
+  transform: rotate(3deg);
   pointer-events: none;
 }
 
-.consultation-graph::after {
-  position: absolute;
-  left: 4%;
-  bottom: 7%;
-  width: min(34%, 220px);
-  height: 78px;
-  border: 2px solid rgba(255, 253, 247, 0.54);
-  transform: rotate(-8deg);
-  content: "";
-  pointer-events: none;
-}
-
-.consultation-chart-card,
-.consultation-tickers {
+.consultation-note-card {
   position: relative;
   z-index: 1;
-}
-
-.consultation-chart-card {
-  width: min(100%, 620px);
+  width: min(100%, 590px);
   display: grid;
-  gap: clamp(22px, 2.6vw, 34px);
-  padding: clamp(28px, 3.4vw, 48px);
-  border: 3px solid rgba(33, 24, 22, 0.2);
-  background:
-    linear-gradient(rgba(255, 253, 247, 0.94), rgba(255, 253, 247, 0.94)),
-    url("/images/dakjangsu-board-cream-texture.png");
+  gap: clamp(20px, 2.5vw, 30px);
+  padding: clamp(30px, 3.5vw, 46px);
+  border: 3px solid #211816;
+  border-radius: 10px;
+  background-color: #fff8e8;
+  background-image: url("/images/dakjangsu-board-cream-texture.png");
   background-size: cover;
   color: #211816;
-  box-shadow: 18px 18px 0 rgba(33, 24, 22, 0.2);
-  transform: rotate(-1.8deg);
+  box-shadow: 14px 14px 0 rgba(33, 24, 22, 0.24);
+  transform: rotate(-1.2deg);
 }
 
-.consultation-chart-card::before,
-.consultation-chart-card::after {
+.consultation-note-card::before {
   position: absolute;
-  z-index: -1;
-  width: 44%;
-  height: 74%;
-  border: 2px solid rgba(33, 24, 22, 0.16);
-  background: rgba(255, 253, 247, 0.58);
+  left: clamp(22px, 2.4vw, 30px);
+  top: clamp(92px, 9vw, 116px);
+  bottom: clamp(28px, 3vw, 38px);
+  width: 3px;
+  border-radius: 999px;
+  background: #d90a0a;
   content: "";
+  pointer-events: none;
 }
 
-.consultation-chart-card::before {
-  left: -9%;
-  bottom: 7%;
-  transform: rotate(-8deg);
+.consultation-note-clip {
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 84px;
+  height: 28px;
+  border: 3px solid #111111;
+  border-radius: 16px 16px 4px 4px;
+  background: #211816;
+  transform: translateX(-50%) rotate(1deg);
+  box-shadow: 3px 3px 0 rgba(33, 24, 22, 0.24);
 }
 
-.consultation-chart-card::after {
-  right: -8%;
-  top: 10%;
-  transform: rotate(8deg);
-}
-
-.consultation-graph-head {
-  align-self: start;
+.consultation-note-head {
   display: grid;
-  gap: 8px;
+  gap: clamp(12px, 1.5vw, 18px);
 }
 
-.consultation-graph-head span {
+.consultation-note-head > span {
   width: fit-content;
   padding: 8px 12px 7px;
+  border: 2px solid #211816;
+  border-radius: 4px;
   background: #d90a0a;
   color: #fffdf7;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-size: clamp(0.92rem, 1vw, 1.06rem);
   line-height: 1;
   font-weight: 950;
 }
 
-.consultation-graph-head strong {
+.consultation-note-head strong {
+  display: grid;
   color: #211816;
-  font-size: clamp(2.4rem, 3.5vw, 4.2rem);
-  line-height: 0.92;
-  font-weight: 950;
+  font-family: var(--font-display);
+  font-size: clamp(2.45rem, 3.6vw, 4.1rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: 0;
   word-break: keep-all;
 }
 
-.consultation-bars {
-  min-height: clamp(240px, 24vw, 340px);
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: end;
-  gap: clamp(14px, 1.8vw, 24px);
-  padding: clamp(18px, 2vw, 26px) clamp(14px, 2vw, 24px) 0;
-  border-bottom: 4px solid #211816;
-  background-image:
-    linear-gradient(rgba(33, 24, 22, 0.08) 1px, transparent 1px);
-  background-size: 100% 48px;
-}
-
-.consultation-bar-item {
+.consultation-note-list {
   position: relative;
+  z-index: 1;
   display: grid;
-  justify-items: center;
-  gap: 10px;
-  min-width: 0;
+  gap: 0;
+  margin: 0;
+  padding: 0 0 0 clamp(16px, 2vw, 22px);
+  list-style: none;
 }
 
-.consultation-bar-item span {
-  width: 42px;
-  height: 42px;
+.consultation-note-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  padding: clamp(14px, 1.6vw, 18px) 0;
+  border-top: 1px solid rgba(33, 24, 22, 0.14);
+}
+
+.consultation-note-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.consultation-note-list li > span {
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  background: #211816;
-  color: #f4d83d;
-  font-size: 0.92rem;
-  line-height: 1;
-  font-weight: 950;
-  transform: rotate(-4deg);
-}
-
-.consultation-bar {
-  position: relative;
-  width: min(100%, 76px);
-  height: clamp(150px, 17vw, 240px);
-  display: grid;
-  align-items: end;
-  overflow: hidden;
-  background: rgba(33, 24, 22, 0.08);
-}
-
-.consultation-bar i {
-  min-height: 38px;
-  height: var(--bar-height);
-  display: block;
-  background:
-    linear-gradient(180deg, #f4d83d 0%, #f4d83d 18%, #d90a0a 18%, #d90a0a 100%);
-  box-shadow: inset 0 0 0 2px rgba(33, 24, 22, 0.12);
-}
-
-.consultation-bar-item strong {
+  border: 2px solid #211816;
+  border-radius: 50%;
+  background: #ffd93d;
   color: #211816;
-  font-size: clamp(1rem, 1.2vw, 1.18rem);
-  line-height: 1;
-  font-weight: 950;
-  word-break: keep-all;
-}
-
-.consultation-chart-note {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 14px;
-  padding: 14px 16px;
-  background: #211816;
-  color: #fffdf7;
-  transform: rotate(1.2deg);
-}
-
-.consultation-chart-note b {
-  color: #f4d83d;
-  font-size: clamp(1.05rem, 1.3vw, 1.32rem);
+  font-size: 1rem;
   line-height: 1;
   font-weight: 950;
 }
 
-.consultation-chart-note span {
-  color: rgba(255, 253, 247, 0.82);
-  font-size: clamp(0.96rem, 1vw, 1.08rem);
-  line-height: 1.2;
-  font-weight: 820;
-  word-break: keep-all;
-}
-
-.consultation-tickers {
-  width: min(96%, 620px);
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: -4px;
-  transform: rotate(1.2deg);
-}
-
-.consultation-tickers span {
-  min-height: 78px;
-  display: grid;
-  align-content: center;
-  gap: 6px;
-  padding: 13px 10px;
-  border: 2px solid rgba(33, 24, 22, 0.2);
-  background: rgba(255, 253, 247, 0.92);
-  color: #211816;
-  box-shadow: 7px 7px 0 rgba(33, 24, 22, 0.16);
-}
-
-.consultation-tickers b,
-.consultation-tickers em {
+.consultation-note-list strong {
   display: block;
-  text-align: center;
-  font-style: normal;
-}
-
-.consultation-tickers b {
-  color: #d90a0a;
-  font-size: clamp(1.12rem, 1.38vw, 1.44rem);
-  line-height: 1;
-  font-weight: 950;
-}
-
-.consultation-tickers em {
-  color: rgba(33, 24, 22, 0.68);
-  font-size: clamp(0.82rem, 0.94vw, 0.94rem);
+  color: #211816;
+  font-size: clamp(1.18rem, 1.46vw, 1.42rem);
   line-height: 1.1;
-  font-weight: 820;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.consultation-note-list p {
+  margin: 5px 0 0;
+  color: rgba(33, 24, 22, 0.7);
+  font-size: clamp(0.96rem, 1.08vw, 1.08rem);
+  line-height: 1.35;
+  font-weight: 760;
+  word-break: keep-all;
+}
+
+.consultation-note-stamp {
+  justify-self: end;
+  margin: 0;
+  padding: 9px 14px 8px;
+  border: 2px solid #211816;
+  border-radius: 999px;
+  background: #ffd93d;
+  color: #211816;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1;
+  font-weight: 950;
+  transform: rotate(-1deg);
 }
 
 @media (min-width: 861px) {
@@ -364,33 +324,36 @@
     width: min(100%, 360px);
   }
 
-  .consultation-graph {
+  .consultation-note-wrap {
     width: min(100%, 520px);
     justify-self: center;
     min-height: 0;
   }
 
-  .consultation-chart-card {
+  .consultation-note-card {
     transform: none;
   }
 
-  .consultation-tickers {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    transform: none;
+  .consultation-note-wrap::before {
+    transform: rotate(2deg);
   }
 }
 
 @media (max-width: 560px) {
-  .consultation-bars {
-    gap: 8px;
-    padding-inline: 4px;
+  .consultation-kakao {
+    padding-inline: 18px;
+    font-size: 1rem;
   }
 
-  .consultation-bar {
-    width: min(100%, 56px);
+  .consultation-note-card {
+    padding: 30px 22px 24px;
   }
 
-  .consultation-tickers {
-    grid-template-columns: 1fr;
+  .consultation-note-card::before {
+    left: 18px;
+  }
+
+  .consultation-note-head strong {
+    font-size: clamp(2.18rem, 10vw, 3rem);
   }
 }

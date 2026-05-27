@@ -5,22 +5,22 @@ const supportSteps = [
     number: '01',
     phase: '오픈 전',
     headline: '시작 부담 낮추는 4무',
-    stamp: '4무',
-    items: ['가맹비 0원', '교육비 0원', '인테리어비 0원', '물류 예치비 0원']
+    highlight: '4무',
+    description: '가맹비, 교육비, 인테리어비, 물류 예치비 부담을 낮춰 매장 준비에 집중할 수 있게 돕습니다.'
   },
   {
     number: '02',
-    phase: '오픈 행사',
+    phase: '오픈 첫날',
     headline: '첫날부터 소프트랜딩',
-    stamp: '첫날 지원',
-    items: ['마케팅비 200만원', '오픈 행사 닭 200마리', '바이럴 마케팅 비용 포함', '본사 인력 지원']
+    highlight: '첫날',
+    description: '오픈 행사, 현장 지원, 초기 홍보 흐름을 함께 맞춰 첫날부터 덜 흔들리게 돕습니다.'
   },
   {
     number: '03',
     phase: '오픈 후',
     headline: '열고 끝내지 않는 관리',
-    stamp: '끝까지 관리',
-    items: ['슈퍼바이저 밀착 관리', '운영 흐름 점검', '매장 안정화 지원']
+    highlight: '끝내지 않는',
+    description: '오픈 이후에도 매장 흐름을 점검하고, 자리 잡을 때까지 함께 봅니다.'
   }
 ];
 
@@ -30,17 +30,16 @@ const FounderFit = () => {
       <div className="founder-fit-copy">
         <h2 id="founder-fit-title">
           <span>오픈하고 끝?</span>
-          <span>닭장수는 끝까지</span>
+          <span>닭장수는 <em>끝까지</em></span>
         </h2>
+        <p>
+          처음 준비하는 순간부터 오픈 첫날, 그리고 매장이 자리 잡는 과정까지
+          점주가 혼자 버티지 않도록 단계별로 함께 봅니다.
+        </p>
       </div>
 
       <div className="founder-fit-content">
-        <div className="founder-support-orbit" aria-label="닭장수후라이드 본사 지원 흐름">
-          <div className="founder-support-center" aria-hidden="true">
-            <span>오픈부터</span>
-            <strong>운영까지</strong>
-          </div>
-
+        <div className="founder-support-timeline" aria-label="닭장수후라이드 본사 지원 흐름">
           {supportSteps.map((step) => (
             <article className="founder-support-step" key={step.phase}>
               <div className="founder-support-meta">
@@ -48,18 +47,15 @@ const FounderFit = () => {
                 <strong>{step.phase}</strong>
               </div>
               <div className="founder-support-body">
-                <b>{step.stamp}</b>
-                <h3>{step.headline}</h3>
-                <ul>
-                  {step.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <h3>
+                  {step.headline.split(step.highlight)[0]}
+                  <em>{step.highlight}</em>
+                  {step.headline.split(step.highlight)[1]}
+                </h3>
+                <p>{step.description}</p>
               </div>
             </article>
           ))}
-
-          <p className="founder-support-note">지원 조건과 세부 범위는 상담 시 확인</p>
         </div>
       </div>
     </section>

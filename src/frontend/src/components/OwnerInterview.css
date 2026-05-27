@@ -6,7 +6,7 @@
   align-items: center;
   justify-items: center;
   overflow: hidden;
-  padding: clamp(44px, 6vw, 96px);
+  padding: clamp(48px, 5vw, 84px);
   background-color: #fffdf7;
   background-image:
     linear-gradient(rgba(255, 253, 247, 0.9), rgba(255, 253, 247, 0.9)),
@@ -32,19 +32,35 @@
 .owner-interview-content {
   position: relative;
   z-index: 1;
-}
-
-.owner-interview-content {
   width: min(100%, 1180px);
   justify-self: center;
   display: grid;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(16px, 1.8vw, 24px);
 }
 
 .owner-interview-heading {
   display: grid;
+  gap: clamp(12px, 1.4vw, 18px);
   justify-items: center;
   text-align: center;
+}
+
+.owner-interview-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 9px 14px 8px;
+  border: 2px solid #111111;
+  border-radius: 6px;
+  background: #ffd93d;
+  color: #111111;
+  box-shadow: 3px 3px 0 #111111;
+  font-size: clamp(0.86rem, 0.96vw, 1rem);
+  line-height: 1;
+  font-weight: 900;
+  transform: rotate(-1deg);
+  word-break: keep-all;
 }
 
 .owner-interview-heading h2 {
@@ -52,51 +68,108 @@
   gap: 4px;
   margin: 0;
   color: #211816;
-  font-size: clamp(2.8rem, 6vw, 6.4rem);
+  font-family: var(--font-display);
+  font-size: clamp(3.1rem, 5.7vw, 6.2rem);
   line-height: 0.92;
-  font-weight: 950;
+  font-weight: 400;
   letter-spacing: 0;
   word-break: keep-all;
 }
 
-.owner-proof-photo {
-  position: relative;
-  min-height: clamp(220px, 24vw, 320px);
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid rgba(33, 24, 22, 0.22);
-  background: #211816;
+.owner-interview-heading h2 em {
+  color: #ffd93d;
+  font-style: normal;
+  text-shadow:
+    2px 2px 0 #111111,
+    -1px -1px 0 #111111,
+    1px -1px 0 #111111,
+    -1px 1px 0 #111111;
 }
 
-.owner-proof-photo::before {
+.owner-proof-video {
+  position: relative;
+  display: block;
+  width: min(100%, 1120px);
+  min-height: clamp(280px, 34vw, 430px);
+  padding: 0;
+  margin: clamp(4px, 0.8vw, 10px) 0 0;
+  overflow: hidden;
+  border: 3px solid #111111;
+  border-radius: 8px;
+  background: #211816;
+  box-shadow: 12px 12px 0 rgba(17, 17, 17, 0.16), 0 20px 42px rgba(33, 24, 22, 0.16);
+  cursor: pointer;
+  appearance: none;
+  font: inherit;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.owner-proof-video::before {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(0deg, rgba(16, 14, 12, 0.72), rgba(16, 14, 12, 0.06) 58%),
-    linear-gradient(90deg, rgba(16, 14, 12, 0.56), rgba(16, 14, 12, 0.08) 52%);
+  background: rgba(16, 14, 12, 0.24);
   content: "";
   pointer-events: none;
 }
 
-.owner-proof-photo img {
+.owner-proof-video img {
   display: block;
   width: 100%;
   height: 100%;
   min-height: inherit;
   object-fit: cover;
   object-position: center 58%;
-  filter: saturate(0.94) contrast(1.04) brightness(0.9);
+  filter: saturate(0.96) contrast(1.05) brightness(0.92);
+  transform: scale(1.06);
+}
+
+.owner-proof-video:hover,
+.owner-proof-video:focus-visible {
+  transform: translate(3px, 3px);
+  box-shadow: 9px 9px 0 rgba(17, 17, 17, 0.2), 0 16px 34px rgba(33, 24, 22, 0.14);
+}
+
+.owner-proof-video:focus-visible {
+  outline: 4px solid #ffd93d;
+  outline-offset: 5px;
+}
+
+.owner-proof-play {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  z-index: 2;
+  width: clamp(78px, 7.4vw, 112px);
+  aspect-ratio: 1;
+  border: 3px solid #111111;
+  border-radius: 50%;
+  background: #ffd93d;
+  box-shadow: 7px 7px 0 rgba(17, 17, 17, 0.48);
+  transform: translate(-50%, -50%);
+}
+
+.owner-proof-play::before {
+  position: absolute;
+  left: 52%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: clamp(15px, 1.6vw, 22px) solid transparent;
+  border-bottom: clamp(15px, 1.6vw, 22px) solid transparent;
+  border-left: clamp(23px, 2.35vw, 34px) solid #111111;
+  content: "";
+  transform: translate(-34%, -50%);
 }
 
 .owner-interview-story {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   max-width: 860px;
   margin: 0 auto;
   color: #211816;
-  font-size: clamp(1.18rem, 2vw, 2rem);
-  line-height: 1.24;
+  font-size: clamp(1.18rem, 1.72vw, 1.72rem);
+  line-height: 1.32;
   font-weight: 850;
   text-align: center;
   word-break: keep-all;
@@ -108,7 +181,11 @@
     padding: 56px 24px;
   }
 
-  .owner-proof-photo {
+  .owner-proof-video {
     min-height: 340px;
+  }
+
+  .owner-interview-heading h2 {
+    font-size: clamp(2.7rem, 9vw, 4.8rem);
   }
 }
