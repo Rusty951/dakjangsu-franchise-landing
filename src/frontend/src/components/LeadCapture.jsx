@@ -21,16 +21,16 @@ const LeadCapture = ({ onKakaoClick }) => {
       <div className="consultation-intro">
         <span className="consultation-label">닭장수 창업 상담</span>
         <h2 id="lead-capture-title">
-          <span>우리 동네</span>
-          <span><em>창업 조건</em>부터</span>
-          <span>확인하세요</span>
+          <span>내 동네에서</span>
+          <span>닭장수 창업</span>
+          <span><em>가능할까요?</em></span>
         </h2>
         <p>
           <span>자리, 포장 손님, 먹고 갈 자리, 오픈 후 관리까지</span>
-          <span>우리 동네에 맞는 조건을 먼저 봅니다.</span>
+          <span>상담에서 우리 동네 조건을 함께 봅니다.</span>
         </p>
         <button className="consultation-kakao" onClick={handleKakaoClick}>
-          카카오톡으로 창업 조건 확인하기
+          카카오톡으로 내 동네 가능성 확인하기
         </button>
         <small className="consultation-caution">
           창업 조건은 지역, 매장 상태, 규모, 운영 방식에 따라 달라질 수 있습니다.

@@ -11,15 +11,15 @@ const supportSteps = [
   {
     number: '02',
     phase: '오픈 첫날',
-    headline: '첫날부터 소프트랜딩',
+    headline: '첫날부터 덜 흔들리게',
     highlight: '첫날',
-    description: '오픈 행사, 현장 지원, 초기 홍보 흐름을 함께 맞춰 첫날부터 덜 흔들리게 돕습니다.'
+    description: '오픈 행사, 현장 지원, 초기 홍보 흐름을 함께 맞춰 첫날 운영을 도와드립니다.'
   },
   {
     number: '03',
     phase: '오픈 후',
-    headline: '열고 끝내지 않는 관리',
-    highlight: '끝내지 않는',
+    headline: '열고 나서도 함께 봅니다',
+    highlight: '함께',
     description: '오픈 이후에도 매장 흐름을 점검하고, 자리 잡을 때까지 함께 봅니다.'
   }
 ];

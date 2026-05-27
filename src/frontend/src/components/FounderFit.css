@@ -88,7 +88,7 @@
 .founder-support-timeline {
   position: relative;
   display: grid;
-  gap: clamp(18px, 2vw, 24px);
+  gap: clamp(22px, 2.3vw, 30px);
   width: min(100%, 920px);
   margin: 0 auto;
   padding-left: clamp(22px, 2.6vw, 34px);
@@ -114,20 +114,20 @@
   gap: clamp(18px, 2vw, 26px);
   align-items: stretch;
   width: 100%;
-  min-height: clamp(148px, 13vw, 184px);
-  padding: clamp(24px, 2.6vw, 32px);
+  min-height: clamp(164px, 14vw, 204px);
+  padding: clamp(28px, 3vw, 38px);
   border: 3px solid #211816;
   border-radius: 8px;
   background-color: #fff8e8;
   background-image: url("/images/dakjangsu-board-cream-texture.png");
   background-size: cover;
-  box-shadow: 12px 12px 0 rgba(33, 24, 22, 0.2), 0 18px 34px rgba(83, 0, 0, 0.18);
+  box-shadow: 9px 9px 0 rgba(33, 24, 22, 0.24), 0 14px 24px rgba(83, 0, 0, 0.16);
   color: #211816;
 }
 
 .founder-support-step:nth-of-type(3) {
   border-color: #211816;
-  box-shadow: 12px 12px 0 rgba(33, 24, 22, 0.24), inset 0 0 0 5px rgba(255, 217, 61, 0.75);
+  box-shadow: 9px 9px 0 rgba(33, 24, 22, 0.26), inset 0 0 0 5px rgba(255, 217, 61, 0.75);
 }
 
 .founder-support-step::before {
@@ -155,13 +155,13 @@
 
 .founder-support-meta span {
   width: fit-content;
-  padding: 8px 10px 5px;
+  padding: 7px 9px 5px;
   border: 2px solid #211816;
   border-radius: 4px;
   background: #d92b1f;
   color: #fffdf7;
   font-family: var(--font-display);
-  font-size: clamp(1.82rem, 2.8vw, 3rem);
+  font-size: clamp(1.62rem, 2.35vw, 2.55rem);
   line-height: 0.9;
   font-weight: 950;
   box-shadow: 3px 3px 0 rgba(33, 24, 22, 0.18);
@@ -185,7 +185,7 @@
 .founder-support-body h3 {
   margin: 0;
   color: #211816;
-  font-size: clamp(1.74rem, 2.3vw, 2.45rem);
+  font-size: clamp(1.86rem, 2.48vw, 2.66rem);
   line-height: 1.1;
   font-weight: 950;
   word-break: keep-all;
@@ -200,9 +200,9 @@
   margin: 0;
   max-width: 600px;
   color: rgba(33, 24, 22, 0.76);
-  font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+  font-size: clamp(1.08rem, 1.26vw, 1.24rem);
   line-height: 1.48;
-  font-weight: 820;
+  font-weight: 840;
   word-break: keep-all;
 }
 
@@ -257,7 +257,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
     min-height: 0;
-    padding: 22px;
+    padding: 24px;
   }
 
   .founder-support-meta {
