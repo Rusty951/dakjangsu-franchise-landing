@@ -78,11 +78,11 @@
 }
 
 .menu-proof-lead {
-  margin: clamp(26px, 3vw, 40px) 0 0;
+  margin: clamp(28px, 3.2vw, 44px) 0 0;
   color: rgba(255, 253, 247, 0.95);
-  font-size: clamp(1.34rem, 1.72vw, 1.9rem);
-  line-height: 1.42;
-  font-weight: 850;
+  font-size: clamp(2rem, 2.8vw, 3.2rem);
+  line-height: 1.18;
+  font-weight: 950;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.62);
   word-break: keep-all;
 }
@@ -119,6 +119,11 @@
     font-size: clamp(3.5rem, 10vw, 5.8rem);
   }
 
+  .menu-proof-lead {
+    font-size: clamp(1.72rem, 5.2vw, 2.72rem);
+    line-height: 1.22;
+  }
+
   .menu-proof-copy h2 span {
     white-space: normal;
   }
@@ -142,7 +147,7 @@
   }
 
   .menu-proof-lead {
-    font-size: 1.08rem;
+    font-size: clamp(1.34rem, 6.4vw, 1.82rem);
   }
 
   .menu-proof-support {

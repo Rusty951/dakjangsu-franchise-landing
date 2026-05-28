@@ -1,11 +1,12 @@
 import './ShockHook.css';
+import { assetPath } from '../assetPath';
 
 const ShockHook = () => {
   return (
     <section className="shock-hook-section" aria-labelledby="shock-hook-title">
       <figure className="shock-hook-image">
         <img
-          src="/images/dakjangsu-packaging-start-queue-original.jpg"
+          src={assetPath('/images/dakjangsu-packaging-start-queue-original.jpg')}
           alt="매장 안에서 포장 준비와 대기 손님이 함께 보이는 장면"
         />
       </figure>

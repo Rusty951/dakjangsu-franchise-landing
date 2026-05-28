@@ -1,13 +1,14 @@
 import './MenuShowcase.css';
+import { assetPath } from '../assetPath';
 
 const menuItems = [
-  { image: '/images/dakjangsu-menu-1.png', name: '닭장수후라이드 대표 메뉴 1' },
-  { image: '/images/dakjangsu-menu-2.png', name: '닭장수후라이드 대표 메뉴 2' },
-  { image: '/images/dakjangsu-menu-3.png', name: '닭장수후라이드 대표 메뉴 3' },
-  { image: '/images/dakjangsu-menu-4.png', name: '닭장수후라이드 대표 메뉴 4' },
-  { image: '/images/dakjangsu-menu-5.png', name: '닭장수후라이드 대표 메뉴 5' },
-  { image: '/images/dakjangsu-menu-6.png', name: '닭장수후라이드 대표 메뉴 6' },
-  { image: '/images/dakjangsu-menu-7.png', name: '닭장수후라이드 대표 메뉴 7' }
+  { image: assetPath('/images/dakjangsu-menu-1.png'), name: '닭장수후라이드 대표 메뉴 1' },
+  { image: assetPath('/images/dakjangsu-menu-2.png'), name: '닭장수후라이드 대표 메뉴 2' },
+  { image: assetPath('/images/dakjangsu-menu-3.png'), name: '닭장수후라이드 대표 메뉴 3' },
+  { image: assetPath('/images/dakjangsu-menu-4.png'), name: '닭장수후라이드 대표 메뉴 4' },
+  { image: assetPath('/images/dakjangsu-menu-5.png'), name: '닭장수후라이드 대표 메뉴 5' },
+  { image: assetPath('/images/dakjangsu-menu-6.png'), name: '닭장수후라이드 대표 메뉴 6' },
+  { image: assetPath('/images/dakjangsu-menu-7.png'), name: '닭장수후라이드 대표 메뉴 7' }
 ];
 
 const menuPoints = ['대표 후라이드', '양념 치킨', '곁들이는 사이드', '스페셜 메뉴'];

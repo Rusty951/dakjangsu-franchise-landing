@@ -1,12 +1,13 @@
 import './CharacterHeroConcept.css';
 import Logo from './Logo';
+import { assetPath } from '../assetPath';
 
 const CharacterHeroConcept = ({ onKakaoClick }) => {
   return (
     <section className="character-hero" id="top" aria-label="닭장수후라이드 제품 중심 히어로 시안">
       <figure className="character-hero-bg">
         <img
-          src="/images/dakjangsu-hand-developed-hero.png"
+          src={assetPath('/images/dakjangsu-hand-developed-hero.png')}
           alt="빨간 포스터를 뚫고 나온 손이 후라이드 치킨 박스를 내미는 이미지"
         />
       </figure>

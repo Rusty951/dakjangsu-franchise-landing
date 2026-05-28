@@ -1,4 +1,5 @@
 import './SuccessScenes.css';
+import { assetPath } from '../assetPath';
 
 const SuccessScenes = () => {
   return (
@@ -14,7 +15,7 @@ const SuccessScenes = () => {
 
       <figure className="success-scenes-photo">
         <img
-          src="/images/dakjangsu-interior-queue-20180727-web.jpg"
+          src={assetPath('/images/dakjangsu-interior-queue-20180727-web.jpg')}
           alt="닭장수후라이드 매장에서 손님들이 주문을 기다리는 모습"
         />
       </figure>

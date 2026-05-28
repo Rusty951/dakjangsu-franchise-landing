@@ -1,4 +1,5 @@
 import './OwnerVoice.css';
+import { assetPath } from '../assetPath';
 
 const interviewPoints = [
   {
@@ -23,7 +24,7 @@ const OwnerVoice = () => {
     <section className="owner-voice-section" id="owner-voice" aria-labelledby="owner-voice-title">
       <figure className="owner-voice-photo">
         <img
-          src="/images/dakjangsu-owner-phone-privacy.jpg"
+          src={assetPath('/images/dakjangsu-owner-phone-privacy.jpg')}
           alt="매장에서 전화 응대를 하는 닭장수후라이드 점주"
         />
         <figcaption>

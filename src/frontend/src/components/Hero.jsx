@@ -1,4 +1,5 @@
 import './Hero.css';
+import { assetPath } from '../assetPath';
 
 const Hero = () => {
   return (
@@ -18,12 +19,17 @@ const Hero = () => {
             닭장수후라이드는 배달뿐 아니라 포장, 홀 손님, 재방문까지 고려해
             우리 동네에 맞는 후라이드 치킨 창업을 제안합니다.
           </p>
-        </div>
-
-        <div className="hero-menu-strip" aria-hidden="true">
-          <figure className="hero-menu-photo">
-            <img src="/images/dakjangsu-baemin-hero-menu-cutout.png" alt="" />
-          </figure>
+          <div className="hero-menu-strip" aria-hidden="true">
+            <figure className="hero-menu-photo hero-menu-photo--left">
+              <img src={assetPath('/images/dakjangsu-baemin-hero-menu-cutout.png')} alt="" />
+            </figure>
+            <figure className="hero-menu-photo hero-menu-photo--center">
+              <img src={assetPath('/images/dakjangsu-baemin-hero-menu-cutout.png')} alt="" />
+            </figure>
+            <figure className="hero-menu-photo hero-menu-photo--right">
+              <img src={assetPath('/images/dakjangsu-baemin-hero-menu-cutout.png')} alt="" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>

@@ -1,12 +1,13 @@
 import './StreetHeroConcept.css';
 import Logo from './Logo';
+import { assetPath } from '../assetPath';
 
 const StreetHeroConcept = ({ onKakaoClick }) => {
   return (
     <section className="street-hero" id="top" aria-label="닭장수후라이드 상권 장면형 히어로 시안">
       <figure className="street-hero-bg">
         <img
-          src="/images/dakjangsu-street-takeout-hero.png"
+          src={assetPath('/images/dakjangsu-street-takeout-hero.png')}
           alt="저녁 포장 매장 앞 손님과 후라이드 치킨 박스"
         />
       </figure>
