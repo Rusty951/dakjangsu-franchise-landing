@@ -22,7 +22,7 @@ const Hero = () => {
 
         <div className="hero-menu-strip" aria-hidden="true">
           <figure className="hero-menu-photo">
-            <img src="/images/dakjangsu-baemin-hero-menu.jpg" alt="" />
+            <img src="/images/dakjangsu-baemin-hero-menu-cutout.png" alt="" />
           </figure>
         </div>
       </div>

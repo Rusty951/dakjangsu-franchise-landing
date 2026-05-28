@@ -1,6 +1,17 @@
 .landing-app {
+  width: 100%;
   min-height: 100vh;
-  background: var(--bg-section);
+  overflow-x: clip;
+  background: #e20a0a;
+}
+
+.landing-app > .opening-flow,
+.landing-app > section,
+.landing-app > .site-footer {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .landing-app .mobile-kakao-bar {

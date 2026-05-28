@@ -2,10 +2,10 @@ import './LeadCapture.css';
 import { trackEvent } from '../utils/tracking';
 
 const consultationChecks = [
-  { title: '자리', description: '사람들이 지나가는 길목인지' },
-  { title: '포장 손님', description: '들고 갈 손님이 있는 동네인지' },
-  { title: '먹고 갈 자리', description: '한잔하고 갈 손님이 있는지' },
-  { title: '오픈 후 관리', description: '열고 나서도 같이 봐주는지' }
+  { title: '상권', description: '충분한 수요가 있는 지역인지' },
+  { title: '포장', description: '지나가는 사람들이 사가기 쉬운 위치인지' },
+  { title: '홀', description: '맥주 한 잔 하고 갈 손님이 있는지' },
+  { title: '배후수요', description: '배달 주문까지 가능한 지역인지' }
 ];
 
 const LeadCapture = ({ onKakaoClick }) => {
@@ -21,13 +21,13 @@ const LeadCapture = ({ onKakaoClick }) => {
       <div className="consultation-intro">
         <span className="consultation-label">닭장수 창업 상담</span>
         <h2 id="lead-capture-title">
-          <span>내 동네에서</span>
+          <span>우리동네에서</span>
           <span>닭장수 창업</span>
           <span><em>가능할까요?</em></span>
         </h2>
         <p>
-          <span>자리, 포장 손님, 먹고 갈 자리, 오픈 후 관리까지</span>
-          <span>상담에서 우리 동네 조건을 함께 봅니다.</span>
+          <span>상권분석부터 성장가능성까지 상담을 통해</span>
+          <span>우리동네 조건을 함께 봅니다.</span>
         </p>
         <button className="consultation-kakao" onClick={handleKakaoClick}>
           카카오톡으로 우리동네 창업 확인하기
@@ -40,7 +40,7 @@ const LeadCapture = ({ onKakaoClick }) => {
           <div className="consultation-note-head">
             <span>창업 체크노트</span>
             <strong>
-              <span>우리 동네에서</span>
+              <span>우리동네에서</span>
               <span>먼저 볼 4가지</span>
             </strong>
           </div>
