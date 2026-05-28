@@ -147,18 +147,6 @@
   transform: rotate(-1.2deg);
 }
 
-.consultation-note-card::before {
-  position: absolute;
-  left: clamp(24px, 2.4vw, 32px);
-  top: clamp(96px, 8.4vw, 126px);
-  bottom: clamp(28px, 2.6vw, 36px);
-  width: 3px;
-  border-radius: 999px;
-  background: #d90a0a;
-  content: "";
-  pointer-events: none;
-}
-
 .consultation-note-clip {
   position: absolute;
   left: 50%;
@@ -206,7 +194,7 @@
   display: grid;
   gap: 0;
   margin: 0;
-  padding: 0 0 0 clamp(20px, 2.3vw, 28px);
+  padding: 0;
   list-style: none;
 }
 
@@ -326,10 +314,6 @@
     transform: none;
   }
 
-  .consultation-note-list {
-    padding-left: 14px;
-  }
-
   .consultation-note-list li {
     gap: 10px;
     padding: 10px 0;
@@ -371,10 +355,6 @@
 
   .consultation-note-card {
     padding: 28px 18px 22px;
-  }
-
-  .consultation-note-card::before {
-    left: 20px;
   }
 
   .consultation-note-head strong {
