@@ -4,12 +4,13 @@ const supportSteps = [
   {
     number: '01',
     phase: '오픈 전',
-    headline: '시작 부담 낮추는 4무',
-    highlight: '4무',
+    headline: '시작 부담 낮추는 5무',
+    highlight: '5무',
     figures: [
       { value: '0원', label: '가맹비' },
       { value: '0원', label: '교육비' },
-      { value: '0원', label: '인테리어비' },
+      { value: '0원', label: '로열티' },
+      { value: '0원', label: '인테리어 감리비' },
       { value: '0원', label: '물류 예치비' }
     ],
     description: '초기 비용 부담을 낮춰 매장 준비와 오픈 전 세팅에 더 집중할 수 있게 돕습니다.'
