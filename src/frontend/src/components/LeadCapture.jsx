@@ -30,11 +30,8 @@ const LeadCapture = ({ onKakaoClick }) => {
           <span>상담에서 우리 동네 조건을 함께 봅니다.</span>
         </p>
         <button className="consultation-kakao" onClick={handleKakaoClick}>
-          카카오톡으로 내 동네 가능성 확인하기
+          카카오톡으로 우리동네 창업 확인하기
         </button>
-        <small className="consultation-caution">
-          창업 조건은 지역, 매장 상태, 규모, 운영 방식에 따라 달라질 수 있습니다.
-        </small>
       </div>
 
       <div className="consultation-note-wrap" aria-label="상담에서 함께 확인하는 창업 체크노트">

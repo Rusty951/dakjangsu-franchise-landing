@@ -14,11 +14,6 @@ const MenuProof = () => {
             포장으로 가져가고,<br />
             매장에서는 한잔하고 갑니다.
           </p>
-
-          <p className="menu-proof-support">
-            닭장수는 동네 손님이 직접 찾는<br />
-            매장 주문을 만듭니다.
-          </p>
         </div>
       </div>
     </section>

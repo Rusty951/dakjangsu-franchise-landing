@@ -10,7 +10,7 @@ const menuItems = [
   { image: '/images/dakjangsu-menu-7.png', name: '닭장수후라이드 대표 메뉴 7' }
 ];
 
-const menuPoints = ['후라이드', '양념', '사이드'];
+const menuPoints = ['대표 후라이드', '양념 치킨', '곁들이는 사이드', '스페셜 메뉴'];
 
 const MenuShowcase = () => {
   return (
@@ -22,7 +22,8 @@ const MenuShowcase = () => {
           <span>메뉴판에 쌓여 있다</span>
         </h2>
         <p>
-          후라이드부터 양념, 사이드까지. 동네 손님이 다시 고를 메뉴가 있어야 매장 주문도 살아납니다.
+          <span>후라이드부터 양념, 사이드, 스페셜 메뉴까지.</span>
+          <span>동네 손님이 다시 고를 이유가 있어야 매장 주문도 살아납니다.</span>
         </p>
         <div className="menu-showcase-points" aria-label="메뉴 구성 핵심">
           {menuPoints.map((point) => (

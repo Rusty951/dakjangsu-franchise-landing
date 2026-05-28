@@ -113,64 +113,32 @@
 .hero-menu-strip {
   position: absolute;
   left: 50%;
-  bottom: clamp(-64px, -5vw, -36px);
+  bottom: clamp(18px, 2.4vw, 32px);
   z-index: 1;
-  width: min(1040px, 92vw);
-  height: clamp(180px, 19vw, 280px);
-  transform: translateX(-50%);
+  width: min(760px, 74vw);
+  height: clamp(188px, 15vw, 230px);
+  transform: translateX(-50%) rotate(-1.5deg);
   pointer-events: none;
 }
 
-.hero-menu-item {
-  position: absolute;
-  bottom: 0;
+.hero-menu-photo {
+  width: 100%;
+  height: 100%;
+  margin: 0;
   overflow: hidden;
-  border: 3px solid rgba(17, 17, 17, 0.62);
-  border-radius: 999px;
-  background: #fffdf7;
-  box-shadow: 10px 12px 0 rgba(17, 17, 17, 0.18), 0 18px 34px rgba(69, 0, 0, 0.28);
+  border: 3px solid rgba(17, 17, 17, 0.68);
+  border-radius: 22px;
+  background: #b7191d;
+  box-shadow: 12px 14px 0 rgba(17, 17, 17, 0.2), 0 22px 42px rgba(69, 0, 0, 0.3);
 }
 
-.hero-menu-item img {
+.hero-menu-photo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.08) contrast(1.04);
-}
-
-.hero-menu-item--left {
-  left: 2%;
-  width: clamp(210px, 24vw, 340px);
-  height: clamp(136px, 15vw, 210px);
-  transform: rotate(-6deg);
-}
-
-.hero-menu-item--left img {
-  object-position: 55% 58%;
-  transform: scale(1.55);
-}
-
-.hero-menu-item--center {
-  left: 50%;
-  width: clamp(260px, 30vw, 430px);
-  height: clamp(158px, 17vw, 240px);
-  transform: translateX(-50%) rotate(2deg);
-}
-
-.hero-menu-item--center img {
-  object-position: 48% 48%;
-}
-
-.hero-menu-item--right {
-  right: 1%;
-  width: clamp(220px, 25vw, 360px);
-  height: clamp(140px, 15vw, 212px);
-  transform: rotate(6deg);
-}
-
-.hero-menu-item--right img {
-  object-position: 50% 48%;
+  object-position: center 53%;
+  filter: saturate(1.08) contrast(1.05);
 }
 
 .hero-actions {
@@ -231,8 +199,9 @@
   }
 
   .hero-menu-strip {
-    bottom: -46px;
-    height: 170px;
+    bottom: 22px;
+    width: min(620px, 84vw);
+    height: clamp(170px, 24vw, 210px);
   }
 
 }
@@ -286,29 +255,16 @@
   }
 
   .hero-menu-strip {
-    bottom: -34px;
-    width: 110vw;
-    height: 128px;
+    bottom: 18px;
+    width: min(430px, 88vw);
+    height: clamp(126px, 32vw, 154px);
+    transform: translateX(-50%) rotate(-1deg);
   }
 
-  .hero-menu-item {
+  .hero-menu-photo {
     border-width: 2px;
-    box-shadow: 6px 7px 0 rgba(17, 17, 17, 0.16), 0 12px 24px rgba(69, 0, 0, 0.24);
-  }
-
-  .hero-menu-item--left {
-    width: 150px;
-    height: 94px;
-  }
-
-  .hero-menu-item--center {
-    width: 190px;
-    height: 106px;
-  }
-
-  .hero-menu-item--right {
-    width: 154px;
-    height: 94px;
+    border-radius: 16px;
+    box-shadow: 7px 8px 0 rgba(17, 17, 17, 0.18), 0 14px 26px rgba(69, 0, 0, 0.24);
   }
 
 }
