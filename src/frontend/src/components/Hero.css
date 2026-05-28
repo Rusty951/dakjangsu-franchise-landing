@@ -252,6 +252,10 @@
     line-height: 0.9;
   }
 
+  .hero-title-accent--dark {
+    background: #18100e;
+  }
+
   .hero-subcopy {
     width: min(100%, 330px);
     max-width: min(100%, 330px);
@@ -271,6 +275,7 @@
     width: 100%;
     min-width: 0;
     padding: 18px 16px;
+    background: #f7d64a;
     box-shadow: 5px 5px 0 #111111;
     font-size: 1.06rem;
   }
