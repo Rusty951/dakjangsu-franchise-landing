@@ -10,6 +10,9 @@
   background-position: center, center;
   color: #fffdf7;
   overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .hero-section::before {
@@ -40,7 +43,11 @@
     url("/images/dakjangsu-board-red-texture.png");
   background-size: 42px 42px, 42px 42px, cover, cover;
   background-position: center, center, center, center;
+  contain: paint;
   overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .hero-visual-slot::before {
@@ -52,8 +59,9 @@
     radial-gradient(circle at 18% 22%, rgba(255, 253, 247, 0.14), transparent 18%),
     radial-gradient(circle at 82% 18%, rgba(255, 217, 61, 0.12), transparent 20%);
   content: "";
+  opacity: 0.82;
   pointer-events: none;
-  animation: heroGlowPulse 4.8s ease-in-out infinite;
+  animation: heroGlowPulse 7.2s ease-in-out 1.6s infinite;
 }
 
 .hero-visual-slot::after {
@@ -64,9 +72,10 @@
     linear-gradient(120deg, transparent 0%, rgba(255, 253, 247, 0.08) 42%, transparent 56%),
     radial-gradient(circle at 50% 8%, rgba(255, 217, 61, 0.1), transparent 26%);
   content: "";
+  opacity: 0.36;
   pointer-events: none;
   transform: translateX(-12%);
-  animation: heroLightSweep 5.8s ease-in-out infinite;
+  animation: heroLightSweep 8.4s ease-in-out 2.4s infinite;
 }
 
 .hero-spark-layer {
@@ -79,6 +88,9 @@
   background-position: 8% 18%, 19% 29%;
   background-size: 118px 132px, 164px 146px;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity;
 }
 
 .hero-spark-layer::before,
@@ -92,16 +104,16 @@
   background-position: 14% 58%, 72% 68%, 44% 74%;
   background-size: 126px 148px, 178px 164px, 232px 196px;
   content: "";
-  opacity: 0.5;
+  opacity: 0.24;
   mask-image: radial-gradient(ellipse at 50% 68%, black 0 42%, rgba(0, 0, 0, 0.65) 56%, transparent 82%);
-  animation: heroGlitterField 8.8s ease-in-out infinite alternate;
+  animation: heroGlitterField 12s ease-in-out 2s infinite alternate;
 }
 
 .hero-spark-layer::after {
   background-position: 27% 72%, 84% 52%, 58% 60%;
   background-size: 154px 136px, 218px 184px, 282px 238px;
-  opacity: 0.34;
-  animation-duration: 12s;
+  opacity: 0.18;
+  animation-duration: 14s;
   animation-direction: alternate-reverse;
 }
 
@@ -113,8 +125,11 @@
     drop-shadow(0 0 7px rgba(255, 253, 247, 0.72))
     drop-shadow(0 0 16px rgba(255, 217, 61, 0.58))
     drop-shadow(0 0 26px rgba(255, 80, 40, 0.22));
-  opacity: 0.66;
-  animation: heroSparkle 4.8s ease-in-out infinite;
+  opacity: 0.3;
+  animation: heroSparkle 6.8s ease-in-out 1.8s infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .hero-spark::before,
@@ -142,69 +157,69 @@
   right: 10%;
   top: 16%;
   width: clamp(26px, 3.3vw, 56px);
-  animation-delay: -0.7s;
+  animation-delay: 2.4s;
 }
 
 .hero-spark--three {
   left: 34%;
   top: 59%;
   width: clamp(14px, 1.8vw, 28px);
-  animation-delay: -1.35s;
+  animation-delay: 3.1s;
 }
 
 .hero-spark--four {
   right: 11%;
   top: 42%;
   width: clamp(10px, 1.3vw, 20px);
-  animation-delay: -2s;
+  animation-delay: 3.8s;
 }
 
 .hero-spark--five {
   left: 25%;
   top: 11%;
   width: clamp(12px, 1.6vw, 26px);
-  animation-delay: -0.35s;
+  animation-delay: 2.8s;
 }
 
 .hero-spark--six {
   right: 28%;
   top: 10%;
   width: clamp(13px, 1.6vw, 27px);
-  animation-delay: -1.1s;
+  animation-delay: 4.2s;
 }
 
 .hero-spark--seven {
   left: 61%;
   top: 53%;
   width: clamp(11px, 1.4vw, 22px);
-  animation-delay: -1.75s;
+  animation-delay: 3.5s;
 }
 
 .hero-spark--eight {
   display: none;
-  animation-delay: -2.25s;
+  animation-delay: 4.5s;
 }
 
 .hero-spark--nine {
   display: none;
-  animation-delay: -0.95s;
+  animation-delay: 4.8s;
 }
 
 .hero-spark--ten {
   right: 35%;
   top: 69%;
   width: clamp(12px, 1.5vw, 24px);
-  animation-delay: -1.55s;
+  animation-delay: 5s;
 }
 
 .hero-spark--eleven {
   display: none;
-  animation-delay: -2.55s;
+  animation-delay: 5.2s;
 }
 
 .hero-spark--twelve {
   display: none;
-  animation-delay: -0.15s;
+  animation-delay: 5.4s;
 }
 
 .hero-content {
@@ -303,7 +318,10 @@
     0 0.07em 0 rgba(20, 8, 6, 0.18);
   -webkit-text-stroke: 0;
   transform: rotate(-0.8deg);
-  animation: heroAccentPop 1.35s ease-in-out 0.82s both;
+  animation: heroAccentPop 1.8s ease-in-out 1.35s both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: filter, box-shadow;
 }
 
 .hero-title-tail {
@@ -349,9 +367,9 @@
   background-size: 100% 100%;
   content: "";
   mix-blend-mode: screen;
-  opacity: 0.62;
+  opacity: 0.36;
   pointer-events: none;
-  animation: heroAccentTwinkle 3.4s ease-in-out 1.4s infinite;
+  animation: heroAccentTwinkle 5.2s ease-in-out 2.6s infinite;
 }
 
 .hero-subcopy {
@@ -660,8 +678,39 @@
 }
 
 @media (max-width: 640px) {
+  .hero-visual-slot::before,
+  .hero-visual-slot::after,
+  .hero-spark-layer::before,
+  .hero-spark-layer::after,
+  .hero-spark,
+  .hero-title-accent--dark,
+  .hero-title-accent--dark::after {
+    animation: none;
+  }
+
+  .hero-visual-slot::before {
+    opacity: 0.62;
+  }
+
+  .hero-visual-slot::after {
+    opacity: 0.16;
+    transform: translateX(0);
+  }
+
+  .hero-spark-layer::before {
+    opacity: 0.16;
+  }
+
+  .hero-spark-layer::after {
+    opacity: 0.1;
+  }
+
   .hero-spark {
     width: clamp(16px, 5.8vw, 30px);
+    opacity: 0.32;
+    filter:
+      drop-shadow(0 0 5px rgba(255, 253, 247, 0.46))
+      drop-shadow(0 0 9px rgba(255, 217, 61, 0.34));
   }
 
   .hero-spark--one,
