@@ -61,7 +61,7 @@ const FloatingActions = ({ onKakaoClick }) => {
             <path d="m5.2 7 6.8 5.5L18.8 7" />
           </svg>
           <span>이메일</span>
-          <small>money8881@hanmail.net</small>
+          <small>문의하기</small>
         </a>
 
         <a className="floating-action floating-action--guide" href="#lead-capture" onClick={handleGuideClick}>
@@ -72,6 +72,7 @@ const FloatingActions = ({ onKakaoClick }) => {
             <path d="M9.5 14.4h3.1" />
           </svg>
           <span>가맹 안내</span>
+          <small>상담 신청</small>
         </a>
 
         <a className="floating-action floating-action--top" href="#top" onClick={handleTopClick}>
