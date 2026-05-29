@@ -2,33 +2,65 @@
   position: fixed;
   z-index: 24;
   top: 50%;
-  right: clamp(16px, 2vw, 28px);
-  width: 88px;
+  right: clamp(18px, 2.2vw, 34px);
+  width: 104px;
   overflow: hidden;
-  border: 1px solid rgba(20, 42, 77, 0.12);
-  border-left: 2px solid rgba(171, 124, 100, 0.62);
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--primary-navy);
-  box-shadow: 0 14px 36px rgba(20, 42, 77, 0.1);
+  border: 3px solid #111214;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(245, 240, 232, 0.96)),
+    url("/images/dakjangsu-board-cream-texture.png");
+  color: #211816;
+  box-shadow: 9px 9px 0 rgba(17, 18, 20, 0.28), 0 18px 38px rgba(20, 8, 6, 0.22);
   transform: translateY(-50%);
-  backdrop-filter: blur(14px);
+}
+
+.floating-actions-header {
+  display: grid;
+  gap: 2px;
+  padding: 12px 8px 10px;
+  border-bottom: 3px solid #111214;
+  background: #e20a0a;
+  color: #fffdf7;
+  text-align: center;
+}
+
+.floating-actions-header strong,
+.floating-actions-header span {
+  display: block;
+  line-height: 1.08;
+}
+
+.floating-actions-header strong {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 400;
+}
+
+.floating-actions-header span {
+  color: rgba(255, 253, 247, 0.82);
+  font-size: 0.68rem;
+  font-weight: 850;
 }
 
 .floating-action {
   width: 100%;
-  min-height: 76px;
+  min-height: 94px;
   display: grid;
+  grid-template-columns: 1fr;
   place-items: center;
   align-content: center;
-  gap: 6px;
+  gap: 7px;
   padding: 12px 8px;
   border: 0;
-  border-bottom: 1px solid rgba(20, 42, 77, 0.08);
-  background: transparent;
+  border-bottom: 2px solid rgba(17, 18, 20, 0.16);
+  background: rgba(255, 253, 247, 0.82);
   color: inherit;
+  font: inherit;
   text-align: center;
   text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .floating-action:last-child {
@@ -36,77 +68,256 @@
 }
 
 .floating-action:hover {
-  background: rgba(245, 240, 232, 0.76);
-  color: var(--primary-navy);
+  background: #fff5c2;
+  color: #111214;
+  transform: translateX(-2px);
+}
+
+.floating-action--kakao {
+  background: #fee500;
+}
+
+.floating-action--phone {
+  background: #fffdf7;
+}
+
+.floating-action--top {
+  min-height: 58px;
+  background: #211816;
+  color: #fffdf7;
 }
 
 .floating-action svg {
-  width: 21px;
-  height: 21px;
+  width: 46px;
+  height: 46px;
   display: block;
+  padding: 10px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.72;
+  stroke-width: 2;
+  background: rgba(255, 253, 247, 0.68);
+}
+
+.floating-action--kakao svg {
+  background: #111214;
+  color: #fee500;
+}
+
+.floating-action--phone svg {
+  background: #e20a0a;
+  color: #fffdf7;
+}
+
+.floating-action--top svg {
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+  background: transparent;
+  color: #fffdf7;
 }
 
 .floating-action span,
 .floating-action small {
   display: block;
-  line-height: 1.2;
+  min-width: 0;
+  line-height: 1.16;
   word-break: keep-all;
 }
 
 .floating-action span {
-  font-size: 0.72rem;
-  font-weight: 850;
+  font-size: 0.78rem;
+  font-weight: 950;
 }
 
 .floating-action small {
-  margin-top: -3px;
-  color: rgba(20, 42, 77, 0.62);
+  margin-top: -4px;
+  color: rgba(33, 24, 22, 0.68);
   font-size: 0.66rem;
-  font-weight: 800;
+  font-weight: 850;
 }
 
-.mobile-kakao-bar {
+.floating-action--top small,
+.floating-action--top span {
+  color: inherit;
+}
+
+.mobile-action-bar {
   position: fixed;
   z-index: 26;
-  left: 18px;
-  right: 18px;
-  bottom: 16px;
-  min-height: 58px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: none;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom));
+  border: 0;
+  border-top: 3px solid #111214;
+  border-radius: 14px 14px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 247, 229, 0.98)),
+    url("/images/dakjangsu-board-cream-texture.png");
+  color: #1d1d1d;
+  box-shadow: 0 -10px 24px rgba(17, 18, 20, 0.22);
+}
+
+.mobile-phone-lead {
+  min-width: 0;
+  min-height: 48px;
+  display: flex;
+  gap: 7px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(20, 42, 77, 0.14);
+  padding: 6px 10px 7px;
+  border: 2px solid #111214;
+  border-radius: 7px;
+  background: #e20a0a;
+  color: #fffdf7;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 rgba(17, 18, 20, 0.28);
+}
+
+.mobile-phone-lead svg {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.mobile-phone-lead span {
+  color: rgba(255, 253, 247, 0.92);
+  font-size: clamp(0.78rem, 3.2vw, 0.94rem);
+  line-height: 1;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.mobile-phone-lead strong {
+  color: #ffd93d;
+  font-family: var(--font-display);
+  font-size: clamp(1.76rem, 8.8vw, 2.76rem);
+  line-height: 0.82;
+  font-weight: 400;
+  text-shadow:
+    2px 2px 0 #111214,
+    0 0 14px rgba(255, 217, 61, 0.22);
+  white-space: nowrap;
+}
+
+.mobile-action-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 68px;
+  gap: 6px;
+}
+
+.mobile-action {
+  min-width: 0;
+  min-height: 48px;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #111214;
+  border-radius: 7px;
+  background: #fffdf7;
+  color: #111214;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 950;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mobile-action svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.mobile-action--kakao {
   background: var(--kakao-yellow);
-  color: #1d1d1d;
-  box-shadow: 0 16px 34px rgba(20, 42, 77, 0.24);
-  font-size: 1.12rem;
-  font-weight: 900;
+  font-size: clamp(1rem, 4.3vw, 1.22rem);
+  box-shadow: 3px 3px 0 rgba(17, 18, 20, 0.24);
 }
 
-@media (max-width: 1180px) {
-  .floating-actions {
-    right: 12px;
-    width: 84px;
-  }
-
-  .floating-action {
-    min-height: 74px;
-  }
+.mobile-action--guide {
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.66rem;
 }
 
-@media (max-width: 1440px) {
+.mobile-action--guide svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 760px) {
   .floating-actions {
     display: none;
   }
 }
 
+@media (min-width: 761px) and (max-width: 960px) {
+  .floating-actions {
+    right: 10px;
+    width: 82px;
+    border-width: 2px;
+    box-shadow: 5px 5px 0 rgba(17, 18, 20, 0.24), 0 12px 26px rgba(20, 8, 6, 0.18);
+  }
+
+  .floating-actions-header {
+    padding: 10px 8px 8px;
+    border-bottom-width: 2px;
+  }
+
+  .floating-actions-header strong {
+    font-size: 1rem;
+  }
+
+  .floating-actions-header span {
+    font-size: 0.64rem;
+  }
+
+  .floating-action {
+    min-height: 78px;
+    gap: 5px;
+    padding: 9px 6px;
+  }
+
+  .floating-action--top {
+    min-height: 52px;
+  }
+
+  .floating-action svg {
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  }
+
+  .floating-action span {
+    font-size: 0.66rem;
+  }
+
+  .floating-action small {
+    font-size: 0.58rem;
+  }
+}
+
 @media (max-width: 760px) {
-  .mobile-kakao-bar {
-    display: flex;
+  .mobile-action-bar {
+    display: grid;
   }
 }

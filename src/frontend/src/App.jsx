@@ -25,8 +25,7 @@ function App() {
   const isPopArtConcept = concept === 'popart';
   const isStreetHeroConcept = concept === 'street';
   const isCharacterHeroConcept = concept === 'character';
-  const isHeroRoundFont = searchParams.get('font') === 'round';
-  const landingClassName = `landing-app${isHeroRoundFont ? ' landing-app--hero-round-font' : ''}`;
+  const landingClassName = 'landing-app';
 
   const handleKakaoConsultation = () => {
     alert("카카오톡 상담 링크는 최종 확정 후 연결합니다.");

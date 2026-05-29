@@ -297,7 +297,7 @@
 
   .problem-board h2 {
     margin-top: 28px;
-    font-size: clamp(3.36rem, 14vw, 5.2rem);
+    font-size: clamp(3.04rem, 12vw, 4.4rem);
   }
 
   .problem-cost-card {
