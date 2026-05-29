@@ -17,13 +17,16 @@ import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
 
 function App() {
-  const concept =
+  const searchParams =
     typeof window !== 'undefined'
-      ? new URLSearchParams(window.location.search).get('concept')
-      : null;
+      ? new URLSearchParams(window.location.search)
+      : new URLSearchParams();
+  const concept = searchParams.get('concept');
   const isPopArtConcept = concept === 'popart';
   const isStreetHeroConcept = concept === 'street';
   const isCharacterHeroConcept = concept === 'character';
+  const isHeroRoundFont = searchParams.get('font') === 'round';
+  const landingClassName = `landing-app${isHeroRoundFont ? ' landing-app--hero-round-font' : ''}`;
 
   const handleKakaoConsultation = () => {
     alert("카카오톡 상담 링크는 최종 확정 후 연결합니다.");
@@ -31,7 +34,7 @@ function App() {
 
   if (isPopArtConcept) {
     return (
-      <div className="landing-app landing-app--popart">
+      <div className={`${landingClassName} landing-app--popart`}>
         <PopArtConcept onKakaoClick={handleKakaoConsultation} />
         <ShockHook />
         <ProblemAnswer />
@@ -55,7 +58,7 @@ function App() {
 
   if (isCharacterHeroConcept) {
     return (
-      <div className="landing-app landing-app--hand-product">
+      <div className={`${landingClassName} landing-app--hand-product`}>
         <CharacterHeroConcept onKakaoClick={handleKakaoConsultation} />
         <ShockHook />
         <ProblemAnswer />
@@ -73,7 +76,7 @@ function App() {
   }
 
   return (
-    <div className="landing-app">
+    <div className={landingClassName}>
       <div className="opening-flow">
         <Hero onKakaoClick={handleKakaoConsultation} />
         <ProblemAnswer />

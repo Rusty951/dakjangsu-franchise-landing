@@ -198,3 +198,14 @@
 - Finalized the first three opening pages around the hook, delivery-platform cost calculator, and local customer service answer.
 - Reworked the fourth red-board page into overlapping order tickets for takeout, dine-in, and repeat-visit ordering.
 - Kept risky revenue/profit guarantees out of the revised copy and ran `npm run build` successfully.
+
+## 2026-05-29 - Debug QA Pass
+
+- Checked the in-app browser page for console errors, missing images, and horizontal overflow; no runtime issue was found.
+- Removed unconfirmed founder-support numbers from the live frontend copy and replaced them with 상담 확인형 support wording.
+- Fixed the first-page hero menu animation so offscreen image shadows do not appear as a moving black strip on the left edge.
+- Added a first-page-only `?font=round` sample using Jua on the hero title/subcopy, with the rest of the page staying on the original font system.
+- Painted the hero section and visual slot directly with the red board background so the first-page left edge cannot show a black transparent gutter.
+- Replaced the first and third hero food images with the provided `1.png` and `3.png` assets, resized them for the hero, and balanced their desktop scale against the center image.
+- Reduced the hero food strip width, image basis, overlap, and side-image scales so the first and third food images stay inside the viewport without edge clipping.
+- Ran `npm run lint` and `npm run build` successfully. There is still no `npm run check`, typecheck, or test script configured.
