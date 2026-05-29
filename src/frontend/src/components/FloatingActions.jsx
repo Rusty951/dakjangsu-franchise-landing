@@ -50,13 +50,18 @@ const FloatingActions = ({ onKakaoClick }) => {
           <small>창업 상담</small>
         </button>
 
-        <a className="floating-action" href="#lead-capture" onClick={handleEmailClick}>
+        <a
+          className="floating-action floating-action--email"
+          href="mailto:money8881@hanmail.net"
+          aria-label="이메일 문의 money8881@hanmail.net"
+          onClick={handleEmailClick}
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4.8 6.6h14.4v10.8H4.8z" />
             <path d="m5.2 7 6.8 5.5L18.8 7" />
           </svg>
           <span>이메일</span>
-          <small>확인중</small>
+          <small>money8881@hanmail.net</small>
         </a>
 
         <a className="floating-action floating-action--guide" href="#lead-capture" onClick={handleGuideClick}>

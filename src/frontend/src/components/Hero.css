@@ -293,15 +293,29 @@
   padding: 0 0.08em 0.02em;
   background: transparent;
   color: #fffdf7;
-  font-family: var(--font-display);
-  box-shadow: 0 0 0.22em rgba(255, 217, 61, 0.18);
+  font-family: "Pretendard", var(--font-sans);
+  font-size: 1.08em;
+  font-weight: 950;
+  box-shadow: 0 0 0.18em rgba(255, 217, 61, 0.14);
   text-shadow:
-    0 0 0.08em rgba(255, 246, 169, 0.32),
-    0.04em 0.05em 0 rgba(80, 10, 4, 0.62),
-    0 0.08em 0 rgba(20, 8, 6, 0.28);
+    0 0 0.08em rgba(255, 246, 169, 0.28),
+    0.035em 0.045em 0 rgba(80, 10, 4, 0.44),
+    0 0.07em 0 rgba(20, 8, 6, 0.18);
   -webkit-text-stroke: 0;
   transform: rotate(-0.8deg);
   animation: heroAccentPop 1.35s ease-in-out 0.82s both;
+}
+
+.hero-title-tail {
+  display: inline-block;
+}
+
+.hero-title-mobile-prefix {
+  display: none;
+}
+
+.hero-title-mobile-break {
+  display: inline;
 }
 
 .hero-title-accent--dark::before {
@@ -500,7 +514,7 @@
 
   44% {
     filter: brightness(1.18);
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3), 0 0 34px rgba(255, 217, 61, 0.58);
+    box-shadow: 0 0 26px rgba(255, 217, 61, 0.42);
   }
 }
 
@@ -679,12 +693,39 @@
   }
 
   .hero-title {
-    font-size: clamp(2.45rem, 11vw, 3.25rem);
+    width: 100%;
+    font-size: clamp(2.22rem, 10.2vw, 3rem);
     line-height: 0.88;
+  }
+
+  .hero-title-line:nth-child(2) {
+    display: block;
+    max-width: min(100%, 340px);
+    margin-inline: auto;
+  }
+
+  .hero-title-line:nth-child(3) {
+    max-width: min(100%, 330px);
+    margin-inline: auto;
+    font-size: 0.86em;
+    line-height: 0.96;
   }
 
   .hero-title-accent--dark {
     background: transparent;
+    font-size: clamp(1.18em, 15vw, 1.34em);
+  }
+
+  .hero-title-tail {
+    display: none;
+  }
+
+  .hero-title-mobile-prefix {
+    display: inline;
+  }
+
+  .hero-title-mobile-break {
+    display: block;
   }
 
   .hero-subcopy {

@@ -140,6 +140,13 @@
   font-weight: 850;
 }
 
+.floating-action--email small {
+  max-width: 100%;
+  font-size: 0.52rem;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
 .floating-action--top small,
 .floating-action--top span {
   color: inherit;
@@ -319,5 +326,29 @@
 @media (max-width: 760px) {
   .mobile-action-bar {
     display: grid;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-action-bar {
+    padding-inline: 9px;
+  }
+
+  .mobile-phone-lead {
+    gap: 5px;
+    padding-inline: 8px;
+  }
+
+  .mobile-phone-lead svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-phone-lead span {
+    font-size: 0.74rem;
+  }
+
+  .mobile-phone-lead strong {
+    font-size: clamp(1.68rem, 8.5vw, 2rem);
   }
 }

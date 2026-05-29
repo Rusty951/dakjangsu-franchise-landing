@@ -25,9 +25,12 @@ const Hero = () => {
               치킨집 창업,
             </span>
             <span className="hero-title-line hero-title-line--focus">
-              <em className="hero-title-accent hero-title-accent--dark">배달만</em> 보고
+              <em className="hero-title-accent hero-title-accent--dark">배달만</em>
+              <span className="hero-title-tail">보고</span>
             </span>
-            <span className="hero-title-line hero-title-line--focus">시작해도 될까요?</span>
+            <span className="hero-title-line hero-title-line--focus">
+              <span className="hero-title-mobile-prefix">보고 </span>시작해도 <span className="hero-title-mobile-break">될까요?</span>
+            </span>
           </h1>
           <p className="hero-subcopy">
             닭장수후라이드는 배달뿐 아니라 포장, 홀 손님, 재방문까지 고려해
