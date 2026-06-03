@@ -5,6 +5,7 @@ const Hero = () => {
   return (
     <section className="hero-section" id="top">
       <div className="hero-visual-slot">
+        <div className="hero-dot-motion" aria-hidden="true" />
         <div className="hero-spark-layer" aria-hidden="true">
           <span className="hero-spark hero-spark--one" />
           <span className="hero-spark hero-spark--two" />

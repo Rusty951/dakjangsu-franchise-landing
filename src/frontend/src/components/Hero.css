@@ -53,6 +53,7 @@
 .hero-visual-slot::before {
   position: absolute;
   inset: -18% -8%;
+  z-index: 0;
   display: block;
   background:
     radial-gradient(circle at 50% 38%, rgba(255, 217, 61, 0.18), transparent 28%),
@@ -67,6 +68,7 @@
 .hero-visual-slot::after {
   position: absolute;
   inset: 0 -28%;
+  z-index: 0;
   display: block;
   background:
     linear-gradient(120deg, transparent 0%, rgba(255, 253, 247, 0.08) 42%, transparent 56%),
@@ -76,6 +78,48 @@
   pointer-events: none;
   transform: translateX(-12%);
   animation: heroLightSweep 8.4s ease-in-out 2.4s infinite;
+}
+
+.hero-dot-motion {
+  position: absolute;
+  inset: -16% -12%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-mask-image:
+    radial-gradient(ellipse at 50% 46%, black 0 38%, rgba(0, 0, 0, 0.72) 55%, transparent 78%);
+  mask-image:
+    radial-gradient(ellipse at 50% 46%, black 0 38%, rgba(0, 0, 0, 0.72) 55%, transparent 78%);
+}
+
+.hero-dot-motion::before,
+.hero-dot-motion::after {
+  position: absolute;
+  inset: -18%;
+  background-image:
+    radial-gradient(circle, rgba(255, 217, 61, 0.42) 0 2px, transparent 2.8px),
+    radial-gradient(circle, rgba(255, 253, 247, 0.26) 0 1.4px, transparent 2.4px);
+  background-position: 0 0, 54px 36px;
+  background-size: 132px 132px, 186px 186px;
+  content: "";
+  opacity: 0.22;
+  transform: translate3d(0, 0, 0) rotate(-7deg) scale(1.02);
+  animation: heroDotDrift 16s linear 0.4s infinite;
+  will-change: transform, opacity;
+}
+
+.hero-dot-motion::after {
+  background-image:
+    radial-gradient(circle, rgba(255, 253, 247, 0.4) 0 1.6px, transparent 2.7px),
+    radial-gradient(circle, rgba(255, 188, 61, 0.24) 0 2.2px, transparent 3.2px);
+  background-position: 22px 58px, 84px 12px;
+  background-size: 168px 168px, 238px 238px;
+  opacity: 0.18;
+  transform: translate3d(0, 0, 0) rotate(8deg) scale(1.05);
+  animation-name: heroDotDriftReverse;
+  animation-duration: 22s;
 }
 
 .hero-spark-layer {
@@ -611,6 +655,38 @@
   }
 }
 
+@keyframes heroDotDrift {
+  0% {
+    opacity: 0.14;
+    transform: translate3d(-18px, 14px, 0) rotate(-7deg) scale(1.02);
+  }
+
+  45% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0.14;
+    transform: translate3d(76px, -54px, 0) rotate(-7deg) scale(1.02);
+  }
+}
+
+@keyframes heroDotDriftReverse {
+  0% {
+    opacity: 0.1;
+    transform: translate3d(62px, -28px, 0) rotate(8deg) scale(1.05);
+  }
+
+  52% {
+    opacity: 0.22;
+  }
+
+  100% {
+    opacity: 0.1;
+    transform: translate3d(-48px, 58px, 0) rotate(8deg) scale(1.05);
+  }
+}
+
 @keyframes heroMenuSlideIn {
   from {
     opacity: 0;
@@ -680,6 +756,8 @@
 @media (max-width: 640px) {
   .hero-visual-slot::before,
   .hero-visual-slot::after,
+  .hero-dot-motion::before,
+  .hero-dot-motion::after,
   .hero-spark-layer::before,
   .hero-spark-layer::after,
   .hero-spark,
@@ -695,6 +773,25 @@
   .hero-visual-slot::after {
     opacity: 0.16;
     transform: translateX(0);
+  }
+
+  .hero-dot-motion {
+    inset: -8%;
+    opacity: 0.74;
+    -webkit-mask-image:
+      radial-gradient(ellipse at 50% 42%, black 0 36%, rgba(0, 0, 0, 0.62) 55%, transparent 76%);
+    mask-image:
+      radial-gradient(ellipse at 50% 42%, black 0 36%, rgba(0, 0, 0, 0.62) 55%, transparent 76%);
+  }
+
+  .hero-dot-motion::before {
+    opacity: 0.12;
+    transform: translate3d(12px, -10px, 0) rotate(-7deg) scale(1.02);
+  }
+
+  .hero-dot-motion::after {
+    opacity: 0.08;
+    transform: translate3d(-18px, 18px, 0) rotate(8deg) scale(1.05);
   }
 
   .hero-spark-layer::before {
@@ -842,6 +939,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-visual-slot::before,
   .hero-visual-slot::after,
+  .hero-dot-motion::before,
+  .hero-dot-motion::after,
   .hero-spark-layer::before,
   .hero-spark-layer::after,
   .hero-spark,
