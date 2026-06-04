@@ -1,9 +1,41 @@
+import { useEffect, useRef, useState } from 'react';
 import './OwnerInterview.css';
 import { assetPath } from '../assetPath';
 
 const OwnerInterview = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="owner-interview-section" id="owner-interview" aria-labelledby="owner-interview-title">
+    <section
+      className={`owner-interview-section owner-interview-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="owner-interview"
+      aria-labelledby="owner-interview-title"
+      ref={sectionRef}
+    >
       <div className="owner-interview-content">
         <div className="owner-interview-heading">
           <span className="owner-interview-label">실제 점주 인터뷰</span>

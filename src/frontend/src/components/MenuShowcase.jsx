@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import './MenuShowcase.css';
 import { assetPath } from '../assetPath';
 
@@ -14,13 +15,43 @@ const menuItems = [
 const menuPoints = ['대표 후라이드', '양념 치킨', '곁들이는 사이드', '스페셜 메뉴'];
 
 const MenuShowcase = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.28 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="menu-showcase-section" id="menu-showcase" aria-labelledby="menu-showcase-title">
+    <section
+      ref={sectionRef}
+      className={`menu-showcase-section menu-showcase-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="menu-showcase"
+      aria-labelledby="menu-showcase-title"
+    >
       <div className="menu-showcase-copy">
         <span>닭장수 메뉴소개</span>
         <h2 id="menu-showcase-title">
           <span>다시 찾는 이유</span>
-          <span>메뉴판에 쌓여 있다</span>
+          <span className="menu-showcase-title-line">
+            <em>메뉴판에</em>
+            <strong>쌓여 있다</strong>
+          </span>
         </h2>
         <p>
           <span>후라이드부터 양념, 사이드, 스페셜 메뉴까지.</span>
@@ -34,6 +65,7 @@ const MenuShowcase = () => {
       </div>
 
       <div className="menu-showcase-display" aria-label="닭장수후라이드 메뉴판 이미지">
+        <div className="menu-showcase-glow" aria-hidden="true" />
         <figure className="menu-showcase-main">
           <img src={menuItems[0].image} alt={menuItems[0].name} />
           <figcaption>대표 메뉴판</figcaption>

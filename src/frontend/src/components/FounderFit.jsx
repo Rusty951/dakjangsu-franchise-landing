@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import './FounderFit.css';
 
 const supportSteps = [
@@ -42,8 +43,39 @@ const supportSteps = [
 ];
 
 const FounderFit = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.22 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="founder-fit-section" id="founder-fit" aria-labelledby="founder-fit-title">
+    <section
+      className={`founder-fit-section founder-fit-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="founder-fit"
+      aria-labelledby="founder-fit-title"
+      ref={sectionRef}
+    >
       <div className="founder-fit-copy">
         <h2 id="founder-fit-title">
           <span>오픈하고 끝?</span>
@@ -82,7 +114,7 @@ const FounderFit = () => {
             </article>
           ))}
         </div>
-        <p className="founder-support-note">지원 조건과 세부 범위는 상담 시 확인합니다.</p>
+        <p className="founder-support-note">지원 조건, 적용 범위, 프로모션 여부는 상담 시 최종 확인합니다.</p>
       </div>
     </section>
   );
