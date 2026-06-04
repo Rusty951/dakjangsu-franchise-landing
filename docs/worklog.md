@@ -239,3 +239,9 @@
 - Replaced the first-page `배달만` hand-mark and red border treatment with a simpler dark text-outline treatment that reads more like designed emphasis.
 - Verified the hero on desktop and 390px mobile with no horizontal overflow.
 - Ran `npm run lint` and `npm run build` successfully after the accent revision.
+
+## 2026-06-04 - Menu Proof Background Repeat Fix
+
+- Fixed the fourth-page illustration background so tall mobile viewports do not show the image as three repeated panels.
+- Kept the poster pan motion by sizing the illustration to always cover the viewport height before animating position.
+- Ran `npm run lint` and `npm run build` successfully after the background sizing fix.

@@ -8,7 +8,8 @@
   padding: clamp(58px, 6vw, 90px) clamp(28px, 5vw, 82px);
   background-color: #90100a;
   background-image: url("/images/dakjangsu-haemil-hall-chimek-final.png");
-  background-size: 108% auto;
+  background-repeat: no-repeat;
+  background-size: max(108%, calc(100svh * 1.5)) auto;
   background-position: center center;
   color: #fffdf7;
 }
@@ -276,12 +277,12 @@
 
 @keyframes menuProofPosterPan {
   0% {
-    background-size: 108% auto;
+    background-size: max(108%, calc(100svh * 1.5)) auto;
     background-position: 52% 50%;
   }
 
   100% {
-    background-size: 113% auto;
+    background-size: max(113%, calc(103svh * 1.5)) auto;
     background-position: 58% 48%;
   }
 }
