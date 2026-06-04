@@ -1,9 +1,40 @@
+import { useEffect, useRef, useState } from 'react';
 import './ShockHook.css';
 import { assetPath } from '../assetPath';
 
 const ShockHook = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.28 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="shock-hook-section" aria-labelledby="shock-hook-title">
+    <section
+      className={`shock-hook-section shock-hook-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      aria-labelledby="shock-hook-title"
+      ref={sectionRef}
+    >
       <figure className="shock-hook-image">
         <img
           src={assetPath('/images/dakjangsu-packaging-start-queue-original.jpg')}

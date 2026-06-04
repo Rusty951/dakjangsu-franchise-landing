@@ -13,6 +13,14 @@
   color: #211816;
   box-shadow: 9px 9px 0 rgba(17, 18, 20, 0.28), 0 18px 38px rgba(20, 8, 6, 0.22);
   transform: translateY(-50%);
+  transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+}
+
+.floating-actions--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(20px, -50%);
 }
 
 .floating-actions-header {
@@ -196,6 +204,14 @@
     url("/images/dakjangsu-board-cream-texture.png");
   color: #1d1d1d;
   box-shadow: 0 -10px 24px rgba(17, 18, 20, 0.22);
+  transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+}
+
+.mobile-action-bar--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
 }
 
 .mobile-phone-lead {

@@ -1,5 +1,6 @@
 .menu-proof-section {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   display: grid;
   align-items: center;
@@ -7,15 +8,19 @@
   padding: clamp(58px, 6vw, 90px) clamp(28px, 5vw, 82px);
   background-color: #90100a;
   background-image: url("/images/dakjangsu-haemil-hall-chimek-final.png");
-  background-size: cover;
+  background-size: 108% auto;
   background-position: center center;
   color: #fffdf7;
+}
+
+.menu-proof-section--motion-ready.is-visible {
+  animation: menuProofPosterPan 18s ease-in-out infinite alternate;
 }
 
 .menu-proof-section::before {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(17, 12, 10, 0.95) 0%, rgba(83, 0, 0, 0.8) 29%, rgba(226, 10, 10, 0.18) 56%, rgba(63, 7, 4, 0.08) 100%),
     linear-gradient(180deg, rgba(17, 12, 10, 0.24) 0%, rgba(226, 10, 10, 0.1) 48%, rgba(17, 12, 10, 0.28) 100%),
@@ -24,10 +29,14 @@
   pointer-events: none;
 }
 
+.menu-proof-section--motion-ready.is-visible::before {
+  animation: menuProofOverlaySweep 1.05s ease-out both;
+}
+
 .menu-proof-section::after {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   opacity: 0.12;
   background-image:
     linear-gradient(rgba(255, 253, 247, 0.38) 1px, transparent 1px),
@@ -40,9 +49,122 @@
   pointer-events: none;
 }
 
+.menu-proof-section--motion-ready.is-visible::after {
+  animation: menuProofGridDrift 20s linear infinite;
+}
+
+.menu-proof-loop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.menu-proof-loop::before,
+.menu-proof-loop::after {
+  position: absolute;
+  inset: -18%;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-proof-loop::before {
+  background:
+    linear-gradient(115deg, transparent 0 35%, rgba(255, 217, 61, 0.18) 43%, rgba(255, 253, 247, 0.08) 48%, transparent 58%),
+    linear-gradient(115deg, transparent 0 54%, rgba(217, 10, 10, 0.2) 62%, transparent 70%);
+  transform: translate3d(-34%, 0, 0);
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop::before {
+  animation: menuProofLightSweep 4.8s ease-in-out 0.64s infinite;
+}
+
+.menu-proof-loop::after {
+  background-image:
+    radial-gradient(circle, rgba(255, 217, 61, 0.46) 0 1.8px, transparent 3px),
+    radial-gradient(circle, rgba(255, 253, 247, 0.36) 0 1.2px, transparent 2.4px);
+  background-position: 10% 18%, 72% 62%;
+  background-size: 132px 132px, 186px 186px;
+  transform: rotate(-8deg);
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop::after {
+  animation: menuProofPosterSpark 9s ease-in-out 1.1s infinite alternate;
+}
+
+.menu-proof-loop-light,
+.menu-proof-loop-steam {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.menu-proof-loop-light {
+  width: clamp(180px, 18vw, 320px);
+  height: clamp(100px, 11vw, 190px);
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(255, 217, 61, 0.34), transparent 68%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.menu-proof-loop-light--one {
+  right: 10%;
+  top: 18%;
+}
+
+.menu-proof-loop-light--two {
+  right: 28%;
+  bottom: 14%;
+  width: clamp(140px, 14vw, 250px);
+  height: clamp(80px, 9vw, 150px);
+  background: radial-gradient(ellipse at center, rgba(238, 128, 109, 0.26), transparent 66%);
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop-light--one {
+  animation: menuProofLightPulse 3.8s ease-in-out 0.8s infinite alternate;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop-light--two {
+  animation: menuProofLightPulse 4.6s ease-in-out 1.2s infinite alternate-reverse;
+}
+
+.menu-proof-loop-steam {
+  width: clamp(110px, 11vw, 190px);
+  height: clamp(170px, 18vw, 300px);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 42% 18%, rgba(255, 253, 247, 0.16), transparent 38%),
+    radial-gradient(ellipse at 64% 58%, rgba(255, 217, 61, 0.1), transparent 46%);
+  filter: blur(8px);
+  opacity: 0;
+}
+
+.menu-proof-loop-steam--one {
+  right: 18%;
+  bottom: 4%;
+}
+
+.menu-proof-loop-steam--two {
+  right: 4%;
+  bottom: 20%;
+  transform: scale(0.82);
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop-steam--one {
+  animation: menuProofSteamRise 5.8s ease-in-out 0.6s infinite;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-loop-steam--two {
+  animation: menuProofSteamRise 6.7s ease-in-out 1.4s infinite;
+}
+
 .menu-proof-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: min(100%, 1320px);
   margin: 0 auto;
   display: block;
@@ -63,6 +185,8 @@
   font-size: clamp(4.2rem, 6vw, 7.8rem);
   line-height: 0.9;
   font-weight: 400;
+  letter-spacing: 0;
+  word-spacing: -0.06em;
   text-shadow: 0 14px 34px rgba(0, 0, 0, 0.72);
   word-break: keep-all;
 }
@@ -70,21 +194,72 @@
 .menu-proof-copy h2 span {
   display: block;
   white-space: nowrap;
+  opacity: 0;
+  transform: translate3d(-28px, 26px, 0) rotate(-1.2deg) scale(0.94);
+  will-change: transform, opacity;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 span {
+  animation: menuProofHeadlineHit 0.72s cubic-bezier(0.14, 1.04, 0.22, 1) both;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 span:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 span:nth-child(2) {
+  animation-delay: 0.34s;
 }
 
 .menu-proof-copy h2 em {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
   color: #ffd93d;
   font-style: normal;
+  text-shadow:
+    0 0 0 rgba(255, 217, 61, 0),
+    0 14px 34px rgba(0, 0, 0, 0.72);
+}
+
+.menu-proof-copy h2 em::before {
+  position: absolute;
+  left: -0.08em;
+  right: -0.08em;
+  bottom: 0.03em;
+  z-index: -1;
+  height: 0.24em;
+  background: rgba(217, 10, 10, 0.78);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0) rotate(-1.8deg);
+  transform-origin: left center;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 em {
+  animation: menuProofYellowPop 0.8s ease-out 0.64s both;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 em::before {
+  animation: menuProofYellowSlash 0.46s cubic-bezier(0.15, 0.94, 0.28, 1) 0.68s both;
 }
 
 .menu-proof-lead {
   margin: clamp(28px, 3.2vw, 44px) 0 0;
   color: rgba(255, 253, 247, 0.95);
+  font-family: "Jua", var(--font-sans);
   font-size: clamp(2rem, 2.8vw, 3.2rem);
-  line-height: 1.18;
-  font-weight: 950;
+  line-height: 1.28;
+  font-weight: 400;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.62);
   word-break: keep-all;
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  will-change: transform, opacity;
+}
+
+.menu-proof-section--motion-ready.is-visible .menu-proof-lead {
+  animation: menuProofLeadRise 0.68s ease-out 0.72s both;
 }
 
 .menu-proof-support {
@@ -99,10 +274,170 @@
   word-break: keep-all;
 }
 
+@keyframes menuProofPosterPan {
+  0% {
+    background-size: 108% auto;
+    background-position: 52% 50%;
+  }
+
+  100% {
+    background-size: 113% auto;
+    background-position: 58% 48%;
+  }
+}
+
+@keyframes menuProofOverlaySweep {
+  0% {
+    opacity: 1;
+    transform: translate3d(-3%, 0, 0);
+  }
+
+  100% {
+    opacity: 0.94;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes menuProofGridDrift {
+  from {
+    background-position: center, center, center;
+  }
+
+  to {
+    background-position: calc(50% + 42px) calc(50% - 42px), calc(50% + 42px) calc(50% - 42px), center;
+  }
+}
+
+@keyframes menuProofLightSweep {
+  0%, 100% {
+    opacity: 0;
+    transform: translate3d(-34%, 0, 0);
+  }
+
+  42%, 54% {
+    opacity: 1;
+  }
+
+  72% {
+    opacity: 0;
+    transform: translate3d(28%, 0, 0);
+  }
+}
+
+@keyframes menuProofPosterSpark {
+  0% {
+    opacity: 0.08;
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+
+  48% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0.12;
+    transform: translate3d(34px, -24px, 0) rotate(-8deg);
+  }
+}
+
+@keyframes menuProofLightPulse {
+  from {
+    opacity: 0.18;
+    transform: translate3d(0, 10px, 0) scale(0.92);
+  }
+
+  to {
+    opacity: 0.48;
+    transform: translate3d(0, -8px, 0) scale(1.12);
+  }
+}
+
+@keyframes menuProofSteamRise {
+  0%, 100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.88);
+  }
+
+  30% {
+    opacity: 0.34;
+  }
+
+  72% {
+    opacity: 0.12;
+    transform: translate3d(-14px, -46px, 0) scale(1.08);
+  }
+}
+
+@keyframes menuProofHeadlineHit {
+  0% {
+    opacity: 0;
+    filter: blur(1px);
+    transform: translate3d(-36px, 30px, 0) rotate(-1.6deg) scale(0.9);
+  }
+
+  68% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(5px, -3px, 0) rotate(0.4deg) scale(1.035);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes menuProofYellowPop {
+  0%, 100% {
+    filter: brightness(1);
+    text-shadow:
+      0 0 0 rgba(255, 217, 61, 0),
+      0 14px 34px rgba(0, 0, 0, 0.72);
+  }
+
+  46% {
+    filter: brightness(1.24);
+    text-shadow:
+      0 0 32px rgba(255, 217, 61, 0.5),
+      0 16px 40px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes menuProofYellowSlash {
+  0% {
+    opacity: 0;
+    transform: scaleX(0) rotate(-1.8deg);
+  }
+
+  58% {
+    opacity: 1;
+    transform: scaleX(1.08) rotate(-1.8deg);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: scaleX(1) rotate(-1.8deg);
+  }
+}
+
+@keyframes menuProofLeadRise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @media (max-width: 980px) {
   .menu-proof-section {
     padding: 58px 24px 70px;
     background-position: 58% center;
+    background-size: cover;
   }
 
   .menu-proof-inner {
@@ -117,6 +452,7 @@
 
   .menu-proof-copy h2 {
     font-size: clamp(3.5rem, 10vw, 5.8rem);
+    word-spacing: -0.03em;
   }
 
   .menu-proof-lead {
@@ -140,6 +476,7 @@
   .menu-proof-section {
     padding: 54px 20px 64px;
     background-position: 62% center;
+    background-size: cover;
     background-color: #7d0f08;
   }
 
@@ -154,6 +491,10 @@
     mix-blend-mode: normal;
   }
 
+  .menu-proof-loop {
+    opacity: 0.64;
+  }
+
   .menu-proof-copy h2 {
     font-size: clamp(3.04rem, 13vw, 4.2rem);
   }
@@ -165,5 +506,32 @@
   .menu-proof-support {
     margin-top: 28px;
     font-size: 0.98rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-proof-section--motion-ready.is-visible,
+  .menu-proof-section--motion-ready.is-visible::before,
+  .menu-proof-section--motion-ready.is-visible::after,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop::before,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop::after,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop-light,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop-steam,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 span,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 em,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-copy h2 em::before,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-lead {
+    animation: none;
+  }
+
+  .menu-proof-copy h2 span,
+  .menu-proof-lead {
+    opacity: 1;
+    transform: none;
+  }
+
+  .menu-proof-copy h2 em::before {
+    opacity: 0.9;
+    transform: scaleX(1) rotate(-1.8deg);
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './ProblemAnswer.css';
 
 const commissionRate = 0.078;
@@ -30,16 +30,48 @@ const problemItems = [
 const ProblemAnswer = () => {
   const [openItem, setOpenItem] = useState(null);
   const [orderAmount, setOrderAmount] = useState(25000);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
   const commissionFee = orderAmount * commissionRate;
   const paymentFee = orderAmount * paymentRate;
   const totalFee = commissionFee + deliveryFee + paymentFee;
+  const amountMotionKey = Math.round(orderAmount);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.32 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="story-section" id="answer">
+    <section
+      className={`story-section story-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="answer"
+      ref={sectionRef}
+    >
       <div className="problem-board">
-        <h2>
-          팔릴 때마다<br />
-          먼저 빠지는 <span>비용</span>
+        <h2 className="problem-headline" aria-label="팔릴 때마다 먼저 빠지는 비용">
+          <span className="problem-headline-line problem-headline-line--one">팔릴 때마다</span>
+          <span className="problem-headline-line problem-headline-line--two">
+            먼저 빠지는 <span className="problem-headline-stamp">비용</span>
+          </span>
         </h2>
         <div className="problem-cost-card" aria-label="배달앱 주문에 따라붙는 비용 항목">
           <strong>공개 요금제 기준 비용 계산</strong>
@@ -57,20 +89,26 @@ const ProblemAnswer = () => {
           <div className="problem-cost-summary" aria-label="공개 요금제 기준 비용 예시">
             <span>
               <em>중개비</em>
-              <b>{formatWon(commissionFee)}</b>
+              <b className="problem-cost-amount" key={`commission-${amountMotionKey}`}>
+                {formatWon(commissionFee)}
+              </b>
             </span>
             <span>
               <em>배달비</em>
-              <b>{formatWon(deliveryFee)}</b>
+              <b className="problem-cost-amount problem-cost-amount--steady" key={`delivery-${amountMotionKey}`}>
+                {formatWon(deliveryFee)}
+              </b>
             </span>
             <span>
               <em>결제대행</em>
-              <b>{formatWon(paymentFee)}</b>
+              <b className="problem-cost-amount" key={`payment-${amountMotionKey}`}>
+                {formatWon(paymentFee)}
+              </b>
             </span>
           </div>
           <p className="problem-cost-total">
-            공개 요금제 기준, 쿠폰과 광고비 전에도
-            <strong>{formatWon(totalFee)}</strong>
+            공개 요금제 기준, <span>쿠폰과 광고비 전에도</span>
+            <strong key={`total-${amountMotionKey}`}>{formatWon(totalFee)}</strong>
             비용으로 먼저 잡힙니다.
           </p>
           <div className="problem-chip-list">
@@ -80,7 +118,7 @@ const ProblemAnswer = () => {
               return (
                 <article className="problem-cost-item" key={item.label}>
                   <button
-                    className="problem-cost-row"
+                    className={`problem-cost-row${isOpen ? ' is-open' : ''}`}
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpenItem(isOpen ? null : item.label)}

@@ -1,29 +1,30 @@
+import { useEffect, useRef, useState } from 'react';
 import './FounderFit.css';
 
 const supportSteps = [
   {
     number: '01',
     phase: '오픈 전',
-    headline: '시작 부담 낮추는 5무',
-    highlight: '5무',
+    headline: '시작 부담을 함께 점검',
+    highlight: '함께 점검',
     figures: [
-      { value: '0원', label: '가맹비' },
-      { value: '0원', label: '교육비' },
-      { value: '0원', label: '로열티' },
-      { value: '0원', label: '인테리어 감리비' },
-      { value: '0원', label: '물류 예치비' }
+      { value: '상담 확인', label: '가맹 조건' },
+      { value: '상담 확인', label: '교육 범위' },
+      { value: '상담 확인', label: '운영 비용' },
+      { value: '상담 확인', label: '매장 준비' },
+      { value: '상담 확인', label: '물류 조건' }
     ],
-    description: '초기 비용 부담을 낮춰 매장 준비와 오픈 전 세팅에 더 집중할 수 있게 돕습니다.'
+    description: '초기 준비에 필요한 항목과 적용 조건을 상담에서 함께 확인합니다.'
   },
   {
     number: '02',
     phase: '오픈 첫날',
-    headline: '첫날부터 안정적인 손님 유치',
-    highlight: '손님 유치',
+    headline: '첫날 운영 흐름 준비',
+    highlight: '운영 흐름',
     figures: [
-      { value: '200만원', label: '마케팅비 지원' },
-      { value: '200마리', label: '오픈 행사 닭 지원' },
-      { value: '본사', label: '현장 인력 지원' }
+      { value: '초기 홍보', label: '준비 지원' },
+      { value: '오픈 행사', label: '운영 협의' },
+      { value: '현장 운영', label: '지원 확인' }
     ],
     description: '오픈 행사, 현장 지원, 초기 홍보 흐름을 함께 맞춰 첫날 운영을 도와드립니다.'
   },
@@ -42,16 +43,47 @@ const supportSteps = [
 ];
 
 const FounderFit = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.22 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="founder-fit-section" id="founder-fit" aria-labelledby="founder-fit-title">
+    <section
+      className={`founder-fit-section founder-fit-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="founder-fit"
+      aria-labelledby="founder-fit-title"
+      ref={sectionRef}
+    >
       <div className="founder-fit-copy">
         <h2 id="founder-fit-title">
           <span>오픈하고 끝?</span>
           <span>닭장수는 <em>끝까지</em></span>
         </h2>
         <p>
-          처음 준비하는 순간부터 오픈 첫날, 그리고 매장이 자리 잡는 과정까지
-          점주가 혼자 버티지 않도록 단계별로 함께 봅니다.
+          오픈 전, 첫날, 오픈 후까지
+          단계별로 본사가 같이 봅니다.
         </p>
       </div>
 
@@ -69,7 +101,7 @@ const FounderFit = () => {
                   <em>{step.highlight}</em>
                   {step.headline.split(step.highlight)[1]}
                 </h3>
-                <div className="founder-support-numbers" aria-label={`${step.phase} 주요 지원 숫자`}>
+                <div className="founder-support-numbers" aria-label={`${step.phase} 주요 지원 항목`}>
                   {step.figures.map((figure) => (
                     <span className="founder-support-number" key={`${step.phase}-${figure.label}`}>
                       <b>{figure.value}</b>

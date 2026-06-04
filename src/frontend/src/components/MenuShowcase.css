@@ -1,5 +1,6 @@
 .menu-showcase-section {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   display: grid;
   grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
@@ -28,6 +29,32 @@
   pointer-events: none;
 }
 
+.menu-showcase-section::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background-image:
+    radial-gradient(circle, rgba(217, 10, 10, 0.18) 0 2px, transparent 2.4px),
+    radial-gradient(circle, rgba(255, 217, 61, 0.34) 0 2px, transparent 2.6px);
+  background-position:
+    18% 24%,
+    82% 70%;
+  background-size:
+    150px 150px,
+    190px 190px;
+  content: "";
+  pointer-events: none;
+}
+
+.menu-showcase-section.is-visible::before {
+  animation: menuShowcaseGridDrift 15s linear infinite;
+}
+
+.menu-showcase-section.is-visible::after {
+  animation: menuShowcaseDotFloat 8s ease-in-out infinite;
+}
+
 .menu-showcase-copy,
 .menu-showcase-display {
   position: relative;
@@ -44,6 +71,7 @@
 .menu-showcase-copy > span {
   padding: 8px 18px 7px;
   border: 2px solid rgba(33, 24, 22, 0.22);
+  border-radius: 999px;
   background: rgba(255, 253, 247, 0.78);
   color: #ab7c64;
   font-size: clamp(0.94rem, 1vw, 1.06rem);
@@ -63,17 +91,50 @@
   word-break: keep-all;
 }
 
-.menu-showcase-copy h2 span:last-child {
+.menu-showcase-copy h2 .menu-showcase-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.12em;
+}
+
+.menu-showcase-copy h2 em {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.04em 0.02em;
+  color: #211816;
+  font-style: normal;
+  z-index: 0;
+}
+
+.menu-showcase-copy h2 em::before {
+  position: absolute;
+  left: -0.03em;
+  right: -0.02em;
+  bottom: 0.04em;
+  z-index: -1;
+  height: 0.36em;
+  border-radius: 999px 18px 999px 18px;
+  background: #ffd93d;
+  box-shadow: 0 0.08em 0 rgba(217, 10, 10, 0.18);
+  content: "";
+  transform: rotate(-1.4deg) scaleX(0);
+  transform-origin: left center;
+}
+
+.menu-showcase-copy h2 strong {
   color: #d90a0a;
+  font: inherit;
 }
 
 .menu-showcase-copy p {
   max-width: 560px;
   margin: 6px 0 0;
   color: rgba(33, 24, 22, 0.76);
+  font-family: "Jua", Pretendard, system-ui, sans-serif;
   font-size: clamp(1.08rem, 1.32vw, 1.32rem);
   line-height: 1.42;
-  font-weight: 820;
+  font-weight: 400;
   word-break: keep-all;
 }
 
@@ -89,13 +150,14 @@
 }
 
 .menu-showcase-points strong {
+  position: relative;
   min-height: 46px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0 18px;
   border: 3px solid #211816;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #fff8e8;
   color: #211816;
   box-shadow: 5px 5px 0 rgba(33, 24, 22, 0.18);
@@ -103,6 +165,18 @@
   line-height: 1;
   font-weight: 950;
   word-break: keep-all;
+  overflow: hidden;
+}
+
+.menu-showcase-points strong::after {
+  position: absolute;
+  inset: -20% auto -20% -42%;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 253, 247, 0.62), transparent);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: skewX(-18deg) translateX(0);
 }
 
 .menu-showcase-points strong:nth-child(2) {
@@ -121,19 +195,36 @@
 }
 
 .menu-showcase-display {
+  position: relative;
   min-height: clamp(520px, 48vw, 720px);
   display: grid;
   place-items: center;
 }
 
+.menu-showcase-glow {
+  position: absolute;
+  inset: 11% 4%;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 217, 61, 0.5), transparent 58%),
+    radial-gradient(circle at 70% 36%, rgba(217, 10, 10, 0.16), transparent 44%);
+  filter: blur(2px);
+  opacity: 0;
+  transform: scale(0.82);
+  pointer-events: none;
+}
+
 .menu-showcase-main {
   position: relative;
   z-index: 2;
-  width: min(62%, 430px);
+  width: min(68%, 480px);
   margin: 0;
-  border: 3px solid rgba(33, 24, 22, 0.22);
+  border: 4px solid #211816;
+  border-radius: 14px;
   background: #fffdf7;
-  box-shadow: 18px 18px 0 rgba(33, 24, 22, 0.12);
+  box-shadow: 22px 22px 0 rgba(33, 24, 22, 0.14), 0 22px 30px rgba(33, 24, 22, 0.1);
+  overflow: hidden;
 }
 
 .menu-showcase-main img {
@@ -148,6 +239,7 @@
   left: 14px;
   top: 14px;
   padding: 8px 12px 7px;
+  border-radius: 6px;
   background: #d90a0a;
   color: #fffdf7;
   font-size: clamp(0.9rem, 1vw, 1rem);
@@ -164,34 +256,153 @@
 
 .menu-showcase-stack img {
   position: absolute;
-  width: min(28%, 190px);
-  border: 2px solid rgba(33, 24, 22, 0.18);
+  width: min(34%, 238px);
+  border: 3px solid rgba(33, 24, 22, 0.2);
+  border-radius: 12px;
   background: #fffdf7;
-  box-shadow: 10px 10px 0 rgba(33, 24, 22, 0.1);
+  box-shadow: 14px 14px 0 rgba(33, 24, 22, 0.12);
+  overflow: hidden;
 }
 
 .menu-showcase-stack img:nth-child(1) {
-  left: 4%;
-  top: 20%;
-  transform: rotate(-9deg);
+  left: -2%;
+  top: 18%;
+  transform: rotate(-14deg);
+  --menu-card-final-transform: rotate(-14deg);
+  --menu-card-start-transform: translate3d(96px, 48px, 0) scale(0.64) rotate(-28deg);
+  --menu-float-transform: translate3d(-7px, -8px, 0) rotate(-14.8deg);
 }
 
 .menu-showcase-stack img:nth-child(2) {
-  right: 4%;
-  top: 14%;
-  transform: rotate(8deg);
+  right: -2%;
+  top: 10%;
+  transform: rotate(13deg);
+  --menu-card-final-transform: rotate(13deg);
+  --menu-card-start-transform: translate3d(-98px, 54px, 0) scale(0.64) rotate(28deg);
+  --menu-float-transform: translate3d(7px, -9px, 0) rotate(13.8deg);
 }
 
 .menu-showcase-stack img:nth-child(3) {
-  left: 10%;
-  bottom: 11%;
-  transform: rotate(7deg);
+  left: 4%;
+  bottom: 4%;
+  transform: rotate(12deg);
+  --menu-card-final-transform: rotate(12deg);
+  --menu-card-start-transform: translate3d(88px, -86px, 0) scale(0.64) rotate(26deg);
+  --menu-float-transform: translate3d(-8px, 7px, 0) rotate(12.8deg);
 }
 
 .menu-showcase-stack img:nth-child(4) {
-  right: 10%;
-  bottom: 8%;
-  transform: rotate(-7deg);
+  right: 4%;
+  bottom: 2%;
+  transform: rotate(-13deg);
+  --menu-card-final-transform: rotate(-13deg);
+  --menu-card-start-transform: translate3d(-88px, -86px, 0) scale(0.64) rotate(-26deg);
+  --menu-float-transform: translate3d(8px, 8px, 0) rotate(-13.8deg);
+}
+
+.menu-showcase-section--motion-ready .menu-showcase-copy > span,
+.menu-showcase-section--motion-ready .menu-showcase-copy h2 span,
+.menu-showcase-section--motion-ready .menu-showcase-copy p,
+.menu-showcase-section--motion-ready .menu-showcase-points strong,
+.menu-showcase-section--motion-ready .menu-showcase-main,
+.menu-showcase-section--motion-ready .menu-showcase-stack img {
+  opacity: 0;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-copy > span {
+  animation: menuShowcaseLabelIn 0.42s ease-out 0.08s forwards;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-copy h2 span {
+  animation: menuShowcaseHeadlineIn 0.68s cubic-bezier(0.2, 1, 0.34, 1) forwards;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-copy h2 span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-copy h2 em::before {
+  animation: menuShowcaseUnderline 0.46s ease-out 0.48s forwards;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-copy p {
+  animation: menuShowcaseTextIn 0.54s ease-out 0.38s forwards;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong {
+  animation: menuShowcaseChipIn 0.54s cubic-bezier(0.2, 1.45, 0.36, 1) forwards;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong::after {
+  animation: menuShowcaseChipSweep 0.42s ease-out both;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(1) {
+  animation-delay: 0.58s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(1)::after {
+  animation-delay: 0.9s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(2) {
+  animation-delay: 0.66s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(2)::after {
+  animation-delay: 0.98s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(3) {
+  animation-delay: 0.74s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(3)::after {
+  animation-delay: 1.06s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(4) {
+  animation-delay: 0.82s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-points strong:nth-child(4)::after {
+  animation-delay: 1.14s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-glow {
+  animation: menuShowcaseGlow 3.6s ease-in-out 0.32s infinite;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-main {
+  animation:
+    menuShowcaseMainIn 0.82s cubic-bezier(0.18, 1, 0.32, 1) 0.2s forwards,
+    menuShowcaseMainFloat 7.2s ease-in-out 1.12s infinite;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-main figcaption {
+  animation: menuShowcaseCaptionStamp 0.5s cubic-bezier(0.2, 1.45, 0.36, 1) 0.84s both;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-stack img {
+  animation:
+    menuShowcaseCardIn 0.64s cubic-bezier(0.18, 1, 0.32, 1) forwards,
+    menuShowcaseCardFloat 7.4s ease-in-out infinite;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-stack img:nth-child(1) {
+  animation-delay: 0.44s, 1.22s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-stack img:nth-child(2) {
+  animation-delay: 0.54s, 1.34s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-stack img:nth-child(3) {
+  animation-delay: 0.64s, 1.46s;
+}
+
+.menu-showcase-section.is-visible .menu-showcase-stack img:nth-child(4) {
+  animation-delay: 0.74s, 1.58s;
 }
 
 @media (max-width: 1180px) {
@@ -207,6 +418,10 @@
 
   .menu-showcase-copy p {
     margin-inline: auto;
+  }
+
+  .menu-showcase-copy h2 .menu-showcase-title-line {
+    justify-content: center;
   }
 }
 
@@ -229,6 +444,225 @@
   }
 
   .menu-showcase-stack img {
-    width: min(34%, 140px);
+    width: min(36%, 150px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-showcase-section::before,
+  .menu-showcase-section::after,
+  .menu-showcase-section.is-visible .menu-showcase-copy > span,
+  .menu-showcase-section.is-visible .menu-showcase-copy h2 span,
+  .menu-showcase-section.is-visible .menu-showcase-copy h2 em::before,
+  .menu-showcase-section.is-visible .menu-showcase-copy p,
+  .menu-showcase-section.is-visible .menu-showcase-points strong,
+  .menu-showcase-section.is-visible .menu-showcase-points strong::after,
+  .menu-showcase-section.is-visible .menu-showcase-glow,
+  .menu-showcase-section.is-visible .menu-showcase-main,
+  .menu-showcase-section.is-visible .menu-showcase-main figcaption,
+  .menu-showcase-section.is-visible .menu-showcase-stack img {
+    animation: none;
+  }
+
+  .menu-showcase-section--motion-ready .menu-showcase-copy > span,
+  .menu-showcase-section--motion-ready .menu-showcase-copy h2 span,
+  .menu-showcase-section--motion-ready .menu-showcase-copy p,
+  .menu-showcase-section--motion-ready .menu-showcase-points strong,
+  .menu-showcase-section--motion-ready .menu-showcase-main,
+  .menu-showcase-section--motion-ready .menu-showcase-stack img,
+  .menu-showcase-section::after {
+    opacity: 1;
+  }
+
+  .menu-showcase-copy h2 em::before,
+  .menu-showcase-glow {
+    transform: none;
+  }
+}
+
+@keyframes menuShowcaseGridDrift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 42px 42px, 42px 42px;
+  }
+}
+
+@keyframes menuShowcaseDotFloat {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.34;
+    transform: translate3d(8px, -10px, 0);
+  }
+}
+
+@keyframes menuShowcaseLabelIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10px, 10px, 0) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+}
+
+@keyframes menuShowcaseHeadlineIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) rotate(-0.8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+}
+
+@keyframes menuShowcaseUnderline {
+  0% {
+    transform: rotate(-1.4deg) scaleX(0);
+  }
+  100% {
+    transform: rotate(-1.4deg) scaleX(1);
+  }
+}
+
+@keyframes menuShowcaseTextIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes menuShowcaseChipIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.76) rotate(-2.6deg);
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(1.08) rotate(1.4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+}
+
+@keyframes menuShowcaseChipIdle {
+  0%,
+  88%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+  92% {
+    opacity: 1;
+    transform: translate3d(0, -2px, 0) scale(1.025) rotate(-0.5deg);
+  }
+  96% {
+    opacity: 1;
+    transform: translate3d(0, 1px, 0) scale(0.995) rotate(0.25deg);
+  }
+}
+
+@keyframes menuShowcaseChipSweep {
+  0% {
+    opacity: 0;
+    transform: skewX(-18deg) translateX(0);
+  }
+  35% {
+    opacity: 0.58;
+  }
+  100% {
+    opacity: 0;
+    transform: skewX(-18deg) translateX(420%);
+  }
+}
+
+@keyframes menuShowcaseGlow {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes menuShowcaseMainIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 52px, 0) scale(0.72) rotate(-7deg);
+  }
+  78% {
+    opacity: 1;
+    transform: translate3d(0, -8px, 0) scale(1.04) rotate(1.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(-1.4deg);
+  }
+}
+
+@keyframes menuShowcaseMainFloat {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(-1.4deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, -7px, 0) rotate(-0.7deg);
+  }
+}
+
+@keyframes menuShowcaseCaptionStamp {
+  0% {
+    transform: translate3d(0, -8px, 0) scale(1.18) rotate(-4deg);
+  }
+  70% {
+    transform: translate3d(0, 2px, 0) scale(0.96) rotate(1deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
+  }
+}
+
+@keyframes menuShowcaseCardIn {
+  0% {
+    opacity: 0;
+    transform: var(--menu-card-start-transform);
+  }
+  78% {
+    opacity: 1;
+    transform: var(--menu-card-final-transform) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: var(--menu-card-final-transform);
+  }
+}
+
+@keyframes menuShowcaseCardFloat {
+  0%,
+  100% {
+    opacity: 1;
+    transform: var(--menu-card-final-transform);
+  }
+  50% {
+    opacity: 1;
+    transform: var(--menu-float-transform);
   }
 }

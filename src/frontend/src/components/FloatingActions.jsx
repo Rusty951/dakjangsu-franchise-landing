@@ -1,7 +1,37 @@
+import { useEffect, useState } from 'react';
 import './FloatingActions.css';
 import { trackEvent } from '../utils/tracking';
 
 const FloatingActions = ({ onKakaoClick }) => {
+  const [isContentBlocked, setIsContentBlocked] = useState(false);
+
+  useEffect(() => {
+    const blockingSections = [...document.querySelectorAll('#founder-fit, #menu-showcase, #lead-capture')];
+
+    if (blockingSections.length === 0) {
+      return undefined;
+    }
+
+    const visibleSections = new Set();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target.id);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+        setIsContentBlocked(visibleSections.size > 0);
+      },
+      { threshold: 0.18 }
+    );
+
+    blockingSections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleTopClick = () => {
     trackEvent('floating_top_click', { section: 'floating_menu' });
   };
@@ -27,7 +57,7 @@ const FloatingActions = ({ onKakaoClick }) => {
 
   return (
     <>
-      <aside className="floating-actions" aria-label="빠른 상담 메뉴">
+      <aside className={`floating-actions${isContentBlocked ? ' floating-actions--hidden' : ''}`} aria-label="빠른 상담 메뉴">
         <div className="floating-actions-header">
           <strong>창업 상담</strong>
           <span>빠른 문의</span>
@@ -84,7 +114,7 @@ const FloatingActions = ({ onKakaoClick }) => {
         </a>
       </aside>
 
-      <nav className="mobile-action-bar" aria-label="모바일 빠른 상담 메뉴">
+      <nav className={`mobile-action-bar${isContentBlocked ? ' mobile-action-bar--hidden' : ''}`} aria-label="모바일 빠른 상담 메뉴">
         <a className="mobile-phone-lead" href="tel:1588-2287" onClick={handlePhoneClick}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8.2 4.7 6.1 6.8c-.5.5-.7 1.2-.4 1.9 1.8 4.7 5 7.9 9.6 9.6.7.3 1.4.1 1.9-.4l2.1-2.1c.5-.5.5-1.4-.1-1.8l-2.4-1.7c-.5-.3-1.1-.3-1.6 0l-1.1.7c-1.4-.8-2.5-1.9-3.2-3.2l.7-1.1c.3-.5.3-1.1 0-1.6L9.9 4.8c-.4-.6-1.2-.7-1.7-.1Z" />

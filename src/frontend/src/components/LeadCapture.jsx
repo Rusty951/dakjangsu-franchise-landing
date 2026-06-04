@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import './LeadCapture.css';
 import { trackEvent } from '../utils/tracking';
 
@@ -9,6 +10,28 @@ const consultationChecks = [
 ];
 
 const LeadCapture = ({ onKakaoClick }) => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.26 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleKakaoClick = () => {
     trackEvent('cta_kakao_click', { section: 'lead_capture_footer' });
     if (onKakaoClick) {
@@ -17,7 +40,12 @@ const LeadCapture = ({ onKakaoClick }) => {
   };
 
   return (
-    <section className="lead-capture-section" id="lead-capture" aria-labelledby="lead-capture-title">
+    <section
+      ref={sectionRef}
+      className={`lead-capture-section lead-capture-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      id="lead-capture"
+      aria-labelledby="lead-capture-title"
+    >
       <div className="consultation-intro">
         <span className="consultation-label">닭장수 창업 상담</span>
         <h2 id="lead-capture-title">
