@@ -251,3 +251,8 @@
 - Disabled fourth-page background pan, grid drift, and decorative loop animations on narrow mobile screens to prevent the red overlay from appearing to slide out of alignment on iPhone.
 - Kept the copy entrance motion active while making the mobile illustration layer stable.
 - Ran `npm run lint` and `npm run build` successfully after the mobile motion stabilization.
+
+## 2026-06-04 - Menu Proof Mobile Right Edge Fix
+
+- Disabled the remaining mobile overlay sweep animation and expanded the overlay by 1px so the right edge cannot expose a shifting red panel on iPhone.
+- Ran `npm run lint` and `npm run build` successfully after the right-edge fix.

@@ -486,9 +486,16 @@
   }
 
   .menu-proof-section::before {
+    inset: -1px;
     background:
       linear-gradient(180deg, rgba(17, 12, 10, 0.78) 0%, rgba(83, 0, 0, 0.48) 50%, rgba(17, 12, 10, 0.78) 100%),
       rgba(125, 15, 8, 0.26);
+  }
+
+  .menu-proof-section--motion-ready.is-visible::before {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 
   .menu-proof-section::after {
