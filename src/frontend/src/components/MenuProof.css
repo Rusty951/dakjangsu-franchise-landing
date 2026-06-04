@@ -476,15 +476,15 @@
 @media (max-width: 560px) {
   .menu-proof-section {
     padding: 54px 20px 64px;
-    background-position: 62% center;
-    background-size: cover;
+    background-position: 52% 48%;
+    background-size: auto 118%;
     background-color: #7d0f08;
   }
 
   .menu-proof-section::before {
     background:
-      linear-gradient(180deg, rgba(17, 12, 10, 0.9) 0%, rgba(83, 0, 0, 0.72) 50%, rgba(17, 12, 10, 0.88) 100%),
-      rgba(125, 15, 8, 0.46);
+      linear-gradient(180deg, rgba(17, 12, 10, 0.78) 0%, rgba(83, 0, 0, 0.48) 50%, rgba(17, 12, 10, 0.78) 100%),
+      rgba(125, 15, 8, 0.26);
   }
 
   .menu-proof-section::after {
