@@ -26,7 +26,9 @@ const Hero = () => {
               치킨집 창업,
             </span>
             <span className="hero-title-line hero-title-line--focus">
-              <em className="hero-title-accent hero-title-accent--dark">배달만</em>
+              <em className="hero-title-accent hero-title-accent--dark">
+                <span className="hero-title-accent-text">배달만</span>
+              </em>
               <span className="hero-title-tail">보고</span>
             </span>
             <span className="hero-title-line hero-title-line--focus">

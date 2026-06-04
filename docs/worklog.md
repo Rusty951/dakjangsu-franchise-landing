@@ -227,3 +227,15 @@
 - Reduced late-section background and chip idle motion so founder support, menu showcase, and final CTA read in a clearer sequence.
 - Kept only subtle menu-board float and Kakao CTA sparkle as ongoing motion in the closing flow.
 - Ran 390px mobile QA across the full landing; no horizontal overflow or final CTA overlap was found.
+
+## 2026-06-04 - Founder Support Message Restore
+
+- Restored the founder support section's original high-density `5무`, opening marketing support, chicken support, and headquarters support messaging.
+- Kept a consultation confirmation note under the support timeline so support conditions and promotional scope remain reviewable before public use.
+- Ran `npm run lint` and `npm run build` successfully after the copy restore.
+
+## 2026-06-04 - Hero Delivery-Only Accent Revision
+
+- Replaced the first-page `배달만` hand-mark and red border treatment with a simpler dark text-outline treatment that reads more like designed emphasis.
+- Verified the hero on desktop and 390px mobile with no horizontal overflow.
+- Ran `npm run lint` and `npm run build` successfully after the accent revision.

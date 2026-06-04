@@ -349,23 +349,29 @@
   position: relative;
   display: inline-block;
   z-index: 0;
-  padding: 0 0.08em 0.02em;
+  padding: 0 0.11em 0.03em;
   background: transparent;
   color: #fffdf7;
   font-family: "Pretendard", var(--font-sans);
   font-size: 1.08em;
   font-weight: 950;
-  box-shadow: 0 0 0.18em rgba(255, 217, 61, 0.14);
+  box-shadow: 0 0 0.12em rgba(255, 217, 61, 0.1);
   text-shadow:
-    0 0 0.08em rgba(255, 246, 169, 0.28),
-    0.035em 0.045em 0 rgba(80, 10, 4, 0.44),
-    0 0.07em 0 rgba(20, 8, 6, 0.18);
-  -webkit-text-stroke: 0;
+    0.032em 0.04em 0 rgba(33, 24, 22, 0.82),
+    0 0 0.075em rgba(255, 246, 169, 0.2),
+    0 0.065em 0 rgba(20, 8, 6, 0.14);
+  -webkit-text-stroke: 0.012em rgba(33, 24, 22, 0.92);
   transform: rotate(-0.8deg);
   animation: heroAccentPop 1.8s ease-in-out 1.35s both;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   will-change: filter, box-shadow;
+}
+
+.hero-title-accent-text {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
 }
 
 .hero-title-tail {
@@ -392,28 +398,15 @@
     linear-gradient(90deg, rgba(255, 217, 61, 0.94), rgba(255, 196, 43, 0.9)),
     linear-gradient(180deg, rgba(255, 253, 247, 0.26), transparent 70%);
   box-shadow:
-    0 0.06em 0 rgba(95, 16, 8, 0.28),
-    0 0.11em 0.18em rgba(69, 0, 0, 0.26);
+    0 0.05em 0 rgba(33, 24, 22, 0.22),
+    0 0.1em 0.16em rgba(33, 24, 22, 0.16);
   content: "";
   transform: rotate(-1.4deg) skewX(-7deg);
   transform-origin: 48% 62%;
 }
 
 .hero-title-accent--dark::after {
-  position: absolute;
-  inset: -0.1em -0.12em;
-  z-index: 1;
-  background:
-    radial-gradient(circle at 14% 20%, rgba(255, 253, 247, 0.9) 0 0.032em, transparent 0.072em),
-    radial-gradient(circle at 86% 22%, rgba(255, 253, 247, 0.8) 0 0.024em, transparent 0.06em),
-    radial-gradient(circle at 76% 74%, rgba(255, 217, 61, 0.72) 0 0.025em, transparent 0.064em);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  content: "";
-  mix-blend-mode: screen;
-  opacity: 0.36;
-  pointer-events: none;
-  animation: heroAccentTwinkle 5.2s ease-in-out 2.6s infinite;
+  content: none;
 }
 
 .hero-subcopy {
@@ -761,8 +754,7 @@
   .hero-spark-layer::before,
   .hero-spark-layer::after,
   .hero-spark,
-  .hero-title-accent--dark,
-  .hero-title-accent--dark::after {
+  .hero-title-accent--dark {
     animation: none;
   }
 
