@@ -481,6 +481,10 @@
     background-color: #7d0f08;
   }
 
+  .menu-proof-section--motion-ready.is-visible {
+    animation: none;
+  }
+
   .menu-proof-section::before {
     background:
       linear-gradient(180deg, rgba(17, 12, 10, 0.78) 0%, rgba(83, 0, 0, 0.48) 50%, rgba(17, 12, 10, 0.78) 100%),
@@ -490,6 +494,14 @@
   .menu-proof-section::after {
     opacity: 0.06;
     mix-blend-mode: normal;
+  }
+
+  .menu-proof-section--motion-ready.is-visible::after,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop::before,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop::after,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop-light,
+  .menu-proof-section--motion-ready.is-visible .menu-proof-loop-steam {
+    animation: none;
   }
 
   .menu-proof-loop {

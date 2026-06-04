@@ -245,3 +245,9 @@
 - Fixed the fourth-page illustration background so tall mobile viewports do not show the image as three repeated panels.
 - Kept the poster pan motion by sizing the illustration to always cover the viewport height before animating position.
 - Ran `npm run lint` and `npm run build` successfully after the background sizing fix.
+
+## 2026-06-04 - Menu Proof iPhone Motion Stabilization
+
+- Disabled fourth-page background pan, grid drift, and decorative loop animations on narrow mobile screens to prevent the red overlay from appearing to slide out of alignment on iPhone.
+- Kept the copy entrance motion active while making the mobile illustration layer stable.
+- Ran `npm run lint` and `npm run build` successfully after the mobile motion stabilization.
