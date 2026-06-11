@@ -1,5 +1,9 @@
 # Worklog
 
+## 2026-06-11 - Gopdoritang Photo Correction
+
+- Replaced the incorrect 곱도리탕 photo in the menu showcase thumbnail and regenerated the composed popular menu board assets.
+
 ## 2026-05-27 - Assertive Copy Tone Reference
 
 - Added `docs/context/assertive-copy-tone.md` to lock the next copy direction without changing the landing structure.
