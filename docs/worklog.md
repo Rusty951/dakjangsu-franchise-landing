@@ -201,6 +201,13 @@
 - Hid the mobile fixed Kakao bar on the popart concept route so the first-view concept does not show duplicate CTAs.
 - Ran `npm run build` and `npm run lint` successfully after the connection pass.
 
+## 2026-06-12 - Contact And Social Link Wiring
+
+- Wired the floating email action to a configurable `VITE_CONTACT_EMAIL`, with `money8881@hanmail.net` as the current default.
+- Added configurable footer links for the official video gallery, Naver Blog, and Instagram channels.
+- Pointed the YouTube footer action to the likely official unsuffixed brand channel after comparing public channel metadata; Gmail ownership still requires YouTube Studio/account verification.
+- Updated the footer Instagram URL to the client-provided `dakjangsu_official_` address.
+
 ## 2026-05-27 - Final CTA Graph Styling Pass
 
 - Reworked the final consultation CTA from a plain text block into a red-board section with a cream chart sheet.

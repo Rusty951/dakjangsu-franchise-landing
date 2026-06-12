@@ -2,6 +2,7 @@ import './SiteFooter.css';
 
 const socialChannels = [
   {
+    id: 'youtube',
     label: '유튜브',
     className: 'youtube',
     icon: (
@@ -12,6 +13,7 @@ const socialChannels = [
     )
   },
   {
+    id: 'blog',
     label: '블로그',
     className: 'blog',
     icon: (
@@ -21,6 +23,7 @@ const socialChannels = [
     )
   },
   {
+    id: 'instagram',
     label: '인스타그램',
     className: 'instagram',
     icon: (
@@ -33,7 +36,7 @@ const socialChannels = [
   }
 ];
 
-const SiteFooter = () => {
+const SiteFooter = ({ socialLinks = {} }) => {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
@@ -51,16 +54,31 @@ const SiteFooter = () => {
             <p className="footer-copyright">Copyright@2017 dakjangsu all rights reserved</p>
           </div>
           <div className="footer-social" aria-label="공식 채널 아이콘">
-            {socialChannels.map((channel) => (
-              <span
-                key={channel.label}
-                className={`footer-social-icon ${channel.className}`}
-                role="img"
-                aria-label={channel.label}
-              >
-                {channel.icon}
-              </span>
-            ))}
+            {socialChannels.map((channel) => {
+              const href = socialLinks[channel.id];
+              const className = `footer-social-icon ${channel.className}`;
+
+              if (!href) {
+                return (
+                  <span key={channel.label} className={className} role="img" aria-label={channel.label}>
+                    {channel.icon}
+                  </span>
+                );
+              }
+
+              return (
+                <a
+                  key={channel.label}
+                  className={className}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${channel.label} 새 창으로 열기`}
+                >
+                  {channel.icon}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

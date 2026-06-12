@@ -71,10 +71,29 @@
   background: rgba(20, 42, 77, 0.06);
   color: var(--primary-navy);
   border: 1px solid rgba(20, 42, 77, 0.1);
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.footer-social-icon[href]:hover,
+.footer-social-icon[href]:focus-visible {
+  background: rgba(20, 42, 77, 0.12);
+  border-color: rgba(20, 42, 77, 0.24);
+  transform: translateY(-2px);
+}
+
+.footer-social-icon[href]:focus-visible {
+  outline: 3px solid rgba(238, 128, 109, 0.38);
+  outline-offset: 4px;
 }
 
 .footer-social-icon.blog {
   background: rgba(171, 124, 100, 0.14);
+}
+
+.footer-social-icon.blog[href]:hover,
+.footer-social-icon.blog[href]:focus-visible {
+  background: rgba(171, 124, 100, 0.22);
 }
 
 .footer-social-icon svg {

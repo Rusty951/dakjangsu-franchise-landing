@@ -17,6 +17,14 @@ import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
 
 const kakaoConsultationUrl = import.meta.env.VITE_KAKAO_CONSULTATION_URL;
+const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'money8881@hanmail.net';
+const socialLinks = {
+  youtube:
+    import.meta.env.VITE_YOUTUBE_URL ||
+    'https://www.youtube.com/@%EB%8B%AD%EC%9E%A5%EC%88%98%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C',
+  blog: import.meta.env.VITE_NAVER_BLOG_URL || 'https://blog.naver.com/dakjangsu78',
+  instagram: import.meta.env.VITE_INSTAGRAM_URL || 'https://www.instagram.com/dakjangsu_official_/'
+};
 
 function App() {
   const searchParams =
@@ -52,8 +60,8 @@ function App() {
         <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
-        <SiteFooter />
-        <FloatingActions onKakaoClick={handleKakaoConsultation} />
+        <SiteFooter socialLinks={socialLinks} />
+        <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
       </div>
     );
   }
@@ -75,8 +83,8 @@ function App() {
         <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
-        <SiteFooter />
-        <FloatingActions onKakaoClick={handleKakaoConsultation} />
+        <SiteFooter socialLinks={socialLinks} />
+        <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
       </div>
     );
   }
@@ -93,8 +101,8 @@ function App() {
       <FounderFit />
       <MenuShowcase />
       <LeadCapture onKakaoClick={handleKakaoConsultation} />
-      <SiteFooter />
-      <FloatingActions onKakaoClick={handleKakaoConsultation} />
+      <SiteFooter socialLinks={socialLinks} />
+      <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
     </div>
   );
 }

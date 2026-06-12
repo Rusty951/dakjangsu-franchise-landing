@@ -2,8 +2,22 @@ import { useEffect, useState } from 'react';
 import './FloatingActions.css';
 import { trackEvent } from '../utils/tracking';
 
-const FloatingActions = ({ onKakaoClick }) => {
+const emailSubject = '닭장수후라이드 창업 상담 문의';
+const emailBody = ['성함:', '연락처:', '희망 지역:', '문의 내용:'].join('\n');
+
+const buildMailtoHref = (email) => {
+  const normalizedEmail = email?.trim();
+
+  if (!normalizedEmail) {
+    return '#lead-capture';
+  }
+
+  return `mailto:${normalizedEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+};
+
+const FloatingActions = ({ onKakaoClick, contactEmail }) => {
   const [isContentBlocked, setIsContentBlocked] = useState(false);
+  const emailHref = buildMailtoHref(contactEmail);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
@@ -86,8 +100,8 @@ const FloatingActions = ({ onKakaoClick }) => {
 
         <a
           className="floating-action floating-action--email"
-          href="mailto:money8881@hanmail.net"
-          aria-label="이메일 문의 money8881@hanmail.net"
+          href={emailHref}
+          aria-label={`이메일 문의 ${contactEmail}`}
           onClick={handleEmailClick}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
