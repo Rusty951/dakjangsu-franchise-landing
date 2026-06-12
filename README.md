@@ -28,3 +28,11 @@ tests/                           tests
 ## Start
 
 Open this folder in Antigravity or Codex. First read `AGENT.md`, then `docs/context/brief.md`.
+
+## Deploy Notes
+
+- Vercel Root Directory: `src/frontend`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Lead API: `POST /api/leads`
+- Required server env: `RESEND_API_KEY`, `LEAD_TO_EMAIL`

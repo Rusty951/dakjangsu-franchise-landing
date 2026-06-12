@@ -72,7 +72,15 @@
 ## Implementation Notes
 
 - Normalize phone server-side.
-- Store leads in Google Sheets, Airtable, or a later CRM adapter.
-- Send notification through email or webhook.
+- Send the first notification through Resend email.
+- `LEAD_TO_EMAIL` can be changed from the test recipient to the client recipient without code changes.
+- Store leads in Google Sheets, Airtable, or a later CRM adapter if persistent lead history is required.
 - Keep all credentials in `.env.local`.
 - Separate storage failure from notification failure in logs.
+
+## Environment
+
+- `RESEND_API_KEY`: Resend API key.
+- `LEAD_TO_EMAIL`: comma-separated recipient list.
+- `LEAD_FROM_EMAIL`: sender identity, defaults to `Dakjangsu Franchise <onboarding@resend.dev>` for testing.
+- `LEAD_EMAIL_SUBJECT_PREFIX`: optional subject prefix.

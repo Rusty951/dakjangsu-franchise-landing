@@ -1,5 +1,18 @@
 # Worklog
 
+## 2026-06-12 - Lead Email API
+
+- Added a Vercel-compatible `/api/leads` endpoint that validates landing form submissions and sends Resend email notifications.
+- Wired the Vite dev server to the same lead handler so local `/api/leads` requests exercise the backend path.
+- Set the local test recipient to the provided email address in ignored `.env.local`; Resend API credentials still need to be supplied outside git.
+
+## 2026-06-12 - Privacy Consent Alignment
+
+- Added a landing-specific privacy policy dialog to the lead form, aligned with the official site's franchise inquiry consent structure.
+- Narrowed the displayed collection scope to the landing form's actual consultation fields and tracking fields.
+- Kept the consent interaction inside the final CTA form so applicants can review the policy before submitting.
+- Cross-role note: Codex touched final CTA frontend because the work was tied to privacy consent, lead capture, and launch readiness.
+
 ## 2026-06-11 - Gopdoritang Photo Correction
 
 - Replaced the incorrect 곱도리탕 photo in the menu showcase thumbnail and regenerated the composed popular menu board assets.
