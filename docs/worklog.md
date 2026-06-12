@@ -4,6 +4,14 @@
 
 - Replaced the incorrect 곱도리탕 photo in the menu showcase thumbnail and regenerated the composed popular menu board assets.
 
+## 2026-06-09 - Lead Form Validation/API Wiring
+
+- Added a secondary lead form to the final consultation section with required name, phone, region, and privacy consent fields.
+- Wired client-side validation, `/api/leads` submission, UTM/path/referrer tracking fields, and lead form tracking events.
+- Added frontend environment placeholders for Kakao consultation URL and lead API endpoint in `src/frontend/.env.example`.
+- Hid the fixed quick-action menus while the final lead section is in view so they do not cover the form.
+- Cross-role note: Codex touched the final CTA frontend because the work was tied to lead form validation, tracking, and API handoff.
+
 ## 2026-05-27 - Assertive Copy Tone Reference
 
 - Added `docs/context/assertive-copy-tone.md` to lock the next copy direction without changing the landing structure.

@@ -16,6 +16,8 @@ import PopArtConcept from './components/PopArtConcept';
 import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
 
+const kakaoConsultationUrl = import.meta.env.VITE_KAKAO_CONSULTATION_URL;
+
 function App() {
   const searchParams =
     typeof window !== 'undefined'
@@ -28,7 +30,12 @@ function App() {
   const landingClassName = 'landing-app';
 
   const handleKakaoConsultation = () => {
-    alert("카카오톡 상담 링크는 최종 확정 후 연결합니다.");
+    if (kakaoConsultationUrl && typeof window !== 'undefined') {
+      window.open(kakaoConsultationUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    alert('카카오톡 상담 링크는 최종 확정 후 연결합니다.');
   };
 
   if (isPopArtConcept) {

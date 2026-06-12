@@ -6,6 +6,10 @@ const FloatingActions = ({ onKakaoClick }) => {
   const [isContentBlocked, setIsContentBlocked] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return undefined;
+    }
+
     const blockingSections = [...document.querySelectorAll('#founder-fit, #menu-showcase, #lead-capture')];
 
     if (blockingSections.length === 0) {
