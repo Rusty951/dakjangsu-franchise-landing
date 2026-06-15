@@ -10,3 +10,4 @@ coverage/
 *.log
 references/extracted/
 exports/previews/
+.vercel
