@@ -208,24 +208,35 @@ const buildHtmlEmail = (lead) => {
 const sendLeadEmail = async (lead) => {
   const resendApiKey = process.env.RESEND_API_KEY;
   const to = parseEmails(process.env.LEAD_TO_EMAIL);
-  const from = process.env.LEAD_FROM_EMAIL || 'Dakjangsu Franchise <onboarding@resend.dev>';
+  const from = process.env.LEAD_FROM_EMAIL;
+  const replyTo = parseEmails(process.env.LEAD_REPLY_TO_EMAIL);
   const subjectPrefix = process.env.LEAD_EMAIL_SUBJECT_PREFIX || '[닭장수 창업상담]';
 
-  if (!resendApiKey || to.length === 0) {
-    const missing = [!resendApiKey && 'RESEND_API_KEY', to.length === 0 && 'LEAD_TO_EMAIL'].filter(Boolean);
+  if (!resendApiKey || to.length === 0 || !from) {
+    const missing = [
+      !resendApiKey && 'RESEND_API_KEY',
+      to.length === 0 && 'LEAD_TO_EMAIL',
+      !from && 'LEAD_FROM_EMAIL'
+    ].filter(Boolean);
     const error = new Error(`Missing lead email environment variables: ${missing.join(', ')}`);
     error.statusCode = 500;
     throw error;
   }
 
   const resend = new Resend(resendApiKey);
-  const { error } = await resend.emails.send({
+  const emailPayload = {
     from,
     to,
     subject: `${subjectPrefix} ${lead.name} / ${lead.region}`,
     text: buildPlainTextEmail(lead),
     html: buildHtmlEmail(lead)
-  });
+  };
+
+  if (replyTo.length > 0) {
+    emailPayload.replyTo = replyTo;
+  }
+
+  const { error } = await resend.emails.send(emailPayload);
 
   if (error) {
     const sendError = new Error(error.message || 'Lead email send failed');

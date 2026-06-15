@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "src/frontend/dist",
+  "functions": {
+    "api/leads.js": {
+      "maxDuration": 10
+    }
+  }
+}

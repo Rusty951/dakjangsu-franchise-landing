@@ -53,6 +53,31 @@
   letter-spacing: 0.04em;
 }
 
+.footer-policy-link {
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(20, 42, 77, 0.68);
+  font: inherit;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  font-weight: 850;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.footer-policy-link:hover,
+.footer-policy-link:focus-visible {
+  color: var(--primary-navy);
+}
+
+.footer-policy-link:focus-visible {
+  outline: 3px solid rgba(238, 128, 109, 0.34);
+  outline-offset: 5px;
+}
+
 .footer-social {
   display: flex;
   justify-content: flex-end;

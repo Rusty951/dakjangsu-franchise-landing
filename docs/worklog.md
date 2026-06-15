@@ -288,3 +288,13 @@
 
 - Disabled the remaining mobile overlay sweep animation and expanded the overlay by 1px so the right edge cannot expose a shifting red panel on iPhone.
 - Ran `npm run lint` and `npm run build` successfully after the right-edge fix.
+
+## 2026-06-15 - Vercel Deployment Wiring Pass
+
+- Added root Vercel deployment config and a root `/api/leads` entrypoint so the lead form can run as a production Vercel Function.
+- Kept the existing frontend dev API middleware intact for local Vite development.
+- Required `LEAD_FROM_EMAIL` instead of falling back to Resend's test sender, and documented the lead recipient in `.env.example`.
+- Added optional `LEAD_REPLY_TO_EMAIL` support for routing replies to the client's Gmail account while keeping the sender on a verified domain.
+- Connected the owner interview video card to an inline YouTube embed using the confirmed interview URL.
+- Extracted the privacy policy dialog so the same policy can open from both the lead form and footer.
+- Ran `npm run vercel-build`, `npm run lint`, and a root API handler import check successfully.

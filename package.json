@@ -1,0 +1,16 @@
+{
+  "name": "dakjangsu-franchise-landing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix src/frontend run build",
+    "lint": "npm --prefix src/frontend run lint",
+    "vercel-build": "npm --prefix src/frontend ci && npm --prefix src/frontend run build"
+  },
+  "dependencies": {
+    "resend": "^6.12.4"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

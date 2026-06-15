@@ -160,6 +160,7 @@
   position: relative;
   display: block;
   width: min(100%, 1120px);
+  aspect-ratio: 16 / 9;
   min-height: clamp(280px, 34vw, 430px);
   padding: 0;
   margin: clamp(4px, 0.8vw, 10px) 0 0;
@@ -168,13 +169,14 @@
   border-radius: 8px;
   background: #211816;
   box-shadow: 12px 12px 0 rgba(17, 17, 17, 0.16), 0 20px 42px rgba(33, 24, 22, 0.16);
-  cursor: pointer;
-  appearance: none;
-  font: inherit;
   transition: transform 0.16s ease, box-shadow 0.16s ease;
   opacity: 0;
   transform: translateY(28px) rotate(0.7deg) scale(0.98);
   transform-origin: center center;
+}
+
+.owner-proof-video:not(.is-playing) {
+  cursor: pointer;
 }
 
 .owner-interview-section--motion-ready.is-visible .owner-proof-video {
@@ -202,11 +204,30 @@
   transform: translateX(-42%);
 }
 
-.owner-interview-section--motion-ready.is-visible .owner-proof-video::after {
+.owner-interview-section--motion-ready.is-visible .owner-proof-video:not(.is-playing)::after {
   animation: ownerInterviewVideoSweep 4.8s ease-in-out 1.1s infinite;
 }
 
-.owner-proof-video img {
+.owner-proof-video.is-playing::before,
+.owner-proof-video.is-playing::after {
+  display: none;
+}
+
+.owner-proof-video-trigger {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  font: inherit;
+}
+
+.owner-proof-video-trigger img {
   display: block;
   width: 100%;
   height: 100%;
@@ -218,17 +239,17 @@
   will-change: transform, filter;
 }
 
-.owner-interview-section--motion-ready.is-visible .owner-proof-video img {
+.owner-interview-section--motion-ready.is-visible .owner-proof-video:not(.is-playing) img {
   animation: ownerInterviewVideoLoop 9s ease-in-out 1.2s infinite alternate;
 }
 
-.owner-proof-video:hover,
-.owner-proof-video:focus-visible {
+.owner-proof-video:not(.is-playing):hover,
+.owner-proof-video:focus-within {
   transform: translate(3px, 3px);
   box-shadow: 9px 9px 0 rgba(17, 17, 17, 0.2), 0 16px 34px rgba(33, 24, 22, 0.14);
 }
 
-.owner-proof-video:focus-visible {
+.owner-proof-video:focus-within {
   outline: 4px solid #ffd93d;
   outline-offset: 5px;
 }
@@ -263,6 +284,17 @@
   border-left: clamp(23px, 2.35vw, 34px) solid #111111;
   content: "";
   transform: translate(-34%, -50%);
+}
+
+.owner-proof-embed {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000000;
 }
 
 .owner-interview-story {

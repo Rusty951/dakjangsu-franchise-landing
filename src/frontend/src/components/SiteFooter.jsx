@@ -36,7 +36,7 @@ const socialChannels = [
   }
 ];
 
-const SiteFooter = ({ socialLinks = {} }) => {
+const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
@@ -51,6 +51,11 @@ const SiteFooter = ({ socialLinks = {} }) => {
               <p>(04726) 서울특별시 성동구 금호산길 60 3층&nbsp;&nbsp;|&nbsp;&nbsp;대표자 : 송민화</p>
               <p>사업자등록번호 : 646-88-01502</p>
             </div>
+            {onPrivacyClick && (
+              <button className="footer-policy-link" type="button" onClick={onPrivacyClick}>
+                개인정보처리방침
+              </button>
+            )}
             <p className="footer-copyright">Copyright@2017 dakjangsu all rights reserved</p>
           </div>
           <div className="footer-social" aria-label="공식 채널 아이콘">

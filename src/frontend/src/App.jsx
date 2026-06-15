@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Hero from './components/Hero';
 import ShockHook from './components/ShockHook';
@@ -12,6 +13,7 @@ import OwnerVoice from './components/OwnerVoice';
 import LeadCapture from './components/LeadCapture';
 import SiteFooter from './components/SiteFooter';
 import FloatingActions from './components/FloatingActions';
+import PrivacyPolicyDialog from './components/PrivacyPolicyDialog';
 import PopArtConcept from './components/PopArtConcept';
 import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
@@ -27,6 +29,7 @@ const socialLinks = {
 };
 
 function App() {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const searchParams =
     typeof window !== 'undefined'
       ? new URLSearchParams(window.location.search)
@@ -60,8 +63,9 @@ function App() {
         <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
-        <SiteFooter socialLinks={socialLinks} />
+        <SiteFooter socialLinks={socialLinks} onPrivacyClick={() => setIsPrivacyOpen(true)} />
         <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
+        {isPrivacyOpen && <PrivacyPolicyDialog onClose={() => setIsPrivacyOpen(false)} />}
       </div>
     );
   }
@@ -83,8 +87,9 @@ function App() {
         <MenuShowcase />
         <OwnerVoice />
         <LeadCapture onKakaoClick={handleKakaoConsultation} />
-        <SiteFooter socialLinks={socialLinks} />
+        <SiteFooter socialLinks={socialLinks} onPrivacyClick={() => setIsPrivacyOpen(true)} />
         <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
+        {isPrivacyOpen && <PrivacyPolicyDialog onClose={() => setIsPrivacyOpen(false)} />}
       </div>
     );
   }
@@ -101,8 +106,9 @@ function App() {
       <FounderFit />
       <MenuShowcase />
       <LeadCapture onKakaoClick={handleKakaoConsultation} />
-      <SiteFooter socialLinks={socialLinks} />
+      <SiteFooter socialLinks={socialLinks} onPrivacyClick={() => setIsPrivacyOpen(true)} />
       <FloatingActions onKakaoClick={handleKakaoConsultation} contactEmail={contactEmail} />
+      {isPrivacyOpen && <PrivacyPolicyDialog onClose={() => setIsPrivacyOpen(false)} />}
     </div>
   );
 }
