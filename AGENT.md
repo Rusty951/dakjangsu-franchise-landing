@@ -7,6 +7,8 @@ Purpose: build a franchise lead landing page for 닭장수후라이드 with Anti
 1. `AGENT.md`
 2. `docs/context/brief.md`
 
+New deliverables, intermediate drafts, and review files should land in `~/Desktop/{task}/` work folders first. Cleanup candidates should move to `~/Desktop/{task}-cleanup/` with a manifest instead of being deleted immediately.
+
 Read other files only when needed:
 - Frontend handoff: `docs/handoff/antigravity-frontend-brief.md`
 - Backend/API: `docs/backend/api-contract.md`

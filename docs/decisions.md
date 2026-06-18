@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-06-18 - Deliverables land in Desktop work folders
+
+- Decision: New deliverables, intermediate drafts, and review files land in `~/Desktop/{task}/` work folders first. Cleanup candidates move to `~/Desktop/{task}-cleanup/` with a manifest.
+- Reason: The user wants to review outputs on the Desktop before moving approved files to backup/archive storage.
+- Impact: `AGENTS.md` and `AGENT.md` now carry the Desktop work-folder rule.
+
 ## 2026-05-20 - Role Split
 
 - Decision: Antigravity handles frontend design and Codex handles planning, backend, review, debugging, and QA.
