@@ -1,5 +1,11 @@
 # Worklog
 
+## 2026-06-23 - Mobile Phone CTA Fit
+
+- Tightened the mobile fixed phone CTA so `1588-2287` no longer clips on 360px/390px widths.
+- Switched the phone number in that bar to the numeric-friendly sans font, fixed the mobile sizing, and hid the short label only on very narrow screens while preserving an accessible label.
+- Cross-role note: Codex touched the floating action frontend because the issue was a launch-readiness/mobile QA bug.
+
 ## 2026-06-22 - Short Instagram Attribution URL
 
 - Added clean Instagram profile entry paths `/instagram` and `/ig` so the public profile link can stay short.

@@ -217,7 +217,9 @@
 .mobile-phone-lead {
   min-width: 0;
   min-height: 48px;
-  display: flex;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, auto);
   gap: 7px;
   align-items: center;
   justify-content: center;
@@ -243,20 +245,21 @@
 
 .mobile-phone-lead span {
   color: rgba(255, 253, 247, 0.92);
-  font-size: clamp(0.78rem, 3.2vw, 0.94rem);
+  font-size: 0.88rem;
   line-height: 1;
   font-weight: 950;
   white-space: nowrap;
 }
 
 .mobile-phone-lead strong {
+  min-width: 0;
   color: #ffd93d;
-  font-family: var(--font-display);
-  font-size: clamp(1.76rem, 8.8vw, 2.76rem);
-  line-height: 0.82;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  line-height: 0.96;
+  font-weight: 950;
   text-shadow:
-    2px 2px 0 #111214,
+    1px 1px 0 #111214,
     0 0 14px rgba(255, 217, 61, 0.22);
   white-space: nowrap;
 }
@@ -381,6 +384,7 @@
   }
 
   .mobile-phone-lead {
+    grid-template-columns: auto minmax(0, auto);
     gap: 5px;
     padding-inline: 8px;
   }
@@ -391,10 +395,10 @@
   }
 
   .mobile-phone-lead span {
-    font-size: 0.74rem;
+    display: none;
   }
 
   .mobile-phone-lead strong {
-    font-size: clamp(1.68rem, 8.5vw, 2rem);
+    font-size: 1.86rem;
   }
 }
