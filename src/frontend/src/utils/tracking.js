@@ -3,15 +3,25 @@
  * PRD 요구사항 10번(트래킹 요구사항)을 충족합니다.
  *
  * 이벤트 목록:
- * - cta_kakao_click
- * - cta_phone_click
+ * - page_view
+ * - click_kakao
+ * - click_phone
+ * - submit_lead
+ * - click_instagram
+ * - click_youtube
  * - lead_form_start
  * - lead_form_submit
- * - lead_form_success
  * - lead_form_error
  */
 
 import { trackMetaPixelEvent } from './metaPixel.js';
+
+const EVENT_ALIASES = {
+  cta_kakao_click: 'click_kakao',
+  cta_phone_click: 'click_phone',
+  cta_email_click: 'click_email',
+  lead_form_success: 'submit_lead',
+};
 
 const normalizeAnalyticsParam = (value) => {
   if (value === undefined || value === null) {
@@ -41,14 +51,17 @@ const getAnalyticsParams = (eventData) =>
   }, {});
 
 export const trackEvent = (eventName, eventData = {}) => {
+  const normalizedEventName = EVENT_ALIASES[eventName] || eventName;
+  const normalizedEventData =
+    normalizedEventName === eventName ? eventData : { ...eventData, legacy_event_name: eventName };
   const payload = {
-    event: eventName,
-    data: eventData,
+    event: normalizedEventName,
+    data: normalizedEventData,
     timestamp: new Date().toISOString(),
   };
 
   // 1. 콘솔 로깅 (디버깅용)
-  console.log(`[Tracker] Event Triggered: ${eventName}`, payload);
+  console.log(`[Tracker] Event Triggered: ${normalizedEventName}`, payload);
 
   // 2. 브라우저 커스텀 이벤트 발송 (Codex가 연동하기 쉽게 처리)
   const customEvent = new CustomEvent('antigravity_tracking_event', { detail: payload });
@@ -61,9 +74,9 @@ export const trackEvent = (eventName, eventData = {}) => {
 
   // 4. GA4 직접 설치 이벤트 전송
   if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, getAnalyticsParams(eventData));
+    window.gtag('event', normalizedEventName, getAnalyticsParams(normalizedEventData));
   }
 
   // 5. Meta Pixel 직접 설치 이벤트 전송
-  trackMetaPixelEvent(eventName, eventData);
+  trackMetaPixelEvent(normalizedEventName, normalizedEventData);
 };

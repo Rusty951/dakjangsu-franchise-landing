@@ -13,7 +13,7 @@ export const initGoogleAnalytics = () => {
   };
 
   window.gtag('js', new Date());
-  window.gtag('config', gaMeasurementId);
+  window.gtag('config', gaMeasurementId, { send_page_view: false });
 
   const script = document.createElement('script');
   script.async = true;

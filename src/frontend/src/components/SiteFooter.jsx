@@ -1,4 +1,5 @@
 import './SiteFooter.css';
+import { trackEvent } from '../utils/tracking';
 
 const socialChannels = [
   {
@@ -37,6 +38,20 @@ const socialChannels = [
 ];
 
 const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
+  const handleSocialClick = (channelId) => {
+    const eventName = {
+      instagram: 'click_instagram',
+      youtube: 'click_youtube',
+      blog: 'click_blog',
+    }[channelId];
+
+    if (!eventName) {
+      return;
+    }
+
+    trackEvent(eventName, { section: 'site_footer', channel: channelId });
+  };
+
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
@@ -79,6 +94,7 @@ const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${channel.label} 새 창으로 열기`}
+                  onClick={() => handleSocialClick(channel.id)}
                 >
                   {channel.icon}
                 </a>

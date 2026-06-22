@@ -171,7 +171,7 @@ const LeadCapture = ({ onKakaoClick }) => {
   };
 
   const handleKakaoClick = () => {
-    trackEvent('cta_kakao_click', { section: 'lead_capture_footer' });
+    trackEvent('click_kakao', { section: 'lead_capture_footer' });
     if (onKakaoClick) {
       onKakaoClick();
     }
@@ -231,7 +231,7 @@ const LeadCapture = ({ onKakaoClick }) => {
       setStatusMessage(
         responseBody.message || '문의가 접수되었습니다. 담당자가 희망 지역과 창업 조건을 확인한 뒤 연락드리겠습니다.'
       );
-      trackEvent('lead_form_success', { section: 'lead_capture_form' });
+      trackEvent('submit_lead', { section: 'lead_capture_form' });
     } catch (error) {
       setStatus('error');
       setStatusMessage('문의 접수 연결을 확인 중입니다. 카카오톡 상담 또는 대표번호를 이용해 주세요.');

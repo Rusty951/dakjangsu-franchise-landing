@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-06-22 - Conversion Event Contract
+
+- Standardized the paid-media event contract to `page_view`, `click_kakao`, `click_phone`, `submit_lead`, `click_instagram`, and `click_youtube`.
+- Switched GA4 page view collection from automatic config firing to one explicit `page_view` tracking call so the landing has a single canonical visit event.
+- Switched Meta Pixel `PageView` firing to the same explicit `page_view` tracking call and kept `Contact` for Kakao/phone/email and `Lead` for successful lead form submission.
+- Added footer social tracking for Instagram, YouTube, and Blog clicks as supporting events.
+- Kept legacy event aliases for previous `cta_*` and `lead_form_success` names so older call sites still resolve to the new reporting names.
+
 ## 2026-06-22 - Meta Pixel Install
 
 - Created the Meta Pixel/data set `닭장수후라이드 가맹 랜딩` in the existing `닭장수이야기` business portfolio.

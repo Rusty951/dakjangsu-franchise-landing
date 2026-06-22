@@ -55,11 +55,11 @@ const FloatingActions = ({ onKakaoClick, contactEmail }) => {
   };
 
   const handlePhoneClick = () => {
-    trackEvent('cta_phone_click', { section: 'floating_menu' });
+    trackEvent('click_phone', { section: 'floating_menu' });
   };
 
   const handleKakaoClick = () => {
-    trackEvent('cta_kakao_click', { section: 'floating_menu' });
+    trackEvent('click_kakao', { section: 'floating_menu' });
     if (onKakaoClick) {
       onKakaoClick();
     }
@@ -70,7 +70,7 @@ const FloatingActions = ({ onKakaoClick, contactEmail }) => {
   };
 
   const handleEmailClick = () => {
-    trackEvent('cta_email_click', { section: 'floating_menu' });
+    trackEvent('click_email', { section: 'floating_menu' });
   };
 
   return (

@@ -1,13 +1,17 @@
 const metaPixelId = import.meta.env.VITE_META_PIXEL_ID || '';
 
 const META_STANDARD_EVENT_MAP = {
-  cta_kakao_click: 'Contact',
-  cta_phone_click: 'Contact',
-  cta_email_click: 'Contact',
-  lead_form_success: 'Lead',
+  page_view: 'PageView',
+  click_kakao: 'Contact',
+  click_phone: 'Contact',
+  click_email: 'Contact',
+  submit_lead: 'Lead',
 };
 
 const META_CUSTOM_EVENT_MAP = {
+  click_instagram: 'ClickInstagram',
+  click_youtube: 'ClickYoutube',
+  click_blog: 'ClickBlog',
   floating_top_click: 'FloatingTopClick',
   floating_guide_click: 'FloatingGuideClick',
   lead_form_start: 'LeadFormStart',
@@ -75,7 +79,6 @@ export const initMetaPixel = () => {
   document.head.appendChild(script);
 
   window.fbq('init', metaPixelId);
-  window.fbq('track', 'PageView');
 };
 
 export const trackMetaPixelEvent = (eventName, eventData = {}) => {
