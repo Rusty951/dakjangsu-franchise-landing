@@ -1,5 +1,10 @@
 # Worklog
 
+## 2026-06-22 - Managed Channel Link Update
+
+- Updated the footer social link defaults from the old YouTube/Naver Blog channels to the newly managed channels.
+- Updated `src/frontend/.env.example` and `docs/context/source-map.md` so future deployments and handoffs use `https://www.youtube.com/@dakjangsu_official` and `https://blog.naver.com/dakjangsu_official`.
+
 ## 2026-06-12 - Lead Email API
 
 - Added a Vercel-compatible `/api/leads` endpoint that validates landing form submissions and sends Resend email notifications.
