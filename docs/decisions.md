@@ -17,3 +17,9 @@
 - Decision: lock the landing copy rewrite standard in `docs/context/copy-direction.md`.
 - Reason: current copy feedback centers on abstract, easy-to-challenge phrases that do not create concrete customer scenes.
 - Impact: before changing page copy, propose line-by-line options against the standard, get user approval, then edit.
+
+## 2026-06-22 - Tracking and Attribution Contract
+
+- Decision: use direct GA4 and Meta Pixel tracking with one explicit `page_view`, canonical conversion events (`click_kakao`, `click_phone`, `submit_lead`), supporting social click events, and clean public attribution paths such as `/instagram`.
+- Reason: paid media needs reliable event names, while public profile links should not expose long UTM strings.
+- Impact: future landing/profile/ad link changes must preserve the event contract and attribution mapping. The Instagram profile URL is `https://www.dakjangsu-franchise.com/instagram`, and explicit query parameters can still override inferred attribution.
