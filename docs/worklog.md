@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-06-22 - GA4 Tracking Install
+
+- Created the GA4 account/property/web stream for the franchise landing and set the measurement ID to `G-GH9NP6WFVN`.
+- Added a lightweight Google tag loader in `src/frontend/src/utils/analytics.js` and exposed `VITE_GA_MEASUREMENT_ID` in the frontend env example.
+- Connected the existing landing tracking events to GA4 through `gtag('event', ...)` while keeping the existing `dataLayer` and custom browser events.
+- Added `VITE_GA_MEASUREMENT_ID` to Vercel production env, redeployed production, and verified the live bundle includes the Google tag script and measurement ID.
+- Google Analytics' install test detected the tag successfully. Meta Pixel and a real lead-submission test remain separate launch checks.
+
 ## 2026-06-22 - Managed Channel Link Update
 
 - Updated the footer social link defaults from the old YouTube/Naver Blog channels to the newly managed channels.
