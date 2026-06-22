@@ -1,5 +1,32 @@
 # Worklog
 
+## 2026-06-23 - Clean Organic Channel Attribution URLs
+
+- Added clean public landing paths for YouTube, Naver Blog, and Threads so channel descriptions do not expose long UTM query strings.
+- Preserved the existing Instagram `/instagram` and `/ig` behavior.
+- Mapped the public paths to inferred attribution:
+
+| Public path | Inferred attribution |
+| --- | --- |
+| `/instagram` | `utm_source=instagram`, `utm_medium=profile`, `utm_campaign=franchise_launch_2606`, `utm_content=bio_link` |
+| `/youtube` | `utm_source=youtube`, `utm_medium=social`, `utm_campaign=franchise_launch_2606`, `utm_content=video_description` |
+| `/blog` | `utm_source=naver_blog`, `utm_medium=blog`, `utm_campaign=franchise_launch_2606`, `utm_content=post_cta` |
+| `/threads` | `utm_source=threads`, `utm_medium=social`, `utm_campaign=franchise_launch_2606`, `utm_content=profile_link` |
+
+- Added Vercel rewrites for `/youtube`, `/blog`, `/threads`, and their trailing-slash variants.
+
+## 2026-06-23 - Consultation Action Reporting Standard
+
+- Updated the reporting standard so `submit_lead`, `click_kakao`, and `click_phone` are interpreted as equal core consultation actions.
+- Kept the event names unchanged to preserve the existing GA4/Meta contract.
+- Reporting breakout:
+
+| Metric | Events |
+| --- | --- |
+| Consultation actions | `submit_lead` + `click_kakao` + `click_phone` |
+| Confirmed inquiries | `submit_lead` |
+| Consultation clicks | `click_kakao` + `click_phone` |
+
 ## 2026-06-23 - Mobile Phone CTA Fit
 
 - Tightened the mobile fixed phone CTA so `1588-2287` no longer clips on 360px/390px widths.

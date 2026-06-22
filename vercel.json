@@ -17,6 +17,30 @@
     {
       "source": "/ig/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/youtube",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/youtube/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/threads",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/threads/",
+      "destination": "/index.html"
     }
   ],
   "functions": {

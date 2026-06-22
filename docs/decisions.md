@@ -23,3 +23,15 @@
 - Decision: use direct GA4 and Meta Pixel tracking with one explicit `page_view`, canonical conversion events (`click_kakao`, `click_phone`, `submit_lead`), supporting social click events, and clean public attribution paths such as `/instagram`.
 - Reason: paid media needs reliable event names, while public profile links should not expose long UTM strings.
 - Impact: future landing/profile/ad link changes must preserve the event contract and attribution mapping. The Instagram profile URL is `https://www.dakjangsu-franchise.com/instagram`, and explicit query parameters can still override inferred attribution.
+
+## 2026-06-23 - Clean Organic Channel Paths
+
+- Decision: keep organic channel links short in public surfaces: `/instagram`, `/youtube`, `/blog`, and `/threads`.
+- Reason: channel profiles and descriptions should look clean while still preserving source attribution in GA4 and lead payloads.
+- Impact: use the short URLs in Instagram, YouTube, Naver Blog, and Threads; the landing app infers the UTM fields from the path, and explicit query parameters still override inferred values.
+
+## 2026-06-23 - Consultation Action Reporting
+
+- Decision: treat `submit_lead`, `click_kakao`, and `click_phone` as equal core consultation actions.
+- Reason: all three indicate franchise consultation intent on this landing; ranking one above the others would understate phone and Kakao behavior.
+- Impact: mark all three as GA4 key events. Report the sum as `consultation actions`, then break it out into `confirmed inquiries` (`submit_lead`) and `consultation clicks` (`click_kakao` + `click_phone`).

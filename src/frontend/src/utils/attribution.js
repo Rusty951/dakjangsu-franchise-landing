@@ -11,6 +11,24 @@ const ATTRIBUTION_PRESETS = {
     utm_campaign: 'franchise_launch_2606',
     utm_content: 'bio_link',
   },
+  '/youtube': {
+    utm_source: 'youtube',
+    utm_medium: 'social',
+    utm_campaign: 'franchise_launch_2606',
+    utm_content: 'video_description',
+  },
+  '/blog': {
+    utm_source: 'naver_blog',
+    utm_medium: 'blog',
+    utm_campaign: 'franchise_launch_2606',
+    utm_content: 'post_cta',
+  },
+  '/threads': {
+    utm_source: 'threads',
+    utm_medium: 'social',
+    utm_campaign: 'franchise_launch_2606',
+    utm_content: 'profile_link',
+  },
 };
 
 const ATTRIBUTION_KEYS = [
