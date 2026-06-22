@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './LeadCapture.css';
 import PrivacyPolicyDialog from './PrivacyPolicyDialog';
 import { trackEvent } from '../utils/tracking';
+import { getLandingAttribution } from '../utils/attribution';
 
 const leadApiEndpoint = import.meta.env.VITE_LEAD_API_ENDPOINT || '/api/leads';
 
@@ -39,16 +40,8 @@ const getTrackingFields = () => {
     };
   }
 
-  const params = new URLSearchParams(window.location.search);
-
   return {
-    utm_source: params.get('utm_source') || '',
-    utm_medium: params.get('utm_medium') || '',
-    utm_campaign: params.get('utm_campaign') || '',
-    utm_content: params.get('utm_content') || '',
-    utm_term: params.get('utm_term') || '',
-    landing_path: `${window.location.pathname}${window.location.search}`,
-    referrer: document.referrer || '',
+    ...getLandingAttribution(),
     user_agent: navigator.userAgent,
     submitted_at: new Date().toISOString()
   };

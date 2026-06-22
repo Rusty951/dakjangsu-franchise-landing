@@ -1,6 +1,24 @@
 {
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "src/frontend/dist",
+  "rewrites": [
+    {
+      "source": "/instagram",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/instagram/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ig",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ig/",
+      "destination": "/index.html"
+    }
+  ],
   "functions": {
     "api/leads.js": {
       "maxDuration": 10

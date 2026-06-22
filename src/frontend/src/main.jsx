@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { initGoogleAnalytics } from './utils/analytics.js'
 import { initMetaPixel } from './utils/metaPixel.js'
 import { trackEvent } from './utils/tracking.js'
+import { getLandingAttribution } from './utils/attribution.js'
 
 const getPageViewEventData = () => {
   if (typeof window === 'undefined') {
@@ -13,6 +14,7 @@ const getPageViewEventData = () => {
 
   return {
     section: 'landing_page',
+    ...getLandingAttribution(),
     page_location: window.location.href,
     page_path: `${window.location.pathname}${window.location.search}`,
     page_title: document.title,

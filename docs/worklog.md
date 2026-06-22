@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-06-22 - Short Instagram Attribution URL
+
+- Added clean Instagram profile entry paths `/instagram` and `/ig` so the public profile link can stay short.
+- Added `src/frontend/src/utils/attribution.js` to infer Instagram profile UTM fields from those paths while still allowing explicit query parameters to override defaults.
+- Connected inferred attribution to both `page_view` tracking and lead form payloads.
+- Added Meta dynamic URL parameter IDs to the lead API email payload for future ad-level separation.
+- Added Vercel rewrites so `/instagram`, `/instagram/`, `/ig`, and `/ig/` serve the landing app.
+
 ## 2026-06-22 - Conversion Event Contract
 
 - Standardized the paid-media event contract to `page_view`, `click_kakao`, `click_phone`, `submit_lead`, `click_instagram`, and `click_youtube`.
