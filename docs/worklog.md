@@ -1,12 +1,22 @@
 # Worklog
 
+## 2026-06-22 - Meta Pixel Install
+
+- Created the Meta Pixel/data set `닭장수후라이드 가맹 랜딩` in the existing `닭장수이야기` business portfolio.
+- Pixel ID: `1687894755772370`.
+- Added a lightweight Meta Pixel loader in `src/frontend/src/utils/metaPixel.js` and exposed `VITE_META_PIXEL_ID` in the frontend env example.
+- Mapped landing events to Meta browser events: `PageView`, `Contact` for consultation clicks, and `Lead` for successful form submissions.
+- Left automatic advanced matching disabled because it can use customer email/phone matching.
+- Added `VITE_META_PIXEL_ID` to Vercel production env, redeployed production, and verified the live bundle includes the Pixel ID and `fbevents.js`.
+- Verified Meta Events Manager test events: `PageView` and `문의` were received and processed through browser/direct setup.
+
 ## 2026-06-22 - GA4 Tracking Install
 
 - Created the GA4 account/property/web stream for the franchise landing and set the measurement ID to `G-GH9NP6WFVN`.
 - Added a lightweight Google tag loader in `src/frontend/src/utils/analytics.js` and exposed `VITE_GA_MEASUREMENT_ID` in the frontend env example.
 - Connected the existing landing tracking events to GA4 through `gtag('event', ...)` while keeping the existing `dataLayer` and custom browser events.
 - Added `VITE_GA_MEASUREMENT_ID` to Vercel production env, redeployed production, and verified the live bundle includes the Google tag script and measurement ID.
-- Google Analytics' install test detected the tag successfully. Meta Pixel and a real lead-submission test remain separate launch checks.
+- Google Analytics' install test detected the tag successfully. A real lead-submission test remains a separate launch check.
 
 ## 2026-06-22 - Managed Channel Link Update
 

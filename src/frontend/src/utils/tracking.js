@@ -11,6 +11,8 @@
  * - lead_form_error
  */
 
+import { trackMetaPixelEvent } from './metaPixel.js';
+
 const normalizeAnalyticsParam = (value) => {
   if (value === undefined || value === null) {
     return undefined;
@@ -61,4 +63,7 @@ export const trackEvent = (eventName, eventData = {}) => {
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, getAnalyticsParams(eventData));
   }
+
+  // 5. Meta Pixel 직접 설치 이벤트 전송
+  trackMetaPixelEvent(eventName, eventData);
 };
