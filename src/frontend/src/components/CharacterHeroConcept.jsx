@@ -9,6 +9,10 @@ const CharacterHeroConcept = ({ onKakaoClick }) => {
         <img
           src={assetPath('/images/dakjangsu-hand-developed-hero.png')}
           alt="빨간 포스터를 뚫고 나온 손이 후라이드 치킨 박스를 내미는 이미지"
+          width="1672"
+          height="941"
+          decoding="async"
+          fetchPriority="high"
         />
       </figure>
 

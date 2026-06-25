@@ -8,6 +8,9 @@ const Logo = () => {
         className="brand-logo-image"
         src={assetPath('/brand/dakjangsu-logo-full-color.png')}
         alt="닭장수후라이드"
+        width="2856"
+        height="638"
+        decoding="async"
       />
     </a>
   );

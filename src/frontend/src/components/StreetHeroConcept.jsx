@@ -9,6 +9,10 @@ const StreetHeroConcept = ({ onKakaoClick }) => {
         <img
           src={assetPath('/images/dakjangsu-street-takeout-hero.png')}
           alt="저녁 포장 매장 앞 손님과 후라이드 치킨 박스"
+          width="1672"
+          height="941"
+          decoding="async"
+          fetchPriority="high"
         />
       </figure>
 

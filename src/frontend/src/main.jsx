@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { initGoogleAnalytics } from './utils/analytics.js'
@@ -25,8 +25,21 @@ initGoogleAnalytics()
 initMetaPixel()
 trackEvent('page_view', getPageViewEventData())
 
-createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root')
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+const hasPrerenderedMarkup = rootElement.hasChildNodes()
+const shouldHydrate = hasPrerenderedMarkup && !new URLSearchParams(window.location.search).has('concept')
+
+if (shouldHydrate) {
+  hydrateRoot(rootElement, app)
+} else {
+  if (hasPrerenderedMarkup) {
+    rootElement.textContent = ''
+  }
+
+  createRoot(rootElement).render(app)
+}

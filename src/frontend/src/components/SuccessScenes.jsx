@@ -17,6 +17,10 @@ const SuccessScenes = () => {
         <img
           src={assetPath('/images/dakjangsu-interior-queue-20180727-web.jpg')}
           alt="닭장수후라이드 매장에서 손님들이 주문을 기다리는 모습"
+          width="2400"
+          height="1800"
+          loading="lazy"
+          decoding="async"
         />
       </figure>
     </section>

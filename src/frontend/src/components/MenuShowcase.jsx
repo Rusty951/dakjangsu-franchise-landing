@@ -114,11 +114,18 @@ const MenuShowcase = () => {
         <div className="menu-showcase-glow" aria-hidden="true" />
         <div className="menu-showcase-board-stack" aria-hidden="true">
           {legacyMenuBoards.map((item) => (
-            <img src={item.image} alt="" key={item.name} />
+            <img src={item.image} alt="" key={item.name} loading="lazy" decoding="async" />
           ))}
         </div>
         <figure className="menu-showcase-main">
-          <img src={menuBoardImage} alt="후라이드치킨, 반반치킨, 매콤치킨, 마늘고추치킨, 후라이드 닭발, 후라이드 똥집, 직화양념구이, 직화간장구이, 곱도리탕으로 구성한 닭장수후라이드 인기메뉴판" />
+          <img
+            src={menuBoardImage}
+            alt="후라이드치킨, 반반치킨, 매콤치킨, 마늘고추치킨, 후라이드 닭발, 후라이드 똥집, 직화양념구이, 직화간장구이, 곱도리탕으로 구성한 닭장수후라이드 인기메뉴판"
+            width="1600"
+            height="2032"
+            loading="lazy"
+            decoding="async"
+          />
           <strong className="menu-showcase-stamp">한 번 팔고 끝낼 메뉴가 아닙니다</strong>
         </figure>
 
@@ -134,7 +141,14 @@ const MenuShowcase = () => {
               className={`menu-showcase-mobile-card${item.isSpecial ? ' menu-showcase-mobile-card--special' : ''}`}
               key={item.name}
             >
-              <img src={item.image} alt={`${item.name} 메뉴 사진`} />
+              <img
+                src={item.image}
+                alt={`${item.name} 메뉴 사진`}
+                width="520"
+                height="360"
+                loading="lazy"
+                decoding="async"
+              />
               <div>
                 {item.isSpecial ? <span>스페셜</span> : null}
                 <h3>{item.name}</h3>

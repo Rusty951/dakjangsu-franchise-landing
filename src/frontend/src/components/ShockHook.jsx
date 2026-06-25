@@ -39,6 +39,10 @@ const ShockHook = () => {
         <img
           src={assetPath('/images/dakjangsu-packaging-start-queue-original.jpg')}
           alt="매장 안에서 포장 준비와 대기 손님이 함께 보이는 장면"
+          width="2400"
+          height="1800"
+          loading="lazy"
+          decoding="async"
         />
       </figure>
       <div className="shock-hook-copy">

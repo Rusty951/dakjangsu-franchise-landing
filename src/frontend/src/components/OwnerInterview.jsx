@@ -101,6 +101,10 @@ const OwnerInterview = () => {
               <img
                 src={assetPath('/images/dakjangsu-owner-interview-real.png')}
                 alt="닭장수후라이드 점주 인터뷰 장면"
+                width="3252"
+                height="1836"
+                loading="lazy"
+                decoding="async"
               />
               <span className="owner-proof-play" aria-hidden="true" />
             </button>

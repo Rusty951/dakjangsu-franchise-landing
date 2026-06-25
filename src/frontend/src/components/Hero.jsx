@@ -41,13 +41,32 @@ const Hero = () => {
           </p>
           <div className="hero-menu-strip" aria-hidden="true">
             <figure className="hero-menu-photo hero-menu-photo--left">
-              <img src={assetPath('/images/dakjangsu-hero-left-wings-cutout.png')} alt="" />
+              <img
+                src={assetPath('/images/dakjangsu-hero-left-wings-cutout.png')}
+                alt=""
+                width="1500"
+                height="967"
+                decoding="async"
+              />
             </figure>
             <figure className="hero-menu-photo hero-menu-photo--center">
-              <img src={assetPath('/images/dakjangsu-baemin-hero-menu-cutout.png')} alt="" />
+              <img
+                src={assetPath('/images/dakjangsu-baemin-hero-menu-cutout.png')}
+                alt=""
+                width="1280"
+                height="960"
+                decoding="async"
+                fetchPriority="high"
+              />
             </figure>
             <figure className="hero-menu-photo hero-menu-photo--right">
-              <img src={assetPath('/images/dakjangsu-hero-right-skillet-cutout.png')} alt="" />
+              <img
+                src={assetPath('/images/dakjangsu-hero-right-skillet-cutout.png')}
+                alt=""
+                width="1500"
+                height="980"
+                decoding="async"
+              />
             </figure>
           </div>
         </div>

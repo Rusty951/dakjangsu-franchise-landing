@@ -26,6 +26,10 @@ const OwnerVoice = () => {
         <img
           src={assetPath('/images/dakjangsu-owner-phone-privacy.jpg')}
           alt="매장에서 전화 응대를 하는 닭장수후라이드 점주"
+          width="2200"
+          height="1467"
+          loading="lazy"
+          decoding="async"
         />
         <figcaption>
           <span>상담 전 확인할 질문</span>

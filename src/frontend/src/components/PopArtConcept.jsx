@@ -11,7 +11,14 @@ const PopArtConcept = ({ onKakaoClick }) => {
         </header>
 
         <figure className="poster-product">
-          <img src={assetPath('/images/dakjangsu-red-hand-hero-16x9.png')} alt="빨간 배경을 뚫고 나온 손이 후라이드 치킨 박스를 들고 있는 광고 이미지" />
+          <img
+            src={assetPath('/images/dakjangsu-red-hand-hero-16x9.png')}
+            alt="빨간 배경을 뚫고 나온 손이 후라이드 치킨 박스를 들고 있는 광고 이미지"
+            width="1672"
+            height="941"
+            decoding="async"
+            fetchPriority="high"
+          />
         </figure>
 
         <div className="poster-bg-type" aria-hidden="true">
