@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import './OwnerInterview.css';
 import { assetPath } from '../assetPath';
 
-const ownerInterviewVideoUrl = import.meta.env.VITE_OWNER_INTERVIEW_VIDEO_URL || 'https://youtu.be/wthDFr0Y3eE';
+const ownerInterviewVideoUrl =
+  import.meta.env.VITE_OWNER_INTERVIEW_VIDEO_URL || 'https://www.youtube.com/watch?v=LtWcQBXPlDo';
 
 const getYouTubeEmbedUrl = (url) => {
   try {
