@@ -377,3 +377,9 @@
 - Connected the owner interview video card to an inline YouTube embed using the confirmed interview URL.
 - Extracted the privacy policy dialog so the same policy can open from both the lead form and footer.
 - Ran `npm run vercel-build`, `npm run lint`, and a root API handler import check successfully.
+
+## 2026-06-26 - Meta Domain Verification
+
+- Added the `facebook-domain-verification` meta tag issued by Meta Business Suite for `dakjangsu-franchise.com`.
+- Kept the verification tag in the static HTML head so Meta can read it before the React app loads.
+- Deployed the tag to production and confirmed the domain status changed to `Verified` in Meta Business Suite.
