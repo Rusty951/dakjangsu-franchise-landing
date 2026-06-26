@@ -1,5 +1,12 @@
 # Worklog
 
+## 2026-06-26 - Meta Pixel Account Switch
+
+- Created a new Meta Pixel dataset for the `dakjangsu / dakjangsu_official_` Meta Business Suite account.
+- Pixel ID: `1976009553081377`.
+- Updated `VITE_META_PIXEL_ID` in the frontend env example and Vercel production env so the landing can send events to the new Meta account on the next production build.
+- Opened the Meta Business Suite home screen with Korean locale for handoff.
+
 ## 2026-06-23 - Clean Organic Channel Attribution URLs
 
 - Added clean public landing paths for YouTube, Naver Blog, and Threads so channel descriptions do not expose long UTM query strings.
