@@ -452,7 +452,7 @@ const LeadCapture = ({ onKakaoClick }) => {
                 checked={formData.metaCapiConsent}
                 onChange={handleFieldChange}
               />
-              <span>(선택) Meta 광고 전환 측정을 위한 정보 전송에 동의합니다.</span>
+              <span>(선택) 광고 성과 측정을 위한 정보 전송에 동의합니다.</span>
             </label>
             <button className="consultation-privacy-link" type="button" onClick={handlePrivacyOpen}>
               전송 항목 보기
