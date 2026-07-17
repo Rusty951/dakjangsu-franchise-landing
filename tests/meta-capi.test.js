@@ -52,7 +52,7 @@ test('builds a website Lead event with matching and attribution data', () => {
   assert.equal(JSON.stringify(event).includes('01012345678'), false);
 });
 
-test('sends the CAPI token only in the authorization header and includes test_event_code temporarily', async () => {
+test('sends the CAPI token as the Graph API access_token and includes test_event_code temporarily', async () => {
   let capturedUrl = '';
   let capturedOptions;
   const fakeToken = 'test-token-not-a-secret';
@@ -78,9 +78,10 @@ test('sends the CAPI token only in the authorization header and includes test_ev
 
   assert.equal(result.sent, true);
   assert.equal(result.eventId, lead.event_id);
-  assert.match(capturedUrl, /\/v25\.0\/1976009553081377\/events$/);
-  assert.equal(capturedUrl.includes(fakeToken), false);
-  assert.equal(capturedOptions.headers.Authorization, `Bearer ${fakeToken}`);
+  const requestUrl = new URL(capturedUrl);
+  assert.match(requestUrl.pathname, /\/v25\.0\/1976009553081377\/events$/);
+  assert.equal(requestUrl.searchParams.get('access_token'), fakeToken);
+  assert.equal(capturedOptions.headers.Authorization, undefined);
   assert.equal(body.test_event_code, 'TEST12345');
   assert.equal(body.data[0].event_id, lead.event_id);
 });

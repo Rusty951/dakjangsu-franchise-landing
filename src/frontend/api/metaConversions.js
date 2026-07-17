@@ -198,12 +198,16 @@ export const sendMetaLeadEvent = async ({
     payload.test_event_code = testEventCode;
   }
 
+  const endpoint = new URL(
+    `https://graph.facebook.com/${META_GRAPH_API_VERSION}/${encodeURIComponent(pixelId)}/events`
+  );
+  endpoint.searchParams.set('access_token', accessToken);
+
   const response = await fetchImpl(
-    `https://graph.facebook.com/${META_GRAPH_API_VERSION}/${encodeURIComponent(pixelId)}/events`,
+    endpoint.toString(),
     {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload),
