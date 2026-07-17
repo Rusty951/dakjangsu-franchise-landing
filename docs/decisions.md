@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-07-17 - Consent-Aware Meta Lead Deduplication
+
+- Decision: send the successful form `Lead` through browser Pixel and server CAPI only when the separate optional Meta measurement consent is selected, using one shared `event_id`.
+- Reason: preserve the required consultation flow and email delivery while making the hashed phone and overseas Meta transfer optional and clearly disclosed.
+- Impact: a declined Meta consent never blocks `POST /api/leads`; a Meta outage never changes an emailed inquiry from success to failure; production CAPI requires server-only environment variables and a post-deploy Test Events check.
+
 ## 2026-05-20 - Role Split
 
 - Decision: Antigravity handles frontend design and Codex handles planning, backend, review, debugging, and QA.

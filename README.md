@@ -35,4 +35,7 @@ Open this folder in Antigravity or Codex. First read `AGENT.md`, then `docs/cont
 - Build command: `npm run build`
 - Output directory: `dist`
 - Lead API: `POST /api/leads`
-- Required server env: `RESEND_API_KEY`, `LEAD_TO_EMAIL`
+- Required lead email env: `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_FROM_EMAIL`
+- Required Meta CAPI env: `META_PIXEL_ID`, `META_CAPI_ACCESS_TOKEN`
+- Temporary Meta test env: `META_TEST_EVENT_CODE` (Events Manager 검증 후 삭제)
+- Production deployment and ad activation require owner confirmation.

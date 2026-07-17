@@ -34,6 +34,12 @@
 - Track `lead_form_submit`.
 - Track `lead_form_success`.
 - Track `lead_form_error`.
+- Meta browser `Lead` and server `Lead` use the same `event_id`.
+- Meta CAPI sends `action_source=website`, source URL, server-derived IP, user agent, and available `_fbp`/`_fbc`.
+- Raw phone numbers never leave the lead email flow; Meta receives only the normalized SHA-256 phone hash after optional consent.
+- Events Manager Test Events shows one deduplicated Lead from Browser and Server.
+- Events Manager Diagnostics has no unresolved CAPI payload, matching, or deduplication errors.
+- `META_TEST_EVENT_CODE` is removed after validation.
 
 ## Final QA
 

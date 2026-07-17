@@ -1,5 +1,17 @@
 # Worklog
 
+## 2026-07-17 - Meta Conversions API Lead Integration
+
+- Added a server-side Meta CAPI `Lead` event to the existing Vercel lead endpoint using Graph API `v25.0`.
+- Added one client-generated `event_id` shared by browser Pixel and server CAPI for deduplication.
+- Added server-derived IP, request user agent, event source URL, available `_fbp`/`_fbc`, and a server-side SHA-256 hash of the country-code-normalized phone number.
+- Kept email notification as the lead success boundary; missing Meta consent, missing Meta configuration, or a CAPI failure does not break the existing inquiry response.
+- Added separate optional Meta measurement consent and expanded the privacy dialog with Meta transfer fields, method, purpose, retention, refusal effect, cookie notice, and privacy controls.
+- Added server environment placeholders for `META_PIXEL_ID`, `META_CAPI_ACCESS_TOKEN`, and temporary `META_TEST_EVENT_CODE` without adding any token value.
+- Added automated coverage for hashing, payload shape, token handling, consent gating, shared browser/server event ID, and CAPI failure isolation.
+- Read-only Events Manager baseline before deployment: `Dakjangsu Website Pixel` is active and browser-only; the selected period showed PageView 319 and Contact/문의 14, while Meta's high-priority action still says to connect Conversions API. No server-event deduplication result exists yet.
+- Production environment setup, deployment, Test Events/Diagnostics verification, test-code removal, and campaign creation remain pending owner confirmation.
+
 ## 2026-06-26 - Meta Pixel Account Switch
 
 - Created a new Meta Pixel dataset for the `dakjangsu / dakjangsu_official_` Meta Business Suite account.

@@ -14,7 +14,8 @@ const initialFormData = {
   currentBusiness: '',
   preferredContactTime: '',
   message: '',
-  privacyConsent: false
+  privacyConsent: false,
+  metaCapiConsent: false
 };
 
 const timelineOptions = [
@@ -40,11 +41,34 @@ const getTrackingFields = () => {
     };
   }
 
+  const getCookie = (name) => {
+    const cookie = document.cookie
+      .split(';')
+      .map((part) => part.trim())
+      .find((part) => part.startsWith(`${name}=`));
+
+    return cookie ? decodeURIComponent(cookie.slice(name.length + 1)) : '';
+  };
+  const params = new URLSearchParams(window.location.search);
+  const fbclid = params.get('fbclid') || '';
+  const fbc = getCookie('_fbc') || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
+
   return {
     ...getLandingAttribution(),
     user_agent: navigator.userAgent,
+    event_source_url: window.location.href,
+    fbp: getCookie('_fbp'),
+    fbc,
     submitted_at: new Date().toISOString()
   };
+};
+
+const createLeadEventId = () => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return `lead_${crypto.randomUUID()}`;
+  }
+
+  return `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 };
 
 const normalizePhone = (phone) => phone.replace(/[^\d]/g, '');
@@ -72,12 +96,14 @@ const validateForm = (formData) => {
   return nextErrors;
 };
 
-const buildLeadPayload = (formData) => {
+const buildLeadPayload = (formData, eventId) => {
   const payload = {
     name: formData.name.trim(),
     phone: formData.phone.trim(),
     region: formData.region.trim(),
     privacyConsent: formData.privacyConsent,
+    metaCapiConsent: formData.metaCapiConsent,
+    event_id: eventId,
     ...getTrackingFields()
   };
 
@@ -194,7 +220,8 @@ const LeadCapture = ({ onKakaoClick }) => {
       return;
     }
 
-    const payload = buildLeadPayload(formData);
+    const eventId = createLeadEventId();
+    const payload = buildLeadPayload(formData, eventId);
     setStatus('submitting');
     setStatusMessage('');
     trackEvent('lead_form_submit', {
@@ -224,7 +251,14 @@ const LeadCapture = ({ onKakaoClick }) => {
       setStatusMessage(
         responseBody.message || '문의가 접수되었습니다. 담당자가 희망 지역과 창업 조건을 확인한 뒤 연락드리겠습니다.'
       );
-      trackEvent('submit_lead', { section: 'lead_capture_form' });
+      trackEvent(
+        'submit_lead',
+        {
+          section: 'lead_capture_form',
+          ...(payload.metaCapiConsent ? { event_id: eventId } : {})
+        },
+        { meta: payload.metaCapiConsent }
+      );
     } catch (error) {
       setStatus('error');
       setStatusMessage('문의 접수 연결을 확인 중입니다. 카카오톡 상담 또는 대표번호를 이용해 주세요.');
@@ -408,6 +442,22 @@ const LeadCapture = ({ onKakaoClick }) => {
             </button>
           </div>
           {errors.privacyConsent && <small className="consultation-field-error">{errors.privacyConsent}</small>}
+
+          <div className="consultation-consent">
+            <label className="consultation-consent-check" htmlFor="lead-meta-capi-consent">
+              <input
+                id="lead-meta-capi-consent"
+                name="metaCapiConsent"
+                type="checkbox"
+                checked={formData.metaCapiConsent}
+                onChange={handleFieldChange}
+              />
+              <span>(선택) Meta 광고 전환 측정을 위한 정보 전송에 동의합니다.</span>
+            </label>
+            <button className="consultation-privacy-link" type="button" onClick={handlePrivacyOpen}>
+              전송 항목 보기
+            </button>
+          </div>
 
           <button className="consultation-submit" type="submit" disabled={status === 'submitting'}>
             {status === 'submitting' ? '문의 접수 중' : '상담 문의 남기기'}

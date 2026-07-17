@@ -1,4 +1,4 @@
-const metaPixelId = import.meta.env.VITE_META_PIXEL_ID || '';
+const metaPixelId = import.meta.env?.VITE_META_PIXEL_ID || '';
 
 const META_STANDARD_EVENT_MAP = {
   page_view: 'PageView',
@@ -38,6 +38,10 @@ const sanitizeMetaParam = (value) => {
 
 const getMetaParams = (eventData = {}) =>
   Object.entries(eventData).reduce((params, [key, value]) => {
+    if (key === 'event_id') {
+      return params;
+    }
+
     const sanitizedValue = sanitizeMetaParam(value);
 
     if (sanitizedValue !== undefined) {
@@ -90,6 +94,13 @@ export const trackMetaPixelEvent = (eventName, eventData = {}) => {
   const standardEventName = META_STANDARD_EVENT_MAP[eventName];
 
   if (standardEventName) {
+    const eventId = typeof eventData.event_id === 'string' ? eventData.event_id.trim() : '';
+
+    if (eventId) {
+      window.fbq('track', standardEventName, metaParams, { eventID: eventId });
+      return;
+    }
+
     window.fbq('track', standardEventName, metaParams);
     return;
   }

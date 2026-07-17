@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import { sendMetaLeadEvent } from './metaConversions.js';
 
 const SUCCESS_MESSAGE = '문의가 접수되었습니다. 담당자가 희망 지역과 창업 조건을 확인한 뒤 연락드리겠습니다.';
 const SAFE_ERROR_MESSAGE = '문의 접수 연결을 확인 중입니다. 카카오톡 상담 또는 대표번호를 이용해 주세요.';
@@ -28,7 +29,11 @@ const textFields = [
   'landing_path',
   'referrer',
   'user_agent',
-  'submitted_at'
+  'submitted_at',
+  'event_id',
+  'event_source_url',
+  'fbp',
+  'fbc'
 ];
 
 const optionalLabels = [
@@ -129,6 +134,7 @@ const normalizeLead = (body) => {
   });
 
   lead.privacyConsent = body.privacyConsent === true;
+  lead.metaCapiConsent = body.metaCapiConsent === true;
   lead.phoneDigits = normalizePhone(lead.phone);
 
   return lead;
@@ -255,6 +261,24 @@ const sendJson = (response, statusCode, body) => {
   response.status(statusCode).json(body);
 };
 
+export const deliverLead = async (
+  lead,
+  request,
+  { emailSender = sendLeadEmail, metaSender = sendMetaLeadEvent, logger = console } = {}
+) => {
+  await emailSender(lead);
+
+  try {
+    const metaResult = await metaSender({ lead, request });
+
+    if (!metaResult.sent && metaResult.reason === 'not_configured') {
+      logger.warn('[meta-capi] skipped: server environment is not configured');
+    }
+  } catch (metaError) {
+    logger.error('[meta-capi]', metaError?.message || 'request failed');
+  }
+};
+
 export default async function handler(request, response) {
   response.setHeader('Cache-Control', 'no-store');
 
@@ -283,7 +307,7 @@ export default async function handler(request, response) {
       return;
     }
 
-    await sendLeadEmail(lead);
+    await deliverLead(lead, request);
     sendJson(response, 200, { ok: true, message: SUCCESS_MESSAGE });
   } catch (error) {
     const statusCode = error?.statusCode || (error instanceof SyntaxError ? 400 : 500);

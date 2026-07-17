@@ -5,6 +5,8 @@
   "scripts": {
     "build": "npm --prefix src/frontend run build",
     "lint": "npm --prefix src/frontend run lint",
+    "test": "node --test tests/*.test.js",
+    "check": "npm run lint && npm run test && npm run build",
     "vercel-build": "npm --prefix src/frontend ci && npm --prefix src/frontend run build"
   },
   "dependencies": {

@@ -50,7 +50,7 @@ const getAnalyticsParams = (eventData) =>
     return params;
   }, {});
 
-export const trackEvent = (eventName, eventData = {}) => {
+export const trackEvent = (eventName, eventData = {}, options = {}) => {
   const normalizedEventName = EVENT_ALIASES[eventName] || eventName;
   const normalizedEventData =
     normalizedEventName === eventName ? eventData : { ...eventData, legacy_event_name: eventName };
@@ -78,5 +78,7 @@ export const trackEvent = (eventName, eventData = {}) => {
   }
 
   // 5. Meta Pixel 직접 설치 이벤트 전송
-  trackMetaPixelEvent(normalizedEventName, normalizedEventData);
+  if (options.meta !== false) {
+    trackMetaPixelEvent(normalizedEventName, normalizedEventData);
+  }
 };
