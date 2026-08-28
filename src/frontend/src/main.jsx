@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { initGoogleAnalytics } from './utils/analytics.js'
+import { initKarrotPixel } from './utils/karrotPixel.js'
 import { initMetaPixel } from './utils/metaPixel.js'
 import { trackEvent } from './utils/tracking.js'
 import { getLandingAttribution } from './utils/attribution.js'
@@ -22,6 +23,7 @@ const getPageViewEventData = () => {
 }
 
 initGoogleAnalytics()
+initKarrotPixel()
 initMetaPixel()
 trackEvent('page_view', getPageViewEventData())
 

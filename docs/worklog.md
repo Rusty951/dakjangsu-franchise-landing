@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-07-29 - Karrot Website Conversion Tracking
+
+- Created the Karrot expert-mode ad account `닭장수후라이드_가맹광고` (ID `4522162`) for 주식회사 주완푸드.
+- Created the website conversion tracker `닭장수후라이드_가맹랜딩` (ID `1785301238064995001`) for `https://dakjangsu-franchise.com`.
+- Added the Karrot Pixel loader and mapped the existing landing contract to Karrot events: `page_view` → `ViewPage`, `lead_form_start` → `Lead`, and `submit_lead` → `SubmitApplication`.
+- Added the public tracker ID to the frontend environment example and disclosed the Karrot measurement events in the privacy dialog without sending form field values in pixel events.
+- Production deployment, live collection verification, campaign creation, budget confirmation, cash charging, and activation remain pending owner confirmation.
+
 ## 2026-07-17 - Meta Conversions API Lead Integration
 
 - Added a server-side Meta CAPI `Lead` event to the existing Vercel lead endpoint using Graph API `v25.0`.

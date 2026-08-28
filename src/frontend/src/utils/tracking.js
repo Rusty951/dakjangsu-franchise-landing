@@ -15,6 +15,7 @@
  */
 
 import { trackMetaPixelEvent } from './metaPixel.js';
+import { trackKarrotPixelEvent } from './karrotPixel.js';
 
 const EVENT_ALIASES = {
   cta_kakao_click: 'click_kakao',
@@ -81,4 +82,7 @@ export const trackEvent = (eventName, eventData = {}, options = {}) => {
   if (options.meta !== false) {
     trackMetaPixelEvent(normalizedEventName, normalizedEventData);
   }
+
+  // 6. 당근 전환 추적 직접 설치 이벤트 전송
+  trackKarrotPixelEvent(normalizedEventName);
 };

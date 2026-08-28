@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-07-29 - Karrot Conversion Event Mapping
+
+- Decision: keep the existing franchise landing as the single paid-media conversion point and map its canonical events to Karrot Pixel as `ViewPage`, `Lead`, and `SubmitApplication`.
+- Reason: the Karrot native lead-form recommendation would split the consultation flow and bypass the landing's existing attribution, privacy, and email-delivery contract.
+- Impact: Karrot conversion campaigns must use tracker ID `1785301238064995001`; production deployment and live collection verification must complete before campaign creation or activation.
+
 ## 2026-07-17 - Consent-Aware Meta Lead Deduplication
 
 - Decision: send the successful form `Lead` through browser Pixel and server CAPI only when the separate optional Meta measurement consent is selected, using one shared `event_id`.
