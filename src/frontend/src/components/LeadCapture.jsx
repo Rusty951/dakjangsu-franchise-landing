@@ -246,15 +246,15 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
       <div className="consultation-intro">
         <span className="consultation-label">닭장수 창업 상담</span>
         <h2 id="lead-capture-title">
-          <span>우리동네에서</span>
-          <span>닭장수 창업</span>
-          <span><em>가능할까요?</em></span>
+          <span>{rebrandCopy ? '내 점포의' : '우리동네에서'}</span>
+          <span>{rebrandCopy ? '창업 혜택,' : '닭장수 창업'}</span>
+          <span><em>{rebrandCopy ? '함께 확인해요.' : '가능할까요?'}</em></span>
         </h2>
         <p>
           {rebrandCopy ? (
             <>
               <span>희망 지역과 점포 조건부터</span>
-              <span>상담에서 함께 확인합니다.</span>
+              <span>적용 가능한 지원 항목까지 확인합니다.</span>
             </>
           ) : (
             <>

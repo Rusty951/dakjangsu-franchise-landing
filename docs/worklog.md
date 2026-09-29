@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Benefit-first Landing
+
+- User requested maximum emphasis on franchise benefits. Applied Copywrite and existing Korean Style QA/Voice guidance to the revised preview copy.
+- Hero now leads with the conditional 440만원 fee exemption and first-two-years royalty exemption. Moved the 740만원 opening package scene directly after the hero and moved detailed benefits before menu/space.
+- Enlarged the 740만원 package total and showed its 440 + 100 + 200 composition. Retained draft status, cash/non-cash distinction, kitchen eligibility and sales thresholds. Did not combine conditional kitchen/royalty/growth amounts into a universal total.
+- Added a benefit-specific consultation CTA and aligned the rebrand consultation heading. Original landing copy remains unchanged when rebrandCopy is false. Existing character gestures preserved.
+- Browser QA: 1280x720 hero/package breakdown, 390x844 hero/second scene/benefit detail, one active scene, no horizontal overflow. Detail section ordering and consultation anchor verified. No form submitted or deployment performed.
+- Build, lint and git diff --check passed. Screenshot evidence inspected inline.
+
 ## 2026-09-29 - Articulated Character Gestures
 
 - User requested hands moving and additional character motion. Added a layered 2D SVG puppet with independent wrist rotation and gentle body lean, connected to the existing scroll scenes. This is not a skeletal 3D rig.

@@ -80,3 +80,9 @@ Final result: passed for local preview.
 Added alternate waving pose and independent hand transforms with a small body lean. Native SVG image layers use the canonical resting asset and a transparent generated greeting asset. Gestures last 3.6 seconds per chapter, then stop. Image readiness, offscreen and hidden-tab pauses are handled. Reduced-motion retains the existing static story fallback.
 
 Inspected desktop 1280x720 welcome and intermediate scenes, mobile 390x844 welcome/menu/support/invitation. Verified computed wrist transform changed during playback (example matrix 0.999066, -0.043218, 0.043218, 0.999066) and returned to identity. Generated image loads, no horizontal page overflow, greeting hand and final CTA visible. Screenshots inspected inline only. Build and lint passed. The gestures are a layered 2D approximation; no finger bending, lip sync or 3D joint rig is claimed.
+
+## Benefit-first revision
+
+Hero prioritizes 440만원 fee exemption and two years of royalty exemption, marked as draft proposals. Second scroll chapter now introduces the 740만원 opening package. Detailed benefits immediately follow the story, ahead of product and interior details. Package breakdown is 440 + 100 + 200, without double counting kitchen/royalty/growth offers. Eligibility details and non-cash explanation remain.
+
+Observed desktop 1280x720 and mobile 390x844 hero, support scene and package detail. Large amounts and their qualifiers remain visible; no horizontal page overflow. One active story panel, correct chapter order, benefit details before menu, and consultation anchor verified. Build/lint/diff checks passed. Local review only.

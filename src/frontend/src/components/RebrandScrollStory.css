@@ -14,9 +14,9 @@
   color: #241f1b;
   transition: background-color .35s, color .35s;
 }
-.jangsu-stage[data-scene='1'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='1'] { background: #f7efe4; color: #241f1b; }
 .jangsu-stage[data-scene='2'] { background: #241f1b; color: #f7efe4; }
-.jangsu-stage[data-scene='3'] { background: #f7efe4; color: #241f1b; }
+.jangsu-stage[data-scene='3'] { background: #241f1b; color: #f7efe4; }
 .jangsu-stage::after {
   content: '';
   position: absolute;
