@@ -1104,3 +1104,172 @@
 .rebrand-page .consultation-field>span>em {
   background:var(--rebrand-orange);
 }
+
+/* Orange stage and a recurring character guide, requested by the brand owner. */
+.rebrand-hero {
+  background: #d86535;
+}
+.rebrand-hero-logo {
+  left: 3%;
+  width: 94%;
+  top: 50px;
+}
+.rebrand-hero-character {
+  width: 53%;
+  height: 83%;
+  bottom: 10px;
+}
+.rebrand-hero .rebrand-eyebrow,
+.rebrand-hero h1 em,
+.rebrand-hero-copy > p {
+  color: var(--rebrand-ink);
+}
+.rebrand-hero h1 em {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+.rebrand-hero-offer {
+  width: 265px;
+  right: 4%;
+  border-top: 0;
+  padding-top: 0;
+  bottom: 14%;
+}
+.jangsu-hero-speech {
+  position: relative;
+  background: var(--rebrand-cream);
+  padding: 24px;
+  border-radius: 4px 22px 22px 22px;
+  margin-bottom: 22px;
+}
+.jangsu-hero-speech::before {
+  content: '';
+  position: absolute;
+  left: -17px;
+  top: 32px;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 20px solid var(--rebrand-cream);
+}
+.jangsu-hero-speech > span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8e371c;
+  margin-bottom: 12px;
+}
+.jangsu-hero-speech p {
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -.045em;
+}
+.jangsu-hero-speech strong {
+  font-weight: 800;
+}
+.rebrand-hero .rebrand-button:hover {
+  background: #382e26;
+}
+.jangsu-guide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  color: var(--rebrand-ink);
+}
+.jangsu-guide-portrait {
+  position: relative;
+  flex: 0 0 110px;
+  width: 110px;
+  height: 132px;
+  overflow: hidden;
+  background: #d86535;
+  border-radius: 56px 56px 4px 4px;
+}
+.jangsu-guide-portrait img {
+  position: absolute;
+  width: 220px;
+  height: auto;
+  max-width: none;
+  left: 50%;
+  top: 7px;
+  transform: translateX(-50%);
+}
+.jangsu-guide-message {
+  position: relative;
+  background: var(--rebrand-cream);
+  padding: 20px 23px;
+  border-radius: 4px 18px 18px 18px;
+}
+.jangsu-guide-message::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 26px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid var(--rebrand-cream);
+}
+.jangsu-guide-message > span {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8e371c;
+  margin-bottom: 9px;
+  letter-spacing: .03em;
+}
+.rebrand-page .jangsu-guide-message p {
+  font-size: 14px;
+  color: var(--rebrand-ink);
+  line-height: 1.7;
+  margin: 0;
+}
+.rebrand-space .jangsu-guide {
+  margin: 28px 0 0;
+}
+.rebrand-space .jangsu-guide-portrait {
+  background: transparent;
+}
+.rebrand-benefits .jangsu-guide {
+  margin: 0 0 32px;
+}
+.rebrand-benefits .jangsu-guide-message {
+  background: var(--rebrand-paper);
+}
+.rebrand-benefits .jangsu-guide-message::before {
+  border-right-color: var(--rebrand-paper);
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .rebrand-hero-offer { width: 205px; right: 3%; bottom: 12%; }
+  .jangsu-hero-speech { padding: 18px; }
+  .jangsu-hero-speech p { font-size: 14px; }
+  .rebrand-hero-character { width: 51%; height: 77%; bottom: 20px; }
+  .jangsu-guide { gap: 12px; }
+  .jangsu-guide-portrait { flex-basis: 80px; width: 80px; height: 110px; }
+  .jangsu-guide-portrait img { width: 185px; }
+  .jangsu-guide-message { padding: 16px; }
+  .rebrand-page .jangsu-guide-message p { font-size: 12px; }
+}
+@media (max-width: 700px) {
+  .rebrand-hero { height: 905px; }
+  .rebrand-hero-logo { top: 55px; left: 3%; width: 94%; }
+  .rebrand-hero-character { top: 110px; bottom: auto; left: 62%; width: 330px; height: 430px; }
+  .rebrand-hero-offer { left: 20px; right: 20px; width: auto; top: 565px; bottom: auto; }
+  .jangsu-hero-speech { padding: 19px 23px; border-radius: 18px; margin-bottom: 16px; }
+  .jangsu-hero-speech::before { left: auto; right: 70px; top: -16px; border: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 18px solid var(--rebrand-cream); }
+  .jangsu-hero-speech p { font-size: 16px; }
+  .jangsu-hero-speech p br:first-of-type { display: none; }
+  .jangsu-hero-speech > span { margin-bottom: 8px; }
+  .rebrand-hero h1 em { text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .jangsu-guide { gap: 13px; margin-top: 25px; }
+  .jangsu-guide-portrait { flex-basis: 88px; width: 88px; height: 116px; }
+  .jangsu-guide-portrait img { width: 194px; }
+  .jangsu-guide-message { padding: 17px; }
+  .rebrand-page .jangsu-guide-message p { font-size: 13px; }
+  .jangsu-guide-message p br { display: none; }
+}
+@media (max-width: 370px) {
+  .rebrand-hero-character { left: 66%; width: 295px; }
+  .jangsu-guide-portrait { flex-basis: 72px; width: 72px; }
+  .jangsu-guide-message { padding: 15px; }
+}

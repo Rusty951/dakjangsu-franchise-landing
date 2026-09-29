@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-09-29 - Orange Stage and Character Narration
+
+- User changed the selected hero direction to orange, with larger black BI and character. Applied the canonical orange #d86535 on the hero and enlarged the existing transparent character.
+- Added a first-person welcome speech bubble plus five recurring character guides in menu, space, benefits, consultation preparation and FAQ. Reused the canonical character without new image generation.
+- Applied existing Copywrite and client Voice guidance to short explanatory lines. Preserved all commercial draft conditions.
+- Browser review: desktop 1280x900 hero/menu and mobile 390x844 hero/menu. Five guide components present and no mobile horizontal overflow. Build, lint and diff checks passed. Local preview only.
+
+
 ## 2026-09-29 - Franchise Decision Flow Upgrade
 
 - User explicitly requested a full design upgrade with devil's advocate, reframing and content review. Frontend changes performed in that authorized scope despite the usual Antigravity ownership split.

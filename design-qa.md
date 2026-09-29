@@ -52,3 +52,11 @@ Capture limitation: screenshots were inspected inline through the browser tool. 
 Applied skills: devils-advocate, framestorming, content-resonance-loop, copywrite, Product Design audit guidance. Korean Style QA and client Voice checked. All numeric offers remain an internal draft awaiting headquarters confirmation before external use.
 
 Build and lint passed after implementation. Final result: passed for local design review; commercial terms remain provisional.
+
+## Orange narrator direction
+
+The latest user direction replaces the cream hero with brand orange #d86535. Enlarged black BI and foreground canonical character, with a cream speech bubble. Five portrait-and-message guides continue the same speaker through menu, space, benefits, consultation preparation and FAQ.
+
+Inspected current desktop 1280x900 hero and menu, mobile 390x844 hero and menu via browser screenshots. Logo remains legible, character is visibly larger, guide portraits crop to face/shoulders, no horizontal overflow. New copy is character narration, not a customer testimonial or an asserted personal experience. Existing conditions remain intact.
+
+Final result: passed for local preview.

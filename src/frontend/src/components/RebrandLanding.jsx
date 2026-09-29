@@ -5,6 +5,15 @@ import SiteFooter from './SiteFooter';
 import PrivacyPolicyDialog from './PrivacyPolicyDialog';
 import { useState } from 'react';
 
+const JangsuGuide = ({ children, chapter }) => (
+  <aside className="jangsu-guide" aria-label={`닭장수의 ${chapter} 안내`}>
+    <div className="jangsu-guide-portrait" aria-hidden="true">
+      <img src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
+    </div>
+    <div className="jangsu-guide-message"><span>닭장수가 알려드릴게요</span><p>{children}</p></div>
+  </aside>
+);
+
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -37,10 +46,9 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
             <img src={assetPath('/rebrand/character-cutout.png')} alt="검은 갓과 앞치마를 입고 손님을 맞이하는 닭장수" width="1122" height="1402" fetchPriority="high" />
           </figure>
           <div className="rebrand-hero-offer">
-            <span className="rebrand-eyebrow">내 점포에서 시작하기</span>
-            <p>메뉴, 공간, 가맹 조건. <br />하나씩 살펴보세요.</p>
+            <div className="jangsu-hero-speech"><span>반갑습니다. 닭장수입니다.</span><p>무슨 치킨을 팔지, <br />어떤 가게를 열지.<br /><strong>제가 하나씩 보여드릴게요.</strong></p></div>
             <a className="rebrand-button rebrand-button--primary" href="#lead-capture">내 지역 창업 상담 <span aria-hidden="true">↗</span></a>
-            <a className="rebrand-text-link" href="#rebrand-menu">닭장수 먼저 알아보기 <span aria-hidden="true">↓</span></a>
+            <a className="rebrand-text-link" href="#rebrand-menu">닭장수 따라 둘러보기 <span aria-hidden="true">↓</span></a>
           </div>
           <div className="rebrand-hero-bottom"><span>맛있는 한 마리. 반가운 한 자리.</span><span>SCROLL TO EXPLORE</span></div>
         </section>
@@ -48,7 +56,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
         <div className="rebrand-chapter-bar" aria-label="가맹 안내 순서"><a href="#rebrand-menu"><b>01</b> 무엇을 파는가 <span>↘</span></a><a href="#rebrand-space"><b>02</b> 어떤 공간인가 <span>↘</span></a><a href="#rebrand-benefits"><b>03</b> 어떻게 시작하는가 <span>↘</span></a></div>
 
         <section className="rebrand-menu rebrand-container" id="rebrand-menu" aria-labelledby="menu-title">
-          <div className="rebrand-section-heading"><span>01 / THE CHICKEN</span><h2 id="menu-title">이 집의 시작은,<br />역시 후라이드.</h2><p>특제 파우더로 튀긴 후라이드.<br />포장 한 상자에도, 홀의 한 접시에도<br />닭장수가 가장 먼저 내놓는 메뉴입니다.</p></div>
+          <div className="rebrand-section-heading"><span>01 / THE CHICKEN</span><h2 id="menu-title">이 집의 시작은,<br />역시 후라이드.</h2><p>특제 파우더로 튀긴 후라이드.<br />포장 한 상자에도, 홀의 한 접시에도<br />닭장수가 가장 먼저 내놓는 메뉴입니다.</p><JangsuGuide chapter="메뉴">먼저, 우리가 팔 치킨부터 보시죠. <br />닭장수의 기본은 후라이드입니다.</JangsuGuide></div>
           <figure className="rebrand-food-photo"><img src={assetPath('/images/dakjangsu-product-showcase-real.jpg')} alt="매장 진열대에 준비된 닭장수 후라이드 치킨" width="2400" height="1600" loading="lazy" /><figcaption><span>THE ORIGINAL</span><strong>후라이드가 중심입니다.</strong></figcaption></figure>
           <div className="rebrand-menu-grid">
             {[['fried-chicken','후라이드치킨','기본부터 바삭하게'],['half-half-chicken','반반치킨','두 가지 맛을 한 접시에'],['garlic-pepper-chicken','마늘후추치킨','마늘과 후추로 더한 풍미']].map(([image,name,desc],i)=><article key={image}><div><span>0{i+1}</span><img src={assetPath(`/images/menu-showcase/${image}.webp`)} alt={name} width="520" height="360" loading="lazy" /></div><h3>{name}</h3><p>{desc}</p></article>)}
@@ -58,6 +66,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
         <section className="rebrand-space" id="rebrand-space" aria-labelledby="rebrand-space-title">
           <div className="rebrand-container">
             <div className="rebrand-section-heading"><span>02 / THE NEIGHBORHOOD</span><h2 id="rebrand-space-title">한 마리 포장도,<br />한잔할 자리도.</h2><p>퇴근길에 들르고, 마주 앉아 먹는 공간.<br />따뜻한 벽돌과 스테인리스, 테이블 위의 조명으로<br />닭장수의 새로운 매장 분위기를 잡았습니다.</p></div>
+            <JangsuGuide chapter="공간">포장하러 오는 손님도, 앉아서 드실 손님도. <br />어떻게 들어오고 머무를지 같이 봐야죠.</JangsuGuide>
             <div className="rebrand-space-selector" aria-label="공간 콘셉트 선택">
               <button type="button" aria-pressed={spaceView===0} onClick={()=>setSpaceView(0)}>01 <span>좁고 긴 홀</span> <small>18평형 예시</small></button>
               <button type="button" aria-pressed={spaceView===1} onClick={()=>setSpaceView(1)}>02 <span>넓은 홀</span> <small>35~45평형 예시</small></button>
@@ -74,6 +83,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
               <div><span className="rebrand-eyebrow">03 / OPENING SUPPORT</span><h2 id="benefits-title">시작할 때 필요한 지원,<br />조건까지 살펴보세요.</h2></div>
               <p className="benefits-status">2026년 8월 혜택 초안 기준<br />신규 10개점 대상안이며, 시행 여부와 모집 잔여 수량은 상담에서 확인합니다.</p>
             </div>
+            <JangsuGuide chapter="가맹 혜택">지원 항목마다 조건이 달라요. <br />내 점포에 적용되는 것부터 확인해봅시다.</JangsuGuide>
             <div className="benefit-lead">
               <div><span className="benefit-number">01 / OPEN START</span><h3>가맹비와 교육비<br />440만원 면제안</h3><p>가맹비 275만원 + 교육비 165만원<br />부가세 포함 합계 440만원 면제안</p></div>
               <div className="benefit-zero"><span>가맹비 + 교육비 면제</span><strong>440<small>만원</small></strong><span>프로모션 적용 시</span></div>
@@ -101,6 +111,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
           <div className="rebrand-section-heading">
             <span>04 / YOUR NEXT STEP</span>
             <h2 id="rebrand-fit-title">점포가 있어도,<br />아직 없어도.<br />여기서 시작하세요.</h2>
+            <JangsuGuide chapter="상담">어느 동네를 생각하고 계세요? <br />희망 지역부터 편하게 남겨주세요.</JangsuGuide>
           </div>
           <div className="rebrand-fit-list">
             <article><span>01</span><div><h3>희망 지역</h3><p>포장과 홀 이용을 기대할 수 있는 위치와 주변 생활 동선을 살펴봅니다.</p></div></article>
@@ -109,7 +120,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
           </div>
         </section>
 
-        <section className="rebrand-faq rebrand-container" aria-labelledby="faq-title"><div className="rebrand-section-heading"><span>BEFORE WE TALK</span><h2 id="faq-title">상담 전에<br />궁금한 것들.</h2></div><div>
+        <section className="rebrand-faq rebrand-container" aria-labelledby="faq-title"><div className="rebrand-section-heading"><span>BEFORE WE TALK</span><h2 id="faq-title">상담 전에<br />궁금한 것들.</h2><JangsuGuide chapter="자주 묻는 질문">비용도, 지원 조건도. <br />궁금한 건 짚고 넘어가야죠.</JangsuGuide></div><div>
           <details><summary>점포를 구하기 전에도 상담할 수 있나요?</summary><p>희망 지역을 먼저 남겨주세요. 점포가 정해지지 않았다면 상담 신청서의 남기실 말에 적어주시면 됩니다.</p></details>
           <details><summary>기존 가게를 바꿔서 시작할 수 있나요?</summary><p>기존 점포의 면적과 주방, 설비 상태를 확인한 뒤 전환 가능 여부를 검토합니다. 주방 지원안은 전환 점포도 본사 기준에 따른 전체 인테리어 신규 시공과 검수가 필요합니다.</p></details>
           <details><summary>혜택 금액만큼 현금으로 지원받나요?</summary><p>가맹비 면제, 현물과 마케팅 지원, 물류대금 차감으로 구성된 안입니다. 현금 지급액을 뜻하지 않습니다. 항목별 적용 조건과 최종 시행 여부는 본사 확인이 필요합니다.</p></details>
