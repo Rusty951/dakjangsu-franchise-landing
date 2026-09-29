@@ -66,6 +66,7 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
         if (event.animationName === 'jangsu-lift-act') onComplete();
       }}>
         {liftPoses.map(pose => <img key={pose} className={`jangsu-lift-pose jangsu-lift-pose--${pose}`} src={assetPath(`/rebrand/character-lift-${pose}.webp`)} alt="" width="1024" height="1536" draggable="false" />)}
+        <img className="jangsu-lift-pose jangsu-lift-pose--rest" src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" draggable="false" />
       </div>
     </div>
   );

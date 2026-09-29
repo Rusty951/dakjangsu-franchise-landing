@@ -512,3 +512,9 @@
 - Added decoded-image gating, existing-character fallback on image failure, re-entry and same-chapter replay, reduced-motion static presentation, and shared offscreen/hidden animation pausing.
 - Browser checks: actual 1440x852 and 375x619 content viewports, all three poses, final reel event and orange transition, final reading state, keyboard replay, and scroll exit/re-entry. No horizontal overflow. Desktop conditions end at 728px above navigation at 779px. Mobile conditions end at 500px above navigation at 552px; the character occupies the reserved right-hand lane.
 - Reduced-motion and load-failure branches were reviewed in code, without changing OS settings or injecting network failure. Lint, production build, and diff whitespace checks passed. Saved browser evidence in the draft output folder. No external deployment.
+
+## 2026-09-29 - Restore the original pose after shrinking
+
+- Applied the user's requested return to the original character pose as the lift actor shrinks. Reused the intermediate and preparation poses in reverse during the exit, then switched to the existing original cutout for the final reading state.
+- Included the original cutout in the decode gate. Kept the existing size, reading lanes, and 4.2-second timing.
+- Verified the return sequence and final original image in the actual 1345x1566 browser viewport. Saved the resulting screenshot. Lint and production build passed.

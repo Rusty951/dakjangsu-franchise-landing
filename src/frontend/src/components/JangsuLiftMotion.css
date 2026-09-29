@@ -15,6 +15,7 @@
 .jangsu-lift[data-ready='true'] .jangsu-lift-pose--ready { animation: jangsu-lift-ready 4.2s linear both; }
 .jangsu-lift[data-ready='true'] .jangsu-lift-pose--mid { animation: jangsu-lift-mid 4.2s linear both; }
 .jangsu-lift[data-ready='true'] .jangsu-lift-pose--push { animation: jangsu-lift-push 4.2s linear both; }
+.jangsu-lift[data-ready='true'] .jangsu-lift-pose--rest { animation: jangsu-lift-rest 4.2s linear both; }
 
 @keyframes jangsu-lift-act {
   0% { opacity: 0; transform: translate(50px, 140px) scale(.92); animation-timing-function: cubic-bezier(.16,1,.3,1); }
@@ -26,9 +27,11 @@
   100% { opacity: 1; transform: translate(var(--lift-park-x), var(--lift-park-y)) scale(var(--lift-park-scale)); }
 }
 /* Change keys during the fastest part of the lift, without translucent double faces. */
-@keyframes jangsu-lift-ready { 0%, 20% { opacity: 1; } 20.01%, 100% { opacity: 0; } }
-@keyframes jangsu-lift-mid { 0%, 20% { opacity: 0; } 20.01%, 26.2% { opacity: 1; } 26.21%, 100% { opacity: 0; } }
-@keyframes jangsu-lift-push { 0%, 26.2% { opacity: 0; } 26.21%, 100% { opacity: 1; } }
+/* Lower the arms through the same keys as the host shrinks, then restore the original. */
+@keyframes jangsu-lift-ready { 0%, 20%, 87.01%, 91% { opacity: 1; } 20.01%, 87%, 91.01%, 100% { opacity: 0; } }
+@keyframes jangsu-lift-mid { 0%, 20%, 26.21%, 83%, 87.01%, 100% { opacity: 0; } 20.01%, 26.2%, 83.01%, 87% { opacity: 1; } }
+@keyframes jangsu-lift-push { 0%, 26.2%, 83.01%, 100% { opacity: 0; } 26.21%, 83% { opacity: 1; } }
+@keyframes jangsu-lift-rest { 0%, 91% { opacity: 0; } 91.01%, 100% { opacity: 1; } }
 
 .jangsu-stage[data-scene='5'] .benefit-scene--growth .benefit-scene-copy { animation: none; }
 .jangsu-stage[data-scene='5'] .benefit-scene--growth h2 > strong { animation: none; }

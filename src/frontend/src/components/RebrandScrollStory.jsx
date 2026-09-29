@@ -38,9 +38,10 @@ export default function RebrandScrollStory() {
   useEffect(() => {
     let disposed = false;
     // Decode all keys before starting the act so the raised hands never pop in late.
-    const images = ['ready', 'mid', 'push'].map(pose => {
+    const sources = [...['ready', 'mid', 'push'].map(pose => `/rebrand/character-lift-${pose}.webp`), '/rebrand/character-cutout.png'];
+    const images = sources.map(source => {
       const image = new Image();
-      image.src = assetPath(`/rebrand/character-lift-${pose}.webp`);
+      image.src = assetPath(source);
       return image.decode();
     });
     Promise.all(images).then(() => {
