@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Cream Character Hero and Franchise Benefits
+
+- Applied the user-selected reference composition with the canonical black BI, cream canvas and foreground character; generated a transparent derivative while preserving the original asset.
+- Added the August 12 franchise benefits draft: fee exemption, opening support, conditional kitchen support, royalty exemption and growth logistics credits. Draft status, eligibility and non-cash conditions remain visible; no combined guaranteed savings headline.
+- Source: https://drive.google.com/file/d/1NlKLMi1tsOst-ef33Q-2auqXquXdr5Eh/view
+- Verified desktop 1280x900 and mobile 390x844 in the in-app browser, loaded images, no mobile horizontal overflow, benefit anchor and condition disclosure. Build, lint and diff checks passed.
+- Local preview only. No deployment or inquiry submission.
+
+
 ## 2026-09-29 - Rebrand Franchise Concept Preview
 
 - Added a local `?concept=rebrand` preview for franchise prospects using the approved Warm Ink BI and pilot interior concept images.
