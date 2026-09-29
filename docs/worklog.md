@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Product Design Refinement
+
+- User explicitly requested Product Design review and refinement of the existing approved rebrand. Applied audit/get-context guidance to the running page, then refined the existing implementation in place. Frontend changes follow that explicit request.
+- Established shared type, spacing and control rules: Pretendard body, display headings, quieter labels, consistent reading sizes, clear chapter selection, 16px form inputs and visible focus states.
+- Changed the detail section to cream with one 740 package summary and its 440/100/200 breakdown. Removed the repeated opening-support card; kitchen, royalty and logistics now use aligned comparison rows on desktop and stacked blocks on phones. Preserved all existing eligibility text and draft status.
+- Refined menu image layout, mobile menu rows, space selector/crop, FAQ typography and consultation styling. Preserved the orange hero, canonical logo/assets, one-benefit-per-screen flow, mascot travel, gestures and numeric reels.
+- Applied Copywrite and client Voice to the limited removal of repeated copy; no new benefit or performance claims. Current implementation evidence and limits are in design-qa.md.
+- Verified at 1280px desktop, 390px mobile and 320x568 short mobile. Terms/FAQ expand, space switches, CTA navigates, 16px/52px inputs and no horizontal overflow observed. Build/lint passed. No form sent or external deployment.
+
 ## 2026-09-29 - Traveling Host and Slot Number Motion
 
 - Implemented the user's explicit frontend motion request: alternating left/right mascot positions with an eased lower crossing path, arrival tilt and existing wrist gestures.

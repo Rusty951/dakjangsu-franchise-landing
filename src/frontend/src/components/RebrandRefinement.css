@@ -1,0 +1,203 @@
+/* One typography and spacing system for the approved rebrand direction. */
+.rebrand-page {
+  --rebrand-rule: #241f1b29;
+  --rebrand-muted: #6a5e53;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+.rebrand-page h1, .rebrand-page h2 { font-family: var(--font-display); font-weight: 400; }
+.rebrand-page h3, .rebrand-page h4 { font-family: var(--font-sans); font-weight: 750; }
+.rebrand-page p { text-wrap: pretty; }
+.rebrand-page :focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+.rebrand-container { width: min(100% - 96px, 1320px); }
+.rebrand-header { height: 80px; min-height: 80px; padding-block: 12px; }
+.rebrand-header nav a { font-size: 14px; font-weight: 650; }
+.rebrand-header-cta { min-height: 48px; display: inline-flex; align-items: center; transition: background .2s; }
+.rebrand-header-cta:hover { background: #b64826; }
+.rebrand-benefits-nav { border-bottom: 0; }
+.rebrand-header nav a:not(.rebrand-header-cta) { padding-block: 12px; }
+.rebrand-header nav a:not(.rebrand-header-cta):hover { text-decoration: underline; text-underline-offset: 7px; }
+.rebrand-section-heading > span, .rebrand-eyebrow, .benefit-number { font-size: 12px; font-weight: 650; letter-spacing: .14em; }
+.rebrand-section-heading p { font-size: 17px; line-height: 1.85; color: var(--rebrand-muted); }
+
+/* The hero stays emphatic; supporting information gets a clear reading level. */
+.benefits-intro button { font-size: 14px; font-weight: 650; min-height: 48px; }
+.benefits-intro-note { font-size: 13px; line-height: 1.75; }
+.benefit-scene-copy h2 > span { font-family: var(--font-sans); font-weight: 650; }
+.benefit-scene-copy h2 > b { font-weight: 400; }
+.benefit-scene-copy h2 small { font-family: var(--font-sans); font-weight: 650; }
+.benefit-scene-detail { font-size: 16px; font-weight: 500; line-height: 1.75; }
+.benefit-scene-note { font-size: 13px; opacity: 1; line-height: 1.7; }
+.jangsu-panel .benefit-scene-copy a { font-size: 13px; min-height: 40px; padding-block: 10px; }
+.jangsu-stage-footer nav { padding: 4px 10px; gap: 2px; border: 1px solid #ffffff30; }
+.jangsu-stage-footer button { padding: 10px 12px; font-size: 12px; opacity: 1; color: #e8dbcc; }
+.jangsu-stage-footer button small { font-size: 9px; opacity: .65; }
+.jangsu-stage-footer button[aria-current] { background: #f7efe4; color: #241f1b; border-bottom: 0; }
+.jangsu-stage-footer button:hover { background: #ffffff18; }
+.jangsu-stage-footer button[aria-current]:hover { background: #f7efe4; }
+
+/* A compact reference after the immersive benefit chapters. */
+.rebrand-benefits { padding-block: 96px; background: var(--rebrand-cream); border-top: 1px solid var(--rebrand-rule); }
+.rebrand-benefits .benefits-heading h2 { font-size: clamp(38px, 4.6vw, 66px); line-height: 1.15; }
+.benefits-heading { gap: 48px; margin-bottom: 40px; }
+.rebrand-benefits .benefits-status { font-size: 13px; font-weight: 400; color: var(--rebrand-muted); border-left: 2px solid #b64826; }
+.rebrand-benefits .benefit-lead { padding: 36px 40px; grid-template-columns: 1fr 1fr; align-items: center; }
+.benefit-lead h3 { font-size: clamp(30px, 3.4vw, 48px); margin-block: 14px; }
+.benefit-lead p { font-size: 15px; color: #ded1c0; }
+.rebrand-benefits .benefit-zero { align-items: flex-end; border-left: 0; }
+.rebrand-benefits .benefit-zero strong { font-size: clamp(90px, 10vw, 140px); line-height: 1.05; letter-spacing: -.075em; }
+.rebrand-benefits .benefit-zero small { display: inline; font: 650 22px var(--font-sans); letter-spacing: -.04em; margin-left: 12px; }
+.rebrand-benefits .benefit-zero > span { font-size: 12px; }
+.benefit-breakdown { background: var(--rebrand-paper); gap: 28px; padding: 30px 40px; border: 1px solid var(--rebrand-rule); border-top: 0; }
+.benefit-breakdown p > span { font-size: 14px; font-weight: 600; }
+.benefit-breakdown strong { font-size: clamp(40px, 4vw, 56px); }
+.benefit-breakdown p > small { font-size: 12px; color: var(--rebrand-muted); }
+.rebrand-benefits .benefit-grid { display: block; margin-top: 36px; border-top: 1px solid var(--rebrand-ink); }
+.rebrand-benefits .benefit-grid article { display: grid; grid-template-columns: .85fr 1fr 1.25fr; gap: 10px 32px; align-items: baseline; padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--rebrand-rule); }
+.rebrand-benefits .benefit-grid article:nth-child(odd) { border-right: 0; }
+.benefit-grid .benefit-number { grid-column: 1; font-size: 10px; color: var(--rebrand-muted); }
+.rebrand-benefits .benefit-grid h3 { grid-column: 1; grid-row: 2; margin: 0; font-size: 18px; color: var(--rebrand-ink); }
+.rebrand-benefits .benefit-grid article > strong { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: clamp(23px, 2.6vw, 36px); margin: 0; letter-spacing: -.04em; }
+.benefit-grid article > p:not(.benefit-caption) { grid-column: 3; grid-row: 1 / 3; font-size: 14px; align-self: center; }
+.rebrand-benefits .benefit-grid .benefit-caption { grid-column: 3; margin: 0; padding: 0; border: 0; font-size: 12px; color: var(--rebrand-muted); }
+.benefit-consult { margin-top: 32px; padding: 28px 32px; background: transparent; color: var(--rebrand-ink); border: 1px solid var(--rebrand-rule); }
+.benefit-consult h3 { font-size: clamp(22px, 2.4vw, 30px); }
+.benefit-consult p { font-size: 14px; color: var(--rebrand-muted); }
+.benefit-consult a { background: var(--rebrand-ink); color: var(--rebrand-paper); min-height: 52px; }
+.benefit-consult a:hover { background: #b64826; }
+.benefit-zero-fees { font-size: 14px; }
+.benefit-terms { font-size: 14px; }
+.benefit-terms summary { min-height: 56px; }
+
+/* Photograph-led sections share a consistent grid and quieter supporting text. */
+.rebrand-menu { padding-block: 104px; grid-template-columns: .85fr 1.15fr; gap: 56px; }
+.rebrand-menu .rebrand-section-heading h2, .rebrand-space .rebrand-section-heading h2 { font-size: clamp(44px, 5.3vw, 76px); line-height: 1.13; letter-spacing: -.045em; }
+.rebrand-food-photo { aspect-ratio: 1.08; }
+.rebrand-menu-grid { gap: 32px; }
+.rebrand-menu-grid article > div { background: var(--rebrand-cream); }
+.rebrand-menu-grid h3 { font-size: 22px; }
+.rebrand-menu-grid p { font-size: 14px; }
+.rebrand-space { padding-block: 104px; }
+.rebrand-space-selector { gap: 0; border-bottom: 1px solid #f7efe440; margin-bottom: 28px; }
+.rebrand-space-selector button { border: 0; border-bottom: 3px solid transparent; padding: 18px 28px; min-height: 64px; }
+.rebrand-space-selector button[aria-pressed=true] { background: transparent; color: #f7efe4; border-bottom-color: #ed9b6e; }
+.rebrand-space-selector button:not([aria-pressed=true]) { color: #c3b29f; }
+.rebrand-space-selector button:hover { background: #ffffff0a; }
+.rebrand-space-stage img { aspect-ratio: 1.7; }
+.rebrand-space-stage figcaption { font-size: 12px; padding-block: 18px; }
+.rebrand-operation h3 { font-size: 21px; }
+.rebrand-operation p { font-size: 14px; }
+.rebrand-fit { padding-block: 96px; gap: 72px; }
+.rebrand-fit .rebrand-section-heading h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1.17; }
+.rebrand-fit-list h3 { font-size: 22px; }
+.rebrand-fit-list p { font-size: 15px; }
+.rebrand-faq { padding-bottom: 96px; gap: 72px; }
+.rebrand-faq summary { font-size: 16px; font-weight: 600; }
+.rebrand-faq details p { font-size: 15px; }
+
+/* Consultation continues the same visual language. */
+.rebrand-page .lead-capture-section { padding: 88px max(48px, calc((100% - 1320px) / 2)); align-items: start; gap: 64px; }
+.rebrand-page .consultation-intro { padding-top: 32px; }
+.rebrand-page .consultation-intro h2 { font-size: clamp(40px, 4.8vw, 68px); line-height: 1.14; letter-spacing: -.04em; gap: 4px; }
+.rebrand-page .consultation-intro p { font-size: 16px; font-weight: 400; line-height: 1.8; }
+.rebrand-page .consultation-label { padding: 0; background: transparent; color: #984221; font-size: 13px; font-weight: 650; margin-bottom: 24px; }
+.rebrand-page .consultation-form-card { padding: 36px; border: 1px solid var(--rebrand-rule); }
+.rebrand-page .consultation-form-head > span { background: transparent; padding: 0; color: var(--rebrand-muted); font-size: 12px; font-weight: 500; }
+.rebrand-page .consultation-form-head h3 { font: 750 30px/1.3 var(--font-sans); letter-spacing: -.04em; }
+.rebrand-page .consultation-field > span { font-size: 14px; font-weight: 600; }
+.rebrand-page .consultation-field > span > em { background: transparent; color: #984221; font-size: 11px; }
+.rebrand-page .consultation-form-card :is(input,select,textarea) { font-size: 16px; font-weight: 400; border-color: #241f1b40; background: var(--rebrand-paper); }
+.rebrand-page .consultation-form-card :is(input,select) { min-height: 52px; }
+.rebrand-page .consultation-form-card :is(input,select,textarea):focus { border-color: var(--rebrand-ink); outline: 2px solid var(--rebrand-ink); outline-offset: 2px; box-shadow: none; }
+.rebrand-page .consultation-consent { background: transparent; border: 0; padding-inline: 0; font-size: 13px; font-weight: 400; }
+.rebrand-page .consultation-form-card button[type=submit] { font-size: 17px; font-weight: 650; min-height: 58px; }
+.rebrand-page .consultation-form-card button[type=submit]:hover { background: #b64826; transform: none; }
+
+@media (min-width: 701px) and (max-height: 800px) {
+  .benefit-scene-copy { top: 9%; }
+  .benefit-scene-detail { font-size: 15px; margin-top: 18px; }
+  .benefit-scene-note { font-size: 12px; max-width: 95%; }
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .rebrand-container { width: calc(100% - 64px); }
+  .benefit-grid article > p:not(.benefit-caption), .rebrand-benefits .benefit-grid .benefit-caption { grid-column: 2 / 4; grid-row: auto; }
+  .rebrand-benefits .benefit-grid article > strong { grid-column: 2 / 4; }
+  .rebrand-page .lead-capture-section { grid-template-columns: 1fr 1.3fr; padding-inline: 32px; gap: 32px; }
+  .rebrand-page .consultation-intro h2 { font-size: 40px; }
+}
+@media (max-width: 700px) {
+  .rebrand-container { width: calc(100% - 40px); }
+  .rebrand-header { height: 66px; min-height: 66px; padding: 8px 20px; }
+  .rebrand-header nav a { font-size: 12px; }
+  .rebrand-header-cta { min-height: 44px; padding: 10px 14px; }
+  .rebrand-section-heading > span, .rebrand-eyebrow { font-size: 10px; }
+  .rebrand-section-heading p { font-size: 15px; }
+  .benefits-intro button { font-size: 12px; }
+  .benefits-intro-note { font-size: 11px; }
+  .benefit-scene-copy { top: 10%; }
+  .benefit-scene-detail { font-size: 14px; max-width: 100%; margin-top: 24px; }
+  .benefit-scene-note { font-size: 12px; max-width: 100%; margin-top: 12px; }
+  .jangsu-panel .benefit-scene-copy a { font-size: 12px; margin-top: 8px; }
+  .jangsu-stage-footer nav { width: 100%; padding: 4px; gap: 0; }
+  .jangsu-stage-footer button { padding: 10px 0; font-size: 11px; }
+  .rebrand-benefits { padding-block: 64px; }
+  .rebrand-benefits .benefits-heading h2 { font-size: 36px; }
+  .benefits-heading { margin-bottom: 28px; }
+  .rebrand-benefits .benefits-status { font-size: 12px; }
+  .rebrand-benefits .benefit-lead { grid-template-columns: 1fr; padding: 28px 24px; gap: 26px; }
+  .benefit-lead h3 { font-size: 30px; }
+  .benefit-lead p { font-size: 14px; }
+  .rebrand-benefits .benefit-zero { align-items: flex-start; padding-top: 20px; }
+  .rebrand-benefits .benefit-zero strong { font-size: 88px; }
+  .rebrand-benefits .benefit-zero small { font-size: 19px; margin-left: 8px; }
+  .rebrand-benefits .benefit-zero > span { font-size: 11px; text-align: left; }
+  .benefit-breakdown { padding: 24px; gap: 18px; }
+  .benefit-breakdown p { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 8px 12px; }
+  .benefit-breakdown p > span { font-size: 13px; }
+  .benefit-breakdown strong { font-size: 32px; }
+  .benefit-breakdown strong small { display: block; text-align: right; font-size: 11px; margin: 4px 0 0; }
+  .benefit-breakdown p > small { grid-column: 1 / -1; }
+  .rebrand-benefits .benefit-grid article { display: block; padding: 26px 0; }
+  .rebrand-benefits .benefit-grid h3 { font-size: 16px; margin: 12px 0; }
+  .rebrand-benefits .benefit-grid article > strong { font-size: 30px; margin-bottom: 12px; }
+  .rebrand-benefits .benefit-grid .benefit-caption { margin-top: 8px; }
+  .benefit-consult { padding: 24px; }
+  .benefit-consult h3 { font-size: 23px; }
+  .rebrand-menu, .rebrand-fit { padding-block: 72px; }
+  .rebrand-menu { grid-template-columns: 1fr; gap: 32px; }
+  .rebrand-menu .rebrand-section-heading h2, .rebrand-space .rebrand-section-heading h2 { font-size: 42px; }
+  .rebrand-menu-grid { gap: 18px; grid-template-columns: 1fr; }
+  .rebrand-menu-grid article { display: grid; grid-template-columns: 42% 1fr; align-items: center; gap: 4px 22px; border-bottom: 1px solid var(--rebrand-rule); padding-bottom: 18px; }
+  .rebrand-menu-grid article > div { grid-row: 1 / 3; }
+  .rebrand-menu-grid h3 { align-self: end; font-size: 19px; margin: 0; }
+  .rebrand-menu-grid p { align-self: start; font-size: 13px; }
+  .rebrand-space { padding-block: 72px; }
+  .rebrand-space-selector button { padding: 16px 12px; min-height: 70px; }
+  .rebrand-space-selector button span { font-size: 14px; }
+  .rebrand-space-selector button small { font-size: 11px; }
+  .rebrand-space-stage img { aspect-ratio: 1.45; }
+  .rebrand-space-stage figcaption { font-size: 10px; line-height: 1.5; }
+  .rebrand-operation { gap: 22px; }
+  .rebrand-operation h3 { font-size: 21px; }
+  .rebrand-operation p { font-size: 14px; }
+  .rebrand-fit, .rebrand-faq { gap: 28px; }
+  .rebrand-fit .rebrand-section-heading h2 { font-size: 37px; }
+  .rebrand-faq { padding-bottom: 72px; }
+  .rebrand-faq summary { font-size: 15px; }
+  .rebrand-page .lead-capture-section { padding: 64px 20px; gap: 32px; }
+  .rebrand-page .consultation-intro { padding: 0; }
+  .rebrand-page .consultation-intro h2 { font-size: 38px; }
+  .rebrand-page .consultation-form-card { padding: 26px 20px; }
+  .rebrand-page .consultation-form-head h3 { font-size: 26px; }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .benefit-scene-copy { top: 9%; }
+  .benefit-scene-detail { font-size: 12px; margin-top: 16px; }
+  .benefit-scene-note { font-size: 11px; margin-top: 8px; }
+  .jangsu-panel .benefit-scene-copy a { font-size: 11px; margin-top: 3px; }
+  .benefits-intro-note { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-stage .benefit-scene-copy { position: relative; top: auto; left: auto; right: auto; width: auto; padding: 64px 5%; }
+  .jangsu-stage .jangsu-panel--benefit { min-height: 0; }
+}

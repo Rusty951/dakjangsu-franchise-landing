@@ -144,3 +144,24 @@ F0 원문: “난 스크롤 옮기면서 지원이 한개씩 크게 한페이지
 ### 검증 한계와 결과
 
 build, lint, git diff --check 통과. 브라우저에서 현재 화면을 직접 캡처해 확인했으나 문서화된 캡처 API에 로컬 저장 기능이 없어 캡처 파일을 보존한 정식 감사 패키지는 만들지 못했다. 화면 및 코드 기반 자체 검수다. OS의 reduced-motion 설정, 스크린리더 전체 탐색, 실제 문의 수신, 본사 프로모션 시행은 별도 미검증. 결론은 방향 유지, 관찰된 가독성 및 작은 화면 오류 수정 완료, 실제 고객 이해와 확정 조건 확인 필요다.
+
+
+## 2026-09-29 Product Design refinement
+
+Scope: current `?concept=rebrand` preview, from brand entry through benefits, menu, space, FAQ and consultation. Intended user is a prospective franchise owner. Existing approved visual direction is the reference; this was refinement of the current product, not concept replacement.
+
+### Current-run screen findings and disposition
+
+1. Brand entry and benefit chapters: oversized logo, single benefit and character are strong anchors. Supporting text and chapter navigation were disproportionately small. Standardized supporting type and added an explicit filled active chapter state. Kept native scrolling and the existing number/character motions. Mobile opening amount settled at 740; short-phone kitchen amount settled at 500.
+2. Benefit details: the opening support repeated the same 440/100/200 information in multiple large blocks. Removed the duplicate 300 opening-support card while keeping the package composition. Replaced the orange detail wall and four repeated cards with cream, a dark package summary and three aligned support rows. Current screenshots show the breakdown and qualification text together.
+3. Menu: three narrow mobile images and small labels made each product difficult to inspect. Changed to image-and-text rows on mobile, retaining three columns on desktop and all real assets. Directly inspected the mobile menu after the change.
+4. Space: framed buttons competed with the image; mobile crop discarded too much context. Changed to underlined selection tabs and a wider image ratio. Switched to the second concept and confirmed the corresponding 1400px source loaded. Concept/actual-photo distinction remains visible.
+5. FAQ and preparation: shared body sizes, heading rhythm and rules now align with the preceding sections. Opened the cash-support FAQ and inspected the revealed answer. Terms disclosure also opened successfully.
+6. Consultation: previous heavy type, badges and uneven scale did not match the detail sections. Simplified labels and field styling, set text inputs to 16px and minimum 52px height, retained existing required semantics. CTA navigation inspected; no form submitted.
+
+### Checks and limits
+
+- Current screenshots captured and inspected in the in-app browser, including desktop 1280, mobile 390x844 and short mobile 320x568. Rejected an incorrectly scaled capture from the older tab and used a fresh preview tab. The documented browser API cannot persist screenshot bytes to local files, so this is a direct screen/code review, not the complete saved-screenshot audit package prescribed by the audit skill.
+- At 320x568, kitchen qualifications ended at y412.7 and chapter navigation started at y501. No horizontal document overflow. At 390px, form text inputs computed at 16px and 52px height. Desktop support rows and alternate space image inspected.
+- Build and lint passed. Focus/reduced-motion rules source reviewed; full keyboard journey, OS reduced-motion emulation, screen-reader testing and WCAG compliance are not claimed.
+- Promotion activation, actual inquiries and customer comprehension remain unverified. No external publication, uploads or lead submission.

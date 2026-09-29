@@ -6,6 +6,7 @@ import PrivacyPolicyDialog from './PrivacyPolicyDialog';
 import { useState } from 'react';
 import RebrandScrollStory from './RebrandScrollStory';
 import './RebrandBenefits.css';
+import './RebrandRefinement.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);
@@ -37,15 +38,14 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
             </div>
 
             <div className="benefit-lead">
-              <div><span className="benefit-number">01 / OPEN START</span><h3>오픈 패키지<br />740만원 상당 지원안</h3><p>가맹비와 교육비 면제부터<br />오픈행사 생닭과 마케팅까지.</p></div>
+              <div><span className="benefit-number">01 / OPEN START</span><h3>오픈 패키지</h3><p>가맹비와 교육비 면제부터<br />오픈행사 생닭과 마케팅까지.</p></div>
               <div className="benefit-zero"><span>오픈 패키지 합계</span><strong>740<small>만원 상당</small></strong><span>면제와 현물, 마케팅 지원 / 현금 지급 아님</span></div>
             </div>
             <div className="benefit-breakdown" aria-label="오픈 패키지 740만원 구성"><p><span>가맹비 + 교육비 면제</span><strong>440<small>만원</small></strong><small>275만원 + 165만원, 부가세 포함</small></p><b aria-hidden="true">+</b><p><span>오픈행사 생닭 200수</span><strong>100<small>만원 상당</small></strong><small>생닭 현물 지원안</small></p><b aria-hidden="true">+</b><p><span>오픈 마케팅</span><strong>200<small>만원 상당</small></strong><small>지역 커뮤니티, 블로그 체험단 등</small></p></div>
             <div className="benefit-grid">
-              <article><span className="benefit-number">02 / OPENING</span><h3>첫 손님을 맞이할 준비</h3><strong>오픈 지원 300만원 상당</strong><p>오픈행사 생닭 100만원 상당과 지역 커뮤니티, 블로그 체험단 등 마케팅 200만원 상당 지원안.</p><p className="benefit-caption">가맹비와 교육비 면제를 포함한 오픈 패키지 합계 740만원 상당</p></article>
-              <article><span className="benefit-number">03 / KITCHEN</span><h3>주방도 함께 준비합니다</h3><strong>500만원 상당</strong><p>간냉식 냉장고 300만원 상당, 최신형 튀김기 200만원 상당 지원안.</p><p className="benefit-caption">조건 충족 매장 중 선착순 5개점 대상안</p></article>
-              <article><span className="benefit-number">04 / ROYALTY</span><h3>운영에 집중할 첫 2년</h3><strong>첫 2년 전액 면제안</strong><p>최초 가맹계약 2년 동안 정상 로열티율인 월 매출액 3.3%를 면제하는 안입니다.</p><p className="benefit-caption">실제 면제액은 매장 매출에 따라 달라집니다.</p></article>
-              <article><span className="benefit-number">05 / GROWTH</span><h3>성장에 맞춰 더하는 지원</h3><strong>월 최대 100만원</strong><p>월 매출 3,000만원 이상은 30만원, 4,000만원 이상은 100만원의 물류 크레딧 지원안.</p><p className="benefit-caption">개점월부터 12개월 내 달성 월에 적용, 익월 물류대금에서 차감</p></article>
+              <article><span className="benefit-number">02 / KITCHEN</span><h3>주방도 함께 준비합니다</h3><strong>500만원 상당</strong><p>간냉식 냉장고 300만원 상당, 최신형 튀김기 200만원 상당 지원안.</p><p className="benefit-caption">조건 충족 매장 중 선착순 5개점 대상안</p></article>
+              <article><span className="benefit-number">03 / ROYALTY</span><h3>운영에 집중할 첫 2년</h3><strong>첫 2년 전액 면제안</strong><p>최초 가맹계약 2년 동안 정상 로열티율인 월 매출액 3.3%를 면제하는 안입니다.</p><p className="benefit-caption">실제 면제액은 매장 매출에 따라 달라집니다.</p></article>
+              <article><span className="benefit-number">04 / GROWTH</span><h3>성장에 맞춰 더하는 지원</h3><strong>월 최대 100만원</strong><p>월 매출 3,000만원 이상은 30만원, 4,000만원 이상은 100만원의 물류 크레딧 지원안.</p><p className="benefit-caption">개점월부터 12개월 내 달성 월에 적용, 익월 물류대금에서 차감</p></article>
             </div>
             <div className="benefit-consult"><div><h3>내 점포에는 어떤 혜택이 적용될까요?</h3><p>희망 지역과 점포 조건을 알려주시면, 적용 가능한 항목을 함께 확인합니다.</p></div><a href="#lead-capture">내 점포 혜택 상담 ↗</a></div>
             <div className="benefit-zero-fees"><span>초안에 기재된 추가 비용</span><p>계약이행보증금 <b>0원</b></p><p>가맹금 예치금 <b>0원</b></p><p>재계약비 <b>0원</b></p></div>
