@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Scroll-linked Jangsu Story
+
+- Implemented the user-approved five-scene direction: welcome, fried chicken, space, support and neighborhood consultation. One character changes horizontal position and size with native scroll progress; the same motion reverses when scrolling up.
+- Replaced the hero and all repeated portrait/speech cards with a sticky narrative stage and large direct headlines. Removed unused hero/guide CSS. Kept detailed menu, space, conditional support, FAQ and live form in ordinary document flow.
+- Added chapter navigation, requestAnimationFrame scheduling, event cleanup, inactive-panel inert/ARIA handling and a static prefers-reduced-motion fallback. No new library, generated asset or actual skeletal character animation.
+- Browser QA: desktop 1280x900 all five chapters; mobile 390x844 welcome/menu/support/invite, forward/back native scrolling, chapter buttons and consultation link. Fixed a final CTA stacking issue; one traveler, zero speech cards, no horizontal overflow verified.
+- Build, lint and diff checks passed. OS reduced-motion fallback was implemented and reviewed in source, not exercised by changing the user's system setting. No inquiry submitted and no deployment.
+
+
 ## 2026-09-29 - Orange Stage and Character Narration
 
 - User changed the selected hero direction to orange, with larger black BI and character. Applied the canonical orange #d86535 on the hero and enlarged the existing transparent character.

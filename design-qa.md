@@ -60,3 +60,17 @@ The latest user direction replaces the cream hero with brand orange #d86535. Enl
 Inspected current desktop 1280x900 hero and menu, mobile 390x844 hero and menu via browser screenshots. Logo remains legible, character is visibly larger, guide portraits crop to face/shoulders, no horizontal overflow. New copy is character narration, not a customer testimonial or an asserted personal experience. Existing conditions remain intact.
 
 Final result: passed for local preview.
+
+## Scroll-linked story implementation
+
+Latest approved direction: one large character connects five full-screen scenes; no speech bubbles. Native scroll controls character position and height, with a sticky stage and changing orange/ink/cream scenery. Details follow outside the sticky stage.
+
+Observed at 1280x900: welcome, food, interior, conditional 440만원 fee exemption, consultation invitation. Observed at 390x844: welcome, food, support and invitation. Mobile final CTA originally appeared behind the character; corrected panel stacking and visually verified the complete opaque CTA above it.
+
+Browser interactions: native downward scroll changed scene; upward half-page scroll returned toward support and produced an intermediate character position (left 71.1044%, height 52.459%, bottom 0.481365%), demonstrating continuous reversible interpolation rather than only chapter jumps. Chapter buttons reached their scenes. Consultation link navigated to #lead-capture. DOM: one traveler, no old speech or portrait guides, one active story panel, no horizontal overflow.
+
+Reduced-motion CSS presents scenes in normal flow with a static welcome character. Source reviewed; OS preference was not changed during testing. Screen-reader completeness not independently tested. Existing benefits remain provisional and visible with conditions.
+
+Build, lint and git diff --check passed. Browser screenshot evidence was inspected inline; no saved screenshot artifact.
+
+Final result: passed for local preview.
