@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
+import JangsuMotion from './JangsuMotion';
 import './RebrandScrollStory.css';
 
 const chapters = ['닭장수', '후라이드', '공간', '시작', '우리 동네'];
@@ -7,7 +8,7 @@ const desktopFrames = [
   [50, 83, -1], [81, 88, -8], [88, 48, -3], [22, 77, -5], [50, 76, -31],
 ];
 const mobileFrames = [
-  [65, 65, 1], [88, 49, -3], [87, 39, -2], [85, 47, -2], [57, 58, 3],
+  [65, 65, 1], [70, 49, -3], [78, 39, -2], [75, 47, -2], [57, 58, 3],
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -21,6 +22,19 @@ export default function RebrandScrollStory() {
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const panels = [...stageRef.current.querySelectorAll('.jangsu-panel')];
+    const track = trackRef.current;
+    let onScreen = true;
+    const syncMotion = () => {
+      track.dataset.motionPaused = String(!onScreen || document.hidden || preference.matches);
+    };
+    const visibility = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      syncMotion();
+    });
+    visibility.observe(track);
+    document.addEventListener('visibilitychange', syncMotion);
+    preference.addEventListener('change', syncMotion);
+    syncMotion();
     let frame = 0;
     let lastActive = -1;
     const paint = () => {
@@ -72,6 +86,9 @@ export default function RebrandScrollStory() {
       window.removeEventListener('resize', requestPaint);
       preference.removeEventListener('change', requestPaint);
       observer.disconnect();
+      visibility.disconnect();
+      document.removeEventListener('visibilitychange', syncMotion);
+      preference.removeEventListener('change', syncMotion);
     };
   }, []);
 
@@ -113,7 +130,7 @@ export default function RebrandScrollStory() {
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(4)}>
           <span className="jangsu-scene-number">04 / YOUR NEIGHBORHOOD</span><h2>어느 동네에<br />문을 열까요?</h2><div className="jangsu-invite-copy"><p>점포가 있어도, 아직 없어도.<br />희망 지역부터 알려주세요.</p><a href="#lead-capture">내 지역 창업 상담 <span aria-hidden="true">↗</span></a></div>
         </article>
-        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true"><img src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" fetchPriority="high" /></div>
+        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true"><JangsuMotion scene={active} /></div>
         <div className="jangsu-stage-footer"><span>SCROLL TO EXPLORE ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
       </div>
     </section>

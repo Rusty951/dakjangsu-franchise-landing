@@ -74,3 +74,9 @@ Reduced-motion CSS presents scenes in normal flow with a static welcome characte
 Build, lint and git diff --check passed. Browser screenshot evidence was inspected inline; no saved screenshot artifact.
 
 Final result: passed for local preview.
+
+## Articulated hand motion
+
+Added alternate waving pose and independent hand transforms with a small body lean. Native SVG image layers use the canonical resting asset and a transparent generated greeting asset. Gestures last 3.6 seconds per chapter, then stop. Image readiness, offscreen and hidden-tab pauses are handled. Reduced-motion retains the existing static story fallback.
+
+Inspected desktop 1280x720 welcome and intermediate scenes, mobile 390x844 welcome/menu/support/invitation. Verified computed wrist transform changed during playback (example matrix 0.999066, -0.043218, 0.043218, 0.999066) and returned to identity. Generated image loads, no horizontal page overflow, greeting hand and final CTA visible. Screenshots inspected inline only. Build and lint passed. The gestures are a layered 2D approximation; no finger bending, lip sync or 3D joint rig is claimed.

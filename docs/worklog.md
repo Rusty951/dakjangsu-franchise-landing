@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Articulated Character Gestures
+
+- User requested hands moving and additional character motion. Added a layered 2D SVG puppet with independent wrist rotation and gentle body lean, connected to the existing scroll scenes. This is not a skeletal 3D rig.
+- Welcome and invitation use a new waving pose. Intermediate chapters use the canonical resting pose with small wrist gestures. Each scene plays a 3.6-second gesture, then rests. Loading, offscreen and hidden-tab states pause animation; reduced-motion CSS disables it.
+- Built-in ImageGen edited `src/frontend/public/rebrand/character-cutout.png` into the sibling `src/frontend/public/rebrand/character-wave.png` (1122x1402, transparent). Original assets preserved. Generated source: `exec-9e880e2e-3bf5-4414-bfe6-3e5beee52ddf.png`. The output raised the opposite hand from the requested side; accepted after visual review because the gesture fits the layout and preserves recognizable identity.
+- Generation prompt: "Edit target: the attached canonical full-body Korean chicken shop mascot. Create ONE full-body waving pose on true transparent alpha background, portrait canvas. Preserve exactly this character's identity, huge black gat, facial features, moustache and beard, cream hanbok, black apron, shoes, proportions, soft studio lighting and premium 3D render style. Keep head torso legs and left-on-image hand on hip unchanged. Change ONLY the arm on the RIGHT side of the image: raise that arm with elbow bent to 90 degrees, forearm pointing vertically upward beside the head, palm facing camera, five natural fingers gently separated for a friendly hello. Crucial for animation: leave a visible transparent gap between raised forearm/hand and the face/hat; elbow sits well outside torso on the right, roughly waist/chest height. The upper arm extends outward to that elbow. Entire hat feet and raised fingers visible with generous transparent padding. One character only, no text, no shadows on background, no props. A faithful alternate pose for a layered 2D web animation, not a character redesign."
+- Browser review at 1280x720 and 390x844: greeting, menu, support and invitation inspected. Hand transform changed during playback and returned to identity after the finite gesture. Shifted intermediate mobile character positions inward to expose the moving hand. No horizontal page overflow. Image-load readiness observed as true.
+- Build, lint and diff checks passed. Reduced-motion behavior source reviewed, not OS toggled. Local preview only; no deployment or form submission. Frontend work follows the user's explicit request.
+
 ## 2026-09-29 - Scroll-linked Jangsu Story
 
 - Implemented the user-approved five-scene direction: welcome, fried chicken, space, support and neighborhood consultation. One character changes horizontal position and size with native scroll progress; the same motion reverses when scrolling up.
