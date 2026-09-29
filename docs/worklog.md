@@ -1,5 +1,12 @@
 # Worklog
 
+## 2026-09-29 - Rebrand Franchise Concept Preview
+
+- Added a local `?concept=rebrand` preview for franchise prospects using the approved Warm Ink BI and pilot interior concept images.
+- Labeled the space images as visualizations and left store dimensions, seating, materials, and construction costs subject to site review.
+- Reused the existing Kakao click tracking, lead form, privacy dialog, and footer. The default landing view and copy remain in place.
+- Cross-role note: Codex built the frontend preview to make the requested space and landing direction concrete for review. It has not been deployed.
+
 ## 2026-06-26 - Meta Pixel Account Switch
 
 - Created a new Meta Pixel dataset for the `dakjangsu / dakjangsu_official_` Meta Business Suite account.

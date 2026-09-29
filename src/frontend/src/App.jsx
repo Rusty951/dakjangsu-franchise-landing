@@ -17,6 +17,7 @@ import PrivacyPolicyDialog from './components/PrivacyPolicyDialog';
 import PopArtConcept from './components/PopArtConcept';
 import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
+import RebrandLanding from './components/RebrandLanding';
 
 const kakaoConsultationUrl = import.meta.env.VITE_KAKAO_CONSULTATION_URL;
 const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'money8881@hanmail.net';
@@ -38,6 +39,7 @@ function App() {
   const isPopArtConcept = concept === 'popart';
   const isStreetHeroConcept = concept === 'street';
   const isCharacterHeroConcept = concept === 'character';
+  const isRebrandConcept = concept === 'rebrand';
   const landingClassName = 'landing-app';
 
   const handleKakaoConsultation = () => {
@@ -46,8 +48,17 @@ function App() {
       return;
     }
 
+    if (isRebrandConcept && typeof document !== 'undefined') {
+      document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
     alert('카카오톡 상담 링크는 최종 확정 후 연결합니다.');
   };
+
+  if (isRebrandConcept) {
+    return <RebrandLanding onKakaoClick={handleKakaoConsultation} socialLinks={socialLinks} />;
+  }
 
   if (isPopArtConcept) {
     return (

@@ -105,7 +105,7 @@ const parseLeadResponse = (responseText) => {
   }
 };
 
-const LeadCapture = ({ onKakaoClick }) => {
+const LeadCapture = ({ onKakaoClick, rebrandCopy = false }) => {
   const sectionRef = useRef(null);
   const hasTrackedStartRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -251,8 +251,17 @@ const LeadCapture = ({ onKakaoClick }) => {
           <span><em>가능할까요?</em></span>
         </h2>
         <p>
-          <span>상권분석부터 성장가능성까지 상담을 통해</span>
-          <span>우리동네 조건을 함께 봅니다.</span>
+          {rebrandCopy ? (
+            <>
+              <span>희망 지역과 점포 조건부터</span>
+              <span>상담에서 함께 확인합니다.</span>
+            </>
+          ) : (
+            <>
+              <span>상권분석부터 성장가능성까지 상담을 통해</span>
+              <span>우리동네 조건을 함께 봅니다.</span>
+            </>
+          )}
         </p>
         <button className="consultation-kakao" onClick={handleKakaoClick}>
           카카오톡으로 우리동네 창업 확인하기
