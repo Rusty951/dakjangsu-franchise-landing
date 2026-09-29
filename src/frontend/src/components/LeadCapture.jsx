@@ -105,7 +105,7 @@ const parseLeadResponse = (responseText) => {
   }
 };
 
-const LeadCapture = ({ onKakaoClick, rebrandCopy = false }) => {
+const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) => {
   const sectionRef = useRef(null);
   const hasTrackedStartRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -263,9 +263,11 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false }) => {
             </>
           )}
         </p>
-        <button className="consultation-kakao" onClick={handleKakaoClick}>
-          카카오톡으로 우리동네 창업 확인하기
-        </button>
+        {!hideKakao && (
+          <button className="consultation-kakao" onClick={handleKakaoClick}>
+            카카오톡으로 우리동네 창업 확인하기
+          </button>
+        )}
       </div>
 
       <div className="consultation-form-wrap" aria-label="닭장수 창업 상담 신청서">

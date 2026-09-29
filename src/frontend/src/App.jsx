@@ -49,7 +49,7 @@ function App() {
     }
 
     if (isRebrandConcept && typeof document !== 'undefined') {
-      document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'instant', block: 'start' });
       return;
     }
 

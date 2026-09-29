@@ -47,7 +47,7 @@
 .rebrand-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.93fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   min-height: min(760px, calc(100svh - 88px));
   background: var(--rebrand-cream);
 }
@@ -65,10 +65,16 @@
   font-weight: 850;
   letter-spacing: 0.08em;
 }
+.rebrand-hero-logo {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  margin-top: 36px;
+}
 .rebrand-hero h1 {
-  margin: 26px 0 0;
+  margin: 52px 0 0;
   color: var(--rebrand-ink);
-  font-size: clamp(3.6rem, 5.5vw, 6.3rem);
+  font-size: clamp(3.1rem, 4.1vw, 5.1rem);
   font-weight: 850;
   line-height: 1.12;
   letter-spacing: -0.065em;
@@ -100,10 +106,12 @@
 .rebrand-button span { font-size: 1.35rem; line-height: 1; }
 .rebrand-text-link { border-bottom: 1px solid currentColor; padding-bottom: 5px; font-weight: 750; text-decoration: none; }
 .rebrand-text-link span { margin-left: 12px; }
-.rebrand-hero-image { position: relative; min-width: 0; overflow: hidden; background: #ad5431; }
-.rebrand-hero-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.rebrand-hero-image::after { position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(25, 17, 12, .58)); content: ''; pointer-events: none; }
-.rebrand-hero-image figcaption { position: absolute; z-index: 1; right: 34px; bottom: 31px; color: #fffdf9; font-size: .9rem; font-weight: 700; }
+.rebrand-hero-character { position: relative; min-width: 0; overflow: hidden; background: #f5e9d6; }
+.rebrand-hero-character::before { position: absolute; z-index: 2; inset: 0 auto 0 0; width: 14px; background: var(--rebrand-orange); content: ''; }
+.rebrand-character-window { width: 100%; height: 100%; overflow: hidden; }
+.rebrand-character-window img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; animation: rebrand-character-enter 900ms cubic-bezier(.22, 1, .36, 1) both; }
+.rebrand-hero-character figcaption { position: absolute; z-index: 1; right: 28px; bottom: 25px; color: var(--rebrand-ink); font-size: .9rem; font-weight: 800; letter-spacing: .06em; }
+@keyframes rebrand-character-enter { from { opacity: 0; transform: translateY(72px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .rebrand-hero-index { position: absolute; bottom: 28px; left: max(36px, calc((100vw - 1220px) / 2)); font-size: .74rem; font-weight: 750; letter-spacing: .14em; }
 
 .rebrand-intro, .rebrand-fit { padding-top: clamp(96px, 9vw, 150px); padding-bottom: clamp(96px, 9vw, 150px); }
@@ -160,7 +168,7 @@
 @media (max-width: 900px) {
   .rebrand-hero { grid-template-columns: 1fr; }
   .rebrand-hero-copy { padding: 86px 36px 100px; }
-  .rebrand-hero-image { height: 480px; }
+  .rebrand-hero-character { height: 520px; }
   .rebrand-hero-index { display: none; }
   .rebrand-fit { grid-template-columns: 1fr; gap: 48px; }
 }
@@ -172,13 +180,14 @@
   .rebrand-header nav { gap: 0; }
   .rebrand-header nav a:not(.rebrand-header-cta) { display: none; }
   .rebrand-header nav .rebrand-header-cta { padding: 9px 12px; font-size: .82rem; }
-  .rebrand-hero-copy { padding: 70px 20px 73px; }
-  .rebrand-hero h1 { font-size: clamp(3.1rem, 11vw, 4.2rem); }
-  .rebrand-hero-copy > p { margin-top: 24px; font-size: 1rem; }
-  .rebrand-hero-actions { gap: 22px; margin-top: 32px; }
+  .rebrand-hero-copy { padding: 48px 20px 40px; }
+  .rebrand-hero-logo { width: min(100%, 280px); margin-top: 24px; }
+  .rebrand-hero h1 { margin-top: 30px; font-size: clamp(2.45rem, 9.2vw, 3.7rem); }
+  .rebrand-hero-copy > p { margin-top: 18px; font-size: 1rem; }
+  .rebrand-hero-actions { gap: 18px; margin-top: 24px; }
   .rebrand-button { width: 100%; }
-  .rebrand-hero-image { height: 345px; }
-  .rebrand-hero-image figcaption { right: 18px; bottom: 15px; }
+  .rebrand-hero-character { height: 480px; }
+  .rebrand-hero-character figcaption { right: 18px; bottom: 15px; }
   .rebrand-intro, .rebrand-fit { padding-top: 86px; padding-bottom: 86px; }
   .rebrand-section-heading h2 { font-size: clamp(2.36rem, 9vw, 3.2rem); }
   .rebrand-intro-body { grid-template-columns: 1fr; gap: 18px; margin-top: 35px; }

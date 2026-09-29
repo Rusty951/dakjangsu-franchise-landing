@@ -4,7 +4,9 @@
 
 - Added a local `?concept=rebrand` preview for franchise prospects using the approved Warm Ink BI and pilot interior concept images.
 - Labeled the space images as visualizations and left store dimensions, seating, materials, and construction costs subject to site review.
-- Reused the existing Kakao click tracking, lead form, privacy dialog, and footer. The default landing view and copy remain in place.
+- Reused the existing lead form, privacy dialog, and footer. The default landing view and copy remain in place.
+- Routed preview consultation links to the inquiry form because the currently configured Kakao open-chat link displays a deleted-link notice.
+- Revised the first screen around the approved BI and canonical 3D 닭장수 character, with a short upward entrance motion and a responsive mobile composition.
 - Cross-role note: Codex built the frontend preview to make the requested space and landing direction concrete for review. It has not been deployed.
 
 ## 2026-06-26 - Meta Pixel Account Switch

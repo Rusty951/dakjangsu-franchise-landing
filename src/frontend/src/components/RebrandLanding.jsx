@@ -1,6 +1,5 @@
 import './RebrandLanding.css';
 import { assetPath } from '../assetPath';
-import { trackEvent } from '../utils/tracking';
 import LeadCapture from './LeadCapture';
 import SiteFooter from './SiteFooter';
 import PrivacyPolicyDialog from './PrivacyPolicyDialog';
@@ -8,11 +7,6 @@ import { useState } from 'react';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-
-  const handleConsultation = (section) => {
-    trackEvent('click_kakao', { section });
-    onKakaoClick();
-  };
 
   return (
     <div className="rebrand-page" id="top">
@@ -31,23 +25,25 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
         <section className="rebrand-hero" aria-labelledby="rebrand-hero-title">
           <div className="rebrand-hero-copy">
             <span className="rebrand-eyebrow">닭장수후라이드 가맹 안내</span>
-            <h1 id="rebrand-hero-title">후라이드로 시작해,<br /><em>동네 저녁까지.</em></h1>
+            <img className="rebrand-hero-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="512" height="128" />
+            <h1 id="rebrand-hero-title">닭장수가 문을 열면,<br /><em>동네 저녁이 시작됩니다.</em></h1>
             <p>
-              포장 손님과 홀 손님이 함께 찾을 수 있는 치킨집을 준비하고 있습니다.
-              내 지역과 점포 조건에 맞는 운영 방식은 상담에서 함께 확인합니다.
+              후라이드 한 마리에서 동네 손님이 머무는 저녁까지.
+              새로운 매장 방향을 함께 살펴보세요.
             </p>
             <div className="rebrand-hero-actions">
-              <button type="button" className="rebrand-button rebrand-button--primary" onClick={() => handleConsultation('rebrand_hero')}>
-                카카오톡으로 가맹 상담하기 <span aria-hidden="true">↗</span>
-              </button>
-              <a className="rebrand-text-link" href="#rebrand-space">공간 콘셉트 보기 <span aria-hidden="true">↓</span></a>
+              <a className="rebrand-button rebrand-button--primary" href="#rebrand-space">
+                공간 콘셉트 보기 <span aria-hidden="true">↓</span>
+              </a>
             </div>
           </div>
-          <figure className="rebrand-hero-image">
-            <img src={assetPath('/images/dakjangsu-real-chicken-plate.png')} alt="접시에 담긴 닭장수후라이드 치킨" width="1200" height="900" fetchPriority="high" />
-            <figcaption>브랜드의 출발점, 후라이드</figcaption>
+          <figure className="rebrand-hero-character">
+            <div className="rebrand-character-window">
+              <img src={assetPath('/rebrand/character-3d.png')} alt="검은 갓과 앞치마를 입은 닭장수 캐릭터" width="1122" height="1402" fetchPriority="high" />
+            </div>
+            <figcaption>닭장수</figcaption>
           </figure>
-          <div className="rebrand-hero-index" aria-hidden="true">01 / FRANCHISE</div>
+          <div className="rebrand-hero-index" aria-hidden="true">BRAND CHARACTER / DAKJANGSU</div>
         </section>
 
         <section className="rebrand-intro rebrand-container" id="rebrand-model" aria-labelledby="rebrand-intro-title">
@@ -99,7 +95,7 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
           </div>
         </section>
 
-        <LeadCapture onKakaoClick={onKakaoClick} rebrandCopy />
+        <LeadCapture onKakaoClick={onKakaoClick} rebrandCopy hideKakao />
       </main>
 
       <SiteFooter socialLinks={socialLinks} onPrivacyClick={() => setIsPrivacyOpen(true)} />
