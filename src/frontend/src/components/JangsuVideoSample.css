@@ -1,0 +1,6 @@
+.jangsu-video-sample { position: relative; width: 100%; height: 100%; }
+.jangsu-video-sample img, .jangsu-video-sample canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; transition: opacity .45s ease; }
+.jangsu-video-sample canvas { opacity: 0; }
+.jangsu-video-sample[data-playing='true'] canvas { opacity: 1; }
+.jangsu-video-sample[data-playing='true'] img { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .jangsu-video-sample canvas { display: none; } .jangsu-video-sample img { opacity: 1 !important; transition: none; } }

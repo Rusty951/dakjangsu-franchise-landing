@@ -534,3 +534,10 @@
 - Rebuilt the final invitation around one large question, readable guidance, a prominent consultation link, and the three consultation topics. The character now stands beside the content; mobile sizing reserves the space between the heading and action. The form continues the ink, cream, and orange palette with larger labels and an existing character asset. Form submission and validation behavior are unchanged.
 - Verified the story at desktop content sizes 1688x1566, 1440x900, 1440x852, 1280x720, and 1280x672, plus mobile 375x667 and 375x619. All five benefit copy blocks end above chapter navigation with no horizontal overflow. Added extra compact-screen amount sizing after the short desktop check. Confirmed the invitation link reaches the form, mobile fields fit their container, and the growth actor still reaches its parked state after the reel settles.
 - Reviewed reduced-motion layout in source without changing OS preferences. Saved usable hero, invitation, and form screenshots in the draft output folder. Lint, production build, and diff whitespace checks passed. No form was submitted and no external deployment was performed.
+
+## 2026-09-29 — First-scene Omni motion sample
+- User explicitly requested inserting the downloaded Google Flow sample into the existing frontend.
+- Added the original 6-second 360x640 MP4 (497 KB) and a first-scene-only canvas renderer. Green dominance keying removes the background without cropping the source or intentionally removing its watermark. Audio is muted.
+- One playback per entry, then crossfade to original character. Reduced motion, visibility pause, load/play failure fallback and unmount cleanup included. Other scenes unchanged.
+- Desktop browser capture confirms hand raised over orange background; end state data-playing=false confirmed. This remains a low-resolution sample with slight green edge spill, not a final production motion asset.
+- Validation: lint and build passed; browser preview verified. No external deployment or additional generation.

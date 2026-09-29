@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
+import JangsuVideoSample from './JangsuVideoSample';
 import JangsuLiftMotion from './JangsuLiftMotion';
 import SlotNumber from './SlotNumber';
 import './RebrandScrollStory.css';
@@ -242,7 +243,7 @@ export default function RebrandScrollStory() {
           </div>
           <img className="jangsu-invite-static" src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
         </article>
-        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{(active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 0 || active === 6} />}</div>
+        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuVideoSample /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer"><span>SCROLL TO EXPLORE ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
       </div>
