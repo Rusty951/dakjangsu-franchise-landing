@@ -503,3 +503,12 @@
 - Added a single orange background reveal and stronger number settling motion tied to the existing final-reel completion state. Reduced-motion mode shows the final orange state without animation.
 - Verified desktop content viewport 1440x852 and short mobile 375x619: final amount visible, conditions above navigation, no horizontal overflow. Saved the desktop result alongside the prior audit screenshots.
 - Lint, production build, and diff whitespace checks passed. No external deployment.
+
+## 2026-09-29 - Character lift prototype for monthly support
+
+- Implemented the user's approved 100만원 prototype in the existing frontend. Created preparation, intermediate, and overhead poses with built-in ImageGen from the existing character. Stored transparent WebP assets and complete prompts in `docs/rebrand-lift-motion.md`.
+- Added a 4.2-second character performance with a synchronized amount lift, delayed slot start, final-reel background reveal, and a move to a reserved reading position. Readable terms appear after the actor's animation completes. Kept the monthly maximum and all benefit terms unchanged.
+- Measured the number's untransformed layout to align palms with its lower edge. Added a mobile note lane so the final character stays 120px tall on the checked short phone, and kept the character above the chapter navigation.
+- Added decoded-image gating, existing-character fallback on image failure, re-entry and same-chapter replay, reduced-motion static presentation, and shared offscreen/hidden animation pausing.
+- Browser checks: actual 1440x852 and 375x619 content viewports, all three poses, final reel event and orange transition, final reading state, keyboard replay, and scroll exit/re-entry. No horizontal overflow. Desktop conditions end at 728px above navigation at 779px. Mobile conditions end at 500px above navigation at 552px; the character occupies the reserved right-hand lane.
+- Reduced-motion and load-failure branches were reviewed in code, without changing OS settings or injecting network failure. Lint, production build, and diff whitespace checks passed. Saved browser evidence in the draft output folder. No external deployment.

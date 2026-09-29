@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
+import JangsuLiftMotion from './JangsuLiftMotion';
 import SlotNumber from './SlotNumber';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
@@ -28,6 +29,27 @@ export default function RebrandScrollStory() {
   const [active, setActive] = useState(0);
   const [settled, setSettled] = useState(-1);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [liftAssets, setLiftAssets] = useState('loading');
+  const [liftReplay, setLiftReplay] = useState(0);
+  const [liftParked, setLiftParked] = useState(false);
+  const liftReady = liftAssets === 'ready' && !reducedMotion;
+  const liftStatus = reducedMotion ? 'static' : liftAssets === 'ready' ? (liftParked ? 'parked' : 'playing') : liftAssets;
+
+  useEffect(() => {
+    let disposed = false;
+    // Decode all keys before starting the act so the raised hands never pop in late.
+    const images = ['ready', 'mid', 'push'].map(pose => {
+      const image = new Image();
+      image.src = assetPath(`/rebrand/character-lift-${pose}.webp`);
+      return image.decode();
+    });
+    Promise.all(images).then(() => {
+      if (!disposed) setLiftAssets('ready');
+    }).catch(() => {
+      if (!disposed) setLiftAssets('error');
+    });
+    return () => { disposed = true; };
+  }, []);
 
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -67,10 +89,11 @@ export default function RebrandScrollStory() {
         lastActive = current;
         setActive(current);
         setSettled(-1);
+        setLiftParked(false);
       }
       const frames = window.innerWidth <= 700 ? mobileFrames : desktopFrames;
       // Keep the host in the active chapter's reserved lane at every scroll offset.
-      // The inner puppet animates its arrival; it never crosses live reading copy.
+      // The lift actor uses this same lane after its opening performance.
       const values = [...frames[current]];
       if (current >= 1 && current <= 5) {
         values[0] = window.innerWidth <= 700 ? frames[current][0] : (current % 2 ? 85 : 16);
@@ -127,6 +150,12 @@ export default function RebrandScrollStory() {
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
       return;
     }
+    if (index === 5 && active === 5) {
+      setSettled(-1);
+      setLiftParked(false);
+      setLiftReplay(replay => replay + 1);
+      return;
+    }
     const top = window.scrollY + track.getBoundingClientRect().top - header;
     window.scrollTo({ top: top + (track.offsetHeight - stage.offsetHeight) * index / (chapters.length - 1), behavior: 'smooth' });
   };
@@ -137,7 +166,7 @@ export default function RebrandScrollStory() {
 
   return (
     <section className="jangsu-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
-      <div className="jangsu-stage" ref={stageRef} data-scene={active} data-settled={reducedMotion || settled === active}>
+      <div className="jangsu-stage" ref={stageRef} data-scene={active} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <div className="jangsu-stage-kicker"><span>DAKJANGSU FRIED CHICKEN</span><span>닭장수가 보여드릴게요</span></div>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
@@ -154,7 +183,13 @@ export default function RebrandScrollStory() {
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 1)}>
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 1} / 05 OPENING BENEFITS</span>
-              <h2><span>{benefit.label}</span><strong><SlotNumber value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></strong><b>{benefit.title}</b></h2>
+              <h2>
+                <span>{benefit.label}</span>
+                <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
+                  <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
+                </span> : <><SlotNumber value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
+                <b>{benefit.title}</b>
+              </h2>
               {benefit.detail && <p className="benefit-scene-detail">{benefit.detail}</p>}
               <p className="benefit-scene-note">{benefit.note}</p>
               <a href="#rebrand-benefits">전체 지원 내용과 조건 보기 ↗</a>
@@ -164,7 +199,8 @@ export default function RebrandScrollStory() {
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(6)}>
           <span className="jangsu-scene-number">YOUR NEIGHBORHOOD</span><h2>내 점포에는<br />어떤 혜택이?</h2><div className="jangsu-invite-copy"><p>점포가 있어도, 아직 없어도.<br />희망 지역부터 알려주세요.</p><a href="#lead-capture">내 점포 혜택 상담 <span aria-hidden="true">↗</span></a></div>
         </article>
-        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true"><JangsuMotion scene={active} greeting={active === 0 || active === 6} /></div>
+        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{(active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 0 || active === 6} />}</div>
+        {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer"><span>SCROLL TO EXPLORE ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
       </div>
     </section>

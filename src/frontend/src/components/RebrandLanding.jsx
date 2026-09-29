@@ -8,6 +8,7 @@ import RebrandScrollStory from './RebrandScrollStory';
 import './RebrandBenefits.css';
 import './RebrandRefinement.css';
 import './RebrandImpact.css';
+import './JangsuLiftMotion.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);

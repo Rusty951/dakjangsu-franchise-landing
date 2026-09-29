@@ -2,7 +2,7 @@
 .slot-number-accessible { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .slot-number-reels { display: inline-flex; gap: 0; font-variant-numeric: tabular-nums; }
 .slot-number-window { display: inline-block; height: 1em; width: .56em; overflow: hidden; vertical-align: bottom; }
-.slot-number-strip { display: flex; flex-direction: column; animation: reel-roll var(--reel-duration) cubic-bezier(.12,.78,.16,1) both; }
+.slot-number-strip { display: flex; flex-direction: column; animation: reel-roll var(--reel-duration) var(--reel-delay, 0s) cubic-bezier(.12,.78,.16,1) both; }
 .slot-number-strip > span, .slot-number-still { display: block; flex-shrink: 0; height: 1em; line-height: 1em; text-align: center; }
 .slot-number[data-spinning='true'] .slot-number-window { animation: reel-seat .28s var(--reel-seat-delay) ease-out both; }
 @keyframes reel-roll {
