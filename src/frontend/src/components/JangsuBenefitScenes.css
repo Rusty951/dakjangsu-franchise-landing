@@ -58,3 +58,31 @@
   .benefit-scene--kitchen { background: #d86535; color: #241f1b; }
   .benefits-intro button { display: none; }
 }
+
+/* Review fixes: legible at every scroll offset, and reachable on short phones. */
+.jangsu-panel--benefit[aria-hidden='false'] .benefit-scene-copy { animation: benefit-chapter-enter .32s cubic-bezier(.16,1,.3,1); }
+@keyframes benefit-chapter-enter { from { transform: translateY(18px); } to { transform: translateY(0); } }
+.jangsu-stage-footer nav { align-items: stretch; }
+.jangsu-stage-footer button { min-height: 44px; min-width: 30px; }
+@media (max-width: 700px) {
+  .jangsu-stage { min-height: 0; }
+  .jangsu-stage-footer nav { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; padding-inline: 5px; }
+  .jangsu-stage-footer button { width: 100%; min-width: 0; }
+  .benefit-scene-note { font-size: 11px; opacity: 1; }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .benefit-scene-copy { top: 9%; }
+  .benefit-scene-index { margin-bottom: 14px; }
+  .benefit-scene-copy h2 > span { font-size: 20px; }
+  .benefit-scene-copy h2 > strong { font-size: clamp(90px,30vw,122px); }
+  .benefit-scene-copy h2 > b { font-size: 26px; }
+  .benefit-scene-detail { margin-top: 18px; font-size: 12px; line-height: 1.6; }
+  .benefit-scene-note { margin-top: 10px; max-width: 75%; line-height: 1.6; }
+  .jangsu-panel .benefit-scene-copy a { margin-top: 7px; }
+  .benefits-intro { top: 24%; }
+  .jangsu-panel--welcome .benefits-intro h1 { font-size: 29px; }
+  .benefits-intro-note { bottom: 18%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-panel--benefit .benefit-scene-copy { animation: none !important; }
+}

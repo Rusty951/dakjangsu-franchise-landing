@@ -1,5 +1,13 @@
 # Worklog
 
+## 2026-09-29 - Multi-perspective Review and Readability Fixes
+
+- Applied requested devil's advocate, reframing and content review alongside Product Design screen/accessibility criteria. Findings and limits are recorded in design-qa.md; this is self-review, not independent customer validation.
+- Found a real intermediate-scroll defect: current/next panels simultaneously rendered at 0.227/0.073 opacity. Replaced continuous text opacity with one opaque active panel, retaining continuous character position and a short chapter entrance.
+- Fixed 320x568 viewport clipping, enlarged chapter hit areas from as little as 16.56px width to roughly 38.57x44px, and improved qualification type size. Retested native scroll before and after a chapter boundary.
+- Added semantic required states for four existing mandatory form fields and associated consent errors. Consultation navigation and DOM semantics verified; no lead submitted.
+- Build/lint/diff checks passed. Full saved-screenshot audit, real-user comprehension, conversion outcomes and promotion activation remain unverified.
+
 ## 2026-09-29 - One Benefit per Scroll Screen
 
 - User clarified during implementation that each scroll screen should feature one benefit. Replaced the temporary timed three-card entrance with native scroll chapters: brand introduction, fee exemption 440만원, opening package 740만원, kitchen 500만원, royalty exemption 2 years, monthly logistics credit up to 100만원, consultation.

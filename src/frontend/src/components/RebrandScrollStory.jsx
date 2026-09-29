@@ -75,8 +75,10 @@ export default function RebrandScrollStory() {
       character.style.height = `${values[1]}%`;
       character.style.bottom = `${values[2]}%`;
       stage.style.setProperty('--chapter-progress', `${progress / (chapters.length - 1) * 100}%`);
+      // Keep the reading surface opaque even when scrolling stops between
+      // chapter centers. Only the character interpolates continuously.
       panels.forEach((panel, i) => {
-        if (panel) panel.style.opacity = String(clamp(1 - Math.abs(progress - i) * 1.7, 0, 1));
+        panel.style.opacity = i === current ? '1' : '0';
       });
     };
     const requestPaint = () => {

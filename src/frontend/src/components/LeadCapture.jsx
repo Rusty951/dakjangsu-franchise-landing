@@ -287,6 +287,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
               <input
                 id="lead-name"
                 name="name"
+                required
                 type="text"
                 autoComplete="name"
                 value={formData.name}
@@ -306,6 +307,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
               <input
                 id="lead-phone"
                 name="phone"
+                required
                 type="tel"
                 inputMode="tel"
                 autoComplete="tel"
@@ -327,6 +329,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
               <input
                 id="lead-region"
                 name="region"
+                required
                 type="text"
                 autoComplete="address-level2"
                 placeholder="예: 천안, 성수동, 부산 해운대"
@@ -407,10 +410,12 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
               <input
                 id="lead-privacy-consent"
                 name="privacyConsent"
+                required
                 type="checkbox"
                 checked={formData.privacyConsent}
                 onChange={handleFieldChange}
                 aria-invalid={Boolean(errors.privacyConsent)}
+                aria-describedby={errors.privacyConsent ? 'lead-consent-error' : undefined}
               />
               <span>개인정보 수집 및 이용에 동의합니다.</span>
             </label>
@@ -418,7 +423,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
               개인정보 처리방침 보기
             </button>
           </div>
-          {errors.privacyConsent && <small className="consultation-field-error">{errors.privacyConsent}</small>}
+          {errors.privacyConsent && <small id="lead-consent-error" className="consultation-field-error">{errors.privacyConsent}</small>}
 
           <button className="consultation-submit" type="submit" disabled={status === 'submitting'}>
             {status === 'submitting' ? '문의 접수 중' : '상담 문의 남기기'}
