@@ -4,9 +4,9 @@ import './JangsuMotion.css';
 
 // A layered 2D puppet. Both poses retain their original raster assets;
 // SVG clips articulate the hands without regenerating frames in JavaScript.
-export default function JangsuMotion({ scene }) {
+export default function JangsuMotion({ scene, greeting = false }) {
   const id = useId().replaceAll(':', '');
-  const waving = scene === 0 || scene === 4;
+  const waving = greeting;
   const pose = waving ? 'wave' : 'explain';
   const source = assetPath(`/rebrand/character-${waving ? 'wave' : 'cutout'}.png`);
   const hand = waving

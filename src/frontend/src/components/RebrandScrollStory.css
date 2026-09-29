@@ -1,6 +1,6 @@
 .jangsu-story {
   position: relative;
-  height: 520svh;
+  height: 420svh;
 }
 .jangsu-stage {
   --chapter-progress: 0%;
@@ -14,9 +14,9 @@
   color: #241f1b;
   transition: background-color .35s, color .35s;
 }
-.jangsu-stage[data-scene='1'] { background: #f7efe4; color: #241f1b; }
+.jangsu-stage[data-scene='1'] { background: #241f1b; color: #f7efe4; }
 .jangsu-stage[data-scene='2'] { background: #241f1b; color: #f7efe4; }
-.jangsu-stage[data-scene='3'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='3'] { background: #d86535; color: #241f1b; }
 .jangsu-stage::after {
   content: '';
   position: absolute;
@@ -242,7 +242,7 @@
   .jangsu-invite-copy { width: 29%; right: 3%; }
 }
 @media (max-width: 700px) {
-  .jangsu-story { height: 490svh; }
+  .jangsu-story { height: 390svh; }
   .jangsu-stage { top: 66px; height: calc(100svh - 66px); min-height: 520px; }
   .jangsu-stage-kicker { top: 18px; left: 20px; right: 20px; font-size: 8px; }
   .jangsu-stage-kicker span:first-child { display: none; }

@@ -1,0 +1,60 @@
+/* Each native-scroll chapter devotes the viewport to exactly one benefit. */
+.jangsu-story { height: 740svh; }
+.hero-stage-logo { z-index: 0; opacity: 0; transition: opacity .25s; pointer-events: none; }
+.jangsu-stage[data-scene='0'] .hero-stage-logo { opacity: 1; }
+.jangsu-stage[data-scene='1'] { background: #f7efe4; color: #241f1b; }
+.jangsu-stage[data-scene='2'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='3'] { background: #d86535; color: #241f1b; }
+.jangsu-stage[data-scene='4'] { background: #f7efe4; color: #241f1b; }
+.jangsu-stage[data-scene='5'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='6'] { background: #d86535; color: #241f1b; }
+.benefits-intro { position: absolute; left: 5%; top: 45%; }
+.jangsu-panel--welcome .benefits-intro h1 { position: static; max-width: none; font-size: clamp(32px,4vw,64px); }
+.benefits-intro button { color: inherit; font: inherit; font-size: 13px; background: transparent; padding: 15px 0; margin-top: 18px; border: 0; border-bottom: 1px solid currentColor; cursor: pointer; }
+.benefits-intro-note { position: absolute; right: 5%; bottom: 22%; width: 21%; font-size: 12px; }
+.benefit-scene-copy { position: absolute; top: 10%; left: 5%; width: 68%; }
+.benefit-scene-index { display: block; font-size: 11px; letter-spacing: .13em; margin-bottom: 25px; }
+.benefit-scene-copy h2 { display: flex; flex-direction: column; }
+.benefit-scene-copy h2 > span { font-size: clamp(23px,3vw,44px); letter-spacing: -.04em; }
+.benefit-scene-copy h2 > strong { font-family: Arial,sans-serif; font-size: clamp(150px,22vw,340px); line-height: 1.02; letter-spacing: -.08em; white-space: nowrap; }
+.benefit-scene-copy h2 small { font: 750 clamp(23px,3.4vw,48px) sans-serif; letter-spacing: -.05em; margin-left: 16px; }
+.benefit-scene-copy h2 > b { font-size: clamp(35px,4.7vw,70px); line-height: 1.1; letter-spacing: -.055em; }
+.benefit-scene-detail { max-width: 640px; font-size: 16px; margin-top: 28px; line-height: 1.7; }
+.benefit-scene-note { max-width: 620px; font-size: 11px; margin-top: 10px; line-height: 1.7; opacity: .85; }
+.jangsu-panel .benefit-scene-copy a { font-size: 12px; margin-top: 8px; padding-block: 8px; }
+.benefit-scene--opening h2 > strong, .benefit-scene--growth h2 > strong { color: #ed9b6e; }
+.jangsu-stage-footer nav { gap: 16px; }
+@media (max-height: 800px) and (min-width: 701px) {
+  .benefit-scene-copy { top: 9%; }
+  .benefit-scene-index { margin-bottom: 15px; }
+  .benefit-scene-copy h2 > strong { font-size: min(20vw,230px); }
+  .benefit-scene-copy h2 > b { font-size: 45px; }
+  .benefit-scene-detail { font-size: 14px; margin-top: 18px; }
+}
+@media (max-width: 700px) {
+  .jangsu-story { height: 700svh; }
+  .benefits-intro { top: 26%; left: 20px; }
+  .jangsu-panel--welcome .benefits-intro h1 { font-size: 36px; }
+  .benefits-intro button { font-size: 11px; }
+  .benefits-intro-note { left: 20px; right: auto; width: 43%; bottom: 18%; font-size: 10px; }
+  .benefit-scene-copy { top: 12%; left: 20px; right: 20px; width: auto; }
+  .benefit-scene-index { font-size: 9px; margin-bottom: 25px; }
+  .benefit-scene-copy h2 > span { font-size: 23px; }
+  .benefit-scene-copy h2 > strong { font-size: clamp(110px,34vw,195px); line-height: 1.12; }
+  .benefit-scene-copy h2 small { font-size: clamp(20px,5vw,29px); margin-left: 8px; }
+  .benefit-scene-copy h2 > b { font-size: clamp(27px,7.6vw,43px); }
+  .benefit-scene-detail { font-size: 13px; margin-top: 28px; max-width: 86%; }
+  .benefit-scene-note { font-size: 10px; max-width: 72%; margin-top: 14px; }
+  .jangsu-panel .benefit-scene-copy a { font-size: 10px; margin-top: 12px; }
+  .jangsu-stage-footer nav { gap: 3px; padding-inline: 9px; }
+  .jangsu-stage-footer button { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-story { height: auto; }
+  .jangsu-stage .hero-stage-logo { opacity: 1; }
+  .jangsu-stage .jangsu-panel--benefit { min-height: 800px; }
+  .benefit-scene--fee, .benefit-scene--royalty { background: #f7efe4; color: #241f1b; }
+  .benefit-scene--opening, .benefit-scene--growth { background: #241f1b; color: #f7efe4; }
+  .benefit-scene--kitchen { background: #d86535; color: #241f1b; }
+  .benefits-intro button { display: none; }
+}

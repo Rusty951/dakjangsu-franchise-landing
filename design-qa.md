@@ -86,3 +86,9 @@ Inspected desktop 1280x720 welcome and intermediate scenes, mobile 390x844 welco
 Hero prioritizes 440만원 fee exemption and two years of royalty exemption, marked as draft proposals. Second scroll chapter now introduces the 740만원 opening package. Detailed benefits immediately follow the story, ahead of product and interior details. Package breakdown is 440 + 100 + 200, without double counting kitchen/royalty/growth offers. Eligibility details and non-cash explanation remain.
 
 Observed desktop 1280x720 and mobile 390x844 hero, support scene and package detail. Large amounts and their qualifiers remain visible; no horizontal page overflow. One active story panel, correct chapter order, benefit details before menu, and consultation anchor verified. Build/lint/diff checks passed. Local review only.
+
+## One benefit per scroll screen
+
+Latest user clarification supersedes the timed multi-card hero experiment. Seven native-scroll scenes now introduce the character, then devote a viewport each to fee exemption, opening package, kitchen support, royalty exemption and logistics credit, followed by consultation. Menu and space content remain later in the document. Numeric totals, conditions and 740만원 inclusion of 440만원 are preserved.
+
+Browser: 390x844 fee, opening and kitchen inspected; native scroll moved from fee to opening. 1280x800 royalty and logistics scenes inspected. Seven panels, one active at rest, no horizontal overflow. Static reduced-motion path source-reviewed. Build/lint/diff checks passed. Screenshots inspected inline.

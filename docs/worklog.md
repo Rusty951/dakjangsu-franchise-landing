@@ -1,5 +1,12 @@
 # Worklog
 
+## 2026-09-29 - One Benefit per Scroll Screen
+
+- User clarified during implementation that each scroll screen should feature one benefit. Replaced the temporary timed three-card entrance with native scroll chapters: brand introduction, fee exemption 440만원, opening package 740만원, kitchen 500만원, royalty exemption 2 years, monthly logistics credit up to 100만원, consultation.
+- Product and space storytelling moved out of the sticky story; their ordinary detail sections remain after the benefits sequence. Each benefit now has a large numeric heading, explanation and local qualification. The 740만원 scene explicitly includes the earlier 440만원, preventing double counting.
+- Character moves with scrolling and retains wrist gestures. Greeting pose follows the first and final scene explicitly, instead of assuming the old scene count. No timed carousel, scroll interception or auto advance. Reduced-motion fallback stacks static chapters.
+- QA: mobile 390x844 fee/opening/kitchen scenes, actual native scroll advances fee to opening, desktop 1280x800 royalty/growth scenes. Seven panels total, one active panel at rest, no horizontal overflow. Build/lint/diff checks passed. No form submission, paid generation or deployment.
+
 ## 2026-09-29 - Benefit-first Landing
 
 - User requested maximum emphasis on franchise benefits. Applied Copywrite and existing Korean Style QA/Voice guidance to the revised preview copy.
