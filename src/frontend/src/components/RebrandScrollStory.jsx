@@ -8,16 +8,16 @@ import './JangsuBenefitScenes.css';
 
 const chapters = ['닭장수', '가맹비', '오픈', '주방', '로열티', '운영', '상담'];
 const desktopFrames = [
-  [50, 83, -1], [84, 67, -8], [17, 70, -8], [84, 67, -8], [18, 71, -8], [85, 65, -8], [50, 76, -31],
+  [51, 78, 4], [84, 67, -8], [17, 70, -8], [84, 67, -8], [18, 71, -8], [85, 65, -8], [81, 80, 8],
 ];
 const mobileFrames = [
-  [66, 64, 0], [85, 30, -2], [18, 26, -2], [85, 30, -2], [18, 26, -2], [85, 30, -2], [57, 58, 3],
+  [73, 44, 35], [85, 30, -2], [18, 26, -2], [85, 30, -2], [18, 26, -2], [85, 30, -2], [78, 46, 20],
 ];
 const benefits = [
-  { id: 'fee', label: '가맹비와 교육비', amount: '440', unit: '만원', title: '전액 면제안', detail: '가맹비 275만원 + 교육비 165만원. 부가세를 포함한 합계입니다.', note: '2026년 8월 신규 가맹 혜택 초안. 시행 여부와 적용 조건은 본사 확인이 필요합니다.' },
-  { id: 'opening', label: '문 여는 준비를 함께', amount: '740', unit: '만원 상당', title: '오픈 패키지안', detail: '앞서 본 440만원 면제에, 생닭 200수 100만원 상당과 오픈 마케팅 200만원 상당을 포함한 합계입니다.', note: '440만원과 별도로 더해지는 금액이 아닙니다. 현금 지급이 아닌 면제와 현물, 마케팅 지원안입니다.' },
-  { id: 'kitchen', label: '주방을 준비할 때도', amount: '500', unit: '만원 상당', title: '주방 지원안', detail: '간냉식 냉장고 300만원 상당 + 최신형 튀김기 200만원 상당.', note: '조건 충족 매장 중 선착순 5개점 대상안. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건이 있습니다.' },
-  { id: 'royalty', label: '매달 내는 로열티,', amount: '0', unit: '원', title: '첫 2년 전액 면제안', note: '정상 로열티 월 매출액 3.3%를 최초 계약 2년간 면제하는 안입니다. 시행 여부와 최종 적용 조건은 본사 확인이 필요합니다.' },
+  { id: 'fee', label: '가맹비와 교육비', amount: '440', unit: '만원', title: '전액 면제안', facts: [['가맹비', '275만원'], ['교육비', '165만원']], detail: '부가세를 포함한 합계입니다.', note: '2026년 8월 신규 가맹 혜택 초안. 시행 여부와 적용 조건은 본사 확인이 필요합니다.' },
+  { id: 'opening', label: '문 여는 준비를 함께', amount: '740', unit: '만원 상당', title: '오픈 패키지안', facts: [['가맹비 + 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']], note: '앞서 본 440만원 면제를 포함한 합계입니다. 현금 지급이 아닌 면제와 현물, 마케팅 지원안입니다.' },
+  { id: 'kitchen', label: '주방을 준비할 때도', amount: '500', unit: '만원 상당', title: '주방 지원안', facts: [['간냉식 냉장고', '300만원 상당'], ['최신형 튀김기', '200만원 상당']], note: '조건 충족 매장 중 선착순 5개점 대상안. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건이 있습니다.' },
+  { id: 'royalty', label: '매달 내는 로열티,', amount: '0', unit: '원', title: '첫 2년 전액 면제안', facts: [['정상 로열티', '월 매출액 3.3%']], note: '최초 계약 2년간 면제하는 혜택 초안입니다. 시행 여부와 최종 적용 조건은 본사 확인이 필요합니다.' },
   { id: 'growth', label: '매출 기준 달성 시, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '개점월부터 12개월 내 달성 월에 적용하는 안입니다.', note: '매출 증빙 제출 후 익월 물류대금에서 차감합니다. 현금 지급이나 매출 보장을 뜻하지 않습니다.' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -114,6 +114,22 @@ export default function RebrandScrollStory() {
           values[2] = (stage.offsetHeight - characterBottom) / stage.offsetHeight * 100;
         }
       }
+      if (current === 6) {
+        const stageTop = stage.getBoundingClientRect().top;
+        const invite = panels[current];
+        if (window.innerWidth <= 700) {
+          const headingBottom = invite.querySelector('h2').getBoundingClientRect().bottom - stageTop;
+          const actionTop = invite.querySelector('.jangsu-invite-copy a').getBoundingClientRect().top - stageTop;
+          values[1] = Math.max(0, actionTop - headingBottom - 32) / stage.offsetHeight * 100;
+          values[2] = (stage.offsetHeight - actionTop + 12) / stage.offsetHeight * 100;
+        } else {
+          const copyBottom = invite.querySelector('.jangsu-invite-content').getBoundingClientRect().bottom - stageTop;
+          const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageTop;
+          const visualHeight = Math.min(stage.offsetHeight * .8, Math.min(window.innerWidth * .4, 760) * 1402 / 1122);
+          const characterBottom = Math.min(footerTop - 16, Math.max(copyBottom + 36, visualHeight + 60));
+          values[2] = (stage.offsetHeight - characterBottom) / stage.offsetHeight * 100;
+        }
+      }
       character.style.left = `${values[0]}%`;
       character.style.height = `${values[1]}%`;
       character.style.bottom = `${values[2]}%`;
@@ -133,7 +149,7 @@ export default function RebrandScrollStory() {
     const observer = new ResizeObserver(requestPaint);
     observer.observe(trackRef.current);
     panels.forEach(panel => {
-      const copy = panel.querySelector('.benefit-scene-copy');
+      const copy = panel.querySelector('.benefit-scene-copy, .jangsu-invite-content');
       if (copy) observer.observe(copy);
     });
     paint();
@@ -179,7 +195,7 @@ export default function RebrandScrollStory() {
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
           <img className="jangsu-reduced-character" src={assetPath('/rebrand/character-cutout.png')} alt="닭장수 캐릭터" width="1122" height="1402" />
-          <div className="benefits-intro"><h1>창업 혜택,<br />이만큼.</h1><button type="button" onClick={() => goToChapter(1)}>스크롤해서 혜택 보기 ↓</button></div>
+          <div className="benefits-intro"><span className="benefits-intro-label">닭장수의 창업 지원안</span><h1>창업 혜택,<br /><em>이만큼.</em></h1><button type="button" onClick={() => goToChapter(1)}>혜택 하나씩 만나보기 <span aria-hidden="true">↓</span></button></div>
           <div className="benefits-preview" aria-label="주요 창업 혜택 초안">
             <button type="button" onClick={() => goToChapter(1)}><span>가맹비와 교육비 면제안</span><strong>440<small>만원</small></strong></button>
             <button type="button" onClick={() => goToChapter(3)}><span>조건 충족 매장 주방 지원안</span><strong>500<small>만원 상당</small></strong></button>
@@ -203,14 +219,28 @@ export default function RebrandScrollStory() {
                   {benefit.tiers.map(tier => <div key={tier.sales}><dt>월 매출 {tier.sales} 이상</dt><dd>{tier.credit}</dd></div>)}
                 </dl>
                 <p className="growth-support-term">{benefit.detail}</p>
-              </div> : benefit.detail && <p className="benefit-scene-detail">{benefit.detail}</p>}
+              </div> : <div className="benefit-scene-detail benefit-facts">
+                <dl aria-label={`${benefit.title} 구성`}>
+                  {benefit.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+                </dl>
+                {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
+              </div>}
               <p className="benefit-scene-note">{benefit.note}</p>
               <a href="#rebrand-benefits">전체 지원 내용과 조건 보기 ↗</a>
             </div>
           </article>
         ))}
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(6)}>
-          <span className="jangsu-scene-number">YOUR NEIGHBORHOOD</span><h2>내 점포에는<br />어떤 혜택이?</h2><div className="jangsu-invite-copy"><p>점포가 있어도, 아직 없어도.<br />희망 지역부터 알려주세요.</p><a href="#lead-capture">내 점포 혜택 상담 <span aria-hidden="true">↗</span></a></div>
+          <div className="jangsu-invite-content">
+            <span className="jangsu-scene-number">YOUR NEXT CHAPTER</span>
+            <h2>내 점포에는<br />어떤 혜택이?</h2>
+            <div className="jangsu-invite-copy">
+              <p>점포가 있어도, 아직 없어도.<br />희망 지역부터 함께 확인해요.</p>
+              <a href="#lead-capture">내 점포 혜택 상담 <span aria-hidden="true">↗</span></a>
+              <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
+            </div>
+          </div>
+          <img className="jangsu-invite-static" src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{(active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 0 || active === 6} />}</div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}

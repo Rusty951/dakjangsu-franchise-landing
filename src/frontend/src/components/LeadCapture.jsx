@@ -3,6 +3,7 @@ import './LeadCapture.css';
 import PrivacyPolicyDialog from './PrivacyPolicyDialog';
 import { trackEvent } from '../utils/tracking';
 import { getLandingAttribution } from '../utils/attribution';
+import { assetPath } from '../assetPath';
 
 const leadApiEndpoint = import.meta.env.VITE_LEAD_API_ENDPOINT || '/api/leads';
 
@@ -263,6 +264,10 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
             </>
           )}
         </p>
+        {rebrandCopy && <div className="consultation-host">
+          <p>점포가 아직 없어도 괜찮습니다.<br />희망 지역부터 남겨주세요.</p>
+          <img src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
+        </div>}
         {!hideKakao && (
           <button className="consultation-kakao" onClick={handleKakaoClick}>
             카카오톡으로 우리동네 창업 확인하기
