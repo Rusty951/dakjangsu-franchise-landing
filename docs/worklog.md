@@ -1,5 +1,12 @@
 # Worklog
 
+## 2026-09-29 - Traveling Host and Slot Number Motion
+
+- Implemented the user's explicit frontend motion request: alternating left/right mascot positions with an eased lower crossing path, arrival tilt and existing wrist gestures.
+- Added per-digit vertical reels to the five benefit amounts. Two full numeric cycles decelerate into the final digit in 1.6 seconds plus 0.22 seconds per subsequent digit, followed by a small settling bounce. Re-entry restarts the effect. Screen readers receive the final number only.
+- Browser QA at 1280x800, 390x844 and 320x568: observed moving reel transforms and exact final 440/740/500, no horizontal overflow on tested phones. Fixed observed character overlap during intermediate desktop scroll by lowering the crossing path and placing benefit text above the character.
+- Paused motion offscreen/when hidden, retained static reduced-motion fallback. Reduced-motion source reviewed, OS setting not toggled. Build/lint passed; no lead submission or deployment.
+
 ## 2026-09-29 - Multi-perspective Review and Readability Fixes
 
 - Applied requested devil's advocate, reframing and content review alongside Product Design screen/accessibility criteria. Findings and limits are recorded in design-qa.md; this is self-review, not independent customer validation.

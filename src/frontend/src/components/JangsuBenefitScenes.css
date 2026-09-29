@@ -86,3 +86,21 @@
 @media (prefers-reduced-motion: reduce) {
   .jangsu-panel--benefit .benefit-scene-copy { animation: none !important; }
 }
+
+/* Give the traveling host a real left/right path and reserve the opposite side. */
+@media (min-width: 701px) {
+  .benefit-scene--opening .benefit-scene-copy,
+  .benefit-scene--royalty .benefit-scene-copy { left: 40%; width: 55%; }
+}
+.jangsu-panel--benefit { z-index: 4; }
+.benefit-scene-copy h2 > strong { display: flex; align-items: baseline; }
+.benefit-scene-copy h2 > strong > small { flex-shrink: 0; }
+/* A restrained arrival tilt rides inside the outer scroll positioning. */
+.jangsu-stage[data-scene='2'] .jangsu-puppet,
+.jangsu-stage[data-scene='4'] .jangsu-puppet { animation: jangsu-slide-left .7s cubic-bezier(.16,1,.3,1) both; }
+.jangsu-stage[data-scene='1'] .jangsu-puppet,
+.jangsu-stage[data-scene='3'] .jangsu-puppet,
+.jangsu-stage[data-scene='5'] .jangsu-puppet { animation: jangsu-slide-right .7s cubic-bezier(.16,1,.3,1) both; }
+@keyframes jangsu-slide-left { from { transform: translateX(30px) rotate(3deg); } to { transform: translateX(0) rotate(0); } }
+@keyframes jangsu-slide-right { from { transform: translateX(-30px) rotate(-3deg); } to { transform: translateX(0) rotate(0); } }
+@media (prefers-reduced-motion: reduce) { .jangsu-stage .jangsu-puppet { animation: none; } }

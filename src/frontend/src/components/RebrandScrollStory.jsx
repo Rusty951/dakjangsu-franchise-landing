@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
+import SlotNumber from './SlotNumber';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
 const chapters = ['닭장수', '가맹비', '오픈', '주방', '로열티', '운영', '상담'];
 const desktopFrames = [
-  [50, 83, -1], [84, 67, -8], [85, 65, -8], [84, 67, -8], [83, 71, -8], [85, 65, -8], [50, 76, -31],
+  [50, 83, -1], [84, 67, -8], [17, 70, -8], [84, 67, -8], [18, 71, -8], [85, 65, -8], [50, 76, -31],
 ];
 const mobileFrames = [
-  [66, 64, 0], [85, 33, -2], [85, 33, -2], [85, 33, -2], [85, 33, -2], [85, 33, -2], [57, 58, 3],
+  [66, 64, 0], [85, 30, -2], [18, 26, -2], [85, 30, -2], [18, 26, -2], [85, 30, -2], [57, 58, 3],
 ];
 const benefits = [
   { id: 'fee', label: '가맹비와 교육비', amount: '440', unit: '만원', title: '면제안', detail: '가맹비 275만원 + 교육비 165만원. 부가세를 포함한 합계입니다.', note: '2026년 8월 신규 가맹 혜택 초안. 시행 여부와 적용 조건은 본사 확인이 필요합니다.' },
@@ -71,6 +72,17 @@ export default function RebrandScrollStory() {
       const fraction = progress - from;
       const eased = fraction * fraction * (3 - 2 * fraction);
       const values = frames[from].map((value, i) => value + (frames[to][i] - value) * eased);
+      // Dip below the reading area while crossing between benefit stages.
+      if (window.innerWidth > 700 && from >= 1 && to <= 5) {
+        const crossing = Math.sin(Math.PI * fraction) ** 2;
+        values[1] -= 30 * crossing;
+        values[2] -= 8 * crossing;
+      }
+      // Keep the mascot below dense copy on short phones while it crosses sides.
+      if (window.innerWidth <= 700 && window.innerHeight <= 700 && progress >= 1 && progress <= 5) {
+        values[1] = 26;
+        values[2] = 0;
+      }
       character.style.left = `${values[0]}%`;
       character.style.height = `${values[1]}%`;
       character.style.bottom = `${values[2]}%`;
@@ -128,7 +140,7 @@ export default function RebrandScrollStory() {
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 1)}>
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 1} / 05 OPENING BENEFITS</span>
-              <h2><span>{benefit.label}</span><strong>{benefit.amount}<small>{benefit.unit}</small></strong><b>{benefit.title}</b></h2>
+              <h2><span>{benefit.label}</span><strong><SlotNumber value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} /><small>{benefit.unit}</small></strong><b>{benefit.title}</b></h2>
               <p className="benefit-scene-detail">{benefit.detail}</p>
               <p className="benefit-scene-note">{benefit.note}</p>
               <a href="#rebrand-benefits">전체 지원 내용과 조건 보기 ↗</a>

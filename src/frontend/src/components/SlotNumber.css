@@ -1,0 +1,19 @@
+.slot-number { display: inline-block; font: inherit; letter-spacing: normal; line-height: 1; vertical-align: baseline; }
+.slot-number-accessible { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.slot-number-reels { display: inline-flex; gap: 0; font-variant-numeric: tabular-nums; }
+.slot-number-window { display: inline-block; height: 1em; width: .56em; overflow: hidden; vertical-align: bottom; }
+.slot-number-strip { display: flex; flex-direction: column; animation: reel-roll var(--reel-duration) cubic-bezier(.12,.78,.16,1) both; }
+.slot-number-strip > span, .slot-number-still { display: block; flex-shrink: 0; height: 1em; line-height: 1em; text-align: center; }
+.slot-number[data-spinning='true'] .slot-number-window { animation: reel-seat .28s var(--reel-seat-delay) ease-out both; }
+@keyframes reel-roll {
+  0% { transform: translateY(0); filter: blur(3px); }
+  65% { filter: blur(1px); }
+  100% { transform: translateY(var(--reel-stop)); filter: blur(0); }
+}
+@keyframes reel-seat { 0%, 100% { transform: translateY(0); } 35% { transform: translateY(.025em); } 65% { transform: translateY(-.012em); } }
+.jangsu-story[data-motion-paused='true'] .slot-number-strip,
+.jangsu-story[data-motion-paused='true'] .slot-number-window { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .slot-number-strip { animation: none; transform: translateY(var(--reel-stop)); filter: none; }
+  .slot-number-window { animation: none !important; }
+}
