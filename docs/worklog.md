@@ -495,3 +495,11 @@
 - Kept the proposal status, royalty term, equipment conditions, and package non-stacking explanation. Reduced-motion mode keeps the final state readable and preview buttons navigate to the corresponding static section.
 - Browser checks: 1440-wide desktop, 390-wide mobile, and 375-wide short mobile. Actual content viewport heights reported by the in-app browser were 852, 796, and 619 pixels. Checked an intermediate desktop royalty scroll position: stage top equals header bottom at 80px, no mascot/copy rectangle intersection, no horizontal overflow. Mobile royalty copy also ends above its mascot and navigation.
 - Captured updated hero and royalty screens in the existing draft audit folder. Lint and production build passed. No external deployment.
+
+
+## 2026-09-29 - Oversized monthly growth support
+
+- Enlarged the growth chapter's 100만원 into the dominant visual, retaining the visible monthly maximum, sales thresholds, logistics-credit wording, and non-cash conditions.
+- Added a single orange background reveal and stronger number settling motion tied to the existing final-reel completion state. Reduced-motion mode shows the final orange state without animation.
+- Verified desktop content viewport 1440x852 and short mobile 375x619: final amount visible, conditions above navigation, no horizontal overflow. Saved the desktop result alongside the prior audit screenshots.
+- Lint, production build, and diff whitespace checks passed. No external deployment.
