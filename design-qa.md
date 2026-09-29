@@ -26,3 +26,29 @@ npm run lint: passed
 git diff --check: passed
 
 final result: passed
+
+## 2026-09-29 Upgrade review
+
+F0: “훨씬 나은 수준으로 업그레이드 해줘”. Audience: prospective franchise owners. Fixed choices: cream background, black canonical BI, foreground character, local preview.
+
+Reframing compared three distinct interventions: visual memorability (hero hierarchy), product understanding (real menu and store visuals), and decision uncertainty (cost/support distinctions, eligibility, consultation path). Chosen sequence combines product understanding before support, followed by decision guidance; brand hero remains the entry. This is a design hypothesis, not demonstrated conversion improvement.
+
+Devil's advocate findings against the previous recommendation: a strong character does not by itself explain the business; an oversized zero may imply more fees are waived than documented; past average-revenue examples add little decision value and can suggest expected earnings. Added product evidence and FAQ, replaced zero emphasis with named fee exemption, removed average-revenue examples. No fabricated testimonials, sales guarantees or exact total investment.
+
+Content review (self-review, not independent): usefulness is primary, relevance and engagement support it. R=4, medium confidence: prospective owners can distinguish unselected sites and conversions. U=4, medium confidence: conditional support, non-cash benefits and unknown total costs are explicit. E=3, medium confidence: character, food, space and support vary the page rhythm; actual audience engagement remains unobserved. These are editorial rubric judgments, not measured customer outcomes.
+
+Current-run browser steps:
+1. Hero: cream and black composition retained, direct consultation CTA added; desktop and mobile inspected.
+2. Menu: actual existing product photography and three menu assets, desktop/mobile screenshots inspected.
+3. Space: selecting wide hall changed image, selected state and caption. Concept status is explicit.
+4. Support: preserved draft status and detailed conditions; no cash-total headline.
+5. FAQ: mobile total-investment disclosure opens correctly.
+6. Consultation: anchor reaches existing form; visible form styling reviewed. No real inquiry submitted.
+
+Viewports: 1280x900 desktop, 820x1000 tablet, 390x844 mobile. DOM checks: no horizontal overflow, one H1, all rendered images loaded. Keyboard navigation to menu verified. Skip link, pressed states, native details and reduced-motion styles present; full assistive-technology compliance not tested.
+
+Capture limitation: screenshots were inspected inline through the browser tool. Its documented screenshot API returns image bytes without a filesystem-save method, so this is an implementation review with inline evidence, not a complete saved-screenshot audit package.
+
+Applied skills: devils-advocate, framestorming, content-resonance-loop, copywrite, Product Design audit guidance. Korean Style QA and client Voice checked. All numeric offers remain an internal draft awaiting headquarters confirmation before external use.
+
+Build and lint passed after implementation. Final result: passed for local design review; commercial terms remain provisional.

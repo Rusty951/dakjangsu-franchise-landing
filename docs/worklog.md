@@ -1,5 +1,14 @@
 # Worklog
 
+## 2026-09-29 - Franchise Decision Flow Upgrade
+
+- User explicitly requested a full design upgrade with devil's advocate, reframing and content review. Frontend changes performed in that authorized scope despite the usual Antigravity ownership split.
+- Rebuilt preview styles around the cream/black character composition; added sticky navigation, chapter links, actual product photos, selectable space concepts and franchise FAQ.
+- Reordered menu, space, benefits and consultation; replaced zero emphasis with named fee exemption and removed illustrative average-revenue savings. Preserved draft/eligibility limitations.
+- Reused existing approved project assets. No new paid generation, deployment or form submission.
+- Verified desktop, tablet and mobile views, images, overflow, space selection, FAQ and consultation navigation. Build/lint passed; details and capture limitation in design-qa.md.
+
+
 ## 2026-09-29 - Cream Character Hero and Franchise Benefits
 
 - Applied the user-selected reference composition with the canonical black BI, cream canvas and foreground character; generated a transparent derivative while preserving the original asset.
