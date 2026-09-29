@@ -1,0 +1,91 @@
+/* The amount attracts attention; the benefit and its conditions must hold it. */
+.growth-support dl, .growth-support dt, .growth-support dd { margin: 0; }
+.growth-support dl { display: grid; gap: 8px; }
+.growth-support dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; border-bottom: 1px solid currentColor; padding-bottom: 7px; }
+.growth-support dt { font-weight: 600; }
+.growth-support dd { flex-shrink: 0; font-weight: 800; font-size: 1.25em; letter-spacing: -.045em; }
+.growth-support .growth-support-term { margin: 12px 0 0; font-size: .76em; line-height: 1.5; }
+.benefit-scene--growth h2 > b > span { display: inline-block; }
+
+@media (min-width: 701px) {
+  .jangsu-panel--benefit .benefit-scene-copy { top: 7%; }
+  .jangsu-panel--benefit h2 > b { font-size: clamp(56px, 5.5vw, 96px); line-height: 1.06; }
+  .jangsu-panel--benefit .benefit-scene-detail { font-size: clamp(20px, 1.55vw, 26px); line-height: 1.5; margin-top: 24px; max-width: 100%; }
+  .jangsu-panel--benefit .benefit-scene-note { font-size: clamp(16px, 1.08vw, 18px); line-height: 1.6; margin-top: 14px; max-width: 100%; }
+  .jangsu-panel--benefit .benefit-scene-copy > a { font-size: 16px; min-height: 44px; margin-top: 14px; }
+  .benefit-scene--growth .growth-support,
+  .benefit-scene--growth .benefit-scene-note { max-width: 66%; }
+  .benefit-scene--growth .growth-support { max-width: min(66%, 900px); }
+  .benefit-scene--growth h2 > b { max-width: 68%; }
+}
+
+/* Tall screens use the available height instead of pinning a small block at the top. */
+@media (min-width: 701px) and (min-height: 1400px) {
+  .jangsu-panel--benefit { display: flex; align-items: center; padding: 64px 5% 100px; }
+  .jangsu-panel--benefit .benefit-scene-copy { position: relative; inset: auto; width: 70%; }
+  .benefit-scene--opening .benefit-scene-copy,
+  .benefit-scene--royalty .benefit-scene-copy { width: 63%; margin-left: auto; }
+  .benefit-scene--growth .benefit-scene-copy { width: 100%; }
+  .benefit-scene--growth h2 > b { font-size: clamp(80px, 5.7vw, 96px); }
+  .benefit-scene--growth h2 > b > span { display: block; }
+  .benefit-scene--growth h2 > strong { margin-bottom: 24px; }
+}
+
+@media (min-width: 701px) and (max-height: 1399px) {
+  .jangsu-panel--benefit h2 > strong { font-size: min(22vw, 28svh, 340px); }
+  .jangsu-panel--benefit h2 > b { font-size: clamp(42px, 4.3vw, 62px); }
+  .jangsu-panel--benefit .benefit-scene-detail { font-size: 18px; margin-top: 16px; }
+  .jangsu-panel--benefit .benefit-scene-note { font-size: 14px; margin-top: 10px; }
+  .jangsu-panel--benefit .benefit-scene-copy > a { font-size: 14px; margin-top: 8px; }
+  .benefit-scene--royalty h2 > strong { font-size: min(50vw, 43svh); }
+  .benefit-scene--growth h2 > span { font-size: 28px; }
+  .benefit-scene--growth h2 > strong { font-size: min(43vw, 45svh); margin-block: 6px 12px; }
+  .benefit-scene--growth h2 > b { font-size: 54px; }
+  .growth-support dl { gap: 5px; }
+  .growth-support dl > div { padding-bottom: 4px; }
+  .growth-support .growth-support-term { font-size: 14px; margin-top: 8px; }
+}
+@media (min-width: 1200px) and (min-height: 1400px) {
+  .jangsu-panel--benefit:not(.benefit-scene--growth):not(.benefit-scene--royalty) h2 > strong { font-size: min(26vw, 36svh, 440px); }
+  .jangsu-panel--benefit:not(.benefit-scene--growth):not(.benefit-scene--royalty) h2 > strong > small { font-size: .105em; }
+}
+@media (min-width: 701px) and (max-height: 849px) {
+  .benefit-scene--growth h2 > strong { font-size: min(43vw, 40svh); }
+}
+@media (min-width: 701px) and (max-height: 749px) {
+  .jangsu-panel--benefit h2 > b { font-size: 42px; }
+  .jangsu-panel--benefit .benefit-scene-detail { font-size: 16px; margin-top: 12px; }
+  .jangsu-panel--benefit .benefit-scene-note { font-size: 13px; margin-top: 8px; }
+  .jangsu-panel--benefit .benefit-scene-copy > a { margin-top: 4px; min-height: 36px; padding-block: 7px; }
+  .benefit-scene--growth h2 > span { font-size: 24px; }
+  .benefit-scene--growth h2 > strong { font-size: min(43vw, 35svh); margin-block: 4px 8px; }
+  .growth-support .growth-support-term { font-size: 13px; margin-top: 6px; }
+}
+
+@media (max-width: 700px) {
+  .jangsu-panel--benefit h2 > b { font-size: clamp(32px, 8.4vw, 42px); }
+  .jangsu-panel--benefit .benefit-scene-detail { font-size: 15px; margin-top: 18px; }
+  .jangsu-panel--benefit .benefit-scene-note { font-size: 13px; line-height: 1.55; }
+  .benefit-scene--growth .benefit-scene-copy { top: 7%; }
+  .benefit-scene--growth h2 > strong { font-size: min(43vw, 28svh, calc((100vw - 98px) / 1.68)); flex-direction: row; align-items: baseline; margin-block: 8px 12px; }
+  .benefit-scene--growth .growth-lift-number > small { align-self: auto; font-size: 26px; margin-left: 6px; }
+  .benefit-scene--growth .growth-support { max-width: 100%; margin-top: 14px; }
+  .growth-support dl { gap: 5px; }
+  .growth-support dl > div { gap: 8px; padding-bottom: 4px; }
+  .growth-support .growth-support-term { font-size: 12px; margin-top: 8px; }
+  .benefit-scene--growth .benefit-scene-note { font-size: 12px; }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .jangsu-panel--benefit .benefit-scene-detail { font-size: 14px; margin-top: 14px; }
+  .jangsu-panel--benefit .benefit-scene-note { font-size: 12px; margin-top: 8px; }
+  .benefit-scene--growth h2 > strong { font-size: min(46vw, 24svh); }
+  .benefit-scene--growth h2 > b { font-size: 32px; }
+  .benefit-scene--growth .growth-support { margin-top: 10px; }
+  .benefit-scene--growth .benefit-scene-note { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-stage .jangsu-panel--benefit { display: block; padding: 0; }
+  .jangsu-stage .jangsu-panel--benefit .benefit-scene-copy { position: relative; inset: auto; width: auto; margin: 0; }
+  .benefit-scene--growth .growth-support,
+  .benefit-scene--growth .benefit-scene-note { max-width: 100%; }
+}

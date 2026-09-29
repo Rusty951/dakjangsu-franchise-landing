@@ -31,7 +31,10 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
       const stageRect = stage.getBoundingClientRect();
       const restRect = rest.getBoundingClientRect();
       const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageRect.top;
-      const restBottom = Math.min(restRect.bottom - stageRect.top, footerTop - 12);
+      const copyBottom = layoutPoint(copy, stage).y + copy.offsetHeight;
+      const restBottom = mobile
+        ? Math.min(restRect.bottom - stageRect.top, footerTop - 12)
+        : Math.min(copyBottom + 24, footerTop - 12);
       let restHeight = Math.min(restRect.height, restRect.width * 1.5);
       let restCenter = restRect.left + restRect.width / 2 - stageRect.left;
       if (mobile) {

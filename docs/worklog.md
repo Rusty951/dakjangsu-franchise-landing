@@ -518,3 +518,11 @@
 - Applied the user's requested return to the original character pose as the lift actor shrinks. Reused the intermediate and preparation poses in reverse during the exit, then switched to the existing original cutout for the final reading state.
 - Included the original cutout in the decode gate. Kept the existing size, reading lanes, and 4.2-second timing.
 - Verified the return sequence and final original image in the actual 1345x1566 browser viewport. Saved the resulting screenshot. Lint and production build passed.
+
+## 2026-09-29 - Readable benefit titles and conditions
+
+- Implemented the user's approved typography and spacing review in the existing frontend. The growth title reaches 96px on tall desktop screens, with supporting text up to 26px and notes up to 18px. Other benefit chapters use the same hierarchy. Tall screens center the content block and give the three-digit amounts more space.
+- Split the existing growth thresholds into two semantic definition-list rows and retained the original sales amounts, credit amounts, application period, proposal status, evidence requirement, and non-cash wording. Data remains in the benefit record.
+- Aligned the growth actor's final position with the copy, and raised the other desktop characters beside their explanations. Preserved lift timing, pose return, replay, and reduced-motion handling. Compact desktop and mobile styles keep the amount and all conditions within the chapter.
+- Verified 1688x1566 desktop screenshots for growth and opening, plus a 375x667 mobile screenshot. DOM geometry checks covered all five benefit copy blocks at 1440x900, 1280x720, 375x667, and 375x619. No horizontal overflow; the shortest measured remaining space above navigation was about 50px at 1280x720. On the 375x619 phone, the growth text has about 56px of remaining space.
+- Captured the before and after views under the existing draft typography audit folder. Console error check was empty. Lint, production build, and diff whitespace checks passed. No external deployment.

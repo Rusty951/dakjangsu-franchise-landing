@@ -18,7 +18,7 @@ const benefits = [
   { id: 'opening', label: '문 여는 준비를 함께', amount: '740', unit: '만원 상당', title: '오픈 패키지안', detail: '앞서 본 440만원 면제에, 생닭 200수 100만원 상당과 오픈 마케팅 200만원 상당을 포함한 합계입니다.', note: '440만원과 별도로 더해지는 금액이 아닙니다. 현금 지급이 아닌 면제와 현물, 마케팅 지원안입니다.' },
   { id: 'kitchen', label: '주방을 준비할 때도', amount: '500', unit: '만원 상당', title: '주방 지원안', detail: '간냉식 냉장고 300만원 상당 + 최신형 튀김기 200만원 상당.', note: '조건 충족 매장 중 선착순 5개점 대상안. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건이 있습니다.' },
   { id: 'royalty', label: '매달 내는 로열티,', amount: '0', unit: '원', title: '첫 2년 전액 면제안', note: '정상 로열티 월 매출액 3.3%를 최초 계약 2년간 면제하는 안입니다. 시행 여부와 최종 적용 조건은 본사 확인이 필요합니다.' },
-  { id: 'growth', label: '매출 기준 달성 시, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', detail: '월 매출 3,000만원 이상은 30만원, 4,000만원 이상은 100만원. 개점월부터 12개월 내 달성 월에 적용하는 안입니다.', note: '매출 증빙 제출 후 익월 물류대금에서 차감합니다. 현금 지급이나 매출 보장을 뜻하지 않습니다.' },
+  { id: 'growth', label: '매출 기준 달성 시, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '개점월부터 12개월 내 달성 월에 적용하는 안입니다.', note: '매출 증빙 제출 후 익월 물류대금에서 차감합니다. 현금 지급이나 매출 보장을 뜻하지 않습니다.' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -105,6 +105,13 @@ export default function RebrandScrollStory() {
           const copyBottom = copy.getBoundingClientRect().bottom - stage.getBoundingClientRect().top;
           const available = Math.max(0, stage.offsetHeight * .91 - 12 - copyBottom);
           values[1] = Math.min(values[1], available / stage.offsetHeight * 100);
+        } else if (current < 5) {
+          const stageTop = stage.getBoundingClientRect().top;
+          const copyBottom = panels[current].querySelector('.benefit-scene-copy').getBoundingClientRect().bottom - stageTop;
+          const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageTop;
+          const visualHeight = Math.min(stage.offsetHeight * .68, window.innerWidth * .27 * 1402 / 1122);
+          const characterBottom = Math.min(footerTop - 12, Math.max(copyBottom + 24, visualHeight + 50));
+          values[2] = (stage.offsetHeight - characterBottom) / stage.offsetHeight * 100;
         }
       }
       character.style.left = `${values[0]}%`;
@@ -189,9 +196,14 @@ export default function RebrandScrollStory() {
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
                 </span> : <><SlotNumber value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
-                <b>{benefit.title}</b>
+                <b>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
               </h2>
-              {benefit.detail && <p className="benefit-scene-detail">{benefit.detail}</p>}
+              {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
+                <dl aria-label="월 매출별 물류 크레딧 지원 기준">
+                  {benefit.tiers.map(tier => <div key={tier.sales}><dt>월 매출 {tier.sales} 이상</dt><dd>{tier.credit}</dd></div>)}
+                </dl>
+                <p className="growth-support-term">{benefit.detail}</p>
+              </div> : benefit.detail && <p className="benefit-scene-detail">{benefit.detail}</p>}
               <p className="benefit-scene-note">{benefit.note}</p>
               <a href="#rebrand-benefits">전체 지원 내용과 조건 보기 ↗</a>
             </div>

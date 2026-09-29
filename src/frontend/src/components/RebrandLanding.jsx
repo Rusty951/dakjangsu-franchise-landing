@@ -9,6 +9,7 @@ import './RebrandBenefits.css';
 import './RebrandRefinement.css';
 import './RebrandImpact.css';
 import './JangsuLiftMotion.css';
+import './RebrandBenefitReadability.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);
