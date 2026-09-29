@@ -476,3 +476,22 @@
 - Added the `facebook-domain-verification` meta tag issued by Meta Business Suite for `dakjangsu-franchise.com`.
 - Kept the verification tag in the static HTML head so Meta can read it before the React app loads.
 - Deployed the tag to production and confirmed the domain status changed to `Verified` in Meta Business Suite.
+
+
+## 2026-09-29 - Oversized royalty payoff
+
+- User requested a much larger benefit presentation. Applied the directly requested frontend adjustment to the existing rebrand page.
+- Changed the royalty chapter from a large 2-year duration to an oversized 0원, retaining the first-contract two-year proposal and confirmation conditions.
+- Added a delayed term reveal after the 1.6-second slot reel, synchronized the existing hand gesture, and kept reduced-motion content immediate.
+- Checked desktop 1440x900 and 1280x720, plus mobile 390x844 and 375x667 in the in-app browser. No horizontal overflow; conditions remain readable and clear of the chapter navigation.
+- Validation: frontend lint and production build passed. No publication or external deployment.
+
+
+## 2026-09-29 - Benefit impact and scroll overlap repair
+
+- Implemented the user's approved design-audit recommendations in the existing frontend: sequential hero benefit previews, a stronger exemption stamp, and a dark-background royalty payoff after the slot reel actually completes.
+- Added an optional completion callback to SlotNumber. Stage feedback now follows the last reel's animation end instead of a separate timing guess. Re-entry resets the stage payoff.
+- Reserved fixed left/right lanes for the host during benefit chapters, capped desktop character width, and bounded mobile character height by the space remaining beneath copy. Changed the rebrand body's horizontal overflow to clip so it does not create a competing sticky scroll ancestor.
+- Kept the proposal status, royalty term, equipment conditions, and package non-stacking explanation. Reduced-motion mode keeps the final state readable and preview buttons navigate to the corresponding static section.
+- Browser checks: 1440-wide desktop, 390-wide mobile, and 375-wide short mobile. Actual content viewport heights reported by the in-app browser were 852, 796, and 619 pixels. Checked an intermediate desktop royalty scroll position: stage top equals header bottom at 80px, no mascot/copy rectangle intersection, no horizontal overflow. Mobile royalty copy also ends above its mascot and navigation.
+- Captured updated hero and royalty screens in the existing draft audit folder. Lint and production build passed. No external deployment.

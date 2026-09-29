@@ -7,6 +7,7 @@ import { useState } from 'react';
 import RebrandScrollStory from './RebrandScrollStory';
 import './RebrandBenefits.css';
 import './RebrandRefinement.css';
+import './RebrandImpact.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);

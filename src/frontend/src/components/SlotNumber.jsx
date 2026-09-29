@@ -1,6 +1,6 @@
 import './SlotNumber.css';
 
-export default function SlotNumber({ value, active, reducedMotion }) {
+export default function SlotNumber({ value, active, reducedMotion, onComplete }) {
   const spin = active && !reducedMotion;
   return (
     <span className="slot-number" data-spinning={spin}>
@@ -11,7 +11,9 @@ export default function SlotNumber({ value, active, reducedMotion }) {
           const duration = 1.6 + index * .22;
           return (
             <span className="slot-number-window" key={index} style={{ '--reel-stop': `${-stop}em`, '--reel-duration': `${duration}s`, '--reel-seat-delay': `${duration - .04}s` }}>
-              {spin ? <span className="slot-number-strip" key="rolling">{Array.from({ length: stop + 1 }, (_, row) => <span key={row}>{row % 10}</span>)}</span> : <span className="slot-number-still">{digit}</span>}
+              {spin ? <span className="slot-number-strip" key="rolling" onAnimationEnd={event => {
+                if (event.animationName === 'reel-roll' && index === value.length - 1) onComplete?.();
+              }}>{Array.from({ length: stop + 1 }, (_, row) => <span key={row}>{row % 10}</span>)}</span> : <span className="slot-number-still">{digit}</span>}
             </span>
           );
         })}

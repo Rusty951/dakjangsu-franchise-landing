@@ -201,3 +201,63 @@
   .jangsu-stage .benefit-scene-copy { position: relative; top: auto; left: auto; right: auto; width: auto; padding: 64px 5%; }
   .jangsu-stage .jangsu-panel--benefit { min-height: 0; }
 }
+
+
+/* Royalty gets a single oversized payoff, with the term revealed after the reel. */
+.benefit-scene--royalty .benefit-scene-copy { top: 9%; left: 32%; width: 63%; }
+.benefit-scene--royalty .benefit-scene-index { display: none; }
+.benefit-scene--royalty h2 > span { font-size: clamp(26px, 3.5vw, 52px); }
+.benefit-scene--royalty h2 > strong {
+  font-size: min(52vw, 60svh, 700px);
+  line-height: .82;
+  align-items: center;
+  letter-spacing: -.07em;
+  margin-block: 4px 12px;
+}
+.benefit-scene--royalty .slot-number { display: inline-flex; line-height: .82; }
+.benefit-scene--royalty .slot-number-window { height: .82em; }
+.benefit-scene--royalty .slot-number-strip > span,
+.benefit-scene--royalty .slot-number-still { line-height: .82em; }
+.benefit-scene--royalty h2 > strong > small {
+  font: 400 .65em/1 var(--font-display);
+  letter-spacing: -.07em;
+  margin-left: .03em;
+}
+.benefit-scene--royalty h2 > b { font-size: clamp(27px, 3.3vw, 48px); }
+.benefit-scene--royalty[aria-hidden='false'] h2 > b {
+  animation: royalty-term-enter .45s 1.65s cubic-bezier(.16,1,.3,1) both;
+}
+.benefit-scene--royalty .benefit-scene-note { max-width: 680px; margin-top: 18px; }
+@keyframes royalty-term-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.jangsu-stage[data-scene='4'] .jangsu-puppet--explain .jangsu-puppet-hand {
+  animation: royalty-hand-present .8s 1.5s ease-out both;
+}
+@keyframes royalty-hand-present {
+  0% { transform: rotate(0); }
+  40% { transform: rotate(-16deg) translateY(-10px); }
+  70%, 100% { transform: rotate(-8deg) translateY(-4px); }
+}
+@media (max-width: 700px) {
+  .benefit-scene--royalty .benefit-scene-copy { left: 20px; right: 20px; top: 10%; width: auto; }
+  .benefit-scene--royalty h2 > span { font-size: 27px; }
+  .benefit-scene--royalty h2 > strong { font-size: min(73vw, 40svh); margin-block: 14px 18px; }
+  .benefit-scene--royalty h2 > b { font-size: clamp(26px, 7vw, 40px); }
+  .benefit-scene--royalty .benefit-scene-note { margin-top: 18px; font-size: 12px; }
+}
+@media (max-height: 700px) and (min-width: 701px) {
+  .benefit-scene--royalty h2 > strong { font-size: min(50vw, 54svh); }
+  .benefit-scene--royalty .benefit-scene-note { margin-top: 10px; }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .benefit-scene--royalty .benefit-scene-copy { top: 9%; }
+  .benefit-scene--royalty h2 > strong { font-size: min(73vw, 37svh); margin-block: 8px 14px; }
+  .benefit-scene--royalty .benefit-scene-note { margin-top: 12px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-stage .benefit-scene--royalty .benefit-scene-copy { position: relative; inset: auto; width: auto; }
+  .benefit-scene--royalty h2 > b { animation: none !important; }
+  .jangsu-stage[data-scene='4'] .jangsu-puppet--explain .jangsu-puppet-hand { animation: none; }
+}
