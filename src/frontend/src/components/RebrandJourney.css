@@ -167,3 +167,8 @@
   .jangsu-invite-static { bottom: 200px; right: 0; width: 47%; max-height: 35%; }
   .jangsu-reduced-character { right: 0; bottom: 40%; width: 55%; }
 }
+.rebrand-page[data-story-preview='true'] .rebrand-header nav,
+.rebrand-page[data-story-preview='true'] main > :not(.jangsu-story),
+.rebrand-page[data-story-preview='true'] > footer,
+.rebrand-page[data-story-preview='true'] .jangsu-panel--benefit .benefit-scene-copy > a,
+.rebrand-page[data-story-preview='true'] .jangsu-invite-copy > a { display: none; }

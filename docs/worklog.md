@@ -541,3 +541,8 @@
 - One playback per entry, then crossfade to original character. Reduced motion, visibility pause, load/play failure fallback and unmount cleanup included. Other scenes unchanged.
 - Desktop browser capture confirms hand raised over orange background; end state data-playing=false confirmed. This remains a low-resolution sample with slight green edge spill, not a final production motion asset.
 - Validation: lint and build passed; browser preview verified. No external deployment or additional generation.
+
+## 2026-09-30 — Client story preview
+- Client-facing Vercel copy uses `VITE_STORY_ONLY=true` to show the seven opening scroll chapters, from 닭장수 through 상담. The full local landing remains available without this flag.
+- Hidden follow-on benefits, menu, space, FAQ and lead form on the shared preview. Hid links that would target those hidden sections; skip link now targets the story.
+- Verified the final story chapter reaches the page bottom, with no later sections visible. Lint and flagged build passed.

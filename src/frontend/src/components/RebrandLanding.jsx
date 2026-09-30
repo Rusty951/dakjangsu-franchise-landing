@@ -13,12 +13,13 @@ import './RebrandBenefitReadability.css';
 import './RebrandJourney.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
+  const storyPreview = import.meta.env.VITE_STORY_ONLY === 'true';
   const [spaceView, setSpaceView] = useState(0);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   return (
-    <div className="rebrand-page" id="top">
-      <a className="rebrand-skip" href="#rebrand-benefits">본문 바로가기</a>
+    <div className="rebrand-page" id="top" data-story-preview={storyPreview}>
+      <a className="rebrand-skip" href={storyPreview ? '#rebrand-story' : '#rebrand-benefits'}>본문 바로가기</a>
       <header className="rebrand-header">
         <a href="#top" className="rebrand-logo" aria-label="닭장수후라이드 가맹 안내 첫 화면">
           <img src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="512" height="128" />
