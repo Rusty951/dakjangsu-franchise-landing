@@ -217,3 +217,5 @@ Evidence: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/202
 - Checked desktop, tablet and phone/compact sizes. No horizontal overflow or console warnings/errors. Existing source matches captured interactions; unrelated chapters remain unchanged.
 
 ESLint, client/SSR build, prerender and whitespace checks pass. Backend delivery, real form submission, full accessibility/performance certification and legal copy review are outside this integration pass. Public update is limited to the dedicated sample project; main site is preserved.
+
+Public rollout verification: passed. Same sample URL now serves source da9a662 in deployment dpl_EsFS5Dn9WbWzPygYapS2muvrrafw. Anonymous 200/new bundle fingerprints, public main-section display and menu/fit screenshots (18-public-menu.jpg, 19-public-menu-cards.jpg, 20-public-fit.jpg) confirm the integrated result. Main production unchanged.
