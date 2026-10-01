@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
-import JangsuVideoSample from './JangsuVideoSample';
+import JangsuHeroMotion from './JangsuHeroMotion';
+import JangsuFeeMotion from './JangsuFeeMotion';
+import JangsuOpeningMotion from './JangsuOpeningMotion';
+import JangsuKitchenMotion from './JangsuKitchenMotion';
+import JangsuRoyaltyMotion from './JangsuRoyaltyMotion';
+import JangsuInviteMotion from './JangsuInviteMotion';
 import JangsuLiftMotion from './JangsuLiftMotion';
 import SlotNumber from './SlotNumber';
+import RebrandHeroOffer from './RebrandHeroOffer';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
@@ -32,6 +38,12 @@ export default function RebrandScrollStory() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [liftAssets, setLiftAssets] = useState('loading');
   const [liftReplay, setLiftReplay] = useState(0);
+  const [heroReplay, setHeroReplay] = useState(0);
+  const [feeReplay, setFeeReplay] = useState(0);
+  const [openingReplay, setOpeningReplay] = useState(0);
+  const [kitchenReplay, setKitchenReplay] = useState(0);
+  const [royaltyReplay, setRoyaltyReplay] = useState(0);
+  const [inviteReplay, setInviteReplay] = useState(0);
   const [liftParked, setLiftParked] = useState(false);
   const liftReady = liftAssets === 'ready' && !reducedMotion;
   const liftStatus = reducedMotion ? 'static' : liftAssets === 'ready' ? (liftParked ? 'parked' : 'playing') : liftAssets;
@@ -98,19 +110,56 @@ export default function RebrandScrollStory() {
       // The lift actor uses this same lane after its opening performance.
       const values = [...frames[current]];
       if (current >= 1 && current <= 5) {
-        values[0] = window.innerWidth <= 700 ? frames[current][0] : (current % 2 ? 85 : 16);
+        values[0] = window.innerWidth <= 700 ? (current === 1 ? 75 : frames[current][0]) : ((current === 1 || current === 3) ? 82 : (current === 2 || current === 4) ? 18 : current % 2 ? 85 : 16);
         values[2] = window.innerWidth <= 700 ? 9 : 2;
-        values[1] = window.innerWidth <= 700 ? 19 : 68;
+        values[1] = window.innerWidth <= 700 ? 19 : (current >= 1 && current <= 4 ? 78 : 68);
         if (window.innerWidth <= 700) {
           const copy = panels[current].querySelector('.benefit-scene-copy');
           const copyBottom = copy.getBoundingClientRect().bottom - stage.getBoundingClientRect().top;
           const available = Math.max(0, stage.offsetHeight * .91 - 12 - copyBottom);
           values[1] = Math.min(values[1], available / stage.offsetHeight * 100);
+          if (current === 1) {
+            const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stage.getBoundingClientRect().top;
+            const actorBottom = footerTop - 12;
+            values[1] = Math.min(30, Math.max(0, actorBottom - copyBottom - 12) / stage.offsetHeight * 100);
+            values[2] = (stage.offsetHeight - actorBottom) / stage.offsetHeight * 100;
+            if (window.innerHeight <= 780) {
+              const actorTop = copy.querySelector('h2').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16;
+              const portraitHeight = Math.min(210, Math.max(0, actorBottom - actorTop));
+              values[0] = 80;
+              values[1] = portraitHeight / stage.offsetHeight * 100;
+              values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
+            }
+          }
+          if (current === 2) {
+            const actorTop = copy.querySelector('h2').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16;
+            const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stage.getBoundingClientRect().top;
+            const portraitHeight = Math.min(230, Math.max(0, footerTop - 12 - actorTop));
+            values[0] = 16;
+            values[1] = portraitHeight / stage.offsetHeight * 100;
+            values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
+          }
+          if (current === 3) {
+            const actorTop = copy.querySelector('h2').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16;
+            const noteTop = copy.querySelector('.benefit-scene-note').getBoundingClientRect().top - stage.getBoundingClientRect().top;
+            const portraitHeight = Math.min(230, Math.max(0, noteTop - 12 - actorTop));
+            values[0] = 80;
+            values[1] = portraitHeight / stage.offsetHeight * 100;
+            values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
+          }
+          if (current === 4) {
+            const number = copy.querySelector('h2 > strong').getBoundingClientRect();
+            const actorTop = number.top - stage.getBoundingClientRect().top + 8;
+            const portraitHeight = Math.max(0, Math.min(250, number.height - 16));
+            values[0] = 18;
+            values[1] = portraitHeight / stage.offsetHeight * 100;
+            values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
+          }
         } else if (current < 5) {
           const stageTop = stage.getBoundingClientRect().top;
           const copyBottom = panels[current].querySelector('.benefit-scene-copy').getBoundingClientRect().bottom - stageTop;
           const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageTop;
-          const visualHeight = Math.min(stage.offsetHeight * .68, window.innerWidth * .27 * 1402 / 1122);
+          const visualHeight = Math.min(stage.offsetHeight * (current >= 1 && current <= 4 ? .78 : .68), window.innerWidth * (current >= 1 && current <= 4 ? .35 : .27) * 1402 / 1122);
           const characterBottom = Math.min(footerTop - 12, Math.max(copyBottom + 24, visualHeight + 50));
           values[2] = (stage.offsetHeight - characterBottom) / stage.offsetHeight * 100;
         }
@@ -121,7 +170,7 @@ export default function RebrandScrollStory() {
         if (window.innerWidth <= 700) {
           const headingBottom = invite.querySelector('h2').getBoundingClientRect().bottom - stageTop;
           const actionTop = invite.querySelector('.jangsu-invite-copy a').getBoundingClientRect().top - stageTop;
-          values[1] = Math.max(0, actionTop - headingBottom - 32) / stage.offsetHeight * 100;
+          values[1] = Math.min(280, Math.max(0, actionTop - headingBottom - 32)) / stage.offsetHeight * 100;
           values[2] = (stage.offsetHeight - actionTop + 12) / stage.offsetHeight * 100;
         } else {
           const copyBottom = invite.querySelector('.jangsu-invite-content').getBoundingClientRect().bottom - stageTop;
@@ -175,6 +224,33 @@ export default function RebrandScrollStory() {
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
       return;
     }
+    if (index === 0 && active === 0) {
+      setHeroReplay(replay => replay + 1);
+      return;
+    }
+    if (index === 1 && active === 1) {
+      setSettled(-1);
+      setFeeReplay(replay => replay + 1);
+      return;
+    }
+    if (index === 2 && active === 2) {
+      setSettled(-1);
+      setOpeningReplay(replay => replay + 1);
+      return;
+    }
+    if (index === 3 && active === 3) {
+      setSettled(-1);
+      setKitchenReplay(replay => replay + 1);
+      return;
+    }
+    if (index === 4 && active === 4) {
+      setSettled(-1);
+      setRoyaltyReplay(replay => replay + 1);
+      return;
+    }
+    if (index === 6 && active === 6) {
+      setInviteReplay(replay => replay + 1);
+    }
     if (index === 5 && active === 5) {
       setSettled(-1);
       setLiftParked(false);
@@ -195,25 +271,23 @@ export default function RebrandScrollStory() {
         <div className="jangsu-stage-kicker"><span>DAKJANGSU FRIED CHICKEN</span><span>닭장수가 보여드릴게요</span></div>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
-          <img className="jangsu-reduced-character" src={assetPath('/rebrand/character-cutout.png')} alt="닭장수 캐릭터" width="1122" height="1402" />
-          <div className="benefits-intro"><span className="benefits-intro-label">닭장수의 창업 지원안</span><h1>창업 혜택,<br /><em>이만큼.</em></h1><button type="button" onClick={() => goToChapter(1)}>혜택 하나씩 만나보기 <span aria-hidden="true">↓</span></button></div>
-          <div className="benefits-preview" aria-label="주요 창업 혜택 초안">
-            <button type="button" onClick={() => goToChapter(1)}><span>가맹비와 교육비 면제안</span><strong>440<small>만원</small></strong></button>
-            <button type="button" onClick={() => goToChapter(3)}><span>조건 충족 매장 주방 지원안</span><strong>500<small>만원 상당</small></strong></button>
-            <button type="button" onClick={() => goToChapter(4)}><span>첫 2년 로열티 면제안</span><strong>0<small>원</small></strong></button>
-          </div>
-          <p className="benefits-intro-note">2026년 8월 신규 가맹 혜택 초안<br />시행 여부와 적용 조건은 본사 확인이 필요합니다.</p>
+          <img className="jangsu-reduced-character" src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="닭장수 캐릭터" width="1122" height="1402" />
+          <RebrandHeroOffer onExplore={() => goToChapter(1)} />
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 1)}>
+            {benefit.id === 'fee' && <img className="fee-static-character" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'opening' && <img className="opening-static-character" src={assetPath('/rebrand/poses/opening-package-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'kitchen' && <img className="kitchen-static-character" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'royalty' && <img className="royalty-static-character" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 1} / 05 OPENING BENEFITS</span>
               <h2>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
-                </span> : <><SlotNumber value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
-                <b>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
+                </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
+                <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
               </h2>
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
                 <dl aria-label="월 매출별 물류 크레딧 지원 기준">
@@ -222,7 +296,7 @@ export default function RebrandScrollStory() {
                 <p className="growth-support-term">{benefit.detail}</p>
               </div> : <div className="benefit-scene-detail benefit-facts">
                 <dl aria-label={`${benefit.title} 구성`}>
-                  {benefit.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+                  {benefit.facts.map(([label, value]) => <div key={label} className={benefit.id === 'opening' ? 'opening-package-card' : benefit.id === 'kitchen' ? 'kitchen-support-card' : benefit.id === 'royalty' ? 'royalty-rate-card' : undefined}><dt>{label}</dt><dd>{value}</dd></div>)}
                 </dl>
                 {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
               </div>}
@@ -241,9 +315,9 @@ export default function RebrandScrollStory() {
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
-          <img className="jangsu-invite-static" src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
+          <img className="jangsu-invite-static" src={assetPath('/rebrand/poses/consultation-invite-v1/04-rest.png')} alt="" width="1122" height="1402" loading="lazy" />
         </article>
-        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuVideoSample /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
+        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuHeroMotion key={heroReplay} /> : active === 1 ? <JangsuFeeMotion key={feeReplay} /> : active === 2 ? <JangsuOpeningMotion key={openingReplay} /> : active === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : active === 4 ? <JangsuRoyaltyMotion key={royaltyReplay} /> : active === 6 ? <JangsuInviteMotion key={inviteReplay} /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer"><span>SCROLL TO EXPLORE ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
       </div>

@@ -11,6 +11,7 @@ import './RebrandImpact.css';
 import './JangsuLiftMotion.css';
 import './RebrandBenefitReadability.css';
 import './RebrandJourney.css';
+import './RebrandHeroOffer.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const storyPreview = import.meta.env.VITE_STORY_ONLY === 'true';

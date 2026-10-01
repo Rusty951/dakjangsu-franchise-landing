@@ -1,0 +1,12 @@
+.jangsu-hero-motion { width: 100%; height: 100%; pointer-events: none; }
+.jangsu-hero-arrival { position: relative; width: 100%; height: 100%; transform-origin: center bottom; }
+.jangsu-hero-pose { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; opacity: 0; }
+.jangsu-hero-pose--0 { opacity: 1; }
+.jangsu-stage[data-scene='0'] .hero-offer-total .hero-offer-amount { transform-origin: left bottom; }
+.jangsu-stage[data-scene='0'] .hero-offer-zero .hero-offer-amount { transform-origin: right bottom; }
+@media (max-width: 700px) {
+  .jangsu-hero-motion { width: 92%; margin-inline: auto; transform: translateX(-7px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-hero-motion { display: none; }
+}

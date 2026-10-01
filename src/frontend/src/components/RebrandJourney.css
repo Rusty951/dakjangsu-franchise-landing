@@ -170,5 +170,6 @@
 .rebrand-page[data-story-preview='true'] .rebrand-header nav,
 .rebrand-page[data-story-preview='true'] main > :not(.jangsu-story),
 .rebrand-page[data-story-preview='true'] > footer,
-.rebrand-page[data-story-preview='true'] .jangsu-panel--benefit .benefit-scene-copy > a,
-.rebrand-page[data-story-preview='true'] .jangsu-invite-copy > a { display: none; }
+.rebrand-page[data-story-preview='true'] .jangsu-panel--benefit .benefit-scene-copy > a { display: none; }
+/* Reveal the existing form only when the story's consultation anchor is selected. */
+.rebrand-page[data-story-preview='true'] main > #lead-capture:target { display: grid; }

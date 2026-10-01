@@ -1,167 +1,200 @@
-# Rebrand design QA
-
-Date: 2026-09-29
-
-## References
-
-- Selected composition: https://dribbble.com/shots/18881631-Landing-page-Interactive-Hero-banner
-- Visual source: https://cdn.dribbble.com/userupload/3175503/file/still-022a321e9d35379f5612d27f092054dd.png?resize=1600x1200
-- Implementation: http://127.0.0.1:5173/?concept=rebrand
-- Canonical assets: src/frontend/public/rebrand/bi-warm-ink.png and character-3d.png. Transparent derivative: character-cutout.png.
-
-## Visual comparison
-
-Reference and final desktop browser screenshots were reviewed together in the same tool response. Browser screenshots were displayed inline, not saved as files.
-
-The implementation preserves the centered character and prominent wordmark hierarchy. Cream background, black canonical logo, full-body character, Korean copy and franchise CTA are intentional user-requested adaptations. Original reference lighting, space imagery and third-party character are not reused.
-
-Desktop 1280x900: logo legible, foreground character clear, copy and CTA separated from character. Mobile 390x844: logo, character, left headline and lower CTA remain readable without horizontal overflow. All five page images loaded. Benefit cards stack on mobile; draft status appears before monetary figures. Conditions disclosure opens successfully, benefit anchor navigates correctly.
-
-## Content and verification
-
-August 12 benefits source is an internal draft. Draft status, quantities, qualification conditions, illustrative royalty savings and logistics-credit meaning are retained. No guaranteed total grant claim. No external publication and no live form submission.
-
-npm run build: passed
-npm run lint: passed
-git diff --check: passed
+# Opening composition QA — 2026-10-01
 
 final result: passed
 
-## 2026-09-29 Upgrade review
+## Target and evidence
 
-F0: “훨씬 나은 수준으로 업그레이드 해줘”. Audience: prospective franchise owners. Fixed choices: cream background, black canonical BI, foreground character, local preview.
+- Existing selected target: the approved orange/ink first chapter with the approximately 7,000만원 conditional total, fee-only zero, and original 닭장수 character. This is a scoped refinement of that design, not a new visual direction.
+- Source visual truth: `../dakjangsu-7000-review/big-numbers-verified/01-desktop-1280.png`, `02-mobile-390.png`, and this run's `../dakjangsu-7000-review/before-product-design/02-inapp-before.png`.
+- Final implementation: `../dakjangsu-7000-review/product-design-final/01-desktop-1280.png`, `02-mobile-390.png`, `03-mobile-375.png`, `05-desktop-1440.png`, `06-tablet-768.png`, `07-inapp-tall.png`, `08-wide-2048.png`, `09-full-inapp-2508.png`, and `04-reduced-mobile-375.png`.
+- Full-view comparisons opened together: `product-design-final/compare-desktop.png` and `compare-mobile.png`. Each places the source on the left and the implementation on the right at identical density and viewport.
+- Focused comparisons opened: `product-design-final/compare-conditions.png` and `compare-cta-scope.png`. These retain full-size source and implementation text for the calculation, exclusion, CTA and navigation checks.
+- Native in-app evidence: `product-design-final/10-inapp-confirmed-v2.png`. The accepted capture shows the actual target URL and updated composition before the final four-percentage-point actor adjustment. `compare-inapp-confirmed-v2.png` places it beside this run's original native capture. A later capture showing a different user conversation was rejected and removed from the deliverables.
+- Viewports: 1280×720, 1440×900, 390×844, 375×667, 768×1024, 1280×1480, 2048×1152, 2508×1560, plus reduced-motion mobile. Automated screenshots use 1 pixel per CSS pixel. Native pane captures are 2596×3322 physical pixels at 2× density, with browser chrome; comparisons use the same crop and density.
+- State: first chapter, same route/content/theme. Final responsive captures include the broad waving pose around 4.8 seconds. The earlier compact desktop source shows the standing pose, so pose differences are not treated as fidelity drift. The native before/after pair shows the standing first chapter in both.
 
-Reframing compared three distinct interventions: visual memorability (hero hierarchy), product understanding (real menu and store visuals), and decision uncertainty (cost/support distinctions, eligibility, consultation path). Chosen sequence combines product understanding before support, followed by decision guidance; brand hero remains the entry. This is a design hypothesis, not demonstrated conversion improvement.
+## Findings and comparison history
 
-Devil's advocate findings against the previous recommendation: a strong character does not by itself explain the business; an oversized zero may imply more fees are waived than documented; past average-revenue examples add little decision value and can suggest expected earnings. Added product evidence and FAQ, replaced zero emphasis with named fee exemption, removed average-revenue examples. No fabricated testimonials, sales guarantees or exact total investment.
+- [P2, fixed] Tall-pane composition had a large blank gap between the heading and the amounts. This run's original native capture shows it. Anchoring the amounts below the heading and enlarging the central character fills that gap; the native comparison and final 1280×1480 capture show the corrected composition.
+- [P2, fixed] The first implementation left only 6.41px between the compact desktop CTA and chapter navigation. Reduced the price-row top space and grid gaps without shrinking the numeral fonts. Final 1280×720 evidence gives 20.41px; every normal tested layout now gives at least 14px.
+- [P2, fixed] The larger character's waving hand was partly hidden behind the zero at 1440×900. The earlier `product-design/05-desktop-1440.png` shows the issue. Moving its desktop center from 55% to 51% exposes the complete hand in `product-design-actor-final/05-desktop-1440.png`, now copied into the final set.
+- No remaining actionable P0/P1/P2 issue was found within this first-scene scope.
 
-Content review (self-review, not independent): usefulness is primary, relevance and engagement support it. R=4, medium confidence: prospective owners can distinguish unselected sites and conversions. U=4, medium confidence: conditional support, non-cash benefits and unknown total costs are explicit. E=3, medium confidence: character, food, space and support vary the page rhythm; actual audience engagement remains unobserved. These are editorial rubric judgments, not measured customer outcomes.
+## Required fidelity surfaces
 
-Current-run browser steps:
-1. Hero: cream and black composition retained, direct consultation CTA added; desktop and mobile inspected.
-2. Menu: actual existing product photography and three menu assets, desktop/mobile screenshots inspected.
-3. Space: selecting wide hall changed image, selected state and caption. Concept status is explicit.
-4. Support: preserved draft status and detailed conditions; no cash-total headline.
-5. FAQ: mobile total-investment disclosure opens correctly.
-6. Consultation: anchor reaches existing form; visible form styling reviewed. No real inquiry submitted.
+- Fonts and typography: retained the local Black Han Sans display face and original body font. Large numerals remain the visual priority. The left numeral is more condensed to stay within its half; headline and CTA copy changes are intentional. Conditions remain readable and untruncated in the inspected phone and desktop captures.
+- Spacing and layout: preserved the equal split, chapter navigation and fee-first exploration flow. Both amounts stay inside their reading lanes. The desktop actor fits between the amounts; the mobile actor remains in its prior reserved lane. No horizontal overflow, price/condition collision, or CTA/navigation collision was measured in the final set.
+- Colors and tokens: retained orange `#d86535`, ink `#241f1b` and cream `#fff8ed`. Small text on orange uses ink; small text on ink uses cream. Draft and assumption labels retain their contrasting surfaces. No new decorative assets or palette were introduced.
+- Image quality: retained the canonical greeting and standing raster artwork inside the existing motion component. No replacement illustration, logo, or approximate code drawing was introduced. The inspected larger render has no new clipping; the waving hand is visible after the final correction.
+- Copy and content: preserves the 740 + 500 + 1,200 + 4,752 = 7,192만원 example and approximately 7,000만원 display. Monthly sales of 6,000만원 for 24 months are explicitly assumptions, with all eligibility conditions met. HQ confirmation remains pending. The zero is labeled 가맹비·교육비 and explicitly excludes total startup costs, rent and interior.
 
-Viewports: 1280x900 desktop, 820x1000 tablet, 390x844 mobile. DOM checks: no horizontal overflow, one H1, all rendered images loaded. Keyboard navigation to menu verified. Skip link, pressed states, native details and reduced-motion styles present; full assistive-technology compliance not tested.
+## Interaction and validation
 
-Capture limitation: screenshots were inspected inline through the browser tool. Its documented screenshot API returns image bytes without a filesystem-save method, so this is an implementation review with inline evidence, not a complete saved-screenshot audit package.
+- The primary exploration button reaches existing chapter 1 (가맹비) in all eight normal responsive cases; no inquiry is submitted.
+- Static reduced-motion mobile remains readable in normal document flow. Its CTA was not exercised in this final run.
+- Browser console/error events: zero in the isolated Chrome responsive runs. In-app automation was unavailable; native captures verify its visible rendering, not its console.
+- ESLint, client build, SSR build, prerender and whitespace checks passed. There is no project check/test script.
+- Frontend files: `src/frontend/src/components/RebrandHeroOffer.jsx` and `RebrandHeroOffer.css`. Earlier working-tree changes and the original checkout remain preserved.
 
-Applied skills: devils-advocate, framestorming, content-resonance-loop, copywrite, Product Design audit guidance. Korean Style QA and client Voice checked. All numeric offers remain an internal draft awaiting headquarters confirmation before external use.
+## Limits and follow-up
 
-Build and lint passed after implementation. Final result: passed for local design review; commercial terms remain provisional.
+- This pass covers the first scene and its exploration action. Forms, backend delivery, real conversion, performance and full accessibility compliance were not tested.
+- Public benefit amounts and eligibility wording still require HQ confirmation; this remains a local review draft.
+- No source commit, push, inquiry submission or deployment was performed.
 
-## Orange narrator direction
+Implementation checklist: complete. Keep the local preview available for review.
 
-The latest user direction replaces the cream hero with brand orange #d86535. Enlarged black BI and foreground canonical character, with a cream speech bubble. Five portrait-and-message guides continue the same speaker through menu, space, benefits, consultation preparation and FAQ.
+## Latest iteration — larger character
 
-Inspected current desktop 1280x900 hero and menu, mobile 390x844 hero and menu via browser screenshots. Logo remains legible, character is visibly larger, guide portraits crop to face/shoulders, no horizontal overflow. New copy is character narration, not a customer testimonial or an asserted personal experience. Existing conditions remain intact.
-
-Final result: passed for local preview.
-
-## Scroll-linked story implementation
-
-Latest approved direction: one large character connects five full-screen scenes; no speech bubbles. Native scroll controls character position and height, with a sticky stage and changing orange/ink/cream scenery. Details follow outside the sticky stage.
-
-Observed at 1280x900: welcome, food, interior, conditional 440만원 fee exemption, consultation invitation. Observed at 390x844: welcome, food, support and invitation. Mobile final CTA originally appeared behind the character; corrected panel stacking and visually verified the complete opaque CTA above it.
-
-Browser interactions: native downward scroll changed scene; upward half-page scroll returned toward support and produced an intermediate character position (left 71.1044%, height 52.459%, bottom 0.481365%), demonstrating continuous reversible interpolation rather than only chapter jumps. Chapter buttons reached their scenes. Consultation link navigated to #lead-capture. DOM: one traveler, no old speech or portrait guides, one active story panel, no horizontal overflow.
-
-Reduced-motion CSS presents scenes in normal flow with a static welcome character. Source reviewed; OS preference was not changed during testing. Screen-reader completeness not independently tested. Existing benefits remain provisional and visible with conditions.
-
-Build, lint and git diff --check passed. Browser screenshot evidence was inspected inline; no saved screenshot artifact.
-
-Final result: passed for local preview.
-
-## Articulated hand motion
-
-Added alternate waving pose and independent hand transforms with a small body lean. Native SVG image layers use the canonical resting asset and a transparent generated greeting asset. Gestures last 3.6 seconds per chapter, then stop. Image readiness, offscreen and hidden-tab pauses are handled. Reduced-motion retains the existing static story fallback.
-
-Inspected desktop 1280x720 welcome and intermediate scenes, mobile 390x844 welcome/menu/support/invitation. Verified computed wrist transform changed during playback (example matrix 0.999066, -0.043218, 0.043218, 0.999066) and returned to identity. Generated image loads, no horizontal page overflow, greeting hand and final CTA visible. Screenshots inspected inline only. Build and lint passed. The gestures are a layered 2D approximation; no finger bending, lip sync or 3D joint rig is claimed.
-
-## Benefit-first revision
-
-Hero prioritizes 440만원 fee exemption and two years of royalty exemption, marked as draft proposals. Second scroll chapter now introduces the 740만원 opening package. Detailed benefits immediately follow the story, ahead of product and interior details. Package breakdown is 440 + 100 + 200, without double counting kitchen/royalty/growth offers. Eligibility details and non-cash explanation remain.
-
-Observed desktop 1280x720 and mobile 390x844 hero, support scene and package detail. Large amounts and their qualifiers remain visible; no horizontal page overflow. One active story panel, correct chapter order, benefit details before menu, and consultation anchor verified. Build/lint/diff checks passed. Local review only.
-
-## One benefit per scroll screen
-
-Latest user clarification supersedes the timed multi-card hero experiment. Seven native-scroll scenes now introduce the character, then devote a viewport each to fee exemption, opening package, kitchen support, royalty exemption and logistics credit, followed by consultation. Menu and space content remain later in the document. Numeric totals, conditions and 740만원 inclusion of 440만원 are preserved.
-
-Browser: 390x844 fee, opening and kitchen inspected; native scroll moved from fee to opening. 1280x800 royalty and logistics scenes inspected. Seven panels, one active at rest, no horizontal overflow. Static reduced-motion path source-reviewed. Build/lint/diff checks passed. Screenshots inspected inline.
-
-## 2026-09-29 종합 자체 검수
-
-대상 버전: 46a4330에서 시작한 현재 로컬 리브랜딩 시안. 검수 기준은 악마의 대변인, 프레임스토밍, 콘텐츠검수 R/U/E, Product Design audit의 화면 및 접근성 기준이다. 독립 평가자나 실제 가맹 희망자의 반응을 측정한 결과는 아니다.
-
-### 판단
-
-한 화면에 혜택 하나를 크게 보여주고 닭장수가 동행하는 방향은 유지한다. 다만 모든 스크롤 위치에서 읽을 수 있다는 이전 검수 판단은 수정한다. 장면 중앙만 검수해서 전환 중 멈춤 문제를 놓쳤다.
-
-### 확인한 문제와 수정
-
-1. 642x988의 실제 중간 스크롤에서 740만원 장면 opacity 0.227148, 다음 500만원 장면 0.0728518이 동시에 표시됐다. 숫자와 설명이 겹치고 희미했다. 현재 장면만 opacity 1로 유지하도록 고쳤다. 캐릭터 위치 보간은 유지하고 새 장면의 짧은 이동만 적용했다. 새로고침 후 진행률 57.359%에서 하나만 opacity 1, 나머지 0을 확인했다. 다음 스크롤에서 로열티 장면도 하나만 표시됐다.
-2. 320x568에서 stage bottom 586, footer bottom 573으로 화면 아래가 잘렸다. 일부 탐색 버튼 폭은 16.56px였다. 작은 화면의 최소 높이와 타이포 간격을 조정했다. 수정 후 stage bottom 568, footer 511~555, 본문 bottom 468.98. 버튼은 약 38.57x44px, 가로 넘침 없음. 조건 글자를 10px에서 11px로 키웠다.
-3. 필수 입력은 화면과 사용자 정의 검증에만 표시되고 입력 요소의 required가 없었다. 성함, 연락처, 희망 지역, 개인정보 동의에 required를 추가하고 동의 오류를 aria-describedby로 연결했다. DOM에서 네 필수 항목을 확인했다. 실제 문의는 제출하지 않았다.
-
-### 화면별 확인 범위
-
-1. 첫 화면: 현재 구조와 코드 확인. 이번 수정은 소개 문구나 캐릭터 정체성을 바꾸지 않음.
-2. 가맹비 440만원: 내용과 산식 확인. 275 + 165이며 부가세 포함 표기 유지.
-3. 오픈 740만원: 현재 데스크톱 화면 확인. 앞의 440을 포함하는 합계라는 본문과 현금 지급 아님 표기 유지.
-4. 주방 500만원: 작은 화면 수정 전후 직접 확인. 냉장고 300 + 튀김기 200, 대상 조건 확인.
-5. 로열티 2년: 중간 스크롤로 전환 후 단일 패널 표시 확인.
-6. 물류 월 최대 100만원: 코드의 3,000/4,000만원 매출 조건과 다음 달 차감 표기 확인. 이번에는 별도 화면 캡처하지 않음.
-7. 마지막 상담 장면: 코드 확인. 별도 화면 캡처하지 않음.
-8. 상세 조건: 펼치기 직접 확인. 면적, 상권, 전체 신규 공사, 의무 운영과 환수 조건이 열림.
-9. 상담: 상단 버튼으로 바로 이동, 320x568 배치와 필수 요소 확인. 전송 및 수신은 미검증.
-
-### 악마의 대변인
-
-- 큰 숫자가 실제 제공을 보장한다는 근거는 없다. 현재 자료는 2026년 8월 초안이며 실제 시행과 모집 잔여 수량은 미확인이다. 디자인 시안의 검토와 공개용 조건 확정은 구분한다.
-- 440과 740을 연속으로 보여주는 방식은 별도 금액으로 기억될 위험이 있다. 현재 포함 관계와 구성표가 반론을 일부 해소한다. 1,180만원으로 합산하지 않는다. 실제 독자의 이해는 확인하지 못했다.
-- 페이지 전체 높이는 관찰한 642x988에서 16,435px였다. 혜택 연출 뒤 비슷한 내용을 다시 크게 설명해 반복이 발생한다. 상단 상담 우회는 작동하지만 이탈이 줄었다는 증거는 없다. 후속 개선은 뒤쪽 상세 혜택의 요약화를 우선 검토한다. 사용자가 선택한 전면 혜택 연출은 유지한다.
-
-### 리프레이밍
-
-F0 원문: “난 스크롤 옮기면서 지원이 한개씩 크게 한페이지 다 담기게 들어가면 좋겠어”. 목표는 가맹 희망자가 혜택을 강하게 인지하고 상담할 수 있게 하는 것. 캐릭터, 주황색, 한 화면 한 혜택은 고정한다.
-
-- F1 주목: 각 화면에서 가장 먼저 기억되는 것이 혜택인지 본다. 큰 숫자와 단일 장면 구성을 유지한다. 다음 확인은 가맹 희망자가 장면을 본 뒤 핵심 항목을 회상할 수 있는지다.
-- F2 이해: 내 점포에 적용되는 지원과 포함 관계를 구분할 수 있는지 본다. 740에 440이 포함되는지, 500 지원 조건이 있는지 설명하게 해보는 것이 판별 방법이다. 우선 검증할 프레임이다.
-- F3 행동: 혜택을 이해한 사람이 원하는 시점에 상담할 수 있는지 본다. 상단 상담 버튼의 실제 이동은 확인했다. 상담 클릭과 유효 문의가 증가하는지는 미측정이다.
-
-### 콘텐츠검수
-
-목적을 기준으로 U를 주력, R과 E를 지원 축으로 보았다. 점수는 편집 판단용이며 심리척도나 성과 예측값이 아니다.
-
-- R 3, 확신도 중간: 창업 시점의 비용과 운영 부담이 구체적이다. 실제 예비 점주의 발화나 반응은 없다.
-- U 3, 확신도 중간: 금액 구성과 적용 조건을 확인할 수 있다. 실제 시행 여부와 전체 창업 견적은 미확인이다.
-- E 3, 확신도 중간: 캐릭터와 큰 숫자로 연속 장면의 목적이 분명하다. 이후 내용 반복은 소비 부담을 늘릴 수 있다.
-
-### 검증 한계와 결과
-
-build, lint, git diff --check 통과. 브라우저에서 현재 화면을 직접 캡처해 확인했으나 문서화된 캡처 API에 로컬 저장 기능이 없어 캡처 파일을 보존한 정식 감사 패키지는 만들지 못했다. 화면 및 코드 기반 자체 검수다. OS의 reduced-motion 설정, 스크린리더 전체 탐색, 실제 문의 수신, 본사 프로모션 시행은 별도 미검증. 결론은 방향 유지, 관찰된 가독성 및 작은 화면 오류 수정 완료, 실제 고객 이해와 확정 조건 확인 필요다.
+The user's following request enlarges 닭장수 substantially on desktop and mobile. Latest evidence, fixes and the passed QA result are recorded in [design-qa-big-character.md](design-qa-big-character.md). Prior evidence above remains the source for this scoped size refinement.
 
 
-## 2026-09-29 Product Design refinement
+## Latest iteration — Page 2 settle and mobile portrait
 
-Scope: current `?concept=rebrand` preview, from brand entry through benefits, menu, space, FAQ and consultation. Intended user is a prospective franchise owner. Existing approved visual direction is the reference; this was refinement of the current product, not concept replacement.
+final result: passed
 
-### Current-run screen findings and disposition
+### Target and comparison evidence
 
-1. Brand entry and benefit chapters: oversized logo, single benefit and character are strong anchors. Supporting text and chapter navigation were disproportionately small. Standardized supporting type and added an explicit filled active chapter state. Kept native scrolling and the existing number/character motions. Mobile opening amount settled at 740; short-phone kitchen amount settled at 500.
-2. Benefit details: the opening support repeated the same 440/100/200 information in multiple large blocks. Removed the duplicate 300 opening-support card while keeping the package composition. Replaced the orange detail wall and four repeated cards with cream, a dark package summary and three aligned support rows. Current screenshots show the breakdown and qualification text together.
-3. Menu: three narrow mobile images and small labels made each product difficult to inspect. Changed to image-and-text rows on mobile, retaining three columns on desktop and all real assets. Directly inspected the mobile menu after the change.
-4. Space: framed buttons competed with the image; mobile crop discarded too much context. Changed to underlined selection tabs and a wider image ratio. Switched to the second concept and confirmed the corresponding 1400px source loaded. Concept/actual-photo distinction remains visible.
-5. FAQ and preparation: shared body sizes, heading rhythm and rules now align with the preceding sections. Opened the cash-support FAQ and inspected the revealed answer. Terms disclosure also opened successfully.
-6. Consultation: previous heavy type, badges and uneven scale did not match the detail sections. Simplified labels and field styling, set text inputs to 16px and minimum 52px height, retained existing required semantics. CTA navigation inspected; no form submitted.
+The user accepted the Product Design size review: preserve the large introduction, reduce the desktop rest size by 10% and move slightly aside, and use a larger waist-up phone portrait. Scope is page 2 only. Earlier first-scene QA sections remain historical evidence, not a rerun of that scope.
 
-### Checks and limits
+- Source visual truth: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_크기검토/01-current.jpg` (1280x720 desktop) and `02-mobile.jpg` (390x844 phone), both the settled fee chapter before this edit.
+- Matched final implementation: `03-desktop-after.jpg` and `04-mobile-after.jpg` in the same folder, same route, theme, chapter, content and settled pose. CSS sizes and pixels match 1:1; no density normalization or browser-chrome crop was needed.
+- Full-view source-left / implementation-right comparisons were created without rescaling and actually inspected together: `05-desktop-comparison.png` (2584x720) and `06-mobile-comparison.png` (804x844), with a 24px gap. The desktop preview may be display-scaled by the image viewer; full-size single viewport captures were also inspected for details.
+- Compact phone comparison history: initial candidate `08-small-mobile-rest.jpg` versus fixed `10-small-mobile-final-rest.jpg`, both 375x667; inspected together in `11-small-mobile-comparison.png` (774x667). Final main-gesture evidence is `09-small-mobile-final-press.jpg`. Final 360x740 evidence is `13-narrow-mobile-final.jpg`.
+- Separate focused crops were unnecessary for this scoped size edit: full-size phone pairs make the face, hands, logo and every changed line readable, while the desktop single capture preserves legible copy at its original 1280x720 pixels.
 
-- Current screenshots captured and inspected in the in-app browser, including desktop 1280, mobile 390x844 and short mobile 320x568. Rejected an incorrectly scaled capture from the older tab and used a fresh preview tab. The documented browser API cannot persist screenshot bytes to local files, so this is a direct screen/code review, not the complete saved-screenshot audit package prescribed by the audit skill.
-- At 320x568, kitchen qualifications ended at y412.7 and chapter navigation started at y501. No horizontal document overflow. At 390px, form text inputs computed at 16px and 52px height. Desktop support rows and alternate space image inspected.
-- Build and lint passed. Focus/reduced-motion rules source reviewed; full keyboard journey, OS reduced-motion emulation, screen-reader testing and WCAG compliance are not claimed.
-- Promotion activation, actual inquiries and customer comprehension remain unverified. No external publication, uploads or lead submission.
+### Findings and iteration history
+
+- [P2, fixed] The first 375x667 portrait remained too small below the copy, so face and hand motion were hard to distinguish. Replaced this short-phone arrangement with facts on the left and a 210px portrait lane on the right, constrained by heading and menu positions. Final paired evidence shows the larger face and preserved fee labels, amounts and note.
+- The same compact treatment applies through 780px phone height; the final 360x740 image shows the larger portrait, full condition note and reachable navigation without horizontal overflow.
+- Desktop scale .9 and 26px retreat are intentional. Phone crop excludes the lower body; the lowered resting hand may meet that waist crop. The meaningful downward press remains fully visible. No actionable P0/P1/P2 finding remains within this scope.
+
+### Required fidelity surfaces
+
+- Fonts and typography: retained existing families, fallbacks, sizes, weights, digit treatment and color. Desktop wrapping is unchanged. Short-phone facts and conditions intentionally wrap in a narrower column and remain untruncated.
+- Spacing and layout rhythm: desktop motion retains the large presentation and settles gently to .9 scale. Normal phones move the fee copy upward modestly to reserve a portrait lane. Short phones use a side-by-side facts/portrait layout; header, 440 emphasis and chapter navigation remain readable.
+- Colors and tokens: retained cream, dark ink and the existing temporary warm-ink accent; settled comparisons have the same source palette. No new decorative drawing or visual token.
+- Image quality and asset fidelity: reused all four existing transparent raster poses with unchanged face, clothing, logo and proportions. Mobile uses a viewport crop with a top allowance for the hat and moving hands; no new image generation or substitute illustration.
+- Copy and content: fee 275만원 plus training 165만원 equals 440만원; VAT wording and the unconfirmed proposal/conditions remain exactly the existing content. No public claim was added.
+
+### Interaction, validation and limits
+
+Native in-app captures verify settled desktop scale matrix(.9,0,0,.9,26,0), readable phone crops, the downward hand gesture, and no horizontal overflow. Pointer replay and Enter-key replay work; the latter changes the fee host from settled to playing. Browser warnings/errors: none. ESLint, client build, SSR build, prerender and Git whitespace checks pass. Reduced-motion phone cropping was reviewed in source; preference emulation, full accessibility, real inquiries and production performance were not tested. No deployment, commit or push.
+
+Implementation checklist: complete for this scoped page-2 adjustment.
+
+
+## Latest iteration — Page 3 opening-support presentation
+
+final result: passed
+
+### Target and evidence
+
+The user requested page 3 from the agreed action map: a left-side host presents the three existing support items, connects them to 740만원 상당, and finishes at full size. New cards and reference-guided poses are intentional changes to this existing scene; other chapters are outside the comparison scope.
+
+- Source visual truth: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_3페이지_오픈지원/연결검수/01-desktop-before.jpg` (1280x720) and `02-mobile-before.jpg` (390x844), both chapter 3 with the number settled and the old host standing.
+- Final implementation: `05-desktop-rest.jpg` and `07-mobile-rest.jpg` at exactly the same viewport, theme, route and settled chapter. Pose/scale and card treatment differ intentionally under the user's request.
+- Inspected source-left / implementation-right pixel comparisons: `12-desktop-comparison.png` (2584x720) and `13-mobile-comparison.png` (804x844), created with a 24px gap, no rescaling and no browser chrome. CSS viewport and image pixels are 1:1. The desktop overview may be display-scaled by the viewer; full-size single captures were also inspected for text.
+- Timed evidence: `03-desktop-first-card.jpg`, `04-desktop-all-cards.jpg` and `06-mobile-present.jpg`. Read-only inspection confirmed the early sequence's first two cards had reached full opacity while the third remained at .55, then all three became fully visible, followed by the neutral finish.
+- Additional states: `08-small-mobile-present.jpg` (375x667), `09-wide-desktop-rest.jpg` (1440x900), `10-tablet-rest.jpg` (768x1024), and `11-narrow-mobile-rest.jpg` (360x740). Normal final widths equal viewport widths. The narrow phone finishes with identity transform, without end shrink.
+- Separate focused crops were unnecessary: the original-size phone pair makes the face, presenting hand, complete card labels/values and note readable. Desktop note and card detail were inspected in the single 1280x720 capture.
+
+### Findings and fixes
+
+- [P2, fixed before integration] Initial generated preparation/intermediate poses barely differed from the full extension and shifted the character. Rejected those two candidates, edited them from the full-presentation pose to create an apron-reaching hand and a distinct short offering hand, then inspected the three adopted PNGs. Kept the existing canonical neutral PNG for the finish and applied a small pose-registration offset in the UI. No further generation after the five-call batch including repairs.
+- Compact desktop cards use smaller padding/minimum height to protect the explanatory note and navigation. In final captures, note clearance to the menu is about 34px at 1280x720, 42px at 1440x900, 145px at 768x1024, 173px at 390x844, 53px at 375x667 and 64px at 360x740.
+- No actionable P0/P1/P2 visual issue remains within page 3. Discrete raster-pose changes are an expected property of the selected four-pose technique, not continuous anatomical interpolation.
+
+### Required fidelity surfaces
+
+- Typography: retained the existing display heading, 740 numeral and unit hierarchy. Cards keep the existing information; phone labels use 12px and values 16px to fit the narrow right column, with intentional wrapping and no truncation.
+- Layout: desktop host is larger on the left, with three readable support cards on the right. Phone host uses a left waist-up viewport while cards and the complete note remain on the right. Full-size rest is deliberate; the final transform is identity.
+- Colors/tokens: retained dark ink, cream and warm numeric accent. Cream cards with dark text are an intentional semantic UI treatment in the existing palette, not substitute illustration assets.
+- Imagery: three adopted transparent reference-guided poses plus the previously selected neutral pose, all 1122x1402 RGBA with genuine transparent corners. Original artwork remains intact; no mirroring of the Korean logo or approximate SVG/div mascot. Photo-pose generation and its repairs are recorded in the job's 생성프롬프트.txt.
+- Copy/content: existing fee/training waiver 440만원, 200 chickens valued at 100만원 상당 and opening marketing 200만원 상당 are unchanged. Total remains 740만원 상당, explicitly including the preceding 440만원 and representing waiver, in-kind and marketing support rather than cash. This remains the existing review proposal.
+
+### Interaction and limits
+
+Pointer replay and Enter-key replay restart both number and host. The shared 4.6-second clock coordinates three offering gestures, sequential card emphasis and the total pulse, then becomes still. Browser warnings/errors: none. ESLint, client build, SSR build, prerender and whitespace checks pass. Reduced-motion static cards/portrait were reviewed in source; preference emulation, full accessibility, production performance, API delivery and real inquiry submission are outside this pass. No deployment, commit or push.
+
+Implementation checklist: complete for page 3.
+
+
+## Latest iteration — Page 4 kitchen support
+
+final result: passed
+
+Target: the agreed right-side host alternately presents the refrigerator and fryer, emphasizes their 500만원 상당 total, then rests at full size. New cream cards and larger reference mascot are intentional changes.
+
+Evidence folder: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_4페이지_주방지원/`.
+- Source: before-desktop.jpg (1280x720), before-mobile.jpg (390x844), settled chapter 4, same route and theme.
+- Implementation: after-desktop.jpg and after-mobile.jpg at matching viewport and settled state. Inspected comparison-desktop.png (2584x720) and comparison-mobile.png (804x844): original pixels, 24px gap, no rescaling in files. Desktop pair viewer resized both sides equally; original-size singles were also inspected.
+- Timed: desktop-fridge.jpg first pose, first card opacity 1 and second .55; mobile-fryer.jpg second pose; preview-fryer.jpg fully readable 500 and both cards. Exactly one pose layer visible. No face crossfade.
+- Additional inspected rest captures: 1440x900, 768x1024, 375x667, 360x740. All document widths equal viewport widths. Note clearance to menu: 45px at 375x667, 17px at 360x740, 178px at 768x1024, 108px at 1440x900. Final actor transform matrix(1,0,0,1,0,0).
+
+Fidelity surfaces:
+- Typography: preserved heading, 500 numeral and unit hierarchy. Mobile cards intentionally stack 13px labels and 18px values, without truncation.
+- Layout: larger right host on desktop, waist-up right portrait and left cards on phones; long conditions full-width beneath the portrait row. Source-to-result relocation is intentional. No text or footer occlusion in observed states.
+- Colors/tokens: existing orange, dark ink and cream. Card surfaces intentionally improve separation and match chapter 3 treatment.
+- Imagery: two new arm gestures retain canonical face/clothing/logo, no mirrored Korean lettering, plus exact neutral reuse. RGBA/corner-alpha validated; no equipment imagery represented as a factual supplied product.
+- Copy: unchanged refrigerator 300만원 상당 and fryer 200만원 상당, totaling 500만원 상당. Retained conditional first-five-store eligibility, minimum 15평, commercial-area condition, full new interior and HQ review, 24-month operation. This remains the existing proposal wording.
+
+No actionable P0/P1/P2 issue remains in this scoped pass. Discrete pose switches remain a limit of the user's chosen raster-pose method. The small body dip communicates a nod without independently articulating the head.
+
+Pointer and Enter replay verified. Decode-before-playback and visibility/reduced-motion handling inspected in code; reduced-motion preference emulation unavailable in this browser. No full accessibility, live form delivery or production-performance certification. Browser warnings/errors none. ESLint, client build, SSR build, prerender and whitespace checks pass. Implementation checklist complete for page 4. No deployment, commit or push.
+
+
+## Latest iteration — Page 5 royalty zero-push
+
+final result: passed
+
+Target: the agreed left host pushes the large zero into place, introduces the first-two-year waiver proposal, and finishes with an open palm at full size. Larger host, smaller unit and cream normal-rate card are intentional changes to this chapter.
+
+Evidence folder: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_5페이지_로열티/`.
+- Source: before-desktop.jpg (1280x720), before-mobile.jpg (390x844), settled chapter 5, identical route/theme.
+- Final: after-desktop.jpg and after-mobile.jpg, same viewport and settled state. Inspected source-left/implementation-right comparison-desktop.png (2584x720) and comparison-mobile.png (804x844), 24px gap, original pixels/no file rescaling. Desktop overview displayed smaller by viewer; full-size originals inspected too.
+- Timed: desktop-push.jpg and mobile-push.jpg. Read-only DOM confirmed one visible push pose and the zero's in-progress native transform at about 2 seconds, then final open-palm pose only, identity actor/zero transform and settled phase after 4.2 seconds.
+- Additional full-size rest captures: 1440x900, 768x1024, 375x667, 360x740. No horizontal overflow, identity final actor at all sizes. Final note-to-menu clearance about 22px at 1280x720, 71px at 1440x900, 294px at tablet, 87px at 375x667 and 89px at 360x740.
+
+Findings fixed:
+- [P2] Phone push hand was cut by portrait overflow. Replaced horizontal clipping with a clip-path that retains vertical waist crop and permits lateral arm movement. Final mobile-push.jpg shows complete palm and fingers.
+- [P2] Tall-tablet auto-centered copy placed the title behind the presenting hand. Scoped positioning at 36% gives the hand/text separate lanes; final rest-768x1024.jpg inspected after rebuild.
+- No actionable P0/P1/P2 issue remains within this pass. The selected four-raster-pose method uses discrete arm changes, with smooth whole-body and number transforms; it is not continuous skeletal animation.
+
+Fidelity surfaces:
+- Typography: preserved existing Korean display family, period/title wording and large zero. The unit is deliberately smaller to prioritize the numeral. Phone zero is sized for the side-by-side host; title stays full-width below.
+- Layout: larger left host beside zero on both desktop and phone. One readable cream card for the normal rate, full-width eligibility note on phones. Scoped tall-tablet placement prevents hand/title collision.
+- Colors/tokens: existing dark ink background, cream lettering and cream card. Kept the settled dark palette during replay rather than flashing back to cream.
+- Imagery: two generated cutouts plus two existing reference poses. Canonical face/hat/clothing/logo retained, Korean text never mirrored. All 1122x1402 RGBA with transparent corner alpha 0. Small pose-registration offset aligns the push/presentation images; no final shrink.
+- Copy: original 매달 내는 로열티, 0원, 첫 2년 전액 면제안, 정상 로열티 월 매출액 3.3% unchanged. Note still specifies first contract 2 years and unconfirmed draft/HQ conditions.
+
+Pointer and same-chapter Enter replay verified. Browser warnings/errors none. Decode-before-play, visibility pause and reduced-motion fallback inspected in source; reduced-motion preference emulation unavailable. No full accessibility/performance/live form certification. ESLint, client build, SSR build, prerender and whitespace checks pass. Implementation checklist complete for page 5. No deployment, commit or push.
+
+
+## Latest iteration — Page 7 consultation invitation
+
+final result: passed
+
+Target: right-side host welcomes the visitor, guides the consultation CTA and rests large and calm. Existing copy and consultation topics stay intact. The CTA/form connection is intentionally restored in story-only preview as part of the final chapter.
+
+Evidence directory: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_7페이지_상담/`.
+- Source: before-desktop.jpg (1280x720), before-mobile.jpg (390x844), settled chapter 7, same route/theme. The source phone had no visible host because its action anchor was hidden and the actor's measured available height collapsed.
+- Final: after-desktop.jpg and after-mobile.jpg at the same viewport/state, neutral pointer. Inspected exact-size source-left/result-right comparison-desktop.png (2584x720) and comparison-mobile.png (804x844), 24px gap, no rescaling in files. Desktop pair is viewer-scaled equally; full-size singles inspected too.
+- Timed desktop-guide.jpg and mobile-guide.jpg: guide pose at about 2.5 seconds, button scale/lift/glow on the same clock. Read-only DOM confirmed only guide pose visible, then only rest pose and identity actor transform after 4.2 seconds. No idle looping or final shrink.
+- Inspected rest-375x667.jpg, rest-360x740.jpg, rest-768x1024.jpg and rest-1440x900.jpg. Final stage top is 66px on phones, 80px on desktop/tablet, without heading cropping. No horizontal overflow at any size. Three-topic list/menu clearance: 11px on phones, 58px at 1280x720, 110px at 1440x900, 189px at tablet. Additional reset-view screenshot preview-final.jpg is 1282x1566 with all content/host/CTA visible.
+- CTA interaction evidence: consultation-form-mobile.jpg and consultation-form-desktop.jpg show the existing empty form after anchor selection. Browser Back removes the fragment and restores the story-only scene. No personal data entered or inquiry submitted.
+
+Findings fixed:
+- [P2] Existing preview hid CTA and all form content. Removed CTA hiding and added a scoped :target rule for the existing form; confirmed actual scroll to it on desktop/phone.
+- [P2] Later generic CSS reduced phone host width, showing too much full body. Increased selector specificity for the intentional 78vw waist-up crop; face and active palm remain visible, outer right silhouette may meet the viewport edge by design.
+- [P2] Last-chapter replay returned early after resizing, leaving the stage partly above the header. Replay now also aligns chapter 7; all final matched viewport captures show complete headings and correctly positioned menu.
+- No actionable P0/P1/P2 remains in this scope. Four raster poses still switch discretely, accompanied by smooth whole-body/button transforms.
+
+Fidelity surfaces:
+- Typography: preserved existing Korean display heading and support text, CTA label and three consultation topics. No claim or new marketing copy added.
+- Layout: desktop large right host plus left content/button; phone larger right portrait sits above the full-width CTA. Original headline moves higher on desktop because the previously hidden action now occupies real space. Intentional, without overlap.
+- Colors/tokens: existing orange/ink/cream, dark CTA with its existing cream hover. Soft one-time border emphasis accompanies the guide gesture.
+- Imagery: exact approved neutral plus two reference-guided invitation/lower-guide poses; invitation reused as rest. Same character, hat, clothing and Korean apron logo, no mirroring or vector substitute. All RGBA, corner alpha 0, source originals intact.
+- Copy/content: unchanged 내 점포에는 어떤 혜택이?, point of contact for visitors with/without a store, 희망 지역, 점포 조건 and 적용 혜택. Existing consultation form revealed locally; handler and destination unchanged.
+
+Pointer replay, same-chapter Enter replay, anchor navigation and Back restoration verified. Console warnings/errors none. Decode, offscreen/document pause and reduced-motion static behavior inspected in source; preference emulation unavailable. No full accessibility/performance/live-delivery certification. Lint, client build, SSR build, prerender and Git whitespace checks pass. Implementation checklist complete for page 7. No deployment, commit or push.
