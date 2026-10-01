@@ -198,3 +198,22 @@ Fidelity surfaces:
 - Copy/content: unchanged 내 점포에는 어떤 혜택이?, point of contact for visitors with/without a store, 희망 지역, 점포 조건 and 적용 혜택. Existing consultation form revealed locally; handler and destination unchanged.
 
 Pointer replay, same-chapter Enter replay, anchor navigation and Back restoration verified. Console warnings/errors none. Decode, offscreen/document pause and reduced-motion static behavior inspected in source; preference emulation unavailable. No full accessibility/performance/live-delivery certification. Lint, client build, SSR build, prerender and Git whitespace checks pass. Implementation checklist complete for page 7. No deployment, commit or push.
+
+
+## Latest iteration — Full lower landing integration
+
+final result: passed (local integration)
+
+User requested all existing content beneath the seven chapters. The scope is restoring a continuous page and checking directly affected layout/interactions, without redesigning or changing commercial claims.
+
+Evidence: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_전체랜딩연결/`. Screenshots include desktop story end/transition, support detail, menu, wide space, open FAQ, form; compact fee/opening/kitchen scenes; phone menu, narrow space, FAQ, form/footer; tablet space.
+
+- Native scrolling from scene 7 reaches the support section. All seven main sections and footer have visible computed display values without fragment selection. Header and chapter-detail links reach their existing targets. Desktop header remains 80px, phone 66px.
+- Existing support detail and FAQ expand/collapse, space presets switch the actual image, form anchor reaches the existing empty form, and both privacy controls open/close. No inquiry or external message sent.
+- [P2, fixed] Restoring the kitchen detail link put its bottom too close to the short-phone menu and over it on 360x740. Reduced reserved detail-row height at compact heights and adjusted the portrait crop to preserve visible face/gesture size. Final 375 and 360 screenshots inspected; narrow copy/menu clearance is about 8px.
+- Typography/content: existing heading hierarchy, values, terms and draft qualifiers retained. Full content is intentional. No new facts or claims.
+- Layout/colors: retained chapter orange/ink, cream support detail, light menu/FAQ and dark space/form. Header navigation and footer reappear under the full-page request. Main content order matches the existing code.
+- Imagery: reused existing real menu imagery and labeled space concepts, plus the previously adopted mascot poses. Broken completed images: none. Phone portrait retains its visible face and left-side content remains readable.
+- Checked desktop, tablet and phone/compact sizes. No horizontal overflow or console warnings/errors. Existing source matches captured interactions; unrelated chapters remain unchanged.
+
+ESLint, client/SSR build, prerender and whitespace checks pass. Backend delivery, real form submission, full accessibility/performance certification and legal copy review are outside this integration pass. Public update is limited to the dedicated sample project; main site is preserved.

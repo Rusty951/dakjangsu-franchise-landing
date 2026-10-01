@@ -29,8 +29,12 @@
   .jangsu-kitchen-actor { top: 16px; height: calc((100% - 28px) * 1.5); transform-origin: center top; }
   .jangsu-traveler .jangsu-kitchen-pose { object-position: center top; }
 }
-@media (max-width: 700px) and (max-height: 700px) {
+@media (max-width: 700px) and (max-height: 780px) {
   .benefit-scene--kitchen .benefit-scene-detail { min-height: 190px; }
+  .jangsu-kitchen-actor { height: calc((100% - 28px) * 1.9); }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .benefit-scene--kitchen .benefit-scene-detail { min-height: 174px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .kitchen-static-character { display: block; position: absolute; right: 4%; bottom: 85px; width: clamp(110px,20vw,260px); height: 32%; object-fit: contain; object-position: right bottom; }
