@@ -225,7 +225,7 @@ Public rollout verification: passed. Same sample URL now serves source da9a662 i
 
 final result: passed
 
-Compact-height verification and matched comparisons are complete. Public rollout follows. Existing seven-chapter visual target, orange/cream/ink palette, mascot poses, real product photos and labeled space concepts are retained. User requested full desktop/mobile critique and correction, including natural Korean copy.
+Compact-height verification, matched comparisons and public rollout are complete. Existing seven-chapter visual target, orange/cream/ink palette, mascot poses, real product photos and labeled space concepts are retained. User requested full desktop/mobile critique and correction, including natural Korean copy.
 
 Evidence root: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_전체디자인문구검수/`. Current-run source captures are in before/, revised captures in after/. Desktop 1440x900 and phone 390x844, actual browser screenshots, 1:1 image/CSS pixels. Extra 375x667, 360x740, 768x1024 and 1280x720 checks follow.
 
@@ -251,3 +251,6 @@ Flow coverage: 1 hero, 2 fee, 3 opening, 4 kitchen, 5 royalty, 6 growth, 7 invit
 - Extra 375x667 and 360x740 checks cover all seven scenes. Notes/links remain above the phone menu (minimum measured 13px at 375 opening); no horizontal overflow. 1280x720 opening link shares the menu's vertical band in a separate left lane, with no overlap; its note stays above the menu. 768x1024 space image is about 704x453 and remains complete. Extra captures are compact-*, narrow-*, short-desktop-* and 19-tablet-space.jpg.
 - Menu Enter/Escape/focus return and close-on-navigation verified. Space presets, FAQ/conditions expand, required-field focus, sample-only validation, footer tel href and form anchors work. Same-chapter replay/visibility/reduced-motion code preserved. Browser warnings/errors: none in observed states. Real inquiries/calls, screen-reader traversal, OS motion preference emulation, 200% zoom, performance profiling and legal-policy validity are outside this pass.
 - No actionable P0/P1/P2 remains within the audited surface. No AI-detection or human-authorship claim is made. Implementation checklist complete for the desktop/mobile design/copy fixes; source lint/client/SSR/prerender checks passed.
+
+
+Public rollout verification: passed. Dedicated sample deployment dpl_6HMWFew7xqxRdrwrjZiCjw16V4Y9 is READY from source commit c50442e, with VITE_REVIEW_ONLY=true. Anonymous HTTP 200 serves the latest JS/CSS fingerprints at https://dakjangsu-client-sample.vercel.app/?concept=rebrand. Public browser verifies expanded support conditions, visible review-only form notice, privacy open/close and preserved 7,000 hover animation; console warnings/errors none. Evidence after/20-public-conditions.jpg and after/21-public-hero-hover.jpg. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8, independently rechecked through the Vercel project API. No real inquiry or call sent. Temporary viewport override reset; public sample retained as deliverable.
