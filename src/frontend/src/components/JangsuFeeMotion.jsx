@@ -34,7 +34,7 @@ export default function JangsuFeeMotion() {
         { offset: .58, opacity: 1, transform: 'translate(0, 6px) scale(1.02,.97) rotate(.6deg)', easing: 'cubic-bezier(.16,1,.3,1)' },
         { offset: .66, opacity: 1, transform: 'translate(0, -5px) scale(.995,1.012) rotate(-.3deg)', easing: 'ease-out' },
         { offset: .8, opacity: 1, transform: 'translate(0, 0) scale(1) rotate(0)', easing: 'cubic-bezier(.16,1,.3,1)' },
-        { offset: 1, opacity: 1, transform: mobile ? 'translate(0, 0) scale(1) rotate(0)' : 'translate(26px, 0) scale(.9) rotate(0)' },
+        { offset: 1, opacity: 1, transform: 'translate(0, 0) scale(1) rotate(0)' },
       ], options));
       const title = stage.querySelector('.fee-waiver-title');
       if (title) animations.push(title.animate([

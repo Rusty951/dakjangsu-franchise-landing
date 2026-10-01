@@ -60,7 +60,7 @@ const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
             <p className="footer-company-name">주식회사 주완푸드</p>
             <div className="footer-company-info">
               <p>
-                <span>대표번호 : 1588-2287</span>
+                <a className="footer-phone" href="tel:15882287">대표번호 : 1588-2287</a>
                 <span>팩스 : 02-6954-2217</span>
               </p>
               <p>(04726) 서울특별시 성동구 금호산길 60 3층&nbsp;&nbsp;|&nbsp;&nbsp;대표자 : 송민화</p>

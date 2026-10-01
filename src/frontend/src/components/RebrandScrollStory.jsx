@@ -22,10 +22,10 @@ const mobileFrames = [
 ];
 const benefits = [
   { id: 'fee', label: '가맹비와 교육비', amount: '440', unit: '만원', title: '전액 면제안', facts: [['가맹비', '275만원'], ['교육비', '165만원']], detail: '부가세를 포함한 합계입니다.', note: '2026년 8월 신규 가맹 혜택 초안. 시행 여부와 적용 조건은 본사 확인이 필요합니다.' },
-  { id: 'opening', label: '문 여는 준비를 함께', amount: '740', unit: '만원 상당', title: '오픈 패키지안', facts: [['가맹비 + 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']], note: '앞서 본 440만원 면제를 포함한 합계입니다. 현금 지급이 아닌 면제와 현물, 마케팅 지원안입니다.' },
-  { id: 'kitchen', label: '주방을 준비할 때도', amount: '500', unit: '만원 상당', title: '주방 지원안', facts: [['간냉식 냉장고', '300만원 상당'], ['최신형 튀김기', '200만원 상당']], note: '조건 충족 매장 중 선착순 5개점 대상안. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건이 있습니다.' },
-  { id: 'royalty', label: '매달 내는 로열티,', amount: '0', unit: '원', title: '첫 2년 전액 면제안', facts: [['정상 로열티', '월 매출액 3.3%']], note: '최초 계약 2년간 면제하는 혜택 초안입니다. 시행 여부와 최종 적용 조건은 본사 확인이 필요합니다.' },
-  { id: 'growth', label: '매출 기준 달성 시, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '개점월부터 12개월 내 달성 월에 적용하는 안입니다.', note: '매출 증빙 제출 후 익월 물류대금에서 차감합니다. 현금 지급이나 매출 보장을 뜻하지 않습니다.' },
+  { id: 'opening', label: '문을 열 때 필요한 지원', amount: '740', unit: '만원 상당', title: '오픈 지원안', facts: [['가맹비 + 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']], note: '440만원 면제를 포함한 금액입니다. 면제와 현물, 마케팅 지원안이며 현금으로 지급하지 않습니다.' },
+  { id: 'kitchen', label: '냉장고와 튀김기', amount: '500', unit: '만원 상당', title: '주방 지원안', facts: [['간냉식 냉장고', '300만원 상당'], ['최신형 튀김기', '200만원 상당']], note: '조건을 충족한 선착순 5개점 대상안입니다. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건이 있습니다.' },
+  { id: 'royalty', label: '매달 내는 로열티', amount: '0', unit: '원', title: '첫 2년 전액 면제안', facts: [['정상 로열티', '월 매출액 3.3%']], note: '최초 계약 2년간 면제하는 혜택 초안입니다. 시행 여부와 최종 적용 조건은 본사 확인이 필요합니다.' },
+  { id: 'growth', label: '매출 기준을 달성하면, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '개점월부터 12개월 내 기준을 달성한 월에 적용하는 안입니다.', note: '매출 증빙을 제출하면 다음 달 물류대금에서 차감합니다. 현금 지급이나 매출 보장은 아닙니다.' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
@@ -123,9 +123,9 @@ export default function RebrandScrollStory() {
             const actorBottom = footerTop - 12;
             values[1] = Math.min(30, Math.max(0, actorBottom - copyBottom - 12) / stage.offsetHeight * 100);
             values[2] = (stage.offsetHeight - actorBottom) / stage.offsetHeight * 100;
-            if (window.innerHeight <= 780) {
+            {
               const actorTop = copy.querySelector('h2').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16;
-              const portraitHeight = Math.min(210, Math.max(0, actorBottom - actorTop));
+              const portraitHeight = Math.min(230, Math.max(0, actorBottom - actorTop));
               values[0] = 80;
               values[1] = portraitHeight / stage.offsetHeight * 100;
               values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
@@ -134,7 +134,7 @@ export default function RebrandScrollStory() {
           if (current === 2) {
             const actorTop = copy.querySelector('h2').getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 16;
             const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stage.getBoundingClientRect().top;
-            const portraitHeight = Math.min(230, Math.max(0, footerTop - 12 - actorTop));
+            const portraitHeight = Math.min(window.innerHeight <= 700 ? 180 : 230, Math.max(0, footerTop - 12 - actorTop));
             values[0] = 16;
             values[1] = portraitHeight / stage.offsetHeight * 100;
             values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
@@ -281,7 +281,7 @@ export default function RebrandScrollStory() {
             {benefit.id === 'kitchen' && <img className="kitchen-static-character" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             {benefit.id === 'royalty' && <img className="royalty-static-character" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
-              <span className="benefit-scene-index">0{index + 1} / 05 OPENING BENEFITS</span>
+              <span className="benefit-scene-index">0{index + 1} / {chapters[index + 1]} 지원</span>
               <h2>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
@@ -301,17 +301,17 @@ export default function RebrandScrollStory() {
                 {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
               </div>}
               <p className="benefit-scene-note">{benefit.note}</p>
-              <a href="#rebrand-benefits">전체 지원 내용과 조건 보기 ↗</a>
+              <a href="#rebrand-benefits">지원 조건 자세히 보기 ↗</a>
             </div>
           </article>
         ))}
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(6)}>
           <div className="jangsu-invite-content">
-            <span className="jangsu-scene-number">YOUR NEXT CHAPTER</span>
+            <span className="jangsu-scene-number">창업 상담</span>
             <h2>내 점포에는<br />어떤 혜택이?</h2>
             <div className="jangsu-invite-copy">
-              <p>점포가 있어도, 아직 없어도.<br />희망 지역부터 함께 확인해요.</p>
-              <a href="#lead-capture">내 점포 혜택 상담 <span aria-hidden="true">↗</span></a>
+              <p>점포를 구하기 전에도 상담할 수 있습니다.<br />희망 지역부터 남겨주세요.</p>
+              <a href="#lead-capture">창업 상담하기 <span aria-hidden="true">↗</span></a>
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
@@ -319,7 +319,7 @@ export default function RebrandScrollStory() {
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuHeroMotion key={heroReplay} /> : active === 1 ? <JangsuFeeMotion key={feeReplay} /> : active === 2 ? <JangsuOpeningMotion key={openingReplay} /> : active === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : active === 4 ? <JangsuRoyaltyMotion key={royaltyReplay} /> : active === 6 ? <JangsuInviteMotion key={inviteReplay} /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
-        <div className="jangsu-stage-footer"><span>SCROLL TO EXPLORE ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
+        <div className="jangsu-stage-footer"><span>아래로 스크롤 ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
       </div>
     </section>
   );

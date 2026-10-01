@@ -108,6 +108,8 @@ const parseLeadResponse = (responseText) => {
 
 const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) => {
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
+  const previewOnly = rebrandCopy && import.meta.env.VITE_REVIEW_ONLY === 'true';
   const hasTrackedStartRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
@@ -136,7 +138,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
   }, []);
 
   const trackFormStart = () => {
-    if (hasTrackedStartRef.current) {
+    if (previewOnly || hasTrackedStartRef.current) {
       return;
     }
 
@@ -188,10 +190,21 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
       setErrors(validationErrors);
       setStatus('error');
       setStatusMessage('필수 정보를 확인해 주세요.');
+      const firstMissing = Object.keys(validationErrors)[0];
+      const input = formRef.current?.elements.namedItem(firstMissing);
+      input?.focus({ preventScroll: true });
+      input?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       trackEvent('lead_form_error', {
         reason: 'validation',
         fields: Object.keys(validationErrors)
       });
+      return;
+    }
+
+    if (previewOnly) {
+      setErrors({});
+      setStatus('preview');
+      setStatusMessage('입력 내용을 확인했습니다. 검토용 샘플이라 실제 상담 신청은 접수되지 않습니다.');
       return;
     }
 
@@ -228,7 +241,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
       trackEvent('submit_lead', { section: 'lead_capture_form' });
     } catch (error) {
       setStatus('error');
-      setStatusMessage('문의 접수 연결을 확인 중입니다. 카카오톡 상담 또는 대표번호를 이용해 주세요.');
+      setStatusMessage(rebrandCopy ? '접수 연결을 확인 중입니다. 잠시 후 다시 시도하거나 대표번호 1588-2287로 연락해 주세요.' : '문의 접수 연결을 확인 중입니다. 카카오톡 상담 또는 대표번호를 이용해 주세요.');
       trackEvent('lead_form_error', {
         reason: 'network_or_api',
         endpoint: leadApiEndpoint,
@@ -247,15 +260,13 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
       <div className="consultation-intro">
         <span className="consultation-label">닭장수 창업 상담</span>
         <h2 id="lead-capture-title">
-          <span>{rebrandCopy ? '내 점포의' : '우리동네에서'}</span>
-          <span>{rebrandCopy ? '창업 혜택,' : '닭장수 창업'}</span>
-          <span><em>{rebrandCopy ? '함께 확인해요.' : '가능할까요?'}</em></span>
+          {rebrandCopy ? <><span>어느 동네에서</span><span><em>열고 싶으세요?</em></span></> : <><span>우리동네에서</span><span>닭장수 창업</span><span><em>가능할까요?</em></span></>}
         </h2>
         <p>
           {rebrandCopy ? (
             <>
-              <span>희망 지역과 점포 조건부터</span>
-              <span>적용 가능한 지원 항목까지 확인합니다.</span>
+              <span>점포를 구하기 전에도 상담할 수 있습니다.</span>
+              <span>희망 지역과 운영 계획을 적어주세요.</span>
             </>
           ) : (
             <>
@@ -265,7 +276,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
           )}
         </p>
         {rebrandCopy && <div className="consultation-host">
-          <p>점포가 아직 없어도 괜찮습니다.<br />희망 지역부터 남겨주세요.</p>
+          <p>지역과 점포 조건을 보고,<br />지원 항목을 하나씩 확인합니다.</p>
           <img src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" loading="lazy" />
         </div>}
         {!hideKakao && (
@@ -276,15 +287,16 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
       </div>
 
       <div className="consultation-form-wrap" aria-label="닭장수 창업 상담 신청서">
-        <form className="consultation-form-card" onSubmit={handleSubmit} noValidate>
+        <form ref={formRef} className="consultation-form-card" onSubmit={handleSubmit} noValidate>
           <span className="consultation-note-clip" aria-hidden="true" />
           <div className="consultation-form-head">
             <span>상담 신청서</span>
             <strong>
-              <span>희망 지역을</span>
-              <span>먼저 남겨주세요</span>
+              <span>{rebrandCopy ? '연락받을 정보를' : '희망 지역을'}</span>
+              <span>{rebrandCopy ? '남겨주세요' : '먼저 남겨주세요'}</span>
             </strong>
           </div>
+          {previewOnly && <p className="consultation-preview-note">검토용 양식입니다. 입력 내용은 전송되지 않습니다.</p>}
 
           <div className="consultation-form-grid">
             <label className="consultation-field" htmlFor="lead-name">
@@ -431,7 +443,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
           {errors.privacyConsent && <small id="lead-consent-error" className="consultation-field-error">{errors.privacyConsent}</small>}
 
           <button className="consultation-submit" type="submit" disabled={status === 'submitting'}>
-            {status === 'submitting' ? '문의 접수 중' : '상담 문의 남기기'}
+            {status === 'submitting' ? '문의 접수 중' : previewOnly ? '입력 내용 확인하기' : rebrandCopy ? '창업 상담 신청하기' : '상담 문의 남기기'}
           </button>
 
           {statusMessage && (

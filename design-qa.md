@@ -219,3 +219,35 @@ Evidence: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/202
 ESLint, client/SSR build, prerender and whitespace checks pass. Backend delivery, real form submission, full accessibility/performance certification and legal copy review are outside this integration pass. Public update is limited to the dedicated sample project; main site is preserved.
 
 Public rollout verification: passed. Same sample URL now serves source da9a662 in deployment dpl_EsFS5Dn9WbWzPygYapS2muvrrafw. Anonymous 200/new bundle fingerprints, public main-section display and menu/fit screenshots (18-public-menu.jpg, 19-public-menu-cards.jpg, 20-public-fit.jpg) confirm the integrated result. Main production unchanged.
+
+
+## Latest iteration — Full Product Design and Korean copy audit
+
+final result: passed
+
+Compact-height verification and matched comparisons are complete. Public rollout follows. Existing seven-chapter visual target, orange/cream/ink palette, mascot poses, real product photos and labeled space concepts are retained. User requested full desktop/mobile critique and correction, including natural Korean copy.
+
+Evidence root: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-01_닭장수_전체디자인문구검수/`. Current-run source captures are in before/, revised captures in after/. Desktop 1440x900 and phone 390x844, actual browser screenshots, 1:1 image/CSS pixels. Extra 375x667, 360x740, 768x1024 and 1280x720 checks follow.
+
+Initial findings and adopted fixes:
+- [P1] before/10-mobile-space.jpg and read-only geometry show a 350px-wide space image with fixed 900px height, despite a declared aspect ratio. It cropped the layout into a ceiling strip. Set height:auto, preserve full image with contain and 14/9 viewport. after/10-mobile-space.jpg now measures 350x225 and reveals tables/kitchen, with readable conceptual-image disclosure. Both presets inspected.
+- [P2] before/01-mobile-hero.jpg has no section navigation; only the consultation CTA is visible. Added a text-based 44px menu disclosure with six links, Escape focus return and close-on-link. after/16-mobile-menu-open.jpg accepted; Enter/Escape/navigation behavior verified.
+- [P2] Fee host is small below the phone copy, and desktop finish shrinks by 10%. before/02 captures document both. Reserve a phone portrait beside the facts/note at all heights and remove late shrink. after/02 captures preserve identity and show the larger finish. Growth's phone parked host also gets a larger bounded allowance while its lift remains unchanged.
+- [P2] Supporting prose is small and muted, while editorial copy repeats vague phrases and decorative English. Made primary body 16–17px, notes 12–13px with full opacity, darker secondary ink, and Korean section labels. Source Voice.md and Korean Style QA applied. Actual benefit values, dates, VAT, assumptions and eligibility clauses preserved, not converted into confirmed offers.
+- [P2] before/13-mobile-form.jpg shows a long duplicate introduction before the first field. Shortened to two-line intro and direct form heading; removed redundant mobile mascot block. after/13-mobile-form.jpg shows all three required fields within/at the first viewport.
+- [P2] Blank submission leaves the first missing field at -459px and focus on the submit button in before/14-mobile-form-errors.jpg. Added focus and center scroll to the first missing field. after/14 shows lead-name focused at about 396px, all four errors still available. No source validation rule weakened.
+- [P2] Public sample's form looks like a real submission path. Explicit VITE_REVIEW_ONLY mode labels it and checks sample input without constructing/sending a lead payload. after/18 confirms the clear not-received message using fabricated test values. Real API path remains when this flag is absent/false. No real inquiry sent.
+- [P3] Footer phone is static and text excessively heavy. Made the supplied number a tel link, adjusted weight/size and contact-row alignment. Phone href inspected without initiating a call; company/legal details unchanged.
+
+Flow coverage: 1 hero, 2 fee, 3 opening, 4 kitchen, 5 royalty, 6 growth, 7 invitation, 8 support details, 9 menu, 10 space, 11 franchise fit, 12 FAQ, 13 form entry, 14 validation, 15 footer. Source screenshots for every step accepted in this run; later report records final state.
+
+### Final comparison and verification
+
+- Full-view same-size comparisons inspected in after/compare-*.png: hero desktop/phone, fee desktop/phone, opening/kitchen/royalty/growth/invitation phone, menu desktop/phone, space desktop/phone, form desktop/phone and phone errors. Desktop pairs are 2904x900 (1440x900 each plus 24px); phone pairs are 804x844 (390x844 each plus 24px). No rescaling in files. Viewer downscales large desktop pairs equally; original single captures also inspected.
+- Focused after/focus-desktop-assumptions.png compares the same x35/y680/w650/h135 region at 1:1, preserving the 7,192 calculation, item sum and conditional/non-cash wording. Phone pairs remain 1:1 and cover dense dates/conditions/fields without needing extra crops. Before/after form-error scroll positions intentionally differ because correcting focus/scroll is the fix.
+- Before/08-mobile-benefits.jpg and before fit/FAQ captures include adjacent sections from minimal heading scrolling, whereas final mobile anchors land at their sections. These are flow evidence, not pixel-alignment evidence; no false layout-drift finding is based on that difference.
+- Matched screenshots confirm the five surfaces: display/sans hierarchy preserved with clearer 16–17px body and 12–13px opaque notes; spacing/crop purposeful; orange/cream/ink retained; original raster assets and existing icons kept; copy reviewed against Voice and Korean Style QA, with values/conditions preserved.
+- Selected solid-token contrast calculations: muted ink/paper 6.49:1, ink/orange 4.53:1, cream body/ink 11.10:1, review note 10.10:1. These are specific token checks, not a full accessibility certification.
+- Extra 375x667 and 360x740 checks cover all seven scenes. Notes/links remain above the phone menu (minimum measured 13px at 375 opening); no horizontal overflow. 1280x720 opening link shares the menu's vertical band in a separate left lane, with no overlap; its note stays above the menu. 768x1024 space image is about 704x453 and remains complete. Extra captures are compact-*, narrow-*, short-desktop-* and 19-tablet-space.jpg.
+- Menu Enter/Escape/focus return and close-on-navigation verified. Space presets, FAQ/conditions expand, required-field focus, sample-only validation, footer tel href and form anchors work. Same-chapter replay/visibility/reduced-motion code preserved. Browser warnings/errors: none in observed states. Real inquiries/calls, screen-reader traversal, OS motion preference emulation, 200% zoom, performance profiling and legal-policy validity are outside this pass.
+- No actionable P0/P1/P2 remains within the audited surface. No AI-detection or human-authorship claim is made. Implementation checklist complete for the desktop/mobile design/copy fixes; source lint/client/SSR/prerender checks passed.

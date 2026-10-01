@@ -41,7 +41,7 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
         const detail = copy.querySelector('.benefit-scene-detail');
         const detailBottom = layoutPoint(detail, stage).y + detail.offsetHeight;
         // The note reserves an 84px lane so the host can stay legible on phones.
-        restHeight = Math.min(120, Math.max(0, restBottom - detailBottom - 10));
+        restHeight = Math.min(190, Math.max(0, restBottom - detailBottom - 10));
         restCenter = stage.clientWidth - 12 - restHeight / 3;
       }
       const variables = {
