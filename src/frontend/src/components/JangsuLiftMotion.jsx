@@ -22,22 +22,27 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
     const copy = stage.querySelector('.benefit-scene--growth .benefit-scene-copy');
     const measure = () => {
       const mobile = window.innerWidth <= 700;
-      const height = Math.min(stage.clientHeight * (mobile ? .78 : .9), stage.clientWidth * 1.38, 1040);
+      const portrait = stage.closest('.jangsu-story--portrait') !== null;
+      const height = Math.min((portrait ? window.innerHeight - 118 : stage.clientHeight) * (mobile ? .78 : .9), stage.clientWidth * 1.38, 1040);
       const point = layoutPoint(number, stage);
       const width = height * 2 / 3;
-      const left = point.x + number.offsetWidth * .55 - width / 2;
+      const left = portrait ? (stage.clientWidth - width) / 2 : point.x + number.offsetWidth * .55 - width / 2;
       // In the raised pose the palms sit 8% below the top of the image canvas.
       const top = point.y + number.offsetHeight - height * .08;
       const stageRect = stage.getBoundingClientRect();
       const restRect = rest.getBoundingClientRect();
       const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageRect.top;
       const copyBottom = layoutPoint(copy, stage).y + copy.offsetHeight;
-      const restBottom = mobile
+      let restBottom = mobile
         ? Math.min(restRect.bottom - stageRect.top, footerTop - 12)
         : Math.min(copyBottom + 24, footerTop - 12);
       let restHeight = Math.min(restRect.height, restRect.width * 1.5);
       let restCenter = restRect.left + restRect.width / 2 - stageRect.left;
-      if (mobile) {
+      if (portrait) {
+        // Match the full-size portrait slot. Clip the lower body only after parking.
+        restHeight = restRect.width * 1.5;
+        restBottom = restRect.top - stageRect.top + restHeight;
+      } else if (mobile) {
         const detail = copy.querySelector('.benefit-scene-detail');
         const detailBottom = layoutPoint(detail, stage).y + detail.offsetHeight;
         // The note reserves an 84px lane so the host can stay legible on phones.

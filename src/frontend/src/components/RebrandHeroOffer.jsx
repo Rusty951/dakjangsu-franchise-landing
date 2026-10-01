@@ -13,7 +13,9 @@ const credit = example.monthlyCredit * example.creditMonths;
 const total = example.opening + example.kitchen + credit + royalty;
 const format = value => new Intl.NumberFormat('ko-KR').format(value);
 
-export default function RebrandHeroOffer({ onExplore }) {
+import { assetPath } from '../assetPath';
+
+export default function RebrandHeroOffer({ onExplore, portrait = false }) {
   return (
     <div className="hero-offer">
       <header className="hero-offer-heading">
@@ -29,6 +31,8 @@ export default function RebrandHeroOffer({ onExplore }) {
         <strong className="hero-offer-amount"><b className="hero-offer-numeral">7,000</b><small>만원 상당</small></strong>
         <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span><span>현금 지급액 아님</span></p>
       </section>
+
+      {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
 
       <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제안">
         <p className="hero-offer-label"><span>440만원 면제안</span><b>가맹비, 교육비</b></p>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
 import JangsuHeroMotion from './JangsuHeroMotion';
@@ -33,7 +33,23 @@ export default function RebrandScrollStory() {
   const trackRef = useRef(null);
   const stageRef = useRef(null);
   const characterRef = useRef(null);
+  const lastReadingPosition = useRef({ index: 0, withinStory: true });
+  const orientationRestore = useRef(null);
   const [active, setActive] = useState(0);
+  const [portrait, setPortrait] = useState(false);
+
+  useLayoutEffect(() => {
+    const query = window.matchMedia('(max-width: 700px) and (orientation: portrait)');
+    let initial = true;
+    const update = () => {
+      if (!initial) orientationRestore.current = { ...lastReadingPosition.current };
+      initial = false;
+      setPortrait(query.matches);
+    };
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
   const [settled, setSettled] = useState(-1);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [liftAssets, setLiftAssets] = useState('loading');
@@ -65,7 +81,7 @@ export default function RebrandScrollStory() {
     return () => { disposed = true; };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const panels = [...stageRef.current.querySelectorAll('.jangsu-panel')];
     const track = trackRef.current;
@@ -89,6 +105,8 @@ export default function RebrandScrollStory() {
       const stage = stageRef.current;
       const character = characterRef.current;
       if (!track || !stage || !character) return;
+      // A resize can arrive before React switches layouts. Preserve the last valid reading position.
+      if (window.matchMedia('(max-width: 700px) and (orientation: portrait)').matches !== portrait) return;
       const reduced = preference.matches;
       setReducedMotion(reduced);
       if (reduced) {
@@ -96,9 +114,35 @@ export default function RebrandScrollStory() {
         return;
       }
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
+      if (portrait) {
+        // Portrait chapters use their real content height, rather than a virtual scroll track.
+        const navHeight = stage.querySelector('.jangsu-stage-footer').offsetHeight;
+        const readingLine = header + navHeight + Math.min(180, window.innerHeight * .24);
+        const index = Math.max(0, panels.findIndex(panel => panel.getBoundingClientRect().bottom > readingLine));
+        lastReadingPosition.current = { index, withinStory: track.getBoundingClientRect().top <= header + 52 && track.getBoundingClientRect().bottom > header + 52 };
+        if (lastActive !== index) {
+          lastActive = index;
+          setActive(index);
+          setSettled(-1);
+          setLiftParked(false);
+        }
+        panels.forEach(panel => panel.style.removeProperty('opacity'));
+        const slot = panels[index].querySelector('.portrait-character-slot');
+        if (slot) {
+          const box = slot.getBoundingClientRect();
+          const stageBox = stage.getBoundingClientRect();
+          stage.style.setProperty('--portrait-host-top', `${box.top - stageBox.top}px`);
+          stage.style.setProperty('--portrait-host-height', `${box.height}px`);
+          stage.style.setProperty('--portrait-host-width', `${box.width}px`);
+          stage.style.setProperty('--portrait-host-left', `${box.left + box.width / 2 - stageBox.left}px`);
+          stage.style.setProperty('--portrait-host-clip', `inset(${box.top - stageBox.top}px 0 ${stage.offsetHeight - (box.bottom - stageBox.top)}px 0)`);
+        }
+        return;
+      }
       const travel = Math.max(1, track.offsetHeight - stage.offsetHeight);
       const progress = clamp((header - track.getBoundingClientRect().top) / travel, 0, 1) * (chapters.length - 1);
       const current = Math.round(progress);
+      lastReadingPosition.current = { index: current, withinStory: track.getBoundingClientRect().top <= header && track.getBoundingClientRect().bottom > header };
       if (lastActive !== current) {
         lastActive = current;
         setActive(current);
@@ -202,6 +246,16 @@ export default function RebrandScrollStory() {
       const copy = panel.querySelector('.benefit-scene-copy, .jangsu-invite-content');
       if (copy) observer.observe(copy);
     });
+    const restore = orientationRestore.current;
+    orientationRestore.current = null;
+    if (restore?.withinStory) {
+      const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
+      const top = window.scrollY + track.getBoundingClientRect().top - header;
+      const destination = portrait
+        ? window.scrollY + panels[restore.index].getBoundingClientRect().top - header - stageRef.current.querySelector('.jangsu-stage-footer').offsetHeight
+        : top + (track.offsetHeight - stageRef.current.offsetHeight) * restore.index / (chapters.length - 1);
+      window.scrollTo({ top: destination, behavior: 'instant' });
+    }
     paint();
     return () => {
       window.cancelAnimationFrame(frame);
@@ -213,12 +267,28 @@ export default function RebrandScrollStory() {
       document.removeEventListener('visibilitychange', syncMotion);
       preference.removeEventListener('change', syncMotion);
     };
-  }, []);
+  }, [portrait]);
 
-  const goToChapter = (index) => {
+  const goToChapter = (index, focusHeading = false) => {
     const track = trackRef.current;
     const stage = stageRef.current;
     const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
+    if (portrait) {
+      if (active === index) {
+        if (index === 0) setHeroReplay(replay => replay + 1);
+        if (index === 1) setFeeReplay(replay => replay + 1);
+        if (index === 2) setOpeningReplay(replay => replay + 1);
+        if (index === 3) setKitchenReplay(replay => replay + 1);
+        if (index === 4) setRoyaltyReplay(replay => replay + 1);
+        if (index === 5) { setLiftReplay(replay => replay + 1); setLiftParked(false); }
+        if (index === 6) setInviteReplay(replay => replay + 1);
+      }
+      const panel = stage.querySelectorAll('.jangsu-panel')[index];
+      if (focusHeading) panel.querySelector('h2')?.focus({ preventScroll: true });
+      const navHeight = stage.querySelector('.jangsu-stage-footer').offsetHeight;
+      window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header - navHeight, behavior: reducedMotion ? 'instant' : 'smooth' });
+      return;
+    }
     if (reducedMotion) {
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
@@ -261,18 +331,19 @@ export default function RebrandScrollStory() {
     window.scrollTo({ top: top + (track.offsetHeight - stage.offsetHeight) * index / (chapters.length - 1), behavior: 'smooth' });
   };
   const panelProps = (index) => ({
-    'aria-hidden': reducedMotion ? undefined : active !== index,
-    inert: !reducedMotion && active !== index,
+    'aria-hidden': portrait || reducedMotion ? undefined : active !== index,
+    inert: !portrait && !reducedMotion && active !== index,
+    'data-portrait-active': portrait && !reducedMotion && active === index,
   });
 
   return (
-    <section className="jangsu-story" id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
+    <section className={`jangsu-story${portrait ? ' jangsu-story--portrait' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
       <div className="jangsu-stage" ref={stageRef} data-scene={active} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <div className="jangsu-stage-kicker"><span>DAKJANGSU FRIED CHICKEN</span><span>닭장수가 보여드릴게요</span></div>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
           <img className="jangsu-reduced-character" src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="닭장수 캐릭터" width="1122" height="1402" />
-          <RebrandHeroOffer onExplore={() => goToChapter(1)} />
+          <RebrandHeroOffer onExplore={event => goToChapter(1, event.detail === 0)} portrait={portrait} />
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 1)}>
@@ -282,13 +353,14 @@ export default function RebrandScrollStory() {
             {benefit.id === 'royalty' && <img className="royalty-static-character" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 1} / {chapters[index + 1]} 지원</span>
-              <h2>
+              <h2 tabIndex={portrait ? -1 : undefined}>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
                 </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
                 <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
               </h2>
+              {portrait && <PortraitCharacterSlot scene={index + 1} />}
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
                 <dl aria-label="월 매출별 물류 크레딧 지원 기준">
                   {benefit.tiers.map(tier => <div key={tier.sales}><dt>월 매출 {tier.sales} 이상</dt><dd>{tier.credit}</dd></div>)}
@@ -311,6 +383,7 @@ export default function RebrandScrollStory() {
             <h2>내 점포에는<br />어떤 혜택이?</h2>
             <div className="jangsu-invite-copy">
               <p>점포를 구하기 전에도 상담할 수 있습니다.<br />희망 지역부터 남겨주세요.</p>
+              {portrait && <PortraitCharacterSlot scene={6} />}
               <a href="#lead-capture">창업 상담하기 <span aria-hidden="true">↗</span></a>
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
@@ -323,4 +396,17 @@ export default function RebrandScrollStory() {
       </div>
     </section>
   );
+}
+
+const portraitPoses = [
+  '/rebrand/poses/hero-presentation-v1/01-neutral.png',
+  '/rebrand/poses/fee-waiver-v1/04-rest.png',
+  '/rebrand/poses/opening-package-v1/04-rest.png',
+  '/rebrand/poses/kitchen-support-v1/04-rest.png',
+  '/rebrand/poses/royalty-zero-v1/04-present.png',
+  '/rebrand/character-cutout.png',
+  '/rebrand/poses/consultation-invite-v1/04-rest.png',
+];
+function PortraitCharacterSlot({ scene }) {
+  return <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} alt="" width="1122" height="1402" /></div>;
 }

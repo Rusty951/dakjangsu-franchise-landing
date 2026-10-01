@@ -13,6 +13,7 @@ import './RebrandBenefitReadability.css';
 import './RebrandJourney.css';
 import './RebrandHeroOffer.css';
 import './RebrandEditorial.css';
+import './RebrandPortraitStory.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [spaceView, setSpaceView] = useState(0);
