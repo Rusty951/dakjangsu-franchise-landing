@@ -344,3 +344,18 @@ Checks: actual component arithmetic executed against independently expected scen
 
 
 Public rollout verification: passed. Sample dpl_98SG7xYkKC7EZs4abr3z6Wg7ruFc is READY from source80e7805 with VITE_REVIEW_ONLY=true. Cloud client/SSR build, prerender and function packaging passed. Anonymous HTTP200 confirms index-CrmbZH8P.js/current CSS. Public-mobile.jpg inspected at390x844: initial3,000, exact3,220 calculation, intact hat layer, no overflow/console warnings, review-only form notice present. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8 through the API. Viewport reset and refreshed public sample shown as deliverable.
+
+
+## Latest iteration — Royalty host/zero proximity
+
+final result: passed
+
+User requested reducing the distance between the royalty host and the amount. Fresh source captures in Desktop review folder 2026-10-02_닭장수_로열티간격: before-desktop.jpg1440x900, before-mobile.jpg390x844, before-tall-desktop.jpg1282x1566. Matching after files, short desktop1280x720, tablet768x1024 and mid-motion capture inspected. Combined desktop2904x900, tall2588x1566 and phone804x844 comparisons inspected; files retain1:1 pixels with24px gaps, desktop/tall viewer downsized both sides equally. Original files also inspected. Focus-pair.png compares the same x100/y160/w760/h460 region at1:1, showing the closer hand/zero relationship.
+
+- [P2, fixed] Desktop host center was18% while the copy started36%, separating the pair into columns. Royalty host now centers at26%, copy starts34% with61% width. Original figure/numeral size retained; presenting hand reaches the zero, with the original numeral foreground order.
+- [P2, fixed during iteration] Tablet host was vertically tied to the description's bottom, placing it below the zero. Royalty alone now aligns the presenting palm to the lower part of the amount using actual layout offsets and rendered image height, clamped above navigation. Layout offsets ignore temporary numeral/entry transforms, keeping replay stable. Other chapters retain their prior rules.
+- [P1, fixed during iteration] Tall screens combined a relative copy layout, auto margin and percentage left offset. Source and iteration-1-tall-overflow.jpg show text pushed beyond the viewport despite document overflow reporting0. Desktop royalty copy now explicitly uses absolute positioning with zero auto margin across heights, preserving the existing10% top setting at1000–1399px. Reduced-motion has an explicit relative-flow override. At1282x1566 final copy bounds are about x436–1218, inside the viewport, with complete title/card/note/link visible.
+
+Required surfaces: display/sans/Arial typography and sizes unchanged; intended tighter horizontal and amount-based vertical alignment, with footer clearance; original ink/cream palette unchanged; exact approved four PNG poses and opacity-swap choreography retained, no generation/substitute; all amount/rate/waiver/draft words unchanged. Mobile before/after pair confirms the approved hat/zero overlap and layout remain. Existing3,000 first example unaffected.
+
+Validation:1440x900,1280x720,768x1024,1282x1566 and390x844 screenshots accepted. Mid-act and Enter replay inspected; numeral/unit, caption, normal-rate card, conditions and link remain readable without clipping/overlap. No console warnings/errors. ESLint, client/SSR build, prerender and whitespace pass. No root check script. No real inquiry/call/client message. Scoped positional QA, not full accessibility/performance or physical-device certification. OS reduced-motion emulation unavailable; relative-flow guard inspected in source.

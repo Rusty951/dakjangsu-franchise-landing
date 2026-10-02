@@ -745,3 +745,9 @@
 - Verified actual component calculations at2,500/3,000/4,000/6,000, mobile/desktop matched screenshots and focused calculation crop. Split the mobile assumption into meaningful lines. Original mascot/hat layer, palette and design preserved. Latest design-qa.md result passed. ESLint, client/SSR build, prerender and whitespace pass. No real inquiry/call/client message. Sample rollout retains VITE_REVIEW_ONLY=true and targets dakjangsu-client-sample only.
 
 - Public initial-amount update complete: source80e7805, sample dpl_98SG7xYkKC7EZs4abr3z6Wg7ruFc READY with VITE_REVIEW_ONLY=true. Anonymous HTTP200/current JS fingerprint and public mobile capture confirm3,000 plus matching3,220 example calculation, preserved hat layer, no overflow/console warnings and review notice. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Public sample shown; viewport reset. No real inquiry/call/client message.
+
+
+## 2026-10-02 — Royalty host/amount proximity
+- Direct user feedback authorizes this scoped frontend correction. Desktop royalty host center18% ->26%, copy36% ->34%. Align its presenting palm to the amount using stable layout offsets instead of the description bottom. Clamp above chapter controls. Same poses, size, motion and financial words remain; mobile hat overlap retained.
+- Found and fixed tall-screen relative-layout/percentage-left conflict that pushed royalty copy beyond the clipped stage. Explicit desktop absolute layout and zero auto margin preserve all content; reduced-motion has a relative-flow override. Inspected1440x900,1280x720,768x1024,1282x1566 and390x844, matched pairs/focused crop and Enter replay/mid-act. Latest design-qa.md result passed. Evidence: Desktop review folder2026-10-02_닭장수_로열티간격.
+- ESLint, client/SSR build, prerender and whitespace pass. No new media generation, copy/benefit/form/backend change or real inquiry/call/client message. Public rollout limited to dakjangsu-client-sample with VITE_REVIEW_ONLY=true.

@@ -200,11 +200,18 @@ export default function RebrandScrollStory() {
             values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
           }
         } else if (current < 5) {
+          if (current === 4) values[0] = 26;
           const stageTop = stage.getBoundingClientRect().top;
           const copyBottom = panels[current].querySelector('.benefit-scene-copy').getBoundingClientRect().bottom - stageTop;
           const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageTop;
           const visualHeight = Math.min(stage.offsetHeight * (current >= 1 && current <= 4 ? .78 : .68), window.innerWidth * (current >= 1 && current <= 4 ? .35 : .27) * 1402 / 1122);
-          const characterBottom = Math.min(footerTop - 12, Math.max(copyBottom + 24, visualHeight + 50));
+          const number = current === 4 ? panels[current].querySelector('h2 > strong') : null;
+          let numberTop = 0;
+          for (let node = number; node && node !== stage; node = node.offsetParent) numberTop += node.offsetTop;
+          // The presenting palm sits about 42% down the image. Keep it beside the zero,
+          // independent of the note/table height, with room above chapter navigation.
+          const presentationBottom = number ? numberTop + number.offsetHeight * .65 + visualHeight * .58 : null;
+          const characterBottom = Math.min(footerTop - 12, presentationBottom ?? Math.max(copyBottom + 24, visualHeight + 50));
           values[2] = (stage.offsetHeight - characterBottom) / stage.offsetHeight * 100;
         }
       }
