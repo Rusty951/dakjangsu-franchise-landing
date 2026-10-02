@@ -39,8 +39,9 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
       let restHeight = Math.min(restRect.height, restRect.width * 1.5);
       let restCenter = restRect.left + restRect.width / 2 - stageRect.left;
       if (portrait) {
-        // Match the full-size portrait slot. Clip the lower body only after parking.
-        restHeight = restRect.width * 1.5;
+        // Match the rendered image width of the other 150%-height portrait actors.
+        // The lift canvas is 2:3, while the resting PNG is 1122:1402.
+        restHeight = Math.min(restRect.width, restRect.height * 1.5 * 1122 / 1402) * 1.5;
         restBottom = restRect.top - stageRect.top + restHeight;
       } else if (mobile) {
         const detail = copy.querySelector('.benefit-scene-detail');
