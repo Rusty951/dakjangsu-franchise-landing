@@ -758,3 +758,5 @@
 ## 2026-10-02 — Royalty spacing refinement
 - Direct user feedback authorizes this frontend correction. The previous hand entered the zero; move desktop host center26% ->17.5% to expose the hand and leave a small gap. Keep copy34%, size, vertical alignment, tall-screen layout fix and portrait hat overlap. No copy/benefit/backend/form change.
 - Matched1440x900 before/after combined input inspected, plus1280x720,1282x1566 and390x844 final captures. Evidence: Desktop review folder2026-10-02_닭장수_로열티간격재조정. Latest design-qa.md result passed. ESLint, client/SSR build, prerender and whitespace pass. No console warnings, mobile overflow or real inquiry/call/client message. Sample-only rollout with VITE_REVIEW_ONLY=true.
+
+- Public spacing refinement complete: source b776cef, sample dpl_8MMEy8gKP1uQudGGujvJREs4mZR7 READY with VITE_REVIEW_ONLY=true. Anonymous200/current hashes and public royalty screenshot confirm the gap. Console clean, review notice retained. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Viewport reset; public sample shown.
