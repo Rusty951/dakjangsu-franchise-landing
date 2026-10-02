@@ -27,12 +27,11 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
       </header>
 
       <section className="hero-offer-total" aria-label="조건부 혜택 합산 계산 예시">
-        <p className="hero-offer-label"><span>2년 합산 계산 예시</span><b>조건 충족 가정, 약</b></p>
+        <p className="hero-offer-label"><span>2년 합산 계산 예시</span><b>조건 충족 가정, 약</b>{portrait && <span className="hero-offer-noncash">현금 지급액 아님</span>}</p>
         <strong className="hero-offer-amount"><b className="hero-offer-numeral">7,000</b><small>만원 상당</small></strong>
-        <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span><span>현금 지급액 아님</span></p>
+        {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
+        <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span>{!portrait && <span>현금 지급액 아님</span>}</p>
       </section>
-
-      {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
 
       <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제안">
         <p className="hero-offer-label"><span>440만원 면제안</span><b>가맹비, 교육비</b></p>

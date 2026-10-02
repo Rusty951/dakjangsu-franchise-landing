@@ -358,9 +358,9 @@ export default function RebrandScrollStory() {
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
                 </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
+                {portrait && <PortraitCharacterSlot scene={index + 1} />}
                 <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
               </h2>
-              {portrait && <PortraitCharacterSlot scene={index + 1} />}
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
                 <dl aria-label="월 매출별 물류 크레딧 지원 기준">
                   {benefit.tiers.map(tier => <div key={tier.sales}><dt>월 매출 {tier.sales} 이상</dt><dd>{tier.credit}</dd></div>)}
@@ -408,5 +408,5 @@ const portraitPoses = [
   '/rebrand/poses/consultation-invite-v1/04-rest.png',
 ];
 function PortraitCharacterSlot({ scene }) {
-  return <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} alt="" width="1122" height="1402" /></div>;
+  return <span className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} alt="" width="1122" height="1402" /></span>;
 }
