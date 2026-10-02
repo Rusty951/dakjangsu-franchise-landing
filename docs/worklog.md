@@ -770,3 +770,16 @@
 - Evidence: Desktop review folder2026-10-02_닭장수_전체정밀검증. Public rollout targets dakjangsu-client-sample only with both build/runtime VITE_REVIEW_ONLY=true. No live inquiry, email, phone call or client message.
 
 - Public audit update complete: source fe8e5cd, sample dpl_dhrsd5UU5aSSaiK467j44HJKMci8 READY. Both review flags set, anonymous root200/current fingerprints/noindex verified, empty-body sample API request rejected403 before provider access. Public desktop/mobile captures show expected result, no analytics or console errors. Official production unchanged at dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Verified full14-step/33-image report saved to `/Users/bananabk/Desktop/codex-output/01_최종산출물/2026-10-02_닭장수_랜딩페이지_정밀검수_fe8e5cd.html`. No live lead/email/call/client message.
+
+## 2026-10-02 — 보류 피드백 1: 하단 정보 영역의 임팩트와 통일감
+- 사용자 피드백: 상단 1~7번 소개 아래의 정보들이 임팩트를 주지 못한다. 상단과 디자인 및 표현의 결을 맞추거나, 불필요하다면 없애는 방향으로 검토한다.
+- 상태: 피드백 한 건으로 저장. 당시에는 기록만 하고 수정은 보류했다. 이후 사용자의 “바꿔보자” 요청으로 아래 하단 간소화 작업에 반영했다.
+
+
+## 2026-10-02 — 하단 간소화와 상단 디자인 연결
+- 피드백1을 반영해 흐름을 상단7장 → 실제 치킨 사진과 대표 메뉴3종 → FAQ3개 → 상담으로 줄였다. 중복 혜택 설명, 공간 예시, 별도 창업 준비 섹션을 제거했다. 원본 이미지 파일은 보존하고 기존 실제 음식 사진을 재사용했다.
+- RebrandClosing에 큰 Black Han Sans 제목과 기존 크림/잉크 색상을 적용했다. 메뉴는 데스크탑3열, 모바일 간결한 세로 목록으로 구성했다. Copywrite와 고객 Voice 기준으로 짧은 헤드라인과 FAQ를 검수했다. 새로운 매출/성과/보장 주장은 추가하지 않았다.
+- 지원안 금액과 모집안, 주방/상권/의무운영/환수/물류증빙/현금지급 아님/기타비용 조건을 펼쳐보기로 보존했다. 기존 #rebrand-benefits 링크와 직접 주소는 해당 조건을 자동으로 연다. 헤더 링크도 새 흐름으로 맞췄다.
+- 기본 접힘 상태에서 상단 이야기 끝부터 신청서 끝까지의 높이:1440px 폭6944.32→2940.37px,390px 폭7975.67→3155.56px. 모바일 하단 길이 약60% 감소. 문서 높이 비교이며 전환 성과 측정이 아니다.
+-1440x900/390x844의 메뉴와 FAQ 비교4개,320x568 FAQ,768x1024 메뉴, 메뉴3종, 지원 조건/직접 링크/상담 연결/키보드 FAQ 확인. 끊어진 내부 링크, 가로 넘침, 실패 이미지와 브라우저 경고/오류 없음. 린트, 클라이언트/SSR 빌드, prerender와 diff 검사 통과. 기존 API/전송 차단 로직은 수정하지 않았다.
+- 근거: Desktop 검수 폴더2026-10-02_닭장수_하단간소화. 최신 design-qa.md 판정 passed. 기존 사용자 요청에 따라 샘플 프로젝트만 두 review 플래그로 배포한다.

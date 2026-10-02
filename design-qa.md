@@ -437,3 +437,24 @@ Limits: browser responsive viewports, not physical phones. No Safari/Chrome devi
 Public rollout verification: passed. Dedicated sample deployment dpl_dhrsd5UU5aSSaiK467j44HJKMci8 READY from source fe8e5cd with both build/runtime VITE_REVIEW_ONLY=true. Cloud builds and function packaging passed with0 dependency advisories. Anonymous root HTTP200 serves the rebrand prerender, noindex and index-BzLIO65F.js/index-BTIB2LyS.css. Empty JSON POST to the sample returns403 with the review message, proving the runtime guard without sending lead content. Public1440x900 and390x844 captures inspected; review notice retained, analytics scripts absent and console clean. Independent main project API verifies unchanged official deployment dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8.
 
 Full self-contained audit report: [2026-10-02_닭장수_랜딩페이지_정밀검수_fe8e5cd.html](/Users/bananabk/Desktop/codex-output/01_최종산출물/2026-10-02_닭장수_랜딩페이지_정밀검수_fe8e5cd.html). Created in the designated review folder, then browser-rendered and visually inspected before copying to the final folder. Contains14 flow steps and33 embedded current-run evidence images; inspected expanded content,0 broken images. Source and final file hashes match. Viewport restored.
+
+
+## Latest iteration — Shorter closing flow
+
+final result: passed
+
+User approved the proposed reduction after recording feedback that the lower page lacked impact and continuity. Scope is the existing prototype's lower flow, using the agreed upper-story typography/palette and supplied food photography as visual grounding. No template replacement, generated asset or backend change.
+
+Source truth: fresh public10cddb5 captures in `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-02_닭장수_하단간소화/before-{menu,faq}-{desktop,mobile}.jpg`. Implementation: same-folder `after-*` captures from the compiled review preview at port8876. This is one continued task across a browser-session restart; accepted captures were retained, not recast from another audit.
+
+Intentional differences: remove the repeated benefits presentation, illustrative space section and separate preparation section. Show real food immediately after the seven chapters, a three-menu lineup, three FAQs and consultation. Put complete support conditions in a native disclosure reachable through the existing #rebrand-benefits anchor. Keep all numbers, draft status, eligibility, sales evidence,24-month obligation/repayment and non-cash qualifications.
+
+Five surfaces: original display/sans families, larger menu headline and readable16–18px FAQ labels; larger food region with fewer section breaks and generous aligned spacing; existing cream/ink/orange palette, dark FAQ continuous with consultation; original sharp food/menu assets, controlled cover crop and no new assets; plain Korean headline and shorter FAQ retain facts and client Voice. Form/privacy/footer and story visuals reuse prior verification; only the story's support-link callback changed.
+
+Comparisons: four combined inputs `compare-menu-desktop.png`, `compare-faq-desktop.png`, `compare-menu-mobile.png`, `compare-faq-mobile.png` were opened and judged with originals. Same route anchor, theme, closed disclosure state and viewport. Desktop CSS/source/render each1440x900, mobile each390x844,1:1 pixels with24px gutter. Desktop pair2904x900 displayed equally reduced to2048x635; mobile pair804x844 remains readable at native size. Larger headline, photograph crop and dark FAQ are requested changes, not fidelity regressions. Individual menu lineup/terms captures provide readable detail, so no additional crop needed.
+
+Iteration: initial layout -> removed the preceding scene's10px strip from direct section jumps by aligning anchors to80px/66px headers -> final matched captures. No actionable P0/P1/P2 remains in this scope. Minor physical-device/assistive-tech gaps remain as below.
+
+Checks:320x568 and390x844 phones,768x1024 tablet,1440x900 desktop. No document overflow, broken local anchors or failed images. All3 FAQs open; first FAQ also opened/closed with Enter. The five story support links share the tested handler; fee-link navigation opened conditions and settled at y82 on mobile. Direct #rebrand-benefits reload opens the disclosure at y82. Header consultation anchor reaches the form at y75 with its review notice. Browser warning/error log empty. Basic collapsed lower-page height measured from story bottom to main bottom: desktop6944.32→2940.37, mobile7975.67→3155.56 pixels (~58%/~60% reduction). This is layout measurement, not conversion evidence.
+
+ESLint, client/SSR build, prerender and whitespace pass. Existing seven API tests and previous full audit remain relevant to untouched paths; no new mirror tests for this visual/content change. No external inquiry/call/email. Limits: responsive browser checks rather than physical-device, screen-reader or OS reduced-motion testing.

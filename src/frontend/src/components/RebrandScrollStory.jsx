@@ -31,7 +31,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
 const flowingStoryQuery = '(max-width: 1024px) and (orientation: portrait), (max-height: 640px)';
 
-export default function RebrandScrollStory() {
+export default function RebrandScrollStory({ onConditionsClick }) {
   const trackRef = useRef(null);
   const stageRef = useRef(null);
   const characterRef = useRef(null);
@@ -389,7 +389,7 @@ export default function RebrandScrollStory() {
                 {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
               </div>}
               <p className="benefit-scene-note">{benefit.note}</p>
-              <a href="#rebrand-benefits">지원 조건 자세히 보기 ↗</a>
+              <a href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 자세히 보기 ↗</a>
             </div>
           </article>
         ))}

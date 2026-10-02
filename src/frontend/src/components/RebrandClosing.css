@@ -1,0 +1,85 @@
+/* A shorter closing sequence, using the story's type scale and real food assets. */
+.rebrand-page .rebrand-menu-story, .rebrand-page .rebrand-closing-faq { scroll-margin-top: 80px; }
+.rebrand-menu-story { background: #f7efe4; color: #241f1b; }
+.rebrand-menu-story-intro { display: grid; grid-template-columns: .9fr 1.1fr; min-height: min(760px, calc(100svh - 80px)); }
+.rebrand-menu-story-copy { align-self: center; padding: 64px clamp(32px, 5vw, 96px); }
+.rebrand-closing-label { margin: 0 0 30px; font: 650 13px/1.5 var(--font-sans); letter-spacing: .05em; }
+.rebrand-page .rebrand-menu-story h2 { margin: 0; font: 400 clamp(72px, 8.2vw, 138px)/.98 var(--font-display); letter-spacing: -.055em; }
+.rebrand-menu-story h2 > span { display: block; margin-bottom: 22px; font: 650 clamp(24px, 2.8vw, 42px)/1.3 var(--font-sans); letter-spacing: -.045em; }
+.rebrand-menu-story-description { margin-top: 32px; font: 450 17px/1.8 var(--font-sans); color: #40382f; }
+.rebrand-menu-story-photo { position: relative; min-height: 560px; overflow: hidden; }
+.rebrand-menu-story-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 55% center; }
+.rebrand-menu-lineup { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; list-style: none; max-width: 1440px; margin: 0 auto; padding: 40px 5% 72px; }
+.rebrand-menu-lineup li { min-width: 0; }
+.rebrand-menu-lineup img { display: block; width: 100%; height: auto; aspect-ratio: 13 / 9; object-fit: contain; }
+.rebrand-menu-lineup li > div { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: baseline; padding-top: 20px; border-top: 1px solid #241f1b40; }
+.rebrand-menu-order { grid-row: 1 / 3; font: 500 13px/1.5 var(--font-sans); color: #665b52; }
+.rebrand-page .rebrand-menu-lineup h3 { margin: 0; font: 400 clamp(23px, 2.2vw, 32px)/1.3 var(--font-display); letter-spacing: -.04em; }
+.rebrand-menu-lineup p { grid-column: 2; margin: 0; font-size: 15px; color: #665b52; }
+.rebrand-closing-faq { padding: 80px max(5%, calc((100% - 1320px) / 2)); background: #241f1b; color: #fff8ed; }
+.rebrand-closing-faq-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
+.rebrand-closing-faq .rebrand-closing-label { color: #ed9b6e; }
+.rebrand-page .rebrand-closing-faq h2 { margin: 0; font: 400 clamp(44px, 4.9vw, 76px)/1.08 var(--font-display); letter-spacing: -.05em; }
+.rebrand-closing-questions details { border-bottom: 1px solid #fff8ed45; }
+.rebrand-closing-questions details:first-child { border-top: 1px solid #fff8ed45; }
+.rebrand-closing-questions summary { display: flex; gap: 18px; align-items: baseline; min-height: 76px; padding: 24px 0; cursor: pointer; list-style: none; }
+.rebrand-closing-questions summary::-webkit-details-marker, .rebrand-support-terms > summary::-webkit-details-marker { display: none; }
+.rebrand-closing-questions summary > span { color: #ed9b6e; font-size: 13px; }
+.rebrand-closing-questions summary > strong { flex: 1; font: 650 18px/1.5 var(--font-sans); }
+.rebrand-closing-questions summary::after { content: '열기'; flex-shrink: 0; color: #d6c7b6; font: 450 12px/1.5 var(--font-sans); }
+.rebrand-closing-questions details[open] > summary::after { content: '닫기'; }
+.rebrand-closing-questions details > p { margin: 0; padding: 0 0 24px 34px; max-width: 620px; font-size: 16px; line-height: 1.8; color: #e0d3c4; }
+.rebrand-support-terms { margin-top: 48px; border-top: 1px solid #fff8ed45; border-bottom: 1px solid #fff8ed45; scroll-margin-top: 100px; }
+.rebrand-support-terms > summary { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 18px 0; list-style: none; cursor: pointer; font-size: 16px; }
+.rebrand-support-terms > summary small { margin-left: auto; color: #d6c7b6; font-size: 12px; }
+.rebrand-support-terms > summary::after { content: '펼쳐보기'; font-size: 12px; color: #ed9b6e; }
+.rebrand-support-terms[open] > summary::after { content: '접기'; }
+.rebrand-support-content { padding: 32px; margin-bottom: 24px; background: #f7efe4; color: #241f1b; font-size: 15px; line-height: 1.8; }
+.rebrand-support-status { margin-bottom: 28px; }
+.rebrand-page .rebrand-support-content h3 { margin: 32px 0 12px; font: 750 20px/1.5 var(--font-sans); }
+.rebrand-support-content dl { margin: 0; }
+.rebrand-support-content dl > div { display: grid; grid-template-columns: 230px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid #241f1b30; }
+.rebrand-support-content dt { font-weight: 750; }
+.rebrand-support-content dd { margin: 0; }
+.rebrand-support-content ul { padding-left: 20px; }
+.rebrand-support-content li + li { margin-top: 8px; }
+.rebrand-support-extra { padding-top: 24px; margin-top: 24px; border-top: 1px solid #241f1b30; }
+.rebrand-closing-faq + .lead-capture-section { border-top: 1px solid #fff8ed30; }
+@media (max-width: 1000px) {
+  .rebrand-menu-story-copy { padding-inline: 32px; }
+  .rebrand-menu-story-photo { min-height: 520px; }
+  .rebrand-menu-story-description { font-size: 15px; }
+  .rebrand-menu-lineup { gap: 24px; }
+  .rebrand-closing-faq-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .rebrand-menu-story, .rebrand-page .rebrand-closing-faq { scroll-margin-top: 66px; }
+  .rebrand-menu-story-intro { grid-template-columns: 1fr; min-height: 0; }
+  .rebrand-menu-story-copy { padding: 40px 24px 32px; }
+  .rebrand-closing-label { margin-bottom: 24px; font-size: 12px; }
+  .rebrand-page .rebrand-menu-story h2 { font-size: clamp(62px, 18vw, 86px); }
+  .rebrand-menu-story h2 > span { font-size: 24px; margin-bottom: 14px; }
+  .rebrand-menu-story-description { font-size: 15px; margin-top: 22px; }
+  .rebrand-menu-story-photo { min-height: 0; height: 66vw; max-height: 390px; }
+  .rebrand-menu-story-photo img { object-position: center 58%; }
+  .rebrand-menu-lineup { grid-template-columns: 1fr; gap: 0; padding: 16px 24px 36px; }
+  .rebrand-menu-lineup li { display: grid; grid-template-columns: 40% 1fr; gap: 18px; align-items: center; padding: 16px 0; border-bottom: 1px solid #241f1b30; }
+  .rebrand-menu-lineup li:last-child { border-bottom: 0; }
+  .rebrand-menu-lineup li > div { display: block; padding: 0; border: 0; }
+  .rebrand-menu-order { display: block; margin-bottom: 6px; font-size: 11px; }
+  .rebrand-page .rebrand-menu-lineup h3 { font-size: 23px; }
+  .rebrand-menu-lineup p { font-size: 13px; margin-top: 4px; }
+  .rebrand-closing-faq { padding: 48px 24px; }
+  .rebrand-page .rebrand-closing-faq h2 { font-size: 44px; }
+  .rebrand-closing-faq-grid { gap: 32px; }
+  .rebrand-closing-questions summary { gap: 12px; min-height: 76px; padding: 22px 0; }
+  .rebrand-closing-questions summary > strong { font-size: 16px; }
+  .rebrand-closing-questions details > p { padding-left: 0; font-size: 15px; }
+  .rebrand-support-terms { margin-top: 32px; scroll-margin-top: 82px; }
+  .rebrand-support-terms > summary { flex-wrap: wrap; gap: 4px 12px; padding-block: 16px; font-size: 15px; }
+  .rebrand-support-terms > summary small { order: 1; flex-basis: 100%; margin: 0; }
+  .rebrand-support-terms > summary::after { margin-left: auto; }
+  .rebrand-support-content { padding: 20px 18px; margin-bottom: 16px; font-size: 14px; }
+  .rebrand-support-content dl > div { grid-template-columns: 1fr; gap: 8px; }
+  .rebrand-page .rebrand-support-content h3 { font-size: 18px; }
+}
