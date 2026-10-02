@@ -362,3 +362,14 @@ Validation:1440x900,1280x720,768x1024,1282x1566 and390x844 screenshots accepted.
 
 
 Public rollout verification: passed. Sample dpl_FD6GqKi1pPsi1eVTzu7Vu6UL6K4y READY from source776424c with VITE_REVIEW_ONLY=true. Cloud client/SSR/prerender/function packaging passed. Anonymous HTTP200 confirms index-DNoA1abG.js and index-DvE2VubD.css. Public-desktop.jpg1440x900 inspected: host26%, copy x490, readable close pair and all terms visible. The final9% top rule intentionally standardizes medium-height positioning too; after-desktop.jpg/compare-desktop.png/focus-pair.png were refreshed from this final public capture and inspected again. First amount remains3,000, review-only notice present, console warnings/errors none. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Viewport reset; public royalty scene shown and retained as deliverable.
+
+
+## Latest iteration — Royalty breathing room
+
+final result: passed
+
+User found the previous close placement excessive. Shifted only the desktop royalty host center from26% to17.5%, keeping copy34%, host size and stable amount-based vertical alignment. The presenting hand is now fully visible beside the zero with a small gap. The tall-screen absolute positioning fix and reduced-motion flow remain. Portrait placement is outside this changed branch and retains the requested small hat overlap.
+
+Evidence: fresh public before/local after at1440x900 in Desktop review folder2026-10-02_닭장수_로열티간격재조정; compare-desktop.png combines both at identical dimensions and was inspected along with originals. Output2904x900, viewer equally reduced to2048x635. Inspected1280x720 and1282x1566 final royalty captures: hand/numeral separated, terms and chapter controls clear.390x844 portrait capture retains the prior hat layer, no horizontal overflow and review-only notice.
+
+Five surfaces: fonts and numeral sizes unchanged; only horizontal host spacing changed; original ink/cream palette, transparent mascot poses and all wording/financial conditions retained. No actionable P0/P1/P2 in this scoped correction. ESLint, client/SSR build, prerender and whitespace pass; console warnings/errors none. No new test harness for this reversible visual adjustment. No actual inquiry/call/client message. Prior verified motion guards retained; no full accessibility/performance certification or physical-device testing.

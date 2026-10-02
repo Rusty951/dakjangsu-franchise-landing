@@ -753,3 +753,8 @@
 - ESLint, client/SSR build, prerender and whitespace pass. No new media generation, copy/benefit/form/backend change or real inquiry/call/client message. Public rollout limited to dakjangsu-client-sample with VITE_REVIEW_ONLY=true.
 
 - Public royalty proximity update complete: source776424c, sample dpl_FD6GqKi1pPsi1eVTzu7Vu6UL6K4y READY with VITE_REVIEW_ONLY=true. Anonymous200/current bundle hashes and public1440x900 royalty capture confirm host26%/copy34%, the close pair, readable terms and retained3,000 initial amount. Final source/after pair refreshed for the standardized9% top position. Review notice remains; no console warnings. Main production unchanged at dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Public royalty scene shown; viewport reset. No real inquiry/call/client message.
+
+
+## 2026-10-02 — Royalty spacing refinement
+- Direct user feedback authorizes this frontend correction. The previous hand entered the zero; move desktop host center26% ->17.5% to expose the hand and leave a small gap. Keep copy34%, size, vertical alignment, tall-screen layout fix and portrait hat overlap. No copy/benefit/backend/form change.
+- Matched1440x900 before/after combined input inspected, plus1280x720,1282x1566 and390x844 final captures. Evidence: Desktop review folder2026-10-02_닭장수_로열티간격재조정. Latest design-qa.md result passed. ESLint, client/SSR build, prerender and whitespace pass. No console warnings, mobile overflow or real inquiry/call/client message. Sample-only rollout with VITE_REVIEW_ONLY=true.

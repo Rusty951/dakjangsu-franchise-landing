@@ -200,7 +200,7 @@ export default function RebrandScrollStory() {
             values[2] = (stage.offsetHeight - actorTop - portraitHeight) / stage.offsetHeight * 100;
           }
         } else if (current < 5) {
-          if (current === 4) values[0] = 26;
+          if (current === 4) values[0] = 17.5;
           const stageTop = stage.getBoundingClientRect().top;
           const copyBottom = panels[current].querySelector('.benefit-scene-copy').getBoundingClientRect().bottom - stageTop;
           const footerTop = stage.querySelector('.jangsu-stage-footer').getBoundingClientRect().top - stageTop;
