@@ -1,6 +1,7 @@
 /* Audit refinements: keep the selected artwork and palette, improve reading. */
 body:has(.rebrand-page) { padding-bottom: 0; }
 .rebrand-page { --rebrand-muted: #665b52; }
+.rebrand-page .consultation-host, .rebrand-page .site-footer { border-top: 0; }
 .rebrand-page .rebrand-menu-toggle { display: none; }
 .rebrand-header nav a.rebrand-mobile-nav-link { display: none; }
 .rebrand-page .rebrand-section-heading > span { font-size: 12px; letter-spacing: .08em; }

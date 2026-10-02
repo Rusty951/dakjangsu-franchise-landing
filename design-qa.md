@@ -460,3 +460,16 @@ Checks:320x568 and390x844 phones,768x1024 tablet,1440x900 desktop. No document o
 ESLint, client/SSR build, prerender and whitespace pass. Existing seven API tests and previous full audit remain relevant to untouched paths; no new mirror tests for this visual/content change. No external inquiry/call/email. Limits: responsive browser checks rather than physical-device, screen-reader or OS reduced-motion testing.
 
 Public rollout verification: passed. Sample dpl_GDbtTVT8MJapFmqT6mLzdZKwsAgC READY from source131b715 with both build/runtime VITE_REVIEW_ONLY=true. Anonymous200 serves index-B0Zu9QB4.js/index-CH9oACAd.css, the shorter closing flow and noindex. Removed space/fit sections are absent; support disclosure remains. Empty JSON sample API request returns403. Public1440x900 menu screenshot inspected and matches the local result; no console warnings/errors. Official main remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Viewport reset; public #rebrand-menu left visible.
+
+
+## Latest iteration — Remove redundant horizontal rules
+
+final result: passed
+
+User requested fewer unnecessary horizontal lines. Removed decorative menu dividers, FAQ row borders, support disclosure borders/internal row rules, the FAQ/form separator, consultation-host rule and footer rule. Existing spacing/numbering/backgrounds provide grouping. Input boundaries and keyboard focus indicators are functional and retained. No copy, images, animation, form logic or API changes.
+
+Fresh public source and local compiled implementation captures are in `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-02_닭장수_구분선정리/`, prefixed before-/after-. Four combined inputs compare-lineup-desktop.png, compare-faq-desktop.png, compare-lineup-mobile.png and compare-faq-mobile.png were inspected with their individual screenshots. Desktop1440x900 and mobile390x844 matched CSS/pixel size, theme and closed disclosure state, with a24px gutter and no density rescaling. Desktop pair2904x900 was equally reduced to2048x635 by the viewer; mobile804x844 retained readable native-size detail. No additional crop needed. A transient overscrolled footer image was rejected and replaced after scrolling settled.
+
+Five surfaces: fonts and text sizes unchanged; spacing/order preserved with1px border-height reductions; original colors retained while decorative strokes removed; approved image assets/crops unchanged; all copy/conditions preserved. Comparisons show clearer grouping without an actionable P0/P1/P2 issue. Footer screenshots also inspected.
+
+Validation: FAQ opens/closes with Enter, support disclosure opens, no horizontal overflow and no console warning/error. Computed top/bottom borders on FAQ, support disclosure/rows, consultation host and footer are0px; input border remains1px and keyboard outline3px. Client/SSR build, prerender and diff whitespace pass. No new tests for this reversible CSS-only correction. Prior behavior checks remain applicable; no live inquiry/call/client message.
