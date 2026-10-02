@@ -328,3 +328,16 @@ Validation: 390x844 hero/fee/royalty/growth, 375x667 hero and 360x740 opening fu
 
 
 Public rollout verification: passed. Dedicated sample deployment dpl_E5AXToxcHpUSyY1tRj6bwKfcE2SH is READY from source 24482b4 with VITE_REVIEW_ONLY=true. Cloud client/SSR build, prerender and function packaging passed. Anonymous HTTP 200 confirms index-D0UZn0i2.js and index-DckVf9Hq.css. Public 390x844 capture after/public-hero.jpg inspected: larger host/hat overlap matches local result, non-cash qualification is visible at about y334, portrait slot is 304px, no horizontal overflow, review-only notice present and console warnings/errors none. Main production remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8 through independent project API verification. Viewport reset; existing public sample tab refreshed and retained.
+
+
+## Latest iteration — Initial 3,000만원 example
+
+final result: passed
+
+User clarified that the large initial 7,000 amount must be 3,000만원 상당. To keep the displayed claim and arithmetic coherent, the review example now assumes monthly sales of 2,500만원 for 24 months, with opening/kitchen conditions fulfilled. The unchanged 3.3% royalty rule produces 1,980만원, opening 740 + kitchen 500 + credit 0 yields 3,220만원, rounded to approximately 3,000만원. These are clearly labeled assumptions, not store results or confirmed cash support. Credit is derived from the existing 3,000/4,000 thresholds, so it is excluded from this lower-sales example; actual support terms elsewhere remain unchanged.
+
+Evidence: Desktop review folder 2026-10-02_닭장수_3000초기값. Fresh before/after mobile captures at 390x844 and desktop at 1440x900 inspected. Same-input compare-mobile.png (804x844) and compare-desktop.png (2904x900) inspected; desktop viewer equally reduced to 2048x635, original files also inspected. Focused focus-calculation.png compares x35/y680/w650/h135 at 1:1 and confirms the changed exact sum, royalty and credit explanation. No density rescaling in files.
+
+Five surfaces: display/sans fonts and numeral size unchanged; existing hat overlap/artwork/palette and layout retained; assumption text now has two meaningful mobile lines instead of an orphaned final word; calculation and qualifiers agree with the rounded amount. No image generation, CSS/layout redesign or new benefit rule. Desktop assumption remains inline. Copywrite/client Voice/Korean style rules reused for the small explanatory revision.
+
+Checks: actual component arithmetic executed against independently expected scenarios: monthly 2,500 -> credit0/total3,220/rounded3,000; 3,000 ->30/3,976/4,000; 4,000 ->100/5,608/6,000; 6,000 ->100/7,192/7,000. Default DOM verifies 3,000, calculation3,220, royalty1,980, credit0 and explicit hypothesis. Mobile no horizontal overflow, console warnings/errors none. ESLint, client/SSR build, prerender and whitespace pass. No root check script. Unaffected navigation/form/motion contracts reused from the prior verified iteration; no real inquiry/call/client message. This scoped pass is not full accessibility/performance or physical-phone certification.
