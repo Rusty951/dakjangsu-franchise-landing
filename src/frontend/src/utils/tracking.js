@@ -51,6 +51,7 @@ const getAnalyticsParams = (eventData) =>
   }, {});
 
 export const trackEvent = (eventName, eventData = {}) => {
+  if (typeof window === 'undefined' || import.meta.env.VITE_REVIEW_ONLY === 'true') return;
   const normalizedEventName = EVENT_ALIASES[eventName] || eventName;
   const normalizedEventData =
     normalizedEventName === eventName ? eventData : { ...eventData, legacy_event_name: eventName };

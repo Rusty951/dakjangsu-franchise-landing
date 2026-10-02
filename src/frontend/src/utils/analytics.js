@@ -1,6 +1,7 @@
 const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-GH9NP6WFVN';
 
 export const initGoogleAnalytics = () => {
+  if (import.meta.env.VITE_REVIEW_ONLY === 'true') return;
   if (typeof window === 'undefined' || !gaMeasurementId || window.__dakjangsuGaInitialized) {
     return;
   }

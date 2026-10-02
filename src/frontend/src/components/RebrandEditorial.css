@@ -1,4 +1,5 @@
 /* Audit refinements: keep the selected artwork and palette, improve reading. */
+body:has(.rebrand-page) { padding-bottom: 0; }
 .rebrand-page { --rebrand-muted: #665b52; }
 .rebrand-page .rebrand-menu-toggle { display: none; }
 .rebrand-header nav a.rebrand-mobile-nav-link { display: none; }
@@ -46,15 +47,31 @@
 .rebrand-page .footer-phone { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
 .rebrand-page .footer-policy-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
 .rebrand-page .footer-copyright { font-size: 12px; font-weight: 450; letter-spacing: 0; }
+.rebrand-page .privacy-policy-dialog { border: 1px solid #665b52; border-radius: 0; background: #fffdf9; box-shadow: 0 16px 48px #0003; }
+.rebrand-page .privacy-policy-head > span { border: 0; border-radius: 0; background: #f7efe4; color: #241f1b; font-weight: 650; }
+.rebrand-page .privacy-policy-head h3 { font-size: clamp(28px, 3vw, 42px); line-height: 1.25; }
+.rebrand-page .privacy-policy-head p,
+.rebrand-page .privacy-policy-section ul { color: #40382f; font-size: 15px; line-height: 1.75; font-weight: 450; }
+.rebrand-page .privacy-policy-section h4 { color: #241f1b; font-weight: 750; line-height: 1.5; }
+.rebrand-page .privacy-policy-source { background: #f7efe4; border: 0; border-radius: 0; font-weight: 450; line-height: 1.7; }
+.rebrand-page .privacy-policy-close { border: 0; border-radius: 0; background: #241f1b; color: #fff8ed; box-shadow: none; }
+.rebrand-page .privacy-policy-close:hover { background: #a44c2b; }
+@media (max-height: 500px) {
+  .privacy-policy-dialog { max-height: calc(100dvh - 24px); }
+  .privacy-policy-head { padding: 10px 20px; }
+  .privacy-policy-head > span, .privacy-policy-head p { display: none; }
+  .rebrand-page .privacy-policy-head h3 { font-size: 24px; }
+  .privacy-policy-close { margin-bottom: 12px; }
+}
 @media (min-width: 701px) {
   .hero-offer .hero-offer-calculated span:nth-child(2)::before { content: ', '; }
 }
 @media (max-width: 700px) {
   .rebrand-page .rebrand-header { gap: 12px; }
   .rebrand-page .rebrand-logo img { width: 148px; }
-  .rebrand-page .rebrand-menu-toggle { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; margin-left: auto; padding: 8px 12px; border: 1px solid #241f1b40; background: transparent; color: #241f1b; font: 650 14px/1 var(--font-sans); cursor: pointer; }
+  .rebrand-page .rebrand-menu-toggle { display: inline-flex; flex-shrink: 0; white-space: nowrap; align-items: center; justify-content: center; min-height: 44px; margin-left: auto; padding: 8px 12px; border: 1px solid #241f1b40; background: transparent; color: #241f1b; font: 650 14px/1 var(--font-sans); cursor: pointer; }
   .rebrand-page .rebrand-header nav { gap: 0; }
-  .rebrand-page .rebrand-header-cta { min-height: 44px; padding: 12px; font-size: 12px; }
+  .rebrand-page .rebrand-header-cta { min-height: 44px; padding: 12px; font-size: 12px; white-space: nowrap; }
   .rebrand-page .rebrand-header[data-menu-open='true'] nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 12px 20px 20px; background: #fffdf9; border-bottom: 1px solid #241f1b30; box-shadow: 0 12px 18px #241f1b15; }
   .rebrand-page .rebrand-header[data-menu-open='true'] nav a { display: flex; align-items: center; min-height: 48px; padding: 12px; font-size: 14px; }
   .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-cta { justify-content: center; color: #fff8ed; }
@@ -77,6 +94,10 @@
   .rebrand-page .consultation-intro > p { font-size: 16px; line-height: 1.75; }
   .rebrand-page .consultation-form-card { padding: 24px 20px; }
   .rebrand-page .consultation-form-head > strong { font-size: 28px; }
+}
+@media (max-width: 350px) {
+  .rebrand-page .rebrand-header { gap: 8px; padding-inline: 16px; }
+  .rebrand-page .rebrand-logo, .rebrand-page .rebrand-logo img { width: 128px; }
 }
 @media (max-width: 700px) and (max-height: 700px) {
   .rebrand-page .hero-offer-assumption,

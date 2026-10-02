@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const privacyPolicySections = [
   {
@@ -58,31 +58,44 @@ const privacyPolicySections = [
 ];
 
 const PrivacyPolicyDialog = ({ onClose }) => {
+  const dialogRef = useRef(null);
+  const titleRef = useRef(null);
+
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return undefined;
-    }
-
+    const dialog = dialogRef.current;
     const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
-
+    const opener = document.activeElement;
+    dialog.showModal();
+    titleRef.current?.focus();
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
+      dialog.close();
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
     };
-  }, [onClose]);
+  }, []);
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className="privacy-policy-backdrop"
-      role="presentation"
+      aria-labelledby="privacy-policy-title"
+      onCancel={(event) => { event.preventDefault(); onClose(); }}
+      onKeyDown={(event) => {
+        if (event.key !== 'Tab') return;
+        const controls = [...event.currentTarget.querySelectorAll('button, a[href], input, select, textarea, [tabindex="0"]')]
+          .filter(element => !element.disabled && element.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls.at(-1);
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === titleRef.current)) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -91,20 +104,17 @@ const PrivacyPolicyDialog = ({ onClose }) => {
     >
       <section
         className="privacy-policy-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="privacy-policy-title"
       >
         <div className="privacy-policy-head">
           <span>개인정보 수집 및 이용 동의</span>
-          <h3 id="privacy-policy-title">개인정보 처리방침</h3>
+          <h3 ref={titleRef} tabIndex={-1} id="privacy-policy-title">개인정보 처리방침</h3>
           <p>
             닭장수후라이드 창업 상담 신청을 위해 필요한 최소한의 개인정보를 수집하며,
             상담 목적 범위 안에서만 이용합니다.
           </p>
         </div>
 
-        <div className="privacy-policy-body">
+        <div className="privacy-policy-body" role="region" tabIndex={0} aria-label="개인정보 처리방침 내용">
           {privacyPolicySections.map((section) => (
             <article className="privacy-policy-section" key={section.title}>
               <h4>{section.title}</h4>
@@ -126,7 +136,7 @@ const PrivacyPolicyDialog = ({ onClose }) => {
           확인
         </button>
       </section>
-    </div>
+    </dialog>
   );
 };
 

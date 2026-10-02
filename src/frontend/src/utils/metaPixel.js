@@ -48,6 +48,7 @@ const getMetaParams = (eventData = {}) =>
   }, { content_category: 'franchise_landing' });
 
 export const initMetaPixel = () => {
+  if (import.meta.env.VITE_REVIEW_ONLY === 'true') return;
   if (typeof window === 'undefined' || !metaPixelId || window.__dakjangsuMetaPixelInitialized) {
     return;
   }

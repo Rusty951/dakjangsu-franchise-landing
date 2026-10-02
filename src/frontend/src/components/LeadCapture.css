@@ -462,12 +462,20 @@
 .privacy-policy-backdrop {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
   z-index: 80;
   display: grid;
   place-items: center;
   padding: clamp(16px, 3vw, 40px);
   background: rgba(17, 18, 20, 0.64);
 }
+.privacy-policy-backdrop:not([open]) { display: none; }
+.privacy-policy-backdrop::backdrop { background: transparent; }
 
 .privacy-policy-dialog {
   width: min(100%, 760px);

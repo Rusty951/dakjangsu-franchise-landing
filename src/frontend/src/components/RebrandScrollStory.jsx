@@ -28,6 +28,8 @@ const benefits = [
   { id: 'growth', label: '매출 기준을 달성하면, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원안', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '개점월부터 12개월 내 기준을 달성한 월에 적용하는 안입니다.', note: '매출 증빙을 제출하면 다음 달 물류대금에서 차감합니다. 현금 지급이나 매출 보장은 아닙니다.' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+// Use the readable, flowing composition for narrow portrait and short viewports.
+const flowingStoryQuery = '(max-width: 1024px) and (orientation: portrait), (max-height: 640px)';
 
 export default function RebrandScrollStory() {
   const trackRef = useRef(null);
@@ -35,11 +37,12 @@ export default function RebrandScrollStory() {
   const characterRef = useRef(null);
   const lastReadingPosition = useRef({ index: 0, withinStory: true });
   const orientationRestore = useRef(null);
+  const headingFocusTarget = useRef(null);
   const [active, setActive] = useState(0);
   const [portrait, setPortrait] = useState(false);
 
   useLayoutEffect(() => {
-    const query = window.matchMedia('(max-width: 700px) and (orientation: portrait)');
+    const query = window.matchMedia(flowingStoryQuery);
     let initial = true;
     const update = () => {
       if (!initial) orientationRestore.current = { ...lastReadingPosition.current };
@@ -106,19 +109,16 @@ export default function RebrandScrollStory() {
       const character = characterRef.current;
       if (!track || !stage || !character) return;
       // A resize can arrive before React switches layouts. Preserve the last valid reading position.
-      if (window.matchMedia('(max-width: 700px) and (orientation: portrait)').matches !== portrait) return;
+      if (window.matchMedia(flowingStoryQuery).matches !== portrait) return;
       const reduced = preference.matches;
       setReducedMotion(reduced);
-      if (reduced) {
-        panels.forEach(panel => panel?.style.removeProperty('opacity'));
-        return;
-      }
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
-      if (portrait) {
-        // Portrait chapters use their real content height, rather than a virtual scroll track.
+      if (portrait || reduced) {
+        // Flowing and reduced-motion chapters track their real document positions.
         const navHeight = stage.querySelector('.jangsu-stage-footer').offsetHeight;
         const readingLine = header + navHeight + Math.min(180, window.innerHeight * .24);
-        const index = Math.max(0, panels.findIndex(panel => panel.getBoundingClientRect().bottom > readingLine));
+        const nextPanel = panels.findIndex(panel => panel.getBoundingClientRect().bottom > readingLine);
+        const index = nextPanel === -1 ? panels.length - 1 : nextPanel;
         lastReadingPosition.current = { index, withinStory: track.getBoundingClientRect().top <= header + 52 && track.getBoundingClientRect().bottom > header + 52 };
         if (lastActive !== index) {
           lastActive = index;
@@ -128,7 +128,7 @@ export default function RebrandScrollStory() {
         }
         panels.forEach(panel => panel.style.removeProperty('opacity'));
         const slot = panels[index].querySelector('.portrait-character-slot');
-        if (slot) {
+        if (slot && !reduced) {
           const box = slot.getBoundingClientRect();
           const stageBox = stage.getBoundingClientRect();
           stage.style.setProperty('--portrait-host-top', `${box.top - stageBox.top}px`);
@@ -276,6 +276,13 @@ export default function RebrandScrollStory() {
     };
   }, [portrait]);
 
+  useEffect(() => {
+    if (headingFocusTarget.current === active) {
+      stageRef.current.querySelectorAll('.jangsu-panel')[active].querySelector('h2')?.focus({ preventScroll: true });
+      headingFocusTarget.current = null;
+    }
+  }, [active]);
+
   const goToChapter = (index, focusHeading = false) => {
     const track = trackRef.current;
     const stage = stageRef.current;
@@ -298,6 +305,7 @@ export default function RebrandScrollStory() {
     }
     if (reducedMotion) {
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
+      if (focusHeading) panel.querySelector('h2')?.focus({ preventScroll: true });
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
       return;
     }
@@ -335,6 +343,7 @@ export default function RebrandScrollStory() {
       return;
     }
     const top = window.scrollY + track.getBoundingClientRect().top - header;
+    if (focusHeading) headingFocusTarget.current = index;
     window.scrollTo({ top: top + (track.offsetHeight - stage.offsetHeight) * index / (chapters.length - 1), behavior: 'smooth' });
   };
   const panelProps = (index) => ({
@@ -354,13 +363,13 @@ export default function RebrandScrollStory() {
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 1)}>
-            {benefit.id === 'fee' && <img className="fee-static-character" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
-            {benefit.id === 'opening' && <img className="opening-static-character" src={assetPath('/rebrand/poses/opening-package-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
-            {benefit.id === 'kitchen' && <img className="kitchen-static-character" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
-            {benefit.id === 'royalty' && <img className="royalty-static-character" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'opening' && <img className="opening-static-character" loading="lazy" src={assetPath('/rebrand/poses/opening-package-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'kitchen' && <img className="kitchen-static-character" loading="lazy" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
+            {benefit.id === 'royalty' && <img className="royalty-static-character" loading="lazy" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 1} / {chapters[index + 1]} 지원</span>
-              <h2 tabIndex={portrait ? -1 : undefined}>
+              <h2 tabIndex={-1}>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
@@ -415,5 +424,5 @@ const portraitPoses = [
   '/rebrand/poses/consultation-invite-v1/04-rest.png',
 ];
 function PortraitCharacterSlot({ scene }) {
-  return <span className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} alt="" width="1122" height="1402" /></span>;
+  return <span className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} loading="lazy" alt="" width="1122" height="1402" /></span>;
 }

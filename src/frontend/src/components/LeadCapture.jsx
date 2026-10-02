@@ -109,7 +109,7 @@ const parseLeadResponse = (responseText) => {
 const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) => {
   const sectionRef = useRef(null);
   const formRef = useRef(null);
-  const previewOnly = rebrandCopy && import.meta.env.VITE_REVIEW_ONLY === 'true';
+  const previewOnly = import.meta.env.VITE_REVIEW_ONLY === 'true';
   const hasTrackedStartRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState(initialFormData);

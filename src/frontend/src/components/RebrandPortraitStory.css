@@ -1,6 +1,6 @@
-/* Portrait has its own composition and real document height. Landscape keeps the stage. */
+/* Portrait tablets and short screens need real document height to keep every action reachable. */
 .portrait-character-slot { display: none; }
-@media (max-width: 700px) and (orientation: portrait) {
+@media (max-width: 1024px) and (orientation: portrait), (max-height: 640px) {
   .rebrand-page .jangsu-story--portrait { height: auto; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage {
     position: relative; top: 0; height: auto; min-height: 0; overflow: visible;
@@ -11,12 +11,16 @@
   .jangsu-story--portrait .jangsu-stage-kicker,
   .jangsu-story--portrait .hero-stage-logo { display: none; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer {
-    position: sticky; top: 66px; order: -1; inset-inline: auto; bottom: auto;
+    display: block;
+    position: sticky; top: var(--story-header-height, 66px); order: -1; inset-inline: auto; bottom: auto;
     width: 100%; height: 52px; background: #fffdf9; border-block: 1px solid #241f1b25;
   }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer nav {
-    height: 100%; padding-inline: 12px; background: #fffdf9; color: #241f1b;
+    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0;
+    width: 100%; height: 100%; padding-inline: 12px; background: #fffdf9; color: #241f1b;
   }
+  .jangsu-story--portrait .jangsu-stage-footer > span,
+  .jangsu-story--portrait .jangsu-stage-footer button small { display: none; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer button {
     font-size: 11px; opacity: .8; min-height: 48px; border: 0; color: #241f1b;
   }
@@ -27,7 +31,7 @@
   .rebrand-page .jangsu-story--portrait .jangsu-panel {
     position: relative; inset: auto; opacity: 1; min-height: 0;
     padding: 32px 24px 40px; z-index: 1; overflow: hidden;
-    scroll-margin-top: 118px;
+    scroll-margin-top: calc(var(--story-header-height, 66px) + 52px);
   }
   .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome,
   .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene--kitchen,
@@ -39,7 +43,7 @@
   .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene--growth h2 > strong { color: #241f1b; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage[data-scene='5'][data-lift-status='playing'] .benefit-scene--growth { background: #241f1b; color: #fff8ed; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage[data-scene='5'][data-lift-status='playing'] .benefit-scene--growth h2 > strong { color: #fff8ed; }
-  .rebrand-page .jangsu-story--portrait .benefit-scene-copy {
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy {
     position: relative; inset: auto; width: 100%; margin: 0; animation: none;
   }
   .rebrand-page .jangsu-story--portrait .benefit-scene-index { font-size: 11px; margin-bottom: 18px; }
@@ -131,7 +135,7 @@
   .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-numeral {
     transform: none; font-size: clamp(100px, 29vw, 128px); line-height: 1; letter-spacing: -.075em;
   }
-  .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount small { font-size: 19px; max-width: 42px; }
+  .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount small { font-size: 20px; max-width: 42px; color: #241f1b; }
   .rebrand-page .jangsu-story--portrait .hero-offer-calculated { margin-top: 12px; font-size: 12px; line-height: 1.6; }
   .rebrand-page .jangsu-story--portrait .jangsu-panel--welcome { padding-top: 24px; }
   .rebrand-page .jangsu-story--portrait .hero-offer .portrait-character-slot { margin-top: -38px; }
@@ -165,4 +169,13 @@
   .rebrand-page .jangsu-story--portrait .jangsu-invite-copy p { display: block; width: 100%; margin: 20px 0 0; font-size: 16px; line-height: 1.7; }
   .rebrand-page .jangsu-story--portrait .jangsu-invite-copy a { position: relative; inset: auto; min-height: 56px; font-size: 16px; margin: 0; }
   .rebrand-page .jangsu-story--portrait .jangsu-invite-copy ol { position: static; margin-top: 20px; font-size: 12px; }
+}
+@media (min-width: 701px) {
+  .jangsu-story--portrait { --story-header-height: 80px; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage-footer button { font-size: 14px; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy,
+  .rebrand-page .jangsu-story--portrait .hero-offer,
+  .rebrand-page .jangsu-story--portrait .jangsu-invite-content {
+    max-width: 580px; margin-inline: auto;
+  }
 }

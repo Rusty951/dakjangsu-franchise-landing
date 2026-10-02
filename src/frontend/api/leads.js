@@ -268,6 +268,11 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (process.env.VITE_REVIEW_ONLY === 'true') {
+    sendJson(response, 403, { ok: false, message: '검토용 샘플에서는 상담 신청을 접수하지 않습니다.' });
+    return;
+  }
+
   if (isRateLimited(request)) {
     sendJson(response, 429, { ok: false, message: '잠시 후 다시 시도해 주세요.' });
     return;
@@ -275,6 +280,9 @@ export default async function handler(request, response) {
 
   try {
     const body = await readJsonBody(request);
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      throw new SyntaxError('Expected a JSON object');
+    }
     const lead = normalizeLead(body);
     const errors = validateLead(lead);
 

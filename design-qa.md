@@ -375,3 +375,61 @@ Evidence: fresh public before/local after at1440x900 in Desktop review folder202
 Five surfaces: fonts and numeral sizes unchanged; only horizontal host spacing changed; original ink/cream palette, transparent mascot poses and all wording/financial conditions retained. No actionable P0/P1/P2 in this scoped correction. ESLint, client/SSR build, prerender and whitespace pass; console warnings/errors none. No new test harness for this reversible visual adjustment. No actual inquiry/call/client message. Prior verified motion guards retained; no full accessibility/performance certification or physical-device testing.
 
 Public rollout verification: passed. Sample deployment dpl_8MMEy8gKP1uQudGGujvJREs4mZR7 READY from source b776cef with VITE_REVIEW_ONLY=true. Anonymous200 confirms index-C800cIsW.js/index-DvE2VubD.css. Public1440x900 screenshot inspected: fully visible presenting hand and small gap match local result, review-only notice remains, no console warnings/errors. Main project API confirms unchanged live deployment dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Viewport reset and public royalty sample retained.
+
+
+## 2026-10-02 — Full desktop/mobile design and code audit
+
+final result: passed
+
+Scope: current client-sample rebrand journey, all seven story chapters and the benefits/menu/space/fit/FAQ/form/footer flow, shared dialog, tracking/bootstrap, prerender and lead API. This is a combined Product Design audit plus bounded implementation review, not certification of unrelated archived concepts or a full security assessment. User explicitly requested rigorous desktop/mobile verification; existing frontend correction and sample-only rollout authorization reused.
+
+Source visual truth: fresh current-run public captures in `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-02_닭장수_전체정밀검증/before/` (source333b0ec). Rendered implementation: fresh compiled review build at port8876, captures in `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/2026-10-02_닭장수_전체정밀검증/after/`. No earlier-run screenshots used as audit evidence. Source/current visual language, official assets and agreed3,000 example are the baseline; intentional changes below address reproduced problems.
+
+### Findings and fixes
+
+- [P1, fixed] Landscape844x390 pinned a560px stage below an80px header. The first CTA was at y483–546 and chapter navigation y567–621, below the390px viewport. Screenshot36 shows the problem. Use the existing flowing composition for height<=640 and portrait width<=1024. After36/37 show persistent reachable navigation and scrollable full benefit facts.
+- [P2, fixed] Tablet768x1024 retained a two-color desktop hero with an undersized low mascot, awkward support text grouping and large detached numerals (34/35). Reuse the agreed mobile composition with a580px content maximum and actual80px header offset. After34/38 show coherent amount/hat layers and centered royalty content.
+- [P1, fixed] Privacy dialog opened with focus behind the modal; Tab advanced to the background submit button (16). A native modal now makes the page behind it inert, focuses the title, offers a keyboard-scrollable policy region, wraps Tab/Shift+Tab, supports Escape and restores the exact opener. Native-only prototype initially allowed a Tab cycle into browser chrome; explicit boundary wrapping fixed it. Five consecutive Tab states stayed inside; Escape restored footer-policy-link.
+- [P2, fixed] Legacy red/yellow modal, heavy small type and thick decorative borders broke the rebrand reading style (16/32). Keep all policy wording while using the existing paper/ink palette,15px regular body type and a clear close control. After32/42 confirm readable portrait and390px-high dialogs. Policy wording itself is not legally certified.
+- [P2, fixed]320px header split 메뉴 and 창업 상담 vertically (41). Protect label wrapping and use a128px logo below350px. Matched41 shows single-line controls and no clipping.
+- [P2, fixed]19px/weight400 white hero units on orange measured3.41:1, below the ordinary-text contrast target. Make the small unit ink-colored at20px; actual token contrast4.53:1. Preserve the large white amount, whose large-text contrast is3.41:1. Matched17 shows the change.
+- [P2, fixed] Desktop keyboard Explore changed the chapter without moving focus. Pending focus now lands on the new H2; inactive panels retain inert attributes. Reduced-motion flow also updates the active chapter from document position instead of leaving the first tab selected. The latter guard was source-reviewed; OS preference emulation was unavailable.
+- [P1/P2, fixed] Review behavior depended on rebrand props/query. The sample root could show the old landing, boot analytics and expose a normal form path. Review builds now default to rebrand, disable tracking and all form variants, prerender that same page and emit noindex. A matching runtime flag rejects every lead POST with403 before provider access. Normal false/unset mode still builds the original indexable landing and retains the API success path.
+- [P2, fixed] Non-object JSON bodies could take the internal-error path. They now return400. Offline tests cover malformed/non-object input, required fields, strict consent, method/preflight, rate limiting, review rejection, provider success and safe provider failure. No live lead/email was sent.
+- [P2, fixed] Development dependency audit reported5 advisories (4 high,1 moderate). Compatible transitive updates only, with no direct dependency/major upgrade; frontend and root production audits now report0. This does not imply absence of every security issue.
+- [P3, fixed] Removed72px legacy mobile footer padding. Deferred four hidden fallback poses totaling4,036,327 source bytes and removed the1,738,291-byte legacy hero preload from review HTML. These are asset file sizes, not a measured network-speed gain.
+
+### Flow evidence
+
+| Step | Surface | Desktop/mobile evidence | Result and notes |
+|---|---|---|---|
+|1|Initial3,000 example|01 /17;34,36,41 variants|Passed after fixes. Scenario assumptions,3,220 sum, non-cash qualifier and original artwork retained; both desktop numerals respond to hover.|
+|2|Fee waiver|02 /18|Passed.440 composition,275+165 facts and intentional mobile hat overlap read clearly.|
+|3|Opening support|03 /19;35,37,39|Passed.740 including440 is explicit; all three facts and conditions reachable.|
+|4|Kitchen support|04 /20|Passed.500 and300+200 agree; eligibility text flows beneath the image.|
+|5|Royalty|05 /21;38|Passed. Desktop hand/zero gap preserved; mobile foreground hat layer retained.|
+|6|Operating credit|06 /22|Passed. Thresholds unchanged, playback settles to100 and parked state, Enter replay goes back to playing.|
+|7|Consultation invitation|07 /23;40|Passed. CTA clear and reachable with native scrolling and short-desktop layout.|
+|8|Benefits and detailed conditions|08–09 /25|Passed. Disclosure works; lower conditions remain readable.09 is deliberately a lower-condition scroll state.|
+|9|Menu|10 /26|Passed. Existing real food/photo assets, responsive image rows and readable descriptions; no failed images in inspected state.|
+|10|Space|11 /27|Passed. Both selectors switch image, caption and aria-pressed; illustrative status visible.|
+|11|Founder preparation|12 /28|Passed. Three practical prompts, no clipped text in inspected views.|
+|12|FAQ|13 /29|Passed. All four disclosures opened and reported open, with answers and natural layout.|
+|13|Lead form|14–15 /30–31|Passed. Empty form reports four fields, focuses first error; dummy valid input produces an explicit review-only completion. API provider behavior tested offline.|
+|14|Privacy and footer|16 /31–32;42|Passed after modal fixes. Confirm/Escape/Tab and opener return checked, company/social/tel destinations inspected without making a call or sending a message.|
+
+### Required fidelity surfaces and comparisons
+
+- Typography: original Black Han Sans/display, sans and Arial numerals preserved; fix only the small unit contrast,320px header wrapping,14px wider flowing navigation and dialog reading type.
+- Spacing/layout: deliberate flow layout on tablets/short screens, persistent navigation,580px content maximum, no clipped controls in sampled viewports. Original1440px hero comparison retained.
+- Colors/tokens: original orange/ink/paper retained. Ink/orange4.53:1; muted text/paper6.49:1; cream text/ink11.10:1. These are selected token checks, not whole-page WCAG certification.
+- Images: exact approved PNG/WebP artwork retained. No image generation/replacement/resampling in the site. Lazy loading applies to hidden fallback/next chapter images.
+- Copy: amounts,3,000 headline,3,220 assumption example, benefit/draft/condition/non-cash qualifiers and policy text preserved. Form/backend review message remains explicit.
+
+Six combined comparison inputs were opened and inspected, with source on the left and revised implementation on the right: compare-01-desktop-hero.png(1440x900 each), compare-17-mobile-hero.png(390x844 each), compare-34-tablet-hero.png(768x1024 each), compare-36-landscape-hero.png(844x390 each), compare-41-smallest-phone.png(320x568 each), compare-32-mobile-privacy.png(390x844 each). Source pixels equal implementation pixels equal CSS viewport; no density normalization required. Pairs retain1:1 pixels with24px white gutter; only the desktop pair viewer downsized2904x900 to2048x635 equally. Narrow/mobile comparisons are themselves readable focused evidence; no additional crop was needed. Original individual files were also inspected before acceptance.
+
+Iteration history: public before capture -> flowing-layout/modal implementation -> corrected wider-flow nav styling and explicit modal Tab wrap ->320px header and unit-contrast fixes -> final matched comparisons. No actionable P0/P1/P2 remains within the inspected scope.
+
+Validation: responsive browser sizes320x568,360x740,390x844,768x1024,844x390,1280x720,1440x900 and1920x1080. Layout-mode switch preserved the consultation chapter. Native menus open/close/Escape and anchors, keyboard Explore, royalty/growth navigation and replay, both space views, all FAQs, error focus, review completion, modal focus cycle and close, no-query root, no analytics script insertion, noindex and removed legacy preload verified. Browser warnings/errors none. Seven offline API tests pass. ESLint, client build, SSR build, prerender and whitespace pass. Both normal and review build contracts checked.
+
+Limits: browser responsive viewports, not physical phones. No Safari/Chrome device matrix, OS reduced-motion visual run,200% browser text zoom, screen-reader traversal, slow-network/FPS/Lighthouse measurement or actual provider email delivery. Source motion pause/reduced-motion/cleanup guards reviewed. No client message, call, actual inquiry or official-site deployment.
