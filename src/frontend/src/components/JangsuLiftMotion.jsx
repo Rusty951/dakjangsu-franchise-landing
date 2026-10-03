@@ -38,7 +38,15 @@ export default function JangsuLiftMotion({ stageRef, characterRef, ready, onComp
         : Math.min(copyBottom + 24, footerTop - 12);
       let restHeight = Math.min(restRect.height, restRect.width * 1.5);
       let restCenter = restRect.left + restRect.width / 2 - stageRect.left;
-      if (portrait) {
+      const camera = stage.closest('.jangsu-story--massive') && rest.querySelector('.jangsu-character-canvas');
+      if (camera) {
+        // Park in the same enlarged image canvas as the other chapter actors.
+        // The visible window clips the body intentionally without shrinking it.
+        const cameraRect = camera.getBoundingClientRect();
+        restHeight = cameraRect.height;
+        restBottom = cameraRect.bottom - stageRect.top;
+        restCenter = cameraRect.left + cameraRect.width / 2 - stageRect.left;
+      } else if (portrait) {
         // Match the rendered image width of the other 150%-height portrait actors.
         // The lift canvas is 2:3, while the resting PNG is 1122:1402.
         restHeight = Math.min(restRect.width, restRect.height * 1.5 * 1122 / 1402) * 1.5;

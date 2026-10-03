@@ -21,7 +21,7 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
   return (
     <div className="hero-offer">
       <header className="hero-offer-heading">
-        <h1>사장님, <span>시작부터 부담을 덜어드릴게요.</span></h1>
+        <h1 tabIndex={-1}>사장님, <span>시작부터 부담을 덜어드릴게요.</span></h1>
         <p className="hero-offer-intro">
           가맹비와 교육비, 주방 설비부터<br />첫 2년 로열티까지.
         </p>
@@ -35,7 +35,7 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
           오픈 및 주방 지원 조건을 충족한 경우의 합산 예시입니다.
         </p>
         <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span>{!portrait && <span>현금 지급액 아님</span>}</p>
-        {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
+        {portrait && <div className="portrait-character-slot" data-character-scene="0" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
       </section>
 
       <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제안">

@@ -40,6 +40,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   const headingFocusTarget = useRef(null);
   const [active, setActive] = useState(0);
   const [portrait, setPortrait] = useState(false);
+  const [guideVisible, setGuideVisible] = useState(false);
 
   useLayoutEffect(() => {
     const query = window.matchMedia(flowingStoryQuery);
@@ -102,6 +103,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
     syncMotion();
     let frame = 0;
     let lastActive = -1;
+    let lastViewport = { width: window.innerWidth, height: window.innerHeight };
     const paint = () => {
       frame = 0;
       const track = trackRef.current;
@@ -113,6 +115,13 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       const reduced = preference.matches;
       setReducedMotion(reduced);
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
+      const resized = lastViewport.width !== window.innerWidth || lastViewport.height !== window.innerHeight;
+      lastViewport = { width: window.innerWidth, height: window.innerHeight };
+      if (resized && !portrait && !reduced && lastReadingPosition.current.withinStory) {
+        // Viewport-based track height must not advance the reader on resize.
+        const top = window.scrollY + track.getBoundingClientRect().top - header;
+        window.scrollTo({ top: top + (track.offsetHeight - stage.offsetHeight) * lastReadingPosition.current.index / (chapters.length - 1), behavior: 'instant' });
+      }
       if (portrait || reduced) {
         // Flowing and reduced-motion chapters track their real document positions.
         const navHeight = stage.querySelector('.jangsu-stage-footer').offsetHeight;
@@ -120,6 +129,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         const nextPanel = panels.findIndex(panel => panel.getBoundingClientRect().bottom > readingLine);
         const index = nextPanel === -1 ? panels.length - 1 : nextPanel;
         lastReadingPosition.current = { index, withinStory: track.getBoundingClientRect().top <= header + 52 && track.getBoundingClientRect().bottom > header + 52 };
+        setGuideVisible(index > 0 && lastReadingPosition.current.withinStory && track.getBoundingClientRect().bottom > readingLine);
         if (lastActive !== index) {
           lastActive = index;
           setActive(index);
@@ -143,6 +153,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       const progress = clamp((header - track.getBoundingClientRect().top) / travel, 0, 1) * (chapters.length - 1);
       const current = Math.round(progress);
       lastReadingPosition.current = { index: current, withinStory: track.getBoundingClientRect().top <= header && track.getBoundingClientRect().bottom > header };
+      setGuideVisible(current > 0 && lastReadingPosition.current.withinStory);
       if (lastActive !== current) {
         lastActive = current;
         setActive(current);
@@ -234,7 +245,6 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       character.style.left = `${values[0]}%`;
       character.style.height = `${values[1]}%`;
       character.style.bottom = `${values[2]}%`;
-      stage.style.setProperty('--chapter-progress', `${progress / (chapters.length - 1) * 100}%`);
       // Keep the reading surface opaque even when scrolling stops between
       // chapter centers. Only the character interpolates continuously.
       panels.forEach((panel, i) => {
@@ -256,10 +266,14 @@ export default function RebrandScrollStory({ onConditionsClick }) {
     const restore = orientationRestore.current;
     orientationRestore.current = null;
     if (restore?.withinStory) {
+      // A layout switch keeps the same chapter and its completed performance.
+      // Resetting the lift here would hide its copy after an already-ended act.
+      lastActive = restore.index;
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
       const top = window.scrollY + track.getBoundingClientRect().top - header;
+      const portraitTarget = restore.index > 0 ? panels[restore.index].querySelector('h2') : panels[restore.index];
       const destination = portrait
-        ? window.scrollY + panels[restore.index].getBoundingClientRect().top - header - stageRef.current.querySelector('.jangsu-stage-footer').offsetHeight
+        ? window.scrollY + portraitTarget.getBoundingClientRect().top - header - (restore.index > 0 ? 12 : 0)
         : top + (track.offsetHeight - stageRef.current.offsetHeight) * restore.index / (chapters.length - 1);
       window.scrollTo({ top: destination, behavior: 'instant' });
     }
@@ -278,7 +292,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
 
   useEffect(() => {
     if (headingFocusTarget.current === active) {
-      stageRef.current.querySelectorAll('.jangsu-panel')[active].querySelector('h2')?.focus({ preventScroll: true });
+      stageRef.current.querySelectorAll('.jangsu-panel')[active].querySelector('h1, h2')?.focus({ preventScroll: true });
       headingFocusTarget.current = null;
     }
   }, [active]);
@@ -287,6 +301,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
     const track = trackRef.current;
     const stage = stageRef.current;
     const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
+    if (focusHeading && active === index) {
+      stage.querySelectorAll('.jangsu-panel')[index].querySelector('h1, h2')?.focus({ preventScroll: true });
+    }
     if (portrait) {
       if (active === index) {
         if (index === 0) setHeroReplay(replay => replay + 1);
@@ -298,14 +315,14 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         if (index === 6) setInviteReplay(replay => replay + 1);
       }
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
-      if (focusHeading) panel.querySelector('h2')?.focus({ preventScroll: true });
-      const navHeight = stage.querySelector('.jangsu-stage-footer').offsetHeight;
-      window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header - navHeight, behavior: reducedMotion ? 'instant' : 'smooth' });
+      if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
+      const target = index > 0 ? panel.querySelector('h2') : panel;
+      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
       return;
     }
     if (reducedMotion) {
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
-      if (focusHeading) panel.querySelector('h2')?.focus({ preventScroll: true });
+      if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
       return;
     }
@@ -353,7 +370,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   });
 
   return (
-    <section className={`jangsu-story${portrait ? ' jangsu-story--portrait' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
+    <section className={`jangsu-story jangsu-story--massive${portrait ? ' jangsu-story--portrait' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
       <div className="jangsu-stage" ref={stageRef} data-scene={active} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
@@ -367,7 +384,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             {benefit.id === 'kitchen' && <img className="kitchen-static-character" loading="lazy" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             {benefit.id === 'royalty' && <img className="royalty-static-character" loading="lazy" src={assetPath('/rebrand/poses/royalty-zero-v1/04-present.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
-              <span className="benefit-scene-index">0{index + 1} / {chapters[index + 1]} 지원</span>
+              <span className="benefit-scene-index">0{index + 2} / {chapters[index + 1]} 지원</span>
               <h2 tabIndex={-1}>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
@@ -396,22 +413,49 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         ))}
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(6)}>
           <div className="jangsu-invite-content">
-            <span className="jangsu-scene-number">창업 상담</span>
-            <h2>내 점포에는<br />어떤 혜택이?</h2>
+            <span className="jangsu-scene-number">내 점포 지원 상담</span>
+            <h2 tabIndex={-1}>사장님 창업비, <br /><em>얼마나 줄일 수 </em><br />있을까요?</h2>
             <div className="jangsu-invite-copy">
-              <p>점포를 구하기 전에도 상담할 수 있습니다.<br />희망 지역부터 남겨주세요.</p>
+              <p>가맹비와 주방 설비, 첫 2년 로열티까지.<br />내 점포에 적용될 지원부터 확인해 보세요.</p>
               {portrait && <PortraitCharacterSlot scene={6} />}
               <a className="story-cta story-cta--primary" href="#lead-capture">
-                <span>창업 상담하기 <span className="story-cta-icon" aria-hidden="true" /></span>
+                <span>내 점포 지원 상담하기 <span className="story-cta-icon" aria-hidden="true" /></span>
               </a>
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
           <img className="jangsu-invite-static" src={assetPath('/rebrand/poses/consultation-invite-v1/04-rest.png')} alt="" width="1122" height="1402" loading="lazy" />
         </article>
-        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuHeroMotion key={heroReplay} /> : active === 1 ? <JangsuFeeMotion key={feeReplay} /> : active === 2 ? <JangsuOpeningMotion key={openingReplay} /> : active === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : active === 4 ? <JangsuRoyaltyMotion key={royaltyReplay} /> : active === 6 ? <JangsuInviteMotion key={inviteReplay} /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
+        <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
+          <div className="jangsu-character-canvas">{active === 0 ? <JangsuHeroMotion key={heroReplay} /> : active === 1 ? <JangsuFeeMotion key={feeReplay} /> : active === 2 ? <JangsuOpeningMotion key={openingReplay} /> : active === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : active === 4 ? <JangsuRoyaltyMotion key={royaltyReplay} /> : active === 6 ? <JangsuInviteMotion key={inviteReplay} /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
+        </div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
+        <nav
+          className="jangsu-progress-guide"
+          aria-label="닭장수 이야기 진행"
+          aria-hidden={!guideVisible}
+          inert={!guideVisible}
+          data-visible={guideVisible}
+        >
+          <ol>
+            {chapters.map((label, index) => (
+              <li key={label}>
+                <button
+                  type="button"
+                  aria-label={`${index + 1}번 ${label} 장면`}
+                  aria-current={active === index ? 'step' : undefined}
+                  data-complete={index < active}
+                  title={label}
+                  onClick={event => goToChapter(index, event.detail === 0)}
+                >
+                  <span className="jangsu-progress-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="jangsu-progress-label" aria-hidden="true">{label}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        </nav>
       </div>
     </section>
   );
@@ -427,5 +471,5 @@ const portraitPoses = [
   '/rebrand/poses/consultation-invite-v1/04-rest.png',
 ];
 function PortraitCharacterSlot({ scene }) {
-  return <span className="portrait-character-slot" aria-hidden="true"><img src={assetPath(portraitPoses[scene])} loading="lazy" alt="" width="1122" height="1402" /></span>;
+  return <span className="portrait-character-slot" data-character-scene={scene} aria-hidden="true"><img src={assetPath(portraitPoses[scene])} loading="lazy" alt="" width="1122" height="1402" /></span>;
 }

@@ -19,6 +19,12 @@
   letter-spacing: -.045em;
 }
 .rebrand-page .hero-offer .hero-offer-intro { margin-top: 12px; line-height: 1.5; }
+/* Cream on orange needs the large, bold subtitle tier to stay readable. */
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer .hero-offer-intro {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.45;
+}
 .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total,
 .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero {
   align-self: start;
@@ -88,21 +94,73 @@
 .rebrand-page .consultation-intro h2 { font-size: clamp(40px, 4.5vw, 64px); line-height: 1.16; letter-spacing: -.045em; }
 .rebrand-page .rebrand-closing-questions summary { min-height: 72px; padding-block: 22px; }
 .rebrand-page .rebrand-support-terms { margin-top: 40px; }
+.rebrand-page .rebrand-support-terms > summary small { font-size: 13px; }
+.rebrand-page .rebrand-support-content { font-size: 15px; word-break: keep-all; overflow-wrap: break-word; }
 .rebrand-page .lead-capture-section {
   padding: var(--layout-section-space) var(--layout-gutter);
+  border-top: 0;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   align-items: start;
   gap: 64px;
 }
-.rebrand-page .consultation-intro { padding-top: 32px; }
+.rebrand-page .consultation-intro {
+  padding-top: 32px;
+  justify-items: start;
+  text-align: left;
+}
 .rebrand-page .consultation-intro > p { font-size: 16px; line-height: 1.8; }
+.rebrand-page .consultation-host { max-width: 520px; gap: 24px; }
+.rebrand-page .consultation-host p { margin-top: 0; text-align: left; }
+.rebrand-page .consultation-host img { flex: 0 0 auto; width: clamp(96px, 12vw, 144px); padding-top: 0; }
 .rebrand-page .consultation-label { margin-bottom: 24px; font-size: 13px; }
+.rebrand-page .consultation-form-wrap { width: 100%; }
 .rebrand-page .consultation-form-card { padding: 32px; gap: 20px; }
 .rebrand-page .consultation-form-head > strong { font-size: 32px; line-height: 1.18; }
 .rebrand-page .consultation-form-head > span { font-size: 13px; }
 .rebrand-page .consultation-field > span { font-size: 14px; }
 .rebrand-page .consultation-form-grid { gap: 16px; }
+.rebrand-page .consultation-form-card .consultation-field :is(input, select, textarea) { border-color: #8c8074; }
+.rebrand-page .consultation-form-card .consultation-field [aria-invalid='true'] { border-color: #a91610; }
+.rebrand-page .consultation-field input::placeholder,
+.rebrand-page .consultation-field textarea::placeholder { color: #76685c; opacity: 1; }
+.rebrand-page .consultation-consent { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+.rebrand-page .consultation-consent-check { min-height: 44px; grid-template-columns: 20px minmax(0, 1fr); align-items: center; }
+.rebrand-page .consultation-consent input { width: 20px; height: 20px; min-height: 20px; margin: 0; accent-color: #984221; }
+.rebrand-page .consultation-consent:has(input:focus-visible) { outline: 2px solid #241f1b; outline-offset: 4px; }
+.rebrand-page .consultation-form-card .consultation-privacy-link {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0 0 0 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #665b52;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  white-space: normal;
+  transform: none;
+}
+.rebrand-page .consultation-form-card .consultation-privacy-link:hover { color: #241f1b; }
 .rebrand-page .consultation-form-card button[type='submit'] { min-height: 58px; font-size: 17px; }
+.rebrand-page .consultation-form-card button.consultation-submit,
+.rebrand-page .consultation-form-card button.consultation-submit:hover:not(:disabled) {
+  background: #d86535;
+  box-shadow: none;
+  transform: none;
+}
+.rebrand-page .consultation-submit > span { padding: .85em 1.25em; }
+.rebrand-page .consultation-form-card button.consultation-submit:focus-visible { outline: 2px solid #241f1b; outline-offset: 4px; }
+.rebrand-page .consultation-form-card button.consultation-submit:not(:disabled):active { transform: scale(.95); }
+.rebrand-page .consultation-form-card button.consultation-submit:disabled { cursor: wait; opacity: .68; }
+@media (prefers-reduced-motion: reduce) {
+  .rebrand-page .consultation-form-card button.consultation-submit:not(:disabled):active { transform: none; }
+}
 
 @media (min-width: 701px) and (min-height: 1000px) {
   .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total,
@@ -122,14 +180,18 @@
 }
 @media (min-width: 701px) and (max-width: 1050px) {
   .rebrand-page .rebrand-closing-faq-grid { grid-template-columns: 1fr; gap: 32px; }
-  .rebrand-page .lead-capture-section { gap: 32px; }
+  .rebrand-page .lead-capture-section { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .rebrand-page .consultation-intro { padding-top: 0; }
+  .rebrand-page .consultation-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rebrand-page .consultation-form-card { padding: 24px; }
   .rebrand-page .consultation-form-head > strong { font-size: 28px; }
 }
 
 /* Group all the amount's explanatory text before its portrait character slot. */
 .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-intro { color: #241f1b; font-size: 15px; }
+.rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-label > span { font-size: 13px; }
 .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-calculated { margin-top: 8px; }
+.rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-scope { font-size: 13px; line-height: 1.6; }
 .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-total .portrait-character-slot { margin-top: 16px; }
 .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount { gap: 10px; }
 .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-numeral { font-size: clamp(92px, 27vw, 116px); }
@@ -155,7 +217,7 @@
   .rebrand-page .consultation-form-card { padding: 24px 20px; }
   .rebrand-page .consultation-form-head > strong { font-size: 26px; line-height: 1.22; }
   .rebrand-page .consultation-form-grid { gap: 16px; }
-  .rebrand-page .hero-offer .hero-offer-breakdown { font-size: 12px; }
+  .rebrand-page .hero-offer .hero-offer-breakdown { font-size: 13px; }
 }
 
 /* Chapters 2–7 share the overview's page edge, hierarchy and CTA language. */
@@ -261,7 +323,8 @@
 }
 .rebrand-page .story-cta:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 .rebrand-page .story-cta:active { transform: scale(.97); }
-.rebrand-page .story-cta--primary { min-height: 48px; font-size: 16px; }
+.rebrand-page .story-cta--primary { min-height: 48px; font-size: 16px; border: 0; }
+.rebrand-page .story-cta--primary:hover { background: #d86535; }
 .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--invite h2 {
   font-size: clamp(40px, 4.5vw, 64px);
   line-height: 1.16;
@@ -319,3 +382,123 @@
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy p { margin: 20px 0 0; font-size: 15px; line-height: 1.8; }
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy a { min-height: 48px; width: fit-content; padding: 0; font-size: 16px; }
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy ol { margin-top: 18px; font-size: 13px; }
+
+/* Make the consultation's concrete question carry the offer into the form. */
+.rebrand-page .consultation-intro h2 em,
+.rebrand-page .jangsu-panel--invite h2 em {
+  color: #ed9b6e;
+  font-size: inherit;
+  font-style: normal;
+  text-shadow: none;
+}
+.rebrand-page .jangsu-panel--invite h2 em { color: #fff8ed; }
+
+/* Approved editorial chapter index: type carries the sequence, with one
+   short active underline. Keep the actor's measurement footer independent. */
+.rebrand-page .jangsu-progress-guide {
+  --guide-accent: currentColor;
+  --guide-surface: #f7efe4;
+  position: absolute;
+  z-index: 12;
+  left: var(--layout-gutter);
+  right: var(--layout-gutter);
+  bottom: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  transform: translateY(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.rebrand-page .jangsu-progress-guide[data-visible='true'] {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.rebrand-page .jangsu-stage[data-scene='1'] > .jangsu-progress-guide { --guide-accent: #d86535; }
+.rebrand-page .jangsu-stage[data-scene='2'] > .jangsu-progress-guide { --guide-accent: #ed9b6e; }
+.rebrand-page .jangsu-progress-guide ol {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) minmax(64px, .55fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rebrand-page .jangsu-progress-guide button {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 0 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: 500 14px/1.4 var(--font-sans);
+  letter-spacing: -.015em;
+  white-space: nowrap;
+  opacity: .72;
+  cursor: pointer;
+}
+.rebrand-page .jangsu-progress-guide button[data-complete='true'] { opacity: .9; }
+.rebrand-page .jangsu-stage:is([data-scene='3'], [data-scene='5'], [data-scene='6']) > .jangsu-progress-guide button { opacity: 1; }
+.rebrand-page .jangsu-progress-guide button[aria-current] { color: var(--guide-accent); font-size: 19px; font-weight: 750; opacity: 1; }
+.rebrand-page .jangsu-progress-guide button[aria-current]::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 36px;
+  height: 2px;
+  background: currentColor;
+}
+.rebrand-page .jangsu-progress-guide button:hover { opacity: 1; }
+.rebrand-page .jangsu-progress-guide button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; opacity: 1; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--benefit,
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--invite { padding-bottom: 108px; }
+.rebrand-page .jangsu-story--portrait .jangsu-progress-guide,
+.rebrand-page .jangsu-story[data-reduced='true'] .jangsu-progress-guide {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px var(--layout-gutter) calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--guide-surface);
+  color: #241f1b;
+}
+.rebrand-page .jangsu-story--portrait .jangsu-stage:is([data-scene='2'], [data-scene='4'], [data-scene='5']) > .jangsu-progress-guide { --guide-surface: #241f1b; --guide-accent: #ed9b6e; color: #fff8ed; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage:is([data-scene='3'], [data-scene='6']) > .jangsu-progress-guide,
+.rebrand-page .jangsu-story--portrait .jangsu-stage[data-scene='5']:is([data-lift-status='parked'], [data-lift-status='static'], [data-lift-status='error']) > .jangsu-progress-guide { --guide-surface: #d86535; --guide-accent: #241f1b; color: #241f1b; }
+.rebrand-page .jangsu-story--portrait .jangsu-panel--benefit,
+.rebrand-page .jangsu-story--portrait .jangsu-panel--invite { padding-bottom: 108px; }
+.rebrand-page .jangsu-story--portrait .story-cta { scroll-margin-bottom: 80px; }
+@media (min-width: 701px) and (max-height: 750px) {
+  .rebrand-page .jangsu-story { --story-number-size: min(24vw, 18svh, 260px); }
+  .rebrand-page .benefit-scene-index { margin-bottom: 8px; }
+  .rebrand-page .benefit-scene-detail { margin-top: 12px; }
+  .rebrand-page .benefit-scene-note { margin-top: 10px; }
+  .rebrand-page .benefit-scene-copy > .story-cta { margin-top: 14px; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .jangsu-progress-guide { left: 20px; right: 20px; }
+  .rebrand-page .jangsu-progress-guide ol { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .rebrand-page .jangsu-progress-guide button { flex-direction: column; align-items: center; justify-content: center; min-height: 56px; gap: 1px; padding-bottom: 12px; font-size: 13px; }
+  .rebrand-page .jangsu-progress-guide .jangsu-progress-label { display: none; }
+  .rebrand-page .jangsu-progress-guide button[aria-current] { font-size: 18px; color: inherit; }
+  .rebrand-page .jangsu-progress-guide button[aria-current] .jangsu-progress-label { display: block; font-size: 12px; line-height: 1.2; }
+  .rebrand-page .jangsu-progress-guide button[aria-current]::after { left: 50%; bottom: 5px; width: 24px; background: var(--guide-accent); transform: translateX(-50%); }
+  .rebrand-page .jangsu-story--portrait .jangsu-progress-guide,
+  .rebrand-page .jangsu-story[data-reduced='true'] .jangsu-progress-guide { left: 0; right: 0; padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rebrand-page .jangsu-progress-guide { transition: none; }
+}

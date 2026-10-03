@@ -111,7 +111,8 @@ body:has(.rebrand-page) { padding-bottom: 0; }
    https://uiverse.io/adamgiebl/pink-chicken-70 */
 .rebrand-page .rebrand-header nav .rebrand-header-cta,
 .rebrand-page .hero-offer-bottom .hero-offer-explore,
-.rebrand-page .story-cta {
+.rebrand-page .story-cta,
+.rebrand-page .consultation-form-card button.consultation-submit {
   position: relative;
   isolation: isolate;
   display: inline-flex;
@@ -134,7 +135,8 @@ body:has(.rebrand-page) { padding-bottom: 0; }
 }
 .rebrand-header-cta > span,
 .rebrand-page .hero-offer-explore > span,
-.rebrand-page .story-cta > span {
+.rebrand-page .story-cta > span,
+.rebrand-page .consultation-submit > span {
   position: relative;
   z-index: 10;
   display: inline-flex;
@@ -144,7 +146,8 @@ body:has(.rebrand-page) { padding-bottom: 0; }
 }
 .rebrand-header-cta::before,
 .hero-offer-explore::before,
-.story-cta::before {
+.story-cta::before,
+.rebrand-page .consultation-submit::before {
   content: '';
   position: absolute;
   top: 0;
@@ -162,7 +165,9 @@ body:has(.rebrand-page) { padding-bottom: 0; }
 .hero-offer-explore:hover::before,
 .hero-offer-explore:focus-visible::before,
 .story-cta:hover::before,
-.story-cta:focus-visible::before {
+.story-cta:focus-visible::before,
+.rebrand-page .consultation-submit:not(:disabled):hover::before,
+.rebrand-page .consultation-submit:not(:disabled):focus-visible::before {
   transform: translate3d(100%, 0, 0);
 }
 .rebrand-header-cta:hover > span,
@@ -170,7 +175,9 @@ body:has(.rebrand-page) { padding-bottom: 0; }
 .hero-offer-explore:hover > span,
 .hero-offer-explore:focus-visible > span,
 .story-cta:hover > span,
-.story-cta:focus-visible > span { color: #241f1b; }
+.story-cta:focus-visible > span,
+.rebrand-page .consultation-submit:not(:disabled):hover > span,
+.rebrand-page .consultation-submit:not(:disabled):focus-visible > span { color: #241f1b; }
 .rebrand-page .rebrand-header nav .rebrand-header-cta:focus-visible {
   outline: 2px solid #241f1b;
   outline-offset: 4px;
@@ -208,10 +215,13 @@ body:has(.rebrand-page) { padding-bottom: 0; }
   .hero-offer-explore::before,
   .hero-offer-explore > span,
   .story-cta::before,
-  .story-cta > span { transition: none; }
+  .story-cta > span,
+  .rebrand-page .consultation-submit::before,
+  .rebrand-page .consultation-submit > span { transition: none; }
   .rebrand-page .rebrand-header nav .rebrand-header-cta:active,
   .hero-offer-explore:active,
-  .story-cta:active { transform: none; }
+  .story-cta:active,
+  .rebrand-page .consultation-form-card button.consultation-submit:not(:disabled):active { transform: none; }
 }
 
 /* Lead with the offer; keep the calculation basis beside its amount. */

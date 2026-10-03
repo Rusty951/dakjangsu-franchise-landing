@@ -15,6 +15,7 @@ import './RebrandHeroOffer.css';
 import './RebrandEditorial.css';
 import './RebrandPortraitStory.css';
 import './RebrandLayout.css';
+import './RebrandCharacterScale.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
