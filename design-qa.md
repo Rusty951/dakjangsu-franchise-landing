@@ -705,3 +705,13 @@ Use case: identity-preserve. Asset type: one production transparent 3D mascot po
 final result: massive local implementation complete; ordinary responsive/interaction checks pass with the static-render/font-inspector limitations stated.
 
 Fresh-start check: reloaded the private preview after implementation, then reset the temporary viewport and showed the selected in-app tab14 at#top. final-in-app.jpg captures its final1280×800 scene1,0px overflow and hidden first-screen guide. Warning/error entries after this reload are empty; the earlier transient Vite entry is historical. Browser tab is retained as the deliverable.
+
+## 2026-10-03 - Massive version public rollout
+
+User authorized commit/push/deployment. Source a844ac23fa270783b0afcd950402f4ba9e09b90e is pushed on codex/hero-7000-preview. Dedicated sample prj_ozu5VlGLkcVjayQjy6Gc9reiU1sw deployed as dpl_8o7aMDzgjC69jeTnXWE3EDv4P8AV, READY and aliased to https://dakjangsu-client-sample.vercel.app/?concept=rebrand. Explicit build/runtime VITE_REVIEW_ONLY=true retains noindex, analytics suppression, review notice and no real inquiry. Cloud dependency install, client/SSR build, prerender and lambda packaging pass.
+
+HTTP200 verifies new index-7eJmUOWu.js/index-Crj1QiXD.css and massive prerender; served portrait bytes match the production PNG checksum. Empty JSON API POST returns403 without contact data. Provider inspection verifies the official domain still points to its separate prior dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Dry inventory and staged-file review exclude credentials; the new generated asset is included.
+
+Public evidence at massive-character/public-desktop-hero.jpg (1280×800), public-mobile-form.jpg and public-mobile-guide.jpg (390×844) was inspected. Actual DOM confirms no analytics insertion,0px overflow, first-screen hidden guide, chapter2 seven-link guide and loaded new portrait/naturalWidth1,122. Consultation anchor after smooth scroll is y75.39 below66px header; the initial immediate capture during that scroll was replaced. Public form's review-specific submit text is “입력 내용 확인하기”, with the same approved CTA style. No browser warning/error or actual inquiry. Viewport reset and the public stable URL is opened in the currently selected user-visible in-app tab1. This rollout verification supplements the fuller local scene/keyboard/resize checks above; their stated static-render/font-inspector/physical-device limits remain applicable.
+
+final result: authorized sample rollout and bounded public verification passed.
