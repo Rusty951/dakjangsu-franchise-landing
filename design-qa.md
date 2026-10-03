@@ -743,3 +743,13 @@ Checks: same-source current-run before/after1280×800 captures for2/5; compariso
 final-source.patch records the single stylesheet delta relative to HEADa895201. The normal revised preview is left in the user-visible in-app tab1 at the private Tailscale URL. This is a concrete local review version; publication remains the preceding authorized snapshot until separately requested. Unmeasured user preference/conversion impact and existing static-render/font-inspector/physical-device limits are not treated as passed.
 
 final result: local strong/quiet rhythm revision complete and bounded responsive/interaction checks passed.
+
+## 2026-10-03 - Authorized rhythm rollout verification
+
+User subsequently requested commit, push and deployment. Source commit1f65c90b93e1a177c17a751c3487d805cf0258a3 is pushed. Deployment dpl_HS849ngvYLqh5y8gnPbwyRh5to7g is READY on the existing sample alias https://dakjangsu-client-sample.vercel.app/?concept=rebrand, with VITE_REVIEW_ONLY=true supplied at build and runtime. Review-only local/cloud client and SSR builds plus prerender pass, producing index-DFEQrhZM.js/index-yAmUs99B.css. Deployment inventory243 files excludes credentials and tool state.
+
+Public HTTP200/noindex and served CSS confirm the revised rhythm rules. The portrait PNG retains SHA256d860b14d3953861e518465cda1f086862f3920b97902a76ff559e98ebf322606. Empty JSON POST receives403 before lead processing. Official main-domain inspection remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8.
+
+At1280×800, native scrolling reaches quiet chapter2 with448px canvas, then the guide jumps to strong chapter7 with880px canvas. Inspected screenshots public-desktop-2.jpg and public-desktop-7.jpg show the intended scale contrast. At390×844, public-mobile-form.jpg shows a supporting342×303.83px contain portrait, loaded naturalWidth1,122, readable consultation hook and review notice; settled section y74.73 is below the66px header. The review submit label remains “입력 내용 확인하기”. All inspected public states have0px horizontal overflow and no analytics insertion or browser warnings/errors. No actual inquiry. These rollout checks supplement CR-1003-v1's fuller local checks, without extending their recorded static-render/font-inspector/physical-device limits.
+
+final result: authorized sample rollout and bounded public verification passed.
