@@ -11,9 +11,7 @@
   .jangsu-story--portrait .jangsu-stage-kicker,
   .jangsu-story--portrait .hero-stage-logo { display: none; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer {
-    display: block;
-    position: sticky; top: var(--story-header-height, 66px); order: -1; inset-inline: auto; bottom: auto;
-    width: 100%; height: 52px; background: #fffdf9; border-block: 1px solid #241f1b25;
+    display: none;
   }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer nav {
     display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0;
@@ -31,7 +29,7 @@
   .rebrand-page .jangsu-story--portrait .jangsu-panel {
     position: relative; inset: auto; opacity: 1; min-height: 0;
     padding: 32px 24px 40px; z-index: 1; overflow: hidden;
-    scroll-margin-top: calc(var(--story-header-height, 66px) + 52px);
+    scroll-margin-top: var(--story-header-height, 66px);
   }
   .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome,
   .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene--kitchen,

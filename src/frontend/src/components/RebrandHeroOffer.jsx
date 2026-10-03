@@ -21,18 +21,21 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
   return (
     <div className="hero-offer">
       <header className="hero-offer-heading">
-        <p className="hero-offer-status"><b>검토용 지원안</b><span>본사 확인 전 초안</span></p>
-        <h1>사장님, <span>지원 내용을 하나씩 볼까요?</span></h1>
-        <p className="hero-offer-assumption">
-          월매출 <b>{format(example.monthlySales)}만원 × {example.royaltyMonths}개월</b> 유지{portrait ? <><br />오픈과 주방 조건 충족 가정</> : ', 오픈과 주방 조건 충족 가정'}
+        <h1>사장님, <span>시작부터 부담을 덜어드릴게요.</span></h1>
+        <p className="hero-offer-intro">
+          가맹비와 교육비, 주방 설비부터<br />첫 2년 로열티까지.
         </p>
       </header>
 
       <section className="hero-offer-total" aria-label="조건부 혜택 합산 계산 예시">
         <p className="hero-offer-label"><span>2년 합산 계산 예시</span><b>조건 충족 가정, 약</b>{portrait && <span className="hero-offer-noncash">현금 지급액 아님</span>}</p>
         <strong className="hero-offer-amount"><b className="hero-offer-numeral">{format(roundedTotal)}</b><small>만원 상당</small></strong>
-        {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
+        <p className="hero-offer-basis">
+          월매출 {format(example.monthlySales)}만원을 {example.royaltyMonths}개월 유지하고<br />
+          오픈 및 주방 지원 조건을 충족한 경우의 합산 예시입니다.
+        </p>
         <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span>{!portrait && <span>현금 지급액 아님</span>}</p>
+        {portrait && <div className="portrait-character-slot" aria-hidden="true"><img src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="" width="1122" height="1402" /></div>}
       </section>
 
       <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제안">
@@ -47,7 +50,9 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
           <span>주방: 조건 충족, 선착순 5개점 / 물류: 이 예시는 월매출 3,000만원 미만이라 제외</span>
           <span>혜택 시행 여부와 최종 조건은 본사에서 확인해 주세요.</span>
         </p>
-        <button type="button" onClick={onExplore}>지원 항목 살펴보기 <span aria-hidden="true">↓</span></button>
+        <button className="hero-offer-explore" type="button" onClick={onExplore}>
+          <span>지원 항목 살펴보기 <span className="hero-offer-explore-icon" aria-hidden="true" /></span>
+        </button>
       </div>
     </div>
   );

@@ -475,3 +475,83 @@ Five surfaces: fonts and text sizes unchanged; spacing/order preserved with1px b
 Validation: FAQ opens/closes with Enter, support disclosure opens, no horizontal overflow and no console warning/error. Computed top/bottom borders on FAQ, support disclosure/rows, consultation host and footer are0px; input border remains1px and keyboard outline3px. Client/SSR build, prerender and diff whitespace pass. No new tests for this reversible CSS-only correction. Prior behavior checks remain applicable; no live inquiry/call/client message.
 
 Public verification: passed. Sample dpl_E3hJUAYaJjysVnC4avFtqhECL2CQ READY from source1e90084 with both review flags. Anonymous HTTP200/current index-B-Fbd0vv.js and index-BvqWyINK.css/noindex verified. Public1440x900 FAQ capture inspected; decorative border0px and input border1px confirmed. Official main remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. Viewport restored and public FAQ shown.
+
+
+## 2026-10-03 — Layout and hierarchy pass
+
+Scope: the user's request to adjust placement and hierarchy in the existing rebrand landing. The accepted copy, colors, fonts, assets and CTA treatment remain the visual source; intentional differences below concern scale, alignment, spacing and information grouping.
+
+### Source and implementation evidence
+
+- hero: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-hero.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-hero.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-hero.jpg`.
+- menu: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-menu.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-menu.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-menu.jpg`.
+- faq: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-faq.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-faq.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-faq.jpg`.
+- form: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-form.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-form.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-form.jpg`.
+- mobile: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-mobile.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-mobile.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-mobile.jpg`.
+- mobile-form: source `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-before-mobile-form.jpg`; implementation `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-mobile-form.jpg`; side-by-side comparison `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-mobile-form.jpg`.
+
+- Desktop source and implementation pixels: 1280×800, matching the CSS viewport at 1:1 density. Mobile: 390×844, also 1:1. Comparisons place both original-size captures in the same image with a 24px gap and 32px label strip; no source rescaling. The viewer may scale the combined image for display.
+- State: first chapter at the top, menu/FAQ/form entered through header anchors, FAQ closed in the matched pair. Captures are from this run. The character's naturally changing pose is expected motion, not an asset substitution.
+- Focused reading/action comparison: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-comparison-hero-detail.jpg`. The 390px pairs make mobile unit wrapping, basis text and form labels readable without an additional crop.
+- Additional viewports: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-1280x720.jpg`, `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-tall.jpg` (1185×1566), `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-tablet.jpg` (768×1024), `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/layout-after-narrow.jpg` (320×740).
+
+### Findings and comparison history
+
+- [P2, resolved] At 1280×800, oversized first-screen amounts forced the support explanation and exploration CTA below the stage. Introduced a height-aware numeral scale and a bounded grid row. The final CTA bottom is 764px within the 800px stage; at 1280×720 it is 692px within the 720px stage.
+- [P2, resolved] The header, hero, FAQ and consultation used different horizontal edges. Added one responsive page gutter, aligned the closing grids, and made the application-card title subordinate to the section heading. Matched menu, FAQ and form comparisons show the final alignment.
+- [P2, resolved] On mobile, the unit wrapped separately and the exact calculation was separated from its amount by the character. Kept the unit together and grouped basis/exact-value text before the existing portrait slot. The 320px check reports page width 320px and unit right edge 288.33px.
+- [P2, resolved in second pass] The first mobile form pass still centered its grid children despite left-aligned text. Corrected `justify-items`; the final mobile-form comparison places the label, heading and body at the same 24px content edge.
+- Tall-screen follow-up: bounded the character height and moved its lane toward the numbers, then recaptured the final 1185×1566 view.
+
+### Required fidelity surfaces
+
+- Fonts/typography: retained Black Han Sans and Pretendard; adjusted the numeral, section-heading, form-heading and supporting-text scale. Checked actual rendered line breaks on desktop and narrow mobile.
+- Spacing/layout: matched horizontal gutters, vertical section rhythm and form-column alignment; inspected the paired overview and reading/action crop. No actionable clipping or overlap remains in the inspected layouts.
+- Colors/tokens: kept the existing orange, ink and cream palette and the approved wipe CTA. Portrait supporting copy uses the existing ink foreground.
+- Image quality/assets: retained the actual food photos, logo and character media. Their framing changes only through their existing layout containers. No replacement assets were generated.
+- Copy/content: no text or numerical claim was rewritten. Only the exact calculation paragraph's position changed. Removed navigation/cue elements remain absent.
+
+### Interaction and implementation checks
+
+- Exploration CTA and native scrolling reached the benefit chapters; sampled all six following chapters at 1280×720. Their content bounds remained inside the story stage. Entrance-animation captures are interaction evidence, not static numerical-copy evidence.
+- Header anchors, mobile consultation entry and FAQ expansion/collapse work. No lead was submitted.
+- Browser error log was empty. Lint, final production build, all 7 existing API tests and diff checks passed. No `check` script is configured.
+- Remaining evidence limit: this is a scoped visual/layout check, not a full accessibility certification or a production deployment check.
+
+final result: passed
+
+
+## 2026-10-03 — Consistent chapters 1–7
+
+Scope: extend the accepted first-screen hierarchy through the five benefit chapters and the final consultation invitation.
+
+### Visual evidence
+
+- Source: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/chapters/before-desktop-2.jpg` through `before-desktop-7.jpg`, all captured in this run at 1280×800.
+- Final implementation: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/chapters/after-desktop-1.jpg` through `after-desktop-7.jpg` at 1280×800.
+- Inspected paired inputs: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/chapters/comparison-desktop-2.jpg` through `comparison-desktop-7.jpg`, 2584×832 with original-size source and implementation, a 24px gap and 32px caption strip. No source scaling in the comparisons.
+- Mobile pairs: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/chapters/comparison-mobile-2.jpg`, `comparison-mobile-3.jpg` and `comparison-mobile-7.jpg`, each 804×876 from two 390×844 captures. All six following chapters were also captured at 390×844.
+- Actual screenshot pixels match the CSS viewport, 1:1. Overview thumbnails are for navigation, not fidelity assessment.
+- Source captures use the settled numeric value but some character/color/reveal transitions were still in progress. Final captures use the owners' settled/parked phase indicators. Those transient pose/opacity differences are excluded from palette and asset-drift judgments. No animation sequencing was changed.
+
+### Findings and iteration history
+
+- [P2, resolved] The following chapters used different numeral families, unit scales, benefit-heading scales and content widths. Added common story tokens, matching Black Han Sans numerals/units to the first screen, balanced alternating text lanes and unified the detail/condition spacing.
+- [P2, resolved] Portrait character slots interrupted the amount and its explanatory text. Grouped heading, amount, benefit, details and conditions before the existing portrait slot; placed the conditions CTA after the character. Existing slot measurement continues to position the animated host.
+- [P2, resolved] Conditions links and the final invitation used different CTA treatments. Applied the accepted ink-to-orange wipe and licensed arrow; retained the original destinations and conditions-open callback.
+- [P2, resolved in second pass] Legacy selectors retained a 66.56px royalty unit and 12px conditions links despite the initial common rules. Increased selector precision and confirmed the final unit/font and 14px, 44px-minimum conditions CTA.
+
+### Fidelity and interaction checks
+
+- Typography: common numeral/display family; consistent benefit heading, unit, definition-row, condition-note and CTA sizes. The overview total remains the primary tier and individual benefits form the next tier.
+- Layout: shared page edge and vertically balanced desktop blocks. At 1280×720, all six following content blocks fit inside the stage, with measured bottoms from 579px to 681px before the final 8px CTA minimum-height correction; the available remaining clearance exceeds that adjustment.
+- Colors: retained the existing ink, cream and orange chapter palettes and their intentional transitions. No palette drift is inferred from transient source captures.
+- Images: retained all original poses and supporting media. The existing number/host performances reach their settled/parked state; cards and text are fully visible after their reveal.
+- Copy: all monetary values, qualifications and destinations remain unchanged; existing decorative arrow glyphs were replaced by the same licensed icon asset used elsewhere.
+- Controls: the conditions CTA opens the support-terms details, and the seventh chapter's CTA reaches the lead form (top about 90px, below the sticky header). No lead was submitted.
+- Narrow mobile: 320px checks on opening and logistics chapters showed document width 320px with no horizontal overflow.
+- Lint, final production build, all 7 existing API tests and diff checks passed. Browser error log was empty.
+
+No actionable P0/P1/P2 findings remain in the requested consistency scope. This is visual and interaction QA, not full accessibility certification.
+
+final result: passed

@@ -209,6 +209,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Preserve the character's measured bottom lane after removing its menu. */
+  min-height: 54px;
 }
 .jangsu-stage-footer > span { font-size: 9px; letter-spacing: .1em; font-weight: 700; }
 .jangsu-stage-footer nav { display: flex; gap: 22px; }

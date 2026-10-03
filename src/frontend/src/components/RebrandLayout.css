@@ -1,0 +1,321 @@
+/* Layout and type hierarchy for the approved rebrand composition. */
+.rebrand-page {
+  --layout-gutter: clamp(24px, 5vw, 80px);
+  --layout-section-space: clamp(48px, 6.25vw, 96px);
+}
+.rebrand-page .rebrand-header { padding-inline: var(--layout-gutter); }
+
+/* The amount, its basis and the action must all fit inside the sticky stage. */
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer {
+  inset: 32px var(--layout-gutter) 36px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 20px 36px;
+  --offer-top-space: clamp(8px, 2svh, 24px);
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-heading h1 {
+  font-size: clamp(32px, 3.2vw, 48px);
+  line-height: 1.18;
+  letter-spacing: -.045em;
+}
+.rebrand-page .hero-offer .hero-offer-intro { margin-top: 12px; line-height: 1.5; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total,
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero {
+  align-self: start;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-label {
+  margin-bottom: 14px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-label > span { font-size: 13px; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total .hero-offer-numeral {
+  font-size: min(24vw, 27svh, 360px);
+  line-height: .86;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-amount small {
+  margin-top: 8px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-label {
+  padding-right: 0;
+  text-align: right;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-amount {
+  gap: 10px;
+  justify-content: flex-end;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-numeral {
+  font-size: min(30vw, 33svh, 420px);
+  line-height: .86;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-scope {
+  margin: 18px 0 0;
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: right;
+}
+.rebrand-page .hero-offer .hero-offer-basis { max-width: 42ch; margin-top: 14px; line-height: 1.6; }
+.rebrand-page .hero-offer .hero-offer-calculated { margin-top: 10px; font-size: 13px; line-height: 1.6; }
+.rebrand-page .hero-offer .hero-offer-breakdown { font-size: 13px; line-height: 1.6; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-bottom { gap: 40px; align-items: flex-end; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-explore { align-self: flex-end; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage[data-scene='0'] .jangsu-traveler {
+  height: min(68%, 680px) !important;
+  width: min(44vw, 760px) !important;
+  bottom: 12% !important;
+}
+
+/* Carry one page edge and reading scale through the closing sections. */
+.rebrand-page .rebrand-menu-story-copy { padding: 64px var(--layout-gutter); }
+.rebrand-page .rebrand-menu-story-intro { min-height: min(680px, calc(100svh - 80px)); }
+.rebrand-page .rebrand-menu-story h2 { font-size: clamp(64px, 7vw, 112px); line-height: 1.04; }
+.rebrand-page .rebrand-menu-story h2 > span { margin-bottom: 18px; font-size: clamp(24px, 2.4vw, 36px); }
+.rebrand-page .rebrand-closing-label { margin-bottom: 24px; font-size: 13px; }
+.rebrand-page .rebrand-menu-story-description { margin-top: 24px; font-size: 16px; line-height: 1.75; }
+.rebrand-page .rebrand-menu-lineup { padding: 32px var(--layout-gutter) var(--layout-section-space); gap: 32px; }
+.rebrand-page .rebrand-menu-lineup h3 { font-size: clamp(24px, 2.1vw, 30px); }
+.rebrand-page .rebrand-closing-faq { padding: var(--layout-section-space) var(--layout-gutter); }
+.rebrand-page .rebrand-closing-faq-grid { grid-template-columns: 1fr 1.15fr; gap: 64px; }
+.rebrand-page .rebrand-closing-faq h2,
+.rebrand-page .consultation-intro h2 { font-size: clamp(40px, 4.5vw, 64px); line-height: 1.16; letter-spacing: -.045em; }
+.rebrand-page .rebrand-closing-questions summary { min-height: 72px; padding-block: 22px; }
+.rebrand-page .rebrand-support-terms { margin-top: 40px; }
+.rebrand-page .lead-capture-section {
+  padding: var(--layout-section-space) var(--layout-gutter);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: 64px;
+}
+.rebrand-page .consultation-intro { padding-top: 32px; }
+.rebrand-page .consultation-intro > p { font-size: 16px; line-height: 1.8; }
+.rebrand-page .consultation-label { margin-bottom: 24px; font-size: 13px; }
+.rebrand-page .consultation-form-card { padding: 32px; gap: 20px; }
+.rebrand-page .consultation-form-head > strong { font-size: 32px; line-height: 1.18; }
+.rebrand-page .consultation-form-head > span { font-size: 13px; }
+.rebrand-page .consultation-field > span { font-size: 14px; }
+.rebrand-page .consultation-form-grid { gap: 16px; }
+.rebrand-page .consultation-form-card button[type='submit'] { min-height: 58px; font-size: 17px; }
+
+@media (min-width: 701px) and (min-height: 1000px) {
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total,
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero {
+    margin-top: min(10svh, 160px);
+  }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage[data-scene='0'] .jangsu-traveler {
+    bottom: max(12%, calc(50% - 340px)) !important;
+  }
+}
+@media (min-width: 701px) and (max-height: 750px) {
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer { inset-block: 24px 28px; row-gap: 14px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-heading h1 { font-size: clamp(30px, 3vw, 42px); }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-label { margin-bottom: 10px; }
+  .rebrand-page .hero-offer .hero-offer-intro { font-size: 15px; margin-top: 8px; }
+  .rebrand-page .hero-offer .hero-offer-basis { margin-top: 10px; }
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .rebrand-page .rebrand-closing-faq-grid { grid-template-columns: 1fr; gap: 32px; }
+  .rebrand-page .lead-capture-section { gap: 32px; }
+  .rebrand-page .consultation-form-card { padding: 24px; }
+  .rebrand-page .consultation-form-head > strong { font-size: 28px; }
+}
+
+/* Group all the amount's explanatory text before its portrait character slot. */
+.rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-intro { color: #241f1b; font-size: 15px; }
+.rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-calculated { margin-top: 8px; }
+.rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-total .portrait-character-slot { margin-top: 16px; }
+.rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount { gap: 10px; }
+.rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-numeral { font-size: clamp(92px, 27vw, 116px); }
+.rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount small { max-width: none; font-size: 18px; white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .rebrand-page .rebrand-header { padding-inline: 20px; }
+  .rebrand-page .rebrand-menu-story-copy { padding: 48px var(--layout-gutter) 32px; }
+  .rebrand-page .rebrand-menu-story-intro { min-height: 0; }
+  .rebrand-page .rebrand-menu-story h2 { font-size: clamp(56px, 15vw, 76px); }
+  .rebrand-page .rebrand-menu-story h2 > span { font-size: 22px; margin-bottom: 12px; }
+  .rebrand-page .rebrand-menu-lineup { gap: 0; padding: 16px var(--layout-gutter) 40px; }
+  .rebrand-page .rebrand-menu-lineup h3 { font-size: 22px; }
+  .rebrand-page .rebrand-closing-faq-grid,
+  .rebrand-page .lead-capture-section { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .rebrand-page .rebrand-closing-faq h2,
+  .rebrand-page .consultation-intro h2 { font-size: 36px; line-height: 1.2; text-align: left; }
+  .rebrand-page .rebrand-closing-label,
+  .rebrand-page .consultation-label { margin-bottom: 20px; }
+  .rebrand-page .consultation-intro { padding-top: 0; text-align: left; align-items: flex-start; justify-items: start; }
+  .rebrand-page .consultation-intro h2 span { text-align: left; }
+  .rebrand-page .consultation-intro > p { font-size: 15px; text-align: left; }
+  .rebrand-page .consultation-form-card { padding: 24px 20px; }
+  .rebrand-page .consultation-form-head > strong { font-size: 26px; line-height: 1.22; }
+  .rebrand-page .consultation-form-grid { gap: 16px; }
+  .rebrand-page .hero-offer .hero-offer-breakdown { font-size: 12px; }
+}
+
+/* Chapters 2–7 share the overview's page edge, hierarchy and CTA language. */
+.rebrand-page .jangsu-story {
+  --story-number-size: min(24vw, 24svh, 320px);
+  --story-unit-size: clamp(22px, 1.8vw, 28px);
+  --story-benefit-size: clamp(28px, 2.6vw, 38px);
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--benefit,
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--invite {
+  display: flex;
+  align-items: center;
+  padding: 32px var(--layout-gutter) 36px;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .benefit-scene-copy,
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-invite-content {
+  position: relative;
+  inset: auto;
+  width: min(64%, 820px);
+  max-width: none;
+  margin: 0;
+}
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .benefit-scene--opening .benefit-scene-copy,
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .benefit-scene--royalty .benefit-scene-copy { margin-left: auto; }
+.rebrand-page .benefit-scene-index,
+.rebrand-page .jangsu-invite-content > .jangsu-scene-number {
+  margin-bottom: 16px;
+  font: 500 13px/1.5 var(--font-sans);
+  letter-spacing: .06em;
+}
+.rebrand-page .benefit-scene-copy h2 { gap: 4px; }
+.rebrand-page .benefit-scene-copy h2 > span {
+  font: 550 clamp(24px, 2.2vw, 30px)/1.4 var(--font-sans);
+  letter-spacing: -.025em;
+}
+.rebrand-page .benefit-scene-copy h2 > strong {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 10px;
+  font: 400 var(--story-number-size)/1 var(--font-display);
+  letter-spacing: -.04em;
+}
+.rebrand-page .jangsu-story .benefit-scene-copy h2 > strong > small,
+.rebrand-page .growth-lift-number > small {
+  align-self: auto;
+  margin: 0;
+  font: 400 var(--story-unit-size)/1.2 var(--font-display);
+  letter-spacing: -.025em;
+}
+.rebrand-page .benefit-scene-copy h2 > b {
+  max-width: none;
+  font: 400 var(--story-benefit-size)/1.2 var(--font-display);
+  letter-spacing: -.04em;
+}
+.rebrand-page .benefit-scene--royalty h2 > strong { font-size: min(30vw, 30svh, 360px); }
+.rebrand-page .growth-lift-number { display: inline-flex; align-items: baseline; gap: 12px; }
+.rebrand-page .benefit-scene--growth h2 > b > span { display: inline; }
+.rebrand-page .benefit-scene--growth .slot-number-window { height: 1em; }
+.rebrand-page .benefit-scene--growth .slot-number-strip > span,
+.rebrand-page .benefit-scene--growth .slot-number-still { line-height: 1em; }
+.rebrand-page .benefit-scene-detail,
+.rebrand-page .benefit-scene--growth .growth-support {
+  max-width: 100%;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.rebrand-page .benefit-facts dl,
+.rebrand-page .growth-support dl { gap: 10px; }
+.rebrand-page .benefit-facts dl > div,
+.rebrand-page .growth-support dl > div {
+  min-height: 44px;
+  padding: 10px 14px;
+  gap: 16px;
+  align-items: center;
+}
+.rebrand-page .benefit-facts dt,
+.rebrand-page .growth-support dt { font-size: 15px; font-weight: 550; line-height: 1.5; }
+.rebrand-page .benefit-facts dd,
+.rebrand-page .growth-support dd { font-size: 18px; font-weight: 700; }
+.rebrand-page .benefit-facts-term,
+.rebrand-page .growth-support .growth-support-term { margin-top: 10px; font-size: 13px; line-height: 1.6; }
+.rebrand-page .benefit-scene-note,
+.rebrand-page .benefit-scene--growth .benefit-scene-note {
+  max-width: 100%;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  opacity: 1;
+}
+.rebrand-page .benefit-scene-copy > .story-cta { min-height: 44px; margin-top: 18px; padding: 0; font-size: 14px; line-height: 1.3; }
+.rebrand-page .story-cta { min-height: 44px; width: fit-content; max-width: 100%; border: 1px solid #fff8ed66; }
+.rebrand-page .story-cta > span { gap: 12px; font-size: inherit; }
+.rebrand-page .story-cta .story-cta-icon {
+  display: inline-block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  mask: url('/icons/lucide/arrow-right.svg') center / contain no-repeat;
+  transform: rotate(-45deg);
+}
+.rebrand-page .story-cta:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.rebrand-page .story-cta:active { transform: scale(.97); }
+.rebrand-page .story-cta--primary { min-height: 48px; font-size: 16px; }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--invite h2 {
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1.16;
+  letter-spacing: -.045em;
+}
+.rebrand-page .jangsu-invite-copy { width: 100%; margin-top: 24px; }
+.rebrand-page .jangsu-invite-copy p { max-width: 36ch; margin-bottom: 24px; font-size: 16px; line-height: 1.8; }
+.rebrand-page .jangsu-invite-copy ol { margin-top: 18px; font-size: 13px; font-weight: 500; }
+
+@media (min-width: 701px) and (max-height: 750px) {
+  .rebrand-page .jangsu-story { --story-number-size: min(24vw, 21svh, 280px); --story-benefit-size: 30px; }
+  .rebrand-page .benefit-scene-index { margin-bottom: 12px; }
+  .rebrand-page .benefit-scene-detail { margin-top: 16px; }
+  .rebrand-page .benefit-facts dl,
+  .rebrand-page .growth-support dl { gap: 8px; }
+  .rebrand-page .benefit-facts dl > div,
+  .rebrand-page .growth-support dl > div { padding-block: 8px; }
+}
+
+/* Financial information stays together before the portrait demonstration. */
+.rebrand-page .jangsu-story--portrait .jangsu-panel--benefit,
+.rebrand-page .jangsu-story--portrait .jangsu-panel--invite { padding: 40px 24px 48px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy h2 { gap: 6px; text-align: left; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy h2 > span {
+  font: 550 22px/1.4 var(--font-sans);
+  text-align: left;
+}
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy h2 > strong {
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+  font: 400 clamp(96px, 28vw, 120px)/1 var(--font-display);
+}
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene--royalty h2 > strong { font-size: clamp(120px, 38vw, 164px); }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy h2 > strong > small,
+.rebrand-page .jangsu-story--portrait .jangsu-stage .growth-lift-number > small {
+  margin: 0;
+  font: 400 20px/1.2 var(--font-display);
+}
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy h2 > b { font: 400 27px/1.25 var(--font-display); }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-detail { margin-top: 20px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-facts dl > div,
+.rebrand-page .jangsu-story--portrait .jangsu-stage .growth-support dl > div { min-height: 48px; padding: 10px 12px; gap: 12px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-facts dt,
+.rebrand-page .jangsu-story--portrait .jangsu-stage .growth-support dt { font-size: 14px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-facts dd,
+.rebrand-page .jangsu-story--portrait .jangsu-stage .growth-support dd { font-size: 17px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-note { font-size: 13px; line-height: 1.65; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy > .portrait-character-slot {
+  height: clamp(240px, 30svh, 300px);
+  margin: 24px auto 20px;
+}
+.rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy > .story-cta { margin-top: 0; padding: 0; font-size: 14px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--invite h2 { font-size: 36px; line-height: 1.2; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy p { margin: 20px 0 0; font-size: 15px; line-height: 1.8; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy a { min-height: 48px; width: fit-content; padding: 0; font-size: 16px; }
+.rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-invite-copy ol { margin-top: 18px; font-size: 13px; }

@@ -793,3 +793,74 @@
 - 근거: Desktop 검수 폴더2026-10-02_닭장수_구분선정리. 문구와 금액, 이미지, 신청 로직 변경 없이 샘플 프로젝트에만 반영한다.
 
 - 공개 반영 완료: 소스1e90084, 샘플 dpl_E3hJUAYaJjysVnC4avFtqhECL2CQ READY. HTTP200과 현재 파일 지문, 공개 FAQ의 구분선 제거/입력 테두리 유지 확인. 공식 운영 배포는 dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8 유지.
+
+## 2026-10-03 - First-screen annotation cleanup
+
+- Following the user’s first approval, removed the first-screen review badges and the duplicate English/character introduction strip. Codex made these narrow frontend edits in response to the explicit browser annotations.
+- Preserved the offer calculation, conditions, character motion and navigation. Font candidates were researched but not applied.
+- No check script exists. Lint, production build and all 7 existing tests passed. Verified the updated Tailscale preview in the in-app browser, including the annotated 1185px viewport.
+
+## 2026-10-03 - Approved navigation font trial
+
+- Applied the user-selected Andong Katuri to header navigation and the mobile menu toggle: 18px desktop, 16px mobile, native 400 weight without synthetic bold. Codex made this narrow frontend change at the user’s request.
+- Included the unchanged WOFF locally with Andong City’s official usage terms and distribution source.
+- Lint and production build passed; no check script exists. In-app visual checks passed at 1185px and 390px, including mobile menu opening and closing.
+
+## 2026-10-03 - Navigation font trial reverted
+
+- The user rejected Andong Katuri as a brand mismatch. Removed its navigation overrides and font-face declaration, restoring the previous desktop and mobile menu typography. Future candidates should follow the sturdy sign-lettering character of the logo.
+
+## 2026-10-03 - Shop-sign consultation CTA
+
+- At the user’s explicit request, Codex styled the header consultation link as an orange shop sign with clipped corners, an ink border, a hard shadow and a licensed Lucide arrow. Reused the existing display font and consultation anchor.
+- Added pointer hover/press feedback, a reduced-motion override and compact mobile sizing.
+- Lint and build passed (no check script). In-app checks at 1185px and 320px confirmed the layout and consultation anchor navigation.
+
+## 2026-10-03 - User-selected Uiverse consultation button
+
+- Replaced the rejected shop-sign CTA with the user-supplied adamgiebl pink-chicken-70 design. Preserved its rounded black cover, purple gradient and angled wipe; adapted the label to the existing consultation anchor. Added keyboard focus feedback and reduced-motion handling.
+- Preserved MIT attribution in public/licenses/uiverse-adamgiebl.txt. Codex performed the explicitly requested frontend edit.
+- Lint, production build and diff checks passed. Desktop and 320px mobile rendering, keyboard color reveal and consultation anchor destination were verified in-app. No check script exists.
+
+## 2026-10-03 - Compact brand-colored CTA
+
+- Reduced the user-selected CTA from 18px/48px to 14px/38px on desktop, with compact 13px/40px mobile sizing. Replaced purple with the hero orange and the black cover with brand ink; hover text switches to ink for contrast.
+- Preserved the approved wipe interaction. Lint, production build and diff checks passed; in-app desktop and mobile visual checks completed.
+
+## 2026-10-03 - Approved first-screen headline
+
+- Applied the approved headline “사장님, 시작부터 부담을 덜어드릴게요.” with the fee, kitchen and first-two-year royalty supporting copy.
+- Moved the monthly-sales and qualification assumption directly below the total amount, preserving all numbers and conditions. Adjusted short-desktop numeral sizing and mobile character spacing so the added conditions remain readable. Codex performed the explicitly approved frontend/copy edit.
+- Lint, build and diff checks passed. Visually checked 1280×720 desktop and 390×844 mobile, including condition text visibility and CTA separation.
+
+## 2026-10-03 - Matching support exploration CTA
+
+- Replaced the first-screen cream rectangular exploration button with the approved rounded ink-to-orange wipe treatment, shared with the header consultation CTA. Kept the existing label and chapter navigation, with a licensed Lucide downward arrow and a subtle border for the dark background.
+- Lint, build and diff checks passed. In-app checks confirmed keyboard color reveal, transition to chapter 1 on click, and full-width mobile layout at 390px.
+
+## 2026-10-03 - Removed chapter menu
+
+- Removed the seven numbered chapter shortcuts at the user’s request. The desktop scroll cue retains its measured lane for character placement; portrait layouts remove the menu’s sticky bar and its 52px scroll offset.
+- Lint, production build and diff checks passed. In-app desktop and 390px mobile checks confirmed the menu is absent and the exploration button still advances to the first benefit chapter.
+
+## 2026-10-03 - Removed scroll cue
+
+- Removed “아래로 스크롤” at the user’s request. Retained only the empty, accessibility-hidden measurement anchor used by character layout.
+- Lint, production build and diff checks passed. In-app inspection confirmed the cue is absent and the character layout is preserved.
+
+## 2026-10-03 - Product Design layout and hierarchy pass
+
+- At the user’s explicit Product Design request, introduced a focused RebrandLayout stylesheet for the existing page: height-aware hero numeral sizing, consistent gutters and closing-section type scales, compact form headings and aligned mobile introduction.
+- Grouped the exact calculation paragraph with its amount before the portrait character. Preserved all copy, amounts, assets, approved buttons and story interactions.
+- Saved matched before/after screenshots and comparisons in the existing review-output folder and appended the scoped QA result to design-qa.md. Lint, production build, all 7 existing tests and diff checks passed.
+
+## 2026-10-03 - Consistent seven-chapter story
+
+- Extended the approved first-screen hierarchy through chapters 2–7: common numeral/unit fonts, benefit-title scales, reading widths and condition spacing, plus the accepted wipe CTA for conditions and consultation links.
+- Grouped mobile financial information before the existing portrait character slots. Preserved the original figures, qualifications and animation performances. Codex performed these frontend changes at the user's explicit request.
+- Inspected all chapter comparisons at 1280×800 and all following chapters on 390×844 mobile, with 1280×720 and 320px checks. Conditions expansion, final form navigation, lint, build, 7 existing tests and diff checks passed. Latest scoped evidence and result are appended to design-qa.md.
+
+## 2026-10-03 - Commit, push and sample rollout
+
+- The user explicitly requested commit, push and deployment of the current approved rebrand work. Reuse branch codex/hero-7000-preview and the dedicated dakjangsu-client-sample project, verified as prj_ozu5VlGLkcVjayQjy6Gc9reiU1sw. Preserve the existing build/runtime VITE_REVIEW_ONLY=true sample contract.
+- Before rollout, the official-domain deployment remains dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8. The rejected, unused Katuri font trial is kept with the local review materials instead of the shipped source. Only the final CTA, layout, licensed icons and QA records are included in this commit.

@@ -355,7 +355,6 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   return (
     <section className={`jangsu-story${portrait ? ' jangsu-story--portrait' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion}>
       <div className="jangsu-stage" ref={stageRef} data-scene={active} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
-        <div className="jangsu-stage-kicker"><span>DAKJANGSU FRIED CHICKEN</span><span>닭장수가 보여드릴게요</span></div>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
           <img className="jangsu-reduced-character" src={assetPath('/rebrand/poses/hero-presentation-v1/01-neutral.png')} alt="닭장수 캐릭터" width="1122" height="1402" />
@@ -374,7 +373,6 @@ export default function RebrandScrollStory({ onConditionsClick }) {
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={active === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(5)} /><small>{benefit.unit}</small>
                 </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 1} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 1)} /><small>{benefit.unit}</small></>}</strong>
-                {portrait && <PortraitCharacterSlot scene={index + 1} />}
                 <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원안</span></> : benefit.title}</b>
               </h2>
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
@@ -389,7 +387,10 @@ export default function RebrandScrollStory({ onConditionsClick }) {
                 {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
               </div>}
               <p className="benefit-scene-note">{benefit.note}</p>
-              <a href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 자세히 보기 ↗</a>
+              {portrait && <PortraitCharacterSlot scene={index + 1} />}
+              <a className="story-cta" href="#rebrand-benefits" onClick={onConditionsClick}>
+                <span>지원 조건 자세히 보기 <span className="story-cta-icon" aria-hidden="true" /></span>
+              </a>
             </div>
           </article>
         ))}
@@ -400,7 +401,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             <div className="jangsu-invite-copy">
               <p>점포를 구하기 전에도 상담할 수 있습니다.<br />희망 지역부터 남겨주세요.</p>
               {portrait && <PortraitCharacterSlot scene={6} />}
-              <a href="#lead-capture">창업 상담하기 <span aria-hidden="true">↗</span></a>
+              <a className="story-cta story-cta--primary" href="#lead-capture">
+                <span>창업 상담하기 <span className="story-cta-icon" aria-hidden="true" /></span>
+              </a>
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
@@ -408,7 +411,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">{active === 0 ? <JangsuHeroMotion key={heroReplay} /> : active === 1 ? <JangsuFeeMotion key={feeReplay} /> : active === 2 ? <JangsuOpeningMotion key={openingReplay} /> : active === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : active === 4 ? <JangsuRoyaltyMotion key={royaltyReplay} /> : active === 6 ? <JangsuInviteMotion key={inviteReplay} /> : (active !== 5 || liftAssets === 'error') && <JangsuMotion scene={active} greeting={active === 6} />}</div>
         {active === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
-        <div className="jangsu-stage-footer"><span>아래로 스크롤 ↓</span><nav aria-label="닭장수 이야기 장면">{chapters.map((label, index) => <button key={label} type="button" aria-current={active === index ? 'step' : undefined} onClick={() => goToChapter(index)}><small>0{index + 1}</small><span>{label}</span></button>)}</nav></div>
+        <div className="jangsu-stage-footer" aria-hidden="true" />
       </div>
     </section>
   );

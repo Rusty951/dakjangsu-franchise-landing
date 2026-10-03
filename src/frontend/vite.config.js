@@ -47,5 +47,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), leadApiDevPlugin()],
+    server: {
+      allowedHosts: ['bananabk-macstudio.tail56d39b.ts.net'],
+    },
   }
 })

@@ -14,6 +14,7 @@ import './RebrandJourney.css';
 import './RebrandHeroOffer.css';
 import './RebrandEditorial.css';
 import './RebrandPortraitStory.css';
+import './RebrandLayout.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -53,7 +54,9 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
           <a href="#rebrand-story">창업 혜택</a>
           <a href="#rebrand-menu">메뉴</a>
           <a href="#rebrand-faq">자주 묻는 질문</a>
-          <a href="#lead-capture" className="rebrand-header-cta">창업 상담</a>
+          <a href="#lead-capture" className="rebrand-header-cta">
+            <span>창업 상담</span>
+          </a>
         </nav>
       </header>
 
