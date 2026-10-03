@@ -715,3 +715,31 @@ HTTP200 verifies new index-7eJmUOWu.js/index-Crj1QiXD.css and massive prerender;
 Public evidence at massive-character/public-desktop-hero.jpg (1280×800), public-mobile-form.jpg and public-mobile-guide.jpg (390×844) was inspected. Actual DOM confirms no analytics insertion,0px overflow, first-screen hidden guide, chapter2 seven-link guide and loaded new portrait/naturalWidth1,122. Consultation anchor after smooth scroll is y75.39 below66px header; the initial immediate capture during that scroll was replaced. Public form's review-specific submit text is “입력 내용 확인하기”, with the same approved CTA style. No browser warning/error or actual inquiry. Viewport reset and the public stable URL is opened in the currently selected user-visible in-app tab1. This rollout verification supplements the fuller local scene/keyboard/resize checks above; their stated static-render/font-inspector/physical-device limits remain applicable.
 
 final result: authorized sample rollout and bounded public verification passed.
+
+## 2026-10-03 - Character rhythm revision
+
+Criteria CR-1003-v1, before edits. User feedback changes the creative goal: the all-massive version is burdensome and needs strong/quiet intervals. This supersedes MC-01's size targets for the new local revision, without retrospectively changing that version's result. Baseline HEADa895201, with before-scale.css and the published massive captures retained. Preserve the existing type/copy/assets, seven-guide controls, completed-act/resize protections and consultation behavior.
+
+| ID | Source / purpose | Observable target | Check |
+| --- | --- | --- | --- |
+| CR-01 | User asks for stronger differences and breathing room | Desktop virtual full-body heights by1–7:110%,56%,94%,52%,135%,44%,110%.1/7 remain strong upper-body moments;3/5 are moderate, with a gentler close framing on5;2/4/6 are full-body supporting figures and6 is quietest. Do not fill their now-empty space with new decoration. | Settled/parked1280×800 sequence and matched baseline comparisons; measure canvas separately from visible windows. |
+| CR-02 | Keep the scale differences on small screens | Quiet portrait scenes show the full figure in shorter windows. Strong/moderate scenes retain controlled larger crops. Active and static-placeholder cameras match, faces/feet are not accidentally clipped, and no document overflow beyond1px. |773×954,390×844,320×740 plus short1280×720. |
+| CR-03 | The form should feel approachable | Reduce the consultation bust's framing, show it as a supporting image beside/after the hook, retain readable headline/body and form/CTA/privacy behavior. | Tablet/phone rendering and existing anchor/focus paths. |
+| CR-04 | Protect normal work | Values/qualifiers/actions remain readable, guide lane clear, all7 jumps and growth completion/replay/resize remain functional. | Native/keyboard actions, settled screenshots, lint/build and source diff. |
+
+Evidence root: `/Users/bananabk/Desktop/codex-output/99_최종아님_삭제대기/닭장수_첫화면_1003/character-rhythm/`. This is a local review revision using existing images; no extra ImageGen, copy rewrite or automatic public rollout. Font-inspector/static-render/physical-device limitations already recorded remain applicable.
+
+Implementation: desktop virtual canvases880/448/752/416/1080/352/880px at1280×800. Supporting figures2/4/6 are vertically offset and fully visible; their space remains empty.3 is a moderate knee/upper-body framing,5 is a reduced, narrower portrait,1/7 retain presence with14% less virtual height. Quiet text lanes expand to60% and royalty to64%. On390×844, fee/kitchen full-body canvases371.36px sit inside388.23px windows; growth303.83 sits inside329.16; invitation780px is a stronger crop. Source/static cameras match. Consultation image uses contain framing at250×320 on tablet and a266.39px-high image box at320×740, giving the question and form priority.
+
+Checks: same-source current-run before/after1280×800 captures for2/5; comparison-2.png matches keyboard H2 focus and settled pose on both sides, comparison-5.png matches mouse/settled state. The first comparison2 with mismatched focus was replaced. Original pixels are preserved with24px separation/34px labels; composite display may scale. after-desktop-1..7 and short-2..7 inspect the sequence; early scene1 background transition and growth's350ms copy arrival are not static color/type evidence. sequence-overview.jpg is a thumbnail navigation aid, not fine-detail proof. Individual3/4/5 and mobile/form captures were inspected.
+
+| Criterion | Outcome | Evidence |
+| --- | --- | --- |
+| CR-01 | 통과 | Exact1–7 canvas targets measured at1280×800; comparison shows much smaller supporting figures and gentler portrait. First/last retain larger framing, with no new decoration or source-image changes. |
+| CR-02 | 통과 |390px full-body fee and growth fit their own windows, with matching actor/static heights and0px overflow. Native scrolling exposes feet and following controls above the fixed footer; below-fold content is not an asset crop.773px and320px consultation checks have0px overflow. |
+| CR-03 | 통과 | Tablet image250×320 and narrow266.39px contain framing remain recognizable. Copy, inputs, consent and submit handlers untouched. The initial tablet capture during smooth scroll showed the preceding FAQ and was replaced by a settled form capture. |
+| CR-04 | 통과 in inspected normal states |1280×720 copy bottoms≤640.77, guide top652; fee403.19px, kitchen374.39, growth316.80, royalty972px virtual canvases. Seven jumps, native scrolling and parked growth were exercised; no horizontal overflow. Lint/client/SSR build/prerender/whitespace pass. Existing prior API and keyboard/resize results reused because this revision changes only CSS. No new test harness or real inquiry. |
+
+final-source.patch records the single stylesheet delta relative to HEADa895201. The normal revised preview is left in the user-visible in-app tab1 at the private Tailscale URL. This is a concrete local review version; publication remains the preceding authorized snapshot until separately requested. Unmeasured user preference/conversion impact and existing static-render/font-inspector/physical-device limits are not treated as passed.
+
+final result: local strong/quiet rhythm revision complete and bounded responsive/interaction checks passed.

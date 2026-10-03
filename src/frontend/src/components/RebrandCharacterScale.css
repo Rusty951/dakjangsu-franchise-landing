@@ -1,41 +1,46 @@
-/* Oversized poster framing. The window and the animated image canvas are
-   independent, so a crop never quietly reduces the mascot to fit its lane. */
+/* Alternate strong, moderate and quiet character moments. Keep the image
+   canvas independent of its window so camera distance is deliberate. */
 .jangsu-story--massive .jangsu-stage {
   --massive-window-left: 63%;
   --massive-window-width: 37%;
   --massive-window-top: 0px;
   --massive-window-bottom: 68px;
-  --massive-body-height: 80svh;
-  --massive-body-top: 0px;
+  --massive-body-height: 56svh;
+  --massive-body-top: 8svh;
 }
 .jangsu-story--massive .jangsu-stage[data-scene='0'] {
   --massive-window-left: 36.5%;
   --massive-window-width: 35%;
   --massive-window-top: 16%;
   --massive-window-bottom: 0px;
-  --massive-body-height: 128svh;
+  --massive-body-height: 110svh;
+  --massive-body-top: 0px;
 }
 .jangsu-story--massive .jangsu-stage[data-scene='2'] {
   --massive-window-left: 0%;
   --massive-window-width: 42%;
   --massive-window-top: 16px;
   --massive-window-bottom: 68px;
-  --massive-body-height: 116svh;
+  --massive-body-height: 94svh;
+  --massive-body-top: 0px;
 }
+.jangsu-story--massive .jangsu-stage[data-scene='3'] { --massive-body-height: 52svh; --massive-body-top: 10svh; }
+.jangsu-story--massive .jangsu-stage[data-scene='5'] { --massive-body-height: 44svh; --massive-body-top: 14svh; }
 .jangsu-story--massive .jangsu-stage[data-scene='4'] {
   --massive-window-left: 0%;
-  --massive-window-width: 43%;
+  --massive-window-width: 36%;
   --massive-window-top: 0px;
   --massive-window-bottom: 68px;
-  --massive-body-height: 180svh;
-  --massive-body-top: -18svh;
+  --massive-body-height: 135svh;
+  --massive-body-top: -4svh;
 }
 .jangsu-story--massive .jangsu-stage[data-scene='6'] {
   --massive-window-left: 53%;
   --massive-window-width: 47%;
   --massive-window-top: 8px;
   --massive-window-bottom: 68px;
-  --massive-body-height: 128svh;
+  --massive-body-height: 110svh;
+  --massive-body-top: 0px;
 }
 .rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait):not([data-reduced='true']) .jangsu-stage[data-scene] > .jangsu-traveler {
   left: var(--massive-window-left) !important;
@@ -83,36 +88,45 @@
 .rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) .benefit-scene-copy,
 .rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-invite-content { width: min(56%, 780px); }
 .rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) .benefit-scene--royalty .benefit-scene-copy { margin-left: auto; }
+.rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) :is(.benefit-scene--fee, .benefit-scene--kitchen, .benefit-scene--growth) .benefit-scene-copy { width: min(60%, 820px); }
+.rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) .benefit-scene--royalty .benefit-scene-copy { width: min(64%, 820px); }
 .rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-panel--invite .jangsu-invite-content { width: min(50%, 720px); }
 .jangsu-story--massive .jangsu-lift-pose--rest { object-fit: cover; object-position: center top; }
 .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-stage[data-lift-status='parked'] > .jangsu-lift {
   clip-path: inset(var(--massive-window-top) calc(100% - var(--massive-window-left) - var(--massive-window-width)) var(--massive-window-bottom) var(--massive-window-left));
 }
 
-/* Flowing portrait chapters get a full-width window, not a miniature host slot. */
+/* Portrait scenes preserve the same strong/quiet rhythm and whole-body rests. */
 .rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot {
-  --massive-body-height: clamp(780px, 235vw, 1440px);
+  --massive-body-height: clamp(700px, 185vw, 1200px);
   --massive-body-top: 0px;
   display: block;
   align-self: start;
   justify-self: start;
   width: 100vw;
-  height: clamp(390px, 62svh, 620px);
+  height: clamp(330px, 52svh, 520px);
   margin: 24px 0 24px calc(50% - 50vw);
   overflow: hidden;
 }
 .rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='1'],
-.rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='3'],
+.rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='3'] {
+  --massive-body-height: clamp(300px, 44svh, 560px);
+  height: clamp(310px, 46svh, 580px);
+}
+.rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='2'] {
+  --massive-body-height: clamp(600px, 160vw, 1040px);
+  height: clamp(320px, 45svh, 500px);
+}
 .rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='5'] {
-  --massive-body-height: clamp(650px, 195vw, 1200px);
-  height: clamp(380px, 56svh, 590px);
+  --massive-body-height: clamp(250px, 36svh, 460px);
+  height: clamp(270px, 39svh, 500px);
 }
 .rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='4'] {
-  --massive-body-height: clamp(1050px, 300vw, 1700px);
-  --massive-body-top: -11svh;
-  height: clamp(400px, 62svh, 650px);
+  --massive-body-height: clamp(820px, 220vw, 1280px);
+  --massive-body-top: -4svh;
+  height: clamp(340px, 50svh, 530px);
 }
-.rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='6'] { height: clamp(420px, 68svh, 680px); }
+.rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot[data-character-scene='6'] { --massive-body-height: clamp(760px, 200vw, 1280px); height: clamp(340px, 56svh, 560px); }
 .rebrand-page .jangsu-story--massive.jangsu-story--portrait .jangsu-stage .portrait-character-slot > img {
   position: absolute;
   left: 50%;
@@ -126,19 +140,23 @@
 }
 /* The active actor must use the same camera as its chapter's static placeholder. */
 @media (max-width: 1024px) and (orientation: portrait), (max-height: 640px) {
-  .jangsu-story--massive .jangsu-stage[data-scene] { --massive-body-height: clamp(780px, 235vw, 1440px); --massive-body-top: 0px; }
-  .jangsu-story--massive .jangsu-stage:is([data-scene='1'], [data-scene='3'], [data-scene='5']) { --massive-body-height: clamp(650px, 195vw, 1200px); }
-  .jangsu-story--massive .jangsu-stage[data-scene='4'] { --massive-body-height: clamp(1050px, 300vw, 1700px); --massive-body-top: -11svh; }
+  .jangsu-story--massive .jangsu-stage[data-scene] { --massive-body-height: clamp(700px, 185vw, 1200px); --massive-body-top: 0px; }
+  .jangsu-story--massive .jangsu-stage:is([data-scene='1'], [data-scene='3']) { --massive-body-height: clamp(300px, 44svh, 560px); }
+  .jangsu-story--massive .jangsu-stage[data-scene='2'] { --massive-body-height: clamp(600px, 160vw, 1040px); }
+  .jangsu-story--massive .jangsu-stage[data-scene='5'] { --massive-body-height: clamp(250px, 36svh, 460px); }
+  .jangsu-story--massive .jangsu-stage[data-scene='4'] { --massive-body-height: clamp(820px, 220vw, 1280px); --massive-body-top: -4svh; }
+  .jangsu-story--massive .jangsu-stage[data-scene='6'] { --massive-body-height: clamp(760px, 200vw, 1280px); }
 }
 
 /* A real bust carries the consultation hook into its form. */
 .rebrand-page .consultation-host { display: grid; max-width: none; gap: 16px; margin-top: 24px; }
 .rebrand-page .consultation-host img {
   grid-row: 1;
-  width: 100%;
-  height: clamp(380px, 55svh, 480px);
+  width: min(100%, 360px);
+  height: clamp(260px, 36svh, 340px);
+  justify-self: center;
   padding: 0;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center top;
 }
 .rebrand-page .consultation-host p { grid-row: 2; margin: 0; max-width: none; }
@@ -149,19 +167,21 @@
   .rebrand-page .consultation-intro > p { grid-column: 1; }
   .rebrand-page .consultation-host { display: contents; }
   .rebrand-page .consultation-host p { grid-column: 1; grid-row: 4; margin-top: 24px; }
-  .rebrand-page .consultation-host img { grid-column: 2; grid-row: 1 / 5; align-self: stretch; width: 100%; height: 100%; min-height: 390px; }
+  .rebrand-page .consultation-host img { grid-column: 2; grid-row: 1 / 5; align-self: center; justify-self: end; width: min(100%, 250px); height: 320px; min-height: 0; }
 }
 @media (max-width: 700px) {
   .rebrand-page .consultation-host { display: grid; width: 100%; }
   .rebrand-page .consultation-host p { font-size: 15px; }
 }
 
-/* Keep the existing static accessibility fallback substantial as well. */
+/* Static fallback follows the same restrained supporting scenes. */
 @media (prefers-reduced-motion: reduce) {
   .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-panel { min-height: max(760px, 100svh); overflow: hidden; }
-  .jangsu-story--massive:not(.jangsu-story--portrait) :is(.fee-static-character, .kitchen-static-character, .growth-static-character) { top: 0; bottom: auto; right: 0; width: 37%; height: 80svh; object-fit: contain; object-position: center top; }
-  .jangsu-story--massive:not(.jangsu-story--portrait) .opening-static-character { top: 16px; bottom: auto; left: 0; width: 40%; height: 116svh; object-fit: cover; object-position: center top; }
-  .jangsu-story--massive:not(.jangsu-story--portrait) .royalty-static-character { top: -18svh; bottom: auto; left: 0; width: 43%; height: 180svh; object-fit: cover; object-position: center top; }
-  .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-invite-static { top: 8px; bottom: auto; right: 0; width: 41%; height: 128svh; object-fit: cover; object-position: center top; }
-  .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-reduced-character { top: 16%; bottom: auto; left: 36.5%; width: 35%; height: 128svh; object-fit: cover; object-position: center top; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) :is(.fee-static-character, .kitchen-static-character, .growth-static-character) { top: 8svh; bottom: auto; right: 0; width: 37%; height: 56svh; object-fit: contain; object-position: center top; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .kitchen-static-character { top: 10svh; height: 52svh; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .growth-static-character { top: 14svh; height: 44svh; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .opening-static-character { top: 16px; bottom: auto; left: 0; width: 42%; height: 94svh; object-fit: cover; object-position: center top; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .royalty-static-character { top: -4svh; bottom: auto; left: 0; width: 36%; height: 135svh; object-fit: cover; object-position: center top; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-invite-static { top: 8px; bottom: auto; right: 0; width: 47%; height: 110svh; object-fit: cover; object-position: center top; }
+  .jangsu-story--massive:not(.jangsu-story--portrait) .jangsu-reduced-character { top: 16%; bottom: auto; left: 36.5%; width: 35%; height: 110svh; object-fit: cover; object-position: center top; }
 }
