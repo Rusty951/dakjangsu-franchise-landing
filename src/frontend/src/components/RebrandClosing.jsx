@@ -1,10 +1,11 @@
 import { assetPath } from '../assetPath';
 import './RebrandClosing.css';
+import RebrandOwnerStories from './RebrandOwnerStories';
 
-const menuItems = [
-  ['fried-chicken', '후라이드치킨', '기본부터 바삭하게'],
-  ['half-half-chicken', '반반치킨', '두 가지 맛을 한 접시에'],
-  ['garlic-pepper-chicken', '마늘후추치킨', '마늘과 후추로 더한 풍미'],
+const operationChecks = [
+  ['공간과 동선', '조리부터 포장, 손님 응대까지.', '주방과 홀의 크기, 주문을 받고 포장하는 동선을 함께 살펴봅니다.'],
+  ['주문 방식', '홀, 포장, 배달을 함께.', '희망 지역과 점포 조건에 맞춰 어떤 주문을 어떻게 받을지 확인합니다.'],
+  ['운영 인원', '내가 감당할 수 있는 운영.', '직접 운영인지 부부 운영인지, 매장 규모와 주문량에 맞춰 필요한 인력을 검토합니다.'],
 ];
 
 const questions = [
@@ -15,24 +16,27 @@ const questions = [
 
 export default function RebrandClosing({ conditionsRef }) {
   return <>
-    <section className="rebrand-menu-story" id="rebrand-menu" aria-labelledby="menu-title">
-      <div className="rebrand-menu-story-intro">
-        <div className="rebrand-menu-story-copy">
-          <p className="rebrand-closing-label">닭장수후라이드 / 대표 메뉴</p>
-          <h2 id="menu-title"><span>치킨집이니까,</span>맛부터<br />보시죠.</h2>
-          <p className="rebrand-menu-story-description">특제 파우더로 튀긴 후라이드.<br />반반과 마늘후추치킨도 함께 준비했습니다.</p>
+    <section className="rebrand-operations" id="rebrand-operations" aria-labelledby="operations-title">
+      <div className="rebrand-operations-intro">
+        <div className="rebrand-operations-copy">
+          <p className="rebrand-closing-label">실제 매장과 운영</p>
+          <h2 id="operations-title">내가 운영할 매장,<br /><em>현장부터 보시죠.</em></h2>
+          <p>공간과 동선, 주문 방식, 함께 일할 사람까지.<br />지원 조건과 운영 조건을 함께 확인하세요.</p>
         </div>
-        <figure className="rebrand-menu-story-photo">
-          <img src={assetPath('/images/dakjangsu-product-showcase-real.jpg')} alt="매장 진열대에 준비된 닭장수 후라이드 치킨" width="2400" height="1600" loading="lazy" />
+        <figure className="rebrand-operations-photo">
+          <img src={assetPath('/images/dakjangsu-takeout-prep-privacy.jpg')} alt="닭장수후라이드 매장 안에서 조리와 포장을 준비하는 직원들" width="2400" height="1800" loading="lazy" />
+          <figcaption>실제 매장의 포장 준비 장면</figcaption>
         </figure>
       </div>
-      <ul className="rebrand-menu-lineup" aria-label="대표 메뉴 세 가지">
-        {menuItems.map(([image, name, description], index) => <li key={image}>
-          <img src={assetPath(`/images/menu-showcase/${image}.webp`)} alt={name} width="520" height="360" loading="lazy" />
-          <div><span className="rebrand-menu-order" aria-hidden="true">0{index + 1}</span><h3>{name}</h3><p>{description}</p></div>
+      <ul className="rebrand-operation-checks" aria-label="상담에서 확인할 운영 조건">
+        {operationChecks.map(([label, title, description]) => <li key={label}>
+          <span>{label}</span><h3>{title}</h3><p>{description}</p>
         </li>)}
       </ul>
+      <p className="rebrand-operations-note">매장 구성과 운영 인원은 점포 조건에 따라 달라집니다.</p>
     </section>
+
+    <RebrandOwnerStories />
 
     <section className="rebrand-closing-faq" id="rebrand-faq" aria-labelledby="faq-title">
       <div className="rebrand-closing-faq-grid">

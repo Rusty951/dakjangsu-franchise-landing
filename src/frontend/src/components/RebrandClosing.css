@@ -1,4 +1,31 @@
-/* A shorter closing sequence, using the story's type scale and real food assets. */
+/* Closing sequence: actual operations, owner experience and consultation. */
+.rebrand-page .rebrand-operations { padding: var(--layout-section-space) var(--layout-gutter); scroll-margin-top: 80px; background: #f7efe4; color: #241f1b; }
+.rebrand-operations-intro { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.rebrand-page .rebrand-operations h2 { margin: 0; font: 400 clamp(38px, 4.5vw, 64px)/1.18 var(--font-display); letter-spacing: -.045em; word-break: keep-all; }
+.rebrand-operations h2 em { font-style: normal; color: #a74321; }
+.rebrand-operations-copy > p:last-child { margin-top: 24px; font-size: 16px; line-height: 1.8; color: #51473e; word-break: keep-all; }
+.rebrand-operations-photo { margin: 0; }
+.rebrand-operations-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.rebrand-operations-photo figcaption { margin-top: 12px; font-size: 12px; line-height: 1.6; color: #665b52; }
+.rebrand-operation-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin: 48px 0 0; padding: 0; list-style: none; }
+.rebrand-operation-checks li { min-width: 0; }
+.rebrand-operation-checks li > span { font: 650 13px/1.5 var(--font-sans); color: #a74321; }
+.rebrand-page .rebrand-operation-checks h3 { margin: 12px 0; font: 650 clamp(20px, 1.8vw, 25px)/1.4 var(--font-sans); letter-spacing: -.035em; word-break: keep-all; }
+.rebrand-operation-checks p { margin: 0; font-size: 15px; line-height: 1.8; color: #51473e; word-break: keep-all; }
+.rebrand-operations-note { margin: 28px 0 0; font-size: 13px; line-height: 1.7; color: #665b52; }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .rebrand-page .rebrand-header nav { gap: 20px; }
+  .rebrand-operations-intro { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .rebrand-operation-checks { gap: 24px; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .rebrand-operations { scroll-margin-top: 66px; }
+  .rebrand-operations-intro { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .rebrand-page .rebrand-operations h2 { font-size: clamp(30px, 8vw, 42px); }
+  .rebrand-operations-copy > p:last-child { font-size: 15px; margin-top: 20px; }
+  .rebrand-operation-checks { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 28px; }
+  .rebrand-page .rebrand-operation-checks h3 { font-size: 21px; margin-top: 8px; }
+}
 .rebrand-page .rebrand-menu-story, .rebrand-page .rebrand-closing-faq { scroll-margin-top: 80px; }
 .rebrand-menu-story { background: #f7efe4; color: #241f1b; }
 .rebrand-menu-story-intro { display: grid; grid-template-columns: .9fr 1.1fr; min-height: min(760px, calc(100svh - 80px)); }

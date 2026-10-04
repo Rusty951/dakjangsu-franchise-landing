@@ -53,7 +53,8 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
           if (event.target.closest('a')) setIsMenuOpen(false);
         }}>
           <a href="#rebrand-story">창업 혜택</a>
-          <a href="#rebrand-menu">메뉴</a>
+          <a href="#rebrand-operations">매장 운영</a>
+          <a href="#rebrand-owner-stories">점주 이야기</a>
           <a href="#rebrand-faq">자주 묻는 질문</a>
           <a href="#lead-capture" className="rebrand-header-cta">
             <span>창업 상담</span>
