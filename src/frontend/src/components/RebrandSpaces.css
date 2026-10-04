@@ -1,0 +1,34 @@
+.rebrand-page .rebrand-space-showcase {
+  padding: var(--layout-section-space) var(--layout-gutter);
+  background: #f7efe4;
+  color: #241f1b;
+  scroll-margin-top: 80px;
+}
+.rebrand-space-showcase-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+.rebrand-space-showcase-heading .rebrand-closing-label { margin-bottom: 14px; color: #665b52; }
+.rebrand-page .rebrand-space-showcase h2 { margin: 0; font: 400 clamp(34px, 4.6vw, 64px)/1.18 var(--font-display); letter-spacing: -.045em; word-break: keep-all; }
+.rebrand-space-showcase h2 em { display: inline-block; color: #a74321; font-style: normal; }
+.rebrand-space-showcase-heading > p { flex-shrink: 0; margin: 0; font: 450 15px/1.8 var(--font-sans); color: #51473e; }
+.rebrand-space-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.rebrand-space-view { min-width: 0; margin: 0; }
+.rebrand-space-image { aspect-ratio: 3 / 2; width: 100%; overflow: hidden; background: #241f1b; }
+.rebrand-space-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.rebrand-space-view figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-top: 14px; font: 450 13px/1.6 var(--font-sans); color: #665b52; }
+.rebrand-space-view figcaption strong { color: #241f1b; font-weight: 650; }
+.rebrand-space-showcase-note { margin: 20px 0 0; font: 450 13px/1.7 var(--font-sans); color: #665b52; word-break: keep-all; }
+@media (max-width: 1000px) {
+  .rebrand-space-showcase-heading { display: block; }
+  .rebrand-space-showcase-heading > p { margin-top: 16px; }
+  .rebrand-space-showcase-heading > p br { display: none; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .rebrand-space-showcase { scroll-margin-top: 66px; }
+  .rebrand-space-showcase-heading { margin-bottom: 24px; }
+  .rebrand-page .rebrand-space-showcase h2 { font-size: clamp(32px, 8.4vw, 40px); }
+  .rebrand-space-showcase-heading > p { font-size: 14px; }
+  .rebrand-space-view figcaption { font-size: 12px; }
+  .rebrand-space-showcase-note { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .rebrand-space-pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}

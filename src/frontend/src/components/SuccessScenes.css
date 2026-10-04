@@ -1,0 +1,124 @@
+.success-scenes-section {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(420px, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 253, 247, 0.9), rgba(255, 253, 247, 0.9)),
+    url("/images/dakjangsu-board-cream-texture.png") center / cover;
+  color: #211816;
+}
+
+.success-scenes-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  min-height: 100svh;
+  padding: clamp(44px, 6vw, 96px);
+}
+
+.success-scenes-copy span:first-child {
+  display: inline-grid;
+  place-items: center;
+  min-height: 36px;
+  margin-bottom: clamp(26px, 3vw, 44px);
+  padding: 0 16px;
+  border: 1px solid rgba(33, 24, 22, 0.36);
+  color: #d90a0a;
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1;
+  font-weight: 900;
+}
+
+.success-scenes-copy h2 {
+  display: grid;
+  gap: clamp(6px, 0.8vw, 12px);
+  color: #211816;
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 5.6vw, 6.4rem);
+  line-height: 0.9;
+  font-weight: 400;
+  word-break: keep-all;
+}
+
+.success-scenes-copy h2 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.success-scenes-photo {
+  position: relative;
+  min-height: 100svh;
+  margin: 0;
+  overflow: hidden;
+  background: #211816;
+}
+
+.success-scenes-photo::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(33, 24, 22, 0.16), rgba(33, 24, 22, 0.02) 42%),
+    linear-gradient(0deg, rgba(33, 24, 22, 0.18), rgba(33, 24, 22, 0));
+  content: "";
+  pointer-events: none;
+}
+
+.success-scenes-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% center;
+  filter: saturate(0.95) contrast(1.06) brightness(0.96);
+}
+
+@media (min-width: 861px) {
+  .success-scenes-section {
+    height: 100svh;
+    min-height: 0;
+  }
+
+  .success-scenes-copy,
+  .success-scenes-photo {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .success-scenes-copy {
+    padding: clamp(40px, 5vw, 76px);
+  }
+}
+
+@media (max-width: 860px) {
+  .success-scenes-section {
+    grid-template-columns: 1fr;
+  }
+
+  .success-scenes-copy {
+    min-height: 48svh;
+    justify-items: center;
+    padding: 56px 24px 42px;
+    text-align: center;
+  }
+
+  .success-scenes-copy h2 {
+    font-size: clamp(3.1rem, 12vw, 5.8rem);
+  }
+
+  .success-scenes-copy h2 span {
+    white-space: normal;
+  }
+
+  .success-scenes-photo {
+    min-height: 52svh;
+  }
+
+  .success-scenes-photo img {
+    object-position: 62% center;
+  }
+}

@@ -1,0 +1,15 @@
+.jangsu-invite-motion, .jangsu-invite-actor { width: 100%; height: 100%; pointer-events: none; }
+.jangsu-invite-actor { position: relative; transform-origin: center bottom; }
+.jangsu-invite-motion[data-phase='loading'] .jangsu-invite-actor { opacity: 0; }
+.jangsu-traveler .jangsu-invite-pose { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; opacity: 0; }
+.jangsu-traveler .jangsu-invite-pose--0 { opacity: 1; }
+.jangsu-invite-copy a { transform-origin: center center; }
+@media (max-width: 700px) {
+  .rebrand-page .jangsu-stage[data-scene='6'] .jangsu-traveler { width: 78vw; }
+  .jangsu-invite-motion { overflow: visible; clip-path: inset(0 -14px 0 -30px); }
+  .jangsu-invite-actor { top: 8px; height: calc((100% - 16px) * 1.6); transform-origin: center top; }
+  .jangsu-traveler .jangsu-invite-pose { object-position: center top; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .jangsu-stage .jangsu-invite-static { top: 210px; bottom: auto; right: 0; height: 220px; width: 48%; max-height: none; object-fit: cover; object-position: center top; }
+}

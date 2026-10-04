@@ -1,0 +1,29 @@
+.jangsu-fee-motion, .jangsu-fee-actor { width: 100%; height: 100%; pointer-events: none; }
+.jangsu-fee-actor { position: relative; transform-origin: center bottom; }
+.jangsu-fee-motion[data-phase='loading'] .jangsu-fee-actor { opacity: 0; }
+.jangsu-traveler .jangsu-fee-pose { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; opacity: 0; }
+.jangsu-traveler .jangsu-fee-pose--0 { opacity: 1; }
+.benefit-scene--fee .fee-waiver-title { transform-origin: left center; }
+.jangsu-stage[data-scene='1'][data-settled] .benefit-scene--fee .fee-waiver-title { animation: none; }
+.fee-static-character { display: none; }
+@media (min-width: 701px) {
+  .jangsu-stage[data-scene='1'] .jangsu-traveler { width: 35vw !important; }
+}
+@media (max-width: 700px) {
+  .jangsu-stage[data-scene='1'] .jangsu-traveler { width: 64vw !important; }
+  .benefit-scene--fee .benefit-scene-copy { top: 7%; }
+  .jangsu-fee-motion { overflow: hidden; }
+  .jangsu-fee-actor { top: 16px; height: calc((100% - 28px) * 1.5); transform-origin: center top; }
+  .jangsu-traveler .jangsu-fee-pose { object-position: center top; }
+}
+@media (max-width: 700px) and (max-height: 780px) {
+  .benefit-scene--fee .benefit-scene-detail,
+  .benefit-scene--fee .benefit-scene-note { max-width: 44%; }
+  .benefit-scene--fee .benefit-facts dl > div { gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fee-static-character { display: block; position: absolute; right: 4%; bottom: 85px; width: clamp(110px, 20vw, 260px); height: 32%; object-fit: contain; object-position: right bottom; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .fee-static-character { width: 64vw; object-fit: cover; object-position: center top; }
+}

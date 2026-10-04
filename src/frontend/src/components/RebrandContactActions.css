@@ -1,0 +1,90 @@
+.rebrand-page .rebrand-phone-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  color: var(--rebrand-ink);
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+.rebrand-page .rebrand-phone-link > span { font-size: 11px; font-weight: 650; line-height: 1.2; }
+.rebrand-page .rebrand-phone-link > strong { font-size: 20px; font-weight: 800; line-height: 1.1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.rebrand-page .rebrand-header nav .rebrand-header-phone { padding-block: 0; }
+.rebrand-page .rebrand-phone-link:hover { color: var(--rebrand-orange); }
+.rebrand-page .rebrand-phone-link:focus-visible { outline: 2px solid var(--rebrand-orange); outline-offset: 5px; }
+.rebrand-page .consultation-phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  min-height: 88px;
+  margin-top: 28px;
+  padding: 10px 24px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: #f7efe4;
+  color: #241f1b;
+  text-decoration: none;
+  transition: background .18s ease, transform .18s ease;
+}
+.rebrand-page .consultation-phone > span { font-size: 14px; font-weight: 700; }
+.rebrand-page .consultation-phone > strong { font-size: clamp(30px, 3.3vw, 42px); }
+.rebrand-page .consultation-phone:hover { background: #ffe2c4; color: #241f1b; transform: translateY(-2px); }
+.rebrand-page .consultation-phone:focus-visible { outline: 3px solid #f3a077; outline-offset: 5px; }
+.rebrand-page .rebrand-kakao-float {
+  position: fixed;
+  right: max(8px, env(safe-area-inset-right, 0px));
+  top: var(--contact-top, 92px);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #241f1b12;
+  border-radius: 18px;
+  background: #fee500;
+  color: #241f1b;
+  box-shadow: 0 4px 18px #241f1b26;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.rebrand-page .rebrand-kakao-float svg { width: 25px; height: 25px; fill: currentColor; }
+.rebrand-page .rebrand-kakao-float > span { font: 750 11px/1.2 var(--font-sans); }
+.rebrand-page .rebrand-kakao-float:hover { transform: translateY(-3px); box-shadow: 0 7px 22px #241f1b35; }
+.rebrand-page .rebrand-kakao-float:focus-visible { outline: 3px solid var(--rebrand-orange); outline-offset: 3px; }
+.rebrand-page .rebrand-kakao-float[data-hidden='true'] { visibility: hidden; pointer-events: none; }
+
+@media (max-width: 1024px) {
+  .rebrand-page .rebrand-header { gap: 12px; }
+  .rebrand-page .rebrand-menu-toggle { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; min-height: 44px; margin-left: auto; padding: 8px 12px; border: 1px solid #241f1b40; background: transparent; color: #241f1b; font: 650 14px/1 var(--font-sans); cursor: pointer; }
+  .rebrand-page .rebrand-header nav { gap: 0; }
+  .rebrand-page .rebrand-header[data-menu-open='false'] nav a { display: none; }
+  .rebrand-page .rebrand-header[data-menu-open='false'] nav .rebrand-header-phone { display: inline-flex; }
+  .rebrand-page .rebrand-header[data-menu-open='true'] nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 12px 20px 20px; background: #fffdf9; border-bottom: 1px solid #241f1b30; box-shadow: 0 12px 18px #241f1b15; }
+  .rebrand-page .rebrand-header[data-menu-open='true'] nav a { display: flex; align-items: center; min-height: 48px; padding: 12px; font-size: 14px; }
+  .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-phone { align-items: flex-start; }
+  .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-cta { justify-content: center; color: #fff8ed; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .consultation-phone { max-width: 320px; min-height: 76px; padding: 10px 20px; }
+  .rebrand-page .rebrand-logo { width: 148px; }
+  .rebrand-page .rebrand-header-phone > strong { font-size: 18px; }
+  .rebrand-page .rebrand-header-phone > span { font-size: 10px; }
+}
+@media (max-width: 350px) {
+  .rebrand-page .consultation-phone { min-height: 72px; padding: 10px 16px; }
+  .rebrand-page .consultation-phone > strong { font-size: 28px; }
+  .rebrand-page .rebrand-header { gap: 8px; padding-inline: 16px; }
+  .rebrand-page .rebrand-logo { width: 128px; }
+  .rebrand-page .rebrand-header-phone > strong { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rebrand-page .consultation-phone { transition: none; }
+  .rebrand-page .rebrand-kakao-float { transition: none; }
+}

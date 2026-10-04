@@ -1,0 +1,316 @@
+.jangsu-story {
+  position: relative;
+  height: 420svh;
+}
+.jangsu-stage {
+  position: sticky;
+  top: 80px;
+  height: calc(100svh - 80px);
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #d86535;
+  color: #241f1b;
+  transition: background-color .35s, color .35s;
+}
+.jangsu-stage[data-scene='1'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='2'] { background: #241f1b; color: #f7efe4; }
+.jangsu-stage[data-scene='3'] { background: #d86535; color: #241f1b; }
+.jangsu-stage-kicker {
+  position: absolute;
+  z-index: 5;
+  top: 23px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+.jangsu-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.jangsu-panel:first-of-type { opacity: 1; }
+.jangsu-panel[aria-hidden='true'] { pointer-events: none; }
+.jangsu-panel h1, .jangsu-panel h2 {
+  letter-spacing: -.065em;
+  line-height: 1.06;
+  margin: 0;
+}
+.jangsu-panel a {
+  display: inline-block;
+  padding: 12px 0;
+  border-bottom: 1px solid currentColor;
+  font-size: 13px;
+  font-weight: 700;
+}
+.jangsu-story-logo {
+  position: absolute;
+  top: 52px;
+  width: 94%;
+  left: 3%;
+  height: auto;
+}
+.jangsu-panel--welcome h1 {
+  position: absolute;
+  left: 5%;
+  top: 45%;
+  font-size: clamp(32px, 4.2vw, 72px);
+  max-width: 32%;
+}
+.jangsu-welcome-copy {
+  position: absolute;
+  right: 5%;
+  bottom: 20%;
+  font-size: 17px;
+  font-weight: 650;
+}
+.jangsu-welcome-copy a { margin-top: 15px; }
+.jangsu-traveler {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  height: 83%;
+  bottom: -1%;
+  width: min(68vw, 1000px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.jangsu-traveler img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+.jangsu-scene-number {
+  font-size: 11px;
+  letter-spacing: .15em;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 22px;
+}
+.jangsu-panel--chicken > .jangsu-scene-number {
+  position: absolute;
+  top: 11%;
+  left: 5%;
+}
+.jangsu-panel--chicken h2 {
+  position: absolute;
+  left: 5%;
+  top: 18%;
+  font-size: clamp(64px, 9vw, 150px);
+  z-index: 2;
+}
+.jangsu-panel--chicken h2 em { color: #ed9b6e; font-style: normal; }
+.jangsu-panel--chicken figure {
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
+  width: 55%;
+  height: 38%;
+  overflow: hidden;
+}
+.jangsu-panel--chicken figure img { width: 100%; height: 100%; object-fit: cover; }
+.jangsu-panel--chicken figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 35px 22px 16px;
+  background: linear-gradient(transparent, #241f1bc9);
+  font-size: 13px;
+  font-weight: 700;
+}
+.jangsu-space-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.48);
+}
+.jangsu-space-caption {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  right: 5%;
+}
+.jangsu-space-caption h2 { font-size: clamp(55px, 8vw, 130px); }
+.jangsu-space-caption p { margin-top: 30px; font-size: 18px; }
+.jangsu-space-caption a { margin-top: 16px; }
+.jangsu-panel--space > small {
+  position: absolute;
+  left: 5%;
+  bottom: 12%;
+  font-size: 11px;
+}
+.jangsu-panel--support > div {
+  position: absolute;
+  top: 12%;
+  left: 45%;
+  right: 5%;
+}
+.jangsu-panel--support h2 { font-size: clamp(38px, 5vw, 80px); }
+.jangsu-support-amount {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 25px 0 10px;
+  color: #a43d1b;
+}
+.rebrand-page .jangsu-support-amount { line-height: 1; }
+.jangsu-support-amount strong { font-family: Arial, sans-serif; font-size: clamp(100px, 15vw, 240px); letter-spacing: -.08em; font-weight: 800; }
+.jangsu-support-amount span { font-size: 25px; font-weight: 700; line-height: 1.3; }
+.jangsu-panel--support .jangsu-support-amount + p { font-size: 13px; max-width: 500px; }
+.jangsu-panel--support a { margin-top: 12px; }
+.jangsu-panel--invite > .jangsu-scene-number {
+  position: absolute;
+  top: 11%;
+  left: 5%;
+}
+.jangsu-panel--invite h2 {
+  position: absolute;
+  top: 18%;
+  left: 5%;
+  right: 5%;
+  font-size: clamp(66px, 10vw, 165px);
+  text-align: center;
+}
+.jangsu-invite-copy {
+  position: absolute;
+  right: 5%;
+  bottom: 16%;
+  width: 26%;
+  z-index: 4;
+}
+.jangsu-invite-copy p { font-size: 17px; font-weight: 700; margin-bottom: 18px; }
+.jangsu-invite-copy a { padding: 18px 22px; background: #241f1b; color: #fffdf9; display: flex; justify-content: space-between; border: 0; }
+.jangsu-stage-footer {
+  position: absolute;
+  z-index: 8;
+  bottom: 19px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Preserve the character's measured bottom lane after removing its menu. */
+  min-height: 54px;
+}
+.jangsu-stage-footer > span { font-size: 9px; letter-spacing: .1em; font-weight: 700; }
+.jangsu-stage-footer nav { display: flex; gap: 22px; }
+.jangsu-stage-footer button { border: 0; color: inherit; background: transparent; cursor: pointer; padding: 12px 0; opacity: .5; font: inherit; font-size: 11px; }
+.jangsu-stage-footer button[aria-current] { opacity: 1; border-bottom: 1px solid currentColor; }
+.jangsu-stage-footer button small { margin-right: 6px; }
+.jangsu-stage a:focus-visible, .jangsu-stage button:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+/* Details remain normal document flow: no wheel interception or scroll lock. */
+.rebrand-menu .rebrand-section-heading h2 { font-size: clamp(50px, 6vw, 90px); }
+.rebrand-space .rebrand-section-heading h2 { font-size: clamp(50px, 6vw, 90px); }
+.rebrand-benefits { background: #d86535; }
+.rebrand-benefits .rebrand-eyebrow { color: #241f1b; }
+.rebrand-benefits .benefits-heading h2 { font-size: clamp(45px, 5.5vw, 85px); }
+.rebrand-benefits .benefits-status { color: #241f1b; border-color: #241f1b; }
+.rebrand-benefits .benefit-lead { background: #241f1b; }
+.rebrand-benefits .benefit-grid { background: transparent; border: 0; gap: 0; }
+.rebrand-benefits .benefit-grid article { background: transparent; border-bottom: 1px solid #241f1b60; padding-block: 45px; }
+.rebrand-benefits .benefit-grid article:nth-child(odd) { border-right: 1px solid #241f1b60; }
+.rebrand-benefits .benefit-grid h3, .rebrand-benefits .benefit-caption, .rebrand-benefits .benefit-zero-fees > span { color: #241f1b; }
+.rebrand-benefits .benefit-grid article > strong { font-size: clamp(32px, 4vw, 58px); }
+.rebrand-benefits .benefit-grid .benefit-caption { border-top-color: #241f1b50; }
+.rebrand-fit .rebrand-section-heading h2 { font-size: clamp(43px, 4.8vw, 73px); }
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .jangsu-traveler { width: 66vw; }
+  .jangsu-welcome-copy { right: 3%; font-size: 14px; }
+  .jangsu-panel--support h2 { font-size: 40px; }
+  .jangsu-support-amount { gap: 12px; }
+  .jangsu-support-amount span { font-size: 19px; }
+  .jangsu-invite-copy { width: 29%; right: 3%; }
+}
+@media (max-width: 700px) {
+  .jangsu-story { height: 390svh; }
+  .jangsu-stage { top: 66px; height: calc(100svh - 66px); min-height: 520px; }
+  .jangsu-stage-kicker { top: 18px; left: 20px; right: 20px; font-size: 8px; }
+  .jangsu-stage-kicker span:first-child { display: none; }
+  .jangsu-story-logo { top: 47px; left: 3%; width: 94%; }
+  .jangsu-panel--welcome h1 { left: 20px; top: 33%; font-size: clamp(27px, 7.5vw, 40px); max-width: 51%; }
+  .jangsu-welcome-copy { left: 20px; right: auto; top: 62%; bottom: auto; font-size: 12px; max-width: 40%; }
+  .jangsu-welcome-copy a { font-size: 10px; margin-top: 8px; }
+  .jangsu-traveler { width: 95vw; }
+  .jangsu-stage-footer { bottom: 13px; left: 20px; right: 20px; }
+  .jangsu-stage-footer > span { display: none; }
+  .jangsu-stage-footer nav { width: 100%; justify-content: space-between; gap: 6px; }
+  .jangsu-stage-footer button { font-size: 10px; padding: 10px 0; }
+  .jangsu-stage-footer button small { display: none; }
+  .jangsu-scene-number { font-size: 9px; margin-bottom: 17px; }
+  .jangsu-panel--chicken > .jangsu-scene-number { top: 10%; left: 20px; }
+  .jangsu-panel--chicken h2 { top: 17%; left: 20px; font-size: clamp(52px, 17vw, 95px); }
+  .jangsu-panel--chicken figure { left: 20px; width: 75%; bottom: 14%; height: 39%; }
+  .jangsu-panel--chicken figcaption { font-size: 10px; padding: 35px 12px 15px; max-width: 90%; }
+  .jangsu-space-caption { left: 20px; right: 20px; top: 15%; }
+  .jangsu-space-caption h2 { font-size: clamp(40px, 11vw, 66px); line-height: 1.16; }
+  .jangsu-space-caption p { font-size: 14px; margin-top: 25px; }
+  .jangsu-space-caption a { font-size: 12px; }
+  .jangsu-panel--space > small { left: 20px; bottom: 12%; max-width: 55%; font-size: 9px; }
+  .jangsu-panel--support > div { top: 11%; left: 20px; right: 20px; }
+  .jangsu-panel--support h2 { font-size: clamp(35px, 10vw, 60px); }
+  .jangsu-support-amount { margin-top: 22px; gap: 15px; }
+  .jangsu-support-amount strong { font-size: clamp(100px, 30vw, 165px); }
+  .jangsu-support-amount span { font-size: 19px; }
+  .jangsu-panel--support .jangsu-support-amount + p { font-size: 11px; max-width: 58%; margin-top: 20px; }
+  .jangsu-panel--support .jangsu-support-amount + p br { display: none; }
+  .jangsu-panel--support a { font-size: 10px; max-width: 56%; }
+  .jangsu-panel--invite > .jangsu-scene-number { top: 10%; left: 20px; }
+  .jangsu-panel--invite h2 { top: 17%; left: 20px; right: 20px; font-size: clamp(44px, 13vw, 75px); text-align: left; }
+  .jangsu-invite-copy { bottom: 10%; left: 20px; right: 20px; width: auto; }
+  .jangsu-invite-copy p { display: none; }
+  .jangsu-invite-copy a { min-height: 54px; font-size: 13px; }
+  .rebrand-menu .rebrand-section-heading h2, .rebrand-space .rebrand-section-heading h2 { font-size: 44px; }
+  .rebrand-benefits .benefits-heading h2 { font-size: 40px; }
+  .rebrand-benefits .benefit-grid article:nth-child(odd) { border-right: 0; }
+  .rebrand-benefits .benefit-grid article { padding-inline: 0; }
+  .rebrand-fit .rebrand-section-heading h2 { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-story { height: auto; }
+  .jangsu-stage { position: relative; top: 0; height: auto; min-height: 0; background: #d86535; color: #241f1b; }
+  .jangsu-panel { position: relative; min-height: 700px; opacity: 1 !important; pointer-events: auto; }
+  .jangsu-panel--chicken { background: #241f1b; color: #f7efe4; }
+  .jangsu-panel--space { color: #f7efe4; }
+  .jangsu-panel--support { background: #f7efe4; color: #241f1b; }
+  .jangsu-panel--support > div { left: 5%; }
+  .jangsu-panel--welcome h1 { top: 42%; max-width: 60%; }
+  .jangsu-welcome-copy { bottom: 14%; }
+  .jangsu-traveler { display: none; }
+  .jangsu-stage-kicker, .jangsu-stage-footer { display: none; }
+  .jangsu-panel--invite h2 { text-align: left; }
+  .jangsu-invite-copy { left: 5%; width: 50%; }
+}
+.jangsu-reduced-character { display: none; }
+.jangsu-stage-footer nav {
+  background: #241f1be8;
+  color: #fffdf9;
+  padding: 0 16px;
+}
+.jangsu-stage-footer button { opacity: .75; }
+.jangsu-stage-footer button[aria-current] { color: #ffbd90; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-panel--welcome, .jangsu-panel--invite { background: #d86535; color: #241f1b; }
+  .jangsu-reduced-character { display: block; position: absolute; height: 60%; width: 50%; object-fit: contain; bottom: 0; right: 10%; }
+  .jangsu-welcome-copy { left: 5%; right: auto; }
+  .jangsu-panel--welcome h1 { top: 35%; font-size: 42px; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .jangsu-reduced-character { right: 0; bottom: 15%; width: 65%; height: 50%; }
+  .jangsu-panel--welcome h1 { top: 28%; font-size: 29px; }
+  .jangsu-welcome-copy { top: auto; bottom: 14%; max-width: 45%; }
+  .jangsu-panel--support .jangsu-support-amount + p { max-width: 100%; }
+  .jangsu-invite-copy { width: 90%; }
+}
+/* Keep the final action visually above the character as well as clickable. */
+.jangsu-panel--invite { z-index: 4; }

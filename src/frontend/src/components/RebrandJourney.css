@@ -1,0 +1,169 @@
+/* Carry the same scale from the first greeting to the consultation form. */
+.jangsu-stage-kicker { font-size: 12px; }
+.benefits-intro-label { display: block; margin-bottom: 20px; font-size: clamp(15px, 1.2vw, 20px); font-weight: 650; }
+.benefits-intro { top: 42%; width: 31%; }
+.jangsu-panel--welcome .benefits-intro h1 { font-size: min(6.4vw, 10svh, 110px); line-height: 1.03; }
+.benefits-intro h1 em { font-style: normal; font-size: 1.16em; }
+.benefits-intro button { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(100%, 320px); margin-top: 32px; padding: 18px 0; font-size: clamp(15px, 1.1vw, 18px); text-align: left; }
+.benefits-intro button > span { font-size: 1.5em; }
+.jangsu-stage[data-scene='0'] .jangsu-traveler { width: min(54vw, 1000px); }
+.benefits-preview { top: 35%; width: 25%; gap: 20px; }
+.benefits-preview button { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 14px 0 20px; }
+.benefits-preview button > span { max-width: none; font-size: clamp(15px, 1.15vw, 20px); }
+.benefits-preview strong { display: flex; align-items: baseline; gap: 12px; font-size: min(7.7vw, 10svh, 132px); }
+.benefits-preview small { display: inline; text-align: left; font-size: clamp(14px, 1.1vw, 19px); }
+.benefits-intro-note { bottom: 9%; width: 25%; font-size: clamp(13px, .95vw, 16px); }
+
+/* Compact definitions make the offer composition visible without dense prose. */
+.benefit-facts dl, .benefit-facts dt, .benefit-facts dd { margin: 0; }
+.benefit-facts dl { display: grid; gap: 8px; }
+.benefit-facts dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; border-bottom: 1px solid currentColor; padding-bottom: 7px; }
+.benefit-facts dt { font-weight: 600; }
+.benefit-facts dd { flex-shrink: 0; font-size: 1.18em; font-weight: 800; letter-spacing: -.045em; }
+.benefit-facts .benefit-facts-term { margin: 10px 0 0; font-size: .76em; line-height: 1.5; }
+.benefit-scene--royalty .benefit-facts { max-width: 90%; }
+
+/* A single, generous invitation beside the host, followed by a clear action. */
+.jangsu-panel--invite { display: flex; align-items: center; padding: 70px 5% 110px; }
+.jangsu-invite-content { position: relative; width: 62%; }
+.jangsu-invite-content > .jangsu-scene-number { font-size: 14px; margin-bottom: 36px; }
+.jangsu-panel--invite h2 { position: static; text-align: left; font-size: min(8.4vw, 12svh, 144px); line-height: 1.02; }
+.jangsu-invite-copy { position: static; width: min(100%, 670px); margin-top: 36px; }
+.jangsu-invite-copy p { display: block; font-size: clamp(21px, 1.65vw, 28px); font-weight: 500; line-height: 1.6; margin: 0 0 30px; }
+.jangsu-invite-copy a { align-items: center; min-height: 88px; padding: 24px 30px; font-size: clamp(22px, 1.6vw, 28px); transition: background .2s, color .2s; }
+.jangsu-invite-copy a span { font-size: 1.6em; line-height: 1; }
+.jangsu-invite-copy a:hover { background: #f7efe4; color: #241f1b; }
+.jangsu-invite-copy ol { display: flex; justify-content: space-between; gap: 16px; list-style: none; margin: 22px 0 0; padding: 0; font-size: clamp(15px, 1.05vw, 18px); font-weight: 650; }
+.jangsu-invite-copy li + li::before { content: '→'; margin-right: 20px; font-weight: 400; }
+.jangsu-stage[data-scene='6'] .jangsu-traveler { width: min(40vw, 760px); }
+.jangsu-invite-static { display: none; }
+.jangsu-panel--invite[aria-hidden='false'] .jangsu-invite-content { animation: journey-invite-enter .65s var(--impact-ease) both; }
+@keyframes journey-invite-enter { from { opacity: 0; } to { opacity: 1; } }
+.jangsu-story[data-motion-paused='true'] .jangsu-invite-content { animation-play-state: paused; }
+
+/* The real form closes the story with the same ink, cream and orange palette. */
+.rebrand-page .lead-capture-section { background: #241f1b; color: #f7efe4; padding-block: 96px; grid-template-columns: 1fr 1.15fr; gap: 64px; }
+.rebrand-page .consultation-label { color: #ed9b6e; font-size: 15px; }
+.rebrand-page .consultation-intro h2, .rebrand-page .consultation-intro h2 em { color: #f7efe4; font-size: clamp(44px, 4.5vw, 76px); }
+.rebrand-page .consultation-intro > p { color: #e0d3c4; font-size: clamp(17px, 1.2vw, 20px); }
+.consultation-host { display: flex; align-items: center; gap: 12px; width: 100%; margin-top: 28px; border-top: 1px solid #f7efe440; }
+.rebrand-page .consultation-host p { flex: 1; font-size: 16px; color: #ed9b6e; }
+.consultation-host img { width: 44%; height: auto; object-fit: contain; padding-top: 24px; }
+.rebrand-page .consultation-form-card { padding: 40px; }
+.rebrand-page .consultation-form-head > strong { font-size: clamp(32px, 3.2vw, 48px); line-height: 1.13; }
+.rebrand-page .consultation-field > span { font-size: 16px; }
+.rebrand-page .consultation-form-card button[type='submit'] { min-height: 66px; font-size: 20px; background: #d86535; color: #241f1b; }
+.rebrand-page .consultation-form-card button[type='submit']:hover { background: #241f1b; color: #f7efe4; }
+
+@media (min-width: 701px) and (min-height: 1000px) and (max-height: 1399px) {
+  .jangsu-panel--benefit:not(.benefit-scene--growth) { display: flex; align-items: center; padding: 64px 5% 100px; }
+  .jangsu-panel--benefit:not(.benefit-scene--growth) .benefit-scene-copy { position: relative; inset: auto; width: 70%; }
+  .benefit-scene--opening .benefit-scene-copy, .benefit-scene--royalty .benefit-scene-copy { margin-left: auto; }
+}
+@media (min-width: 701px) and (max-height: 999px) {
+  .benefits-intro { top: 43%; }
+  .benefits-intro-label { margin-bottom: 14px; }
+  .benefits-intro button { margin-top: 18px; }
+  .benefits-preview { top: 32%; gap: 8px; }
+  .benefits-preview button { gap: 6px; padding: 8px 0 12px; }
+  .benefits-preview strong { font-size: min(6.8vw, 8.8svh); }
+  .benefits-intro-note { bottom: 11%; font-size: 12px; }
+  .benefit-facts dl { gap: 4px; }
+  .benefit-facts dl > div { padding-bottom: 4px; }
+  .benefit-facts .benefit-facts-term { margin-top: 6px; }
+  .jangsu-invite-content > .jangsu-scene-number { margin-bottom: 22px; }
+  .jangsu-invite-copy { margin-top: 24px; }
+  .jangsu-invite-copy p { font-size: 21px; margin-bottom: 20px; }
+  .jangsu-invite-copy a { min-height: 72px; padding-block: 18px; }
+  .jangsu-invite-copy ol { margin-top: 16px; }
+}
+@media (min-width: 701px) and (max-height: 749px) {
+  .jangsu-panel--benefit:not(.benefit-scene--royalty):not(.benefit-scene--growth) h2 > strong { font-size: min(22vw, 24svh); }
+  .benefits-intro-label { font-size: 13px; }
+  .benefits-intro button { font-size: 13px; margin-top: 10px; padding-block: 12px; }
+  .benefits-preview { top: 32%; gap: 4px; }
+  .benefits-preview button { gap: 3px; padding-block: 5px; }
+  .benefits-preview button > span { font-size: 13px; }
+  .benefits-preview strong { font-size: 7.5svh; }
+  .benefits-preview small { font-size: 12px; }
+  .jangsu-invite-copy { margin-top: 20px; }
+  .jangsu-invite-copy p { font-size: 18px; margin-bottom: 16px; }
+  .jangsu-invite-copy a { min-height: 62px; padding-block: 14px; font-size: 20px; }
+  .jangsu-invite-copy ol { font-size: 14px; }
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .rebrand-page .lead-capture-section { gap: 32px; }
+  .rebrand-page .consultation-intro h2, .rebrand-page .consultation-intro h2 em { font-size: 38px; }
+  .rebrand-page .consultation-form-card { padding: 26px; }
+}
+@media (min-width: 701px) and (max-height: 700px) {
+  .jangsu-panel--benefit:not(.benefit-scene--royalty):not(.benefit-scene--growth) h2 > strong { font-size: min(22vw, 22svh); }
+}
+@media (max-width: 700px) {
+  .jangsu-stage-kicker { font-size: 9px; }
+  .benefits-intro { top: 27%; left: 20px; width: 46%; }
+  .benefits-intro-label { font-size: 11px; margin-bottom: 12px; }
+  .jangsu-panel--welcome .benefits-intro h1 { font-size: clamp(33px, 8.9vw, 58px); }
+  .benefits-intro button { min-height: 44px; font-size: 11px; gap: 6px; margin-top: 12px; padding: 8px 0; }
+  .jangsu-stage[data-scene='0'] .jangsu-traveler { width: 58vw; max-height: 44%; bottom: 41% !important; }
+  .benefits-preview { top: auto; bottom: 150px; left: 20px; right: 20px; width: auto; gap: 12px; }
+  .benefits-preview button { display: flex; gap: 8px; padding: 10px 0; }
+  .benefits-preview button > span { font-size: 11px; max-width: 110px; min-height: 33px; }
+  .benefits-preview strong { display: block; font-size: clamp(40px, 11.7vw, 68px); }
+  .benefits-preview small { display: block; font-size: 11px; margin-top: 6px; }
+  .benefits-intro-note { left: 20px; right: 20px; bottom: 84px; width: auto; font-size: 11px; line-height: 1.5; }
+  .benefit-facts dl { gap: 4px; }
+  .benefit-facts dl > div { gap: 8px; padding-bottom: 4px; }
+  .benefit-facts dt { font-size: 14px; }
+  .benefit-facts dd { font-size: 16px; }
+  .benefit-facts .benefit-facts-term { margin-top: 6px; font-size: 12px; }
+  .benefit-scene--royalty .benefit-facts { max-width: 100%; }
+  .jangsu-panel--invite { display: block; padding: 0; }
+  .jangsu-invite-content { position: absolute; inset: 8% 20px 78px; width: auto; }
+  .jangsu-invite-content > .jangsu-scene-number { font-size: 10px; margin-bottom: 22px; }
+  .jangsu-panel--invite h2 { font-size: clamp(46px, 12vw, 76px); line-height: 1.05; }
+  .jangsu-invite-copy { margin-top: 24px; width: auto; }
+  .jangsu-invite-copy p { display: block; width: 52%; font-size: 16px; line-height: 1.6; margin: 0; word-break: keep-all; }
+  .jangsu-invite-copy a { position: absolute; bottom: 34px; left: 0; right: 0; min-height: 64px; padding: 16px 20px; font-size: 19px; }
+  .jangsu-invite-copy ol { position: absolute; bottom: 0; left: 0; right: 0; margin: 0; gap: 6px; font-size: 12px; }
+  .jangsu-invite-copy li + li::before { margin-right: 10px; }
+  .jangsu-stage[data-scene='6'] .jangsu-traveler { width: 60vw; }
+  .rebrand-page .lead-capture-section { grid-template-columns: 1fr; padding: 64px 20px; gap: 32px; }
+  .rebrand-page .consultation-intro h2, .rebrand-page .consultation-intro h2 em { font-size: clamp(38px, 9.8vw, 58px); }
+  .rebrand-page .consultation-intro > p { font-size: 16px; }
+  .consultation-host { margin-top: 20px; }
+  .rebrand-page .consultation-host p { font-size: 14px; }
+  .consultation-host img { width: 32%; padding-top: 16px; }
+  .rebrand-page .consultation-form-card { padding: 28px 20px; }
+  .rebrand-page .consultation-form-head > strong { font-size: 30px; }
+}
+@media (max-width: 700px) and (max-height: 700px) {
+  .benefits-intro-label { margin-bottom: 8px; }
+  .benefits-intro button { margin-top: 8px; }
+  .jangsu-stage[data-scene='0'] .jangsu-traveler { max-height: 40%; bottom: 46% !important; }
+  .benefits-preview { bottom: 134px; }
+  .benefits-preview button { gap: 4px; padding-block: 5px; }
+  .benefits-preview button > span { font-size: 10px; min-height: 30px; }
+  .benefits-preview strong { font-size: 40px; }
+  .benefits-preview small { font-size: 10px; margin-top: 3px; }
+  .benefits-intro-note { bottom: 78px; font-size: 10px; }
+  .benefit-scene--royalty h2 > strong { font-size: min(73vw, 34svh); }
+  .jangsu-invite-content > .jangsu-scene-number { margin-bottom: 18px; }
+  .jangsu-invite-copy { margin-top: 18px; }
+  .jangsu-invite-copy p { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jangsu-stage .jangsu-panel--welcome { min-height: 850px; }
+  .jangsu-stage .jangsu-panel--invite { display: flex; min-height: 680px; }
+  .jangsu-invite-content { animation: none !important; }
+  .jangsu-invite-static { display: block; position: absolute; right: 0; bottom: 10%; width: 34%; max-height: 75%; object-fit: contain; }
+  .jangsu-stage .jangsu-panel--benefit:not(.benefit-scene--growth) { display: block; padding: 0; }
+  .jangsu-stage .jangsu-panel--benefit:not(.benefit-scene--growth) .benefit-scene-copy { width: auto; margin: 0; }
+  .benefits-intro button { display: none; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .jangsu-stage .jangsu-panel--welcome { min-height: 700px; }
+  .jangsu-stage .jangsu-panel--invite { min-height: 620px; }
+  .jangsu-invite-static { bottom: 200px; right: 0; width: 47%; max-height: 35%; }
+  .jangsu-reduced-character { right: 0; bottom: 40%; width: 55%; }
+}
