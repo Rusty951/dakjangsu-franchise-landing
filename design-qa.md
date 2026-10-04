@@ -836,3 +836,15 @@ Implementation uses the four WebP portraits with a cream circular background and
 390×844 inspection confirms all four56px profiles loaded, readable branch/topic labels,0px overflow and no visible edge-color artifact at their actual UI size. Enter selects 서울문정점 with the correct v6ybPKjfPf8 link, selector focus retained and0 iframes; restored the first selection afterward. Screens are 3d-profiles-desktop.jpg, 3d-profiles-tablet.jpg, 3d-profiles-mobile.jpg and3d-profiles-final-in-app.jpg in the existing review folder. Temporary viewport reset; the current in-app tab remains the private review URL.
 
 final result: four3D profile-image options produced and applied to the local selector, with bounded generation, source and responsive checks passed.
+
+## 2026-10-04 - Authorized operations and3D owner rollout verification
+
+Source commit ecec040e3a6a8e4758998e50d463224f1b82d53c is pushed to origin/codex/hero-7000-preview. Deployment dpl_8JQR9zodunM9ESPaJ149Je4gz8Bn is READY at https://dakjangsu-client-sample.vercel.app/?concept=rebrand, with immutable URL https://dakjangsu-client-sample-iedijz08t-dakjangsu-s-projects.vercel.app. Explicit build/runtime VITE_REVIEW_ONLY=true, cloud install/client+SSR build/prerender/function packaging pass. Review bundles index-DSc6NYFk.js/index-BtdeAAUv.css match the local review build; all7 API tests pass.
+
+Anonymous stable-alias HTTP200 confirms noindex, new operations/owner sections and four branch names, without the old taste/menu block. All four served WebP SHA256s match the v3 records and total49,550 bytes. Empty JSON POST to /api/leads returns403 before lead processing. The official-domain project still reports dpl_8EMUD3ibo18SysLuLhTukxt4Ecm8.
+
+Public1280×800 and390×844 screens show all four portraits loaded at naturalWidth256 and0px horizontal overflow, with owner section top y80.11/y65.70 respectively. Native Enter selects 문정점 with the correct v6ybPKjfPf8 original link and no autoplay. Explicit first-video play is observed in the YouTube frame at currentTime70.73, paused=false and readyState4; switching to 세곡점 removes the iframe. Review notice and “입력 내용 확인하기” submit label remain, and no page analytics script is inserted. No real inquiry. Captures: public-owner-profiles-desktop.jpg/public-owner-profiles-mobile.jpg in the existing review folder.
+
+The prior private tab was unavailable in this browser session, whose inventory was empty. A fresh public tab was created, then bound to its returned ID1; other user tabs were not closed. Temporary viewport reset and the stable sample alias is left open in the selected in-app tab. Wider local v1/v2/v3 checks and recorded font/physical-device/preference/full-size-native-edge limits remain applicable.
+
+final result: authorized sample rollout and bounded public verification passed.
