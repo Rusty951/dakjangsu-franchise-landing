@@ -8,12 +8,12 @@
 
 | 컴퓨터 | 코드 정본 |
 | --- | --- |
-| Mac Studio | `/Users/bananabk/Documents/Codex/2026-10-01/task/dakjangsu-7000-preview` |
+| Mac Studio | `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing` |
 | MacBook | `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing` |
 
 MacBook 경로는 사용자 전달 보고서의 2026-10-05 17:29 KST 확인 결과를 기준으로 하며, Studio에서 MacBook 파일시스템을 직접 점검한 것은 아닙니다.
 
-Studio의 `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing`은 이전 독립 이력과 stash 2개를 보존한 원본입니다. 현재 정본이나 배포 소스로 사용하지 않으며, 이름만 보고 두 폴더를 덮어쓰거나 옛 이력을 다시 합치지 않습니다.
+Studio의 이전 독립 이력 원본은 `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing-preserved-legacy-20261005`에 보존합니다. 현재 main에 없는 고유 문서·자료, 독립 로컬 설정과 stash 2개가 남아 있는 정리 예외이며, 정본이나 배포 소스로 사용하지 않습니다. 옛 이력이나 설정을 현재 정본에 자동으로 합치거나 덮어쓰지 않습니다.
 
 ## 화면
 
@@ -64,6 +64,6 @@ Vercel Root Directory는 저장소 루트, build command는 `npm run vercel-buil
 
 ## 복구와 보존
 
-코드 문제는 현재 `main`의 원인 커밋을 확인하고 수정 또는 revert 커밋으로 복구합니다. 이전 Projects 원본과 stash는 그대로 보존하며 복구를 이유로 현재 리브랜딩 소스에 다시 적용하지 않습니다. 배포 복구는 실제 배포 대상과 직전 성공 배포를 확인해 별도로 진행하고, 샘플의 빌드·함수 검토 모드를 다시 확인합니다.
+코드 문제는 현재 `main`의 원인 커밋을 확인하고 수정 또는 revert 커밋으로 복구합니다. 이전 원본과 stash는 위 보존 경로에서 유지하며 복구를 이유로 현재 리브랜딩 소스에 다시 적용하지 않습니다. 배포 복구는 실제 배포 대상과 직전 성공 배포를 확인해 별도로 진행하고, 샘플의 빌드·함수 검토 모드를 다시 확인합니다.
 
 [AGENT.md](AGENT.md)는 작업 정책, [검수 기준](docs/review/checklist.md)은 화면·문의 보호 검증을 안내합니다. Desktop 검토 산출물은 소스에 포함되지 않습니다.
