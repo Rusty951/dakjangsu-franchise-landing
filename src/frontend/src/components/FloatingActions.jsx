@@ -24,7 +24,9 @@ const FloatingActions = ({ onKakaoClick, contactEmail }) => {
       return undefined;
     }
 
-    const blockingSections = [...document.querySelectorAll('#founder-fit, #menu-showcase, #lead-capture')];
+    const blockingSections = [
+      ...document.querySelectorAll('.shock-hook-section, .menu-proof-section, #owner-interview, #founder-fit, #menu-showcase, #lead-capture')
+    ];
 
     if (blockingSections.length === 0) {
       return undefined;
@@ -35,9 +37,9 @@ const FloatingActions = ({ onKakaoClick, contactEmail }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            visibleSections.add(entry.target.id);
+            visibleSections.add(entry.target);
           } else {
-            visibleSections.delete(entry.target.id);
+            visibleSections.delete(entry.target);
           }
         });
         setIsContentBlocked(visibleSections.size > 0);
