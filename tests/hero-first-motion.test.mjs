@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getHeroGreetingState, getOpeningPresentationState, heroGreetingDuration } from '../src/frontend/src/utils/heroGreeting.mjs';
+import { getHeroGreetingState, getOpeningPresentationState, getConsultationArrivalState, heroGreetingDuration, consultationArrivalDuration } from '../src/frontend/src/utils/heroGreeting.mjs';
 
 const pose = { left: [.1468, .6971], right: [.8737, .7047] };
 const state = time => getHeroGreetingState(time, pose);
@@ -58,4 +58,21 @@ test('opening hand stays continuous at every display frame', () => {
     assert(Math.hypot(point[0] - previous[0], point[1] - previous[1]) < .0013);
     previous = point;
   }
+});
+
+test('consultation arrives once without swapping poses or repeating the hand gesture', () => {
+  let previousX = Infinity, previousOpacity = -1;
+  for (let time = 0; time <= consultationArrivalDuration; time += 20) {
+    const state = getConsultationArrivalState(time, pose);
+    assert.equal(state.from, state.to);
+    assert.equal(state.mix, 0);
+    assert.deepEqual(state.points, pose);
+    assert(state.arrival.x <= previousX);
+    assert(state.arrival.opacity >= previousOpacity);
+    previousX = state.arrival.x;
+    previousOpacity = state.arrival.opacity;
+  }
+  const settled = getConsultationArrivalState(consultationArrivalDuration, pose);
+  assert.deepEqual(settled.arrival, { x: 0, y: 0, opacity: 1 });
+  assert.deepEqual(getConsultationArrivalState(10000, pose), settled);
 });

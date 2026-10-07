@@ -20,6 +20,10 @@ export default function JangsuHeroMotion({ scene = 0 }) {
       root.dataset.progress = state.offset.toFixed(3);
       root.dataset.poses = `${state.from + 1}:${state.to + 1}`;
       root.dataset.blend = state.mix.toFixed(3);
+      if (state.arrival) {
+        root.style.transform = `translate(${state.arrival.x}%, ${state.arrival.y}%)`;
+        root.style.opacity = String(state.arrival.opacity);
+      }
     };
     const running = () => !preference.matches && !document.hidden && onScreen && story?.dataset.motionPaused !== 'true';
     const tick = time => {
@@ -36,12 +40,12 @@ export default function JangsuHeroMotion({ scene = 0 }) {
     const sync = () => {
       if (disposed || !renderer) return;
       cancelAnimationFrame(frame); frame = 0; lastTime = undefined;
-      if (preference.matches) { root.dataset.phase = 'static'; return; }
+      if (preference.matches) { root.dataset.phase = 'static'; root.style.transform = ''; root.style.opacity = ''; return; }
       root.dataset.phase = elapsed >= duration ? 'settled' : 'playing';
       root.dataset.paused = String(!running()); paint();
       if (running() && elapsed < duration) frame = requestAnimationFrame(tick);
     };
-    const fallback = () => { cancelAnimationFrame(frame); frame = 0; root.dataset.phase = 'static'; };
+    const fallback = () => { cancelAnimationFrame(frame); frame = 0; root.dataset.phase = 'static'; root.style.transform = ''; root.style.opacity = ''; };
     const contextLost = event => { event.preventDefault(); renderer = undefined; fallback(); };
     canvas.addEventListener('webglcontextlost', contextLost);
     const visibility = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; sync(); });

@@ -32,3 +32,17 @@ export const getOpeningPresentationState = (elapsed, pose) => {
     },
   };
 };
+
+export const consultationArrivalDuration = 800;
+
+// The final chapter welcomes the visitor with one short entrance, rather
+// than repeating the support chapters' palm gesture.
+export const getConsultationArrivalState = (elapsed, pose) => {
+  const offset = Math.min(1, Math.max(0, elapsed / consultationArrivalDuration));
+  const eased = 1 - (1 - offset) ** 3;
+  return {
+    from: 4, to: 4, mix: 0, offset,
+    points: { left: [...pose.left], right: [...pose.right] },
+    arrival: { x: (1 - eased) * 6, y: (1 - eased) * 1.5, opacity: eased },
+  };
+};

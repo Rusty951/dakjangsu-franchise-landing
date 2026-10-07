@@ -2,6 +2,7 @@
 .jangsu-hero-arrival { position: relative; width: 100%; height: 100%; }
 .jangsu-gesture-fallback, .jangsu-gesture-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .jangsu-gesture-canvas { visibility: hidden; }
+.jangsu-hero-gesture[data-gesture-scene='6'][data-phase='loading'] { opacity: 0; }
 .jangsu-hero-gesture:is([data-phase='playing'],[data-phase='settled']) .jangsu-gesture-canvas { visibility: visible; }
 .jangsu-hero-gesture:is([data-phase='playing'],[data-phase='settled']) .jangsu-gesture-fallback { visibility: hidden; }
 .jangsu-stage[data-scene='0'] .hero-offer-total .hero-offer-amount { transform-origin: left bottom; }
