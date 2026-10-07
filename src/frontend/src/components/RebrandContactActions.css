@@ -12,7 +12,7 @@
 .rebrand-page .rebrand-phone-link > span { font-size: 11px; font-weight: 650; line-height: 1.2; }
 .rebrand-page .rebrand-phone-link > strong { font-size: 20px; font-weight: 800; line-height: 1.1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .rebrand-page .rebrand-header nav .rebrand-header-phone { flex-direction: row; align-items: center; gap: 8px; padding-block: 0; }
-.rebrand-page .rebrand-header-phone > span { font-size: 12px; }
+.rebrand-page .rebrand-header-phone > span { padding: 5px 8px; border-radius: 6px; background: #a74321; color: #fff8ed; font-size: 12px; font-weight: 750; }
 .rebrand-page .rebrand-phone-link:hover { color: var(--rebrand-orange); }
 .rebrand-page .rebrand-phone-link:focus-visible { outline: 2px solid var(--rebrand-orange); outline-offset: 5px; }
 .rebrand-page .consultation-phone {
