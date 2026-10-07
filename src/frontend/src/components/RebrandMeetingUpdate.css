@@ -1,0 +1,88 @@
+/* The October meeting updates the offer and inserts a brand chapter.
+   Existing benefit act IDs and their visual treatment are preserved. */
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait):not([data-reduced='true']) {
+  height: calc(var(--story-chapter-count) * 100svh);
+}
+.rebrand-page .jangsu-progress-guide ol { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+.rebrand-page .jangsu-stage[data-scene='brand'] { background: #fff8ed; color: #241f1b; }
+.rebrand-page .jangsu-stage[data-scene='brand'] .jangsu-traveler,
+.rebrand-page .jangsu-stage[data-scene='brand'] .hero-stage-logo { visibility: hidden; }
+.rebrand-page .jangsu-stage[data-scene='0']::before { inset: 0 0 0 74%; }
+.rebrand-page .jangsu-story--massive:not(.jangsu-story--portrait):not([data-reduced='true']) .jangsu-stage[data-scene='0'] { --massive-window-left: 74%; --massive-window-width: 26%; --massive-window-top: 22%; --massive-window-bottom: 0px; --massive-body-height: min(54svh, 25vw); }
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage[data-scene='0'] .jangsu-traveler {
+  left: 82% !important; width: 32vw !important; height: 64% !important; bottom: 14% !important;
+}
+.rebrand-page .jangsu-panel--welcome:has(.offer-overview) { background: transparent; }
+.rebrand-page .offer-overview { position: absolute; inset: 30px var(--layout-gutter) 32px; }
+.rebrand-page .offer-overview-copy { position: relative; z-index: 4; max-width: 70%; }
+.rebrand-page .offer-eyebrow { margin: 0 0 12px; font-size: 13px; font-weight: 750; letter-spacing: .03em; }
+.rebrand-page .offer-overview-heading h1 { position: static; max-width: none; margin: 0; font-size: clamp(30px, 3.1vw, 46px); line-height: 1.2; color: #241f1b; }
+.rebrand-page .offer-summary { margin-top: 20px; }
+.rebrand-page .offer-summary-label { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
+.rebrand-page .offer-summary-amount { display: flex; align-items: baseline; gap: 14px; font: 400 clamp(76px, 8.3vw, 120px)/1 var(--font-display); letter-spacing: -.05em; }
+.rebrand-page .offer-summary-amount small { font: 750 22px/1.3 var(--font-sans); letter-spacing: -.04em; }
+.rebrand-page .offer-components { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0 12px; }
+.rebrand-page .offer-components > div { padding: 12px 14px; border: 1px solid #241f1b; background: #fff8ed; }
+.rebrand-page .offer-components dt { font-size: 13px; font-weight: 650; line-height: 1.4; }
+.rebrand-page .offer-components dd { display: flex; flex-direction: column; margin: 4px 0 0; font: 400 36px/1.1 var(--font-display); }
+.rebrand-page .offer-components dd small { margin-top: 2px; font: 500 12px/1.4 var(--font-sans); }
+.rebrand-page .offer-sales-basis { margin: 0; font-size: 13px; font-weight: 650; line-height: 1.6; }
+.rebrand-page .offer-summary-note, .rebrand-page .offer-separate-note { margin: 8px 0 0; font-size: 12px; line-height: 1.6; max-width: 70ch; }
+.rebrand-page .offer-next { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 16px; min-height: 48px; border: 1px solid #241f1b; padding: 12px 18px; background: #241f1b; color: #fff8ed; font: 750 15px/1.4 var(--font-sans); cursor: pointer; }
+.rebrand-page .offer-next:hover { background: #fff8ed; color: #241f1b; }
+.rebrand-page .offer-next:focus-visible { outline: 3px solid #241f1b; outline-offset: 4px; }
+.rebrand-page .offer-next > span { font-size: 22px; }
+.rebrand-page .brand-story-copy { position: absolute; inset: 42px var(--layout-gutter) 110px; display: flex; flex-direction: column; justify-content: center; max-width: 1100px; margin-inline: auto; }
+.rebrand-page .brand-story-copy h2 { font-size: clamp(38px, 4.2vw, 64px); line-height: 1.2; }
+.rebrand-page .brand-story-copy h2 em { color: #a43f18; font-style: normal; }
+.rebrand-page .brand-story-intro { margin: 20px 0 0; font-size: 17px; line-height: 1.7; }
+.rebrand-page .brand-story-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.rebrand-page .brand-story-reasons section { padding: 20px 0 0; border-top: 1px solid #241f1b; }
+.rebrand-page .brand-story-reasons span { font-size: 13px; font-weight: 750; color: #a43f18; }
+.rebrand-page .brand-story-reasons h3 { margin: 8px 0; font-size: 24px; line-height: 1.3; letter-spacing: -.045em; }
+.rebrand-page .brand-story-reasons p { margin: 0; max-width: 44ch; font-size: 15px; line-height: 1.75; }
+.rebrand-page .brand-story-note { margin: 20px 0 0; font-size: 12px; line-height: 1.6; }
+.rebrand-page .brand-story-copy .offer-next { align-self: flex-start; }
+@media (min-height: 641px) and (max-height: 800px) {
+  .rebrand-page .offer-overview { inset-block: 20px 24px; }
+  .rebrand-page .offer-overview-heading h1 { font-size: 32px; }
+  .rebrand-page .offer-summary { margin-top: 12px; }
+  .rebrand-page .offer-summary-amount { font-size: 84px; }
+  .rebrand-page .offer-components { margin-top: 10px; }
+  .rebrand-page .offer-components > div { padding-block: 8px; }
+  .rebrand-page .brand-story-copy { inset-block: 24px 100px; }
+  .rebrand-page .brand-story-copy h2 { font-size: 42px; }
+  .rebrand-page .brand-story-reasons { margin-top: 20px; }
+}
+@media (max-width: 1024px) and (orientation: portrait), (max-height: 640px), (prefers-reduced-motion: reduce) {
+  .rebrand-page .jangsu-stage[data-scene='0']::before { display: none; }
+  .rebrand-page .jangsu-panel--welcome:has(.offer-overview) { min-height: 0; padding: 24px var(--layout-gutter) 40px; background: #d86535; }
+  .rebrand-page .offer-overview { position: relative; inset: auto; max-width: 580px; margin-inline: auto; }
+  .rebrand-page .offer-overview-copy { max-width: none; }
+  .rebrand-page .offer-overview-heading h1 { font-size: 28px; line-height: 1.2; }
+  .rebrand-page .offer-summary { margin-top: 16px; }
+  .rebrand-page .offer-summary-amount { font-size: 80px; gap: 10px; }
+  .rebrand-page .offer-summary-amount small { font-size: 18px; }
+  .rebrand-page .offer-components { gap: 8px; margin-top: 12px; }
+  .rebrand-page .offer-components > div { padding: 10px 8px; }
+  .rebrand-page .offer-components dt { font-size: 11px; min-height: 30px; }
+  .rebrand-page .offer-components dd { font-size: 30px; }
+  .rebrand-page .offer-components dd small { font-size: 11px; }
+  .rebrand-page .offer-sales-basis { font-size: 12px; }
+  .rebrand-page .offer-next { width: 100%; }
+  .rebrand-page .offer-character-slot { margin: 20px 0 0; height: 230px; }
+  .rebrand-page .jangsu-panel--welcome:has(.offer-overview) .jangsu-reduced-character { display: none; }
+  .rebrand-page .jangsu-panel--brand { min-height: 0; padding: 48px var(--layout-gutter) 100px; background: #fff8ed; color: #241f1b; }
+  .rebrand-page .brand-story-copy { position: relative; inset: auto; display: block; max-width: 580px; }
+  .rebrand-page .brand-story-copy h2 { font-size: 34px; line-height: 1.25; }
+  .rebrand-page .brand-story-intro { font-size: 15px; margin-top: 20px; }
+  .rebrand-page .brand-story-reasons { grid-template-columns: 1fr; gap: 24px; margin-top: 28px; }
+  .rebrand-page .brand-story-reasons h3 { font-size: 22px; }
+  .rebrand-page .brand-story-copy .offer-next { margin-top: 24px; }
+}
+@media (max-width: 380px) {
+  .rebrand-page .offer-overview-heading h1 { font-size: 25px; }
+  .rebrand-page .offer-summary-amount { font-size: 72px; }
+  .rebrand-page .offer-components dd { font-size: 27px; }
+  .rebrand-page .brand-story-copy h2 { font-size: 30px; }
+}

@@ -1,59 +1,29 @@
-// Review-only scenario: these sales are an assumption, never a store result.
-const example = {
-  monthlySales: 2500,
-  royaltyRate: 0.033,
-  royaltyMonths: 24,
-  opening: 740,
-  kitchen: 500,
-  creditMonths: 12,
-};
-const royalty = example.monthlySales * example.royaltyRate * example.royaltyMonths;
-// Apply the proposal's sales thresholds to this example, not the maximum credit.
-const monthlyCredit = example.monthlySales >= 4000 ? 100 : example.monthlySales >= 3000 ? 30 : 0;
-const credit = monthlyCredit * example.creditMonths;
-const total = example.opening + example.kitchen + credit + royalty;
-const roundedTotal = Math.round(total / 1000) * 1000;
-const format = value => new Intl.NumberFormat('ko-KR').format(value);
-
 import { heroGestureStill } from '../utils/heroGesture';
+import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
 export default function RebrandHeroOffer({ onExplore, portrait = false }) {
   return (
-    <div className="hero-offer">
-      <header className="hero-offer-heading">
-        <h1 tabIndex={-1}>사장님, <span>시작부터 부담을 덜어드릴게요.</span></h1>
-        <p className="hero-offer-intro">
-          가맹비와 교육비, 주방 설비부터<br />첫 2년 로열티까지.
-        </p>
-      </header>
-
-      <section className="hero-offer-total" aria-label="조건부 혜택 합산 계산 예시">
-        <p className="hero-offer-label"><span>2년 합산 계산 예시</span><b>조건 충족 가정, 약</b>{portrait && <span className="hero-offer-noncash">현금 지급액 아님</span>}</p>
-        <strong className="hero-offer-amount"><b className="hero-offer-numeral">{format(roundedTotal)}</b><small>만원 상당</small></strong>
-        <p className="hero-offer-basis">
-          월매출 {format(example.monthlySales)}만원을 {example.royaltyMonths}개월 유지하고<br />
-          오픈 및 주방 지원 조건을 충족한 경우의 합산 예시입니다.
-        </p>
-        <p className="hero-offer-calculated"><span>계산값 {format(total)}만원</span><span>매출 가정 포함</span>{!portrait && <span>현금 지급액 아님</span>}</p>
-        {portrait && <div className="portrait-character-slot" data-character-scene="0" aria-hidden="true"><img src={heroGestureStill} alt="" width="1254" height="1254" /></div>}
-      </section>
-
-      <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제 조건">
-        <p className="hero-offer-label"><span>440만원 면제 조건</span><b>가맹비, 교육비</b></p>
-        <strong className="hero-offer-amount"><b className="hero-offer-numeral">0</b><small>원</small></strong>
-        <p className="hero-offer-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
-      </section>
-
-      <div className="hero-offer-bottom">
-        <p className="hero-offer-breakdown">
-          <span>오픈 {example.opening} + 주방 {example.kitchen} + 물류 {format(credit)} + 로열티 {format(royalty)}만원</span>
-          <span>주방: 선착순 5개점 기준 확인 중 / 물류: 이 예시는 월매출 3,000만원 미만이라 제외</span>
-          <span>혜택 적용 여부와 모집 수량, 세부 조건은 확인 중입니다. 본사 상담에서 안내합니다.</span>
-        </p>
-        <button className="hero-offer-explore" type="button" onClick={onExplore}>
-          <span>지원 항목 살펴보기 <span className="hero-offer-explore-icon" aria-hidden="true" /></span>
-        </button>
+    <div className="offer-overview">
+      <div className="offer-overview-copy">
+        <header className="offer-overview-heading">
+          <p className="offer-eyebrow">닭장수후라이드 창업 지원안</p>
+          <h1 tabIndex={-1}>문을 여는 준비부터,<br />장사를 이어가는 힘까지.</h1>
+        </header>
+        <section className="offer-summary" aria-label="조건부 지원 합산 계산 예시">
+          <p className="offer-summary-label">2년간 조건 충족 시, 합산 예시</p>
+          <strong className="offer-summary-amount">{format(example.total)}<small>만원 상당</small></strong>
+          <dl className="offer-components" aria-label="지원 금액 구성">
+            <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
+            <div><dt>주방 지원</dt><dd>{format(example.kitchen)}<small>만원 상당</small></dd></div>
+            <div><dt>조건부 물류 크레딧</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
+          </dl>
+          <p className="offer-sales-basis">계산 가정: 첫 12개월 월매출 3,000만원, 다음 12개월 월매출 4,000만원.<br />물류 크레딧 월 30만원 × 12개월 + 월 100만원 × 12개월.</p>
+          <p className="offer-summary-note">현금 지급액이 아닙니다. 오픈과 주방 지원 조건 충족을 가정하며, 물류 지원 기간과 혜택 적용 조건은 확인 중입니다.</p>
+        </section>
+        <p className="offer-separate-note">가맹비와 교육비 면제 440만원은 오픈 지원에 포함됩니다.<br />로열티 면제는 별도 혜택으로 안내하며 합산에서 제외했습니다. 임대, 인테리어 등은 별도 비용입니다.</p>
+        <button className="offer-next" type="button" onClick={onExplore}>새로운 닭장수 이야기 <span aria-hidden="true">↓</span></button>
       </div>
+      {portrait && <div className="portrait-character-slot offer-character-slot" data-character-scene="0" aria-hidden="true"><img src={heroGestureStill} alt="" width="1254" height="1254" /></div>}
     </div>
   );
 }
