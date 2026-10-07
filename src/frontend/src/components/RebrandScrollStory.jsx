@@ -383,18 +383,22 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <img className="jangsu-reduced-character" src={heroGestureStill} alt="닭장수 캐릭터" width="1254" height="1254" />
           <RebrandHeroOffer onExplore={event => goToChapter(1, event.detail === 0)} portrait={portrait} />
         </article>
-        <article className="jangsu-panel jangsu-panel--brand" {...panelProps(1)}>
-          <div className="brand-story-copy">
-            <p className="offer-eyebrow">02 / 새로운 닭장수</p>
-            <h2 tabIndex={-1}>오래 장사할 사장님과,<br /><em>함께 시작하려고요.</em></h2>
-            <p className="brand-story-intro">간판부터 매장 분위기까지, 새로운 닭장수를 준비합니다.<br />매장을 직접 돌보고 꾸준히 운영할 사장님을 모십니다.</p>
-            <div className="brand-story-reasons">
-              <section><span>문을 열 때</span><h3>시작의 부담을 줄이도록</h3><p>가맹비와 교육비, 오픈 마케팅, 주방 설비까지. 점포 조건에 맞는 지원으로 창업 준비를 돕는 방향입니다.</p></section>
-              <section><span>장사를 이어갈 때</span><h3>운영에도 보탬이 되도록</h3><p>매출 기준을 달성한 뒤에는 물류 크레딧으로 운영 부담을 덜도록 설계하고 있습니다.</p></section>
+        <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
+          <div className="benefit-scene-copy brand-story-copy">
+            <span className="benefit-scene-index">02 / 새로운 닭장수</span>
+            <h2 tabIndex={-1}>
+              <span>간판부터 매장 분위기까지, 새롭게</span>
+              <b>오래 장사할 사장님과,<br />함께 시작하려고요.</b>
+            </h2>
+            <div className="benefit-scene-detail">
+              <p>매장을 직접 돌보고 꾸준히 운영할 사장님을 모십니다.</p>
+              <p>문을 열 때는 오픈과 주방 지원으로,<br />장사를 이어갈 때는 조건에 따른 물류 지원으로.<br />시작과 운영의 부담을 덜도록 준비하고 있습니다.</p>
             </div>
-            <p className="brand-story-note">새로운 매장 모습과 지원안은 준비 중입니다. 적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
-            <button type="button" className="offer-next" onClick={event => goToChapter(2, event.detail === 0)}>지원 항목 살펴보기 <span aria-hidden="true">↓</span></button>
+            <p className="benefit-scene-note">새로운 매장 모습과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
+            {portrait && <PortraitCharacterSlot scene={0} />}
+            <button type="button" className="story-cta brand-story-next" onClick={event => goToChapter(2, event.detail === 0)}><span>지원 항목 살펴보기 <span className="story-cta-icon" aria-hidden="true" /></span></button>
           </div>
+          <img className="brand-static-character" loading="lazy" src={heroGestureStill} alt="" width="1254" height="1254" />
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
@@ -446,7 +450,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <img className="jangsu-invite-static" src={heroGestureStill} alt="" width="1254" height="1254" loading="lazy" />
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
-          <div className="jangsu-character-canvas">{scene === 'brand' ? null : scene === 0 ? <JangsuHeroMotion key={`hero-${heroReplay}`} /> : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuHeroMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuHeroMotion key={`royalty-${royaltyReplay}`} scene={4} /> : scene === 6 ? <JangsuHeroMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
+          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuHeroMotion key="brand" /> : scene === 0 ? <JangsuHeroMotion key={`hero-${heroReplay}`} /> : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuHeroMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuHeroMotion key={`royalty-${royaltyReplay}`} scene={4} /> : scene === 6 ? <JangsuHeroMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
         {scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
