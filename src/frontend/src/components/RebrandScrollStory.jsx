@@ -392,11 +392,11 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             </h2>
             <div className="benefit-scene-detail">
               <p>매장을 직접 돌보고 꾸준히 운영할 사장님을 모십니다.</p>
-              <p>문을 열 때는 오픈과 주방 지원으로,<br />장사를 이어갈 때는 조건에 따른 물류 지원으로.<br />시작과 운영의 부담을 덜도록 준비하고 있습니다.</p>
+              <p>문을 열 때는 오픈과 주방 지원으로, 장사를 이어갈 때는 조건에 따른 물류 지원으로. 시작과 운영의 부담을 덜도록 준비하고 있습니다.</p>
             </div>
             <p className="benefit-scene-note">새로운 매장 모습과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
-            {portrait && <PortraitCharacterSlot scene={0} />}
             <button type="button" className="story-cta brand-story-next" onClick={event => goToChapter(2, event.detail === 0)}><span>지원 항목 살펴보기 <span className="story-cta-icon" aria-hidden="true" /></span></button>
+            {portrait && <PortraitCharacterSlot scene={0} />}
           </div>
           <img className="brand-static-character" loading="lazy" src={heroGestureStill} alt="" width="1254" height="1254" />
         </article>

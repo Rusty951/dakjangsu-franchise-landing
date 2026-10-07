@@ -7,8 +7,8 @@
 .rebrand-page .hero-offer-parts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 0; max-width: min(340px, 24vw); color: #fff8ed; }
 .rebrand-page .hero-offer-parts > div { border-top: 1px solid currentColor; padding-top: 8px; }
 .rebrand-page .hero-offer-parts dt { font: 650 12px/1.4 var(--font-sans); }
-.rebrand-page .hero-offer-parts dd { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin: 3px 0 0; font: 400 30px/1.1 var(--font-display); }
-.rebrand-page .hero-offer-parts small { font: 500 11px/1.4 var(--font-sans); }
+.rebrand-page .hero-offer-parts dd { display: block; margin: 3px 0 0; font: 400 30px/1.1 var(--font-display); }
+.rebrand-page .hero-offer-parts small { display: block; margin-top: 4px; font: 500 11px/1.4 var(--font-sans); }
 .rebrand-page .hero-offer .hero-offer-basis { max-width: 42ch; margin-top: 12px; font-size: 12px; line-height: 1.6; }
 .rebrand-page .jangsu-stage[data-scene='brand'] { background: #f7efe4; color: #241f1b; }
 .rebrand-page .brand-story-copy h2 > b { margin-top: 18px; }
@@ -30,14 +30,46 @@
   .jangsu-story--portrait .brand-static-character { display: none; }
 }
 
-@media (min-width: 701px) and (min-height: 641px) and (max-height: 800px) {
-  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total .hero-offer-numeral { font-size: min(24vw, 20svh); }
-  .rebrand-page .hero-offer-parts { margin-top: 10px; }
-  .rebrand-page .hero-offer .hero-offer-basis { margin-top: 8px; }
-  .rebrand-page .hero-offer .hero-offer-calculated { margin-top: 4px; }
-}
-
 .jangsu-stage[data-scene='brand'] .jangsu-character-canvas { width: var(--massive-body-height); }
 @media (max-width: 1024px) and (orientation: portrait), (max-height: 640px) {
   .jangsu-story--massive .jangsu-stage[data-scene='brand'] { --massive-body-height: min(100vw, 620px); --massive-body-top: 0px; }
+}
+
+/* Align the two hero values on one baseline, using the existing display type. */
+.rebrand-page .brand-story-copy .benefit-scene-detail { max-width: 44ch; }
+.rebrand-page .brand-story-copy .benefit-scene-note { max-width: 48ch; }
+.rebrand-page .brand-story-copy > .brand-story-next { margin-top: 16px; min-height: 48px; }
+@media (min-width: 701px) and (min-height: 641px) {
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer { --hero-aligned-value: min(24vw, 24svh, 300px); }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-total .hero-offer-numeral,
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-numeral { font-size: var(--hero-aligned-value); line-height: .86; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-amount { flex-direction: column; align-items: flex-end; gap: 0; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-zero .hero-offer-amount small { margin-top: 8px; font-size: 24px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-parts { gap: 12px; margin-top: 12px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-scope { margin-top: 16px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-panel--brand { padding-block: 40px 108px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .brand-story-copy h2 > span { font-size: clamp(20px, 1.8vw, 26px); }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .brand-story-copy h2 > b { font-size: clamp(34px, 3.2vw, 48px); line-height: 1.22; margin-top: 16px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .brand-story-copy .benefit-scene-detail { margin-top: 24px; }
+}
+@media (min-width: 701px) and (min-height: 641px) and (max-height: 780px) {
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer { --hero-aligned-value: 18svh; --offer-top-space: 0px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-parts dd { font-size: 24px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer .hero-offer-basis { font-size: 11px; }
+}
+@media (min-width: 701px) and (min-height: 641px) and (max-height: 700px) {
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer { --hero-aligned-value: min(18svh, max(60px, calc(100svh - 580px))); }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-heading h1 { font-size: 32px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer-label { margin-bottom: 8px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer .hero-offer-basis { margin-top: 8px; }
+  .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .hero-offer .hero-offer-calculated { margin-top: 6px; }
+}
+@media (max-width: 1024px) and (orientation: portrait), (max-height: 640px) {
+  .rebrand-page .jangsu-story--portrait .hero-offer-calculated { text-align: left; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy h2 { gap: 0; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy h2 > span { max-width: calc(100% - 64px); font-size: 19px; line-height: 1.5; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy h2 > b { margin-top: 16px; font-size: clamp(28px, 7.6vw, 38px); line-height: 1.25; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy .benefit-scene-detail { margin-top: 24px; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy > .brand-story-next { margin-top: 16px; min-height: 48px; }
+  .rebrand-page .jangsu-story--portrait .jangsu-panel--brand .portrait-character-slot { margin-top: 24px; }
 }
