@@ -19,3 +19,16 @@ export const getHeroGreetingState = (elapsed, pose) => {
     },
   };
 };
+
+// Opening support is presented from the left side of the screen. Keep the
+// resting arm fixed and give the hand beside the offer one restrained gesture.
+export const getOpeningPresentationState = (elapsed, pose) => {
+  const state = getHeroGreetingState(elapsed, pose);
+  return {
+    ...state,
+    points: {
+      left: [...pose.left],
+      right: state.points.right.map((value, axis) => pose.right[axis] + (value - pose.right[axis]) * .4),
+    },
+  };
+};

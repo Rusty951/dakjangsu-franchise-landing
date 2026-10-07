@@ -1,4 +1,4 @@
-import { getHeroGestureState, heroGesturePoses } from './heroGesture';
+import { getHeroGestureState, heroGesturePoses, usesSingleHeroPose } from './heroGesture';
 
 const vertexSource = `
 attribute vec2 point;
@@ -71,7 +71,7 @@ export const createHeroGestureRenderer = (canvas, images, scene = 0) => {
   gl.uniform1i(uniforms.image,0); gl.enable(gl.BLEND); gl.blendFunc(gl.ONE,gl.ONE);
   const draw = (index, state, weight, bodyPass = false, armSide = 0) => {
     const pose = heroGesturePoses[index];
-    gl.bindTexture(gl.TEXTURE_2D,textures[scene === 0 ? 0 : index]);
+    gl.bindTexture(gl.TEXTURE_2D,textures[usesSingleHeroPose(scene) ? 0 : index]);
     for (const side of ['left','right']) {
       gl.uniform2fv(uniforms[`${side}Palm`],pose[side]);
       gl.uniform2fv(uniforms[`${side}Delta`],bodyPass ? [0,0] : state.points[side].map((value,axis) => value-pose[side][axis]));

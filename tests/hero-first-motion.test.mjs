@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getHeroGreetingState, heroGreetingDuration } from '../src/frontend/src/utils/heroGreeting.mjs';
+import { getHeroGreetingState, getOpeningPresentationState, heroGreetingDuration } from '../src/frontend/src/utils/heroGreeting.mjs';
 
 const pose = { left: [.1468, .6971], right: [.8737, .7047] };
 const state = time => getHeroGreetingState(time, pose);
@@ -35,5 +35,27 @@ test('first-page easing settles without a sharp start or stop', () => {
   for (const t of [1, heroGreetingDuration - 1]) {
     const point = state(t).points.left;
     assert(Math.hypot(point[0] - pose.left[0], point[1] - pose.left[1]) < .000001);
+  }
+});
+
+test('opening presentation keeps one pose and the resting arm still', () => {
+  let maximumReach = 0;
+  for (let time = 0; time <= heroGreetingDuration; time += 20) {
+    const frame = getOpeningPresentationState(time, pose);
+    assert.equal(frame.from, frame.to);
+    assert.equal(frame.mix, 0);
+    assert.deepEqual(frame.points.left, pose.left);
+    maximumReach = Math.max(maximumReach, Math.hypot(...frame.points.right.map((value, axis) => value - pose.right[axis])));
+  }
+  assert(maximumReach > .005 && maximumReach < .025);
+  assert.deepEqual(getOpeningPresentationState(heroGreetingDuration, pose).points, pose);
+});
+
+test('opening hand stays continuous at every display frame', () => {
+  let previous = pose.right;
+  for (let time = 1000 / 60; time < heroGreetingDuration; time += 1000 / 60) {
+    const point = getOpeningPresentationState(time, pose).points.right;
+    assert(Math.hypot(point[0] - previous[0], point[1] - previous[1]) < .0013);
+    previous = point;
   }
 });

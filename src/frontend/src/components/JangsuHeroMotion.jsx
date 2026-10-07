@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
-import { getHeroGestureDuration, heroGesturePoses, heroGestureStill } from '../utils/heroGesture';
+import { getHeroGestureDuration, heroGesturePoses, heroGestureStill, usesSingleHeroPose } from '../utils/heroGesture';
 import { createHeroGestureRenderer } from '../utils/heroGestureRenderer';
 import './JangsuHeroMotion.css';
 
@@ -26,7 +26,7 @@ export default function JangsuHeroMotion({ scene = 0 }) {
       frame = 0;
       if (!running() || disposed) { lastTime = undefined; return; }
       if (lastTime !== undefined) {
-        const delta = scene === 0 ? Math.min(time - lastTime, 50) : time - lastTime;
+        const delta = usesSingleHeroPose(scene) ? Math.min(time - lastTime, 50) : time - lastTime;
         elapsed = Math.min(duration, elapsed + delta);
       }
       lastTime = time; paint();
@@ -51,7 +51,7 @@ export default function JangsuHeroMotion({ scene = 0 }) {
     const resize = new ResizeObserver(paint); resize.observe(root);
     document.addEventListener('visibilitychange', sync);
     preference.addEventListener('change', sync);
-    const poses = scene === 0 ? [heroGesturePoses[4]] : heroGesturePoses;
+    const poses = usesSingleHeroPose(scene) ? [heroGesturePoses[4]] : heroGesturePoses;
     Promise.all(poses.map(async ({ source }) => {
       const image = new Image(); image.src = source; await image.decode(); return image;
     })).then(images => {
