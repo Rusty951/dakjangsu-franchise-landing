@@ -10,6 +10,10 @@
 .rebrand-page .hero-offer-parts dd { display: block; margin: 3px 0 0; font: 400 30px/1.1 var(--font-display); }
 .rebrand-page .hero-offer-parts small { display: block; margin-top: 4px; font: 500 11px/1.4 var(--font-sans); }
 .rebrand-page .hero-offer .hero-offer-basis { max-width: 42ch; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+.rebrand-page .hero-offer .hero-offer-waiver-details { margin: 12px 0 0; font-size: 12px; line-height: 1.7; text-align: right; }
+.rebrand-page .hero-offer-waiver-details > span { display: block; }
+.rebrand-page .hero-offer-zero .hero-offer-label b > span { display: inline; margin: 0; font: inherit; }
+.rebrand-page .hero-offer-zero .hero-offer-label b > span + span::before { content: ', '; }
 .rebrand-page .jangsu-stage[data-scene='brand'] { background: #f7efe4; color: #241f1b; }
 .rebrand-page .brand-story-copy h2 > b { margin-top: 18px; }
 .rebrand-page .brand-story-copy .benefit-scene-detail p { margin: 0 0 16px; }
@@ -21,6 +25,11 @@
   .rebrand-page .jangsu-story--portrait .hero-offer-parts dd { display: block; font-size: 30px; }
   .rebrand-page .jangsu-story--portrait .hero-offer-parts small { display: block; margin-top: 3px; }
   .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-basis { max-width: none; text-align: left; }
+  .rebrand-page .jangsu-story--portrait .hero-offer-zero .hero-offer-amount { align-self: center; }
+  .rebrand-page .jangsu-story--portrait .hero-offer-zero .hero-offer-label b > span { display: block; white-space: nowrap; }
+  .rebrand-page .jangsu-story--portrait .hero-offer-zero .hero-offer-label b > span + span::before { content: none; }
+  .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-waiver-details { grid-column: 1 / -1; grid-row: 2; margin: 4px 0 0; text-align: left; }
+  .rebrand-page .jangsu-story--portrait .hero-offer .hero-offer-scope { grid-row: 3; }
   .rebrand-page .jangsu-story--portrait .hero-offer .portrait-character-slot { margin-top: 24px; }
   .rebrand-page .jangsu-story--portrait .jangsu-panel--brand { background: #f7efe4; color: #241f1b; padding-bottom: 108px; }
 }

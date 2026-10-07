@@ -22,9 +22,10 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
         {portrait && <div className="portrait-character-slot" data-character-scene="0" aria-hidden="true"><img src={heroGestureStill} alt="" width="1254" height="1254" /></div>}
       </section>
 
-      <section className="hero-offer-zero" aria-label="가맹비와 교육비 면제 조건">
-        <p className="hero-offer-label"><span>440만원 면제 조건</span><b>가맹비, 교육비</b></p>
+      <section className="hero-offer-zero" aria-label="가맹비와 교육비, 첫 2년 로열티 면제 조건">
+        <p className="hero-offer-label"><span>조건 충족 시 면제</span><b><span>가맹비, 교육비</span><span>첫 2년 로열티</span></b></p>
         <strong className="hero-offer-amount"><b className="hero-offer-numeral">0</b><small>원</small></strong>
+        <p className="hero-offer-waiver-details"><span>가맹비와 교육비 440만원은 오픈 지원 740만원에 포함.</span><span>로열티 면제는 2,800만원 합산에서 제외.</span><span>혜택 적용 조건 확인 중.</span></p>
         <p className="hero-offer-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
       </section>
 
