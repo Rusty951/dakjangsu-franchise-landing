@@ -11,14 +11,14 @@ export const heroGesturePoses = [
 ].map(pose => ({ ...pose, source: assetPath(`/rebrand/poses/hero-gesture-v2/${pose.name}.webp`) }));
 
 export const heroGestureDuration = 2800;
-export const usesSingleHeroPose = scene => scene === 0 || scene === 2;
+export const usesSingleHeroPose = scene => scene === 0 || scene === 2 || scene === 4;
 export const getHeroGestureDuration = scene => usesSingleHeroPose(scene) ? heroGreetingDuration : heroGestureDuration;
 export const heroGestureStill = heroGesturePoses[4].source;
 const poseTimes = [0, .2, .36, .52, .68, .84];
 // Continuous palm registration prevents a new pose from jumping sideways.
 export const getHeroGestureState = (elapsed, scene = 0) => {
   if (scene === 0) return getHeroGreetingState(elapsed, heroGesturePoses[4]);
-  if (scene === 2) return getOpeningPresentationState(elapsed, heroGesturePoses[4]);
+  if (scene === 2 || scene === 4) return getOpeningPresentationState(elapsed, heroGesturePoses[4]);
   const offset = Math.min(1, Math.max(0, elapsed / heroGestureDuration));
   const next = poseTimes.findIndex(time => time > offset);
   const from = next < 0 ? poseTimes.length - 1 : Math.max(0, next - 1);

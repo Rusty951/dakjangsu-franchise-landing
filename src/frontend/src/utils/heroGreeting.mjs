@@ -20,7 +20,7 @@ export const getHeroGreetingState = (elapsed, pose) => {
   };
 };
 
-// Opening support is presented from the left side of the screen. Keep the
+// Opening and royalty support are presented from the left side. Keep the
 // resting arm fixed and give the hand beside the offer one restrained gesture.
 export const getOpeningPresentationState = (elapsed, pose) => {
   const state = getHeroGreetingState(elapsed, pose);

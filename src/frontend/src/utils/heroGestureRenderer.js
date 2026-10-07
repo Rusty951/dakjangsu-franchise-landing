@@ -89,7 +89,7 @@ export const createHeroGestureRenderer = (canvas, images, scene = 0) => {
       gl.viewport(0,0,width,height); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
       const state = getHeroGestureState(elapsed,scene);
       draw(4,state,1,true);
-      if (scene === 4 || scene === 6) {
+      if (scene === 6) {
         const resting = { ...state, points: { ...state.points, left: heroGesturePoses[2].left } };
         draw(2,resting,1,false,-1);
         draw(state.from,state,1-state.mix,false,1);
