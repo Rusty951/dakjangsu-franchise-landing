@@ -3,6 +3,8 @@ import { assetPath } from '../assetPath';
 import { heroGestureStill } from '../utils/heroGesture';
 import JangsuMotion from './JangsuMotion';
 import JangsuHeroMotion from './JangsuHeroMotion';
+import JangsuChapterMotion from './JangsuChapterMotion';
+import { chapterMotions } from '../utils/chapterMotion.mjs';
 import JangsuFeeMotion from './JangsuFeeMotion';
 import './JangsuOpeningMotion.css';
 import JangsuKitchenMotion from './JangsuKitchenMotion';
@@ -63,6 +65,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   const [liftAssets, setLiftAssets] = useState('loading');
   const [liftReplay, setLiftReplay] = useState(0);
   const [heroReplay, setHeroReplay] = useState(0);
+  const [brandReplay, setBrandReplay] = useState(0);
   const [feeReplay, setFeeReplay] = useState(0);
   const [openingReplay, setOpeningReplay] = useState(0);
   const [kitchenReplay, setKitchenReplay] = useState(0);
@@ -312,6 +315,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
     }
     if (portrait) {
       if (active === index) {
+        if (destinationScene === 'brand') setBrandReplay(replay => replay + 1);
         if (destinationScene === 0) setHeroReplay(replay => replay + 1);
         if (destinationScene === 1) setFeeReplay(replay => replay + 1);
         if (destinationScene === 2) setOpeningReplay(replay => replay + 1);
@@ -330,6 +334,10 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
       if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
+      return;
+    }
+    if (destinationScene === 'brand' && active === index) {
+      setBrandReplay(replay => replay + 1);
       return;
     }
     if (destinationScene === 0 && active === index) {
@@ -396,23 +404,23 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             </div>
             <p className="benefit-scene-note">새로운 매장 모습과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
             <button type="button" className="story-cta brand-story-next" onClick={event => goToChapter(2, event.detail === 0)}><span>지원 항목 살펴보기 <span className="story-cta-icon" aria-hidden="true" /></span></button>
-            {portrait && <PortraitCharacterSlot scene={0} />}
+            {portrait && <PortraitCharacterSlot scene="brand" />}
           </div>
-          <img className="brand-static-character" loading="lazy" src={heroGestureStill} alt="" width="1254" height="1254" />
+          <img className="brand-static-character" loading="lazy" src={assetPath(chapterMotions.brand.source)} alt="" width="1122" height="1402" />
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
-            {benefit.id === 'opening' && <img className="opening-static-character" loading="lazy" src={heroGestureStill} alt="닭장수 캐릭터" width="1254" height="1254" />}
+            {benefit.id === 'opening' && <img className="opening-static-character" loading="lazy" src={assetPath(chapterMotions[2].source)} alt="닭장수 캐릭터" width="1122" height="1402" />}
             {benefit.id === 'kitchen' && <img className="kitchen-static-character" loading="lazy" src={assetPath('/rebrand/poses/kitchen-support-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
-            {benefit.id === 'royalty' && <img className="royalty-static-character" loading="lazy" src={heroGestureStill} alt="닭장수 캐릭터" width="1254" height="1254" />}
+            {benefit.id === 'royalty' && <img className="royalty-static-character" loading="lazy" src={assetPath(chapterMotions[4].source)} alt="닭장수 캐릭터" width="1122" height="1402" />}
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 3} / {chapters[index + 2]} 지원</span>
               <h2 tabIndex={-1}>
                 <span>{benefit.label}</span>
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={scene === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(6)} /><small>{benefit.unit}</small>
-                </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 2} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 2)} /><small>{benefit.unit}</small></>}</strong>
+                </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 2 && benefit.id !== 'royalty'} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 2)} /><small>{benefit.unit}</small></>}</strong>
                 <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원 조건</span></> : benefit.title}</b>
               </h2>
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
@@ -447,10 +455,10 @@ export default function RebrandScrollStory({ onConditionsClick }) {
               <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
-          <img className="jangsu-invite-static" src={heroGestureStill} alt="" width="1254" height="1254" loading="lazy" />
+          <img className="jangsu-invite-static" src={assetPath(chapterMotions[6].source)} alt="" width="1122" height="1402" loading="lazy" />
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
-          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuHeroMotion key="brand" /> : scene === 0 ? <JangsuHeroMotion key={`hero-${heroReplay}`} /> : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuHeroMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuHeroMotion key={`royalty-${royaltyReplay}`} scene={4} /> : scene === 6 ? <JangsuHeroMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
+          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? <JangsuHeroMotion key={`hero-${heroReplay}`} /> : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
         {scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
@@ -494,5 +502,5 @@ const portraitPoses = [
   '/rebrand/poses/hero-gesture-v2/05-present.webp',
 ];
 function PortraitCharacterSlot({ scene }) {
-  return <span className="portrait-character-slot" data-character-scene={scene} aria-hidden="true"><img src={assetPath(portraitPoses[scene])} loading="lazy" alt="" width="1122" height="1402" /></span>;
+  return <span className="portrait-character-slot" data-character-scene={scene} aria-hidden="true"><img src={assetPath(chapterMotions[scene]?.source || portraitPoses[scene])} loading="lazy" alt="" width="1122" height="1402" /></span>;
 }

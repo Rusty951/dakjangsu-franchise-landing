@@ -20,6 +20,7 @@ import './RebrandLayout.css';
 import './RebrandCharacterScale.css';
 import './RebrandContactActions.css';
 import './RebrandMeetingUpdate.css';
+import './JangsuChapterMotion.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
