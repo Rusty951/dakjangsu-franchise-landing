@@ -22,6 +22,7 @@ import './RebrandContactActions.css';
 import './RebrandMeetingUpdate.css';
 import './JangsuChapterMotion.css';
 import './RebrandBrandStory.css';
+import './RebrandHeroMobileFrame.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
