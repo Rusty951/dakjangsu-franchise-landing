@@ -392,16 +392,14 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <div className="benefit-scene-copy brand-story-copy">
             <span className="benefit-scene-index">02 / 새로운 닭장수</span>
             <h2 tabIndex={-1}>
-              <span className="brand-story-name">닭장수후라이드가</span>
-              <b className="brand-story-headline"><span>새롭게</span><span><em>시작합니다.<span className="brand-story-underline" aria-hidden="true" /></em></span></b>
+              <span className="brand-story-name">새롭게 시작하는 닭장수후라이드.</span>
+              <b className="brand-story-headline"><span>함께 제대로 장사해 볼</span><span><em>사장님을 찾습니다.<span className="brand-story-underline" aria-hidden="true" /></em></span></b>
             </h2>
-            <p className="brand-story-intro">새로운 매장 디자인으로 다시 출발합니다.<br />이 시작을 사장님과 함께하고 싶습니다.</p>
             <div className="brand-story-reason">
               <span className="brand-story-rail" aria-hidden="true" />
-              <p>함께 시작할 사장님의 부담을 덜기 위해</p>
-              <h3>창업 지원안을 준비했습니다.</h3>
+              <p>새 출발을 함께할 사장님을 위해</p>
+              <h3>파격적인 창업 지원을 준비했습니다.</h3>
             </div>
-            <p className="brand-story-outro">오픈을 준비할 때부터 운영을 이어갈 때까지,<br />도움이 되도록 지원 항목을 나눠 준비했습니다.</p>
             <p className="benefit-scene-note">매장 디자인과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
             {portrait && <PortraitCharacterSlot scene="brand" />}
           </div>
