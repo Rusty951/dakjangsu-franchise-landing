@@ -58,13 +58,7 @@
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-support .recruitment-amount b { color: #fff8ed; }
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-scope { border-color: #fff8ed40; }
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-title :is(span, strong) {
-  background: linear-gradient(90deg, #241f1b 50%, #fff8ed 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.jangsu-story:not(.jangsu-story--portrait) .recruitment-title strong {
-  background-image: linear-gradient(90deg, #241f1b 50%, #ed9b6e 50%);
+  color: #fff;
 }
 
 /* Use real flow on portrait and short screens, with a bounded first viewport. */
