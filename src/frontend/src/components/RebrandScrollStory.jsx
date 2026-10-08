@@ -395,12 +395,12 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <div className="benefit-scene-copy brand-story-copy">
             <span className="benefit-scene-index">02 / 새로운 닭장수</span>
             <h2 tabIndex={-1}>
-              <b className="brand-story-headline"><span>간판은 새롭게.</span><span>장사는 <em>오래도록.</em></span></b>
+              <b className="brand-story-headline"><span>간판은 새롭게.</span><span>장사는 <em>오래도록.<span className="brand-story-underline" aria-hidden="true" /></em></span></b>
             </h2>
             <p className="brand-story-intro">매장을 직접 돌보고, 꾸준히 운영할 사장님과 함께하려고요.</p>
             <ul className="brand-story-beats" aria-label="시작부터 운영까지 준비하는 지원">
-              <li><strong>문을 열 때</strong><p>오픈과 주방 지원으로 시작의 부담을 덜어드리려 합니다.</p></li>
-              <li><strong>장사를 이어갈 때</strong><p>매출 조건에 따른 물류 지원도 함께 준비합니다.</p></li>
+              <li><span className="brand-story-rail" aria-hidden="true" /><strong>문을 열 때</strong><p>오픈과 주방 지원으로 시작의 부담을 덜어드리려 합니다.</p></li>
+              <li><span className="brand-story-rail" aria-hidden="true" /><strong>장사를 이어갈 때</strong><p>매출 조건에 따른 물류 지원도 함께 준비합니다.</p></li>
             </ul>
             <p className="benefit-scene-note">매장 디자인과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
             <button type="button" className="story-cta brand-story-next" onClick={event => goToChapter(2, event.detail === 0)}><span>지원 항목 살펴보기 <span className="story-cta-icon" aria-hidden="true" /></span></button>

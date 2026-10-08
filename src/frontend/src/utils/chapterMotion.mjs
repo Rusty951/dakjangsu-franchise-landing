@@ -3,8 +3,8 @@ const rest = { opacity: 1, transform: 'translate(0, 0) scale(1) rotate(0deg)' };
 export const chapterMotions = {
   brand: {
     source: '/rebrand/poses/hero-presentation-v1/01-neutral.png',
-    duration: 900,
-    frames: [{ opacity: 0, transform: 'translateY(12px)' }, rest],
+    duration: 450,
+    frames: [{ opacity: 0 }, { opacity: 1 }],
   },
   2: {
     source: '/rebrand/poses/opening-package-v1/03-present.png',
