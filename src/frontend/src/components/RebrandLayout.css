@@ -91,9 +91,8 @@
 .rebrand-page .rebrand-closing-faq { padding: var(--layout-section-space) var(--layout-gutter); }
 .rebrand-page .rebrand-closing-faq { padding-block: 64px; background: #f7efe4; color: #241f1b; }
 .rebrand-page .rebrand-closing-faq .rebrand-closing-label { color: #a74321; }
-.rebrand-page .rebrand-closing-questions summary > span { color: #a74321; }
-.rebrand-page .rebrand-closing-questions summary::after { color: #665b52; }
-.rebrand-page .rebrand-closing-questions details > p { color: #51473e; }
+.rebrand-page .rebrand-closing-questions h3 > span { color: #a74321; }
+.rebrand-page .rebrand-closing-questions .rebrand-faq-answer > p { color: #51473e; }
 .rebrand-page .rebrand-support-terms > summary small { color: #665b52; }
 .rebrand-page .rebrand-support-terms > summary::after { color: #a74321; }
 .rebrand-page .rebrand-support-content { background: #fffaf3; }
@@ -101,7 +100,7 @@
 .rebrand-page .rebrand-closing-faq h2,
 .rebrand-page .consultation-intro h2 { font-size: clamp(40px, 4.5vw, 64px); line-height: 1.16; letter-spacing: -.045em; }
 .rebrand-page .rebrand-closing-faq h2 { font-size: clamp(32px, 3.2vw, 44px); }
-.rebrand-page .rebrand-closing-questions summary { min-height: 72px; padding-block: 22px; }
+.rebrand-page .rebrand-closing-questions h3 { min-height: 72px; padding-block: 22px; }
 .rebrand-page .rebrand-support-terms { margin-top: 40px; }
 .rebrand-page .rebrand-support-terms > summary small { font-size: 13px; }
 .rebrand-page .rebrand-support-content { font-size: 15px; word-break: keep-all; overflow-wrap: break-word; }

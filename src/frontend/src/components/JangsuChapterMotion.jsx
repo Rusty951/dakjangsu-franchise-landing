@@ -32,10 +32,9 @@ export default function JangsuChapterMotion({ scene, onSettled }) {
         });
         animate(stage.querySelector('.brand-story-underline'), [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 560, delay: 760 });
         animate(stage.querySelector('.brand-story-intro'), [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 680 });
-        stage.querySelectorAll('.brand-story-beats > li').forEach((beat, index) => {
-          animate(beat, [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 1000 + index * 300 });
-          animate(beat.querySelector('.brand-story-rail'), [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 400, delay: 920 + index * 300 });
-        });
+        animate(stage.querySelector('.brand-story-reason'), [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 1000 });
+        animate(stage.querySelector('.brand-story-rail'), [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 400, delay: 920 });
+        animate(stage.querySelector('.brand-story-outro'), [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 1300 });
       }
       if (scene === 2) stage.querySelectorAll('.opening-package-card').forEach((card, index) => {
         animate(card, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, delay: 140 + index * 140 });

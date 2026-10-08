@@ -18,10 +18,10 @@ export default function RebrandClosing({ conditionsRef }) {
       <div className="rebrand-closing-faq-grid">
         <header><p className="rebrand-closing-label">자주 묻는 질문</p><h2 id="faq-title">상담 전에,<br />세 가지만.</h2></header>
         <div className="rebrand-closing-questions">
-          {questions.map(([question, answer], index) => <details key={question} open>
-            <summary><span aria-hidden="true">0{index + 1}</span><strong>{question}</strong></summary>
+          {questions.map(([question, answer], index) => <article key={question} className="rebrand-faq-answer">
+            <h3><span aria-hidden="true">0{index + 1}</span><strong>{question}</strong></h3>
             <p>{answer}</p>
-          </details>)}
+          </article>)}
         </div>
       </div>
       <details ref={conditionsRef} className="rebrand-support-terms" id="rebrand-benefits">

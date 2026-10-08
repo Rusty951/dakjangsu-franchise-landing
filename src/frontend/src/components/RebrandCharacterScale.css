@@ -188,8 +188,9 @@
   .rebrand-page .consultation-host img { grid-column: 2; grid-row: 1 / 5; align-self: center; justify-self: end; width: min(100%, 250px); height: 320px; min-height: 0; }
 }
 @media (max-width: 700px) {
-  .rebrand-page .consultation-host { display: grid; width: 100%; }
-  .rebrand-page .consultation-host p { font-size: 15px; }
+  .rebrand-page .consultation-host { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 16px; align-items: center; }
+  .rebrand-page .consultation-host p { grid-column: 1; grid-row: 1; font-size: 14px; line-height: 1.7; }
+  .rebrand-page .consultation-host img { grid-column: 2; grid-row: 1; justify-self: end; width: 100%; height: auto; max-height: 200px; }
 }
 
 /* Static fallback follows the same restrained supporting scenes. */

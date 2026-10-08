@@ -5,22 +5,23 @@
   line-height: 1.1;
   letter-spacing: -.045em;
 }
+.rebrand-page .jangsu-story .brand-story-copy h2 > span.brand-story-name { margin-bottom: 10px; font-size: 24px; }
 .brand-story-headline > span { display: block; }
 .brand-story-headline em { position: relative; display: inline-block; color: #b75024; font: inherit; }
 .brand-story-underline { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; border-radius: 50% 20% 40% 25%; background: #b75024; transform-origin: left center; }
 .rebrand-page .brand-story-copy .brand-story-intro { margin: 18px 0 0; font-size: 16px; line-height: 1.65; }
-.brand-story-beats { list-style: none; margin: 22px 0 0; padding: 0; }
-.brand-story-beats > li { position: relative; display: grid; grid-template-columns: 132px 1fr; align-items: baseline; gap: 16px; padding: 12px 0 12px 19px; }
+.brand-story-reason { position: relative; margin-top: 28px; padding-left: 20px; }
 .brand-story-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #c66835; transform-origin: center top; }
-.brand-story-beats > li + li { margin-top: 8px; }
-.brand-story-beats strong { font-size: 16px; font-weight: 750; }
-.brand-story-beats p { margin: 0; max-width: 32ch; font-size: 15px; line-height: 1.55; word-break: keep-all; }
+.rebrand-page .brand-story-reason p { margin: 0 0 6px; font-size: 15px; line-height: 1.65; }
+.rebrand-page .brand-story-reason h3 { margin: 0; font: 750 clamp(22px, 2vw, 28px)/1.4 var(--font-sans); letter-spacing: -.035em; word-break: keep-all; }
+.rebrand-page .brand-story-copy .brand-story-outro { margin: 20px 0 0; font-size: 15px; line-height: 1.7; }
 .rebrand-page .brand-story-copy .benefit-scene-note { margin-top: 18px; font-size: 12px; line-height: 1.65; }
-.rebrand-page .brand-story-copy > .brand-story-next { margin-top: 16px; }
 @media (max-width: 1024px) and (orientation: portrait), (max-height: 640px) {
   .rebrand-page .jangsu-story--portrait .brand-story-copy h2 { text-align: left; }
-  .rebrand-page .jangsu-story--portrait .brand-story-copy h2 > b.brand-story-headline { font-size: clamp(34px, 9.5vw, 52px); line-height: 1.15; }
-  .brand-story-beats > li { grid-template-columns: 1fr; gap: 5px; padding-block: 10px; }
-  .brand-story-beats p { max-width: none; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy h2 > b.brand-story-headline { margin-top: 0; font-size: clamp(44px, 12vw, 60px); line-height: 1.15; }
+  .rebrand-page .jangsu-story--portrait .jangsu-stage .brand-story-copy h2 > span.brand-story-name { max-width: none; font-size: 21px; }
+  .brand-story-reason { margin-top: 24px; padding-left: 16px; }
+  .rebrand-page .brand-story-reason h3 { font-size: clamp(20px, 5.7vw, 26px); }
+  .rebrand-page .brand-story-copy .brand-story-outro { font-size: 14px; }
   .rebrand-page .brand-story-copy .benefit-scene-note { font-size: 12px; }
 }

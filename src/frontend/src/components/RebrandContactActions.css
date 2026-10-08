@@ -73,7 +73,9 @@
   .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-cta { justify-content: center; color: #fff8ed; }
 }
 @media (max-width: 700px) {
-  .rebrand-page .consultation-phone { max-width: 320px; min-height: 76px; padding: 10px 20px; }
+  .rebrand-page .consultation-intro > p { width: 100%; max-width: none; }
+  .rebrand-page .consultation-phone { max-width: none; min-height: 76px; padding: 10px 20px; }
+  .rebrand-page .consultation-intro h2 em { font-size: inherit; line-height: inherit; }
   .rebrand-page .rebrand-logo { width: 148px; }
   .rebrand-page .rebrand-header-phone > strong { font-size: 18px; }
   .rebrand-page .rebrand-header-phone > span { font-size: 10px; }

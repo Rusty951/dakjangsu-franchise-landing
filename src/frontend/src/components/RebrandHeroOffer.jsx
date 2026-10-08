@@ -1,7 +1,7 @@
 import { heroGestureStill } from '../utils/heroGesture';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
-export default function RebrandHeroOffer({ onExplore, portrait = false }) {
+export default function RebrandHeroOffer({ portrait = false }) {
   return (
     <div className="hero-offer">
       <header className="hero-offer-heading">
@@ -28,12 +28,9 @@ export default function RebrandHeroOffer({ onExplore, portrait = false }) {
         <p className="hero-offer-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
       </section>
 
-      <div className="hero-offer-bottom">
-        {!portrait && <p className="hero-offer-calculated"><span>지원 조건과 기간 확인 중</span><span>현금 지급액 아님</span></p>}
-        <button className="hero-offer-explore" type="button" onClick={onExplore}>
-          <span>새로운 닭장수 이야기 <span className="hero-offer-explore-icon" aria-hidden="true" /></span>
-        </button>
-      </div>
+      {!portrait && <div className="hero-offer-bottom">
+        <p className="hero-offer-calculated"><span>지원 조건과 기간 확인 중</span><span>현금 지급액 아님</span></p>
+      </div>}
     </div>
   );
 }

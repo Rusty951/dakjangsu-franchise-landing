@@ -47,13 +47,11 @@
 .rebrand-closing-faq-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
 .rebrand-closing-faq .rebrand-closing-label { color: #ed9b6e; }
 .rebrand-page .rebrand-closing-faq h2 { margin: 0; font: 400 clamp(44px, 4.9vw, 76px)/1.08 var(--font-display); letter-spacing: -.05em; }
-.rebrand-closing-questions summary { display: flex; gap: 18px; align-items: baseline; min-height: 76px; padding: 24px 0; cursor: pointer; list-style: none; }
-.rebrand-closing-questions summary::-webkit-details-marker, .rebrand-support-terms > summary::-webkit-details-marker { display: none; }
-.rebrand-closing-questions summary > span { color: #ed9b6e; font-size: 13px; }
-.rebrand-closing-questions summary > strong { flex: 1; font: 650 18px/1.5 var(--font-sans); }
-.rebrand-closing-questions summary::after { content: '열기'; flex-shrink: 0; color: #d6c7b6; font: 450 12px/1.5 var(--font-sans); }
-.rebrand-closing-questions details[open] > summary::after { content: '닫기'; }
-.rebrand-closing-questions details > p { margin: 0; padding: 0 0 24px 34px; max-width: 620px; font-size: 16px; line-height: 1.8; color: #e0d3c4; }
+.rebrand-closing-questions h3 { display: flex; gap: 18px; align-items: baseline; min-height: 76px; padding: 24px 0; margin: 0; }
+.rebrand-support-terms > summary::-webkit-details-marker { display: none; }
+.rebrand-closing-questions h3 > span { color: #ed9b6e; font-size: 13px; }
+.rebrand-closing-questions h3 > strong { flex: 1; font: 650 18px/1.5 var(--font-sans); }
+.rebrand-closing-questions .rebrand-faq-answer > p { margin: 0; padding: 0 0 24px 34px; max-width: 620px; font-size: 16px; line-height: 1.8; color: #e0d3c4; }
 .rebrand-support-terms { margin-top: 48px; scroll-margin-top: 100px; }
 .rebrand-support-terms > summary { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 18px 0; list-style: none; cursor: pointer; font-size: 16px; }
 .rebrand-support-terms > summary small { margin-left: auto; color: #d6c7b6; font-size: 12px; }
@@ -95,9 +93,9 @@
   .rebrand-closing-faq { padding: 48px 24px; }
   .rebrand-page .rebrand-closing-faq h2 { font-size: 44px; }
   .rebrand-closing-faq-grid { gap: 32px; }
-  .rebrand-closing-questions summary { gap: 12px; min-height: 76px; padding: 22px 0; }
-  .rebrand-closing-questions summary > strong { font-size: 16px; }
-  .rebrand-closing-questions details > p { padding-left: 0; font-size: 15px; }
+  .rebrand-closing-questions h3 { gap: 12px; min-height: 76px; padding: 22px 0; }
+  .rebrand-closing-questions h3 > strong { font-size: 16px; }
+  .rebrand-closing-questions .rebrand-faq-answer > p { padding-left: 0; font-size: 15px; }
   .rebrand-support-terms { margin-top: 32px; scroll-margin-top: 82px; }
   .rebrand-support-terms > summary { flex-wrap: wrap; gap: 4px 12px; padding-block: 16px; font-size: 15px; }
   .rebrand-support-terms > summary small { order: 1; flex-basis: 100%; margin: 0; }
