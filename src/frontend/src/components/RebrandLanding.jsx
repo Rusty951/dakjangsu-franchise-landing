@@ -64,15 +64,8 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
         <a href="#top" className="rebrand-logo" aria-label="닭장수후라이드 가맹 안내 첫 화면">
           <img src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="512" height="128" />
         </a>
-        <nav id="rebrand-navigation" aria-label="페이지 메뉴">
-          <a href="#rebrand-story">창업 혜택</a>
-          <a href="#rebrand-operations">매장 공간</a>
-          <a href="#rebrand-owner-stories">점주 이야기</a>
-          <a href="#rebrand-faq">자주 묻는 질문</a>
+        <nav aria-label="창업 문의">
           <RebrandPhoneLink className="rebrand-header-phone" section="rebrand_header" />
-          <a href="#lead-capture" className="rebrand-header-cta">
-            <span>창업 상담</span>
-          </a>
         </nav>
       </header>
 

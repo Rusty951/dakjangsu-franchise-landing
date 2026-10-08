@@ -64,7 +64,6 @@
 @media (max-width: 1024px) {
   .rebrand-page .rebrand-header { display: flex; flex-wrap: nowrap; gap: 12px; height: 66px; min-height: 66px; padding: 8px 20px; }
   .rebrand-page .rebrand-header nav { flex-shrink: 0; gap: 0; }
-  .rebrand-page .rebrand-header nav a:not(.rebrand-header-phone) { display: none; }
   .rebrand-page .rebrand-header nav .rebrand-header-phone { display: inline-flex; }
 }
 @media (max-width: 700px) {
