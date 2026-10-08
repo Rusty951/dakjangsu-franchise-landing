@@ -15,6 +15,15 @@ export default function JangsuChapterMotion({ scene, onSettled }) {
     };
     const start = () => {
       animate(root, motion.frames);
+      if (scene === 'brand') {
+        stage.querySelectorAll('.brand-story-headline > span').forEach((line, index) => {
+          animate(line, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 600, delay: index * 160 });
+        });
+        animate(stage.querySelector('.brand-story-intro'), [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 300 });
+        stage.querySelectorAll('.brand-story-beats > li').forEach((beat, index) => {
+          animate(beat, [{ opacity: 0, transform: 'translateX(-12px)' }, { opacity: 1, transform: 'translateX(0)' }], { duration: 460, delay: 500 + index * 240 });
+        });
+      }
       if (scene === 2) stage.querySelectorAll('.opening-package-card').forEach((card, index) => {
         animate(card, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, delay: 140 + index * 140 });
       });
@@ -49,7 +58,9 @@ export default function JangsuChapterMotion({ scene, onSettled }) {
       });
     };
     const visibility = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; sync(); });
-    visibility.observe(root);
+    // The brand story sits above its character on mobile, so either part being
+    // visible must allow the text sequence to play.
+    visibility.observe(scene === 'brand' ? stage.querySelector('.jangsu-panel--brand') : root);
     const changes = new MutationObserver(sync);
     if (story) changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
