@@ -386,7 +386,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       <div className="jangsu-stage" ref={stageRef} data-scene={scene} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
-          <RebrandHeroOffer key={`hero-${heroReplay}`} portrait={portrait} />
+          <RebrandHeroOffer key={`hero-${heroReplay}`} portrait={portrait} active={active === 0} reducedMotion={reducedMotion} />
         </article>
         <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
           <div className="benefit-scene-copy brand-story-copy">

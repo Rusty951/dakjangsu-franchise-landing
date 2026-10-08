@@ -12,6 +12,14 @@
 .recruitment-first-screen { display: contents; }
 .recruitment-character { grid-column: 2; grid-row: 1; margin: 0; min-height: 0; }
 .recruitment-character img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.recruitment-motion { position: relative; width: 100%; height: 100%; }
+.recruitment-motion img { position: absolute; inset: 0; opacity: 0; }
+.recruitment-motion[data-phase='loading'] img:first-child { opacity: 1; }
+.recruitment-motion[data-phase='static'] img:last-child { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .recruitment-motion[data-phase='loading'] img:first-child { opacity: 0; }
+  .recruitment-motion img:last-child { opacity: 1; }
+}
 .rebrand-page .jangsu-panel--welcome .recruitment-title {
   position: static; grid-column: 2; grid-row: 2; max-width: none;
   text-align: center; font: 400 clamp(30px, 3.25vw, 64px)/1.12 var(--font-display);
@@ -39,6 +47,25 @@
 .recruitment-waiver, .recruitment-scope { font-size: 12px; line-height: 1.6; margin: 20px 0 0; }
 .recruitment-scope { border-top: 1px solid #241f1b35; padding-top: 12px; font-weight: 700; }
 .recruitment-scope span { font-weight: 400; }
+
+/* Restore the desktop's orange / charcoal halves around the central actor. */
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage[data-scene='0'],
+.rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage .jangsu-panel--welcome:has(.recruitment-hero) {
+  background: linear-gradient(90deg, #d86535 50%, #241f1b 50%);
+}
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-hero { border-color: #fff8ed80; }
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-zero { color: #fff8ed; }
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-support .recruitment-amount b { color: #fff8ed; }
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-scope { border-color: #fff8ed40; }
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-title :is(span, strong) {
+  background: linear-gradient(90deg, #241f1b 50%, #fff8ed 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-title strong {
+  background-image: linear-gradient(90deg, #241f1b 50%, #ed9b6e 50%);
+}
 
 /* Use real flow on portrait and short screens, with a bounded first viewport. */
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome:has(.recruitment-hero) { padding: 16px 20px 32px; }

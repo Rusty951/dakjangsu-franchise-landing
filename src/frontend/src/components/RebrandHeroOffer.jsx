@@ -1,7 +1,7 @@
-import { assetPath } from '../assetPath';
+import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
-export default function RebrandHeroOffer({ portrait = false }) {
+export default function RebrandHeroOffer({ portrait = false, active = false, reducedMotion = false }) {
   const parts = (
     <dl className="recruitment-parts">
       <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
@@ -13,7 +13,7 @@ export default function RebrandHeroOffer({ portrait = false }) {
     <div className="recruitment-hero" data-portrait={portrait}>
       <div className="recruitment-first-screen">
         <figure className="recruitment-character">
-          <img src={assetPath('/rebrand/poses/recruitment-v1/05-point.png')} alt="당신을 향해 손가락을 가리키는 닭장수" width="1218" height="1292" fetchPriority="high" />
+          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} />
         </figure>
         <h1 className="recruitment-title" tabIndex={-1}>
           <span>새로운 닭장수가</span>
