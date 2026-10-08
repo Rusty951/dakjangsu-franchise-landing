@@ -1,48 +1,42 @@
-import { heroGestureStill } from '../utils/heroGesture';
+import { assetPath } from '../assetPath';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
 export default function RebrandHeroOffer({ portrait = false }) {
-  const heading = (
-    <header className="hero-offer-heading">
-      <h1 tabIndex={-1}>사장님, <span>시작부터 부담을 덜어드릴게요.</span></h1>
-    </header>
-  );
-  const total = (
-    <section className="hero-offer-total" aria-label="조건부 혜택 합산 계산 예시">
-      {!portrait && <p className="hero-offer-label"><span>조건 충족 가정</span><b>2년 합산 계산 예시</b></p>}
-      <strong className="hero-offer-amount"><b className="hero-offer-numeral">{format(example.total)}</b><small>만원 상당</small></strong>
-      <dl className="hero-offer-parts" aria-label="지원 금액 구성">
-        <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
-        <div><dt>주방 지원</dt><dd>{format(example.kitchen)}<small>만원 상당</small></dd></div>
-        <div><dt>물류 지원</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
-      </dl>
-      {!portrait && <p className="hero-offer-basis">월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>}
-    </section>
+  const parts = (
+    <dl className="recruitment-parts">
+      <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
+      <div><dt>주방 지원</dt><dd>{format(example.kitchen)}<small>만원 상당</small></dd></div>
+      <div><dt>물류 지원</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
+    </dl>
   );
   return (
-    <div className="hero-offer">
-      {portrait ? <>
-        <div className="hero-offer-first-screen">
-          {heading}
-          {total}
-          <div className="portrait-character-slot" data-character-scene="0" aria-hidden="true"><img src={heroGestureStill} alt="" width="1254" height="1254" /></div>
-        </div>
-        <div className="hero-offer-mobile-notes">
-          <p className="hero-offer-label"><span>조건 충족 가정</span><b>2년 합산 계산 예시</b></p>
-          <p className="hero-offer-basis">월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>
-          <p className="hero-offer-calculated"><span>지원 조건과 기간 확인 중</span><span>현금 지급액 아님</span></p>
-        </div>
-      </> : <>{heading}{total}</>}
-      <section className="hero-offer-zero" aria-label="가맹비와 교육비, 첫 2년 로열티 면제 조건">
-        <p className="hero-offer-label"><span>조건 충족 시 면제</span><b><span>가맹비, 교육비</span><span>첫 2년 로열티</span></b></p>
-        <strong className="hero-offer-amount"><b className="hero-offer-numeral">0</b><small>원</small></strong>
-        <p className="hero-offer-waiver-details"><span>가맹비와 교육비 440만원은 오픈 지원에 포함.</span><span>로열티 면제는 합산 금액에서 제외.</span></p>
-        <p className="hero-offer-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
+    <div className="recruitment-hero" data-portrait={portrait}>
+      <div className="recruitment-first-screen">
+        <figure className="recruitment-character">
+          <img src={assetPath('/rebrand/poses/recruitment-v1/05-point.png')} alt="당신을 향해 손가락을 가리키는 닭장수" width="1218" height="1292" fetchPriority="high" />
+        </figure>
+        <h1 className="recruitment-title" tabIndex={-1}>
+          <span>새로운 닭장수가</span>
+          <strong>당신을 원합니다.</strong>
+        </h1>
+        <section className="recruitment-support" aria-label="조건 충족 가정, 2년 합산 지원 계산 예시">
+          <p className="recruitment-support-label">조건 충족 가정, 2년 합산 계산 예시</p>
+          <p className="recruitment-amount"><b>{format(example.total)}</b><span>만원 상당</span></p>
+          {!portrait && parts}
+        </section>
+      </div>
+      <div className="recruitment-notes">
+        {portrait && parts}
+        <p>월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>
+        <p>지원 조건과 기간 확인 중<br />현금 지급액 아님</p>
+      </div>
+      <section className="recruitment-zero" aria-label="가맹비와 교육비, 첫 2년 로열티 면제 조건">
+        <p className="recruitment-support-label">조건 충족 시 면제</p>
+        <h2>가맹비, 교육비<br />첫 2년 로열티</h2>
+        <p className="recruitment-amount"><b>0</b><span>원</span></p>
+        <p className="recruitment-waiver">가맹비와 교육비 440만원은 오픈 지원에 포함.<br />로열티 면제는 합산 금액에서 제외.</p>
+        <p className="recruitment-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
       </section>
-
-      {!portrait && <div className="hero-offer-bottom">
-        <p className="hero-offer-calculated"><span>지원 조건과 기간 확인 중</span><span>현금 지급액 아님</span></p>
-      </div>}
     </div>
   );
 }

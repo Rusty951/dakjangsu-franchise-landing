@@ -1,8 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
-import { heroGestureStill } from '../utils/heroGesture';
 import JangsuMotion from './JangsuMotion';
-import JangsuHeroMotion from './JangsuHeroMotion';
 import JangsuChapterMotion from './JangsuChapterMotion';
 import { chapterMotions } from '../utils/chapterMotion.mjs';
 import JangsuFeeMotion from './JangsuFeeMotion';
@@ -388,8 +386,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       <div className="jangsu-stage" ref={stageRef} data-scene={scene} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
-          <img className="jangsu-reduced-character" src={heroGestureStill} alt="닭장수 캐릭터" width="1254" height="1254" />
-          <RebrandHeroOffer portrait={portrait} />
+          <RebrandHeroOffer key={`hero-${heroReplay}`} portrait={portrait} />
         </article>
         <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
           <div className="benefit-scene-copy brand-story-copy">
@@ -460,7 +457,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <img className="jangsu-invite-static" src={assetPath(chapterMotions[6].source)} alt="" width="1122" height="1402" loading="lazy" />
         </article>
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
-          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? <JangsuHeroMotion key={`hero-${heroReplay}`} /> : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
+          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
         {scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
