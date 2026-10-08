@@ -19,7 +19,7 @@ Studio의 이전 독립 이력 원본은 `/Users/bananabk/Documents/Projects/dak
 
 `/?concept=rebrand`에서 창업 지원 안내, 매장 외관과25평형 실내 시안, 점주 인터뷰4개, 기본 펼침 FAQ와 창업 상담을 제공합니다.
 
-검토 사이트: https://dakjangsu-client-sample.vercel.app/?concept=rebrand
+검토 사이트: https://dakjangsu-client-sample-inky.vercel.app/?concept=rebrand
 
 혜택의 적용 조건은 확인 중입니다. 공개 문구의 수치와 조건은 임의로 확정하지 않습니다.
 
