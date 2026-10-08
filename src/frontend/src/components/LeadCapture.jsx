@@ -254,21 +254,20 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
   return (
     <section
       ref={sectionRef}
-      className={`lead-capture-section lead-capture-section--motion-ready${isVisible ? ' is-visible' : ''}`}
+      className={`lead-capture-section lead-capture-section--motion-ready${rebrandCopy ? ' lead-capture-section--compact-copy' : ''}${isVisible ? ' is-visible' : ''}`}
       id="lead-capture"
       aria-labelledby="lead-capture-title"
     >
       <div className="consultation-intro">
         <span className="consultation-label">{rebrandCopy ? '내 점포 지원 상담' : '닭장수 창업 상담'}</span>
         <h2 id="lead-capture-title">
-          {rebrandCopy ? <><span>사장님 창업비, </span><span><em>얼마나 줄일 수 </em></span><span>있을까요?</span></> : <><span>우리동네에서</span><span>닭장수 창업</span><span><em>가능할까요?</em></span></>}
+          {rebrandCopy ? <><span>시작하고 싶은 동네를</span><span><em>알려주세요.</em></span></> : <><span>우리동네에서</span><span>닭장수 창업</span><span><em>가능할까요?</em></span></>}
         </h2>
         <p>
           {rebrandCopy ? (
             <>
-              <span>내 점포에 적용될 지원부터 확인해 보세요.</span>
-              <span>점포가 없어도, 희망 지역부터 상담할 수 있습니다.</span>
-              <RebrandPhoneLink className="consultation-phone" label="전화로 창업 상담" section="rebrand_consultation" callout />
+              <span>점포가 없어도 상담할 수 있습니다.</span>
+              <RebrandPhoneLink className="consultation-phone" label="창업 문의" section="rebrand_consultation" callout />
             </>
           ) : (
             <>
@@ -277,8 +276,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
             </>
           )}
         </p>
-        {rebrandCopy && <div className="consultation-host">
-          <p>가맹비부터 주방 설비까지,<br />지역과 점포 조건에 맞춰 안내 드립니다.</p>
+        {rebrandCopy && <div className="consultation-host consultation-host--compact">
           <img src={assetPath('/rebrand/poses/massive-portrait-v1/consultation-bust.png')} alt="" width="1122" height="1402" loading="lazy" />
         </div>}
         {!hideKakao && (
@@ -293,10 +291,10 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
           <span className="consultation-note-clip" aria-hidden="true" />
           <div className="consultation-form-head">
             <span>상담 신청서</span>
-            <strong>
-              <span>{rebrandCopy ? '받을 수 있는 지원부터' : '희망 지역을'}</span>
-              <span>{rebrandCopy ? '함께 확인해요' : '먼저 남겨주세요'}</span>
-            </strong>
+            {!rebrandCopy && <strong>
+              <span>희망 지역을</span>
+              <span>먼저 남겨주세요</span>
+            </strong>}
           </div>
           {previewOnly && <p className="consultation-preview-note">검토용 양식입니다. 입력 내용은 전송되지 않습니다.</p>}
 
@@ -445,7 +443,7 @@ const LeadCapture = ({ onKakaoClick, rebrandCopy = false, hideKakao = false }) =
           {errors.privacyConsent && <small id="lead-consent-error" className="consultation-field-error">{errors.privacyConsent}</small>}
 
           <button className="consultation-submit" type="submit" disabled={status === 'submitting'}>
-            <span>{status === 'submitting' ? '문의 접수 중' : previewOnly ? '입력 내용 확인하기' : rebrandCopy ? '내 점포 지원 상담하기' : '상담 문의 남기기'}</span>
+            <span>{status === 'submitting' ? '문의 접수 중' : previewOnly ? '입력 내용 확인하기' : rebrandCopy ? '창업 상담 신청하기' : '상담 문의 남기기'}</span>
           </button>
 
           {statusMessage && (

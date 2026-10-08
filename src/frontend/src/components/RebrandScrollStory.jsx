@@ -24,11 +24,11 @@ const mobileFrames = [
   [73, 44, 35], [85, 30, -2], [18, 26, -2], [85, 30, -2], [18, 26, -2], [85, 30, -2], [78, 46, 20],
 ];
 const benefits = [
-  { id: 'fee', label: '가맹비와 교육비', amount: '440', unit: '만원', title: '전액 면제 조건', facts: [['가맹비', '275만원'], ['교육비', '165만원']], detail: '부가세를 포함한 합계입니다.', note: '혜택 적용 여부와 세부 조건은 확인 중입니다. 현재 적용 가능한 내용은 본사 상담에서 확인해 주세요.' },
-  { id: 'opening', label: '문을 열 때 필요한 지원', amount: '740', unit: '만원 상당', title: '오픈 지원 조건', facts: [['가맹비 + 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']], note: '440만원 면제를 포함한 금액입니다. 면제와 현물, 마케팅 지원으로 구성된 기준이며 현금 지급액이 아닙니다. 적용 여부는 본사 상담에서 확인해 주세요.' },
-  { id: 'kitchen', label: '냉장고와 튀김기', amount: '500', unit: '만원 상당', title: '주방 지원 조건', facts: [['간냉식 냉장고', '300만원 상당'], ['최신형 튀김기', '200만원 상당']], note: '선착순 5개점을 대상으로 검토 중인 지원 기준입니다. 15평 이상, 상권 조건, 전체 신규 인테리어와 본사 검수, 24개월 의무 운영 조건의 적용 여부는 본사 상담에서 확인해 주세요.' },
-  { id: 'royalty', label: '매달 내는 로열티', amount: '0', unit: '원', title: '첫 2년 면제 조건', facts: [['정상 로열티', '월 매출액 3.3%']], note: '최초 계약 2년간 면제하는 기준입니다. 혜택 적용 여부와 세부 조건은 본사 상담에서 확인해 주세요.' },
-  { id: 'growth', label: '매출 기준을 달성하면, 월 최대', amount: '100', unit: '만원', title: '물류 크레딧 지원 조건', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], detail: '첫 화면은 24개월간 매출 기준을 달성한 경우의 계산 예시입니다. 실제 지원 기간과 적용 조건은 확인 중입니다.', note: '지원 대상으로 확인되면 매출 증빙 제출 후 다음 달 물류대금에서 차감하는 방식입니다. 현금 지급이나 매출 보장은 아닙니다. 적용 여부와 세부 조건은 본사 상담에서 확인해 주세요.' },
+  { id: 'fee', label: ['가맹비와 교육비부터', '줄이고 시작하세요.'], amount: '440', unit: '만원', title: '전액 면제안', compactFacts: '가맹비 275 / 교육비 165만원', note: '부가세 포함, 적용 조건 확인 중' },
+  { id: 'opening', label: ['문을 여는 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당', facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']] },
+  { id: 'kitchen', label: ['냉장고와 튀김기,', '주방 준비에 보태세요.'], amount: '500', unit: '만원 상당', compactFacts: '간냉식 냉장고 300 / 튀김기 200만원 상당', note: '조건 충족 매장 중 선착순 5개점 지원 검토 중' },
+  { id: 'royalty', label: ['첫 2년,', '로열티 부담을 덜어보세요.'], amount: '0', unit: '원', prefix: '로열티', title: '면제안', note: '최초 계약 2년간, 적용 조건 확인 중' },
+  { id: 'growth', label: ['매출 기준을 채우면,', '물류대금도 줄여보세요.'], amount: '100', unit: '만원 크레딧', prefix: '월 최대', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], note: '다음 달 물류대금 차감, 지원 기간과 조건 확인 중' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
@@ -414,27 +414,27 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             <div className="benefit-scene-copy">
               <span className="benefit-scene-index">0{index + 3} / {chapters[index + 2]} 지원</span>
               <h2 tabIndex={-1}>
-                <span>{benefit.label}</span>
+                <span className="benefit-compact-heading">{benefit.label.map(line => <span key={line} className="benefit-label-line">{line}</span>)}</span>
+                {benefit.prefix && <span className="benefit-amount-prefix">{benefit.prefix}</span>}
                 <strong>{benefit.id === 'growth' ? <span className="growth-lift-number" key={liftReplay}>
                   <SlotNumber value={benefit.amount} active={scene === 5 && liftAssets !== 'loading'} reducedMotion={reducedMotion} delay={liftReady ? .76 : 0} onComplete={() => setSettled(6)} /><small>{benefit.unit}</small>
                 </span> : <><SlotNumber key={benefit.id === 'fee' ? feeReplay : benefit.id === 'opening' ? openingReplay : benefit.id === 'kitchen' ? kitchenReplay : benefit.id === 'royalty' ? royaltyReplay : undefined} value={benefit.amount} active={active === index + 2 && benefit.id !== 'royalty'} reducedMotion={reducedMotion} onComplete={() => setSettled(index + 2)} /><small>{benefit.unit}</small></>}</strong>
-                <b className={benefit.id === 'fee' ? 'fee-waiver-title' : benefit.id === 'royalty' ? 'royalty-waiver-title' : undefined}>{benefit.id === 'growth' ? <><span>물류 크레딧</span>{' '}<span>지원 조건</span></> : benefit.title}</b>
+                {benefit.title && <b className={benefit.id === 'fee' ? 'fee-waiver-title' : 'royalty-waiver-title'}>{benefit.title}</b>}
               </h2>
               {benefit.id === 'growth' ? <div className="benefit-scene-detail growth-support">
-                <dl aria-label="월 매출별 물류 크레딧 지원 기준">
-                  {benefit.tiers.map(tier => <div key={tier.sales}><dt>월 매출 {tier.sales} 이상</dt><dd>{tier.credit}</dd></div>)}
+                <dl aria-label="월매출별 물류 크레딧 지원 기준">
+                  {benefit.tiers.map(tier => <div key={tier.sales}><dt>월매출 {tier.sales} 이상</dt><dd>→ {tier.credit}</dd></div>)}
                 </dl>
-                <p className="growth-support-term">{benefit.detail}</p>
               </div> : <div className="benefit-scene-detail benefit-facts">
-                <dl aria-label={`${benefit.title} 구성`}>
-                  {benefit.facts.map(([label, value]) => <div key={label} className={benefit.id === 'opening' ? 'opening-package-card' : benefit.id === 'kitchen' ? 'kitchen-support-card' : benefit.id === 'royalty' ? 'royalty-rate-card' : undefined}><dt>{label}</dt><dd>{value}</dd></div>)}
-                </dl>
-                {benefit.detail && <p className="benefit-facts-term">{benefit.detail}</p>}
+                {benefit.compactFacts && <p className={benefit.id === 'kitchen' ? 'benefit-compact-facts kitchen-support-card' : 'benefit-compact-facts'}>{benefit.compactFacts}</p>}
+                {benefit.facts && <dl aria-label="오픈 지원 구성">
+                  {benefit.facts.map(([label, value]) => <div key={label} className="opening-package-card"><dt>{label}</dt><dd>{value}</dd></div>)}
+                </dl>}
               </div>}
               <p className="benefit-scene-note">{benefit.note}</p>
               {portrait && <PortraitCharacterSlot scene={index + 1} />}
               <a className="story-cta" href="#rebrand-benefits" onClick={onConditionsClick}>
-                <span>지원 조건 자세히 보기 <span className="story-cta-icon" aria-hidden="true" /></span>
+                <span>지원 조건 확인하기 <span className="story-cta-icon" aria-hidden="true" /></span>
               </a>
             </div>
           </article>
@@ -442,14 +442,13 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         <article className="jangsu-panel jangsu-panel--invite" {...panelProps(7)}>
           <div className="jangsu-invite-content">
             <span className="jangsu-scene-number">내 점포 지원 상담</span>
-            <h2 tabIndex={-1}>사장님 창업비, <br /><em>얼마나 줄일 수 </em><br />있을까요?</h2>
+            <h2 tabIndex={-1}><span>우리 동네에서도</span><em>닭장수를 시작할 수 있을까요?</em></h2>
             <div className="jangsu-invite-copy">
-              <p>가맹비와 주방 설비, 첫 2년 로열티까지.<br />내 점포에 적용될 지원부터 확인해 보세요.</p>
+              <p>희망 지역과 받을 수 있는 지원을 확인해보세요.</p>
               {portrait && <PortraitCharacterSlot scene={6} />}
               <a className="story-cta story-cta--primary" href="#lead-capture">
-                <span>내 점포 지원 상담하기 <span className="story-cta-icon" aria-hidden="true" /></span>
+                <span>창업 상담하기 <span className="story-cta-icon" aria-hidden="true" /></span>
               </a>
-              <ol aria-label="상담에서 함께 확인할 내용"><li>희망 지역</li><li>점포 조건</li><li>적용 혜택</li></ol>
             </div>
           </div>
           <img className="jangsu-invite-static" src={assetPath(chapterMotions[6].source)} alt="" width="1122" height="1402" loading="lazy" />

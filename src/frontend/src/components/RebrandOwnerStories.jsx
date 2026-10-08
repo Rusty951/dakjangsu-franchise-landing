@@ -57,8 +57,8 @@ export default function RebrandOwnerStories() {
   return <section className="rebrand-owner-stories" id="rebrand-owner-stories" aria-labelledby="owner-stories-title">
     <header className="rebrand-owner-heading">
       <p className="rebrand-closing-label">실제 점주 인터뷰</p>
-      <h2 id="owner-stories-title">먼저 시작한 사장님들의<br /><em>이야기를 들어보세요.</em></h2>
-      <p>인건비부터 업종 전환, 두 번째 매장까지.<br />나와 비슷한 고민이 담긴 인터뷰를 골라보세요.</p>
+      <h2 id="owner-stories-title">먼저 시작한 사장님의<br /><em>이야기를 들어보세요.</em></h2>
+      <p>인건비, 업종 전환, 두 번째 매장까지.</p>
     </header>
 
     <div className="rebrand-owner-layout">
