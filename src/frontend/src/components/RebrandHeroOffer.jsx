@@ -14,7 +14,7 @@ export default function RebrandHeroOffer({ portrait = false }) {
         <dl className="hero-offer-parts" aria-label="지원 금액 구성">
           <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
           <div><dt>주방 지원</dt><dd>{format(example.kitchen)}<small>만원 상당</small></dd></div>
-          <div><dt>조건부 물류</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
+          <div><dt>물류지원</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
         </dl>
         <p className="hero-offer-basis">월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>
         {portrait && <p className="hero-offer-calculated"><span>지원 조건과 기간 확인 중</span><span>현금 지급액 아님</span></p>}

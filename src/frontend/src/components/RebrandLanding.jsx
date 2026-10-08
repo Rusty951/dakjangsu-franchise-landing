@@ -25,8 +25,6 @@ import './RebrandBrandStory.css';
 
 const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuButtonRef = useRef(null);
   const conditionsRef = useRef(null);
   const openConditions = () => { if (conditionsRef.current) conditionsRef.current.open = true; };
 
@@ -62,19 +60,11 @@ const RebrandLanding = ({ onKakaoClick, socialLinks }) => {
   return (
     <div className="rebrand-page" id="top">
       <a className="rebrand-skip" href="#rebrand-story">본문 바로가기</a>
-      <header className="rebrand-header" data-menu-open={isMenuOpen} onKeyDown={event => {
-        if (event.key === 'Escape' && isMenuOpen) {
-          setIsMenuOpen(false);
-          menuButtonRef.current?.focus();
-        }
-      }}>
+      <header className="rebrand-header">
         <a href="#top" className="rebrand-logo" aria-label="닭장수후라이드 가맹 안내 첫 화면">
           <img src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="512" height="128" />
         </a>
-        <button ref={menuButtonRef} className="rebrand-menu-toggle" type="button" aria-controls="rebrand-navigation" aria-expanded={isMenuOpen} aria-label={isMenuOpen ? '페이지 메뉴 닫기' : '페이지 메뉴 열기'} onClick={() => setIsMenuOpen(open => !open)}>메뉴</button>
-        <nav id="rebrand-navigation" aria-label="페이지 메뉴" onClick={event => {
-          if (event.target.closest('a')) setIsMenuOpen(false);
-        }}>
+        <nav id="rebrand-navigation" aria-label="페이지 메뉴">
           <a href="#rebrand-story">창업 혜택</a>
           <a href="#rebrand-operations">매장 공간</a>
           <a href="#rebrand-owner-stories">점주 이야기</a>

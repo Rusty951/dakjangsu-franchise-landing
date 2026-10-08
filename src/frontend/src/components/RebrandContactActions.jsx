@@ -30,14 +30,12 @@ const RebrandContactActions = () => {
       const videoVisible = [...document.querySelectorAll('.rebrand-owner-stories iframe')].some(isOnScreen);
       const dialogOpen = Boolean(document.querySelector('dialog[open], [role="dialog"][aria-modal="true"]'));
       const top = Math.max(0, header?.getBoundingClientRect().bottom ?? 80) + 12;
-      const menuOpen = compactQuery.matches && header?.dataset.menuOpen === 'true';
-      const hidden = Boolean(editing || videoVisible || dialogOpen || menuOpen);
+      const hidden = Boolean(editing || videoVisible || dialogOpen);
       setPlacement(current => current.top === top && current.hidden === hidden ? current : { top, hidden });
     };
     const schedule = () => { if (!frame) frame = window.requestAnimationFrame(measure); };
     const observer = new MutationObserver(schedule);
     observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
-    if (header) observer.observe(header, { attributes: true, attributeFilter: ['data-menu-open'] });
     const resize = new ResizeObserver(schedule);
     if (header) resize.observe(header);
     window.addEventListener('scroll', schedule, { passive: true });

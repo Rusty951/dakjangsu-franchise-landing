@@ -62,40 +62,26 @@
 .rebrand-page .rebrand-kakao-float[data-hidden='true'] { visibility: hidden; pointer-events: none; }
 
 @media (max-width: 1024px) {
-  .rebrand-page .rebrand-header { gap: 12px; }
-  .rebrand-page .rebrand-menu-toggle { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; min-height: 44px; margin-left: auto; padding: 8px 12px; border: 1px solid #241f1b40; background: transparent; color: #241f1b; font: 650 14px/1 var(--font-sans); cursor: pointer; }
-  .rebrand-page .rebrand-header nav { gap: 0; }
-  .rebrand-page .rebrand-header[data-menu-open='false'] nav a { display: none; }
-  .rebrand-page .rebrand-header[data-menu-open='false'] nav .rebrand-header-phone { display: inline-flex; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 12px 20px 20px; background: #fffdf9; border-bottom: 1px solid #241f1b30; box-shadow: 0 12px 18px #241f1b15; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav a { display: flex; align-items: center; min-height: 48px; padding: 12px; font-size: 14px; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-phone { align-items: center; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-cta { justify-content: center; color: #fff8ed; }
+  .rebrand-page .rebrand-header { display: flex; flex-wrap: nowrap; gap: 12px; height: 66px; min-height: 66px; padding: 8px 20px; }
+  .rebrand-page .rebrand-header nav { flex-shrink: 0; gap: 0; }
+  .rebrand-page .rebrand-header nav a:not(.rebrand-header-phone) { display: none; }
+  .rebrand-page .rebrand-header nav .rebrand-header-phone { display: inline-flex; }
 }
 @media (max-width: 700px) {
   .rebrand-page .consultation-intro > p { width: 100%; max-width: none; }
   .rebrand-page .consultation-phone { max-width: none; min-height: 76px; padding: 10px 20px; }
   .rebrand-page .consultation-intro h2 em { font-size: inherit; line-height: inherit; }
-  .rebrand-page .rebrand-logo { width: 148px; }
-  .rebrand-page .rebrand-header-phone > strong { font-size: 18px; }
-  .rebrand-page .rebrand-header-phone > span { font-size: 10px; }
+  .rebrand-page .rebrand-header { padding-inline: 16px; }
+  .rebrand-page .rebrand-logo { width: clamp(112px, 34vw, 148px); }
+  .rebrand-page .rebrand-logo img { width: 100%; }
+  .rebrand-page .rebrand-header nav .rebrand-header-phone { gap: 6px; }
+  .rebrand-page .rebrand-header-phone > strong { font-size: clamp(15px, 4.4vw, 18px); }
+  .rebrand-page .rebrand-header-phone > span { padding-inline: 6px; font-size: 10px; }
 }
 @media (max-width: 350px) {
   .rebrand-page .consultation-phone { min-height: 72px; padding: 10px 16px; }
   .rebrand-page .consultation-phone > strong { font-size: 28px; }
   .rebrand-page .rebrand-header { gap: 8px; padding-inline: 16px; }
-  .rebrand-page .rebrand-logo { width: 128px; }
-  .rebrand-page .rebrand-header-phone > strong { font-size: 17px; }
-}
-/* Give the horizontal contact line its own row when all three items cannot fit. */
-@media (max-width: 480px) {
-  .rebrand-page .rebrand-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 44px 44px; gap: 0 12px; height: auto; min-height: 104px; padding-block: 8px; }
-  .rebrand-page .rebrand-header .rebrand-menu-toggle { margin-left: 0; }
-  .rebrand-page .rebrand-header[data-menu-open='false'] nav { grid-column: 1 / -1; justify-content: center; }
-  .rebrand-page .rebrand-header-phone > span { font-size: 12px; }
-  .rebrand-page .rebrand-header-phone > strong { font-size: 20px; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav { top: 52px; }
-  .rebrand-page .rebrand-header[data-menu-open='true'] nav .rebrand-header-phone { grid-column: 1 / -1; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rebrand-page .consultation-phone { transition: none; }
