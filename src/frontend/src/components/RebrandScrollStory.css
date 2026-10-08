@@ -4,8 +4,8 @@
 }
 .jangsu-stage {
   position: sticky;
-  top: 80px;
-  height: calc(100svh - 80px);
+  top: var(--rebrand-header-height);
+  height: calc(100svh - var(--rebrand-header-height));
   min-height: 560px;
   overflow: hidden;
   isolation: isolate;
@@ -235,7 +235,7 @@
 }
 @media (max-width: 700px) {
   .jangsu-story { height: 390svh; }
-  .jangsu-stage { top: 66px; height: calc(100svh - 66px); min-height: 520px; }
+  .jangsu-stage { min-height: 520px; }
   .jangsu-stage-kicker { top: 18px; left: 20px; right: 20px; font-size: 8px; }
   .jangsu-stage-kicker span:first-child { display: none; }
   .jangsu-story-logo { top: 47px; left: 3%; width: 94%; }

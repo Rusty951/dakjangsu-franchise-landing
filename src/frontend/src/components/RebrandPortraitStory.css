@@ -29,7 +29,7 @@
   .rebrand-page .jangsu-story--portrait .jangsu-panel {
     position: relative; inset: auto; opacity: 1; min-height: 0;
     padding: 32px 24px 40px; z-index: 1; overflow: hidden;
-    scroll-margin-top: var(--story-header-height, 66px);
+    scroll-margin-top: var(--rebrand-header-height);
   }
   .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome,
   .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene--kitchen,
@@ -169,7 +169,6 @@
   .rebrand-page .jangsu-story--portrait .jangsu-invite-copy ol { position: static; margin-top: 20px; font-size: 12px; }
 }
 @media (min-width: 701px) {
-  .jangsu-story--portrait { --story-header-height: 80px; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage-footer button { font-size: 14px; }
   .rebrand-page .jangsu-story--portrait .jangsu-stage .benefit-scene-copy,
   .rebrand-page .jangsu-story--portrait .hero-offer,

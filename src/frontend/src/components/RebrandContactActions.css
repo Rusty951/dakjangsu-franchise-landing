@@ -1,3 +1,6 @@
+.rebrand-page { --rebrand-header-height: 64px; }
+.rebrand-page .rebrand-header { height: var(--rebrand-header-height); min-height: var(--rebrand-header-height); padding-block: 8px; }
+.rebrand-page .rebrand-logo { display: inline-flex; align-items: center; min-height: 44px; width: 176px; }
 .rebrand-page .rebrand-phone-link {
   display: inline-flex;
   flex-direction: column;
@@ -62,7 +65,8 @@
 .rebrand-page .rebrand-kakao-float[data-hidden='true'] { visibility: hidden; pointer-events: none; }
 
 @media (max-width: 1024px) {
-  .rebrand-page .rebrand-header { display: flex; flex-wrap: nowrap; gap: 12px; height: 66px; min-height: 66px; padding: 8px 20px; }
+  .rebrand-page { --rebrand-header-height: 56px; }
+  .rebrand-page .rebrand-header { display: flex; flex-wrap: nowrap; gap: 12px; padding: 5px 20px; }
   .rebrand-page .rebrand-header nav { flex-shrink: 0; gap: 0; }
   .rebrand-page .rebrand-header nav .rebrand-header-phone { display: inline-flex; }
 }

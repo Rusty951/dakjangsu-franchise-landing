@@ -7,7 +7,7 @@
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr);
     gap: 12px;
-    height: min(calc(100svh - 66px), 650px);
+    height: min(calc(100svh - var(--rebrand-header-height)), 650px);
     padding: 24px 0 12px;
     box-sizing: border-box;
   }
