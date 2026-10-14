@@ -42,19 +42,14 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       const actorBox = actor.getBoundingClientRect();
       intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
       intro.style.top = `${actorBox.top + actorBox.height / 2 - rootBox.top}px`;
-      const start = root.querySelector('.recruitment-intro-amount').getBoundingClientRect();
-      const end = root.querySelector('.recruitment-support .recruitment-amount').getBoundingClientRect();
-      const dx = end.left + end.width / 2 - start.left - start.width / 2;
-      const dy = end.top + end.height / 2 - start.top - start.height / 2;
-      const scale = end.height / start.height;
       const number = intro.animate([
-        { offset: 0, opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-        { offset: 1450 / 3000, opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-        { offset: 1850 / 3000, opacity: 0, transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(${scale})` },
-        { offset: 1, opacity: 0, transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(${scale})` },
+        { offset: 0, opacity: 1 },
+        { offset: 1450 / 3000, opacity: 1 },
+        { offset: 1850 / 3000, opacity: 0 },
+        { offset: 1, opacity: 0 },
       ], { duration: 3000, fill: 'both', easing: 'ease-in-out' });
       animations.push(number);
-      fadeIn(actor, 1600, 350, 18);
+      fadeIn(actor, 1600, 350);
       fadeIn(root.querySelector('.recruitment-title'), 2050, 350, 10);
       fadeIn(root.querySelector('.recruitment-support'), 1600, 250);
       fadeIn(root.querySelector('.recruitment-notes'), 1850);
