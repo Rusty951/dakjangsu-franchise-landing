@@ -10,8 +10,12 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
     const story = root.closest('.jangsu-story');
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false, onScreen = true, animations = [];
-    if (!active || reducedMotion || preference.matches) {
+    if (reducedMotion || preference.matches) {
       root.dataset.intro = 'static';
+      return;
+    }
+    if (!active) {
+      root.dataset.intro = 'parked';
       return;
     }
     root.dataset.intro = 'loading';
@@ -45,9 +49,9 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       const number = intro.animate([
         { offset: 0, opacity: 1 },
         { offset: 1450 / 3000, opacity: 1 },
-        { offset: 1850 / 3000, opacity: 0 },
-        { offset: 1, opacity: 0 },
-      ], { duration: 3000, fill: 'both', easing: 'ease-in-out' });
+        { offset: 1950 / 3000, opacity: .32 },
+        { offset: 1, opacity: .32 },
+      ], { duration: 3000, fill: 'both', easing: 'linear' });
       animations.push(number);
       fadeIn(actor, 1600, 350);
       fadeIn(root.querySelector('.recruitment-title'), 2050, 350, 10);
@@ -78,7 +82,7 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-intro="loading">
       <div className="recruitment-intro" aria-hidden="true">
         <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
-        <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원 상당</span></p>
+        <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
       </div>
       <div className="recruitment-first-screen">
         <figure className="recruitment-character">
@@ -90,7 +94,7 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
         </h1>
         <section className="recruitment-support" aria-label="조건 충족 가정, 2년 합산 지원 계산 예시">
           <p className="recruitment-support-label">조건 충족 가정, 2년 합산 계산 예시</p>
-          <p className="recruitment-amount"><b>{format(example.total)}</b><span>만원 상당</span></p>
+          <p className="recruitment-amount"><b>{format(example.total)}</b><span>만원</span></p>
           {!portrait && parts}
         </section>
       </div>
