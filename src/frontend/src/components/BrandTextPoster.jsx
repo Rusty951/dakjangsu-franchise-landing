@@ -78,7 +78,7 @@ function TextPoster({ active, reducedMotion }) {
         <span className="brand-text-line brand-text-emphasis">제대로</span>
         <span className="brand-text-line brand-text-close">장사해 봅시다.</span>
       </h2>
-      <p className="brand-text-support">새 출발을 위한<br /><strong>창업 지원을 준비했습니다.</strong></p>
+      <p className="brand-text-support">이제,<br /><strong>사장님 차례입니다.</strong></p>
     </div>
   );
 }
