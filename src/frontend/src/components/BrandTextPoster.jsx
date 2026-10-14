@@ -16,30 +16,30 @@ function TextPoster({ active, reducedMotion }) {
     const story = root.closest('.jangsu-story');
     const cues = [
       {
-        selector: '.brand-text-line:first-child', duration: 480, delay: 0,
+        selector: '.brand-text-line:first-child', duration: 900, delay: 0,
         frames: [
           { opacity: 0, transform: 'translateX(-28px)', clipPath: 'inset(0 100% 0 0)' },
           { opacity: 1, transform: 'translateX(0)', clipPath: 'inset(0 0% 0 0)' },
         ],
       },
       {
-        selector: '.brand-text-emphasis', duration: 650, delay: 330,
+        selector: '.brand-text-emphasis', duration: 1000, delay: 1150,
         frames: [
-          { opacity: 0, transform: 'scale(1.32) rotate(-3deg)', offset: 0 },
-          { opacity: 1, transform: 'scale(.96) rotate(.7deg)', offset: .42 },
-          { opacity: 1, transform: 'scale(1.025) rotate(-.25deg)', offset: .7 },
+          { opacity: 0, transform: 'scale(1.1) rotate(-1deg)', offset: 0 },
+          { opacity: 1, transform: 'scale(.99) rotate(.2deg)', offset: .6 },
+          { opacity: 1, transform: 'scale(1.01) rotate(0)', offset: .82 },
           { opacity: 1, transform: 'scale(1) rotate(0)', offset: 1 },
         ],
       },
       {
-        selector: '.brand-text-close', duration: 550, delay: 820,
+        selector: '.brand-text-close', duration: 900, delay: 2350,
         frames: [
           { opacity: 0, transform: 'translateY(26px)', clipPath: 'inset(0 0 100% 0)' },
           { opacity: 1, transform: 'translateY(0)', clipPath: 'inset(0 0 0% 0)' },
         ],
       },
       {
-        selector: '.brand-text-support', duration: 420, delay: 1150,
+        selector: '.brand-text-support', duration: 700, delay: 3250,
         frames: [
           { opacity: 0, transform: 'translateY(12px)' },
           { opacity: 1, transform: 'translateY(0)' },
@@ -47,7 +47,7 @@ function TextPoster({ active, reducedMotion }) {
       },
     ];
     const animations = cues.map(({ selector, frames, duration, delay }) => root.querySelector(selector).animate(
-      frames, { duration, delay, fill: 'both', easing: 'cubic-bezier(.16,1,.3,1)' },
+      frames, { duration, delay, fill: 'both', easing: 'cubic-bezier(.22,.7,.3,1)' },
     ));
     let onScreen = true;
     const sync = () => {
