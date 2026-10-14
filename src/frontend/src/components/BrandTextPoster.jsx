@@ -14,10 +14,41 @@ function TextPoster({ active, reducedMotion }) {
     const root = rootRef.current;
     if (!active || reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const story = root.closest('.jangsu-story');
-    const animations = [...root.querySelectorAll('.brand-text-line')].map((line, index) => line.animate([
-      { opacity: 0, transform: 'translateY(8px)' },
-      { opacity: 1, transform: 'translateY(0)' },
-    ], { duration: 450, delay: index * 100, fill: 'both', easing: 'cubic-bezier(.16,1,.3,1)' }));
+    const cues = [
+      {
+        selector: '.brand-text-line:first-child', duration: 480, delay: 0,
+        frames: [
+          { opacity: 0, transform: 'translateX(-28px)', clipPath: 'inset(0 100% 0 0)' },
+          { opacity: 1, transform: 'translateX(0)', clipPath: 'inset(0 0% 0 0)' },
+        ],
+      },
+      {
+        selector: '.brand-text-emphasis', duration: 650, delay: 330,
+        frames: [
+          { opacity: 0, transform: 'scale(1.32) rotate(-3deg)', offset: 0 },
+          { opacity: 1, transform: 'scale(.96) rotate(.7deg)', offset: .42 },
+          { opacity: 1, transform: 'scale(1.025) rotate(-.25deg)', offset: .7 },
+          { opacity: 1, transform: 'scale(1) rotate(0)', offset: 1 },
+        ],
+      },
+      {
+        selector: '.brand-text-close', duration: 550, delay: 820,
+        frames: [
+          { opacity: 0, transform: 'translateY(26px)', clipPath: 'inset(0 0 100% 0)' },
+          { opacity: 1, transform: 'translateY(0)', clipPath: 'inset(0 0 0% 0)' },
+        ],
+      },
+      {
+        selector: '.brand-text-support', duration: 420, delay: 1150,
+        frames: [
+          { opacity: 0, transform: 'translateY(12px)' },
+          { opacity: 1, transform: 'translateY(0)' },
+        ],
+      },
+    ];
+    const animations = cues.map(({ selector, frames, duration, delay }) => root.querySelector(selector).animate(
+      frames, { duration, delay, fill: 'both', easing: 'cubic-bezier(.16,1,.3,1)' },
+    ));
     let onScreen = true;
     const sync = () => {
       const paused = !onScreen || document.hidden || story?.dataset.motionPaused === 'true';
@@ -48,7 +79,6 @@ function TextPoster({ active, reducedMotion }) {
         <span className="brand-text-line brand-text-close">장사해 봅시다.</span>
       </h2>
       <p className="brand-text-support">새 출발을 위한<br /><strong>창업 지원을 준비했습니다.</strong></p>
-      <p className="brand-text-conditions">매장 디자인과 지원안은 준비 중입니다.<br />적용 가능한 혜택은 점포 조건을 확인한 뒤 안내합니다.</p>
     </div>
   );
 }

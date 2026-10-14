@@ -12,11 +12,10 @@
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--brand .brand-text-poster h2 { display: block; margin: 24px 0 26px; max-width: none; text-align: left; }
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--brand .brand-text-poster h2 > .brand-text-line {
   display: block; font: 400 clamp(48px, 18cqw, 94px)/1.04 var(--font-display); letter-spacing: -.055em;
-  margin: 0; text-align: left; white-space: nowrap;
+  margin: 0; text-align: left; white-space: nowrap; transform-origin: 35% 55%;
 }
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--brand .brand-text-poster h2 > .brand-text-emphasis { color: #f7efe4; font-size: clamp(64px, 24cqw, 130px); }
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--brand .brand-text-poster h2 > .brand-text-close { font-size: clamp(30px, 11.1cqw, 56px); margin-top: 8px; }
 .rebrand-page .jangsu-panel--brand .brand-text-poster .brand-text-support { margin: 0 0 30px; font: 550 17px/1.55 var(--font-sans); }
 .rebrand-page .jangsu-panel--brand .brand-text-poster .brand-text-support strong { font-weight: 800; }
-.rebrand-page .jangsu-panel--brand .brand-text-poster .brand-text-conditions { width: 100%; margin: auto 0 0; padding-top: 16px; border-top: 1px solid #241f1b50; font: 500 12px/1.65 var(--font-sans); word-break: keep-all; }
 .rebrand-page .jangsu-story--portrait .jangsu-stage[data-scene='brand']:has(.brand-text-poster) > .jangsu-traveler { display: none; }
