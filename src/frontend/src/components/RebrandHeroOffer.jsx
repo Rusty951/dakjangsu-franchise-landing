@@ -58,9 +58,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       ], { duration: 4750, fill: 'both', easing: 'linear' });
       animations.push(offer);
       fadeIn(actor, 3150, 350);
-      fadeIn(root.querySelector('.recruitment-title span'), 3200, 350, 8);
-      // The final pointing pose starts at 3150 + .72 * 1200 ms.
-      fadeIn(root.querySelector('.recruitment-title strong'), 4020, 400, 8);
+      root.querySelectorAll('.recruitment-title > *').forEach(line => fadeIn(line, 3200, 350, 8));
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
@@ -77,8 +75,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
   return (
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-mobile-intro="true" data-intro="loading">
       <div className="recruitment-first-screen">
-        <div className="recruitment-visual-stage">
-          <div className="recruitment-offer-intro" aria-hidden="true">
+        <div className="recruitment-offer-intro" aria-hidden="true">
             <div className="recruitment-intro recruitment-intro--support">
               <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
               <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
@@ -88,14 +85,16 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
               <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
               <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
             </div>
-          </div>
+        </div>
+        <div className="recruitment-visual-stage">
           <figure className="recruitment-character">
             <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={3150} duration={1200} />
           </figure>
         </div>
-        <h1 className="recruitment-title" tabIndex={-1}>
-          <span>새로운 닭장수가</span>
-          <strong>당신을 원합니다.</strong>
+        <h1 className="recruitment-title" tabIndex={-1} aria-label="닭장수가 장사에 진심인 사장님을 원합니다.">
+          <span>닭장수가</span>
+          <strong>장사에 진심인</strong>
+          <span>사장님을 원합니다.</span>
         </h1>
       </div>
     </div>
