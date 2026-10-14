@@ -39,7 +39,14 @@ function TextPoster({ active, reducedMotion }) {
         ],
       },
       {
-        selector: '.brand-text-support', duration: 700, delay: 3250,
+        selector: '.brand-text-offer', duration: 700, delay: 3250,
+        frames: [
+          { opacity: 0, transform: 'translateY(12px)' },
+          { opacity: 1, transform: 'translateY(0)' },
+        ],
+      },
+      {
+        selector: '.brand-text-invitation', duration: 800, delay: 4400,
         frames: [
           { opacity: 0, transform: 'translateY(12px)' },
           { opacity: 1, transform: 'translateY(0)' },
@@ -72,13 +79,15 @@ function TextPoster({ active, reducedMotion }) {
   return (
     <div className="benefit-scene-copy brand-text-poster" ref={rootRef}>
       <p className="brand-text-index">02 / 새로운 닭장수</p>
-      <p className="brand-text-name">새롭게 시작하는 닭장수후라이드.</p>
       <h2 tabIndex={-1} aria-label="함께, 제대로 장사해 봅시다.">
         <span className="brand-text-line">함께,</span>
         <span className="brand-text-line brand-text-emphasis">제대로</span>
         <span className="brand-text-line brand-text-close">장사해 봅시다.</span>
       </h2>
-      <p className="brand-text-support">이제,<br /><strong>사장님 차례입니다.</strong></p>
+      <div className="brand-text-support">
+        <p className="brand-text-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p>
+        <p className="brand-text-invitation">이제,<br /><strong>사장님 차례입니다.</strong></p>
+      </div>
     </div>
   );
 }
