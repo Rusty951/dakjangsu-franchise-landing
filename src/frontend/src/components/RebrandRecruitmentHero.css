@@ -104,14 +104,22 @@
   min-height: 0; padding: 20px 0 16px;
   border: 0; gap: 12px;
 }
-/* Mobile intro scenes share the exact same stage and center. */
+/* The two mobile offers fill one stage before the solo character arrives. */
 .recruitment-hero[data-mobile-intro] .recruitment-visual-stage {
-  position: relative; grid-column: 1; grid-row: 1; min-height: 0;
+  position: relative; grid-column: 1; grid-row: 1; min-height: 0; container-type: size;
 }
+.recruitment-offer-intro { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); }
 .recruitment-hero[data-mobile-intro] .recruitment-intro {
-  inset: 0; width: 100%; height: 100%; transform: none;
+  position: relative; inset: auto; width: 100%; height: 100%; transform: none; opacity: 1;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
+.recruitment-hero[data-mobile-intro] .recruitment-intro-label { margin-bottom: 8px; }
+.recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-label { margin-bottom: 4px; }
+.recruitment-hero[data-mobile-intro] .recruitment-intro-amount b { font-size: min(42cqw, 32cqh); }
+.recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount b { font-size: min(60cqw, 30cqh); }
+.recruitment-hero[data-mobile-intro] .recruitment-waiver-intro-title { font-size: clamp(20px, 6.5cqw, 28px); margin-bottom: 4px; }
+.recruitment-hero[data-mobile-intro]:is([data-intro='static'], [data-intro='parked']) .recruitment-offer-intro { display: none; }
+.recruitment-hero[data-mobile-intro][data-intro='settled'] .recruitment-offer-intro { opacity: 0; }
 .recruitment-hero[data-mobile-intro] .recruitment-character { position: absolute; inset: 0; }
 .recruitment-hero[data-mobile-intro] .recruitment-motion { transform: none; }
 .jangsu-story--portrait .recruitment-intro-label { font-size: 12px; margin-bottom: 16px; }

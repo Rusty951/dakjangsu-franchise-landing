@@ -50,22 +50,13 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
     Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(image => image.decode())).then(() => {
       if (disposed) return;
       const actor = root.querySelector('.recruitment-character');
-      animations.push(root.querySelector('.recruitment-intro--support').animate([
+      const offer = root.querySelector('.recruitment-offer-intro').animate([
         { offset: 0, opacity: 1 },
-        { offset: 1750 / 4750, opacity: 1 },
-        { offset: 1900 / 4750, opacity: 0 },
-        { offset: 1, opacity: 0 },
-      ], { duration: 4750, fill: 'both', easing: 'linear' }));
-      const waiver = root.querySelector('.recruitment-intro--waiver');
-      const zero = waiver.animate([
-        { offset: 0, opacity: 0 },
-        { offset: 1850 / 4750, opacity: 0 },
-        { offset: 2100 / 4750, opacity: 1 },
         { offset: 2950 / 4750, opacity: 1 },
         { offset: 3150 / 4750, opacity: 0 },
         { offset: 1, opacity: 0 },
       ], { duration: 4750, fill: 'both', easing: 'linear' });
-      animations.push(zero);
+      animations.push(offer);
       fadeIn(actor, 3150, 350);
       fadeIn(root.querySelector('.recruitment-title span'), 3200, 350, 8);
       // The final pointing pose starts at 3150 + .72 * 1200 ms.
@@ -73,7 +64,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
-      zero.onfinish = () => { if (!disposed) root.dataset.intro = 'settled'; };
+      offer.onfinish = () => { if (!disposed) root.dataset.intro = 'settled'; };
       sync();
     }).catch(() => { if (!disposed) root.dataset.intro = 'static'; });
     return () => {
@@ -87,14 +78,16 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-mobile-intro="true" data-intro="loading">
       <div className="recruitment-first-screen">
         <div className="recruitment-visual-stage">
-          <div className="recruitment-intro recruitment-intro--support" aria-hidden="true">
-            <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
-            <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
-          </div>
-          <div className="recruitment-intro recruitment-intro--waiver" aria-hidden="true">
-            <p className="recruitment-intro-label">조건 충족 시 면제</p>
-            <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
-            <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
+          <div className="recruitment-offer-intro" aria-hidden="true">
+            <div className="recruitment-intro recruitment-intro--support">
+              <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
+              <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
+            </div>
+            <div className="recruitment-intro recruitment-intro--waiver">
+              <p className="recruitment-intro-label">조건 충족 시 면제</p>
+              <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
+              <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
+            </div>
           </div>
           <figure className="recruitment-character">
             <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={3150} duration={1200} />
