@@ -36,8 +36,8 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
 const flowingStoryQuery = '(max-width: 1024px), (max-height: 640px)';
 const mobileQuery = '(max-width: 1024px)';
-const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '운영'];
-const mobileScenes = [0, 'brand', 2, 3, 4];
+const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '로열티', '물류'];
+const mobileScenes = [0, 'brand', 2, 3, 4, 5];
 const subscribeMobile = notify => {
   const query = window.matchMedia(mobileQuery);
   query.addEventListener('change', notify);
@@ -431,8 +431,8 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <img className="brand-static-character" loading="lazy" src={assetPath(chapterMotions.brand.source)} alt="" width="1122" height="1402" />
           </BrandTextPoster>
         </article>
-        {compactMobile ? ['opening', 'kitchen', 'operating'].map((kind, index) => (
-          <MobileSupportPanel key={`${kind}-${kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : royaltyReplay}`} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
+        {compactMobile ? ['opening', 'kitchen', 'operating', 'growth'].map((kind, index) => (
+          <MobileSupportPanel key={`${kind}-${kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : kind === 'growth' ? liftReplay : royaltyReplay}`} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
         )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
@@ -484,7 +484,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
           <div className="jangsu-character-canvas">{compactMobile && active >= 2 ? null : scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
-        {scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
+        {!compactMobile && scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
         <nav
           className="jangsu-progress-guide"

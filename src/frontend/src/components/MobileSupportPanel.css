@@ -18,15 +18,18 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-facts > div { display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; font: 550 16px/1.4 var(--font-sans); }
 .rebrand-page .compact-mobile-benefits .mobile-support-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
 .rebrand-page .compact-mobile-benefits .mobile-support-note { margin: 12px 0 0; font: 500 14px/1.5 var(--font-sans); word-break: keep-all; }
-.rebrand-page .compact-mobile-benefits .mobile-operation-logistics { margin-top: 18px; padding-top: 16px; border-top: 1px solid #f7efe440; }
-.rebrand-page .compact-mobile-benefits .mobile-operation-logistics > p:first-child { margin: 0; font: 600 18px/1.4 var(--font-sans); }
-.rebrand-page .compact-mobile-benefits .mobile-operation-logistics strong { display: block; color: #d86535; font-size: 28px; }
+.rebrand-page .compact-mobile-benefits .mobile-support-amount > .mobile-support-prefix { margin: 0 0 4px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-character { height: 180px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-amount { display: flex; align-items: baseline; gap: 10px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-amount > span { font-size: 24px; }
-.rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-operation-logistics { margin-top: 12px; padding-top: 12px; }
-.rebrand-page .compact-mobile-benefits .mobile-operation-logistics .mobile-support-facts { margin-top: 12px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-link { margin-top: 4px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 12px; color: inherit; font: 800 16px/1.4 var(--font-sans); text-decoration: underline; text-underline-offset: 5px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-.rebrand-page .compact-mobile-benefits .jangsu-stage:is([data-scene='2'], [data-scene='3'], [data-scene='4']) > .jangsu-traveler { display: none; }
+.rebrand-page .compact-mobile-benefits .jangsu-stage:is([data-scene='2'], [data-scene='3'], [data-scene='4'], [data-scene='5']) > .jangsu-traveler { display: none; }
+
+@media (max-height: 640px) {
+  .rebrand-page .compact-mobile-benefits .jangsu-stage .mobile-support-panel--growth { padding-top: 20px; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount { margin-top: 8px; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-prefix { margin-bottom: 0; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-facts { margin-top: 12px; }
+}

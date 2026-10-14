@@ -17,9 +17,15 @@ const offers = {
     note: '조건 충족 매장 중 선착순 5개점 지원 검토 중',
   },
   operating: {
-    title: '운영', heading: ['첫 2년,', '로열티 면제안'], amount: '0', unit: '원',
+    title: '로열티', heading: ['첫 2년,', '로열티 면제안'], amount: '0', unit: '원',
     pose: '/rebrand/poses/royalty-zero-v1/03-push.png',
     note: '최초 계약 2년간, 적용 조건 확인 중',
+  },
+  growth: {
+    title: '물류', heading: ['물류대금도', '줄여보세요.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧',
+    pose: '/rebrand/character-cutout.png',
+    facts: [['월매출 3,000만원 이상', '30만원'], ['월매출 4,000만원 이상', '100만원']],
+    note: <>다음 달 물류대금 차감<br />지원 기간과 적용 조건 확인 중</>,
   },
 };
 
@@ -50,11 +56,6 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
         { opacity: 0, transform: 'translateX(18px)' },
         { opacity: 1, transform: 'translateX(0)' },
       ], { duration: 1100, delay: 250, fill: 'both', easing: 'cubic-bezier(.22,.7,.3,1)' }));
-      const logistics = root.querySelector('.mobile-operation-logistics');
-      if (logistics) animations.push(logistics.animate([
-        { opacity: 0, transform: 'translateY(10px)' },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { duration: 900, delay: 2200, fill: 'both', easing: 'ease-out' }));
       sync();
     }).catch(() => {});
     return () => {
@@ -70,19 +71,11 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
         <p className="mobile-support-index">0{index + 1} / {offer.title} 지원</p>
         <div className="mobile-support-hero">
           <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
-          <p className="mobile-support-amount"><b><SlotNumber value={offer.amount} active={active && kind !== 'operating'} reducedMotion={reducedMotion} /></b><span>{offer.unit}</span></p>
+          <p className="mobile-support-amount">{offer.prefix && <span className="mobile-support-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && kind !== 'operating'} reducedMotion={reducedMotion} /></b><span>{offer.unit}</span></p>
           <img className="mobile-support-character" src={assetPath(offer.pose)} alt={`${offer.title} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
         </div>
-        {offer.facts && <dl className="mobile-support-facts" aria-label={`${offer.title} 지원 구성`}>{offer.facts.map(([label, amount]) => <div key={label}><dt>{label}</dt><dd>{amount}</dd></div>)}</dl>}
+        {offer.facts && <dl className="mobile-support-facts" aria-label={kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${offer.title} 지원 구성`}>{offer.facts.map(([label, amount]) => <div key={label}><dt>{label}</dt><dd>{amount}</dd></div>)}</dl>}
         <p className="mobile-support-note">{offer.note}</p>
-        {kind === 'operating' && <div className="mobile-operation-logistics">
-          <p>물류대금 크레딧<strong>월 최대 100만원</strong></p>
-          <dl className="mobile-support-facts" aria-label="월매출별 물류 크레딧 지원 기준">
-            <div><dt>월매출 3,000만원 이상</dt><dd>30만원</dd></div>
-            <div><dt>월매출 4,000만원 이상</dt><dd>100만원</dd></div>
-          </dl>
-          <p className="mobile-support-note">다음 달 물류대금 차감<br />지원 기간과 적용 조건 확인 중</p>
-        </div>}
         <a className="mobile-support-link" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
     </article>
