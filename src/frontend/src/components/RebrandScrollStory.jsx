@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { assetPath } from '../assetPath';
 import JangsuMotion from './JangsuMotion';
 import JangsuChapterMotion from './JangsuChapterMotion';
@@ -12,12 +12,13 @@ import JangsuLiftMotion from './JangsuLiftMotion';
 import SlotNumber from './SlotNumber';
 import RebrandHeroOffer from './RebrandHeroOffer';
 import BrandTextPoster from './BrandTextPoster';
+import MobileSupportPanel from './MobileSupportPanel';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
-const chapters = ['닭장수', '브랜드', '가맹비', '오픈', '주방', '로열티', '운영', '상담'];
+const desktopChapters = ['닭장수', '브랜드', '가맹비', '오픈', '주방', '로열티', '운영', '상담'];
 // Chapter order can change without renumbering the existing character acts.
-const chapterScenes = [0, 'brand', 1, 2, 3, 4, 5, 6];
+const desktopScenes = [0, 'brand', 1, 2, 3, 4, 5, 6];
 const desktopFrames = [
   [51, 78, 4], [84, 67, -8], [17, 70, -8], [84, 67, -8], [18, 71, -8], [85, 65, -8], [81, 80, 8],
 ];
@@ -33,9 +34,21 @@ const benefits = [
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
-const flowingStoryQuery = '(max-width: 1024px) and (orientation: portrait), (max-height: 640px)';
+const flowingStoryQuery = '(max-width: 1024px), (max-height: 640px)';
+const mobileQuery = '(max-width: 1024px)';
+const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '운영'];
+const mobileScenes = [0, 'brand', 2, 3, 4];
+const subscribeMobile = notify => {
+  const query = window.matchMedia(mobileQuery);
+  query.addEventListener('change', notify);
+  return () => query.removeEventListener('change', notify);
+};
 
 export default function RebrandScrollStory({ onConditionsClick }) {
+  const compactMobile = useSyncExternalStore(subscribeMobile, () => window.matchMedia(mobileQuery).matches, () => false);
+  const chapters = compactMobile ? mobileChapters : desktopChapters;
+  const chapterScenes = compactMobile ? mobileScenes : desktopScenes;
+  const previousScenes = useRef(chapterScenes);
   const trackRef = useRef(null);
   const stageRef = useRef(null);
   const characterRef = useRef(null);
@@ -43,7 +56,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   const orientationRestore = useRef(null);
   const headingFocusTarget = useRef(null);
   const [active, setActive] = useState(0);
-  const scene = chapterScenes[active];
+  const scene = chapterScenes[Math.min(active, chapters.length - 1)];
   const [portrait, setPortrait] = useState(false);
   const [guideVisible, setGuideVisible] = useState(false);
 
@@ -92,6 +105,14 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   }, []);
 
   useLayoutEffect(() => {
+    if (previousScenes.current !== chapterScenes) {
+      const position = orientationRestore.current ?? lastReadingPosition.current;
+      const oldScene = previousScenes.current[position.index];
+      const equivalent = chapterScenes.indexOf(oldScene);
+      const fallbackScene = oldScene === 1 ? 2 : 4;
+      orientationRestore.current = { ...position, index: equivalent >= 0 ? equivalent : Math.max(0, chapterScenes.indexOf(fallbackScene)) };
+      previousScenes.current = chapterScenes;
+    }
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const panels = [...stageRef.current.querySelectorAll('.jangsu-panel')];
     const track = trackRef.current;
@@ -295,7 +316,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       document.removeEventListener('visibilitychange', syncMotion);
       preference.removeEventListener('change', syncMotion);
     };
-  }, [portrait]);
+  }, [portrait, chapterScenes, chapters]);
 
   useEffect(() => {
     if (headingFocusTarget.current === active) {
@@ -326,8 +347,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
       if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
       const textPoster = panel.querySelector('.brand-text-poster');
-      const target = textPoster ? panel : index > 0 ? panel.querySelector('h2') : panel;
-      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !textPoster ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
+      const wholePanel = textPoster || panel.classList.contains('mobile-support-panel');
+      const target = wholePanel ? panel : index > 0 ? panel.querySelector('h2') : panel;
+      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !wholePanel ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
       return;
     }
     if (reducedMotion) {
@@ -384,7 +406,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
   });
 
   return (
-    <section className={`jangsu-story jangsu-story--massive${portrait ? ' jangsu-story--portrait' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion} style={{ '--story-chapter-count': chapters.length }}>
+    <section className={`jangsu-story jangsu-story--massive${portrait ? ' jangsu-story--portrait' : ''}${compactMobile ? ' compact-mobile-benefits' : ''}`} id="rebrand-story" ref={trackRef} aria-label="스크롤로 만나는 닭장수" data-reduced={reducedMotion} style={{ '--story-chapter-count': chapters.length }}>
       <div className="jangsu-stage" ref={stageRef} data-scene={scene} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
@@ -409,7 +431,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <img className="brand-static-character" loading="lazy" src={assetPath(chapterMotions.brand.source)} alt="" width="1122" height="1402" />
           </BrandTextPoster>
         </article>
-        {benefits.map((benefit, index) => (
+        {compactMobile ? ['opening', 'kitchen', 'operating'].map((kind, index) => (
+          <MobileSupportPanel key={`${kind}-${kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : royaltyReplay}`} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
+        )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}
             {benefit.id === 'opening' && <img className="opening-static-character" loading="lazy" src={assetPath(chapterMotions[2].source)} alt="닭장수 캐릭터" width="1122" height="1402" />}
@@ -443,7 +467,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             </div>
           </article>
         ))}
-        <article className="jangsu-panel jangsu-panel--invite" {...panelProps(7)}>
+        {!compactMobile && <article className="jangsu-panel jangsu-panel--invite" {...panelProps(7)}>
           <div className="jangsu-invite-content">
             <span className="jangsu-scene-number">내 점포 지원 상담</span>
             <h2 tabIndex={-1}><span>우리 동네에서도</span><em>닭장수를 시작할 수 있을까요?</em></h2>
@@ -456,9 +480,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             </div>
           </div>
           <img className="jangsu-invite-static" src={assetPath(chapterMotions[6].source)} alt="" width="1122" height="1402" loading="lazy" />
-        </article>
+        </article>}
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
-          <div className="jangsu-character-canvas">{scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
+          <div className="jangsu-character-canvas">{compactMobile && active >= 2 ? null : scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
         {scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />
