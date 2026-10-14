@@ -89,19 +89,19 @@
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome:has(.recruitment-hero) { padding: 16px 20px 32px; }
 .jangsu-story--portrait .recruitment-hero { position: relative; inset: auto; display: block; padding: 0; border: 0; max-width: 620px; margin: auto; }
 .jangsu-story--portrait .recruitment-first-screen {
-  display: grid; grid-template-rows: minmax(0, 1fr) auto auto;
-  height: calc(100svh - var(--rebrand-header-height) - 32px);
-  min-height: 0; max-height: 650px; padding: 20px 12px 16px;
+  display: grid; grid-template-rows: minmax(0, 1fr) auto;
+  height: calc(100svh - var(--rebrand-header-height) - 16px);
+  min-height: 0; padding: 20px 0 16px;
   border: 0; gap: 12px;
 }
 .jangsu-story--portrait .recruitment-intro-label { font-size: 12px; margin-bottom: 16px; }
 .jangsu-story--portrait .recruitment-intro-amount > span { font-size: 22px; }
 .jangsu-story--portrait .recruitment-character { grid-column: 1; grid-row: 1; }
-.jangsu-story--portrait .recruitment-motion { transform: translateX(min(6cqw, 26px)); }
+.jangsu-story--portrait .recruitment-motion { transform: translateX(min(4cqw, 20px)); }
 .rebrand-page .jangsu-story--portrait .jangsu-panel--welcome .recruitment-title {
-  grid-column: 1; grid-row: 2; font-size: clamp(27px, 7.3vw, 44px); line-height: 1.14;
+  grid-column: 1; grid-row: 2; font-size: clamp(30px, 8.8vw, 44px); line-height: 1.14;
 }
-.jangsu-story--portrait .recruitment-support { grid-column: 1; grid-row: 3; text-align: center; }
+.jangsu-story--portrait .recruitment-support { margin-top: 20px; padding-top: 20px; border-top: 1px solid #241f1b35; text-align: center; }
 .jangsu-story--portrait .recruitment-support-label { margin-bottom: 2px; font-size: 12px; }
 .jangsu-story--portrait .recruitment-support .recruitment-amount { justify-content: center; gap: 10px; }
 .jangsu-story--portrait .recruitment-support .recruitment-amount b { font-size: 42px; }
