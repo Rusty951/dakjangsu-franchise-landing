@@ -1,9 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import SlotNumber from './SlotNumber';
+import DesktopRebrandHeroOffer from './DesktopRebrandHeroOffer';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
-export default function RebrandHeroOffer({ portrait = false, active = false, reducedMotion = false }) {
+const desktopQuery = '(min-width: 1025px)';
+const isDesktopViewport = () => window.matchMedia(desktopQuery).matches;
+const subscribeViewport = onChange => {
+  const query = window.matchMedia(desktopQuery);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+};
+
+function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion = false }) {
   const rootRef = useRef(null);
   useEffect(() => {
     const root = rootRef.current;
@@ -118,4 +127,9 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       </section>
     </div>
   );
+}
+
+export default function RebrandHeroOffer(props) {
+  const desktop = useSyncExternalStore(subscribeViewport, isDesktopViewport, () => true);
+  return props.portrait && !desktop ? <MobileRebrandHeroOffer {...props} /> : <DesktopRebrandHeroOffer {...props} />;
 }

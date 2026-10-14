@@ -75,6 +75,9 @@
 .rebrand-page .jangsu-story:not(.jangsu-story--portrait) .jangsu-stage .jangsu-panel--welcome:has(.recruitment-hero) {
   background: linear-gradient(90deg, #d86535 50%, #241f1b 50%);
 }
+/* Desktop retains the composition from before the mobile intro revisions. */
+.jangsu-story:not(.jangsu-story--portrait) .recruitment-hero { container-type: normal; border: 5px double #fff8ed80; }
+.jangsu-story:not(.jangsu-story--portrait) :is(.recruitment-character, .recruitment-title, .recruitment-support, .recruitment-notes, .recruitment-zero) { position: static; z-index: auto; }
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-zero { color: #fff8ed; }
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-intro { color: #fff8ed; }
 .jangsu-story:not(.jangsu-story--portrait) .recruitment-intro-amount b { -webkit-text-stroke-color: #fff8ed; }
@@ -117,6 +120,18 @@
 .jangsu-story--portrait .recruitment-zero .recruitment-amount b { font-size: 72px; }
 .jangsu-story--portrait .recruitment-waiver, .jangsu-story--portrait .recruitment-scope { grid-column: 1 / -1; margin-top: 8px; }
 .jangsu-story--portrait .recruitment-scope { border-color: #fff8ed40; }
+/* Short desktop windows keep their original flowing poster, too. */
+@media (min-width: 1025px) {
+  .jangsu-story--portrait .recruitment-hero[data-desktop-original] { container-type: normal; }
+  .jangsu-story--portrait .recruitment-hero[data-desktop-original] .recruitment-first-screen {
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    height: calc(100svh - var(--rebrand-header-height) - 32px);
+    max-height: 650px; padding: 20px 12px 16px; border: 5px double #b84d2d;
+  }
+  .jangsu-story--portrait .recruitment-hero[data-desktop-original] .recruitment-motion { transform: none; }
+  .rebrand-page .jangsu-story--portrait .jangsu-panel--welcome .recruitment-hero[data-desktop-original] .recruitment-title { font-size: clamp(27px, 7.3vw, 44px); }
+  .jangsu-story--portrait .recruitment-hero[data-desktop-original] .recruitment-support { grid-column: 1; grid-row: 3; margin: 0; padding: 0; border: 0; }
+}
 @media (max-height: 700px) and (min-width: 1025px) {
   .recruitment-hero { inset-block: 12px 20px; gap: 12px 24px; padding: 16px 24px; }
   .recruitment-parts { margin-top: 12px; }
