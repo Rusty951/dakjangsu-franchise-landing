@@ -1,14 +1,23 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { assetPath } from '../assetPath';
 import { chapterMotions } from '../utils/chapterMotion.mjs';
 
+const desktopQuery = '(min-width: 1025px)';
+const subscribeViewport = notify => {
+  const query = window.matchMedia(desktopQuery);
+  query.addEventListener('change', notify);
+  return () => query.removeEventListener('change', notify);
+};
+
 export default function JangsuChapterMotion({ scene, onSettled }) {
   const rootRef = useRef(null);
+  const desktop = useSyncExternalStore(subscribeViewport, () => window.matchMedia(desktopQuery).matches, () => true);
   const motion = chapterMotions[scene];
   useEffect(() => {
     const root = rootRef.current, image = root.querySelector('img');
     const story = root.closest('.jangsu-story'), stage = root.closest('.jangsu-stage');
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (scene === 'brand' && stage.querySelector('.brand-text-poster')) { root.dataset.phase = 'static'; return; }
     let disposed = false, loaded = false, onScreen = true, actorOnScreen = false, actorAnimation, animations = [];
     const animate = (element, frames, options = {}) => {
       if (!element) return;
@@ -89,7 +98,7 @@ export default function JangsuChapterMotion({ scene, onSettled }) {
       document.removeEventListener('visibilitychange', sync);
       preference.removeEventListener('change', sync);
     };
-  }, [scene, motion, onSettled]);
+  }, [scene, motion, onSettled, desktop]);
   return <div className="jangsu-chapter-motion" data-chapter-scene={scene} data-phase="loading" ref={rootRef} aria-hidden="true">
     <img src={assetPath(motion.source)} alt="" width="1122" height="1402" draggable="false" decoding="async" />
   </div>;

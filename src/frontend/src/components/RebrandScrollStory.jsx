@@ -11,6 +11,7 @@ import './JangsuInviteMotion.css';
 import JangsuLiftMotion from './JangsuLiftMotion';
 import SlotNumber from './SlotNumber';
 import RebrandHeroOffer from './RebrandHeroOffer';
+import BrandTextPoster from './BrandTextPoster';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
@@ -324,8 +325,9 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       }
       const panel = stage.querySelectorAll('.jangsu-panel')[index];
       if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
-      const target = index > 0 ? panel.querySelector('h2') : panel;
-      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
+      const textPoster = panel.querySelector('.brand-text-poster');
+      const target = textPoster ? panel : index > 0 ? panel.querySelector('h2') : panel;
+      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !textPoster ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
       return;
     }
     if (reducedMotion) {
@@ -389,6 +391,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
           <RebrandHeroOffer key={`hero-${heroReplay}`} portrait={portrait} active={active === 0} reducedMotion={reducedMotion} />
         </article>
         <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
+          <BrandTextPoster key={`brand-text-${brandReplay}`} portrait={portrait} active={active === 1} reducedMotion={reducedMotion}>
           <div className="benefit-scene-copy brand-story-copy">
             <span className="benefit-scene-index">02 / 새로운 닭장수</span>
             <h2 tabIndex={-1}>
@@ -404,6 +407,7 @@ export default function RebrandScrollStory({ onConditionsClick }) {
             {portrait && <PortraitCharacterSlot scene="brand" />}
           </div>
           <img className="brand-static-character" loading="lazy" src={assetPath(chapterMotions.brand.source)} alt="" width="1122" height="1402" />
+          </BrandTextPoster>
         </article>
         {benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
