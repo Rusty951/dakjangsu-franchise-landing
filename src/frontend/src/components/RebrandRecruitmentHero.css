@@ -26,7 +26,7 @@
 }
 .recruitment-intro-amount > span { font: 800 clamp(22px, 3cqw, 40px)/1.3 var(--font-sans); white-space: nowrap; color: #241f1b; }
 .recruitment-intro .slot-number-separator { display: inline-block; width: .14em; line-height: 1em; }
-.recruitment-hero[data-intro='loading'] :is(.recruitment-character, .recruitment-title, .recruitment-support, .recruitment-notes, .recruitment-zero) { opacity: 0; }
+.recruitment-hero[data-intro='loading'] :is(.recruitment-character, .recruitment-title, .recruitment-first-offer, .recruitment-support, .recruitment-notes, .recruitment-zero) { opacity: 0; }
 .recruitment-hero[data-intro='static'] .recruitment-intro { display: none; }
 .recruitment-hero:is([data-intro='settled'], [data-intro='parked']) .recruitment-intro { opacity: .42; }
 .recruitment-hero:is([data-intro='settled'], [data-intro='parked']) :is(.recruitment-intro-label, .recruitment-intro-amount > span) { opacity: 0; }
@@ -92,7 +92,7 @@
 .rebrand-page .jangsu-story--portrait .jangsu-stage .jangsu-panel--welcome:has(.recruitment-hero) { padding: 16px 20px 32px; }
 .jangsu-story--portrait .recruitment-hero { position: relative; inset: auto; display: block; padding: 0; border: 0; max-width: 620px; margin: auto; }
 .jangsu-story--portrait .recruitment-first-screen {
-  display: grid; grid-template-rows: minmax(0, 1fr) auto;
+  display: grid; grid-template-rows: minmax(0, 1fr) auto auto;
   height: calc(100svh - var(--rebrand-header-height) - 16px);
   min-height: 0; padding: 20px 0 16px;
   border: 0; gap: 12px;
@@ -104,6 +104,16 @@
 .rebrand-page .jangsu-story--portrait .jangsu-panel--welcome .recruitment-title {
   grid-column: 1; grid-row: 2; font-size: clamp(30px, 8.8vw, 44px); line-height: 1.14;
 }
+.recruitment-first-offer {
+  position: relative; z-index: 3; grid-column: 1; grid-row: 3;
+  display: flex; justify-content: center; align-items: center; gap: 20px;
+  padding-top: 8px; border-top: 1px solid #241f1b25;
+}
+.rebrand-page .recruitment-first-offer p { margin: 0; font: 700 14px/1.3 var(--font-sans); }
+.recruitment-first-offer small { display: block; margin-bottom: 3px; font: 500 10px/1.3 var(--font-sans); }
+.recruitment-first-offer-amount { display: flex; align-items: baseline; gap: 5px; color: #d86535; }
+.recruitment-first-offer-amount b { font: 400 56px/1 var(--font-display); }
+.recruitment-first-offer-amount > span { font-size: 18px; }
 .jangsu-story--portrait .recruitment-support { margin-top: 20px; padding-top: 20px; border-top: 1px solid #241f1b35; text-align: center; }
 .jangsu-story--portrait .recruitment-support-label { margin-bottom: 2px; font-size: 12px; }
 .jangsu-story--portrait .recruitment-support .recruitment-amount { justify-content: center; gap: 10px; }
@@ -141,5 +151,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .recruitment-hero .recruitment-intro { display: none; }
-  .recruitment-hero[data-intro='loading'] :is(.recruitment-character, .recruitment-title, .recruitment-support, .recruitment-notes, .recruitment-zero) { opacity: 1; }
+  .recruitment-hero[data-intro='loading'] :is(.recruitment-character, .recruitment-title, .recruitment-first-offer, .recruitment-support, .recruitment-notes, .recruitment-zero) { opacity: 1; }
 }

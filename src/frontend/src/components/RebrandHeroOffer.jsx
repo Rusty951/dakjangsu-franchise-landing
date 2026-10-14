@@ -70,6 +70,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       fadeIn(root.querySelector('.recruitment-title span'), 1900, 350, 8);
       // The final pointing pose starts at 1850 + .72 * 1200 ms.
       fadeIn(root.querySelector('.recruitment-title strong'), 2720, 400, 8);
+      fadeIn(root.querySelector('.recruitment-first-offer'), 3100, 300);
       fadeIn(root.querySelector('.recruitment-support'), 3100, 300);
       fadeIn(root.querySelector('.recruitment-notes'), 3100, 300);
       fadeIn(root.querySelector('.recruitment-zero'), 3100, 300);
@@ -107,6 +108,10 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
           <span>새로운 닭장수가</span>
           <strong>당신을 원합니다.</strong>
         </h1>
+        <section className="recruitment-first-offer" aria-label="조건 충족 시 가맹비, 교육비와 첫 2년 로열티 면제">
+          <p><small>조건 충족 시 면제</small><span>가맹비, 교육비<br />첫 2년 로열티</span></p>
+          <p className="recruitment-first-offer-amount"><b>0</b><span>원</span></p>
+        </section>
       </div>
       <section className="recruitment-support" aria-label="조건 충족 가정, 2년 합산 지원 계산 예시">
         <p className="recruitment-support-label">조건 충족 가정, 2년 합산 계산 예시</p>
