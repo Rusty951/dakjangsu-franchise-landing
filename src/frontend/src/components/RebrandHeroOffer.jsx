@@ -46,12 +46,12 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       const actorBox = actor.getBoundingClientRect();
       intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
       // Keep the calculation label below the header on wide, short viewports.
-      intro.style.top = `${Math.max(actorBox.top + actorBox.height / 2 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
+      intro.style.top = `${Math.max(actorBox.top + actorBox.height * .38 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
       const number = intro.animate([
         { offset: 0, opacity: 1 },
         { offset: 1850 / 3400, opacity: 1 },
-        { offset: 2450 / 3400, opacity: .28 },
-        { offset: 1, opacity: .28 },
+        { offset: 2450 / 3400, opacity: .42 },
+        { offset: 1, opacity: .42 },
       ], { duration: 3400, fill: 'both', easing: 'linear' });
       animations.push(number);
       for (const caption of intro.querySelectorAll('.recruitment-intro-label, .recruitment-intro-amount > span')) {
