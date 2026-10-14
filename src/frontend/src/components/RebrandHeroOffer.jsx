@@ -48,16 +48,21 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       intro.style.top = `${actorBox.top + actorBox.height / 2 - rootBox.top}px`;
       const number = intro.animate([
         { offset: 0, opacity: 1 },
-        { offset: 1450 / 3000, opacity: 1 },
-        { offset: 1950 / 3000, opacity: .32 },
-        { offset: 1, opacity: .32 },
-      ], { duration: 3000, fill: 'both', easing: 'linear' });
+        { offset: 1850 / 3400, opacity: 1 },
+        { offset: 2450 / 3400, opacity: .28 },
+        { offset: 1, opacity: .28 },
+      ], { duration: 3400, fill: 'both', easing: 'linear' });
       animations.push(number);
-      fadeIn(actor, 1600, 350);
-      fadeIn(root.querySelector('.recruitment-title'), 2050, 350, 10);
-      fadeIn(root.querySelector('.recruitment-support'), 1600, 250);
-      fadeIn(root.querySelector('.recruitment-notes'), 1850);
-      fadeIn(root.querySelector('.recruitment-zero'), 1850);
+      for (const caption of intro.querySelectorAll('.recruitment-intro-label, .recruitment-intro-amount > span')) {
+        animations.push(caption.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 1850, duration: 350, fill: 'both' }));
+      }
+      fadeIn(actor, 1850, 350);
+      fadeIn(root.querySelector('.recruitment-title span'), 1900, 350, 8);
+      // The final pointing pose starts at 1850 + .72 * 1200 ms.
+      fadeIn(root.querySelector('.recruitment-title strong'), 2720, 400, 8);
+      fadeIn(root.querySelector('.recruitment-support'), 3100, 300);
+      fadeIn(root.querySelector('.recruitment-notes'), 3100, 300);
+      fadeIn(root.querySelector('.recruitment-zero'), 3100, 300);
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
@@ -86,7 +91,7 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       </div>
       <div className="recruitment-first-screen">
         <figure className="recruitment-character">
-          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={1650} duration={1200} />
+          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={1850} duration={1200} />
         </figure>
         <h1 className="recruitment-title" tabIndex={-1}>
           <span>새로운 닭장수가</span>
