@@ -45,7 +45,8 @@ export default function RebrandHeroOffer({ portrait = false, active = false, red
       const rootBox = root.getBoundingClientRect();
       const actorBox = actor.getBoundingClientRect();
       intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
-      intro.style.top = `${actorBox.top + actorBox.height / 2 - rootBox.top}px`;
+      // Keep the calculation label below the header on wide, short viewports.
+      intro.style.top = `${Math.max(actorBox.top + actorBox.height / 2 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
       const number = intro.animate([
         { offset: 0, opacity: 1 },
         { offset: 1850 / 3400, opacity: 1 },

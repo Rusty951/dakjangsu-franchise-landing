@@ -19,7 +19,7 @@
 .recruitment-intro-label { margin: 0 0 20px; font: 700 14px/1.5 var(--font-sans); }
 .recruitment-intro-amount { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 0; color: #ffdc64; }
 .recruitment-intro-amount b {
-  font: 400 39cqw/1 var(--font-display);
+  font: 400 min(39cqw, calc(100svh - var(--rebrand-header-height) - 180px))/1 var(--font-display);
   -webkit-text-stroke: clamp(1.5px, .2cqw, 3px) #241f1b;
   paint-order: stroke fill;
   text-shadow: 0 .014em 0 #241f1b;
