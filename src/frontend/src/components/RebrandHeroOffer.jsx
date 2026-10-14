@@ -67,19 +67,15 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
         { offset: 0, opacity: 0 },
         { offset: 1850 / 4750, opacity: 0 },
         { offset: 2100 / 4750, opacity: 1 },
-        { offset: 3150 / 4750, opacity: 1 },
-        { offset: 3750 / 4750, opacity: .32 },
-        { offset: 1, opacity: .32 },
+        { offset: 2950 / 4750, opacity: 1 },
+        { offset: 3150 / 4750, opacity: 0 },
+        { offset: 1, opacity: 0 },
       ], { duration: 4750, fill: 'both', easing: 'linear' });
       animations.push(zero);
-      for (const caption of waiver.querySelectorAll('.recruitment-intro-label, .recruitment-waiver-intro-title, .recruitment-intro-amount > span')) {
-        animations.push(caption.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 3150, duration: 350, fill: 'both' }));
-      }
       fadeIn(actor, 3150, 350);
       fadeIn(root.querySelector('.recruitment-title span'), 3200, 350, 8);
       // The final pointing pose starts at 3150 + .72 * 1200 ms.
       fadeIn(root.querySelector('.recruitment-title strong'), 4020, 400, 8);
-      fadeIn(root.querySelector('.recruitment-first-offer'), 4450, 300);
       fadeIn(root.querySelector('.recruitment-support'), 4450, 300);
       fadeIn(root.querySelector('.recruitment-notes'), 4450, 300);
       fadeIn(root.querySelector('.recruitment-zero'), 4450, 300);
@@ -122,10 +118,6 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
           <span>새로운 닭장수가</span>
           <strong>당신을 원합니다.</strong>
         </h1>
-        <section className="recruitment-first-offer" aria-label="조건 충족 시 가맹비, 교육비와 첫 2년 로열티 면제">
-          <p><small>조건 충족 시 면제</small><span>가맹비, 교육비<br />첫 2년 로열티</span></p>
-          <p className="recruitment-first-offer-amount"><b>0</b><span>원</span></p>
-        </section>
       </div>
       <section className="recruitment-support" aria-label="조건 충족 가정, 2년 합산 지원 계산 예시">
         <p className="recruitment-support-label">조건 충족 가정, 2년 합산 계산 예시</p>
