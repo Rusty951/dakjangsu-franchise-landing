@@ -49,35 +49,44 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
     };
     Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(image => image.decode())).then(() => {
       if (disposed) return;
-      const intro = root.querySelector('.recruitment-intro');
       const actor = root.querySelector('.recruitment-character');
       const rootBox = root.getBoundingClientRect();
       const actorBox = actor.getBoundingClientRect();
-      intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
-      // Keep the calculation label below the header on wide, short viewports.
-      intro.style.top = `${Math.max(actorBox.top + actorBox.height * .38 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
-      const number = intro.animate([
-        { offset: 0, opacity: 1 },
-        { offset: 1850 / 3400, opacity: 1 },
-        { offset: 2450 / 3400, opacity: .42 },
-        { offset: 1, opacity: .42 },
-      ], { duration: 3400, fill: 'both', easing: 'linear' });
-      animations.push(number);
-      for (const caption of intro.querySelectorAll('.recruitment-intro-label, .recruitment-intro-amount > span')) {
-        animations.push(caption.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 1850, duration: 350, fill: 'both' }));
+      for (const intro of root.querySelectorAll('.recruitment-intro')) {
+        intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
+        intro.style.top = `${Math.max(actorBox.top + actorBox.height * .38 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
       }
-      fadeIn(actor, 1850, 350);
-      fadeIn(root.querySelector('.recruitment-title span'), 1900, 350, 8);
-      // The final pointing pose starts at 1850 + .72 * 1200 ms.
-      fadeIn(root.querySelector('.recruitment-title strong'), 2720, 400, 8);
-      fadeIn(root.querySelector('.recruitment-first-offer'), 3100, 300);
-      fadeIn(root.querySelector('.recruitment-support'), 3100, 300);
-      fadeIn(root.querySelector('.recruitment-notes'), 3100, 300);
-      fadeIn(root.querySelector('.recruitment-zero'), 3100, 300);
+      animations.push(root.querySelector('.recruitment-intro--support').animate([
+        { offset: 0, opacity: 1 },
+        { offset: 1750 / 4750, opacity: 1 },
+        { offset: 1900 / 4750, opacity: 0 },
+        { offset: 1, opacity: 0 },
+      ], { duration: 4750, fill: 'both', easing: 'linear' }));
+      const waiver = root.querySelector('.recruitment-intro--waiver');
+      const zero = waiver.animate([
+        { offset: 0, opacity: 0 },
+        { offset: 1850 / 4750, opacity: 0 },
+        { offset: 2100 / 4750, opacity: 1 },
+        { offset: 3150 / 4750, opacity: 1 },
+        { offset: 3750 / 4750, opacity: .32 },
+        { offset: 1, opacity: .32 },
+      ], { duration: 4750, fill: 'both', easing: 'linear' });
+      animations.push(zero);
+      for (const caption of waiver.querySelectorAll('.recruitment-intro-label, .recruitment-waiver-intro-title, .recruitment-intro-amount > span')) {
+        animations.push(caption.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 3150, duration: 350, fill: 'both' }));
+      }
+      fadeIn(actor, 3150, 350);
+      fadeIn(root.querySelector('.recruitment-title span'), 3200, 350, 8);
+      // The final pointing pose starts at 3150 + .72 * 1200 ms.
+      fadeIn(root.querySelector('.recruitment-title strong'), 4020, 400, 8);
+      fadeIn(root.querySelector('.recruitment-first-offer'), 4450, 300);
+      fadeIn(root.querySelector('.recruitment-support'), 4450, 300);
+      fadeIn(root.querySelector('.recruitment-notes'), 4450, 300);
+      fadeIn(root.querySelector('.recruitment-zero'), 4450, 300);
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
-      number.onfinish = () => { if (!disposed) root.dataset.intro = 'settled'; };
+      zero.onfinish = () => { if (!disposed) root.dataset.intro = 'settled'; };
       sync();
     }).catch(() => { if (!disposed) root.dataset.intro = 'static'; });
     return () => {
@@ -96,13 +105,18 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
   );
   return (
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-intro="loading">
-      <div className="recruitment-intro" aria-hidden="true">
+      <div className="recruitment-intro recruitment-intro--support" aria-hidden="true">
         <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
         <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
       </div>
+      <div className="recruitment-intro recruitment-intro--waiver" aria-hidden="true">
+        <p className="recruitment-intro-label">조건 충족 시 면제</p>
+        <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
+        <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
+      </div>
       <div className="recruitment-first-screen">
         <figure className="recruitment-character">
-          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={1850} duration={1200} />
+          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={3150} duration={1200} />
         </figure>
         <h1 className="recruitment-title" tabIndex={-1}>
           <span>새로운 닭장수가</span>
