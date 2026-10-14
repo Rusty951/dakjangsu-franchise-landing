@@ -122,6 +122,10 @@
 .recruitment-hero[data-mobile-intro][data-intro='settled'] .recruitment-offer-intro { opacity: 0; }
 .recruitment-hero[data-mobile-intro] .recruitment-character { position: absolute; inset: 0; }
 .recruitment-hero[data-mobile-intro] .recruitment-motion { transform: none; }
+.recruitment-hero[data-mobile-intro] .recruitment-character img { object-position: center; }
+.rebrand-page .jangsu-story--portrait .jangsu-panel--welcome .recruitment-hero[data-mobile-intro] .recruitment-title {
+  font-size: clamp(36px, 13cqw, 80px); line-height: 1.12;
+}
 .jangsu-story--portrait .recruitment-intro-label { font-size: 12px; margin-bottom: 16px; }
 .jangsu-story--portrait .recruitment-intro-amount > span { font-size: 22px; }
 .jangsu-story--portrait .recruitment-character { grid-column: 1; grid-row: 1; }
