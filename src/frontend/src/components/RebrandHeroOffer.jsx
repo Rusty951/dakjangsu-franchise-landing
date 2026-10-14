@@ -50,12 +50,6 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
     Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(image => image.decode())).then(() => {
       if (disposed) return;
       const actor = root.querySelector('.recruitment-character');
-      const rootBox = root.getBoundingClientRect();
-      const actorBox = actor.getBoundingClientRect();
-      for (const intro of root.querySelectorAll('.recruitment-intro')) {
-        intro.style.left = `${actorBox.left + actorBox.width / 2 - rootBox.left}px`;
-        intro.style.top = `${Math.max(actorBox.top + actorBox.height * .38 - rootBox.top, intro.offsetHeight / 2 + 8)}px`;
-      }
       animations.push(root.querySelector('.recruitment-intro--support').animate([
         { offset: 0, opacity: 1 },
         { offset: 1750 / 4750, opacity: 1 },
@@ -76,9 +70,6 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       fadeIn(root.querySelector('.recruitment-title span'), 3200, 350, 8);
       // The final pointing pose starts at 3150 + .72 * 1200 ms.
       fadeIn(root.querySelector('.recruitment-title strong'), 4020, 400, 8);
-      fadeIn(root.querySelector('.recruitment-support'), 4450, 300);
-      fadeIn(root.querySelector('.recruitment-notes'), 4450, 300);
-      fadeIn(root.querySelector('.recruitment-zero'), 4450, 300);
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
@@ -92,50 +83,28 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       document.removeEventListener('visibilitychange', sync);
     };
   }, [active, reducedMotion]);
-  const parts = (
-    <dl className="recruitment-parts">
-      <div><dt>오픈 지원</dt><dd>{format(example.opening)}<small>만원 상당</small></dd></div>
-      <div><dt>주방 지원</dt><dd>{format(example.kitchen)}<small>만원 상당</small></dd></div>
-      <div><dt>물류 지원</dt><dd>{format(example.logistics)}<small>만원</small></dd></div>
-    </dl>
-  );
   return (
-    <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-intro="loading">
-      <div className="recruitment-intro recruitment-intro--support" aria-hidden="true">
-        <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
-        <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
-      </div>
-      <div className="recruitment-intro recruitment-intro--waiver" aria-hidden="true">
-        <p className="recruitment-intro-label">조건 충족 시 면제</p>
-        <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
-        <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
-      </div>
+    <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-mobile-intro="true" data-intro="loading">
       <div className="recruitment-first-screen">
-        <figure className="recruitment-character">
-          <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={3150} duration={1200} />
-        </figure>
+        <div className="recruitment-visual-stage">
+          <div className="recruitment-intro recruitment-intro--support" aria-hidden="true">
+            <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
+            <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
+          </div>
+          <div className="recruitment-intro recruitment-intro--waiver" aria-hidden="true">
+            <p className="recruitment-intro-label">조건 충족 시 면제</p>
+            <p className="recruitment-waiver-intro-title">가맹비, 교육비<br />첫 2년 로열티</p>
+            <p className="recruitment-intro-amount"><b><SlotNumber value="0" active={false} reducedMotion /></b><span>원</span></p>
+          </div>
+          <figure className="recruitment-character">
+            <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={3150} duration={1200} />
+          </figure>
+        </div>
         <h1 className="recruitment-title" tabIndex={-1}>
           <span>새로운 닭장수가</span>
           <strong>당신을 원합니다.</strong>
         </h1>
       </div>
-      <section className="recruitment-support" aria-label="조건 충족 가정, 2년 합산 지원 계산 예시">
-        <p className="recruitment-support-label">조건 충족 가정, 2년 합산 계산 예시</p>
-        <p className="recruitment-amount"><b>{format(example.total)}</b><span>만원</span></p>
-        {!portrait && parts}
-      </section>
-      <div className="recruitment-notes">
-        {portrait && parts}
-        <p>월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>
-        <p>지원 조건과 기간 확인 중<br />현금 지급액 아님</p>
-      </div>
-      <section className="recruitment-zero" aria-label="가맹비와 교육비, 첫 2년 로열티 면제 조건">
-        <p className="recruitment-support-label">조건 충족 시 면제</p>
-        <h2>가맹비, 교육비<br />첫 2년 로열티</h2>
-        <p className="recruitment-amount"><b>0</b><span>원</span></p>
-        <p className="recruitment-waiver">가맹비와 교육비 440만원은 오픈 지원에 포함.<br />로열티 면제는 합산 금액에서 제외.</p>
-        <p className="recruitment-scope">전체 창업비 0원 아님<br /><span>임대, 인테리어 등 별도</span></p>
-      </section>
     </div>
   );
 }

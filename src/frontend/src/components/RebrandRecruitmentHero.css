@@ -104,10 +104,19 @@
   min-height: 0; padding: 20px 0 16px;
   border: 0; gap: 12px;
 }
+/* Mobile intro scenes share the exact same stage and center. */
+.recruitment-hero[data-mobile-intro] .recruitment-visual-stage {
+  position: relative; grid-column: 1; grid-row: 1; min-height: 0;
+}
+.recruitment-hero[data-mobile-intro] .recruitment-intro {
+  inset: 0; width: 100%; height: 100%; transform: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.recruitment-hero[data-mobile-intro] .recruitment-character { position: absolute; inset: 0; }
+.recruitment-hero[data-mobile-intro] .recruitment-motion { transform: none; }
 .jangsu-story--portrait .recruitment-intro-label { font-size: 12px; margin-bottom: 16px; }
 .jangsu-story--portrait .recruitment-intro-amount > span { font-size: 22px; }
 .jangsu-story--portrait .recruitment-character { grid-column: 1; grid-row: 1; }
-.jangsu-story--portrait .recruitment-motion { transform: translateX(min(4cqw, 20px)); }
 .rebrand-page .jangsu-story--portrait .jangsu-panel--welcome .recruitment-title {
   grid-column: 1; grid-row: 2; font-size: clamp(30px, 8.8vw, 44px); line-height: 1.14;
 }
