@@ -3,12 +3,11 @@ import { assetPath } from '../assetPath';
 
 const sources = ['01-behind', '02-reach', '03-raise', '04-extend', '05-point']
   .map(pose => assetPath(`/rebrand/poses/recruitment-v1/${pose}.webp`));
-const duration = 2200;
 // Hold the opening pose, then make each hand transition brief and settle on the point.
 const cues = [0, .3, .44, .58, .72];
 const blend = .025;
 
-export default function RebrandRecruitmentMotion({ active, reducedMotion }) {
+export default function RebrandRecruitmentMotion({ active, reducedMotion, delay = 0, duration = 2200 }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export default function RebrandRecruitmentMotion({ active, reducedMotion }) {
           { offset: cues[index + 1] + blend, opacity: 0 },
         );
         frames.push({ offset: 1, opacity: index === sources.length - 1 ? 1 : 0 });
-        return image.animate(frames, { duration, fill: 'both', easing: 'linear' });
+        return image.animate(frames, { duration, delay, fill: 'both', easing: 'linear' });
       });
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
@@ -65,7 +64,7 @@ export default function RebrandRecruitmentMotion({ active, reducedMotion }) {
       changes.disconnect();
       document.removeEventListener('visibilitychange', sync);
     };
-  }, [active, reducedMotion]);
+  }, [active, reducedMotion, delay, duration]);
 
   return <div className="recruitment-motion" ref={rootRef} data-phase="loading" role="img" aria-label="뒷짐에서 손을 꺼내 당신을 지목하는 닭장수">
     {sources.map((source, index) => <img key={source} src={source} alt="" aria-hidden="true" width="900" height="955" fetchPriority={index === 0 ? 'high' : 'auto'} decoding="async" draggable="false" />)}
