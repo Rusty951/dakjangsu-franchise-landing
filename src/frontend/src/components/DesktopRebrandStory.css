@@ -37,13 +37,14 @@
   .dks-desktop-story .dks-hero-frame:is([data-motion='loading'], [data-motion='playing']) .dks-hero-recruitment { opacity: 0; }
   .dks-desktop-story .dks-hero-frame:is([data-motion='static'], [data-motion='settled']) .dks-hero-offers { display: none; }
 
-  .dks-desktop-story .dks-brand-layout { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: clamp(28px, 3vw, 64px); width: min(100%, 1600px); margin-inline: auto; }
-  .dks-desktop-story .dks-brand-layout h2 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -.055em; }
+  .dks-desktop-story .dks-brand-layout { display: grid; grid-template-columns: 1.35fr 1fr; align-items: stretch; gap: 24px clamp(28px, 3vw, 64px); width: min(100%, 1600px); margin-inline: auto; }
+  .dks-desktop-story .dks-brand-layout > .dks-index { grid-area: 1 / 1; margin: 0; }
+  .dks-desktop-story .dks-brand-layout h2 { grid-area: 2 / 1; display: flex; flex-direction: column; justify-content: space-between; margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -.055em; }
   .dks-desktop-story .dks-brand-layout h2 > * { display: block; font-weight: 400; transform-origin: 30% 50%; }
   .dks-desktop-story .dks-brand-together { font-size: clamp(86px, 9vw, 160px); line-height: 1.1; }
   .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: clamp(160px, min(18.2vw, 30svh), 340px); line-height: 1.1; color: #f7efe4; }
   .dks-desktop-story .dks-brand-close { font-size: clamp(56px, 5.7vw, 104px); line-height: 1.15; white-space: nowrap; }
-  .dks-desktop-story .dks-brand-support { display: flex; flex-direction: column; gap: clamp(48px, 7svh, 88px); }
+  .dks-desktop-story .dks-brand-support { grid-area: 2 / 2; padding-top: clamp(10px, 1.1vw, 18px); display: flex; flex-direction: column; justify-content: space-between; gap: clamp(48px, 7svh, 88px); }
   .dks-desktop-story .dks-brand-offer { margin: 0; font: 700 clamp(34px, 3.2vw, 52px)/1.25 var(--font-sans); }
   .dks-desktop-story .dks-brand-offer strong { display: block; margin-top: 8px; font: 400 clamp(50px, 5vw, 84px)/1.12 var(--font-display); letter-spacing: -.045em; word-break: keep-all; }
   .dks-desktop-story .dks-brand-invitation { margin: 0; font: 550 clamp(32px, 3vw, 48px)/1.35 var(--font-sans); }
@@ -90,6 +91,8 @@
   .dks-desktop-story .dks-progress button:focus-visible { outline: 3px solid #a74321; outline-offset: -5px; }
   @keyframes dks-support-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-height: 820px) {
+    .dks-desktop-story .dks-brand-layout { row-gap: 12px; }
+    .dks-desktop-story .dks-brand-support { gap: 24px; }
     .dks-desktop-story .dks-scene { padding-top: 28px; padding-bottom: 100px; }
     .dks-desktop-story .dks-index { margin-bottom: 16px; }
     .dks-desktop-story .dks-support h2 { font-size: 36px; }
@@ -109,7 +112,8 @@
     .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: min(18.2vw, 30svh); }
     .dks-desktop-story .dks-brand-together { font-size: clamp(86px, 9vw, 110px); }
     .dks-desktop-story .dks-brand-close { font-size: clamp(56px, 5.7vw, 72px); }
-    .dks-desktop-story .dks-brand-support { gap: 32px; }
+    .dks-desktop-story .dks-brand-layout { row-gap: 10px; }
+    .dks-desktop-story .dks-brand-support { gap: 32px; padding-top: min(1.1vw, 13px); }
     .dks-desktop-story .dks-support-amount b { font-size: 195px; }
     .dks-desktop-story .dks-support--royalty .dks-support-amount b { font-size: 250px; }
     .dks-desktop-story .dks-index { font-size: 13px; margin-bottom: 10px; }
