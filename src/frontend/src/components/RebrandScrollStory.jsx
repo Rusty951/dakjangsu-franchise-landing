@@ -297,11 +297,14 @@ export default function RebrandScrollStory({ onConditionsClick }) {
       // A layout switch keeps the same chapter and its completed performance.
       // Resetting the lift here would hide its copy after an already-ended act.
       lastActive = restore.index;
+      setActive(restore.index);
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
       const top = window.scrollY + track.getBoundingClientRect().top - header;
-      const portraitTarget = restore.index > 0 ? panels[restore.index].querySelector('h2') : panels[restore.index];
+      const restoredPanel = panels[restore.index];
+      const wholePanel = restoredPanel.querySelector('.brand-text-poster') || restoredPanel.classList.contains('mobile-support-panel');
+      const portraitTarget = restore.index > 0 && !wholePanel ? restoredPanel.querySelector('h2') : restoredPanel;
       const destination = portrait
-        ? window.scrollY + portraitTarget.getBoundingClientRect().top - header - (restore.index > 0 ? 12 : 0)
+        ? window.scrollY + portraitTarget.getBoundingClientRect().top - header - (restore.index > 0 && !wholePanel ? 12 : 0)
         : top + (track.offsetHeight - stageRef.current.offsetHeight) * restore.index / (chapters.length - 1);
       window.scrollTo({ top: destination, behavior: 'instant' });
     }

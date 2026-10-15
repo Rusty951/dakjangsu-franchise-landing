@@ -1,0 +1,20 @@
+.rebrand-page .compact-mobile-benefits .mobile-support-lift { position: absolute; inset: 0; z-index: 3; pointer-events: none; display: none; }
+.rebrand-page .compact-mobile-benefits .mobile-support-lift[data-phase='playing'] { display: block; }
+.rebrand-page .compact-mobile-benefits .mobile-support-lift-actor { position: absolute; }
+.rebrand-page .compact-mobile-benefits .mobile-support-lift-actor img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
+.rebrand-page .compact-mobile-benefits :is(.mobile-support-lift-limit, .mobile-support-lift-unit) { position: absolute; z-index: 5; font: 750 18px/1.2 var(--font-sans); color: #f7efe4; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-index,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-character,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] h2,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-amount > span,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-facts,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-note,
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-link { opacity: 0; visibility: hidden; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-amount b { position: relative; z-index: 4; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation: mobile-lift-copy-in .6s ease-out both; }
+@keyframes mobile-lift-copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.jangsu-story[data-motion-paused='true'] .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .rebrand-page .compact-mobile-benefits .mobile-support-lift { display: none; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation: none; }
+}
