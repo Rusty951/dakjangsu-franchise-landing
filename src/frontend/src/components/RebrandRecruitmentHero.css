@@ -120,7 +120,7 @@
 }
 .recruitment-offer-intro {
   position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1.45fr) minmax(0, 1fr); gap: 24px; padding: 46px 0 24px;
+  grid-template-rows: minmax(0, 1.45fr) minmax(0, 1fr); gap: 12px; padding: 46px 0 24px;
   container-type: size;
 }
 .recruitment-hero[data-mobile-intro] .recruitment-intro {
@@ -136,7 +136,7 @@
 .recruitment-hero[data-mobile-intro] .recruitment-intro--support .recruitment-intro-label { order: 2; margin: 20px 0 0; font-size: clamp(13px, 4cqw, 18px); }
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; align-content: center;
-  column-gap: 16px; align-items: center; text-align: left; border-top: 2px solid #d86535; padding-top: 20px;
+  column-gap: 16px; align-items: center; text-align: left; border-top: 2px solid #d86535; padding-top: 8px;
 }
 .recruitment-hero[data-mobile-intro] .recruitment-waiver-intro-title { grid-column: 1; grid-row: 1; align-self: end; font-size: clamp(22px, 8.3cqw, 36px); margin: 0 0 10px; }
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-label { grid-column: 1; grid-row: 2; align-self: start; margin: 0; font-size: clamp(13px, 4cqw, 18px); }
