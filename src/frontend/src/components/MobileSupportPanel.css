@@ -10,7 +10,7 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-hero h2 { grid-column: 1; grid-row: 1; margin: 0; font: 400 clamp(24px, 7.4cqw, 40px)/1.2 var(--font-display); letter-spacing: -.045em; }
 .rebrand-page .compact-mobile-benefits .mobile-support-hero h2 > span { display: block; }
 .rebrand-page .compact-mobile-benefits .mobile-support-amount { grid-column: 1; grid-row: 2; margin: 12px 0 0; }
-.rebrand-page .compact-mobile-benefits .mobile-support-amount b { display: block; font: 400 clamp(96px, 37cqw, 190px)/1 'Bebas Neue', sans-serif; color: #d86535; }
+.rebrand-page .compact-mobile-benefits .mobile-support-amount b { display: block; font: 400 clamp(96px, 37cqw, 190px)/1 var(--font-display); color: #d86535; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-amount b { color: #f7efe4; }
 .rebrand-page .compact-mobile-benefits .mobile-support-amount > span { display: block; margin-top: 4px; font: 750 18px/1.4 var(--font-sans); }
 .rebrand-page .compact-mobile-benefits .mobile-support-character { position: absolute; right: -20px; top: 0; width: 58cqw; height: 100%; object-fit: contain; object-position: center; }
@@ -30,6 +30,13 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 .rebrand-page .compact-mobile-benefits .jangsu-stage:is([data-scene='2'], [data-scene='3'], [data-scene='4'], [data-scene='5']) > .jangsu-traveler { display: none; }
 
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr; align-content: start; min-height: clamp(400px, 54svh, 470px); text-align: center; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero h2 { grid-column: 1; grid-row: 1; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount { grid-column: 1; grid-row: 2; position: relative; justify-self: center; margin-top: 8px; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount b { font-size: clamp(100px, 34cqw, 180px); }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount > span:last-child { position: absolute; left: calc(100% + 8px); bottom: 16px; width: 3em; margin: 0; font-size: clamp(14px, 4cqw, 18px); text-align: left; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-character { top: auto; bottom: 0; right: auto; left: 50%; transform: translateX(-50%); width: 64cqw; height: calc(100% - 210px); min-height: 155px; }
+
 @media (max-height: 640px) {
   .rebrand-page .compact-mobile-benefits .jangsu-stage .mobile-support-panel { padding-top: 16px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-copy { min-height: calc(100svh - var(--rebrand-header-height) - 116px); }
@@ -47,4 +54,7 @@
   .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount > span { margin-top: 0; }
   .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-facts { margin-top: 8px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-link { margin-top: 4px; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero { min-height: 350px; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero h2 { font-size: 24px; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-character { height: calc(100% - 180px); min-height: 130px; }
 }

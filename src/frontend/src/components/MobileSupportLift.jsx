@@ -57,15 +57,15 @@ export default function MobileSupportLift({ active, reducedMotion }) {
       const width = height * 2 / 3;
       const rise = digits.offsetHeight * .84;
       const left = numberPoint.x + digits.offsetWidth / 2 - width / 2;
-      // Bebas leaves space below its glyphs; align the palms to the visible digits.
-      const top = numberPoint.y + digits.offsetHeight - rise - height * .08 - digits.offsetHeight * .18;
+      // Match the palms to the visible bottom of the original display font.
+      const top = numberPoint.y + digits.offsetHeight - rise - height * .08 - digits.offsetHeight * .12;
       const actor = root.querySelector('.mobile-support-lift-actor');
       const base = { left: `${left}px`, top: `${top}px`, width: `${width}px`, height: `${height}px` };
-      const parked = { left: `${rest.offsetLeft}px`, top: `${rest.offsetTop}px`, width: `${rest.offsetWidth}px`, height: `${rest.offsetHeight}px` };
+      const parked = { left: `${(hero.offsetWidth - rest.offsetWidth) / 2}px`, top: `${rest.offsetTop}px`, width: `${rest.offsetWidth}px`, height: `${rest.offsetHeight}px` };
       const limit = root.querySelector('.mobile-support-lift-limit');
       const unit = root.querySelector('.mobile-support-lift-unit');
-      Object.assign(limit.style, { left: `${numberPoint.x}px`, top: `${numberPoint.y - rise - 24}px` });
-      Object.assign(unit.style, { left: `${numberPoint.x + digits.offsetWidth + 10}px`, top: `${numberPoint.y - rise + digits.offsetHeight * .55}px` });
+      Object.assign(limit.style, { left: `${hero.offsetWidth / 2}px`, top: `${numberPoint.y - rise - 24}px` });
+      Object.assign(unit.style, { left: `${numberPoint.x + digits.offsetWidth + 8}px`, top: `${numberPoint.y - rise + digits.offsetHeight * .55}px` });
       const animate = (element, frames) => {
         const animation = element.animate(frames, { duration, fill: 'both', easing: 'linear' });
         animations.push(animation);
