@@ -123,18 +123,19 @@ function DesktopBrand({ active, reducedMotion }) {
   </div>;
 }
 function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick }) {
-  return <div className={`dks-support dks-support--${offer.kind}`} data-lift="static">
+  const [gestureReady, setGestureReady] = useState(false);
+  return <div className={`dks-support dks-support--${offer.kind}`} data-lift="static" data-gesture-ready={gestureReady}>
     <div className="dks-support-layout">
       <div className="dks-support-copy">
         <p className="dks-index">0{index + 1} / {chapters[index]} 지원</p>
         <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
-        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} /></b><span className="dks-unit">{offer.unit}</span></p>
+        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'opening' ? 1 : 0} duration={offer.kind === 'opening' ? 1.06 : 1.6} /></b><span className="dks-unit">{offer.unit}</span></p>
         {offer.facts && <dl className="dks-facts" aria-label={offer.kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${chapters[index]} 지원 구성`}>{offer.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
         <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
       {offer.kind === 'growth'
         ? <img className="dks-support-character" src={assetPath(offer.pose)} alt={`${chapters[index]} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
-        : <DesktopSupportGesture kind={offer.kind} pose={offer.pose} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} />}
+        : <DesktopSupportGesture kind={offer.kind} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} />}
     </div>
     {offer.kind === 'growth' && <DesktopSupportLift active={active} reducedMotion={reducedMotion} />}
   </div>;

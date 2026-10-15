@@ -75,11 +75,14 @@
   .dks-desktop-story .dks-support-gesture canvas { display: none; }
   .dks-desktop-story .dks-support-gesture:is([data-phase='playing'], [data-phase='settled']) canvas { display: block; }
   .dks-desktop-story .dks-support-gesture:is([data-phase='playing'], [data-phase='settled']) img { opacity: 0; }
+  .dks-desktop-story .dks-support--opening .dks-support-amount b { transform: translateY(var(--dks-number-y, 0px)) scale(var(--dks-number-scale, 1)); transform-origin: center; }
+  .dks-desktop-story :is(.dks-support--opening, .dks-support--kitchen)[data-gesture-ready='false'] :is(.slot-number-strip, .slot-number-window) { animation-play-state: paused; }
   .dks-desktop-story .dks-support--kitchen .dks-facts > div { position: relative; isolation: isolate; }
   .dks-desktop-story .dks-support--kitchen .dks-facts > div::before { content: ''; position: absolute; z-index: -1; inset: -3px -8px; border-radius: 4px; background: var(--color-cream, #fff5df); opacity: calc(var(--dks-cue, 0) * .8); transform: scaleX(calc(.97 + var(--dks-cue, 0) * .03)); transform-origin: left; }
   .dks-desktop-story .dks-facts { margin: 12px 0 0; max-width: 520px; }
   .dks-desktop-story .dks-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 6px; font: 550 19px/1.45 var(--font-sans); }
   .dks-desktop-story .dks-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
+  .dks-desktop-story .dks-support--kitchen .dks-facts dd { transform: scale(calc(1 + var(--dks-cue, 0) * .12)); transform-origin: right center; }
 
   .dks-desktop-story .dks-lift { display: none; position: absolute; inset: 0; min-height: 0; pointer-events: none; }
   .dks-desktop-story .dks-support--growth { min-height: calc(100svh - 188px); }
