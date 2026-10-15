@@ -1,0 +1,84 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "Desktop scene 3: bilateral welcoming action, distinct from the existing alternating-hand kitchen scene 4",
+  "preserved": [
+    "desktop scene 4 images and timing",
+    "all mobile scenes",
+    "desktop scenes 1, 2 and 5"
+  ],
+  "encoding": {
+    "format": "WebP",
+    "quality": 92,
+    "alphaQuality": 100
+  },
+  "frames": [
+    {
+      "name": "02-lift",
+      "prompt": "Use case: precise-object-edit. Produce ONE separate full-body transparent PNG 1024x1536 for the SAME existing mascot. Image 1 is the exact ready-pose edit target; if image2 is present it is ONLY the finished wide-open motion endpoint. Preserve identical face, smile, hat, head angle and placement, torso, chest apron logo 닭장수후라이드, legs, shoes, light and fixed camera. Change ONLY BOTH arms and local sleeves. Exactly two arms and two hands, five natural fingers per hand. True transparent alpha, no background/floor/glow/objects/labels/grid. Same full-body canvas registration, no zoom or movement of face/body/feet. Both arms move SIMULTANEOUSLY and symmetrically from waist toward a broad welcome. This is a SPECIFIC INTERMEDIATE pose, not the finished wide-open endpoint. Tiny early movement. Lift BOTH hands just 35 pixels from original waist level, still close beside waist knot, hands around x335,y805 and x625,y805. Both elbows remain tucked, palms still mostly facing the apron, fingers angle down. Do not open arms wide or lift hands to chest. This is only the start of motion.",
+      "references": [
+        "desktop-support-v3/01-ready.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/02-lift.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/02-lift.webp"
+    },
+    {
+      "name": "03-turn-palms",
+      "prompt": "Use case: precise-object-edit. Produce ONE separate full-body transparent PNG 1024x1536 for the SAME existing mascot. Image 1 is the exact ready-pose edit target; if image2 is present it is ONLY the finished wide-open motion endpoint. Preserve identical face, smile, hat, head angle and placement, torso, chest apron logo 닭장수후라이드, legs, shoes, light and fixed camera. Change ONLY BOTH arms and local sleeves. Exactly two arms and two hands, five natural fingers per hand. True transparent alpha, no background/floor/glow/objects/labels/grid. Same full-body canvas registration, no zoom or movement of face/body/feet. Both arms move SIMULTANEOUSLY and symmetrically from waist toward a broad welcome. This is a SPECIFIC INTERMEDIATE pose, not the finished wide-open endpoint. Early compact movement. BOTH hands rise to the lower chest logo level, hands around x305,y770 and x670,y770, elbows stay tucked and low. BOTH palms start turning upward. Hands close to the torso, forearms diagonally raised. Keep arms compact, not spread wide.",
+      "references": [
+        "desktop-support-v3/01-ready.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/03-turn-palms.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/03-turn-palms.webp"
+    },
+    {
+      "name": "04-open-start",
+      "prompt": "Use case: identity-preserve. ONE transparent full-body 1024x1536 PNG animation in-between. Image1 is the primary edit target/start; image2 is the next pose/end. Draw exactly HALFWAY BETWEEN the two arm poses. BOTH palms open up simultaneously, hand centers approximately viewer-left x275,y740 and viewer-right x755,y740. More open than image1 but CLEARLY LESS WIDE than image2. Keep elbows softly bent close to sides. Preserve exact unchanged face, smile, hat, head position, torso, logo 닭장수후라이드, apron, legs, shoes, canvas registration, camera and light. Change ONLY both arms and local sleeves. Exactly two hands, five fingers each. Full hat/shoes, transparent alpha, no extra object/text/grid/floor/backdrop. Do not repeat either endpoint; this is a small bridging movement between the compact palms-up and outward welcome.",
+      "references": [
+        "desktop-opening-welcome-v1/source/03-turn-palms.png",
+        "desktop-opening-welcome-v1/source/05-open-close.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/04-open-start.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/04-open-start.webp"
+    },
+    {
+      "name": "05-open-close",
+      "prompt": "Use case: precise-object-edit. Produce ONE separate full-body transparent PNG 1024x1536 for the SAME existing mascot. Image 1 is the exact ready-pose edit target; if image2 is present it is ONLY the finished wide-open motion endpoint. Preserve identical face, smile, hat, head angle and placement, torso, chest apron logo 닭장수후라이드, legs, shoes, light and fixed camera. Change ONLY BOTH arms and local sleeves. Exactly two arms and two hands, five natural fingers per hand. True transparent alpha, no background/floor/glow/objects/labels/grid. Same full-body canvas registration, no zoom or movement of face/body/feet. Both arms move SIMULTANEOUSLY and symmetrically from waist toward a broad welcome. This is a SPECIFIC INTERMEDIATE pose, not the finished wide-open endpoint. Middle in-between at 45% of the full open action. Both elbows start opening outward, palms UP beside the apron. Left palm center x255,y740; right palm center x730,y740. Forearms open only a little away from body. Hand span is deliberately much narrower than image2. Keep both at same height.",
+      "references": [
+        "desktop-support-v3/01-ready.png",
+        "desktop-opening-welcome-v1/source/08-welcome.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/05-open-close.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/05-open-close.webp"
+    },
+    {
+      "name": "06-open-mid",
+      "prompt": "Use case: precise-object-edit. Produce ONE separate full-body transparent PNG 1024x1536 for the SAME existing mascot. Image 1 is the exact ready-pose edit target; if image2 is present it is ONLY the finished wide-open motion endpoint. Preserve identical face, smile, hat, head angle and placement, torso, chest apron logo 닭장수후라이드, legs, shoes, light and fixed camera. Change ONLY BOTH arms and local sleeves. Exactly two arms and two hands, five natural fingers per hand. True transparent alpha, no background/floor/glow/objects/labels/grid. Same full-body canvas registration, no zoom or movement of face/body/feet. Both arms move SIMULTANEOUSLY and symmetrically from waist toward a broad welcome. This is a SPECIFIC INTERMEDIATE pose, not the finished wide-open endpoint. Later in-between at 65% of full open action. BOTH forearms spread outward with palms UP, left palm around x205,y730, right palm around x795,y730. Soft elbows, relaxed fingers. Distinctly short of the fully extended arms in image2. Keep both at same height.",
+      "references": [
+        "desktop-support-v3/01-ready.png",
+        "desktop-opening-welcome-v1/source/08-welcome.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/06-open-mid.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/06-open-mid.webp"
+    },
+    {
+      "name": "07-open-wide",
+      "prompt": "Use case: precise-object-edit. Produce ONE separate full-body transparent PNG 1024x1536 for the SAME existing mascot. Image 1 is the exact ready-pose edit target; if image2 is present it is ONLY the finished wide-open motion endpoint. Preserve identical face, smile, hat, head angle and placement, torso, chest apron logo 닭장수후라이드, legs, shoes, light and fixed camera. Change ONLY BOTH arms and local sleeves. Exactly two arms and two hands, five natural fingers per hand. True transparent alpha, no background/floor/glow/objects/labels/grid. Same full-body canvas registration, no zoom or movement of face/body/feet. Both arms move SIMULTANEOUSLY and symmetrically from waist toward a broad welcome. This is a SPECIFIC INTERMEDIATE pose, not the finished wide-open endpoint. Almost complete in-between at 85% of full open action. BOTH forearms spread outward with palms UP, left palm around x145,y715, right palm around x860,y715. Soft elbows, relaxed fingers. Still visibly a little shorter than the endpoint image2, which comes next. Keep both at same height.",
+      "references": [
+        "desktop-support-v3/01-ready.png",
+        "desktop-opening-welcome-v1/source/08-welcome.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/07-open-wide.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/07-open-wide.webp"
+    },
+    {
+      "name": "08-welcome",
+      "prompt": "Use case: identity-preserve. Edit target: the attached exact full-body mascot master. Create ONE transparent 1024x1536 PNG, not a sheet. Preserve same face/smile, eyes, head angle, gat hat/gold rim, shirt, apron with exact logo 닭장수후라이드, torso, legs, shoes, camera, lighting and image registration. Change ONLY BOTH arms and locally necessary sleeve folds. NEW ACTION: a broad two-arm welcoming gesture, as if warmly welcoming a new store owner on opening day. BOTH arms open wide simultaneously to opposite sides, forearms extended outward, BOTH palms facing up, elbows softly bent at about lower chest height. Viewer-left palm around x100,y650, viewer-right palm around x930,y650. Distinctly bilateral and expansive, no pointing, no one hand on waist, no alternating hands, no hand on apron strap. Both hands must be entirely within canvas with at least 35px safety margin. Exactly two arms and two anatomically natural hands, five fingers each. Keep the chest logo fully visible. Keep head, body, shoes pixel-registered to original: no zoom, shift, leaning, body or head movement. Full hat and shoes visible. True transparent alpha, no background, floor, glow, objects, text labels, grid or watermark. This is the completed welcoming endpoint, not the ordinary one-hand offer.",
+      "references": [
+        "desktop-support-v3/01-ready.png"
+      ],
+      "original": "src/frontend/public/rebrand/poses/desktop-opening-welcome-v1/source/08-welcome.png",
+      "runtime": "/rebrand/poses/desktop-opening-welcome-v1/08-welcome.webp"
+    }
+  ],
+  "neutral": "/rebrand/poses/desktop-support-v4/01-ready.webp"
+}

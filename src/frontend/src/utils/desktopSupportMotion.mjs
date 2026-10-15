@@ -6,9 +6,11 @@ const cue = (time, start, end) => between(time, start, start + 300) * (1 - betwe
 const sources = ['01-ready', '02-lift-low', '03-lift-turn', '04-half-open', '05-extend-mid', '06-extend-far', '07-present',
   '08-retract-early', '09-retract-late', '10-change-hands', '11-second-early', '12-second-late', '13-second-present']
   .map(name => ({ source: `/rebrand/poses/desktop-support-v4/${name}.webp` }));
-export const desktopSupportPoses = { opening: sources.slice(0, 7), kitchen: sources };
+const welcome = ['02-lift', '03-turn-palms', '04-open-start', '05-open-close', '06-open-mid', '07-open-wide', '08-welcome']
+  .map(name => ({ source: `/rebrand/poses/desktop-opening-welcome-v1/${name}.webp` }));
+export const desktopSupportPoses = { opening: [sources[0], ...welcome], kitchen: sources };
 export const supportGestureDuration = kind => kind === 'opening' ? 4200 : 6000;
-const frameTimes = { opening: [0, 450, 600, 750, 900, 1050, 1200],
+const frameTimes = { opening: [0, 450, 600, 750, 900, 1050, 1200, 1350],
   kitchen: [0, 360, 500, 640, 780, 920, 1060, 2670, 2830, 2990, 3150, 3310, 3470] };
 const dissolveMs = 130;
 

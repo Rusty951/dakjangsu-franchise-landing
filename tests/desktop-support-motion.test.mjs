@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getDesktopSupportState as state, supportGestureDuration as duration, desktopSupportPoses as poses } from '../src/frontend/src/utils/desktopSupportMotion.mjs';
 
-test('desktop opening unfolds through seven drawings and seats 740 once', () => {
-  assert.equal(poses.opening.length, 7);
+test('desktop opening welcomes with both arms through eight drawings and seats 740 once', () => {
+  assert.equal(poses.opening.length, 8);
+  assert(poses.opening.slice(1).every(pose => pose.source.includes('desktop-opening-welcome-v1')));
   assert.equal(state(0, 'opening').frame, 0);
   assert.equal(state(1000, 'opening').frame, 4);
-  assert.equal(state(2400, 'opening').frame, 6);
+  assert.equal(state(2400, 'opening').frame, 7);
   assert.equal(state(2400, 'opening').mix, 1);
   assert.equal(state(2500, 'opening').numberScale, .92);
   assert.equal(state(2780, 'opening').numberScale, 1.04);
@@ -17,7 +18,8 @@ test('desktop opening unfolds through seven drawings and seats 740 once', () => 
 test('desktop kitchen unfolds through thirteen poses and holds each benefit for reading', () => {
   assert.equal(poses.kitchen.length, 13);
   assert.equal(new Set(poses.kitchen.map(pose => pose.source)).size, 13);
-  assert.deepEqual(poses.opening, poses.kitchen.slice(0, 7));
+  assert.equal(poses.opening[0], poses.kitchen[0]);
+  assert(poses.opening.slice(1).every(pose => !poses.kitchen.some(kitchen => kitchen.source === pose.source)));
   assert.equal(state(1800, 'kitchen').frame, 6);
   assert.equal(state(1800, 'kitchen').mix, 1);
   assert.deepEqual(state(1800, 'kitchen').facts, [1, 0]);
