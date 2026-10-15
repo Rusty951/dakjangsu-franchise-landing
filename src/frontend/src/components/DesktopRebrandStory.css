@@ -51,8 +51,9 @@
   .dks-desktop-story .dks-brand-invitation strong { display: block; margin-top: 12px; font: 400 clamp(68px, 7.2vw, 120px)/1.08 var(--font-display); letter-spacing: -.045em; color: #f7efe4; }
   .dks-desktop-story .dks-brand-invitation strong > span { display: block; white-space: nowrap; }
 
-  .dks-desktop-story .dks-support { position: relative; width: min(100%, 1600px); margin-inline: auto; }
-  .dks-desktop-story .dks-support-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; }
+  .dks-desktop-story .dks-support { --dks-support-height: min(calc(100svh - 172px), 880px); position: relative; width: min(100%, 1600px); margin-inline: auto; }
+  .dks-desktop-story .dks-support-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); min-height: var(--dks-support-height); align-items: stretch; }
+  .dks-desktop-story .dks-support-copy { display: flex; flex-direction: column; justify-content: space-between; padding-block: calc(var(--dks-support-height) * .01) calc(var(--dks-support-height) * .016); }
   .dks-desktop-story .dks-support .dks-index { margin-bottom: 12px; }
   .dks-desktop-story .dks-support .dks-condition-button { margin-top: 16px; }
   .dks-desktop-story .dks-support h2 { margin: 0; font: 400 clamp(32px, 3vw, 48px)/1.18 var(--font-display); letter-spacing: -.045em; }
@@ -64,7 +65,7 @@
   .dks-desktop-story .dks-scene--kitchen .dks-support-amount { color: #f7efe4; }
   .dks-desktop-story .dks-scene--kitchen .dks-unit { color: #241f1b; }
   .dks-desktop-story .dks-support--royalty .dks-support-amount b { font-size: clamp(240px, 29vw, 420px); }
-  .dks-desktop-story .dks-support-character { display: block; width: 100%; height: min(calc(100svh - 172px), 880px); object-fit: contain; object-position: center; }
+  .dks-desktop-story .dks-support-character { display: block; width: 100%; height: var(--dks-support-height); object-fit: contain; object-position: center; }
   .dks-desktop-story .dks-facts { margin: 12px 0 0; max-width: 520px; }
   .dks-desktop-story .dks-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 6px; font: 550 19px/1.45 var(--font-sans); }
   .dks-desktop-story .dks-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
@@ -91,21 +92,27 @@
   .dks-desktop-story .dks-progress button:focus-visible { outline: 3px solid #a74321; outline-offset: -5px; }
   @keyframes dks-support-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-height: 820px) {
+    .dks-desktop-story .dks-support { --dks-support-height: calc(100svh - 180px); }
+    .dks-desktop-story .dks-scene:is(.dks-scene--opening, .dks-scene--kitchen, .dks-scene--growth) { padding-top: 16px; }
+    .dks-desktop-story .dks-support .dks-index { margin-bottom: 8px; }
     .dks-desktop-story .dks-brand-layout { row-gap: 12px; }
     .dks-desktop-story .dks-brand-support { gap: 24px; }
     .dks-desktop-story .dks-scene { padding-top: 28px; padding-bottom: 100px; }
     .dks-desktop-story .dks-index { margin-bottom: 16px; }
     .dks-desktop-story .dks-support h2 { font-size: 36px; }
-    .dks-desktop-story .dks-support-amount { margin-top: 8px; }
+    .dks-desktop-story .dks-support-amount { margin-top: 6px; }
     .dks-desktop-story .dks-support-amount b { font-size: 252px; }
     .dks-desktop-story .dks-support--royalty .dks-support-amount b { font-size: 290px; }
     .dks-desktop-story .dks-facts { margin-top: 10px; }
-    .dks-desktop-story .dks-facts > div { margin-top: 8px; font-size: 18px; }
+    .dks-desktop-story .dks-facts > div { margin-top: 6px; font-size: 18px; }
     .dks-desktop-story .dks-condition-button { margin-top: 20px; }
     .dks-desktop-story .dks-lift { min-height: 0; }
     .dks-desktop-story .dks-lift-number b { font-size: 230px; }
   }
   @media (max-height: 740px) {
+    .dks-desktop-story .dks-support { --dks-support-height: calc(100svh - 164px); }
+    .dks-desktop-story .dks-support .dks-index { margin-bottom: 6px; }
+    .dks-desktop-story .dks-support .dks-condition-button { margin-top: 12px; }
     .dks-desktop-story .dks-scene { padding-top: 16px; padding-bottom: 96px; }
     .dks-desktop-story .dks-hero-character { height: max(270px, calc(100svh - 390px)); }
     .dks-desktop-story .dks-hero-recruitment h1 { font-size: 40px; margin-top: 16px; }
@@ -118,11 +125,11 @@
     .dks-desktop-story .dks-support--royalty .dks-support-amount b { font-size: 250px; }
     .dks-desktop-story .dks-index { font-size: 13px; margin-bottom: 10px; }
     .dks-desktop-story .dks-support h2 { font-size: 28px; }
-    .dks-desktop-story .dks-support-amount { margin-top: 8px; }
-    .dks-desktop-story .dks-facts { margin-top: 8px; }
+    .dks-desktop-story .dks-support-amount { margin-top: 6px; }
+    .dks-desktop-story .dks-facts { margin-top: 6px; }
     .dks-desktop-story .dks-facts > div { font-size: 16px; margin-top: 6px; }
     .dks-desktop-story .dks-condition-button { min-height: 48px; margin-top: 16px; }
-    .dks-desktop-story .dks-support-character { height: calc(100svh - 164px); }
+    .dks-desktop-story .dks-support-character { height: var(--dks-support-height); }
     .dks-desktop-story .dks-lift-number b { font-size: 180px; }
     .dks-desktop-story .dks-lift-number > span { font-size: 18px; }
   }
