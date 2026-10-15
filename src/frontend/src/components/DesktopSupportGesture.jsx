@@ -39,7 +39,7 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
     const tick = time => {
       frame = 0;
       if (!running() || disposed) { previous = undefined; return; }
-      if (previous !== undefined) elapsed = Math.min(duration, elapsed + Math.min(time - previous, 50));
+      if (previous !== undefined) elapsed = Math.min(duration, elapsed + time - previous);
       previous = time; paint();
       if (elapsed < duration) frame = requestAnimationFrame(tick);
       else root.dataset.phase = 'settled';
@@ -48,6 +48,7 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
       if (!renderer || disposed) return;
       cancelAnimationFrame(frame); frame = 0; previous = undefined;
       root.dataset.paused = String(!running());
+      onReady(running());
       root.dataset.phase = elapsed >= duration ? 'settled' : 'playing';
       paint();
       if (running() && elapsed < duration) frame = requestAnimationFrame(tick);
@@ -67,7 +68,6 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
       if (disposed) return;
       renderer = createDesktopSupportRenderer(canvas, images, kind);
       if (!renderer) { fallback(); return; }
-      onReady(true);
       sync();
     }).catch(() => { if (!disposed) fallback(); });
     return () => {
