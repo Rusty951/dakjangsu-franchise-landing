@@ -17,7 +17,6 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-facts { margin: 16px 0 0; }
 .rebrand-page .compact-mobile-benefits .mobile-support-facts > div { display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; font: 550 16px/1.4 var(--font-sans); }
 .rebrand-page .compact-mobile-benefits .mobile-support-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
-.rebrand-page .compact-mobile-benefits .mobile-support-note { margin: 12px 0 0; font: 500 14px/1.5 var(--font-sans); word-break: keep-all; }
 .rebrand-page .compact-mobile-benefits .mobile-support-amount > .mobile-support-prefix { margin: 0 0 4px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-hero { min-height: clamp(240px, 46svh, 450px); }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-hero { min-height: clamp(300px, 58svh, 520px); }
@@ -60,7 +59,6 @@
   .rebrand-page .compact-mobile-benefits .mobile-support-amount { margin-top: 8px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-amount > .mobile-support-prefix { margin-bottom: 0; }
   .rebrand-page .compact-mobile-benefits .mobile-support-facts { margin-top: 12px; }
-  .rebrand-page .compact-mobile-benefits .mobile-support-note { margin-top: 8px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-link { margin-top: 8px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero h2 { line-height: 1.1; }
   .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount { margin-top: 4px; }

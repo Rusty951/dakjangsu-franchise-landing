@@ -10,13 +10,12 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] h2,
 .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-amount > span,
 .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-facts,
-.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-note,
 .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-link { opacity: 0; visibility: hidden; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='playing'] .mobile-support-amount b { position: relative; z-index: 4; }
-.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation: mobile-lift-copy-in .6s ease-out both; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-link) { animation: mobile-lift-copy-in .6s ease-out both; }
 @keyframes mobile-lift-copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.jangsu-story[data-motion-paused='true'] .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation-play-state: paused; }
+.jangsu-story[data-motion-paused='true'] .mobile-support-panel[data-mobile-lift='settled'] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-link) { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .rebrand-page .compact-mobile-benefits .mobile-support-lift { display: none; }
-  .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-note, .mobile-support-link) { animation: none; }
+  .rebrand-page .compact-mobile-benefits .mobile-support-panel[data-mobile-lift] :is(h2, .mobile-support-amount > span, .mobile-support-facts, .mobile-support-link) { animation: none; }
 }

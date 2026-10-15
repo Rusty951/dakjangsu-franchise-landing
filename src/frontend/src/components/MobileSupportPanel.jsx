@@ -9,24 +9,20 @@ const offers = {
     title: '오픈', heading: ['오픈 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당',
     pose: '/rebrand/poses/opening-package-v1/03-present.png',
     facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']],
-    note: '면제 440만원 포함, 적용 조건 확인 중',
   },
   kitchen: {
     title: '주방', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당',
     pose: '/rebrand/poses/kitchen-support-v1/04-rest.png',
     facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']],
-    note: '조건 충족 매장 중 선착순 5개점 지원 검토 중',
   },
   operating: {
     title: '로열티', heading: ['첫 2년,', '로열티 면제안'], amount: '0', unit: '원',
     pose: '/rebrand/poses/royalty-zero-v1/03-push.png',
-    note: '최초 계약 2년간, 적용 조건 확인 중',
   },
   growth: {
-    title: '물류', heading: ['물류대금도', '줄여보세요.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧',
+    title: '물류', heading: ['매달 나가는', '물류비까지 지원.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧',
     pose: '/rebrand/character-cutout.png',
     facts: [['월매출 3,000만원 이상', '30만원'], ['월매출 4,000만원 이상', '100만원']],
-    note: <>다음 달 물류대금 차감<br />지원 기간과 적용 조건 확인 중</>,
   },
 };
 
@@ -77,7 +73,6 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
           {kind === 'growth' && <MobileSupportLift active={active} reducedMotion={reducedMotion} />}
         </div>
         {offer.facts && <dl className="mobile-support-facts" aria-label={kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${offer.title} 지원 구성`}>{offer.facts.map(([label, amount]) => <div key={label}><dt>{label}</dt><dd>{amount}</dd></div>)}</dl>}
-        <p className="mobile-support-note">{offer.note}</p>
         <a className="mobile-support-link" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
     </article>
