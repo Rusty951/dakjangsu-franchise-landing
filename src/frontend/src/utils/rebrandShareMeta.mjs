@@ -2,8 +2,8 @@ export const rebrandShareMeta = {
   title: '닭장수후라이드 창업 | 내 점포 지원 상담',
   description: '창업 지원 조건, 새로운 매장 공간, 실제 점주 경험을 살펴보세요. 희망 지역과 점포에 맞는 창업 상담을 안내합니다.',
   url: 'https://dakjangsu-client-sample-inky.vercel.app/?concept=rebrand',
-  image: 'https://dakjangsu-client-sample-inky.vercel.app/rebrand/share/consultation-v1.png',
-  imageAlt: '닭장수 캐릭터와 함께 살펴보는 창업비와 내 점포 지원 상담',
+  image: 'https://dakjangsu-client-sample-inky.vercel.app/rebrand/share/benefits-v2.png',
+  imageAlt: '2,800만원 합산 계산 예시와 조건 충족 시 가맹비, 교육비 및 첫 2년 로열티 0원',
 };
 
 export const rebrandMetaEntries = [
