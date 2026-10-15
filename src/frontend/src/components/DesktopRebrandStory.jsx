@@ -3,6 +3,7 @@ import { assetPath } from '../assetPath';
 import SlotNumber from './SlotNumber';
 import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import DesktopSupportLift from './DesktopSupportLift';
+import DesktopSupportGesture from './DesktopSupportGesture';
 import './DesktopRebrandStory.css';
 
 const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
@@ -121,15 +122,8 @@ function DesktopBrand({ active, reducedMotion }) {
     <div className="dks-brand-support"><p className="dks-brand-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p><p className="dks-brand-invitation">이제,<br /><strong><span>사장님</span>{' '}<span>차례입니다.</span></strong></p></div>
   </div>;
 }
-function animateSupport(root, animate) {
-  animate(root.querySelector('.dks-support-character'), [
-    { opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'translateY(0)' },
-  ], { delay: 250, duration: 1100 });
-}
 function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick }) {
-  const ref = useRef(null);
-  useDesktopAct(ref, active && offer.kind !== 'growth', reducedMotion, animateSupport);
-  return <div className={`dks-support dks-support--${offer.kind}`} ref={ref} data-lift="static">
+  return <div className={`dks-support dks-support--${offer.kind}`} data-lift="static">
     <div className="dks-support-layout">
       <div className="dks-support-copy">
         <p className="dks-index">0{index + 1} / {chapters[index]} 지원</p>
@@ -138,7 +132,9 @@ function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick
         {offer.facts && <dl className="dks-facts" aria-label={offer.kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${chapters[index]} 지원 구성`}>{offer.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
         <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
-      <img className="dks-support-character" src={assetPath(offer.pose)} alt={`${chapters[index]} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
+      {offer.kind === 'growth'
+        ? <img className="dks-support-character" src={assetPath(offer.pose)} alt={`${chapters[index]} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
+        : <DesktopSupportGesture kind={offer.kind} pose={offer.pose} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} />}
     </div>
     {offer.kind === 'growth' && <DesktopSupportLift active={active} reducedMotion={reducedMotion} />}
   </div>;
