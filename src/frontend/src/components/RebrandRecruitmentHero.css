@@ -141,7 +141,13 @@
 .recruitment-hero[data-mobile-intro] .recruitment-waiver-intro-title { grid-column: 1; grid-row: 1; align-self: end; font-size: clamp(22px, 8.3cqw, 36px); margin: 0 0 10px; }
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-label { grid-column: 1; grid-row: 2; align-self: start; margin: 0; font-size: clamp(13px, 4cqw, 18px); }
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount { grid-column: 2; grid-row: 1 / 3; color: #d86535; gap: 8px; }
-.recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount b { font-size: min(60cqw, 32cqh); transform-origin: center; }
+.recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount b { position: relative; font-size: min(60cqw, 32cqh); transform-origin: center; }
+.recruitment-hero[data-mobile-intro] .recruitment-zero-shine {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0; text-align: center;
+  font: inherit; color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0;
+  background: linear-gradient(115deg, transparent 42%, #fff8 47%, #fff 50%, #fff8 53%, transparent 58%) 100% 50% / 300% 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 0 7px #fff8);
+}
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount > span { color: #d86535; font: 400 10cqw/1 var(--font-display); }
 .recruitment-hero[data-mobile-intro]:is([data-intro='static'], [data-intro='parked']) .recruitment-offer-intro { display: none; }
 .recruitment-hero[data-mobile-intro][data-intro='settled'] .recruitment-offer-intro { opacity: 0; }
