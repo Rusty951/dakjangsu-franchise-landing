@@ -54,8 +54,8 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
     actor.decode().then(() => {
       if (disposed) return;
       animations.push(actor.animate([
-        { opacity: 0, transform: 'translateX(18px)' },
-        { opacity: 1, transform: 'translateX(0)' },
+        { opacity: 0, transform: 'translateY(18px)' },
+        { opacity: 1, transform: 'translateY(0)' },
       ], { duration: 1100, delay: 250, fill: 'both', easing: 'cubic-bezier(.22,.7,.3,1)' }));
       sync();
     }).catch(() => {});
