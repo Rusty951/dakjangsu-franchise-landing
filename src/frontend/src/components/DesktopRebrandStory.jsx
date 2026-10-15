@@ -5,6 +5,7 @@ import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import DesktopSupportLift from './DesktopSupportLift';
 import DesktopSupportGesture from './DesktopSupportGesture';
 import './DesktopRebrandStory.css';
+import { writeData } from '../utils/visualWrites.mjs';
 
 const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
 const offers = [
@@ -160,7 +161,7 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
       setActive(next < 0 ? panels.length - 1 : next);
       const bounds = root.getBoundingClientRect();
       setVisible(bounds.top <= header + 2 && bounds.bottom > header + 180);
-      root.dataset.motionPaused = String(document.hidden || bounds.bottom < header || bounds.top >= window.innerHeight);
+      writeData(root, 'motionPaused', String(document.hidden || bounds.bottom < header || bounds.top >= window.innerHeight));
       setReducedMotion(preference.matches);
     };
     const request = () => { if (!frame) frame = requestAnimationFrame(paint); };
@@ -180,7 +181,7 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
   const goTo = (index, focus) => {
     const panel = rootRef.current.querySelectorAll('.dks-scene')[index];
     if (active === index) setReplay(values => values.map((value, i) => i === index ? value + 1 : value));
-    panel.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'instant' : 'smooth' });
+    panel.scrollIntoView({ block: 'start', behavior: 'instant' });
     if (focus) panel.querySelector('h1, h2').focus({ preventScroll: true });
   };
   return <section className="dks-desktop-story" id="rebrand-story" aria-label="스크롤로 만나는 닭장수" ref={rootRef} data-reduced={reducedMotion}>

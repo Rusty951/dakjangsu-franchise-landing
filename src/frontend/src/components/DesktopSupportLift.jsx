@@ -75,6 +75,6 @@ export default function DesktopSupportLift({ active, reducedMotion }) {
   }, [active, reducedMotion]);
   return <div className="dks-lift" ref={ref} aria-hidden="true">
     <div className="dks-lift-number"><span>월 최대</span><b><SlotNumber value="100" active={active} reducedMotion={reducedMotion} delay={.76} /></b><span>만원<br />크레딧</span></div>
-    <div className="dks-lift-actor">{sources.map(source => <img key={source} src={assetPath(source)} alt="" width="1024" height="1536" />)}</div>
+    <div className="dks-lift-actor">{sources.map(source => <img key={source} src={active && !reducedMotion ? assetPath(source) : undefined} alt="" width="1024" height="1536" decoding="async" />)}</div>
   </div>;
 }

@@ -94,6 +94,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
   const liftStatus = reducedMotion ? 'static' : liftAssets === 'ready' ? (liftParked ? 'parked' : 'playing') : liftAssets;
 
   useEffect(() => {
+    if (compactMobile) return;
     let disposed = false;
     // Decode all keys before starting the act so the raised hands never pop in late.
     const sources = [...['ready', 'mid', 'push'].map(pose => `/rebrand/character-lift-${pose}.webp`), '/rebrand/character-cutout.png'];
@@ -108,7 +109,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       if (!disposed) setLiftAssets('error');
     });
     return () => { disposed = true; };
-  }, []);
+  }, [compactMobile]);
 
   useLayoutEffect(() => {
     if (previousScenes.current !== chapterScenes) {
@@ -171,7 +172,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           setSettled(-1);
           setLiftParked(false);
         }
-        panels.forEach(panel => panel.style.removeProperty('opacity'));
+        // Native mobile flow has no interpolated panel opacity to update.
         const slot = panels[index].querySelector('.portrait-character-slot');
         if (slot && !reduced) {
           const box = slot.getBoundingClientRect();
@@ -360,7 +361,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       const textPoster = panel.querySelector('.brand-text-poster');
       const wholePanel = textPoster || panel.classList.contains('mobile-support-panel');
       const target = wholePanel ? panel : index > 0 ? panel.querySelector('h2') : panel;
-      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !wholePanel ? 12 : 0), behavior: reducedMotion ? 'instant' : 'smooth' });
+      window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !wholePanel ? 12 : 0), behavior: 'instant' });
       return;
     }
     if (reducedMotion) {
@@ -493,7 +494,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           <img className="jangsu-invite-static" src={assetPath(chapterMotions[6].source)} alt="" width="1122" height="1402" loading="lazy" />
         </article>}
         <div className="jangsu-traveler" ref={characterRef} aria-hidden="true">
-          <div className="jangsu-character-canvas">{compactMobile && active >= 2 ? null : scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
+          <div className="jangsu-character-canvas">{compactMobile ? null : scene === 'brand' ? <JangsuChapterMotion key={`brand-${brandReplay}`} scene="brand" /> : scene === 0 ? null : scene === 1 ? <JangsuFeeMotion key={feeReplay} /> : scene === 2 ? <JangsuChapterMotion key={`opening-${openingReplay}`} scene={2} /> : scene === 3 ? <JangsuKitchenMotion key={kitchenReplay} /> : scene === 4 ? <JangsuChapterMotion key={`royalty-${royaltyReplay}`} scene={4} onSettled={setSettled} /> : scene === 6 ? <JangsuChapterMotion key={`invite-${inviteReplay}`} scene={6} /> : (scene !== 5 || liftAssets === 'error') && <JangsuMotion scene={scene} greeting={scene === 6} />}</div>
         </div>
         {!compactMobile && scene === 5 && liftAssets !== 'error' && <JangsuLiftMotion key={liftReplay} stageRef={stageRef} characterRef={characterRef} ready={liftReady} onComplete={() => setLiftParked(true)} />}
         <div className="jangsu-stage-footer" aria-hidden="true" />

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
 import { desktopSupportPoses, getDesktopSupportState, supportGestureDuration } from '../utils/desktopSupportMotion.mjs';
+import { writeData, writeStyle } from '../utils/visualWrites.mjs';
 
 export default function SupportGesture({ kind, label, active, reducedMotion, onReady, layout = 'desktop' }) {
   const rootRef = useRef(null);
   const mobile = layout === 'mobile';
   const poses = desktopSupportPoses[kind];
-  const fallback = assetPath(kind === 'opening' ? '/rebrand/poses/opening-package-v1/03-present.png' : '/rebrand/poses/kitchen-support-v1/04-rest.png');
   useEffect(() => {
     const root = rootRef.current, panel = root.closest(mobile ? '.mobile-support-panel' : '.dks-support'), story = root.closest(mobile ? '.jangsu-story' : '.dks-desktop-story');
     const images = [...root.querySelectorAll('img')], facts = [...panel.querySelectorAll(mobile ? '.mobile-support-facts > div' : '.dks-facts > div')];
@@ -14,8 +14,8 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
     const duration = supportGestureDuration(kind);
     const show = (index, previousIndex = index, mix = 1) => images.forEach((image, i) => {
       const opacity = i === index ? mix : i === previousIndex ? 1 - mix : 0;
-      image.dataset.visible = String(opacity > 0);
-      image.style.setProperty('--dks-pose-opacity', opacity.toFixed(4));
+      writeData(image, 'visible', String(opacity > 0));
+      writeStyle(image, '--dks-pose-opacity', opacity.toFixed(4));
     });
     const clear = () => {
       facts.forEach(row => row.style.removeProperty('--dks-cue'));
@@ -29,12 +29,12 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
       if (!loaded || disposed) return;
       const state = getDesktopSupportState(elapsed, kind);
       show(state.frame, state.previousFrame, state.mix);
-      root.dataset.progress = state.progress.toFixed(3); root.dataset.beat = state.beat;
-      root.dataset.frame = String(state.frame + 1);
-      root.dataset.mix = state.mix.toFixed(3);
-      panel.style.setProperty('--dks-number-scale', state.numberScale.toFixed(4));
-      panel.style.setProperty('--dks-number-y', `${state.numberY.toFixed(2)}px`);
-      if (kind === 'kitchen') facts.forEach((row, index) => row.style.setProperty('--dks-cue', state.facts[index].toFixed(3)));
+      writeData(root, 'progress', state.progress.toFixed(3)); writeData(root, 'beat', state.beat);
+      writeData(root, 'frame', String(state.frame + 1));
+      writeData(root, 'mix', state.mix.toFixed(3));
+      writeStyle(panel, '--dks-number-scale', state.numberScale.toFixed(4));
+      writeStyle(panel, '--dks-number-y', `${state.numberY.toFixed(2)}px`);
+      if (kind === 'kitchen') facts.forEach((row, index) => writeStyle(row, '--dks-cue', state.facts[index].toFixed(3)));
     };
     const tick = time => {
       frame = 0;
@@ -67,9 +67,9 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
     };
   }, [active, reducedMotion, kind, poses, onReady, mobile]);
   return <div className={mobile ? 'mobile-support-character mobile-support-gesture' : 'dks-support-character dks-support-gesture'} ref={rootRef} data-phase="static" role="img" aria-label={label}>
-    {poses.map((pose, i) => <picture key={pose.source}>
-      <source media={mobile ? '(max-width: 1024px)' : '(min-width: 1025px)'} srcSet={assetPath(pose.source)} />
-      <img src={fallback} alt="" width="1024" height="1536" loading="lazy" draggable="false" data-visible={i === (active && !reducedMotion ? 0 : poses.length - 1)} />
-    </picture>)}
+    {poses.map((pose, i) => <img key={pose.source}
+      src={active && !reducedMotion || i === poses.length - 1 ? assetPath(pose.source) : undefined}
+      alt="" width="1024" height="1536" loading={active ? 'eager' : 'lazy'} decoding="async"
+      draggable="false" data-visible={i === (active && !reducedMotion ? 0 : poses.length - 1)} />)}
   </div>;
 }

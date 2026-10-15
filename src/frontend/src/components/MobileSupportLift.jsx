@@ -122,8 +122,8 @@ export default function MobileSupportLift({ active, reducedMotion }) {
     <span className="mobile-support-lift-limit">월 최대</span>
     <span className="mobile-support-lift-unit">만원<br />크레딧</span>
     <div className="mobile-support-lift-actor">
-      {sources.map(source => <img src={source} key={source} alt="" width="1024" height="1536" draggable="false" />)}
-      <img src={assetPath('/rebrand/character-cutout.png')} alt="" width="1122" height="1402" draggable="false" />
+      {sources.map(source => <img src={active && !reducedMotion ? source : undefined} key={source} alt="" width="1024" height="1536" decoding="async" draggable="false" />)}
+      <img src={active && !reducedMotion ? assetPath('/rebrand/character-cutout.png') : undefined} alt="" width="1122" height="1402" decoding="async" draggable="false" />
     </div>
   </div>;
 }
