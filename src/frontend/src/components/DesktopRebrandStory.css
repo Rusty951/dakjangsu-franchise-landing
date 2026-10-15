@@ -14,14 +14,16 @@
   .dks-desktop-story[data-motion-paused='true'] :is(.slot-number-strip, .slot-number-still) { animation-play-state: paused; }
 
   .dks-desktop-story .dks-hero-frame { position: relative; width: min(100%, 1440px); margin-inline: auto; }
-  .dks-desktop-story .dks-hero-offers { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 48px; }
+  .dks-desktop-story .dks-hero-offers { --dks-offer-heading-height: calc(clamp(26px, 2.5vw, 40px) * 2.3); position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; gap: 48px; padding-block: clamp(12px, 2svh, 24px); }
   .dks-desktop-story .dks-hero-offers::after { content: ''; position: absolute; left: calc(50% - 1px); top: 12%; bottom: 12%; width: 2px; background: #d86535; }
-  .dks-desktop-story .dks-hero-offer { text-align: center; }
+  .dks-desktop-story .dks-hero-offer { display: grid; grid-template-rows: var(--dks-offer-heading-height) minmax(0, 1fr) auto; row-gap: 12px; min-height: 0; text-align: center; }
+  .dks-desktop-story .dks-hero-offer > .dks-offer-number { grid-row: 2; align-self: center; }
+  .dks-desktop-story .dks-hero-offer > .dks-offer-note { grid-row: 3; margin: 0; }
   .dks-desktop-story .dks-offer-number { display: flex; justify-content: center; align-items: baseline; gap: 12px; margin: 0; }
   .dks-desktop-story .dks-offer-number b { position: relative; font: 400 clamp(160px, 15.6vw, 280px)/1 var(--font-display); -webkit-text-stroke: .018em currentColor; }
   .dks-desktop-story .dks-offer-number > span { font: 400 clamp(32px, 3vw, 52px)/1 var(--font-display); }
   .dks-desktop-story .dks-offer-note { margin: 24px 0 0; font: 650 clamp(17px, 1.4vw, 22px)/1.5 var(--font-sans); }
-  .dks-desktop-story .dks-waiver-heading { margin: 0 0 16px; font: 400 clamp(26px, 2.5vw, 40px)/1.15 var(--font-display); }
+  .dks-desktop-story .dks-waiver-heading { grid-row: 1; margin: 0; font: 400 clamp(26px, 2.5vw, 40px)/1.15 var(--font-display); }
   .dks-desktop-story .dks-zero { color: #d86535; }
   .dks-desktop-story .dks-zero b { font-size: clamp(240px, 28vw, 460px); transform-origin: center; }
   .dks-desktop-story .dks-zero-shine { position: absolute; inset: 0; opacity: 0; pointer-events: none; color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 0; background: linear-gradient(115deg, transparent 42%, #fff8 47%, #fff 50%, #fff8 53%, transparent 58%) 100% 50% / 300% 100% no-repeat; -webkit-background-clip: text; background-clip: text; }
