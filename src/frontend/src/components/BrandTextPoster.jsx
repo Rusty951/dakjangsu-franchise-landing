@@ -16,14 +16,14 @@ function TextPoster({ active, reducedMotion }) {
     const story = root.closest('.jangsu-story');
     const cues = [
       {
-        selector: '.brand-text-line:first-child', duration: 900, delay: 0,
+        selector: '.brand-text-line:first-child', duration: 800, delay: 0,
         frames: [
           { opacity: 0, transform: 'translateX(-28px)', clipPath: 'inset(0 100% 0 0)' },
           { opacity: 1, transform: 'translateX(0)', clipPath: 'inset(0 0% 0 0)' },
         ],
       },
       {
-        selector: '.brand-text-emphasis', duration: 1000, delay: 1150,
+        selector: '.brand-text-emphasis', duration: 900, delay: 950,
         frames: [
           { opacity: 0, transform: 'scale(1.1) rotate(-1deg)', offset: 0 },
           { opacity: 1, transform: 'scale(.99) rotate(.2deg)', offset: .6 },
@@ -32,21 +32,21 @@ function TextPoster({ active, reducedMotion }) {
         ],
       },
       {
-        selector: '.brand-text-close', duration: 900, delay: 2350,
+        selector: '.brand-text-close', duration: 800, delay: 1950,
         frames: [
           { opacity: 0, transform: 'translateY(26px)', clipPath: 'inset(0 0 100% 0)' },
           { opacity: 1, transform: 'translateY(0)', clipPath: 'inset(0 0 0% 0)' },
         ],
       },
       {
-        selector: '.brand-text-offer', duration: 700, delay: 3250,
+        selector: '.brand-text-offer', duration: 650, delay: 2700,
         frames: [
           { opacity: 0, transform: 'translateY(12px)' },
           { opacity: 1, transform: 'translateY(0)' },
         ],
       },
       {
-        selector: '.brand-text-invitation', duration: 800, delay: 4400,
+        selector: '.brand-text-invitation', duration: 700, delay: 3600,
         frames: [
           { opacity: 0, transform: 'translateY(12px)' },
           { opacity: 1, transform: 'translateY(0)' },
