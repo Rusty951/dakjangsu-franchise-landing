@@ -29,7 +29,7 @@ export default function DesktopSupportLift({ active, reducedMotion }) {
       panel.dataset.lift = 'playing';
       const number = root.querySelector('.dks-lift-number');
       const actor = root.querySelector('.dks-lift-actor');
-      const actorHeight = Math.min(root.offsetHeight * .68, 500);
+      const actorHeight = Math.min(root.offsetHeight * .7, 620, (root.offsetHeight - number.offsetTop - number.offsetHeight * .88 - 8) / .92);
       actor.style.height = `${actorHeight}px`;
       actor.style.top = `${number.offsetTop + number.offsetHeight * .88 - actorHeight * .08}px`;
       const animate = (element, frames) => {
