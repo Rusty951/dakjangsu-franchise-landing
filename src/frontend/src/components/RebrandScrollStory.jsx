@@ -143,6 +143,8 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       const stage = stageRef.current;
       const character = characterRef.current;
       if (!track || !stage || !character) return;
+      // Replaying a keyed chapter replaces its DOM node. Track the live panels.
+      const panels = [...stage.querySelectorAll('.jangsu-panel')];
       // A resize can arrive before React switches layouts. Preserve the last valid reading position.
       if (window.matchMedia(flowingStoryQuery).matches !== portrait) return;
       const reduced = preference.matches;

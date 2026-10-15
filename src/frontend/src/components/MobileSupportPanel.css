@@ -52,6 +52,13 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount > span:last-child { position: absolute; left: calc(100% + 8px); bottom: 16px; width: 3em; margin: 0; font-size: clamp(14px, 4cqw, 18px); text-align: left; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-character { top: auto; bottom: 0; right: auto; left: 50%; transform: translateX(-50%); width: 78cqw; height: calc(100% - 235px); min-height: 155px; }
 
+.rebrand-page .compact-mobile-benefits .mobile-support-gesture { isolation: isolate; pointer-events: none; }
+.rebrand-page .compact-mobile-benefits .mobile-support-gesture img { position: absolute; top: 50%; left: 50%; width: auto; max-width: 100%; height: 104%; aspect-ratio: 1024 / 1536; object-fit: contain; transform: translate(-50%, -50%); opacity: 0; mix-blend-mode: plus-lighter; }
+.rebrand-page .compact-mobile-benefits .mobile-support-gesture img[data-visible='true'] { opacity: var(--dks-pose-opacity, 1); }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--opening .mobile-support-amount b { transform: translateY(var(--dks-number-y, 0px)) scale(var(--dks-number-scale, 1)); transform-origin: center; }
+.rebrand-page .compact-mobile-benefits :is(.mobile-support-panel--opening, .mobile-support-panel--kitchen)[data-gesture-ready='false'] :is(.slot-number-strip, .slot-number-window) { animation-play-state: paused; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-facts > div { background: rgb(247 239 228 / calc(var(--dks-cue, 0) * .28)); box-shadow: 0 0 0 4px rgb(247 239 228 / calc(var(--dks-cue, 0) * .28)); }
+
 @media (max-height: 640px) {
   .rebrand-page .compact-mobile-benefits .jangsu-stage .mobile-support-panel { padding-top: 16px; }
   .rebrand-page .compact-mobile-benefits .mobile-support-copy { min-height: calc(100svh - var(--rebrand-header-height) - 104px); }
