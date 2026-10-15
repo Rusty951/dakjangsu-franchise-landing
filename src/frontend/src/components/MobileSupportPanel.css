@@ -1,6 +1,6 @@
 .rebrand-page .compact-mobile-benefits .jangsu-stage .mobile-support-panel {
   position: relative; inset: auto; min-height: calc(100svh - var(--rebrand-header-height));
-  padding: 16px 20px 88px; background: #241f1b; color: #f7efe4;
+  padding: 16px 20px 100px; background: #241f1b; color: #f7efe4;
   opacity: 1; pointer-events: auto; overflow: hidden;
 }
 .rebrand-page .compact-mobile-benefits .jangsu-stage .mobile-support-panel--kitchen { background: #d86535; color: #241f1b; }
@@ -25,7 +25,7 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-amount { display: flex; align-items: baseline; gap: 10px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-amount > span { font-size: 24px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-link { margin-top: 4px; }
-.rebrand-page .compact-mobile-benefits .mobile-support-link { display: flex; align-self: stretch; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; box-sizing: border-box; margin-top: 12px; padding: 0 16px; border: 1px solid transparent; border-radius: 8px; background: #f7efe4; color: #241f1b; font: 800 16px/1.4 var(--font-sans); text-decoration: none; }
+.rebrand-page .compact-mobile-benefits .mobile-support-link { position: relative; top: 12px; display: flex; align-self: stretch; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; box-sizing: border-box; margin-top: 12px; padding: 0 16px; border: 1px solid transparent; border-radius: 8px; background: #f7efe4; color: #241f1b; font: 800 16px/1.4 var(--font-sans); text-decoration: none; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-link { background: #241f1b; color: #f7efe4; }
 .rebrand-page .compact-mobile-benefits .mobile-support-link:focus-visible { outline: 2px solid #d86535; outline-offset: 4px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-link:focus-visible { outline-color: #f7efe4; }
