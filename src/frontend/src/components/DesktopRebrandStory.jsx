@@ -15,10 +15,12 @@ const offers = [
 
 // Each desktop act shares the page's visibility pause without changing mobile motion.
 function useDesktopAct(ref, active, reducedMotion, build) {
+  const [phase, setPhase] = useState('loading');
   useEffect(() => {
     const root = ref.current;
     let disposed = false, onScreen = true, animations = [];
     root.dataset.motion = !active || reducedMotion ? 'static' : 'loading';
+    setPhase(root.dataset.motion);
     if (!active || reducedMotion) return;
     const story = root.closest('.dks-desktop-story');
     const sync = () => {
@@ -40,12 +42,13 @@ function useDesktopAct(ref, active, reducedMotion, build) {
         animations.push(animation);
         return animation;
       };
-      build(root, animate);
+      build(root, animate, () => setPhase('settled'));
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.motion = 'playing';
+      setPhase('playing');
       sync();
-    }).catch(() => { if (!disposed) root.dataset.motion = 'static'; });
+    }).catch(() => { if (!disposed) { root.dataset.motion = 'static'; setPhase('static'); } });
     return () => {
       disposed = true;
       animations.forEach(animation => animation.cancel());
@@ -54,9 +57,10 @@ function useDesktopAct(ref, active, reducedMotion, build) {
       root.dataset.motion = 'static';
     };
   }, [ref, active, reducedMotion, build]);
+  return phase;
 }
 
-function animateHero(root, animate) {
+function animateHero(root, animate, onFinished) {
   const offer = animate(root.querySelector('.dks-hero-offers'), [
     { offset: 0, opacity: 1 }, { offset: 4050 / 5850, opacity: 1 },
     { offset: 4250 / 5850, opacity: 0 }, { offset: 1, opacity: 0 },
@@ -71,13 +75,13 @@ function animateHero(root, animate) {
     { offset: .15, opacity: 1 }, { offset: .85, opacity: 1 },
     { offset: 1, opacity: 0, backgroundPosition: '0% 50%' },
   ], { delay: 2550, duration: 850, easing: 'linear' });
-  animate(root.querySelector('.dks-hero-recruitment'), [{ opacity: 0, visibility: 'hidden' }, { opacity: 1, visibility: 'visible' }], { delay: 4250, duration: 400 });
-  offer.onfinish = () => { root.dataset.motion = 'settled'; };
+  animate(root.querySelector('.dks-hero-recruitment'), [{ opacity: 0 }, { opacity: 1 }], { delay: 4250, duration: 400 });
+  offer.onfinish = () => { root.dataset.motion = 'settled'; onFinished(); };
 }
 
 function DesktopHero({ active, reducedMotion, onConditionsClick }) {
   const ref = useRef(null);
-  useDesktopAct(ref, active, reducedMotion, animateHero);
+  const phase = useDesktopAct(ref, active, reducedMotion, animateHero);
   return <div className="dks-hero-frame" ref={ref} data-motion="loading">
     <div className="dks-hero-offers" aria-hidden="true">
       <div className="dks-hero-offer">
@@ -90,7 +94,7 @@ function DesktopHero({ active, reducedMotion, onConditionsClick }) {
         <p className="dks-offer-note">조건 충족 시 면제</p>
       </div>
     </div>
-    <div className="dks-hero-recruitment">
+    <div className="dks-hero-recruitment" inert={phase === 'loading' || phase === 'playing'}>
       <figure className="dks-hero-character"><RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={4250} duration={1200} /></figure>
       <h1 tabIndex={-1}><span>닭장수가</span><span><strong>장사에 진심인</strong> 사장님을 원합니다.</span></h1>
       <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
