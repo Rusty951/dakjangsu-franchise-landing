@@ -88,6 +88,10 @@
   .dks-desktop-story .dks-support[data-lift='playing'] .dks-support-layout { visibility: hidden; }
   .dks-desktop-story .dks-lift-number { position: absolute; top: 0; left: 50%; transform: translateX(-50%); text-align: center; }
   .dks-desktop-story .dks-lift-number b { display: block; color: #d86535; font: 400 clamp(220px, 25vw, calc((100svh - 188px) * .48))/1 var(--font-display); -webkit-text-stroke: .028em currentColor; }
+  .dks-desktop-story :is(.dks-lift-number, .dks-support--growth .dks-support-amount) b { -webkit-text-stroke-width: .045em; paint-order: stroke fill; }
+  .dks-desktop-story :is(.dks-lift-number, .dks-support--growth .dks-support-amount) .slot-number-window { width: .6em; }
+  .dks-desktop-story :is(.dks-lift-number, .dks-support--growth .dks-support-amount) .slot-number-window + .slot-number-window { margin-left: -.06em; }
+  .dks-desktop-story :is(.dks-lift-number, .dks-support--growth .dks-support-amount) :is(.slot-number-strip > span, .slot-number-still) { transform: scaleX(1.04); }
   .dks-desktop-story .dks-lift-number > span { display: block; margin: 4px 0; font: 750 22px/1.2 var(--font-sans); }
   .dks-desktop-story .dks-lift-number > span:last-child { position: absolute; top: 48%; left: calc(100% + 16px); width: 3em; text-align: left; }
   .dks-desktop-story .dks-lift-actor { position: absolute; left: 50%; width: min(55%, 560px); transform: translateX(-50%); }

@@ -48,7 +48,10 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr; align-content: start; min-height: clamp(470px, 65svh, 680px); text-align: center; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-hero h2 { grid-column: 1; grid-row: 1; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount { grid-column: 1; grid-row: 2; position: relative; justify-self: center; margin-top: 8px; }
-.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount b { font-size: clamp(128px, 48cqw, 300px); }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount b { font-size: clamp(128px, 48cqw, 300px); -webkit-text-stroke-width: .045em; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .slot-number-window { width: .6em; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .slot-number-window + .slot-number-window { margin-left: -.06em; }
+.rebrand-page .compact-mobile-benefits .mobile-support-panel--growth :is(.slot-number-strip > span, .slot-number-still) { transform: scaleX(1.04); }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-amount > span:last-child { position: absolute; left: calc(100% + 8px); bottom: 16px; width: 3em; margin: 0; font-size: clamp(14px, 4cqw, 18px); text-align: left; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--growth .mobile-support-character { top: auto; bottom: 0; right: auto; left: 50%; transform: translateX(-50%); width: 78cqw; height: calc(100% - 235px); min-height: 155px; }
 
