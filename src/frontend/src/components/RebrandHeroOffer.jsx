@@ -57,6 +57,11 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
         { offset: 1, opacity: 0 },
       ], { duration: 4750, fill: 'both', easing: 'linear' });
       animations.push(offer);
+      animations.push(root.querySelector('.recruitment-intro--waiver .recruitment-intro-amount b').animate([
+        { offset: 0, transform: 'scale(1)' },
+        { offset: .5, transform: 'scale(1.1)' },
+        { offset: 1, transform: 'scale(1)' },
+      ], { delay: 1050, duration: 1300, fill: 'both', easing: 'cubic-bezier(.4,0,.2,1)' }));
       fadeIn(actor, 3150, 350);
       root.querySelectorAll('.recruitment-title > *').forEach(line => fadeIn(line, 3200, 350, 8));
       const epoch = document.timeline.currentTime;
