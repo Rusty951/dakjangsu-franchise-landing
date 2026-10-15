@@ -2,7 +2,7 @@ export const rebrandShareMeta = {
   title: '닭장수후라이드 창업 | 내 점포 지원 상담',
   description: '창업 지원 조건, 새로운 매장 공간, 실제 점주 경험을 살펴보세요. 희망 지역과 점포에 맞는 창업 상담을 안내합니다.',
   url: 'https://dakjangsu-client-sample-inky.vercel.app/?concept=rebrand',
-  image: 'https://dakjangsu-client-sample-inky.vercel.app/rebrand/share/pointing-v5.png',
+  image: 'https://dakjangsu-client-sample-inky.vercel.app/rebrand/share/pointing-v6.png',
   imageAlt: '정면을 손가락으로 가리키는 닭장수와 장사에 진심인 사장님을 원합니다 문구',
 };
 
