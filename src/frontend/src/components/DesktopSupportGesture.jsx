@@ -11,7 +11,11 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
     const images = [...root.querySelectorAll('img')], facts = [...panel.querySelectorAll('.dks-facts > div')];
     let disposed = false, loaded = false, frame = 0, elapsed = 0, previous, onScreen = true;
     const duration = supportGestureDuration(kind);
-    const show = index => images.forEach((image, i) => { image.dataset.visible = String(index === i); });
+    const show = (index, previousIndex = index, mix = 1) => images.forEach((image, i) => {
+      const opacity = i === index ? mix : i === previousIndex ? 1 - mix : 0;
+      image.dataset.visible = String(opacity > 0);
+      image.style.setProperty('--dks-pose-opacity', opacity.toFixed(4));
+    });
     const clear = () => {
       facts.forEach(row => row.style.removeProperty('--dks-cue'));
       panel.style.removeProperty('--dks-number-scale'); panel.style.removeProperty('--dks-number-y');
@@ -23,9 +27,10 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
     const paint = () => {
       if (!loaded || disposed) return;
       const state = getDesktopSupportState(elapsed, kind);
-      show(state.frame);
+      show(state.frame, state.previousFrame, state.mix);
       root.dataset.progress = state.progress.toFixed(3); root.dataset.beat = state.beat;
       root.dataset.frame = String(state.frame + 1);
+      root.dataset.mix = state.mix.toFixed(3);
       if (kind === 'opening') {
         panel.style.setProperty('--dks-number-scale', state.numberScale.toFixed(4));
         panel.style.setProperty('--dks-number-y', `${state.numberY.toFixed(2)}px`);

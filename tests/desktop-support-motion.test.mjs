@@ -2,27 +2,51 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getDesktopSupportState as state, supportGestureDuration as duration, desktopSupportPoses as poses } from '../src/frontend/src/utils/desktopSupportMotion.mjs';
 
-test('desktop opening uses three generated drawings and seats 740 once', () => {
-  assert.equal(poses.opening.length, 3);
+test('desktop opening unfolds through seven drawings and seats 740 once', () => {
+  assert.equal(poses.opening.length, 7);
   assert.equal(state(0, 'opening').frame, 0);
-  assert.equal(state(1000, 'opening').frame, 1);
-  assert.equal(state(2400, 'opening').frame, 2);
+  assert.equal(state(1000, 'opening').frame, 4);
+  assert.equal(state(2400, 'opening').frame, 6);
+  assert.equal(state(2400, 'opening').mix, 1);
   assert.equal(state(2500, 'opening').numberScale, .92);
   assert.equal(state(2780, 'opening').numberScale, 1.04);
   assert.equal(state(3250, 'opening').numberScale, 1);
   assert.deepEqual(state(10000, 'opening'), state(duration('opening'), 'opening'));
 });
 
-test('desktop kitchen uses all five generated poses and emphasizes the matching hand', () => {
-  assert.equal(poses.kitchen.length, 5);
-  assert.equal(new Set(poses.kitchen.map(pose => pose.source)).size, 5);
-  assert.deepEqual(poses.opening, poses.kitchen.slice(0, 3));
-  assert.equal(state(1800, 'kitchen').frame, 2);
+test('desktop kitchen unfolds through thirteen poses and holds each benefit for reading', () => {
+  assert.equal(poses.kitchen.length, 13);
+  assert.equal(new Set(poses.kitchen.map(pose => pose.source)).size, 13);
+  assert.deepEqual(poses.opening, poses.kitchen.slice(0, 7));
+  assert.equal(state(1800, 'kitchen').frame, 6);
+  assert.equal(state(1800, 'kitchen').mix, 1);
   assert.deepEqual(state(1800, 'kitchen').facts, [1, 0]);
-  assert.equal(state(3000, 'kitchen').frame, 3);
-  assert.equal(state(3900, 'kitchen').frame, 4);
+  assert.equal(state(3000, 'kitchen').frame, 9);
+  assert.equal(state(3900, 'kitchen').frame, 12);
+  assert.equal(state(3900, 'kitchen').mix, 1);
   assert.deepEqual(state(3900, 'kitchen').facts, [0, 1]);
   assert.deepEqual(state(10000, 'kitchen'), state(6000, 'kitchen'));
+});
+
+test('dissolves remain continuous at pose changes and never dim the fixed body', () => {
+  const weights = (time, kind) => {
+    const { frame, previousFrame, mix } = state(time, kind);
+    return poses[kind].map((_, i) => i === frame ? mix : i === previousFrame ? 1 - mix : 0);
+  };
+  for (const kind of ['opening', 'kitchen']) {
+    let previous = weights(0, kind), blends = 0;
+    for (let time = 1; time <= duration(kind); time++) {
+      const current = weights(time, kind);
+      assert(current.every(opacity => opacity >= 0 && opacity <= 1));
+      assert(Math.abs(current.reduce((sum, opacity) => sum + opacity, 0) - 1) < 1e-10);
+      assert(current.filter(opacity => opacity > 0).length <= 2);
+      assert(current.every((opacity, i) => Math.abs(opacity - previous[i]) < .015));
+      if (current.some(opacity => opacity > 0 && opacity < 1)) blends++;
+      previous = current;
+    }
+    assert(blends > 600);
+    assert.equal(weights(duration(kind), kind).at(-1), 1);
+  }
 });
 
 test('generated pose indices advance once, stay in range and never loop', () => {

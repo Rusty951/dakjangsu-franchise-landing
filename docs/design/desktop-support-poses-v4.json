@@ -1,0 +1,171 @@
+{
+  "mode": "built-in image_gen",
+  "purpose": "Eight selected in-between drawings for desktop scenes 3 and 4 only",
+  "sourceSet": "desktop-support-v3",
+  "generation": {
+    "commonPrompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. ",
+    "selected": [
+      {
+        "file": "02-lift-low.png",
+        "prompt": "Use case: precise-object-edit. Edit this ONE mascot image, do not redesign. Portrait canvas 1024x1536 with real transparent alpha. Preserve everything exactly: fixed face, black hat, logo, torso, shoes, image registration, lighting. The mascot's anatomical RIGHT arm is the arm on the VIEWER'S LEFT SIDE (left half of picture). Only that arm changes. The other arm, on the viewer's RIGHT, MUST remain resting on waist exactly as in reference. We need an EARLY transition BEFORE presenting. Do not raise the hand to shoulder height. Bend his anatomical RIGHT elbow a little so the hand on the LEFT of the picture moves upward from his waist by just 35 pixels and slightly outward by 15 pixels. The palm remains mostly facing the torso; fingertips point diagonally downward. It is a small halfway-start motion, hand still BELOW the white chest logo. No hand near the shoulder.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/01-ready.png"
+          }
+        ]
+      },
+      {
+        "file": "03-lift-turn.png",
+        "prompt": "Use case: precise-object-edit. Edit this ONE mascot image, do not redesign. Portrait canvas 1024x1536 with real transparent alpha. Preserve everything exactly: fixed face, black hat, logo, torso, shoes, image registration, lighting. The mascot's anatomical RIGHT arm is the arm on the VIEWER'S LEFT SIDE (left half of picture). Only that arm changes. The other arm, on the viewer's RIGHT, MUST remain resting on waist exactly as in reference. We need an EARLY transition BEFORE presenting. Do not raise the hand to shoulder height. Lift his anatomical RIGHT forearm on the LEFT of the picture halfway up from his waist toward his chest, hand level with BOTTOM of white chest logo around y750, near x310. Turn this hand gradually palm up, elbow still down and tucked beside torso. The raised hand must be in the LEFT half of the picture, never the right half. This is a compact low gesture, not an outstretched presentation.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/01-ready.png"
+          }
+        ]
+      },
+      {
+        "file": "05-extend-mid.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. LATE TWO THIRDS (67%) from compact half-open gesture to fully extended palm-up. Image-left palm center around x155,y650, forearm reaches outward nearly to the end but is still visibly shorter than image2. Image-right hand fixed unchanged at waist.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/02-half-open.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/03-present.png"
+          }
+        ]
+      },
+      {
+        "file": "06-extend-far.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. EARLY ONE THIRD (33%) from the compact half-open gesture to fully extended palm-up. Image-left palm center around x205,y650, elbow beginning to open outward. It must visibly sit between the references: farther left than image1 but clearly less extended than image2. Image-right hand fixed unchanged at waist.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/02-half-open.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/03-present.png"
+          }
+        ]
+      },
+      {
+        "file": "08-retract-early.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. EARLY ONE THIRD (33%) of SWITCHING HANDS: image-left presenting arm starts retracting inward, palm center around x185,y665, elbow bends. Image-right hand begins turning palm-up from resting waist, center around x575,y840. Both movements simultaneous. Do not jump to a hand on chest yet; keep face, logo and feet unchanged.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/03-present.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/04-change-hands.png"
+          }
+        ]
+      },
+      {
+        "file": "09-retract-late.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. LATE TWO THIRDS (67%) of SWITCHING HANDS: image-left arm retracted midway toward chest, palm center around x255,y690, elbow bends more. Image-right hand now nearly palm-up at x550,y840, moving across lower apron. Keep separation between hands and logo visible.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/03-present.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/04-change-hands.png"
+          }
+        ]
+      },
+      {
+        "file": "11-second-early.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. EARLY ONE THIRD (33%) from switching-hands pose to second presentation. Image-left hand rising toward its apron strap but not yet touching, hand center around x355,y680. Image-right palm-up hand extends slightly farther across waist to viewer-left, center around x500,y830. Only arm position changes. Keep logo visible.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/04-change-hands.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/05-second-present.png"
+          }
+        ]
+      },
+      {
+        "file": "12-second-late.png",
+        "prompt": "Use case: identity-preserve. Asset: ONE new transparent full-body PNG in-between animation drawing, 1024x1536. Input image 1 is the exact START endpoint and primary edit target, image 2 is the exact END endpoint. Create a genuinely INTERMEDIATE pose between them, neither endpoint. Preserve the exact same man and perfect registration: canvas size, head location/size, face and smile, eyes and head angle, black hat and gold rim, chest and apron with original Korean logo 닭장수후라이드, lower body, shoe positions, camera and lighting. Lock every pixel outside arms and locally necessary sleeve folds. Change ONLY BOTH ARMS along the described natural path. Exactly two arms and two anatomically natural hands with five fingers each. One single character, no panels, no storyboard, no extra objects or text, no redesign, no camera move, no floor, real transparent alpha background. Hat and both shoes fully visible with identical margins as reference. Do not generate the endpoint. Produce the specified fraction of movement so this key pose fits smoothly into an ordered animation. LATE TWO THIRDS (67%) from switching-hands pose to second presentation. Image-left hand nearly resting on apron strap, hand center around x365,y640. Image-right palm-up hand extends across waist, center around x450,y820, still slightly short of final endpoint. Only arm position changes. Keep logo visible.",
+        "referenceRoles": [
+          {
+            "role": "primary edit target / start endpoint",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/04-change-hands.png"
+          },
+          {
+            "role": "end endpoint motion reference",
+            "path": "src/frontend/public/rebrand/poses/desktop-support-v3/05-second-present.png"
+          }
+        ]
+      }
+    ],
+    "notes": "Two initial ready-to-half-open candidates raised the hand too far. Two subsequent candidates moved the wrong hand. Those four candidates were discarded; only the final eight selected images are used. Extension candidates are sequenced by observed hand position, not request order. Existing five PNGs are preserved. Runtime derivatives use WebP with transparent alpha; no mesh warping or body-part compositing."
+  },
+  "outputs": [
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/02-lift-low.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/02-lift-low.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/03-lift-turn.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/03-lift-turn.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/05-extend-mid.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/05-extend-mid.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/06-extend-far.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/06-extend-far.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/08-retract-early.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/08-retract-early.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/09-retract-late.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/09-retract-late.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/11-second-early.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/11-second-early.webp"
+    },
+    {
+      "original": "src/frontend/public/rebrand/poses/desktop-support-v4/source/12-second-late.png",
+      "runtime": "/rebrand/poses/desktop-support-v4/12-second-late.webp"
+    }
+  ],
+  "runtimeSequence": [
+    "/rebrand/poses/desktop-support-v4/01-ready.webp",
+    "/rebrand/poses/desktop-support-v4/02-lift-low.webp",
+    "/rebrand/poses/desktop-support-v4/03-lift-turn.webp",
+    "/rebrand/poses/desktop-support-v4/04-half-open.webp",
+    "/rebrand/poses/desktop-support-v4/05-extend-mid.webp",
+    "/rebrand/poses/desktop-support-v4/06-extend-far.webp",
+    "/rebrand/poses/desktop-support-v4/07-present.webp",
+    "/rebrand/poses/desktop-support-v4/08-retract-early.webp",
+    "/rebrand/poses/desktop-support-v4/09-retract-late.webp",
+    "/rebrand/poses/desktop-support-v4/10-change-hands.webp",
+    "/rebrand/poses/desktop-support-v4/11-second-early.webp",
+    "/rebrand/poses/desktop-support-v4/12-second-late.webp",
+    "/rebrand/poses/desktop-support-v4/13-second-present.webp"
+  ],
+  "runtimeEncoding": {
+    "format": "WebP",
+    "quality": 92,
+    "alphaQuality": 100,
+    "pixels": "1024x1536",
+    "totalBytes": 1872440
+  }
+}
