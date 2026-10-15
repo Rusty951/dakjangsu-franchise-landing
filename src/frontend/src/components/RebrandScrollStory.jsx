@@ -13,6 +13,7 @@ import SlotNumber from './SlotNumber';
 import RebrandHeroOffer from './RebrandHeroOffer';
 import BrandTextPoster from './BrandTextPoster';
 import MobileSupportPanel from './MobileSupportPanel';
+import DesktopRebrandStory from './DesktopRebrandStory';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
@@ -44,7 +45,12 @@ const subscribeMobile = notify => {
   return () => query.removeEventListener('change', notify);
 };
 
-export default function RebrandScrollStory({ onConditionsClick }) {
+export default function RebrandScrollStory(props) {
+  const mobile = useSyncExternalStore(subscribeMobile, () => window.matchMedia(mobileQuery).matches, () => false);
+  return mobile ? <ExistingRebrandScrollStory {...props} /> : <DesktopRebrandStory {...props} />;
+}
+
+function ExistingRebrandScrollStory({ onConditionsClick }) {
   const compactMobile = useSyncExternalStore(subscribeMobile, () => window.matchMedia(mobileQuery).matches, () => false);
   const chapters = compactMobile ? mobileChapters : desktopChapters;
   const chapterScenes = compactMobile ? mobileScenes : desktopScenes;
