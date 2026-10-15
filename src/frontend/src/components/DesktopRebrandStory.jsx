@@ -118,7 +118,7 @@ function DesktopBrand({ active, reducedMotion }) {
   useDesktopAct(ref, active, reducedMotion, animateBrand);
   return <div className="dks-brand-layout" ref={ref}>
     <div><p className="dks-index">02 / 새로운 닭장수</p><h2 tabIndex={-1}><span className="dks-brand-together">함께,</span><strong className="dks-brand-emphasis">제대로</strong><span className="dks-brand-close">장사해 봅시다.</span></h2></div>
-    <div className="dks-brand-support"><p className="dks-brand-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p><p className="dks-brand-invitation">이제,<br /><strong>사장님 차례입니다.</strong></p></div>
+    <div className="dks-brand-support"><p className="dks-brand-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p><p className="dks-brand-invitation">이제,<br /><strong><span>사장님</span>{' '}<span>차례입니다.</span></strong></p></div>
   </div>;
 }
 function animateSupport(root, animate) {
