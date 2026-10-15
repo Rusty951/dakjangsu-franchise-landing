@@ -37,8 +37,8 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
 const flowingStoryQuery = '(max-width: 1024px), (max-height: 640px)';
 const mobileQuery = '(max-width: 1024px)';
-const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '로열티', '물류'];
-const mobileScenes = [0, 'brand', 2, 3, 4, 5];
+const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
+const mobileScenes = [0, 'brand', 2, 3, 5];
 const subscribeMobile = notify => {
   const query = window.matchMedia(mobileQuery);
   query.addEventListener('change', notify);
@@ -440,7 +440,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           <img className="brand-static-character" loading="lazy" src={assetPath(chapterMotions.brand.source)} alt="" width="1122" height="1402" />
           </BrandTextPoster>
         </article>
-        {compactMobile ? ['opening', 'kitchen', 'operating', 'growth'].map((kind, index) => (
+        {compactMobile ? ['opening', 'kitchen', 'growth'].map((kind, index) => (
           <MobileSupportPanel key={`${kind}-${kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : kind === 'growth' ? liftReplay : royaltyReplay}`} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
         )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
