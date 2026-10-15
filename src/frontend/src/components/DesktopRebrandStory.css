@@ -44,8 +44,8 @@
   .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: clamp(160px, min(18.2vw, 30svh), 340px); line-height: 1.1; color: #f7efe4; }
   .dks-desktop-story .dks-brand-close { font-size: clamp(56px, 5.7vw, 104px); line-height: 1.15; white-space: nowrap; }
   .dks-desktop-story .dks-brand-support { display: flex; flex-direction: column; gap: clamp(48px, 7svh, 88px); }
-  .dks-desktop-story .dks-brand-offer { margin: 0; font: 550 clamp(29px, 2.85vw, 46px)/1.4 var(--font-sans); }
-  .dks-desktop-story .dks-brand-offer strong { font-weight: 850; }
+  .dks-desktop-story .dks-brand-offer { margin: 0; font: 700 clamp(34px, 3.2vw, 52px)/1.25 var(--font-sans); }
+  .dks-desktop-story .dks-brand-offer strong { display: block; margin-top: 8px; font: 400 clamp(50px, 5vw, 84px)/1.12 var(--font-display); letter-spacing: -.045em; word-break: keep-all; }
   .dks-desktop-story .dks-brand-invitation { margin: 0; font: 550 clamp(32px, 3vw, 48px)/1.35 var(--font-sans); }
   .dks-desktop-story .dks-brand-invitation strong { display: block; margin-top: 12px; font: 400 clamp(68px, 7.2vw, 120px)/1.08 var(--font-display); letter-spacing: -.045em; color: #f7efe4; }
   .dks-desktop-story .dks-brand-invitation strong > span { display: block; white-space: nowrap; }
