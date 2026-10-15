@@ -53,15 +53,15 @@ export default function MobileSupportLift({ active, reducedMotion }) {
     Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
       if (disposed) return;
       const numberPoint = pointInHero(digits, hero);
-      const height = Math.min(digits.offsetWidth * 1.5 + 32, window.innerHeight * .52, 420);
+      const height = Math.min(digits.offsetWidth * 1.5 + 32, window.innerHeight * .58, 460);
       const width = height * 2 / 3;
-      const rise = digits.offsetHeight * .84;
-      const left = numberPoint.x + digits.offsetWidth / 2 - width / 2;
+      // Keep the monthly limit below the fixed header even with the larger digits.
+      const rise = Math.min(digits.offsetHeight * .84, Math.max(0, numberPoint.y + pointInHero(hero, panel).y - 32));
       // Match the palms to the visible bottom of the original display font.
       const top = numberPoint.y + digits.offsetHeight - rise - height * .08 - digits.offsetHeight * .12;
       const actor = root.querySelector('.mobile-support-lift-actor');
-      const base = { left: `${left}px`, top: `${top}px`, width: `${width}px`, height: `${height}px` };
-      const parked = { left: `${(hero.offsetWidth - rest.offsetWidth) / 2}px`, top: `${rest.offsetTop}px`, width: `${rest.offsetWidth}px`, height: `${rest.offsetHeight}px` };
+      const base = { left: `calc(50% - ${width / 2}px)`, top: `${top}px`, width: `${width}px`, height: `${height}px` };
+      const parked = { left: `calc(50% - ${rest.offsetWidth / 2}px)`, top: `${rest.offsetTop}px`, width: `${rest.offsetWidth}px`, height: `${rest.offsetHeight}px` };
       const limit = root.querySelector('.mobile-support-lift-limit');
       const unit = root.querySelector('.mobile-support-lift-unit');
       Object.assign(limit.style, { left: `${hero.offsetWidth / 2}px`, top: `${numberPoint.y - rise - 24}px` });
