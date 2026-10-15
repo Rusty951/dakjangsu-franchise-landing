@@ -37,17 +37,17 @@
   .dks-desktop-story .dks-hero-frame:is([data-motion='loading'], [data-motion='playing']) .dks-hero-recruitment { opacity: 0; }
   .dks-desktop-story .dks-hero-frame:is([data-motion='static'], [data-motion='settled']) .dks-hero-offers { display: none; }
 
-  .dks-desktop-story .dks-brand-layout { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: clamp(48px, 8vw, 160px); width: min(100%, 1320px); margin-inline: auto; }
+  .dks-desktop-story .dks-brand-layout { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: clamp(28px, 3vw, 64px); width: min(100%, 1600px); margin-inline: auto; }
   .dks-desktop-story .dks-brand-layout h2 { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -.055em; }
   .dks-desktop-story .dks-brand-layout h2 > * { display: block; font-weight: 400; transform-origin: 30% 50%; }
-  .dks-desktop-story .dks-brand-together { font-size: clamp(64px, 6.8vw, 110px); line-height: 1.1; }
-  .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: clamp(120px, 14vw, 220px); line-height: 1.1; color: #f7efe4; }
-  .dks-desktop-story .dks-brand-close { font-size: clamp(44px, 5vw, 80px); line-height: 1.15; white-space: nowrap; }
-  .dks-desktop-story .dks-brand-support { display: flex; flex-direction: column; gap: 64px; }
-  .dks-desktop-story .dks-brand-offer { margin: 0; font: 550 clamp(25px, 2.3vw, 36px)/1.45 var(--font-sans); }
+  .dks-desktop-story .dks-brand-together { font-size: clamp(86px, 9vw, 160px); line-height: 1.1; }
+  .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: clamp(160px, min(18.2vw, 30svh), 340px); line-height: 1.1; color: #f7efe4; }
+  .dks-desktop-story .dks-brand-close { font-size: clamp(56px, 5.7vw, 104px); line-height: 1.15; white-space: nowrap; }
+  .dks-desktop-story .dks-brand-support { display: flex; flex-direction: column; gap: clamp(48px, 7svh, 88px); }
+  .dks-desktop-story .dks-brand-offer { margin: 0; font: 550 clamp(29px, 2.85vw, 46px)/1.4 var(--font-sans); }
   .dks-desktop-story .dks-brand-offer strong { font-weight: 850; }
-  .dks-desktop-story .dks-brand-invitation { margin: 0; font: 550 clamp(28px, 2.4vw, 40px)/1.4 var(--font-sans); }
-  .dks-desktop-story .dks-brand-invitation strong { display: block; margin-top: 12px; font: 400 clamp(38px, 3.5vw, 58px)/1.15 var(--font-display); color: #f7efe4; white-space: nowrap; }
+  .dks-desktop-story .dks-brand-invitation { margin: 0; font: 550 clamp(32px, 3vw, 48px)/1.35 var(--font-sans); }
+  .dks-desktop-story .dks-brand-invitation strong { display: block; margin-top: 12px; font: 400 clamp(44px, 4.4vw, 74px)/1.15 var(--font-display); color: #f7efe4; white-space: nowrap; }
 
   .dks-desktop-story .dks-support { position: relative; width: min(100%, 1600px); margin-inline: auto; }
   .dks-desktop-story .dks-support-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; }
@@ -105,9 +105,9 @@
     .dks-desktop-story .dks-scene { padding-top: 16px; padding-bottom: 96px; }
     .dks-desktop-story .dks-hero-character { height: max(270px, calc(100svh - 390px)); }
     .dks-desktop-story .dks-hero-recruitment h1 { font-size: 40px; margin-top: 16px; }
-    .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: 130px; }
-    .dks-desktop-story .dks-brand-together { font-size: 64px; }
-    .dks-desktop-story .dks-brand-close { font-size: 48px; }
+    .dks-desktop-story .dks-brand-layout .dks-brand-emphasis { font-size: min(18.2vw, 30svh); }
+    .dks-desktop-story .dks-brand-together { font-size: clamp(86px, 9vw, 110px); }
+    .dks-desktop-story .dks-brand-close { font-size: clamp(56px, 5.7vw, 72px); }
     .dks-desktop-story .dks-brand-support { gap: 32px; }
     .dks-desktop-story .dks-support-amount b { font-size: 195px; }
     .dks-desktop-story .dks-support--royalty .dks-support-amount b { font-size: 250px; }
