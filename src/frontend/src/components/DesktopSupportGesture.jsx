@@ -1,35 +1,31 @@
 import { useEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
 import { desktopSupportPoses, getDesktopSupportState, supportGestureDuration } from '../utils/desktopSupportMotion.mjs';
-import { createDesktopSupportRenderer } from '../utils/desktopSupportRenderer';
 
 export default function DesktopSupportGesture({ kind, label, active, reducedMotion, onReady }) {
-  const rootRef = useRef(null), canvasRef = useRef(null);
-  const source = assetPath(desktopSupportPoses[kind][active && !reducedMotion ? 0 : 2].source);
+  const rootRef = useRef(null);
+  const poses = desktopSupportPoses[kind];
+  const fallback = assetPath(kind === 'opening' ? '/rebrand/poses/opening-package-v1/03-present.png' : '/rebrand/poses/kitchen-support-v1/04-rest.png');
   useEffect(() => {
-    const root = rootRef.current, canvas = canvasRef.current;
-    const panel = root.closest('.dks-support'), story = root.closest('.dks-desktop-story');
-    const facts = [...panel.querySelectorAll('.dks-facts > div')];
-    let disposed = false, renderer, frame = 0, elapsed = 0, previous, onScreen = true;
+    const root = rootRef.current, panel = root.closest('.dks-support'), story = root.closest('.dks-desktop-story');
+    const images = [...root.querySelectorAll('img')], facts = [...panel.querySelectorAll('.dks-facts > div')];
+    let disposed = false, loaded = false, frame = 0, elapsed = 0, previous, onScreen = true;
     const duration = supportGestureDuration(kind);
-    const clearFacts = () => {
+    const show = index => images.forEach((image, i) => { image.dataset.visible = String(index === i); });
+    const clear = () => {
       facts.forEach(row => row.style.removeProperty('--dks-cue'));
-      panel.style.removeProperty('--dks-number-scale');
-      panel.style.removeProperty('--dks-number-y');
+      panel.style.removeProperty('--dks-number-scale'); panel.style.removeProperty('--dks-number-y');
     };
-    root.dataset.phase = 'static';
-    onReady(false);
-    if (!active || reducedMotion) { clearFacts(); return; }
-    root.dataset.phase = 'loading';
+    root.dataset.phase = 'static'; onReady(false);
+    if (!active || reducedMotion) { show(poses.length - 1); clear(); return; }
+    show(0); root.dataset.phase = 'loading';
     const running = () => onScreen && !document.hidden && story.dataset.motionPaused !== 'true';
     const paint = () => {
-      if (!renderer || disposed) return;
+      if (!loaded || disposed) return;
       const state = getDesktopSupportState(elapsed, kind);
-      renderer.draw(state);
-      root.dataset.progress = state.progress.toFixed(3);
-      root.dataset.beat = state.beat;
-      root.dataset.poses = `${state.from + 1}:${state.to + 1}`;
-      root.dataset.blend = state.mix.toFixed(3);
+      show(state.frame);
+      root.dataset.progress = state.progress.toFixed(3); root.dataset.beat = state.beat;
+      root.dataset.frame = String(state.frame + 1);
       if (kind === 'opening') {
         panel.style.setProperty('--dks-number-scale', state.numberScale.toFixed(4));
         panel.style.setProperty('--dks-number-y', `${state.numberY.toFixed(2)}px`);
@@ -45,40 +41,31 @@ export default function DesktopSupportGesture({ kind, label, active, reducedMoti
       else root.dataset.phase = 'settled';
     };
     const sync = () => {
-      if (!renderer || disposed) return;
+      if (!loaded || disposed) return;
       cancelAnimationFrame(frame); frame = 0; previous = undefined;
-      root.dataset.paused = String(!running());
-      onReady(running());
-      root.dataset.phase = elapsed >= duration ? 'settled' : 'playing';
-      paint();
+      root.dataset.paused = String(!running()); onReady(running());
+      root.dataset.phase = elapsed >= duration ? 'settled' : 'playing'; paint();
       if (running() && elapsed < duration) frame = requestAnimationFrame(tick);
     };
-    const fallback = () => { cancelAnimationFrame(frame); root.dataset.phase = 'static'; clearFacts(); onReady(true); };
-    const contextLost = event => { event.preventDefault(); renderer?.dispose(); renderer = null; fallback(); };
-    canvas.addEventListener('webglcontextlost', contextLost);
     const visibility = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; sync(); });
     visibility.observe(root);
     const changes = new MutationObserver(sync);
     changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
-    const resize = new ResizeObserver(paint); resize.observe(root);
     document.addEventListener('visibilitychange', sync);
-    Promise.all(desktopSupportPoses[kind].map(async pose => {
-      const image = new Image(); image.src = assetPath(pose.source); await image.decode(); return image;
-    })).then(images => {
+    Promise.all(images.map(image => image.decode())).then(() => { if (!disposed) { loaded = true; sync(); } }).catch(() => {
       if (disposed) return;
-      renderer = createDesktopSupportRenderer(canvas, images, kind);
-      if (!renderer) { fallback(); return; }
-      sync();
-    }).catch(() => { if (!disposed) fallback(); });
+      const available = images.findLastIndex(image => image.complete && image.naturalWidth > 0);
+      show(Math.max(0, available)); root.dataset.phase = 'static'; clear(); onReady(true);
+    });
     return () => {
-      disposed = true; cancelAnimationFrame(frame); renderer?.dispose(); clearFacts();
-      visibility.disconnect(); changes.disconnect(); resize.disconnect();
-      canvas.removeEventListener('webglcontextlost', contextLost);
-      document.removeEventListener('visibilitychange', sync);
+      disposed = true; cancelAnimationFrame(frame); clear();
+      visibility.disconnect(); changes.disconnect(); document.removeEventListener('visibilitychange', sync);
     };
-  }, [active, reducedMotion, kind, source, onReady]);
+  }, [active, reducedMotion, kind, poses, onReady]);
   return <div className="dks-support-character dks-support-gesture" ref={rootRef} data-phase="static" role="img" aria-label={label}>
-    <img src={source} alt="" width="1122" height="1402" loading="lazy" draggable="false" />
-    <canvas ref={canvasRef} width="561" height="701" aria-hidden="true" />
+    {poses.map((pose, i) => <picture key={pose.source}>
+      <source media="(min-width: 1025px)" srcSet={assetPath(pose.source)} />
+      <img src={fallback} alt="" width="1024" height="1536" loading="lazy" draggable="false" data-visible={i === (active && !reducedMotion ? 0 : poses.length - 1)} />
+    </picture>)}
   </div>;
 }

@@ -1,0 +1,50 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "src/frontend/public/rebrand/poses/kitchen-support-v1/04-rest.png",
+  "common": "Use case: identity-preserve. This is ONE separate transparent PNG key pose in a five-frame animation set, NOT a contact sheet. The input image is the exact locked master frame 01. Preserve the same canvas 1024x1536, exact character placement, identical face and expression, hat silhouette and height, head angle, body proportions, torso, apron logo '닭장수후라이드', waist knot, pants, shoes, foot positions, colors, 3D materials, camera and lighting. Do not redraw or move the head, torso, legs or shoes. Only change the arms and the local sleeve folds necessary for the specified pose. Match the input pixel registration closely so consecutive frames can be played with no scale or position shifts. Both hat and both shoes completely visible. One anatomically natural character with exactly two arms and two hands, five fingers on each hand. Real transparent alpha background, no glow or opaque backdrop, no objects, no extra text, frame labels, grids, effects or watermark. The arm on the LEFT side of the image is the first presenting arm; the arm on the RIGHT side is the second presenting arm. ",
+  "frames": [
+    {
+      "frame": 1,
+      "prompt": "Use case: identity-preserve. Create ONE separate full-body transparent PNG animation key pose, frame 01 of a coherent five-pose sequence for this existing Korean chicken franchise mascot. Input image is the identity and clothing master. Preserve the exact same man, face, moustache, pointed beard, tall black gat hat and gold band, warm cream hanbok, black patterned apron and its exact Korean logo '닭장수후라이드', pants, shoes, 3D rendering style, materials and lighting. Change ONLY the arm pose. FRAME 01 READY: both elbows gently bent, hands relaxed just in front of the waist, natural anticipation before a palm-up presentation to the viewer's LEFT. No pointing, no objects. Lock head, torso and legs to the reference and keep full hat and both shoes completely visible. Portrait canvas 1024x1536. Fixed framing for the full series: body/face vertical centerline x=512, hat top y=55, shoe soles y=1480, fixed front camera, same head size and foot positions. Leave enough transparent margin for an arm extending to viewer-left in later frames, no close-up or camera movement. Exactly one character, one pose, real transparent alpha, no background, ground, shadow on a floor, labels, frame numbers, storyboard grid, extra text or decorative effects. Anatomically natural hands with five fingers each. This is a production animation asset, not a redesign."
+    },
+    {
+      "frame": 2,
+      "prompt": "Use case: identity-preserve. This is ONE separate transparent PNG key pose in a five-frame animation set, NOT a contact sheet. The input image is the exact locked master frame 01. Preserve the same canvas 1024x1536, exact character placement, identical face and expression, hat silhouette and height, head angle, body proportions, torso, apron logo '닭장수후라이드', waist knot, pants, shoes, foot positions, colors, 3D materials, camera and lighting. Do not redraw or move the head, torso, legs or shoes. Only change the arms and the local sleeve folds necessary for the specified pose. Match the input pixel registration closely so consecutive frames can be played with no scale or position shifts. Both hat and both shoes completely visible. One anatomically natural character with exactly two arms and two hands, five fingers on each hand. Real transparent alpha background, no glow or opaque backdrop, no objects, no extra text, frame labels, grids, effects or watermark. The arm on the LEFT side of the image is the first presenting arm; the arm on the RIGHT side is the second presenting arm. PRIMARY EDIT TARGET is image 1 (ready master). Image 2 is ONLY the final extended-arm endpoint for motion reference. Make a genuinely HALFWAY frame 02 between them, clearly different from image 2: KEEP THE IMAGE-LEFT UPPER ARM AND ELBOW CLOSE AGAINST THE TORSO. The elbow remains bent sharply, approximately a right angle. Lift and turn only that forearm so the palm faces UP beside the left edge of the apron, with palm center about x=270,y=765. The hand must remain near the body, NOT stretched far into the left side. Fingertips should stay to the RIGHT of x=185. Image-right hand remains at the waist exactly like image 1. This is an early, compact preparation-to-opening transition, not the fully open welcoming pose. Do not move head, torso, logo, legs, feet or camera. Preserve identical canvas and true transparent alpha."
+    },
+    {
+      "frame": 3,
+      "prompt": "Use case: identity-preserve. This is ONE separate transparent PNG key pose in a five-frame animation set, NOT a contact sheet. The input image is the exact locked master frame 01. Preserve the same canvas 1024x1536, exact character placement, identical face and expression, hat silhouette and height, head angle, body proportions, torso, apron logo '닭장수후라이드', waist knot, pants, shoes, foot positions, colors, 3D materials, camera and lighting. Do not redraw or move the head, torso, legs or shoes. Only change the arms and the local sleeve folds necessary for the specified pose. Match the input pixel registration closely so consecutive frames can be played with no scale or position shifts. Both hat and both shoes completely visible. One anatomically natural character with exactly two arms and two hands, five fingers on each hand. Real transparent alpha background, no glow or opaque backdrop, no objects, no extra text, frame labels, grids, effects or watermark. The arm on the LEFT side of the image is the first presenting arm; the arm on the RIGHT side is the second presenting arm. FRAME 03 FULL PRESENTATION: The image-left arm is fully unfolded toward viewer-left with a welcoming palm-up hand, elbow softly bent, fingers naturally together. Palm center around x=125,y=650; elbow around x=230,y=740, upper arm connects naturally at the existing shoulder. This is the completed first presentation gesture. The image-right hand stays at the waist exactly as in the master. Hand must fit inside canvas with a generous margin, no oversized hands."
+    },
+    {
+      "frame": 4,
+      "prompt": "Use case: identity-preserve. This is ONE separate transparent PNG key pose in a five-frame animation set, NOT a contact sheet. The input image is the exact locked master frame 01. Preserve the same canvas 1024x1536, exact character placement, identical face and expression, hat silhouette and height, head angle, body proportions, torso, apron logo '닭장수후라이드', waist knot, pants, shoes, foot positions, colors, 3D materials, camera and lighting. Do not redraw or move the head, torso, legs or shoes. Only change the arms and the local sleeve folds necessary for the specified pose. Match the input pixel registration closely so consecutive frames can be played with no scale or position shifts. Both hat and both shoes completely visible. One anatomically natural character with exactly two arms and two hands, five fingers on each hand. Real transparent alpha background, no glow or opaque backdrop, no objects, no extra text, frame labels, grids, effects or watermark. The arm on the LEFT side of the image is the first presenting arm; the arm on the RIGHT side is the second presenting arm. FRAME 04 CHANGE HANDS MID-POSE: The image-left arm is retracting from its extended presentation toward the chest, palm centered around x=285,y=730, elbow naturally bent. Simultaneously the image-right forearm begins to unfold ACROSS THE FRONT OF THE LOWER APRON toward viewer-left, palm-up hand centered around x=440,y=850, elbow still on image-right. This is a clear natural halfway pose while switching which hand presents. Do not cross hands or occlude the chest logo."
+    },
+    {
+      "frame": 5,
+      "prompt": "Use case: identity-preserve. This is ONE separate transparent PNG key pose in a five-frame animation set, NOT a contact sheet. The input image is the exact locked master frame 01. Preserve the same canvas 1024x1536, exact character placement, identical face and expression, hat silhouette and height, head angle, body proportions, torso, apron logo '닭장수후라이드', waist knot, pants, shoes, foot positions, colors, 3D materials, camera and lighting. Do not redraw or move the head, torso, legs or shoes. Only change the arms and the local sleeve folds necessary for the specified pose. Match the input pixel registration closely so consecutive frames can be played with no scale or position shifts. Both hat and both shoes completely visible. One anatomically natural character with exactly two arms and two hands, five fingers on each hand. Real transparent alpha background, no glow or opaque backdrop, no objects, no extra text, frame labels, grids, effects or watermark. The arm on the LEFT side of the image is the first presenting arm; the arm on the RIGHT side is the second presenting arm. FRAME 05 SECOND PRESENTATION COMPLETE: The image-left hand now rests lightly beside the image-left apron strap near the upper chest, around x=400,y=650. The image-right forearm is extended across the waist toward viewer-left, palm up and open, hand centered around x=300,y=840, elbow naturally at image-right. This is a distinct completed second presentation, lower than the first, as if showing a second benefit below. Keep the chest logo visible; only the lower apron may be naturally occluded by the forearm. No torso turn or face change."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "01-ready",
+      "file": "/rebrand/poses/desktop-support-v3/01-ready.png"
+    },
+    {
+      "name": "02-half-open",
+      "file": "/rebrand/poses/desktop-support-v3/02-half-open.png"
+    },
+    {
+      "name": "03-present",
+      "file": "/rebrand/poses/desktop-support-v3/03-present.png"
+    },
+    {
+      "name": "04-change-hands",
+      "file": "/rebrand/poses/desktop-support-v3/04-change-hands.png"
+    },
+    {
+      "name": "05-second-present",
+      "file": "/rebrand/poses/desktop-support-v3/05-second-present.png"
+    }
+  ]
+}
+
