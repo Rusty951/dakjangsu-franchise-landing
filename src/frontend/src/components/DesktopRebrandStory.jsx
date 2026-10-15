@@ -129,7 +129,7 @@ function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick
       <div className="dks-support-copy">
         <p className="dks-index">0{index + 1} / {chapters[index]} 지원</p>
         <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
-        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'opening' ? 1 : 0} duration={offer.kind === 'opening' ? 1.06 : 1.6} /></b><span className="dks-unit">{offer.unit}</span></p>
+        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'growth' ? 0 : 1} duration={offer.kind === 'growth' ? 1.6 : 1.06} /></b><span className="dks-unit">{offer.unit}</span></p>
         {offer.facts && <dl className="dks-facts" aria-label={offer.kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${chapters[index]} 지원 구성`}>{offer.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
         <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>

@@ -32,10 +32,8 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
       root.dataset.progress = state.progress.toFixed(3); root.dataset.beat = state.beat;
       root.dataset.frame = String(state.frame + 1);
       root.dataset.mix = state.mix.toFixed(3);
-      if (kind === 'opening') {
-        panel.style.setProperty('--dks-number-scale', state.numberScale.toFixed(4));
-        panel.style.setProperty('--dks-number-y', `${state.numberY.toFixed(2)}px`);
-      }
+      panel.style.setProperty('--dks-number-scale', state.numberScale.toFixed(4));
+      panel.style.setProperty('--dks-number-y', `${state.numberY.toFixed(2)}px`);
       if (kind === 'kitchen') facts.forEach((row, index) => row.style.setProperty('--dks-cue', state.facts[index].toFixed(3)));
     };
     const tick = time => {

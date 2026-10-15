@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
+import { fitLiftActor } from '../utils/supportLiftGeometry.mjs';
 import './MobileSupportLift.css';
 
 const duration = 5200;
@@ -53,19 +54,21 @@ export default function MobileSupportLift({ active, reducedMotion }) {
     Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
       if (disposed) return;
       const numberPoint = pointInHero(digits, hero);
-      const height = Math.min(digits.offsetWidth * 1.5 + 32, window.innerHeight * .58, 460);
-      const width = height * 2 / 3;
       // Keep the monthly limit below the fixed header even with the larger digits.
       const rise = Math.min(digits.offsetHeight * .84, Math.max(0, numberPoint.y + pointInHero(hero, panel).y - 32));
       // Match the palms to the visible bottom of the original display font.
-      const top = numberPoint.y + digits.offsetHeight - rise - height * .08 - digits.offsetHeight * .12;
+      const nav = story.querySelector('.jangsu-progress-guide');
+      const bottom = Math.min(window.innerHeight, nav.getBoundingClientRect().top) - hero.getBoundingClientRect().top - 16;
+      const { height, width, top } = fitLiftActor({ maxWidth: hero.offsetWidth * 1.1,
+        handY: numberPoint.y + digits.offsetHeight * .88 - rise, bottom });
+      const numberStretch = Math.max(1, Math.min(1.5, width * .66 / digits.offsetWidth));
       const actor = root.querySelector('.mobile-support-lift-actor');
       const base = { left: `calc(50% - ${width / 2}px)`, top: `${top}px`, width: `${width}px`, height: `${height}px` };
       const parked = { left: `calc(50% - ${rest.offsetWidth / 2}px)`, top: `${rest.offsetTop}px`, width: `${rest.offsetWidth}px`, height: `${rest.offsetHeight}px` };
       const limit = root.querySelector('.mobile-support-lift-limit');
       const unit = root.querySelector('.mobile-support-lift-unit');
       Object.assign(limit.style, { left: `${hero.offsetWidth / 2}px`, top: `${numberPoint.y - rise - 24}px` });
-      Object.assign(unit.style, { left: `${numberPoint.x + digits.offsetWidth + 8}px`, top: `${numberPoint.y - rise + digits.offsetHeight * .55}px` });
+      Object.assign(unit.style, { left: `${hero.offsetWidth / 2 + digits.offsetWidth * numberStretch / 2 + 8}px`, top: `${numberPoint.y - rise + digits.offsetHeight * .55}px` });
       const animate = (element, frames) => {
         const animation = element.animate(frames, { duration, fill: 'both', easing: 'linear' });
         animations.push(animation);
@@ -85,6 +88,11 @@ export default function MobileSupportLift({ active, reducedMotion }) {
         { offset: .32, opacity: 1, transform: `translateY(${-rise}px)` },
         { offset: .74, opacity: 1, transform: `translateY(${-rise}px)`, easing: 'cubic-bezier(.22,.7,.3,1)' },
         { offset: 1, opacity: 1, transform: 'translateY(0)' },
+      ]);
+      animate(digits, [
+        { offset: 0, transform: `scaleX(${numberStretch})` },
+        { offset: .74, transform: `scaleX(${numberStretch})`, easing: 'cubic-bezier(.22,.7,.3,1)' },
+        { offset: 1, transform: 'scaleX(1)' },
       ]);
       [limit, unit].forEach(label => animate(label, [
         { offset: 0, opacity: 0 }, { offset: .18, opacity: 1 },

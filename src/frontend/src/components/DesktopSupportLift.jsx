@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
 import SlotNumber from './SlotNumber';
+import { fitLiftActor } from '../utils/supportLiftGeometry.mjs';
 
 const sources = ['ready', 'mid', 'push'].map(pose => `/rebrand/character-lift-${pose}.webp`);
 export default function DesktopSupportLift({ active, reducedMotion }) {
@@ -29,9 +30,11 @@ export default function DesktopSupportLift({ active, reducedMotion }) {
       panel.dataset.lift = 'playing';
       const number = root.querySelector('.dks-lift-number');
       const actor = root.querySelector('.dks-lift-actor');
-      const actorHeight = Math.min(root.offsetHeight * .7, 620, (root.offsetHeight - number.offsetTop - number.offsetHeight * .88 - 8) / .92);
-      actor.style.height = `${actorHeight}px`;
-      actor.style.top = `${number.offsetTop + number.offsetHeight * .88 - actorHeight * .08}px`;
+      const navTop = story.querySelector('.dks-progress').getBoundingClientRect().top;
+      const bottom = Math.min(root.offsetHeight, navTop - root.getBoundingClientRect().top) - 12;
+      const fit = fitLiftActor({ maxWidth: root.offsetWidth * .7,
+        handY: number.offsetTop + number.offsetHeight * .88, bottom });
+      Object.assign(actor.style, { height: `${fit.height}px`, width: `${fit.width}px`, top: `${fit.top}px` });
       const animate = (element, frames) => {
         const animation = element.animate(frames, { duration: 5200, fill: 'both', easing: 'linear' });
         animations.push(animation);
