@@ -13,7 +13,7 @@ const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
 const offers = [
   { kind: 'opening', heading: ['오픈 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당', pose: '/rebrand/poses/opening-package-v1/03-present.png', facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']] },
   { kind: 'kitchen', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당', pose: '/rebrand/poses/kitchen-support-v1/04-rest.png', facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']] },
-  { kind: 'growth', heading: ['매달 나가는', '물류비까지 지원.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧', pose: '/rebrand/character-cutout.png', facts: [['월매출 3,000만원 이상', '30만원'], ['월매출 4,000만원 이상', '100만원']] },
+  { kind: 'growth', heading: ['매달 나가는', '물류비까지 지원.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧', pose: '/rebrand/character-cutout.png', facts: [['월매출 3,000만원 이상', '월 30만원'], ['월매출 4,000만원 이상', '월 100만원']] },
 ];
 
 // Each desktop act shares the page's visibility pause without changing mobile motion.

@@ -23,7 +23,7 @@ const offers = {
   growth: {
     title: '물류', heading: ['매달 나가는', '물류비까지 지원.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧',
     pose: '/rebrand/character-cutout.png',
-    facts: [['월매출 3,000만원 이상', '30만원'], ['월매출 4,000만원 이상', '100만원']],
+    facts: [['월매출 3,000만원 이상', '월 30만원'], ['월매출 4,000만원 이상', '월 100만원']],
   },
 };
 
