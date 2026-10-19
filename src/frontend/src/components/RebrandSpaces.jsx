@@ -12,9 +12,9 @@ export default function RebrandSpaces() {
     <header className="rebrand-space-showcase-heading">
       <div>
         <p className="rebrand-closing-label">공간 디자인</p>
-        <h2 id="new-space-title">새로운 닭장수를<br /><em>미리 만나보세요.</em></h2>
+        <h2 id="new-space-title">닭장수의 매장,<br /><em>이렇게 달라집니다.</em></h2>
       </div>
-      <p>매장 외관과 실내 디자인 시안</p>
+      <p>새롭게 준비한 매장 외관과 실내 디자인 시안입니다.</p>
     </header>
     <div className="rebrand-space-pair">
       {views.map(view => <figure key={view.id} className="rebrand-space-view">
