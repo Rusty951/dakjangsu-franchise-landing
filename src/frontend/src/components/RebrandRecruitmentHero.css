@@ -38,9 +38,9 @@
 .recruitment-hero .recruitment-intro--waiver .recruitment-intro-amount > span { font-size: 32px; }
 .recruitment-hero[data-intro='loading'] :is(.recruitment-character, .recruitment-title, .recruitment-support, .recruitment-notes, .recruitment-zero) { opacity: 0; }
 .recruitment-hero[data-intro='static'] .recruitment-intro { display: none; }
-.recruitment-hero:is([data-intro='settled'], [data-intro='parked']) .recruitment-intro--support { opacity: 0; }
-.recruitment-hero:is([data-intro='settled'], [data-intro='parked']) .recruitment-intro--waiver { opacity: 0; }
-.recruitment-hero:is([data-intro='settled'], [data-intro='parked']) :is(.recruitment-intro-label, .recruitment-waiver-intro-title, .recruitment-intro-amount > span) { opacity: 0; }
+.recruitment-hero[data-intro='parked'] .recruitment-intro--support { opacity: 0; }
+.recruitment-hero[data-intro='parked'] .recruitment-intro--waiver { opacity: 0; }
+.recruitment-hero[data-intro='parked'] :is(.recruitment-intro-label, .recruitment-waiver-intro-title, .recruitment-intro-amount > span) { opacity: 0; }
 .recruitment-hero:is([data-intro='loading'], [data-paused='true']) .slot-number :is(.slot-number-strip, .slot-number-window) { animation-play-state: paused; }
 .recruitment-character { position: relative; z-index: 2; grid-column: 2; grid-row: 1; margin: 0; min-height: 0; }
 .recruitment-title, .recruitment-support, .recruitment-notes, .recruitment-zero { position: relative; z-index: 3; }
@@ -153,7 +153,8 @@
 }
 .recruitment-hero[data-mobile-intro] .recruitment-intro--waiver .recruitment-intro-amount > span { color: #d86535; font: 400 10cqw/1 var(--font-display); }
 .recruitment-hero[data-mobile-intro]:is([data-intro='static'], [data-intro='parked']) .recruitment-offer-intro { display: none; }
-.recruitment-hero[data-mobile-intro][data-intro='settled'] .recruitment-offer-intro { opacity: 0; }
+.recruitment-hero[data-mobile-intro][data-intro='settled'] .recruitment-offer-intro { opacity: 1; }
+.recruitment-hero[data-mobile-intro][data-intro='settled'] :is(.recruitment-character, .recruitment-title) { visibility: hidden; }
 .recruitment-hero[data-mobile-intro] .recruitment-character { position: absolute; inset: 0; }
 .recruitment-hero[data-mobile-intro] .recruitment-motion { transform: none; }
 .recruitment-hero[data-mobile-intro] .recruitment-character img { object-position: center bottom; }

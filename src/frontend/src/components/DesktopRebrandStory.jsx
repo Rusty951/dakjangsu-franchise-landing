@@ -7,6 +7,7 @@ import DesktopSupportGesture from './DesktopSupportGesture';
 import './DesktopRebrandStory.css';
 import { writeData } from '../utils/visualWrites.mjs';
 import { decodePoseImage } from '../utils/decodePoseImage.mjs';
+import { heroIntroTiming, heroOfferFrames, heroRecruitmentFrames } from '../utils/heroIntroTimeline.mjs';
 
 const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
 const offers = [
@@ -63,10 +64,8 @@ function useDesktopAct(ref, active, reducedMotion, build, replay = 0) {
 }
 
 function animateHero(root, animate, onFinished) {
-  const offer = animate(root.querySelector('.dks-hero-offers'), [
-    { offset: 0, opacity: 1 }, { offset: 4050 / 5850, opacity: 1 },
-    { offset: 4250 / 5850, opacity: 0 }, { offset: 1, opacity: 0 },
-  ], { duration: 5850, easing: 'linear' });
+  const offer = animate(root.querySelector('.dks-hero-offers'), heroOfferFrames,
+    { duration: heroIntroTiming.duration, easing: 'linear' });
   animate(root.querySelector('.dks-zero b'), [
     { transform: 'perspective(600px) rotateY(0deg) scale(1)' },
     { transform: 'perspective(600px) rotateY(180deg) scale(1.06)' },
@@ -77,7 +76,9 @@ function animateHero(root, animate, onFinished) {
     { offset: .15, opacity: 1 }, { offset: .85, opacity: 1 },
     { offset: 1, opacity: 0, backgroundPosition: '0% 50%' },
   ], { delay: 2550, duration: 850, easing: 'linear' });
-  animate(root.querySelector('.dks-hero-recruitment'), [{ opacity: 0 }, { opacity: 1 }], { delay: 4250, duration: 400 });
+  animate(root.querySelector('.dks-hero-recruitment'),
+    heroRecruitmentFrames(heroIntroTiming.characterStart, 400, 0, 'cubic-bezier(.22,.7,.3,1)'),
+    { duration: heroIntroTiming.duration, easing: 'linear' });
   offer.onfinish = () => { root.dataset.motion = 'settled'; onFinished(); };
 }
 
@@ -85,19 +86,19 @@ function DesktopHero({ active, reducedMotion, onConditionsClick, replay = 0 }) {
   const ref = useRef(null);
   const phase = useDesktopAct(ref, active, reducedMotion, animateHero, replay);
   return <div className="dks-hero-frame" ref={ref} data-motion="loading">
-    <div className="dks-hero-offers" aria-hidden="true">
+    <div className="dks-hero-offers">
       <div className="dks-hero-offer">
         <p className="dks-offer-number"><b><SlotNumber key={replay} value="2,800" active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
         <p className="dks-offer-note">조건 충족 가정, 2년 합산 계산 예시</p>
       </div>
       <div className="dks-hero-offer">
         <p className="dks-waiver-heading">가맹비, 교육비<br />첫 2년 로열티</p>
-        <p className="dks-offer-number dks-zero"><b><SlotNumber value="0" active={false} reducedMotion /><span className="dks-zero-shine">0</span></b><span>원</span></p>
+        <p className="dks-offer-number dks-zero"><b><SlotNumber value="0" active={false} reducedMotion /><span className="dks-zero-shine" aria-hidden="true">0</span></b><span>원</span></p>
         <p className="dks-offer-note">조건 충족 시 면제</p>
       </div>
     </div>
-    <div className="dks-hero-recruitment" inert={phase === 'loading' || phase === 'playing'}>
-      <figure className="dks-hero-character"><RebrandRecruitmentMotion replay={replay} active={active} reducedMotion={reducedMotion} delay={4250} duration={1200} /></figure>
+    <div className="dks-hero-recruitment" inert={phase !== 'static'}>
+      <figure className="dks-hero-character"><RebrandRecruitmentMotion replay={replay} active={active} reducedMotion={reducedMotion} delay={heroIntroTiming.characterStart} duration={1200} /></figure>
       <h1 tabIndex={-1}><span>닭장수가</span><span><strong>장사에 진심인</strong> 사장님을 원합니다.</span></h1>
       <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
     </div>

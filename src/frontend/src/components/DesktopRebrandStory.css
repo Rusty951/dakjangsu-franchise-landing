@@ -39,7 +39,9 @@
   .dks-desktop-story .dks-hero-recruitment h1 strong { color: #d86535; font-weight: 400; }
   .dks-desktop-story .dks-hero-recruitment .dks-condition-button { margin-top: 16px; }
   .dks-desktop-story .dks-hero-frame:is([data-motion='loading'], [data-motion='playing']) .dks-hero-recruitment { opacity: 0; }
-  .dks-desktop-story .dks-hero-frame:is([data-motion='static'], [data-motion='settled']) .dks-hero-offers { display: none; }
+  .dks-desktop-story .dks-hero-frame[data-motion='static'] .dks-hero-offers { display: none; }
+  .dks-desktop-story .dks-hero-frame[data-motion='settled'] .dks-hero-offers { opacity: 1; }
+  .dks-desktop-story .dks-hero-frame[data-motion='settled'] .dks-hero-recruitment { visibility: hidden; }
 
   .dks-desktop-story .dks-brand-layout { display: grid; grid-template-columns: 1.35fr 1fr; align-items: stretch; gap: 24px clamp(28px, 3vw, 64px); width: min(100%, 1600px); margin-inline: auto; }
   .dks-desktop-story .dks-brand-layout > .dks-index { grid-area: 1 / 1; margin: 0; }

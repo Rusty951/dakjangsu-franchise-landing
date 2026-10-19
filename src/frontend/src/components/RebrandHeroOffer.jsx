@@ -2,12 +2,13 @@ import { useEffect, useRef, useSyncExternalStore } from 'react';
 import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import SlotNumber from './SlotNumber';
 import { decodePoseImage } from '../utils/decodePoseImage.mjs';
+import { heroIntroTiming, heroOfferFrames, heroRecruitmentFrames } from '../utils/heroIntroTimeline.mjs';
 import DesktopRebrandHeroOffer from './DesktopRebrandHeroOffer';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
 const desktopQuery = '(min-width: 1025px)';
-const introDuration = 5850;
-const characterDelay = 4250;
+const introDuration = heroIntroTiming.duration;
+const characterDelay = heroIntroTiming.characterStart;
 const isDesktopViewport = () => window.matchMedia(desktopQuery).matches;
 const subscribeViewport = onChange => {
   const query = window.matchMedia(desktopQuery);
@@ -44,21 +45,17 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
     const changes = new MutationObserver(sync);
     if (story) changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
-    const fadeIn = (element, delay, duration = 350, rise = 0) => {
-      animations.push(element.animate([
-        { opacity: 0, transform: `translateY(${rise}px)` },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { delay, duration, fill: 'both', easing: 'cubic-bezier(.16,1,.3,1)' }));
+    const showRecruitment = (element, delay, duration = 350, rise = 0) => {
+      animations.push(element.animate(
+        heroRecruitmentFrames(delay, duration, rise, 'cubic-bezier(.16,1,.3,1)'),
+        { duration: introDuration, fill: 'both', easing: 'linear' },
+      ));
     };
     Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       const actor = root.querySelector('.recruitment-character');
-      const offer = root.querySelector('.recruitment-offer-intro').animate([
-        { offset: 0, opacity: 1 },
-        { offset: 4050 / introDuration, opacity: 1 },
-        { offset: characterDelay / introDuration, opacity: 0 },
-        { offset: 1, opacity: 0 },
-      ], { duration: introDuration, fill: 'both', easing: 'linear' });
+      const offer = root.querySelector('.recruitment-offer-intro').animate(heroOfferFrames,
+        { duration: introDuration, fill: 'both', easing: 'linear' });
       animations.push(offer);
       animations.push(root.querySelector('.recruitment-intro--waiver .recruitment-intro-amount b').animate([
         { offset: 0, transform: 'perspective(600px) rotateY(0deg) scale(1)' },
@@ -71,8 +68,8 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
         { offset: .85, opacity: 1 },
         { offset: 1, opacity: 0, backgroundPosition: '0% 50%' },
       ], { delay: 2550, duration: 850, fill: 'both', easing: 'linear' }));
-      fadeIn(actor, characterDelay, 350);
-      root.querySelectorAll('.recruitment-title > *').forEach(line => fadeIn(line, characterDelay + 50, 350, 8));
+      showRecruitment(actor, characterDelay, 350);
+      root.querySelectorAll('.recruitment-title > *').forEach(line => showRecruitment(line, characterDelay + 50, 350, 8));
       const epoch = document.timeline.currentTime;
       animations.forEach(animation => { animation.startTime = epoch; });
       root.dataset.intro = 'playing';
@@ -89,7 +86,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
   return (
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-mobile-intro="true" data-intro="loading">
       <div className="recruitment-first-screen">
-        <div className="recruitment-offer-intro" aria-hidden="true">
+        <div className="recruitment-offer-intro">
             <div className="recruitment-intro recruitment-intro--support">
               <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
               <p className="recruitment-intro-amount"><b><SlotNumber key={replay} value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
