@@ -27,7 +27,7 @@ const offers = {
   },
 };
 
-export default function MobileSupportPanel({ kind, index, active, reducedMotion, onConditionsClick }) {
+export default function MobileSupportPanel({ kind, index, active, reducedMotion, onConditionsClick, replay = 0 }) {
   const rootRef = useRef(null);
   const [gestureReady, setGestureReady] = useState(false);
   const offer = offers[kind];
@@ -71,9 +71,9 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
         <p className="mobile-support-index">0{index + 1} / {offer.title} 지원</p>
         <div className="mobile-support-hero">
           <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
-          <p className="mobile-support-amount">{offer.prefix && <span className="mobile-support-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && kind !== 'operating'} reducedMotion={reducedMotion} delay={hasGesture ? 1 : 0} duration={hasGesture ? 1.06 : 1.6} /></b><span>{offer.unit}</span></p>
+          <p className="mobile-support-amount">{offer.prefix && <span className="mobile-support-prefix">{offer.prefix}</span>}<b><SlotNumber key={replay} value={offer.amount} active={active && kind !== 'operating'} reducedMotion={reducedMotion} delay={hasGesture ? 1 : 0} duration={hasGesture ? 1.06 : 1.6} /></b><span>{offer.unit}</span></p>
           {hasGesture
-            ? <SupportGesture kind={kind} label={`${offer.title} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} layout="mobile" />
+            ? <SupportGesture kind={kind} label={`${offer.title} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} layout="mobile" replay={replay} />
             : <img className="mobile-support-character" src={assetPath(offer.pose)} alt={`${offer.title} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />}
           {kind === 'growth' && <MobileSupportLift active={active} reducedMotion={reducedMotion} />}
         </div>

@@ -444,7 +444,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           </BrandTextPoster>
         </article>
         {compactMobile ? ['opening', 'kitchen', 'growth'].map((kind, index) => (
-          <MobileSupportPanel key={`${kind}-${kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : kind === 'growth' ? liftReplay : royaltyReplay}`} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
+          <MobileSupportPanel key={kind === 'growth' ? `${kind}-${liftReplay}` : kind} replay={kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : liftReplay} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
         )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}

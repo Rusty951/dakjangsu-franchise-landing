@@ -123,20 +123,20 @@ function DesktopBrand({ active, reducedMotion }) {
     <div className="dks-brand-support"><p className="dks-brand-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p><p className="dks-brand-invitation">이제,<br /><strong><span>사장님</span>{' '}<span>차례입니다.</span></strong></p></div>
   </div>;
 }
-function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick }) {
+function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick, replay = 0 }) {
   const [gestureReady, setGestureReady] = useState(false);
   return <div className={`dks-support dks-support--${offer.kind}`} data-lift="static" data-gesture-ready={gestureReady}>
     <div className="dks-support-layout">
       <div className="dks-support-copy">
         <p className="dks-index">0{index + 1} / {chapters[index]} 지원</p>
         <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
-        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'growth' ? 0 : 1} duration={offer.kind === 'growth' ? 1.6 : 1.06} /></b><span className="dks-unit">{offer.unit}</span></p>
+        <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber key={replay} value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'growth' ? 0 : 1} duration={offer.kind === 'growth' ? 1.6 : 1.06} /></b><span className="dks-unit">{offer.unit}</span></p>
         {offer.facts && <dl className="dks-facts" aria-label={offer.kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${chapters[index]} 지원 구성`}>{offer.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
         <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
       {offer.kind === 'growth'
         ? <img className="dks-support-character" src={assetPath(offer.pose)} alt={`${chapters[index]} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
-        : <DesktopSupportGesture kind={offer.kind} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} />}
+        : <DesktopSupportGesture replay={replay} kind={offer.kind} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} />}
     </div>
     {offer.kind === 'growth' && <DesktopSupportLift active={active} reducedMotion={reducedMotion} />}
   </div>;
@@ -187,7 +187,7 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
   return <section className="dks-desktop-story" id="rebrand-story" aria-label="스크롤로 만나는 닭장수" ref={rootRef} data-reduced={reducedMotion}>
     <article className="dks-scene dks-scene--hero"><DesktopHero key={replay[0]} active={active === 0} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>
     <article className="dks-scene dks-scene--brand"><DesktopBrand key={replay[1]} active={active === 1} reducedMotion={reducedMotion} /></article>
-    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={`${offer.kind}-${replay[i + 2]}`} offer={offer} index={i + 2} active={active === i + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
+    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={offer.kind === 'growth' ? `${offer.kind}-${replay[i + 2]}` : offer.kind} replay={replay[i + 2]} offer={offer} index={i + 2} active={active === i + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
     <nav className="dks-progress" aria-label="닭장수 이야기 진행" data-visible={visible} aria-hidden={!visible} inert={!visible}><ol>{chapters.map((label, i) => <li key={label}><button type="button" aria-label={`${i + 1}번 ${label} 장면`} aria-current={active === i ? 'step' : undefined} onClick={event => goTo(i, event.detail === 0)}><span>{String(i + 1).padStart(2, '0')}</span>{label}</button></li>)}</ol></nav>
   </section>;
 }

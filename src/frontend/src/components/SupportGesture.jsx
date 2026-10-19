@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import { desktopSupportPoses, getDesktopSupportState, supportGestureDuration } from '../utils/desktopSupportMotion.mjs';
 import { writeData, writeStyle } from '../utils/visualWrites.mjs';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 
-export default function SupportGesture({ kind, label, active, reducedMotion, onReady, layout = 'desktop' }) {
+export default function SupportGesture({ kind, label, active, reducedMotion, onReady, layout = 'desktop', replay = 0 }) {
   const rootRef = useRef(null);
+  // Latch sources before committing the active render; later visits keep the same images.
+  const [preparedKind, setPreparedKind] = useState(null);
+  if (active && !reducedMotion && preparedKind !== kind) setPreparedKind(kind);
   const mobile = layout === 'mobile';
   const poses = desktopSupportPoses[kind];
   useEffect(() => {
@@ -56,7 +60,7 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
     const changes = new MutationObserver(sync);
     changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
-    Promise.all(images.map(image => image.decode())).then(() => { if (!disposed) { loaded = true; sync(); } }).catch(() => {
+    Promise.all(images.map(decodePoseImage)).then(() => { if (!disposed) { loaded = true; sync(); } }).catch(() => {
       if (disposed) return;
       const available = images.findLastIndex(image => image.complete && image.naturalWidth > 0);
       show(Math.max(0, available)); root.dataset.phase = 'static'; clear(); onReady(true);
@@ -65,10 +69,10 @@ export default function SupportGesture({ kind, label, active, reducedMotion, onR
       disposed = true; cancelAnimationFrame(frame); clear();
       visibility.disconnect(); changes.disconnect(); document.removeEventListener('visibilitychange', sync);
     };
-  }, [active, reducedMotion, kind, poses, onReady, mobile]);
+  }, [active, reducedMotion, kind, poses, onReady, mobile, replay]);
   return <div className={mobile ? 'mobile-support-character mobile-support-gesture' : 'dks-support-character dks-support-gesture'} ref={rootRef} data-phase="static" role="img" aria-label={label}>
     {poses.map((pose, i) => <img key={pose.source}
-      src={active && !reducedMotion || i === poses.length - 1 ? assetPath(pose.source) : undefined}
+      src={preparedKind === kind || i === poses.length - 1 ? assetPath(pose.source) : undefined}
       alt="" width="1024" height="1536" loading={active ? 'eager' : 'lazy'} decoding="async"
       draggable="false" data-visible={i === (active && !reducedMotion ? 0 : poses.length - 1)} />)}
   </div>;
