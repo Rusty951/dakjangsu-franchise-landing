@@ -41,7 +41,7 @@
 .rebrand-page .rebrand-kakao-float {
   position: fixed;
   right: max(8px, env(safe-area-inset-right, 0px));
-  top: var(--contact-top, 92px);
+  top: calc(var(--rebrand-header-height) + 12px);
   z-index: 25;
   display: flex;
   flex-direction: column;
@@ -62,7 +62,6 @@
 .rebrand-page .rebrand-kakao-float > span { font: 750 11px/1.2 var(--font-sans); }
 .rebrand-page .rebrand-kakao-float:hover { transform: translateY(-3px); box-shadow: 0 7px 22px #241f1b35; }
 .rebrand-page .rebrand-kakao-float:focus-visible { outline: 3px solid var(--rebrand-orange); outline-offset: 3px; }
-.rebrand-page .rebrand-kakao-float[data-hidden='true'] { visibility: hidden; pointer-events: none; }
 
 @media (max-width: 1024px) {
   .rebrand-page { --rebrand-header-height: 56px; }
