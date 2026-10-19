@@ -2,10 +2,10 @@ import { assetPath } from '../assetPath';
 import './RebrandSpaces.css';
 
 const views = [
-  { id: 'facade', label: '외관', title: '매장 외관 시안', alt: '크림색 외벽과 닭장수후라이드 간판, 상부 조명 세 개와 유리 출입구로 구성한 외관 시안', width: 1800, height: 1200 },
-  { id: 'main', label: '25평형', title: '25평형 실내 공간 시안', alt: '적주황 벽돌 벽과 원형 스테인리스 테이블, 열린 주방을 배치한 닭장수 25평형 실내 공간 시안', width: 1536, height: 1024 },
+  { id: 'facade', label: '외관', title: '매장 외관 시안', alt: '크림색 외벽과 닭장수후라이드 간판, 유리창 너머로 적주황 벽돌 실내와 후면 주방이 보이는 외관 시안', width: 1536, height: 1024 },
+  { id: 'main', label: '18평형', title: '18평형 실내 공간 시안', alt: '적주황 벽돌 벽과 검정 바닥, 원형 스테인리스 테이블과 후면 주방을 배치한 닭장수 18평형 실내 공간 시안', width: 1536, height: 1024 },
 ];
-const source = view => assetPath(`/rebrand/spaces-approved-v1/${view.id}.webp`);
+const source = view => assetPath(`/rebrand/spaces-18p-v2/${view.id}.webp`);
 
 export default function RebrandSpaces() {
   return <section className="rebrand-space-showcase" id="rebrand-operations" aria-labelledby="new-space-title">
