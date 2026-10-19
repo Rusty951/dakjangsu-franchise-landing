@@ -6,6 +6,7 @@ import DesktopSupportLift from './DesktopSupportLift';
 import DesktopSupportGesture from './DesktopSupportGesture';
 import './DesktopRebrandStory.css';
 import { writeData } from '../utils/visualWrites.mjs';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 
 const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
 const offers = [
@@ -15,7 +16,7 @@ const offers = [
 ];
 
 // Each desktop act shares the page's visibility pause without changing mobile motion.
-function useDesktopAct(ref, active, reducedMotion, build) {
+function useDesktopAct(ref, active, reducedMotion, build, replay = 0) {
   const [phase, setPhase] = useState('loading');
   useEffect(() => {
     const root = ref.current;
@@ -36,7 +37,7 @@ function useDesktopAct(ref, active, reducedMotion, build) {
     const changes = new MutationObserver(sync);
     changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
-    Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
+    Promise.all([...root.querySelectorAll('img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       const animate = (element, frames, options) => {
         const animation = element.animate(frames, { fill: 'both', easing: 'cubic-bezier(.22,.7,.3,1)', ...options });
@@ -57,7 +58,7 @@ function useDesktopAct(ref, active, reducedMotion, build) {
       document.removeEventListener('visibilitychange', sync);
       root.dataset.motion = 'static';
     };
-  }, [ref, active, reducedMotion, build]);
+  }, [ref, active, reducedMotion, build, replay]);
   return phase;
 }
 
@@ -80,13 +81,13 @@ function animateHero(root, animate, onFinished) {
   offer.onfinish = () => { root.dataset.motion = 'settled'; onFinished(); };
 }
 
-function DesktopHero({ active, reducedMotion, onConditionsClick }) {
+function DesktopHero({ active, reducedMotion, onConditionsClick, replay = 0 }) {
   const ref = useRef(null);
-  const phase = useDesktopAct(ref, active, reducedMotion, animateHero);
+  const phase = useDesktopAct(ref, active, reducedMotion, animateHero, replay);
   return <div className="dks-hero-frame" ref={ref} data-motion="loading">
     <div className="dks-hero-offers" aria-hidden="true">
       <div className="dks-hero-offer">
-        <p className="dks-offer-number"><b><SlotNumber value="2,800" active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
+        <p className="dks-offer-number"><b><SlotNumber key={replay} value="2,800" active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
         <p className="dks-offer-note">조건 충족 가정, 2년 합산 계산 예시</p>
       </div>
       <div className="dks-hero-offer">
@@ -96,7 +97,7 @@ function DesktopHero({ active, reducedMotion, onConditionsClick }) {
       </div>
     </div>
     <div className="dks-hero-recruitment" inert={phase === 'loading' || phase === 'playing'}>
-      <figure className="dks-hero-character"><RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={4250} duration={1200} /></figure>
+      <figure className="dks-hero-character"><RebrandRecruitmentMotion replay={replay} active={active} reducedMotion={reducedMotion} delay={4250} duration={1200} /></figure>
       <h1 tabIndex={-1}><span>닭장수가</span><span><strong>장사에 진심인</strong> 사장님을 원합니다.</span></h1>
       <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
     </div>
@@ -138,7 +139,7 @@ function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick
         ? <img className="dks-support-character" src={assetPath(offer.pose)} alt={`${chapters[index]} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />
         : <DesktopSupportGesture replay={replay} kind={offer.kind} label={`${chapters[index]} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} />}
     </div>
-    {offer.kind === 'growth' && <DesktopSupportLift active={active} reducedMotion={reducedMotion} />}
+    {offer.kind === 'growth' && <DesktopSupportLift replay={replay} active={active} reducedMotion={reducedMotion} />}
   </div>;
 }
 
@@ -185,9 +186,9 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
     if (focus) panel.querySelector('h1, h2').focus({ preventScroll: true });
   };
   return <section className="dks-desktop-story" id="rebrand-story" aria-label="스크롤로 만나는 닭장수" ref={rootRef} data-reduced={reducedMotion}>
-    <article className="dks-scene dks-scene--hero"><DesktopHero key={replay[0]} active={active === 0} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>
+    <article className="dks-scene dks-scene--hero"><DesktopHero replay={replay[0]} active={active === 0} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>
     <article className="dks-scene dks-scene--brand"><DesktopBrand key={replay[1]} active={active === 1} reducedMotion={reducedMotion} /></article>
-    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={offer.kind === 'growth' ? `${offer.kind}-${replay[i + 2]}` : offer.kind} replay={replay[i + 2]} offer={offer} index={i + 2} active={active === i + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
+    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={offer.kind} replay={replay[i + 2]} offer={offer} index={i + 2} active={active === i + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
     <nav className="dks-progress" aria-label="닭장수 이야기 진행" data-visible={visible} aria-hidden={!visible} inert={!visible}><ol>{chapters.map((label, i) => <li key={label}><button type="button" aria-label={`${i + 1}번 ${label} 장면`} aria-current={active === i ? 'step' : undefined} onClick={event => goTo(i, event.detail === 0)}><span>{String(i + 1).padStart(2, '0')}</span>{label}</button></li>)}</ol></nav>
   </section>;
 }

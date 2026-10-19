@@ -1,6 +1,7 @@
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
 import SlotNumber from './SlotNumber';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 import DesktopRebrandHeroOffer from './DesktopRebrandHeroOffer';
 import { supportCalculation as example, formatSupportAmount as format } from '../utils/supportExample.mjs';
 
@@ -14,7 +15,7 @@ const subscribeViewport = onChange => {
   return () => query.removeEventListener('change', onChange);
 };
 
-function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion = false }) {
+function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion = false, replay = 0 }) {
   const rootRef = useRef(null);
   useEffect(() => {
     const root = rootRef.current;
@@ -49,7 +50,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
         { opacity: 1, transform: 'translateY(0)' },
       ], { delay, duration, fill: 'both', easing: 'cubic-bezier(.16,1,.3,1)' }));
     };
-    Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(image => image.decode())).then(() => {
+    Promise.all([...root.querySelectorAll('.recruitment-motion img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       const actor = root.querySelector('.recruitment-character');
       const offer = root.querySelector('.recruitment-offer-intro').animate([
@@ -84,14 +85,14 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
       visibility.disconnect(); changes.disconnect();
       document.removeEventListener('visibilitychange', sync);
     };
-  }, [active, reducedMotion]);
+  }, [active, reducedMotion, replay]);
   return (
     <div className="recruitment-hero" ref={rootRef} data-portrait={portrait} data-mobile-intro="true" data-intro="loading">
       <div className="recruitment-first-screen">
         <div className="recruitment-offer-intro" aria-hidden="true">
             <div className="recruitment-intro recruitment-intro--support">
               <p className="recruitment-intro-label">조건 충족 가정, 2년 합산 계산 예시</p>
-              <p className="recruitment-intro-amount"><b><SlotNumber value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
+              <p className="recruitment-intro-amount"><b><SlotNumber key={replay} value={format(example.total)} active={active} reducedMotion={reducedMotion} duration={.76} stagger={.08} /></b><span>만원</span></p>
             </div>
             <div className="recruitment-intro recruitment-intro--waiver">
               <p className="recruitment-intro-label">조건 충족 시 면제</p>
@@ -101,7 +102,7 @@ function MobileRebrandHeroOffer({ portrait = true, active = false, reducedMotion
         </div>
         <div className="recruitment-visual-stage">
           <figure className="recruitment-character">
-            <RebrandRecruitmentMotion active={active} reducedMotion={reducedMotion} delay={characterDelay} duration={1200} />
+            <RebrandRecruitmentMotion replay={replay} active={active} reducedMotion={reducedMotion} delay={characterDelay} duration={1200} />
           </figure>
         </div>
         <h1 className="recruitment-title" tabIndex={-1} aria-label="닭장수가 장사에 진심인 사장님을 원합니다.">

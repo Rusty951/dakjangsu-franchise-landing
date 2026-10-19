@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import SlotNumber from './SlotNumber';
 import { fitLiftActor } from '../utils/supportLiftGeometry.mjs';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 
 const sources = ['ready', 'mid', 'push'].map(pose => `/rebrand/character-lift-${pose}.webp`);
-export default function DesktopSupportLift({ active, reducedMotion }) {
+export default function DesktopSupportLift({ active, reducedMotion, replay = 0 }) {
   const ref = useRef(null);
+  const [prepared, setPrepared] = useState(false);
+  if (active && !reducedMotion && !prepared) setPrepared(true);
   useEffect(() => {
     const root = ref.current;
     const panel = root.closest('.dks-support');
@@ -25,7 +28,7 @@ export default function DesktopSupportLift({ active, reducedMotion }) {
     const changes = new MutationObserver(sync);
     changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
-    Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
+    Promise.all([...root.querySelectorAll('img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       panel.dataset.lift = 'playing';
       const number = root.querySelector('.dks-lift-number');
@@ -72,9 +75,9 @@ export default function DesktopSupportLift({ active, reducedMotion }) {
       document.removeEventListener('visibilitychange', sync);
       panel.dataset.lift = 'static';
     };
-  }, [active, reducedMotion]);
+  }, [active, reducedMotion, replay]);
   return <div className="dks-lift" ref={ref} aria-hidden="true">
-    <div className="dks-lift-number"><span>월 최대</span><b><SlotNumber value="100" active={active} reducedMotion={reducedMotion} delay={.76} /></b><span>만원<br />크레딧</span></div>
-    <div className="dks-lift-actor">{sources.map(source => <img key={source} src={active && !reducedMotion ? assetPath(source) : undefined} alt="" width="1024" height="1536" decoding="async" />)}</div>
+    <div className="dks-lift-number"><span>월 최대</span><b><SlotNumber key={replay} value="100" active={active} reducedMotion={reducedMotion} delay={.76} /></b><span>만원<br />크레딧</span></div>
+    <div className="dks-lift-actor">{sources.map(source => <img key={source} src={prepared ? assetPath(source) : undefined} alt="" width="1024" height="1536" decoding="async" />)}</div>
   </div>;
 }

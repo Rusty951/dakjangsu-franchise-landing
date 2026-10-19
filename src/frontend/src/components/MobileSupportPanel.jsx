@@ -75,7 +75,7 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
           {hasGesture
             ? <SupportGesture kind={kind} label={`${offer.title} 지원을 안내하는 닭장수`} active={active} reducedMotion={reducedMotion} onReady={setGestureReady} layout="mobile" replay={replay} />
             : <img className="mobile-support-character" src={assetPath(offer.pose)} alt={`${offer.title} 지원을 안내하는 닭장수`} width="1122" height="1402" loading="lazy" />}
-          {kind === 'growth' && <MobileSupportLift active={active} reducedMotion={reducedMotion} />}
+          {kind === 'growth' && <MobileSupportLift replay={replay} active={active} reducedMotion={reducedMotion} />}
         </div>
         {offer.facts && <dl className="mobile-support-facts" aria-label={kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${offer.title} 지원 구성`}>{offer.facts.map(([label, amount]) => <div key={label}><dt>{label}</dt><dd>{amount}</dd></div>)}</dl>}
         <a className="mobile-support-link" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>

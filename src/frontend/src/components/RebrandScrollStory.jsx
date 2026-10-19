@@ -63,7 +63,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
   const headingFocusTarget = useRef(null);
   const [active, setActive] = useState(0);
   const scene = chapterScenes[Math.min(active, chapters.length - 1)];
-  const [portrait, setPortrait] = useState(false);
+  const [portrait, setPortrait] = useState(() => typeof window !== 'undefined' && window.matchMedia(flowingStoryQuery).matches);
   const [guideVisible, setGuideVisible] = useState(false);
 
   useLayoutEffect(() => {
@@ -422,7 +422,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       <div className="jangsu-stage" ref={stageRef} data-scene={scene} data-settled={reducedMotion || settled === active} data-lift-ready={liftReady} data-lift-status={liftStatus}>
         <img className="jangsu-story-logo hero-stage-logo" src={assetPath('/rebrand/bi-warm-ink.png')} alt="닭장수후라이드 和" width="1024" height="256" fetchPriority="high" />
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
-          <RebrandHeroOffer key={`hero-${heroReplay}`} portrait={portrait} active={active === 0} reducedMotion={reducedMotion} />
+          <RebrandHeroOffer replay={heroReplay} portrait={portrait} active={active === 0} reducedMotion={reducedMotion} />
         </article>
         <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
           <BrandTextPoster key={`brand-text-${brandReplay}`} portrait={portrait} active={active === 1} reducedMotion={reducedMotion}>
@@ -444,7 +444,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           </BrandTextPoster>
         </article>
         {compactMobile ? ['opening', 'kitchen', 'growth'].map((kind, index) => (
-          <MobileSupportPanel key={kind === 'growth' ? `${kind}-${liftReplay}` : kind} replay={kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : liftReplay} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
+          <MobileSupportPanel key={kind} replay={kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : liftReplay} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
         )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}

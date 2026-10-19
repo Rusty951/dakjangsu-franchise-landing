@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import { fitLiftActor } from '../utils/supportLiftGeometry.mjs';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 import './MobileSupportLift.css';
 
 const duration = 5200;
@@ -15,8 +16,10 @@ function pointInHero(element, hero) {
   return { x, y };
 }
 
-export default function MobileSupportLift({ active, reducedMotion }) {
+export default function MobileSupportLift({ active, reducedMotion, replay = 0 }) {
   const rootRef = useRef(null);
+  const [prepared, setPrepared] = useState(false);
+  if (active && !reducedMotion && !prepared) setPrepared(true);
   useLayoutEffect(() => {
     const root = rootRef.current;
     const hero = root.closest('.mobile-support-hero');
@@ -51,7 +54,7 @@ export default function MobileSupportLift({ active, reducedMotion }) {
       }
     });
     resize.observe(hero);
-    Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
+    Promise.all([...root.querySelectorAll('img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       const numberPoint = pointInHero(digits, hero);
       // Keep the monthly limit below the fixed header even with the larger digits.
@@ -117,13 +120,13 @@ export default function MobileSupportLift({ active, reducedMotion }) {
       document.removeEventListener('visibilitychange', sync);
       phase('static');
     };
-  }, [active, reducedMotion]);
+  }, [active, reducedMotion, replay]);
   return <div className="mobile-support-lift" ref={rootRef} data-phase="static" aria-hidden="true">
     <span className="mobile-support-lift-limit">월 최대</span>
     <span className="mobile-support-lift-unit">만원<br />크레딧</span>
     <div className="mobile-support-lift-actor">
-      {sources.map(source => <img src={active && !reducedMotion ? source : undefined} key={source} alt="" width="1024" height="1536" decoding="async" draggable="false" />)}
-      <img src={active && !reducedMotion ? assetPath('/rebrand/character-cutout.png') : undefined} alt="" width="1122" height="1402" decoding="async" draggable="false" />
+      {sources.map(source => <img src={prepared ? source : undefined} key={source} alt="" width="1024" height="1536" decoding="async" draggable="false" />)}
+      <img src={prepared ? assetPath('/rebrand/character-cutout.png') : undefined} alt="" width="1122" height="1402" decoding="async" draggable="false" />
     </div>
   </div>;
 }

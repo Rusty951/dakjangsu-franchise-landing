@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { assetPath } from '../assetPath';
+import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 
 const sources = ['01-behind', '02-reach', '03-raise', '04-extend', '05-point']
   .map(pose => assetPath(`/rebrand/poses/recruitment-v1/${pose}.webp`));
@@ -7,7 +8,7 @@ const sources = ['01-behind', '02-reach', '03-raise', '04-extend', '05-point']
 const cues = [0, .3, .44, .58, .72];
 const blend = .025;
 
-export default function RebrandRecruitmentMotion({ active, reducedMotion, delay = 0, duration = 2200 }) {
+export default function RebrandRecruitmentMotion({ active, reducedMotion, delay = 0, duration = 2200, replay = 0 }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function RebrandRecruitmentMotion({ active, reducedMotion, delay 
     if (story) changes.observe(story, { attributes: true, attributeFilter: ['data-motion-paused'] });
     document.addEventListener('visibilitychange', sync);
 
-    Promise.all([...root.querySelectorAll('img')].map(image => image.decode())).then(() => {
+    Promise.all([...root.querySelectorAll('img')].map(decodePoseImage)).then(() => {
       if (disposed) return;
       animations = [...root.querySelectorAll('img')].map((image, index) => {
         const frames = [{ offset: 0, opacity: index === 0 ? 1 : 0 }];
@@ -64,7 +65,7 @@ export default function RebrandRecruitmentMotion({ active, reducedMotion, delay 
       changes.disconnect();
       document.removeEventListener('visibilitychange', sync);
     };
-  }, [active, reducedMotion, delay, duration]);
+  }, [active, reducedMotion, delay, duration, replay]);
 
   return <div className="recruitment-motion" ref={rootRef} data-phase="loading" role="img" aria-label="뒷짐에서 손을 꺼내 당신을 지목하는 닭장수">
     {sources.map((source, index) => <img key={source} src={source} alt="" aria-hidden="true" width="900" height="955" fetchPriority={index === 0 ? 'high' : 'auto'} decoding="async" draggable="false" />)}
