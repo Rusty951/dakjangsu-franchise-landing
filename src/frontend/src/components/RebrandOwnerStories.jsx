@@ -12,7 +12,8 @@ const interviews = [
     topic: '인건비와 운영',
     title: '“이건 나 혼자 해도 되겠다는 생각이 드는 거예요.”',
     summary: '인건비와 사람 관리 부담을 겪던 부천중동점 점주의 선택 계기입니다.',
-    poster: assetPath('/rebrand/owner-posters/source-3d-v1/bucheon-jungdong.webp'),
+    poster: assetPath('/rebrand/owner-posters/eo-illustration-v1/bucheon-jungdong.webp'),
+    posterLabel: '이건 혼자서도 하겠는데?',
   },
   {
     id: 'tYAbjFWqiJU',
@@ -21,7 +22,8 @@ const interviews = [
     topic: '업종 전환',
     title: '“저희는 발주만 하는 시스템이라…”',
     summary: '분식집을 10년 운영한 강남세곡점 점주가 경험한 본사 물류와 발주 방식입니다.',
-    poster: assetPath('/rebrand/owner-posters/source-3d-v1/gangnam-segok.webp'),
+    poster: assetPath('/rebrand/owner-posters/eo-illustration-v1/gangnam-segok.webp'),
+    posterLabel: '분식집 10년, 치킨집으로 바꾼 이유',
   },
   {
     id: 'E1pr_LIQv-k',
@@ -30,7 +32,8 @@ const interviews = [
     topic: '두 번째 매장',
     title: '“직원들이나 대표님들이 많이 도와주셨어요.”',
     summary: '서울잠실점 점주가 첫 창업 준비에서 받은 도움과 두 번째 출점의 계기를 들려줍니다.',
-    poster: assetPath('/rebrand/owner-posters/source-3d-v1/seoul-jamsil.webp'),
+    poster: assetPath('/rebrand/owner-posters/eo-illustration-v1/seoul-jamsil.webp'),
+    posterLabel: '왜 두 번째도 닭장수였을까?',
   },
   {
     id: 'v6ybPKjfPf8',
@@ -39,7 +42,8 @@ const interviews = [
     topic: '집에서 출퇴근',
     title: '“저는 여기 1층이 치킨집이고 5층이 저희 집입니다.”',
     summary: '서울문정점 점주가 같은 건물에서 출퇴근하며 매장을 관리하는 이야기입니다.',
-    poster: assetPath('/rebrand/owner-posters/source-3d-v1/seoul-munjeong.webp'),
+    poster: assetPath('/rebrand/owner-posters/eo-illustration-v1/seoul-munjeong.webp'),
+    posterLabel: '1층은 치킨집, 5층은 우리 집',
   },
 ];
 
@@ -87,7 +91,7 @@ export default function RebrandOwnerStories() {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-          /> : <button className="rebrand-owner-play" type="button" onClick={() => setIsPlaying(true)} aria-label={`${interview.branch} 점주 인터뷰 재생`}>
+          /> : <button className="rebrand-owner-play" type="button" onClick={() => setIsPlaying(true)} aria-label={`${interview.branch} 점주 인터뷰 재생: ${interview.posterLabel}`}>
             <img src={interview.poster} alt="" width="1280" height="720" loading="lazy" />
             <span className="rebrand-owner-play-label"><span aria-hidden="true">▶</span>인터뷰 보기</span>
           </button>}

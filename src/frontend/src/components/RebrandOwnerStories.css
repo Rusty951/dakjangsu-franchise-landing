@@ -20,9 +20,8 @@
 .rebrand-owner-video iframe, .rebrand-owner-play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .rebrand-page .rebrand-owner-play { display: block; padding: 0; border-radius: 0; background: #171310; color: #f7efe4; cursor: pointer; overflow: hidden; }
 .rebrand-owner-play img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.rebrand-owner-play::after { content: ''; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #171310b3); }
-.rebrand-owner-play-label { position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 1; display: flex; align-items: center; gap: 12px; font: 650 16px/1.5 var(--font-sans); text-align: left; }
-.rebrand-owner-play-label > span:first-child { display: grid; place-items: center; width: 42px; height: 42px; background: #d86535; color: #fff8ed; border-radius: 50%; font-size: 14px; }
+.rebrand-owner-play-label { position: absolute; bottom: 18px; right: 18px; z-index: 1; display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #171310e6; font: 650 14px/1.5 var(--font-sans); text-align: left; }
+.rebrand-owner-play-label > span:first-child { display: grid; place-items: center; width: 36px; height: 36px; background: #d86535; color: #fff8ed; border-radius: 50%; font-size: 12px; }
 .rebrand-owner-caption { margin-top: 20px; }
 .rebrand-page .rebrand-owner-caption h3 { margin: 0; font: 650 20px/1.55 var(--font-sans); word-break: keep-all; }
 .rebrand-owner-caption p { margin: 12px 0 0; max-width: 62ch; color: #e0d3c4; font: 450 15px/1.8 var(--font-sans); word-break: keep-all; }
@@ -68,8 +67,8 @@
   .rebrand-owner-heading { margin-bottom: 28px; }
   .rebrand-page .rebrand-owner-heading h2 { font-size: clamp(30px, 8vw, 42px); }
   .rebrand-owner-heading > p:last-child { font-size: 15px; margin-top: 20px; }
-  .rebrand-owner-play-label { bottom: 16px; left: 16px; right: 16px; font-size: 14px; gap: 8px; }
-  .rebrand-owner-play-label > span:first-child { width: 36px; height: 36px; font-size: 12px; }
+  .rebrand-owner-play-label { bottom: 8px; right: 8px; font-size: 12px; gap: 6px; padding: 4px 8px 4px 4px; }
+  .rebrand-owner-play-label > span:first-child { width: 28px; height: 28px; font-size: 10px; }
   .rebrand-page .rebrand-owner-caption h3 { font-size: 18px; }
   .rebrand-page .rebrand-owner-choices button { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 12px; }
   .rebrand-owner-avatar { --owner-avatar-size: 56px; }
