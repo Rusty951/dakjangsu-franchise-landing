@@ -95,7 +95,7 @@
 @media (max-width: 1024px) {
   .rebrand-page .customer-proof { padding: 48px var(--layout-gutter) 40px; scroll-margin-top: 66px; }
   .rebrand-page .customer-proof h2 { margin-bottom: 20px; font-size: clamp(34px, 6vw, 54px); }
-  .customer-proof__product { position: static; width: min(78%, 440px); margin: 0 auto 24px; transform: none; }
+  .rebrand-page .customer-proof__product { position: static; width: min(78%, 440px); margin: 0 auto 24px; transform: none; }
   .customer-proof__product figcaption { margin-top: 4px; font-size: clamp(44px, 7vw, 58px); }
   .customer-proof__reviews {
     display: flex;
@@ -135,7 +135,7 @@
   .rebrand-page .customer-proof { padding: 36px 20px 28px; }
   .rebrand-page .customer-proof h2 { font-size: clamp(32px, 8.6vw, 40px); }
   .customer-proof h2 em { display: block; }
-  .customer-proof__product { width: 82%; margin-bottom: 14px; }
+  .rebrand-page .customer-proof__product { width: 82%; margin-bottom: 14px; }
   .customer-proof__product figcaption { font-size: 42px; }
   .customer-proof__card { min-height: 158px; padding-inline: 22px; }
   .customer-proof__card blockquote { font-size: 20px; }
