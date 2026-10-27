@@ -77,7 +77,7 @@ const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
                 <a className="footer-phone" href="tel:15882287">대표번호 : 1588-2287</a>
                 <span>팩스 : 02-6954-2217</span>
               </p>
-              <p>(04726) 서울특별시 성동구 금호산길 60 3층&nbsp;&nbsp;|&nbsp;&nbsp;대표자 : 송민화</p>
+              <p className="footer-company-address"><span>(04726) 서울특별시 성동구 금호산길 60 3층</span><span className="footer-address-divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span>대표자 : 송민화</span></p>
               <p>사업자등록번호 : 646-88-01502</p>
             </div>
             {onPrivacyClick && (

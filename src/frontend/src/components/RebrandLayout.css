@@ -206,6 +206,10 @@
 .rebrand-page .jangsu-story--portrait .hero-offer-total .hero-offer-amount small { max-width: none; font-size: 18px; white-space: nowrap; }
 
 @media (max-width: 700px) {
+  .rebrand-page .site-footer .footer-inner { width: calc(100% - 2 * var(--layout-gutter)); }
+  .rebrand-page .footer-company-address > span { display: block; }
+  .rebrand-page .footer-company-address > .footer-address-divider { display: none; }
+  .rebrand-page .footer-company-address > span:last-child { margin-top: 7px; }
   .rebrand-page .rebrand-header { padding-inline: 20px; }
   .rebrand-page .rebrand-menu-story-copy { padding: 48px var(--layout-gutter) 32px; }
   .rebrand-page .rebrand-menu-story-intro { min-height: 0; }
