@@ -9,7 +9,7 @@ const spreadLights = storeLocations.map(store => ({
   distance: Math.hypot(store.x - origin.x, store.y - origin.y),
 })).sort((a, b) => a.distance - b.distance).map((store, index) => ({
   ...store,
-  arrival: index === 0 ? 300 : 1150 + (index - 1) * 140,
+  arrival: 180 + 3600 * (index / Math.max(1, storeLocations.length - 1)) ** .62,
 }));
 
 export default function RebrandStoreLights() {
@@ -102,11 +102,11 @@ export default function RebrandStoreLights() {
             <span className="store-lights__count" aria-hidden="true"><strong>{visibleCount}</strong><span>곳</span></span>
           </span>
         </h2>
-        <p className="store-lights__message">서산 동문점에서 퍼진 입소문.<br />먹어본 손님이 사장님이 됐습니다.</p>
+        <p className="store-lights__message">서산의 작은 매장에서 퍼진 입소문<br />먹어본 손님이 사장님이 됐습니다.</p>
       </header>
 
       <div className="store-lights__visual">
-        <div key={replay} className="store-lights__map" role="img" aria-label="서산 동문점부터 주변 매장으로 불빛이 하나씩 켜지는 입소문 도식">
+        <div key={replay} className="store-lights__map" role="img" aria-label="서산부터 주변 매장으로 불빛이 점점 빠르게 켜지는 입소문 도식">
           <svg viewBox="0 0 560 540" aria-hidden="true" focusable="false">
             <defs>
               <pattern id="store-lights-grid" width="14" height="14" patternUnits="userSpaceOnUse">
@@ -139,7 +139,7 @@ export default function RebrandStoreLights() {
             </g>)}
             <path className="store-lights__origin-leader" d={`M${origin.x} ${origin.y - 15} V247 L90 235 H31`} />
           </svg>
-          <span className="store-lights__origin-label">서산 동문점</span>
+          <span className="store-lights__origin-label">서산</span>
         </div>
         <div className="store-lights__map-footer">
           <button type="button" className="store-lights__replay" onClick={restart}>
