@@ -66,13 +66,6 @@
   text-wrap: pretty;
 }
 .customer-proof__card strong { color: #b64826; font-weight: inherit; }
-.rebrand-page .customer-proof__context {
-  margin: 12px 0 0;
-  color: #6d5b4e;
-  font: 450 13px/1.55 var(--font-sans);
-  letter-spacing: -.02em;
-  word-break: keep-all;
-}
 .customer-proof__product {
   position: absolute;
   top: 50%;
