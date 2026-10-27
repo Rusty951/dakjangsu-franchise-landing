@@ -15,6 +15,7 @@ const regions = [
 
 // A regional reveal is a visual sequence, not the stores' opening chronology.
 const revealOrder = regions.flatMap(region => region.stores);
+const waveDelays = { 서울: 1, 경기: 1.6, 충남: 2.6, 세종: 3.1, 대전: 3.6, 충북: 4.1, 전북: 5.3, 경남: 5.9 };
 const firstStore = storeLocations.find(store => store.name === '석림점');
 
 export default function RebrandStoreLights() {
@@ -24,6 +25,8 @@ export default function RebrandStoreLights() {
   const [selectedId, setSelectedId] = useState(firstStore.id);
   const [hasSelected, setHasSelected] = useState(false);
   const [replay, setReplay] = useState(0);
+  const [phase, setPhase] = useState('still');
+  const [motionPaused, setMotionPaused] = useState(true);
   const selected = storeLocations.find(store => store.id === selectedId);
 
   useEffect(() => {
@@ -57,6 +60,7 @@ export default function RebrandStoreLights() {
       started = true;
       count = storeLocations.length;
       setVisibleCount(storeLocations.length);
+      setPhase(motion.matches ? 'still' : 'complete');
     };
     finishRef.current = finish;
     const tick = () => {
@@ -64,16 +68,19 @@ export default function RebrandStoreLights() {
       count += 1;
       setVisibleCount(count);
       if (count < storeLocations.length) timer = setTimeout(tick, 82);
+      else setPhase('complete');
     };
     const start = () => {
       if (motion.matches) return;
       started = true;
       count = 0;
       setVisibleCount(count);
+      setPhase('reveal');
       timer = setTimeout(tick, 180);
     };
     const observer = new IntersectionObserver(entries => {
       inView = entries.some(entry => entry.isIntersecting);
+      setMotionPaused(!inView || document.hidden || motion.matches);
       clearTimeout(timer);
       if (!inView || motion.matches) return;
       if (!started) start();
@@ -82,15 +89,20 @@ export default function RebrandStoreLights() {
     observer.observe(section);
     const visibilityChange = () => {
       clearTimeout(timer);
+      setMotionPaused(!inView || document.hidden || motion.matches);
       if (!document.hidden && inView && started) tick();
     };
-    motion.addEventListener('change', finish);
+    const motionChange = () => {
+      finish();
+      setMotionPaused(!inView || document.hidden || motion.matches);
+    };
+    motion.addEventListener('change', motionChange);
     document.addEventListener('visibilitychange', visibilityChange);
     return () => {
       cancelled = true;
       clearTimeout(timer);
       observer?.disconnect();
-      motion.removeEventListener('change', finish);
+      motion.removeEventListener('change', motionChange);
       document.removeEventListener('visibilitychange', visibilityChange);
     };
   }, [replay]);
@@ -101,7 +113,7 @@ export default function RebrandStoreLights() {
     finishRef.current();
   };
 
-  return <section className="store-lights" id="rebrand-store-lights" ref={sectionRef} aria-labelledby="store-lights-title">
+  return <section className="store-lights" id="rebrand-store-lights" ref={sectionRef} aria-labelledby="store-lights-title" data-phase={phase} data-motion-paused={motionPaused}>
     <div className="store-lights__inner">
       <header className="store-lights__heading">
         <p className="store-lights__eyebrow">닭장수후라이드 和</p>
@@ -125,6 +137,11 @@ export default function RebrandStoreLights() {
                 <stop offset="100%" stopColor="black" />
               </radialGradient>
               <mask id="store-lights-mask"><rect width="560" height="540" fill="url(#store-lights-fade)" /></mask>
+              <radialGradient id="store-lights-aura">
+                <stop offset="0%" stopColor="#ffc58f" stopOpacity=".85" />
+                <stop offset="35%" stopColor="#ef946b" stopOpacity=".45" />
+                <stop offset="100%" stopColor="#ec7c51" stopOpacity="0" />
+              </radialGradient>
             </defs>
             <rect width="560" height="540" fill="url(#store-lights-grid)" mask="url(#store-lights-mask)" className="store-lights__grid" />
             <g className="store-lights__leaders">
@@ -134,9 +151,13 @@ export default function RebrandStoreLights() {
               key={store.id}
               className={`store-lights__light${index < visibleCount ? ' is-lit' : ''}${hasSelected && store.region === selected.region ? ' is-region' : ''}${hasSelected && store.id === selected.id ? ' is-selected' : ''}`}
               data-store-id={store.id}
+              style={{ '--wave-delay': `${waveDelays[store.region] + (index % 4) * 0.06}s` }}
               transform={`translate(${store.x} ${store.y})`}
             >
+              <circle className="store-lights__wave-glow" r="23" />
               <circle className="store-lights__halo" r="14" />
+              <circle className="store-lights__arrival" r="9" />
+              <circle className="store-lights__wave" r="9" />
               <circle className="store-lights__point" r="5" />
               <circle className="store-lights__ring" r="12" />
             </g>)}
@@ -144,7 +165,7 @@ export default function RebrandStoreLights() {
           {regions.map(region => <button
             className="store-lights__region"
             key={region.name}
-            style={{ left: `${region.x / 560 * 100}%`, top: `${region.y / 540 * 100}%` }}
+            style={{ left: `${region.x / 560 * 100}%`, top: `${region.y / 540 * 100}%`, '--wave-delay': `${waveDelays[region.name]}s` }}
             type="button"
             aria-label={`${region.name} 매장 ${region.stores.length}곳 보기`}
             aria-pressed={hasSelected && selected.region === region.name}

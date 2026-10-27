@@ -45,6 +45,49 @@
 .store-lights__ring { fill: none; stroke: #f7efe4; stroke-width: 1.3; opacity: 0; }
 .store-lights__light.is-region .store-lights__point { fill: #ffba86; }
 .store-lights__light.is-selected .store-lights__ring { opacity: .9; }
+.store-lights__arrival, .store-lights__wave { fill: none; stroke: #f6ad7d; stroke-width: 1; opacity: 0; }
+.store-lights__wave-glow { fill: url('#store-lights-aura'); opacity: 0; }
+.store-lights__arrival, .store-lights__wave, .store-lights__wave-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+.store-lights[data-phase='complete'] .store-lights__arrival {
+  animation: store-lights-arrival 800ms ease-out both;
+}
+.store-lights[data-phase='complete'] .store-lights__wave {
+  animation: store-lights-wave 11s linear var(--wave-delay) infinite both;
+}
+.store-lights[data-phase='complete'] .store-lights__wave-glow {
+  animation: store-lights-warmth 11s linear var(--wave-delay) infinite both;
+}
+.store-lights[data-phase='complete'] .store-lights__region > span {
+  animation: store-lights-region-warmth 11s linear var(--wave-delay) infinite both;
+}
+.store-lights[data-motion-paused='true'] :is(.store-lights__arrival, .store-lights__wave, .store-lights__wave-glow, .store-lights__region > span) {
+  animation-play-state: paused;
+}
+@keyframes store-lights-arrival {
+  0% { opacity: 0; transform: scale(.6); }
+  18% { opacity: .7; }
+  100% { opacity: 0; transform: scale(3.7); }
+}
+@keyframes store-lights-wave {
+  0% { opacity: 0; transform: scale(.65); }
+  3% { opacity: .65; transform: scale(1.1); }
+  19% { opacity: 0; transform: scale(3.7); }
+  100% { opacity: 0; transform: scale(3.7); }
+}
+@keyframes store-lights-warmth {
+  0% { opacity: 0; transform: scale(.6); }
+  5% { opacity: .75; transform: scale(1.2); }
+  20% { opacity: 0; transform: scale(1.7); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+@keyframes store-lights-region-warmth {
+  0%, 22%, 100% { color: inherit; }
+  5%, 12% { color: #ffc58f; }
+}
 .rebrand-page .store-lights__region {
   position: absolute;
   display: flex;
@@ -105,5 +148,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .store-lights__light { transition: none; }
+  .store-lights[data-phase='complete'] :is(.store-lights__arrival, .store-lights__wave, .store-lights__wave-glow, .store-lights__region > span) { animation: none; }
   .rebrand-page .store-lights__replay { display: none; }
 }
