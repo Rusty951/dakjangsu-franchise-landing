@@ -84,6 +84,10 @@
 .rebrand-page .store-lights__replay { display: inline-flex; flex-shrink: 0; align-items: center; gap: 6px; min-height: 44px; padding: 4px 0 4px 8px; border: 0; background: transparent; color: #e6d8c7; font: 500 13px/1.5 var(--font-sans); cursor: pointer; }
 .store-lights__replay > span { font-size: 22px; }
 .rebrand-page .store-lights__replay:focus-visible { outline: 2px solid #f7c59b; outline-offset: 4px; }
+@media (min-width: 1025px) {
+  .rebrand-page .store-lights { padding-block: 80px 64px; }
+  .store-lights__visual { width: 112%; max-width: 605px; }
+}
 @media (max-width: 900px) {
   .store-lights__inner { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .store-lights__visual { max-width: 540px; justify-self: center; }
