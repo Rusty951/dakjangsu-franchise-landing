@@ -80,8 +80,7 @@
   72% { text-shadow: 0 0 .7em #ffc78f26, 0 0 1.25em #ef946b10; }
   88% { text-shadow: 0 0 .85em #ffc78f00, 0 0 1.4em #ef946b00; }
 }
-.store-lights__map-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; }
-.rebrand-page .store-lights__note { margin: 0; color: #b9ab98; font: 450 11px/1.7 var(--font-sans); word-break: keep-all; }
+.store-lights__map-footer { display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; }
 .rebrand-page .store-lights__replay { display: inline-flex; flex-shrink: 0; align-items: center; gap: 6px; min-height: 44px; padding: 4px 0 4px 8px; border: 0; background: transparent; color: #e6d8c7; font: 500 13px/1.5 var(--font-sans); cursor: pointer; }
 .store-lights__replay > span { font-size: 22px; }
 .rebrand-page .store-lights__replay:focus-visible { outline: 2px solid #f7c59b; outline-offset: 4px; }
@@ -99,8 +98,7 @@
   .rebrand-page .store-lights__message { margin-top: 20px; font-size: 15px; line-height: 1.75; }
   .store-lights__visual { width: calc(100% + 16px); max-width: none; margin: 16px -8px 0; }
   .store-lights__origin-label { font-size: 12px; padding: 4px 6px; }
-  .store-lights__map-footer { margin: 0 8px; gap: 8px; }
-  .rebrand-page .store-lights__note { max-width: 22em; font-size: 10px; }
+  .store-lights__map-footer { margin: 0 8px; }
   .rebrand-page .store-lights__replay { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {

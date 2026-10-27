@@ -105,7 +105,6 @@ export default function RebrandStoreLights() {
           <span className="store-lights__origin-label">서산 동문점</span>
         </div>
         <div className="store-lights__map-footer">
-          <p className="store-lights__note">매장 위치를 지역 기준으로 표현한 도식입니다.</p>
           <button type="button" className="store-lights__replay" onClick={() => setReplay(value => value + 1)}>
             <span aria-hidden="true">↻</span> 다시 보기
           </button>
