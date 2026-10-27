@@ -95,11 +95,11 @@ export default function RebrandStoreLights() {
     <div className="store-lights__inner">
       <header className="store-lights__heading">
         <p className="store-lights__eyebrow">닭장수후라이드 和</p>
-        <h2 id="store-lights-title" aria-label="먹으러 왔다가, 닭장수를 차렸습니다.">
-          <span>먹으러 왔다가,</span>
-          <span><em>닭장수를 차렸습니다.</em></span>
+        <h2 id="store-lights-title" aria-label="입소문이 켠 닭장수의 불빛">
+          <span>입소문이 켠</span>
+          <span>닭장수의 <em>불빛</em></span>
         </h2>
-        <p className="store-lights__message">서산 동문점에서 퍼진 입소문.<br />먹어본 손님들이 가맹을 선택했습니다.</p>
+        <p className="store-lights__message">서산 동문점에서 퍼진 입소문.<br />먹어본 손님이 사장님이 됐습니다.</p>
         <p className="store-lights__total" aria-label={`함께하는 닭장수 매장 ${storeLocations.length}곳`}>
           <span className="store-lights__count" aria-hidden="true"><strong>{visibleCount}</strong><span>곳</span></span>
           <span className="store-lights__count-caption" aria-hidden="true">함께하는 닭장수</span>
