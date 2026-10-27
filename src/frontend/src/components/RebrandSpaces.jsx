@@ -12,7 +12,7 @@ export default function RebrandSpaces() {
     <header className="rebrand-space-showcase-heading">
       <div>
         <p className="rebrand-closing-label">공간 디자인</p>
-        <h2 id="new-space-title">닭장수의 매장,<br /><em>이렇게 달라집니다.</em></h2>
+        <h2 id="new-space-title">닭장수의 <em>공간</em></h2>
       </div>
     </header>
     <div className="rebrand-space-pair">
