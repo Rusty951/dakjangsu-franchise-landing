@@ -68,10 +68,10 @@
 .rebrand-page .store-lights__replay { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 0 4px 8px; border: 0; background: transparent; color: #e6d8c7; font: 500 13px/1.5 var(--font-sans); cursor: pointer; }
 .store-lights__replay > span { font-size: 22px; }
 .store-lights__location { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(220px, .85fr) minmax(0, 1.15fr) auto; align-items: center; gap: 32px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f7efe426; }
-.store-lights__select-wrap label { display: block; margin: 0 0 5px; color: #bdb09f; font: 500 12px/1.4 var(--font-sans); }
+.store-lights__select-wrap label { display: block; margin: 0 0 5px; color: #bdb09f; font: 400 12px/1.4 var(--font-sans); }
 .store-lights__select-field { position: relative; }
 .store-lights__select-field > span { position: absolute; right: 4px; top: 12px; pointer-events: none; color: var(--lights-accent); }
-.store-lights__select-field select { appearance: none; width: 100%; min-height: 44px; border: 0; border-radius: 0; padding: 4px 28px 4px 0; background: #241f1b; color: #f7efe4; font: 400 24px/1.4 var(--font-display); cursor: pointer; }
+.store-lights__select-field select { appearance: none; width: 100%; min-height: 44px; border: 0; border-radius: 0; padding: 4px 28px 4px 0; background: #241f1b; color: #f7efe4; font: 500 22px/1.4 var(--font-sans); cursor: pointer; }
 .rebrand-page .store-lights__address { margin: 0; color: #e1d3c2; font: 450 14px/1.7 var(--font-sans); }
 .rebrand-page .store-lights__note { margin: 0; color: #b9ab98; font: 450 11px/1.7 var(--font-sans); text-align: right; }
 .rebrand-page .store-lights :is(button, select):focus-visible { outline: 2px solid #f7c59b; outline-offset: 4px; }
@@ -99,7 +99,7 @@
   .rebrand-page .store-lights__replay { font-size: 12px; }
   .store-lights__location { display: block; margin-top: 18px; padding-top: 18px; }
   .store-lights__select-field { max-width: 100%; }
-  .store-lights__select-field select { font-size: 23px; }
+  .store-lights__select-field select { font-size: 21px; }
   .rebrand-page .store-lights__address { min-height: 44px; margin-top: 4px; font-size: 13px; }
   .rebrand-page .store-lights__note { margin-top: 16px; font-size: 10px; }
 }
