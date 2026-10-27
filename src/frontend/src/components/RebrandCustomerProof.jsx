@@ -4,12 +4,12 @@ import './RebrandCustomerProof.css';
 
 // Verbatim excerpts. Branches, dates and source context live in docs/context/customer-reviews.md.
 const reviews = [
+  { id: 'returning', before: '후라이드 치킨은 ', emphasis: '짱인것같아여', after: ' 진짜 너무 바삭하고 맛있아요~', source: '1111843021' },
+  { id: 'old-style-best', before: '', emphasis: '옛날통닭의 최고봉~^^', after: '', source: '1465534943' },
   { id: 'thin-batter', before: '기본 치킨 튀김옷이 ', emphasis: '얇아서 고소담백하니', after: ' 넘 맛있어요!!', source: '1326884566' },
+  { id: 'life-chicken', before: '', emphasis: '인생 치킨 등극..!', after: '', context: '간장 순살, 후라이드 닭발을 먹고 남긴 후기', source: '1326884566' },
+  { id: 'fried-only', before: '항상 후라이드는 ', emphasis: '여기서만 포장해요.', after: '', source: '1326884566' },
   { id: 'family', before: '튀김 옷이 두껍지 않아서 담백해 ', emphasis: '부모님이 좋아하세요~', after: '', source: '1315902974' },
-  { id: 'value', before: '가성비좋고 맛있네요 ', emphasis: '다음에 또올게요', after: '', source: '1646909119' },
-  { id: 'returning', before: '', emphasis: '매번 맛있게해주셔서', after: ' 감사해요~', source: '1111843021' },
-  { id: 'takeaway', before: '치킨이 먹고싶은데 맛있다고 소문나서 ', emphasis: '닭장수에서 포장했어요!', after: '', source: '1315902974' },
-  { id: 'gizzard', before: '똥집이 바삭하니 넘 맛있어요~ ', emphasis: '맥주 안주로 딱이네요^^', after: '', source: '1246959544' },
 ];
 
 export default function RebrandCustomerProof() {
@@ -86,6 +86,7 @@ export default function RebrandCustomerProof() {
             <blockquote cite={`https://m.place.naver.com/restaurant/${review.source}/review/visitor`}>
               {review.before}<strong>{review.emphasis}</strong>{review.after}
             </blockquote>
+            {review.context && <p className="customer-proof__context">{review.context}</p>}
           </li>)}
         </ul>
       </div>

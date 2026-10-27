@@ -1,21 +1,21 @@
 # 고객 리뷰 구간의 입력 근거
 
-2026-10-26 대표가 선택한 `RebrandCustomerProof.jsx`의 원문과 자산 연결입니다. 표시 문구는 원문 발췌 그대로 유지합니다. 매장명, 날짜와 방문 횟수는 대표의 후속 요청에 따라 화면에 표시하지 않습니다. 각 `blockquote`의 `cite`에는 원문 플레이스 주소를 남깁니다.
+2026-10-27 대표의 후라이드 극찬 리뷰 선정과 “인생 치킨 등극” 추가 요청을 반영한 `RebrandCustomerProof.jsx`의 원문과 자산 연결입니다. 표시 문구는 원문 발췌 그대로 유지합니다. 매장명, 날짜와 방문 횟수는 대표의 후속 요청에 따라 화면에 표시하지 않습니다. 각 `blockquote`의 `cite`에는 원문 플레이스 주소를 남깁니다. “인생 치킨 등극”은 간장 순살과 후라이드 닭발을 먹은 후기이므로 해당 메뉴 맥락을 카드 안에 별도로 표시합니다.
 
 ## 리뷰
 
-2026-10-26 네이버 플레이스의 공개 방문자 리뷰를 직접 확인했습니다. 아래 날짜는 확인일이 아닌 개별 방문일입니다. 지점별 개인 경험이며 매출, 전체 지점의 동일한 품질이나 재방문율을 뜻하지 않습니다.
+2026-10-26과 2026-10-27 네이버 플레이스의 공개 방문자 리뷰를 직접 확인했습니다. 아래 날짜는 확인일이 아닌 개별 방문일입니다. 지점별 개인 경험이며 매출, 전체 지점의 동일한 품질이나 재방문율을 뜻하지 않습니다.
 
 표시 원문은 컴포넌트의 동일한 입력 ID가 소유합니다. 이 표는 중복 사본 대신 작성자, 방문일과 원문 위치를 연결합니다.
 
 | 입력 ID | 지점, 작성자, 방문일 | 선택 맥락 | 출처 |
 | --- | --- | --- | --- |
-| thin-batter | 서산 성연점, 멜로디영, 2025-06-17 | 얇은 튀김옷과 담백한 식감 | https://m.place.naver.com/restaurant/1326884566/review/visitor |
-| family | 서산 해미점, 행복3347, 2025-11-02 | 부모님의 취향과 가족 이용 | https://m.place.naver.com/restaurant/1315902974/review/visitor |
-| value | 서산 석림점, chlehdrhkd11, 2025-02-21 | 가격 만족과 재방문 의향 | https://m.place.naver.com/restaurant/1646909119/review/visitor |
-| returning | 서산 읍내점, Kim7646, 2024-12-14 | 반복 방문 경험 | https://m.place.naver.com/restaurant/1111843021/review/visitor |
-| takeaway | 서산 해미점, fhk****, 2025-07-28 | 입소문을 통한 포장 주문 | https://m.place.naver.com/restaurant/1315902974/review/visitor |
-| gizzard | 서산 예천점, 나르샤8004, 2026-07-10 | 닭똥집과 맥주 안주 선택 | https://m.place.naver.com/restaurant/1246959544/review/visitor |
+| returning | 서산 읍내점, Kim7646, 2024-12-14 | 기존 같은 리뷰의 앞부분에서 기본 후라이드와 바삭함에 대한 극찬을 발췌 | https://m.place.naver.com/restaurant/1111843021/review/visitor |
+| old-style-best | 서산 대산점, 별명없슴61, 2023-05-09 | 옛날통닭에 대한 극찬 | https://m.place.naver.com/restaurant/1465534943/review/visitor |
+| thin-batter | 서산 성연점, 멜로디영, 2025-06-17 | 기본 치킨의 얇은 튀김옷과 담백한 식감 | https://m.place.naver.com/restaurant/1326884566/review/visitor |
+| life-chicken | 서산 성연점, yeahjd, 2025-06-21 | 원문의 “우왕.. 인생 치킨 등극..!”에서 발췌. 간장 순살과 후라이드 닭발을 주문했으며 기본 후라이드의 평가로 바꾸지 않음 | https://m.place.naver.com/restaurant/1326884566/review/visitor |
+| fried-only | 서산 성연점, pink13, 2022-12-09 | 후라이드를 이곳에서만 포장한다는 반복 선택 | https://m.place.naver.com/restaurant/1326884566/review/visitor |
+| family | 서산 해미점, 행복3347, 2025-11-02 | 얇은 튀김옷과 부모님의 취향 | https://m.place.naver.com/restaurant/1315902974/review/visitor |
 
 ## 음식 사진
 

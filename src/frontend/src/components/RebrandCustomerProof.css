@@ -34,7 +34,9 @@
 .customer-proof__card {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
   min-height: clamp(148px, 12.5vw, 186px);
   padding: 40px clamp(18px, 1.8vw, 27px) 22px;
@@ -64,6 +66,13 @@
   text-wrap: pretty;
 }
 .customer-proof__card strong { color: #b64826; font-weight: inherit; }
+.rebrand-page .customer-proof__context {
+  margin: 12px 0 0;
+  color: #6d5b4e;
+  font: 450 13px/1.55 var(--font-sans);
+  letter-spacing: -.02em;
+  word-break: keep-all;
+}
 .customer-proof__product {
   position: absolute;
   top: 50%;
