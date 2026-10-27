@@ -122,7 +122,7 @@ export default function RebrandStoreLights() {
           <span aria-hidden="true"><strong>{visibleCount}</strong><span>곳</span></span>
           <span className="store-lights__total-caption" aria-hidden="true">8개 시도에서 만나는 닭장수</span>
         </p>
-        <p className="store-lights__message">불빛 하나에,<br />닭장수 한 매장.</p>
+        <p className="store-lights__message">동네의 저녁을,<br />따뜻하게 밝힙니다.</p>
       </header>
 
       <div className="store-lights__visual">
@@ -173,7 +173,6 @@ export default function RebrandStoreLights() {
           ><span>{region.name}</span><strong>{region.stores.length}</strong></button>)}
         </div>
         <div className="store-lights__map-footer">
-          <span>한 개의 불빛 = 한 개의 매장</span>
           <button type="button" className="store-lights__replay" onClick={() => setReplay(value => value + 1)}>
             <span aria-hidden="true">↻</span> 다시 불 켜기
           </button>
