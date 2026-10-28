@@ -14,6 +14,7 @@ import RebrandHeroOffer from './RebrandHeroOffer';
 import BrandTextPoster from './BrandTextPoster';
 import MobileSupportPanel from './MobileSupportPanel';
 import DesktopRebrandStory from './DesktopRebrandStory';
+import RebrandStoreLights from './RebrandStoreLights';
 import './RebrandScrollStory.css';
 import './JangsuBenefitScenes.css';
 
@@ -37,8 +38,9 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.
 const flowingStoryQuery = '(max-width: 1024px), (max-height: 640px)';
 const mobileQuery = '(max-width: 1024px)';
-const mobileChapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
-const mobileScenes = [0, 'brand', 2, 3, 5];
+const mobileChapters = ['닭장수', '입소문', '브랜드', '오픈', '주방', '물류'];
+const mobileScenes = [0, 'lights', 'brand', 2, 3, 5];
+const storyPanels = ':scope > .jangsu-panel, :scope > .store-lights';
 const subscribeMobile = notify => {
   const query = window.matchMedia(mobileQuery);
   query.addEventListener('change', notify);
@@ -54,6 +56,8 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
   const compactMobile = useSyncExternalStore(subscribeMobile, () => window.matchMedia(mobileQuery).matches, () => false);
   const chapters = compactMobile ? mobileChapters : desktopChapters;
   const chapterScenes = compactMobile ? mobileScenes : desktopScenes;
+  const brandIndex = compactMobile ? 2 : 1;
+  const supportOffset = compactMobile ? 3 : 2;
   const previousScenes = useRef(chapterScenes);
   const trackRef = useRef(null);
   const stageRef = useRef(null);
@@ -84,6 +88,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
   const [liftReplay, setLiftReplay] = useState(0);
   const [heroReplay, setHeroReplay] = useState(0);
   const [brandReplay, setBrandReplay] = useState(0);
+  const [lightsReplay, setLightsReplay] = useState(0);
   const [feeReplay, setFeeReplay] = useState(0);
   const [openingReplay, setOpeningReplay] = useState(0);
   const [kitchenReplay, setKitchenReplay] = useState(0);
@@ -121,7 +126,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       previousScenes.current = chapterScenes;
     }
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const panels = [...stageRef.current.querySelectorAll('.jangsu-panel')];
+    const panels = [...stageRef.current.querySelectorAll(storyPanels)];
     const track = trackRef.current;
     let onScreen = true;
     const syncMotion = () => {
@@ -145,7 +150,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       const character = characterRef.current;
       if (!track || !stage || !character) return;
       // Replaying a keyed chapter replaces its DOM node. Track the live panels.
-      const panels = [...stage.querySelectorAll('.jangsu-panel')];
+      const panels = [...stage.querySelectorAll(storyPanels)];
       // A resize can arrive before React switches layouts. Preserve the last valid reading position.
       if (window.matchMedia(flowingStoryQuery).matches !== portrait) return;
       const reduced = preference.matches;
@@ -310,7 +315,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
       const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
       const top = window.scrollY + track.getBoundingClientRect().top - header;
       const restoredPanel = panels[restore.index];
-      const wholePanel = restoredPanel.querySelector('.brand-text-poster') || restoredPanel.classList.contains('mobile-support-panel');
+      const wholePanel = restoredPanel.querySelector('.brand-text-poster') || restoredPanel.matches('.mobile-support-panel, .store-lights');
       const portraitTarget = restore.index > 0 && !wholePanel ? restoredPanel.querySelector('h2') : restoredPanel;
       const destination = portrait
         ? window.scrollY + portraitTarget.getBoundingClientRect().top - header - (restore.index > 0 && !wholePanel ? 12 : 0)
@@ -332,7 +337,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
 
   useEffect(() => {
     if (headingFocusTarget.current === active) {
-      stageRef.current.querySelectorAll('.jangsu-panel')[active].querySelector('h1, h2')?.focus({ preventScroll: true });
+      stageRef.current.querySelectorAll(storyPanels)[active].querySelector('h1, h2')?.focus({ preventScroll: true });
       headingFocusTarget.current = null;
     }
   }, [active]);
@@ -343,10 +348,11 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
     const stage = stageRef.current;
     const header = document.querySelector('.rebrand-header')?.offsetHeight ?? 80;
     if (focusHeading && active === index) {
-      stage.querySelectorAll('.jangsu-panel')[index].querySelector('h1, h2')?.focus({ preventScroll: true });
+      stage.querySelectorAll(storyPanels)[index].querySelector('h1, h2')?.focus({ preventScroll: true });
     }
     if (portrait) {
       if (active === index) {
+        if (destinationScene === 'lights') setLightsReplay(replay => replay + 1);
         if (destinationScene === 'brand') setBrandReplay(replay => replay + 1);
         if (destinationScene === 0) setHeroReplay(replay => replay + 1);
         if (destinationScene === 1) setFeeReplay(replay => replay + 1);
@@ -356,16 +362,16 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
         if (destinationScene === 5) { setLiftReplay(replay => replay + 1); setLiftParked(false); }
         if (destinationScene === 6) setInviteReplay(replay => replay + 1);
       }
-      const panel = stage.querySelectorAll('.jangsu-panel')[index];
+      const panel = stage.querySelectorAll(storyPanels)[index];
       if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
       const textPoster = panel.querySelector('.brand-text-poster');
-      const wholePanel = textPoster || panel.classList.contains('mobile-support-panel');
+      const wholePanel = textPoster || panel.matches('.mobile-support-panel, .store-lights');
       const target = wholePanel ? panel : index > 0 ? panel.querySelector('h2') : panel;
       window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top - header - (index > 0 && !wholePanel ? 12 : 0), behavior: 'instant' });
       return;
     }
     if (reducedMotion) {
-      const panel = stage.querySelectorAll('.jangsu-panel')[index];
+      const panel = stage.querySelectorAll(storyPanels)[index];
       if (focusHeading) panel.querySelector('h1, h2')?.focus({ preventScroll: true });
       window.scrollTo({ top: window.scrollY + panel.getBoundingClientRect().top - header, behavior: 'instant' });
       return;
@@ -424,10 +430,11 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
         <article className="jangsu-panel jangsu-panel--welcome" {...panelProps(0)}>
           <RebrandHeroOffer replay={heroReplay} portrait={portrait} active={active === 0} reducedMotion={reducedMotion} />
         </article>
-        <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(1)}>
-          <BrandTextPoster key={`brand-text-${brandReplay}`} portrait={portrait} active={active === 1} reducedMotion={reducedMotion}>
+        {compactMobile && <RebrandStoreLights replayToken={lightsReplay} />}
+        <article className="jangsu-panel jangsu-panel--benefit jangsu-panel--brand" {...panelProps(brandIndex)}>
+          <BrandTextPoster key={`brand-text-${brandReplay}`} portrait={portrait} active={active === brandIndex} reducedMotion={reducedMotion}>
           <div className="benefit-scene-copy brand-story-copy">
-            <span className="benefit-scene-index">02 / 새로운 닭장수</span>
+            <span className="benefit-scene-index">0{brandIndex + 1} / 새로운 닭장수</span>
             <h2 tabIndex={-1}>
               <span className="brand-story-name">새롭게 시작하는 닭장수후라이드.</span>
               <b className="brand-story-headline"><span>함께 제대로 장사해 볼</span><span><em>사장님을 찾습니다.<span className="brand-story-underline" aria-hidden="true" /></em></span></b>
@@ -444,7 +451,7 @@ function ExistingRebrandScrollStory({ onConditionsClick }) {
           </BrandTextPoster>
         </article>
         {compactMobile ? ['opening', 'kitchen', 'growth'].map((kind, index) => (
-          <MobileSupportPanel key={kind} replay={kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : liftReplay} kind={kind} index={index + 2} active={active === index + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
+          <MobileSupportPanel key={kind} replay={kind === 'opening' ? openingReplay : kind === 'kitchen' ? kitchenReplay : liftReplay} kind={kind} index={index + supportOffset} active={active === index + supportOffset} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} />
         )) : benefits.map((benefit, index) => (
           <article key={benefit.id} className={`jangsu-panel jangsu-panel--benefit benefit-scene--${benefit.id}`} {...panelProps(index + 2)}>
             {benefit.id === 'fee' && <img className="fee-static-character" loading="lazy" src={assetPath('/rebrand/poses/fee-waiver-v1/04-rest.png')} alt="닭장수 캐릭터" width="1122" height="1402" />}

@@ -102,7 +102,7 @@
 
   .dks-desktop-story .dks-progress { position: fixed; z-index: 15; left: 50%; bottom: 20px; transform: translateX(-50%); width: min(calc(100% - 96px), 840px); background: #f7efe4; color: #241f1b; border: 1px solid #241f1b26; opacity: 1; transition: opacity .2s; }
   .dks-desktop-story .dks-progress[data-visible='false'] { opacity: 0; pointer-events: none; visibility: hidden; }
-  .dks-desktop-story .dks-progress ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; padding: 0; margin: 0; }
+  .dks-desktop-story .dks-progress ol { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); list-style: none; padding: 0; margin: 0; }
   .dks-desktop-story .dks-progress button { width: 100%; min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 12px; background: transparent; border: 0; color: inherit; font: 750 16px/1.3 var(--font-sans); cursor: pointer; }
   .dks-desktop-story .dks-progress button > span { font-family: var(--font-display); font-weight: 400; }
   .dks-desktop-story .dks-progress button[aria-current] { color: #a74321; box-shadow: inset 0 -3px currentColor; }

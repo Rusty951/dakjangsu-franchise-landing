@@ -78,7 +78,7 @@ function TextPoster({ active, reducedMotion }) {
   }, [active, reducedMotion]);
   return (
     <div className="benefit-scene-copy brand-text-poster" ref={rootRef}>
-      <p className="brand-text-index">02 / 새로운 닭장수</p>
+      <p className="brand-text-index">03 / 새로운 닭장수</p>
       <h2 tabIndex={-1} aria-label="함께, 제대로 장사해 봅시다.">
         <span className="brand-text-line">함께,</span>
         <span className="brand-text-line brand-text-emphasis">제대로</span>

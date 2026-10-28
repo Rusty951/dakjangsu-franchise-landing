@@ -12,7 +12,7 @@ const spreadLights = storeLocations.map(store => ({
   arrival: 180 + 3600 * (index / Math.max(1, storeLocations.length - 1)) ** .62,
 }));
 
-export default function RebrandStoreLights() {
+export default function RebrandStoreLights({ replayToken = 0 }) {
   const sectionRef = useRef(null);
   const [started, setStarted] = useState(false);
   const [motionPaused, setMotionPaused] = useState(true);
@@ -64,8 +64,9 @@ export default function RebrandStoreLights() {
       }
       if (motion.matches) {
         complete = true;
-        setVisibleCount(spreadLights.length);
+        litCount = spreadLights.length;
       }
+      setVisibleCount(litCount);
       if (!paused) {
         setStarted(true);
         if (!complete && frame === undefined) frame = requestAnimationFrame(tick);
@@ -84,7 +85,7 @@ export default function RebrandStoreLights() {
       motion.removeEventListener('change', sync);
       document.removeEventListener('visibilitychange', sync);
     };
-  }, [replay]);
+  }, [replay, replayToken]);
 
   const restart = () => {
     setVisibleCount(0);
@@ -95,7 +96,7 @@ export default function RebrandStoreLights() {
     <div className="store-lights__inner">
       <header className="store-lights__heading">
         <p className="store-lights__eyebrow">닭장수후라이드 和</p>
-        <h2 id="store-lights-title" aria-label={`입소문이 켠 닭장수의 불빛. 매장 ${storeLocations.length}곳`}>
+        <h2 id="store-lights-title" tabIndex={-1} aria-label={`입소문이 켠 닭장수의 불빛. 매장 ${storeLocations.length}곳`}>
           <span>입소문이 켠</span>
           <span className="store-lights__title-row">
             <span>닭장수의 <em>불빛</em></span>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import SlotNumber from './SlotNumber';
 import RebrandRecruitmentMotion from './RebrandRecruitmentMotion';
+import RebrandStoreLights from './RebrandStoreLights';
 import DesktopSupportLift from './DesktopSupportLift';
 import DesktopSupportGesture from './DesktopSupportGesture';
 import './DesktopRebrandStory.css';
@@ -9,7 +10,7 @@ import { writeData } from '../utils/visualWrites.mjs';
 import { decodePoseImage } from '../utils/decodePoseImage.mjs';
 import { heroIntroTiming, heroOfferFrames, heroRecruitmentFrames } from '../utils/heroIntroTimeline.mjs';
 
-const chapters = ['닭장수', '브랜드', '오픈', '주방', '물류'];
+const chapters = ['닭장수', '입소문', '브랜드', '오픈', '주방', '물류'];
 const offers = [
   { kind: 'opening', heading: ['오픈 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당', pose: '/rebrand/poses/opening-package-v1/03-present.png', facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']] },
   { kind: 'kitchen', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당', pose: '/rebrand/poses/kitchen-support-v1/04-rest.png', facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']] },
@@ -121,7 +122,7 @@ function DesktopBrand({ active, reducedMotion }) {
   const ref = useRef(null);
   useDesktopAct(ref, active, reducedMotion, animateBrand);
   return <div className="dks-brand-layout" ref={ref}>
-    <p className="dks-index">02 / 새로운 닭장수</p><h2 tabIndex={-1}><span className="dks-brand-together">함께,</span><strong className="dks-brand-emphasis">제대로</strong><span className="dks-brand-close">장사해 봅시다.</span></h2>
+    <p className="dks-index">03 / 새로운 닭장수</p><h2 tabIndex={-1}><span className="dks-brand-together">함께,</span><strong className="dks-brand-emphasis">제대로</strong><span className="dks-brand-close">장사해 봅시다.</span></h2>
     <div className="dks-brand-support"><p className="dks-brand-offer">새 출발을 위한<br /><strong>창업지원을 준비했습니다.</strong></p><p className="dks-brand-invitation">이제,<br /><strong><span>사장님</span>{' '}<span>차례입니다.</span></strong></p></div>
   </div>;
 }
@@ -153,7 +154,7 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
   useEffect(() => {
     const root = rootRef.current;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const panels = [...root.querySelectorAll('.dks-scene')];
+    const panels = [...root.querySelectorAll(':scope > .dks-scene, :scope > .store-lights')];
     let frame = 0;
     const paint = () => {
       frame = 0;
@@ -181,15 +182,16 @@ export default function DesktopRebrandStory({ onConditionsClick }) {
     };
   }, []);
   const goTo = (index, focus) => {
-    const panel = rootRef.current.querySelectorAll('.dks-scene')[index];
+    const panel = rootRef.current.querySelectorAll(':scope > .dks-scene, :scope > .store-lights')[index];
     if (active === index) setReplay(values => values.map((value, i) => i === index ? value + 1 : value));
     panel.scrollIntoView({ block: 'start', behavior: 'instant' });
     if (focus) panel.querySelector('h1, h2').focus({ preventScroll: true });
   };
   return <section className="dks-desktop-story" id="rebrand-story" aria-label="스크롤로 만나는 닭장수" ref={rootRef} data-reduced={reducedMotion}>
     <article className="dks-scene dks-scene--hero"><DesktopHero replay={replay[0]} active={active === 0} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>
-    <article className="dks-scene dks-scene--brand"><DesktopBrand key={replay[1]} active={active === 1} reducedMotion={reducedMotion} /></article>
-    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={offer.kind} replay={replay[i + 2]} offer={offer} index={i + 2} active={active === i + 2} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
+    <RebrandStoreLights replayToken={replay[1]} />
+    <article className="dks-scene dks-scene--brand"><DesktopBrand key={replay[2]} active={active === 2} reducedMotion={reducedMotion} /></article>
+    {offers.map((offer, i) => <article className={`dks-scene dks-scene--${offer.kind}`} key={offer.kind}><DesktopSupport key={offer.kind} replay={replay[i + 3]} offer={offer} index={i + 3} active={active === i + 3} reducedMotion={reducedMotion} onConditionsClick={onConditionsClick} /></article>)}
     <nav className="dks-progress" aria-label="닭장수 이야기 진행" data-visible={visible} aria-hidden={!visible} inert={!visible}><ol>{chapters.map((label, i) => <li key={label}><button type="button" aria-label={`${i + 1}번 ${label} 장면`} aria-current={active === i ? 'step' : undefined} onClick={event => goTo(i, event.detail === 0)}><span>{String(i + 1).padStart(2, '0')}</span>{label}</button></li>)}</ol></nav>
   </section>;
 }

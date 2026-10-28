@@ -2,7 +2,6 @@ import './RebrandClosing.css';
 import RebrandOwnerStories from './RebrandOwnerStories';
 import RebrandSpaces from './RebrandSpaces';
 import RebrandCustomerProof from './RebrandCustomerProof';
-import RebrandStoreLights from './RebrandStoreLights';
 
 const questions = [
   ['왜 이런 지원을 하나요?', '닭장수후라이드의 브랜드 리뉴얼에 맞춰 준비한 한시적 특별 지원입니다. 함께 시작할 사장님의 매장 준비와 초기 운영 부담을 덜어드리기 위해 마련했습니다. 지원 항목별 적용 조건은 상담에서 안내해드립니다.'],
@@ -13,7 +12,6 @@ const questions = [
 export default function RebrandClosing({ conditionsRef }) {
   return <>
     <RebrandCustomerProof />
-    <RebrandStoreLights />
     <RebrandSpaces />
 
     <RebrandOwnerStories />
