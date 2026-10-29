@@ -37,6 +37,7 @@ export default function RebrandStoreLights({ replayToken = 0 }) {
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let inView = false;
+    let hasEntered = false;
     let frame;
     let previousTime = null;
     let elapsed = 0;
@@ -73,9 +74,22 @@ export default function RebrandStoreLights({ replayToken = 0 }) {
       }
     };
     const observer = new IntersectionObserver(entries => {
-      inView = entries.some(entry => entry.isIntersecting);
+      entries.forEach(entry => {
+        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+        // A return from another scene starts the shared count and lights again.
+        if (visible && !inView && hasEntered && !motion.matches) {
+          cancelAnimationFrame(frame);
+          frame = undefined;
+          previousTime = null;
+          elapsed = 0;
+          litCount = 0;
+          complete = false;
+        }
+        if (visible) hasEntered = true;
+        inView = visible;
+      });
       sync();
-    }, { threshold: 0.2 });
+    }, { threshold: [0, 0.2] });
     observer.observe(sectionRef.current);
     motion.addEventListener('change', sync);
     document.addEventListener('visibilitychange', sync);
