@@ -137,7 +137,6 @@ export default function RebrandOwnerReviews() {
         </div>
         <button type="button" aria-label="다음 이야기" aria-controls="owner-proof-cards" disabled={activeIndex === stories.length - 1} onClick={() => selectStory(activeIndex + 1)}><span aria-hidden="true">→</span></button>
       </div>
-      <p className="owner-proof__note">점주 인터뷰에서 발췌한 내용과 요약입니다. 각 점주의 운영 경험입니다.</p>
     </div>
   </section>;
 }
