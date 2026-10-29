@@ -4,12 +4,12 @@ import './RebrandCustomerProof.css';
 
 // Verbatim excerpts. Attribution and source context are recorded in docs/context/customer-reviews.md.
 const reviews = [
-  { id: 'returning', branch: '읍내점', author: 'Kim7646', before: '후라이드 치킨은 ', emphasis: '짱인것같아여', after: ' 진짜 너무 바삭하고 맛있아요~', source: '1111843021' },
-  { id: 'old-style-best', branch: '대산점', author: '별명없슴61', before: '', emphasis: '옛날통닭의 최고봉~^^', after: '', source: '1465534943' },
-  { id: 'thin-batter', branch: '성연점', author: '멜로디영', before: '기본 치킨 튀김옷이 ', emphasis: '얇아서 고소담백하니', after: ' 넘 맛있어요!!', source: '1326884566' },
-  { id: 'life-chicken', branch: '성연점', author: 'yeahjd', before: '', emphasis: '인생 치킨 등극..!', after: '', source: '1326884566' },
-  { id: 'fried-only', branch: '성연점', author: 'pink13', before: '항상 후라이드는 ', emphasis: '여기서만 포장해요.', after: '', source: '1326884566' },
-  { id: 'family', branch: '해미점', author: '행복3347', before: '튀김 옷이 두껍지 않아서 담백해 ', emphasis: '부모님이 좋아하세요~', after: '', source: '1315902974' },
+  { id: 'returning', branch: '읍내점', author: 'Ki**', before: '후라이드 치킨은 ', emphasis: '짱인것같아여', after: ' 진짜 너무 바삭하고 맛있아요~', source: '1111843021' },
+  { id: 'old-style-best', branch: '대산점', author: '별명**', before: '', emphasis: '옛날통닭의 최고봉~^^', after: '', source: '1465534943' },
+  { id: 'thin-batter', branch: '성연점', author: '멜로**', before: '기본 치킨 튀김옷이 ', emphasis: '얇아서 고소담백하니', after: ' 넘 맛있어요!!', source: '1326884566' },
+  { id: 'life-chicken', branch: '성연점', author: 'ye**', before: '', emphasis: '인생 치킨 등극..!', after: '', source: '1326884566' },
+  { id: 'fried-only', branch: '성연점', author: 'pi**', before: '항상 후라이드는 ', emphasis: '여기서만 포장해요.', after: '', source: '1326884566' },
+  { id: 'family', branch: '해미점', author: '행복**', before: '튀김 옷이 두껍지 않아서 담백해 ', emphasis: '부모님이 좋아하세요~', after: '', source: '1315902974' },
 ];
 
 export default function RebrandCustomerProof() {
