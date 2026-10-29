@@ -1,5 +1,6 @@
 import './RebrandClosing.css';
 import RebrandOwnerStories from './RebrandOwnerStories';
+import RebrandOwnerReviews from './RebrandOwnerReviews';
 import RebrandCustomerProof from './RebrandCustomerProof';
 
 const questions = [
@@ -10,6 +11,7 @@ const questions = [
 
 export default function RebrandClosing({ conditionsRef }) {
   return <>
+    <RebrandOwnerReviews />
     <RebrandCustomerProof />
     <RebrandOwnerStories />
 
