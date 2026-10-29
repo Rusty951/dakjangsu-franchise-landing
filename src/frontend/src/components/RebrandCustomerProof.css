@@ -65,6 +65,16 @@
   overflow-wrap: anywhere;
   text-wrap: pretty;
 }
+.rebrand-page .customer-proof__attribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 12px 0 0;
+  color: #756453;
+  font: 500 13px/1.5 var(--font-sans);
+  letter-spacing: -.015em;
+}
+.customer-proof__branch { font-weight: 650; }
 .customer-proof__card strong { color: #b64826; font-weight: inherit; }
 .customer-proof__product {
   position: absolute;
