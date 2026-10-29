@@ -103,7 +103,12 @@ export default function RebrandStoreLights({ replayToken = 0 }) {
             <span className="store-lights__count" aria-hidden="true"><strong>{visibleCount}</strong><span>곳</span></span>
           </span>
         </h2>
-        <p className="store-lights__message">서산의 작은 매장에서 퍼진 입소문<br />먹어본 손님이 사장님이 됐습니다.</p>
+        <p className="store-lights__message">
+          서산의 작은 매장에서 시작했습니다.<br />
+          맛있다는 이야기가 사람에서 사람으로 전해졌고,<br />
+          직접 먹어본 뒤 닭장수를 시작한<br />
+          사장님도 있습니다.
+        </p>
       </header>
 
       <div className="store-lights__visual">
