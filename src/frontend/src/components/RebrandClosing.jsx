@@ -1,6 +1,5 @@
 import './RebrandClosing.css';
 import RebrandOwnerStories from './RebrandOwnerStories';
-import RebrandSpaces from './RebrandSpaces';
 import RebrandCustomerProof from './RebrandCustomerProof';
 
 const questions = [
@@ -12,8 +11,6 @@ const questions = [
 export default function RebrandClosing({ conditionsRef }) {
   return <>
     <RebrandCustomerProof />
-    <RebrandSpaces />
-
     <RebrandOwnerStories />
 
     <section className="rebrand-closing-faq" id="rebrand-faq" aria-labelledby="faq-title">
