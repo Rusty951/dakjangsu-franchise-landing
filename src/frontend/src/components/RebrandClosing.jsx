@@ -11,8 +11,8 @@ const questions = [
 
 export default function RebrandClosing({ conditionsRef }) {
   return <>
-    <RebrandOwnerReviews />
     <RebrandCustomerProof />
+    <RebrandOwnerReviews />
     <RebrandOwnerStories />
 
     <section className="rebrand-closing-faq" id="rebrand-faq" aria-labelledby="faq-title">
