@@ -7,7 +7,7 @@ const stories = [
   {
     id: 'gangnam-segok',
     topic: '지인이 전한 입소문',
-    heading: <>지인의 장사가 잘되는 걸 보고,<br />저도 시작했습니다.</>,
+    heading: <>분식집 10년,<br />지인의 장사를 보고 선택했습니다.</>,
     quote: '지인이 먼저 시작을 해서 체인점을 알게 됐고요.',
     branch: '강남세곡점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/gangnam-segok.webp',
@@ -18,7 +18,7 @@ const stories = [
   {
     id: 'bucheon-jungdong',
     topic: '혼자 해볼 만한 운영',
-    heading: <>이 정도 규모라면<br />혼자서도 해볼 수 있겠다</>,
+    heading: <>일보다 사람 관리가<br />더 힘들었습니다.</>,
     quote: '이건 나 혼자 해도 되겠다는 생각이 드는 거예요.',
     branch: '부천중동점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/bucheon-jungdong.webp',
@@ -29,7 +29,7 @@ const stories = [
   {
     id: 'seoul-munjeong',
     topic: '잊을 수 없는 후라이드 맛',
-    heading: <>직접 먹어보고<br />가맹을 결심한 후라이드</>,
+    heading: <>17년 된 치킨집을 이어갈 브랜드,<br />직접 먹어보고 골랐습니다.</>,
     quote: '근처 세곡점 가서 맛있게 먹고 나서 닭장수를 해야겠다는 결심을 하게 되었습니다.',
     branch: '서울문정점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-munjeong.webp',
@@ -40,7 +40,7 @@ const stories = [
   {
     id: 'seoul-jamsil',
     topic: '손님이 남긴 고마움',
-    heading: <>맛있는 치킨을 팔아줘서<br />고맙다는 손님</>,
+    heading: <>우리 동네에 열어줘서<br />고맙다는 후기가 달렸습니다.</>,
     quote: '맛있는 치킨 팔아 주셔서 감사합니다라는 후기를 볼 때가 가장 좋고요.',
     branch: '서울잠실점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-jamsil.webp',
