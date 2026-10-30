@@ -58,7 +58,7 @@ export default function RebrandCustomerProof() {
 
   return <section className="customer-proof" id="rebrand-customer-proof" aria-labelledby="customer-proof-title">
     <div className="customer-proof__inner">
-      <h2 id="customer-proof-title">왜 닭장수를 <em>선택할까요?</em></h2>
+      <h2 id="customer-proof-title">손님들은 왜<br /><em>닭장수를 선택했을까요?</em></h2>
       <div className="customer-proof__layout">
         <figure className="customer-proof__product">
           <img
