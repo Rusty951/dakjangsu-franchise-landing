@@ -26,9 +26,23 @@
 .owner-proof__byline { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 22px; }
 .owner-proof__byline img { width: 52px; height: 52px; object-fit: cover; border: 2px solid #e3cbb4; border-radius: 50%; }
 .owner-proof__branch { font: 800 14px/1.68 'Owner Review Bold', var(--font-sans); }
-.rebrand-page .owner-proof__byline a { display: block; width: fit-content; margin-top: 5px; color: #756453; font: 400 12px/1.68 var(--font-sans); text-decoration: none; }
+.rebrand-page .owner-proof__watch { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; border: 0; background: none; color: #6b4f40; font: 600 13px/1.4 var(--font-sans); cursor: pointer; }
+.owner-proof__watch span { color: #b64826; font-size: 10px; }
+.owner-proof__watch:hover { text-decoration: underline; text-underline-offset: 3px; }
 .owner-proof__controls { display: none; }
-.owner-proof__cards:focus-visible, .owner-proof__byline a:focus-visible, .owner-proof__controls button:focus-visible { outline: 3px solid #ef946b; outline-offset: 4px; }
+.owner-proof__cards:focus-visible, .owner-proof__watch:focus-visible, .owner-proof__controls button:focus-visible { outline: 3px solid #ef946b; outline-offset: 4px; }
+
+.rebrand-page .owner-proof__dialog { box-sizing: border-box; width: min(860px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; overflow: auto; border: 1px solid #796452; border-radius: 16px; background: #241f1b; color: #f7efe4; }
+.owner-proof__dialog::backdrop { background: rgba(0, 0, 0, .76); }
+.owner-proof__dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 14px 20px; }
+.rebrand-page .owner-proof__dialog-header h3 { margin: 0; font: 700 18px/1.4 var(--font-sans); }
+.owner-proof__dialog-close { display: grid; flex: 0 0 44px; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #a78f7c; border-radius: 50%; background: transparent; color: #f7efe4; font: 400 28px/1 var(--font-sans); cursor: pointer; }
+.owner-proof__video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.owner-proof__video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.owner-proof__dialog-footer { padding: 14px 20px 18px; }
+.rebrand-page .owner-proof__dialog-footer a { display: inline-flex; align-items: center; min-height: 44px; color: #f7efe4; font: 500 14px/1.4 var(--font-sans); text-decoration: underline; text-underline-offset: 4px; }
+.owner-proof__dialog :is(button, a):focus-visible { outline: 3px solid #ef946b; outline-offset: 4px; }
+.owner-proof__sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 1100px) and (min-width: 801px) {
   .rebrand-page .owner-proof { padding-inline: 40px; }

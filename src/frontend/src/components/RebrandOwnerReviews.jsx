@@ -42,13 +42,63 @@ const stories = [
   },
 ];
 
+function OwnerInterviewDialog({ story, onClose, openerRef }) {
+  const dialogRef = useRef(null);
+  const closeRef = useRef(null);
+  const video = new URL(story.video);
+  const videoId = video.searchParams.get('v');
+  const start = Number.parseInt(video.searchParams.get('t'), 10) || 0;
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    const opener = openerRef.current;
+    dialog.showModal();
+    closeRef.current?.focus();
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
+    };
+  }, [openerRef]);
+
+  return <dialog
+    ref={dialogRef}
+    className="owner-proof__dialog"
+    aria-labelledby="owner-interview-dialog-title"
+    onCancel={event => { event.preventDefault(); onClose(); }}
+    onClick={event => { if (event.target === event.currentTarget) onClose(); }}
+  >
+    <div className="owner-proof__dialog-header">
+      <h3 id="owner-interview-dialog-title">{story.branch} 인터뷰</h3>
+      <button ref={closeRef} className="owner-proof__dialog-close" type="button" onClick={onClose} aria-label="인터뷰 닫기">×</button>
+    </div>
+    <div className="owner-proof__video">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&start=${start}`}
+        title={`${story.branch} 인터뷰`}
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
+    </div>
+    <div className="owner-proof__dialog-footer">
+      <a href={story.video} target="_blank" rel="noopener noreferrer">유튜브에서 보기 <span aria-hidden="true">↗</span><span className="owner-proof__sr-only">, 새 창</span></a>
+    </div>
+  </dialog>;
+}
+
 export default function RebrandOwnerReviews() {
   const sectionRef = useRef(null);
   const listRef = useRef(null);
+  const openerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedStory, setSelectedStory] = useState(null);
 
   useEffect(() => {
-    if (window.location.hash !== '#rebrand-owner-reviews') return;
+    if (!['#rebrand-owner-reviews', '#rebrand-owner-stories'].includes(window.location.hash)) return;
     let cancelled = false;
     let firstFrame;
     let secondFrame;
@@ -109,7 +159,7 @@ export default function RebrandOwnerReviews() {
   };
 
   return <section className="owner-proof" id="rebrand-owner-reviews" ref={sectionRef} aria-labelledby="owner-proof-title">
-    <div className="owner-proof__inner">
+    <div className="owner-proof__inner" id="rebrand-owner-stories">
       <header className="owner-proof__heading">
         <p>실제 점주 인터뷰</p>
         <h2 id="owner-proof-title">사장님들은 왜<br /><em>닭장수를 선택했을까요?</em></h2>
@@ -121,7 +171,7 @@ export default function RebrandOwnerReviews() {
           <blockquote className="owner-proof__quote" cite={story.video}>“{story.quote}”</blockquote>
           <div className="owner-proof__byline">
             <img src={assetPath(story.profile)} alt="" width="52" height="52" loading="lazy" decoding="async" />
-            <div><span className="owner-proof__branch">{story.branch}</span><a href={story.video} target="_blank" rel="noopener noreferrer" aria-label={`${story.branch} 인터뷰 보기, 새 창`}>인터뷰 보기 <span aria-hidden="true">↗</span></a></div>
+            <div><span className="owner-proof__branch">{story.branch}</span><button className="owner-proof__watch" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기`} onClick={event => { openerRef.current = event.currentTarget; setSelectedStory(story); }}>인터뷰 보기 <span aria-hidden="true">▶</span></button></div>
           </div>
         </li>)}
       </ul>
@@ -133,5 +183,6 @@ export default function RebrandOwnerReviews() {
         <button type="button" aria-label="다음 이야기" aria-controls="owner-proof-cards" disabled={activeIndex === stories.length - 1} onClick={() => selectStory(activeIndex + 1)}><span aria-hidden="true">→</span></button>
       </div>
     </div>
+    {selectedStory && <OwnerInterviewDialog story={selectedStory} openerRef={openerRef} onClose={() => setSelectedStory(null)} />}
   </section>;
 }

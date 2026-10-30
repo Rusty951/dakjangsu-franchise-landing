@@ -1,5 +1,4 @@
 import './RebrandClosing.css';
-import RebrandOwnerStories from './RebrandOwnerStories';
 import RebrandOwnerReviews from './RebrandOwnerReviews';
 import RebrandCustomerProof from './RebrandCustomerProof';
 
@@ -13,7 +12,6 @@ export default function RebrandClosing({ conditionsRef }) {
   return <>
     <RebrandCustomerProof />
     <RebrandOwnerReviews />
-    <RebrandOwnerStories />
 
     <section className="rebrand-closing-faq" id="rebrand-faq" aria-labelledby="faq-title">
       <div className="rebrand-closing-faq-grid">

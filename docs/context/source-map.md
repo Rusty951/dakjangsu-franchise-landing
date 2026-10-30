@@ -6,7 +6,7 @@
 - 첫 손동작: `JangsuHeroMotion.jsx`, `utils/heroGreeting.mjs`, `utils/heroGestureRenderer.js`
 - 매장 시안: `RebrandSpaces.jsx`
 - 고객 리뷰와 시그니처 실사: `RebrandCustomerProof.jsx`, [리뷰 입력 근거](customer-reviews.md)
-- 점주 인터뷰: `RebrandOwnerStories.jsx`
+- 점주 후기와 인터뷰 재생: `RebrandOwnerReviews.jsx`
 - FAQ: `RebrandClosing.jsx`
 - 상담: `LeadCapture.jsx`, `RebrandContactActions.jsx`
 - 하단 링크: `SiteFooter.jsx`
