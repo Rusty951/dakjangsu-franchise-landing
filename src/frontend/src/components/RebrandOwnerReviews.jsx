@@ -179,10 +179,6 @@ export default function RebrandOwnerReviews() {
       </header>
       <ul className="owner-proof__cards" id="owner-proof-cards" ref={listRef} role="list" tabIndex={0} aria-label="점주 네 분의 선택 이유" onScroll={updateActiveStory} onKeyDown={handleKeyDown}>
         {stories.map((story, index) => <li className="owner-proof__card" key={story.id}>
-          <button className="owner-proof__poster" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기: ${story.posterLabel}`} onClick={event => openInterview(event, story)}>
-            <img src={assetPath(story.poster)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
-            <span className="owner-proof__poster-play" aria-hidden="true">▶</span>
-          </button>
           <p className="owner-proof__topic"><span>{String(index + 1).padStart(2, '0')}</span><span>{story.topic}</span></p>
           <h3>{story.heading}</h3>
           <blockquote className="owner-proof__quote" cite={story.video}>“{story.quote}”</blockquote>
@@ -190,6 +186,10 @@ export default function RebrandOwnerReviews() {
             <img src={assetPath(story.profile)} alt="" width="52" height="52" loading="lazy" decoding="async" />
             <div><span className="owner-proof__branch">{story.branch}</span><button className="owner-proof__watch" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기`} onClick={event => openInterview(event, story)}>인터뷰 보기 <span aria-hidden="true">▶</span></button></div>
           </div>
+          <button className="owner-proof__poster" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기: ${story.posterLabel}`} onClick={event => openInterview(event, story)}>
+            <img src={assetPath(story.poster)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+            <span className="owner-proof__poster-play" aria-hidden="true">▶</span>
+          </button>
         </li>)}
       </ul>
       <div className="owner-proof__controls" aria-label="점주 이야기 넘기기">
