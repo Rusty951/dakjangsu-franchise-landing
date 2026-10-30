@@ -6,43 +6,39 @@ import './RebrandOwnerReviews.css';
 const stories = [
   {
     id: 'gangnam-segok',
-    topic: '먹어본 맛',
-    heading: <>다음 날 먹어도<br />맛있어서.</>,
-    quote: '너무 맛있어가지고 한번 해봐야 되겠다는 생각을 가지게 된 것 같아요.',
-    description: <>지인이 운영하던 매장에서 알게 된 닭장수.<br />다음 날 먹은 후라이드 맛이<br />시작의 계기가 됐습니다.</>,
+    topic: '입소문',
+    heading: <>지인의 장사가 잘되는 걸 보고,<br />저도 시작했습니다.</>,
+    quote: '지인이 먼저 시작을 해서 체인점을 알게 됐고요.',
     branch: '강남세곡점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/gangnam-segok.webp',
     video: 'https://www.youtube.com/watch?v=tYAbjFWqiJU&t=6s',
   },
   {
     id: 'bucheon-jungdong',
-    topic: '감당할 수 있는 운영',
-    heading: <>이 정도 규모라면<br />혼자서도.</>,
+    topic: '매장 운영',
+    heading: <>이 정도 규모라면<br />혼자서도 해볼 수 있겠다</>,
     quote: '이건 나 혼자 해도 되겠다는 생각이 드는 거예요.',
-    description: <>넓은 식당의 인건비와 사람 관리가<br />부담이었던 사장님.<br />아담한 매장을 보고 가능성을 봤습니다.</>,
     branch: '부천중동점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/bucheon-jungdong.webp',
     video: 'https://www.youtube.com/watch?v=LtWcQBXPlDo&t=24s',
   },
   {
     id: 'seoul-munjeong',
-    topic: '직접 먹고 내린 결정',
-    heading: <>먹어보고<br />마음을 정했습니다.</>,
+    topic: '후라이드 맛',
+    heading: <>직접 먹어보고<br />가맹을 결심한 후라이드</>,
     quote: '근처 세곡점 가서 맛있게 먹고 나서 닭장수를 해야겠다는 결심을 하게 되었습니다.',
-    description: <>후라이드가 맛있는 브랜드를 찾다가<br />세곡점에 직접 방문해 먹어본 뒤<br />닭장수를 선택했습니다.</>,
     branch: '서울문정점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-munjeong.webp',
     video: 'https://www.youtube.com/watch?v=v6ybPKjfPf8&t=24s',
   },
   {
     id: 'seoul-jamsil',
-    topic: '운영 후 다시 선택',
-    heading: <>두 번째 매장도<br />닭장수로.</>,
-    quote: '고객들도 계속 늘어나고 하다 보니까 욕심이 좀 생기더라고요.',
-    description: <>첫 매장에서 고객과 단골이 늘어나는<br />경험을 한 뒤,<br />두 번째 매장을 열었습니다.</>,
+    topic: '단골',
+    heading: <>맛있는 치킨을 팔아줘서<br />고맙다는 손님</>,
+    quote: '맛있는 치킨 팔아 주셔서 감사합니다라는 후기를 볼 때가 가장 좋고요.',
     branch: '서울잠실점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-jamsil.webp',
-    video: 'https://www.youtube.com/watch?v=E1pr_LIQv-k&t=6s',
+    video: 'https://www.youtube.com/watch?v=E1pr_LIQv-k&t=120s',
   },
 ];
 
@@ -123,7 +119,6 @@ export default function RebrandOwnerReviews() {
           <p className="owner-proof__topic"><span>{String(index + 1).padStart(2, '0')}</span><span>{story.topic}</span></p>
           <h3>{story.heading}</h3>
           <blockquote className="owner-proof__quote" cite={story.video}>“{story.quote}”</blockquote>
-          <p className="owner-proof__context">{story.description}</p>
           <div className="owner-proof__byline">
             <img src={assetPath(story.profile)} alt="" width="52" height="52" loading="lazy" decoding="async" />
             <div><span className="owner-proof__branch">{story.branch}</span><a href={story.video} target="_blank" rel="noopener noreferrer" aria-label={`${story.branch} 인터뷰 보기, 새 창`}>인터뷰 보기 <span aria-hidden="true">↗</span></a></div>
