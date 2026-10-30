@@ -11,6 +11,8 @@ const stories = [
     quote: '지인이 먼저 시작을 해서 체인점을 알게 됐고요.',
     branch: '강남세곡점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/gangnam-segok.webp',
+    poster: '/rebrand/owner-posters/eo-illustration-v1/gangnam-segok.webp',
+    posterLabel: '분식집 10년, 치킨집으로 바꾼 이유',
     video: 'https://www.youtube.com/watch?v=tYAbjFWqiJU&t=6s',
   },
   {
@@ -20,6 +22,8 @@ const stories = [
     quote: '이건 나 혼자 해도 되겠다는 생각이 드는 거예요.',
     branch: '부천중동점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/bucheon-jungdong.webp',
+    poster: '/rebrand/owner-posters/eo-illustration-v1/bucheon-jungdong.webp',
+    posterLabel: '이건 혼자서도 하겠는데?',
     video: 'https://www.youtube.com/watch?v=LtWcQBXPlDo&t=24s',
   },
   {
@@ -29,6 +33,8 @@ const stories = [
     quote: '근처 세곡점 가서 맛있게 먹고 나서 닭장수를 해야겠다는 결심을 하게 되었습니다.',
     branch: '서울문정점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-munjeong.webp',
+    poster: '/rebrand/owner-posters/eo-illustration-v1/seoul-munjeong.webp',
+    posterLabel: '1층은 치킨집, 5층은 우리 집',
     video: 'https://www.youtube.com/watch?v=v6ybPKjfPf8&t=24s',
   },
   {
@@ -38,6 +44,8 @@ const stories = [
     quote: '맛있는 치킨 팔아 주셔서 감사합니다라는 후기를 볼 때가 가장 좋고요.',
     branch: '서울잠실점 점주',
     profile: '/rebrand/owner-profiles/3d-v1/seoul-jamsil.webp',
+    poster: '/rebrand/owner-posters/eo-illustration-v1/seoul-jamsil.webp',
+    posterLabel: '왜 두 번째도 닭장수였을까?',
     video: 'https://www.youtube.com/watch?v=E1pr_LIQv-k&t=120s',
   },
 ];
@@ -96,6 +104,11 @@ export default function RebrandOwnerReviews() {
   const openerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedStory, setSelectedStory] = useState(null);
+
+  const openInterview = (event, story) => {
+    openerRef.current = event.currentTarget;
+    setSelectedStory(story);
+  };
 
   useEffect(() => {
     if (!['#rebrand-owner-reviews', '#rebrand-owner-stories'].includes(window.location.hash)) return;
@@ -166,12 +179,16 @@ export default function RebrandOwnerReviews() {
       </header>
       <ul className="owner-proof__cards" id="owner-proof-cards" ref={listRef} role="list" tabIndex={0} aria-label="점주 네 분의 선택 이유" onScroll={updateActiveStory} onKeyDown={handleKeyDown}>
         {stories.map((story, index) => <li className="owner-proof__card" key={story.id}>
+          <button className="owner-proof__poster" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기: ${story.posterLabel}`} onClick={event => openInterview(event, story)}>
+            <img src={assetPath(story.poster)} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+            <span className="owner-proof__poster-play" aria-hidden="true">▶</span>
+          </button>
           <p className="owner-proof__topic"><span>{String(index + 1).padStart(2, '0')}</span><span>{story.topic}</span></p>
           <h3>{story.heading}</h3>
           <blockquote className="owner-proof__quote" cite={story.video}>“{story.quote}”</blockquote>
           <div className="owner-proof__byline">
             <img src={assetPath(story.profile)} alt="" width="52" height="52" loading="lazy" decoding="async" />
-            <div><span className="owner-proof__branch">{story.branch}</span><button className="owner-proof__watch" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기`} onClick={event => { openerRef.current = event.currentTarget; setSelectedStory(story); }}>인터뷰 보기 <span aria-hidden="true">▶</span></button></div>
+            <div><span className="owner-proof__branch">{story.branch}</span><button className="owner-proof__watch" type="button" aria-haspopup="dialog" aria-label={`${story.branch} 인터뷰 보기`} onClick={event => openInterview(event, story)}>인터뷰 보기 <span aria-hidden="true">▶</span></button></div>
           </div>
         </li>)}
       </ul>
