@@ -15,7 +15,7 @@
 .customer-proof__inner { max-width: 1512px; margin-inline: auto; }
 .rebrand-page .customer-proof h2 {
   margin: 0 0 clamp(32px, 3.3vw, 48px);
-  font: 400 clamp(40px, 5.4vw, 82px)/1.15 var(--font-display);
+  font: 400 clamp(40px, 5.4vw, 60px)/1.2 var(--font-display);
   letter-spacing: -.045em;
   text-align: center;
   word-break: keep-all;
@@ -141,10 +141,11 @@
   .customer-proof__dots button[aria-current='true'] span { background: #b64826; }
   .customer-proof__controls button:focus-visible { outline: 3px solid #b64826; outline-offset: 3px; }
 }
+@media (max-width: 800px) {
+  .rebrand-page .customer-proof h2 { font-size: clamp(28px, 8.6vw, 34px); }
+}
 @media (max-width: 480px) {
   .rebrand-page .customer-proof { padding: 36px 20px 28px; }
-  .rebrand-page .customer-proof h2 { font-size: clamp(32px, 8.6vw, 40px); }
-  .customer-proof h2 em { display: block; }
   .rebrand-page .customer-proof__product { width: 82%; margin-bottom: 14px; }
   .customer-proof__product figcaption { font-size: 42px; }
   .customer-proof__card { min-height: 158px; padding-inline: 22px; }
