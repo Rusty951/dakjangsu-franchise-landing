@@ -2,14 +2,15 @@ import { useRef, useState } from 'react';
 import { assetPath } from '../assetPath';
 import './RebrandCustomerProof.css';
 
-// Verbatim excerpts. Attribution and source context are recorded in docs/context/customer-reviews.md.
+// Excerpts keep the original wording; one typo was fixed at the owner's request.
+// Attribution and source context are recorded in docs/context/customer-reviews.md.
 const reviews = [
-  { id: 'returning', branch: '읍내점', author: 'Ki**', before: '후라이드 치킨은 ', emphasis: '짱인것같아여', after: ' 진짜 너무 바삭하고 맛있아요~', source: '1111843021' },
-  { id: 'old-style-best', branch: '대산점', author: '별명**', before: '', emphasis: '옛날통닭의 최고봉~^^', after: '', source: '1465534943' },
-  { id: 'thin-batter', branch: '성연점', author: '멜로**', before: '기본 치킨 튀김옷이 ', emphasis: '얇아서 고소담백하니', after: ' 넘 맛있어요!!', source: '1326884566' },
-  { id: 'life-chicken', branch: '성연점', author: 'ye**', before: '', emphasis: '인생 치킨 등극..!', after: '', source: '1326884566' },
-  { id: 'fried-only', branch: '성연점', author: 'pi**', before: '항상 후라이드는 ', emphasis: '여기서만 포장해요.', after: '', source: '1326884566' },
-  { id: 'family', branch: '해미점', author: '행복**', before: '튀김 옷이 두껍지 않아서 담백해 ', emphasis: '부모님이 좋아하세요~', after: '', source: '1315902974' },
+  { id: 'thin-batter', branch: '잠실점', author: '돌돌**', before: '후라이드는 ', emphasis: '튀김이 얇아서 진짜 바삭해요!!', after: ' 후라이드맛집 인정!', source: '1418123469' },
+  { id: 'neighborhood-dinner', branch: '안양비산점', author: '빈스**', before: '단지 안에 이런 치킨집 있으면 ', emphasis: '진짜 행복한 저녁', after: '🍗', source: '2090567902' },
+  { id: 'no-sauce', branch: '천안역점', author: '삐삐**', before: '닭장수후라이드 처음 먹어보는데 ', emphasis: '양념없이 먹어도 맛있어요', after: '', source: '2089676023' },
+  { id: 'mom-approved', branch: '탕정점', author: '댕댕**', before: '속살은 촉촉하고 담백해서, ', emphasis: '엄마도 한 입 드시고 고개 끄덕끄덕', after: ' 😄', source: '1319306715' },
+  { id: 'rare-crisp', branch: '봉명점', author: '낭구**', before: '염지된 후라이드도 드문데 ', emphasis: '바삭하기까지 해서', after: ' 너무 맛있게 잘 먹었어요', source: '1629419116' },
+  { id: 'clean-oil', branch: '한솔점', author: '산으**', before: '', emphasis: '깨끗한 기름으로 튀긴 후라이드', after: ' 손으로 짝짝찢어 소금에 찍어 먹으니 맛이나네요', source: '1131300020' },
 ];
 
 export default function RebrandCustomerProof() {
