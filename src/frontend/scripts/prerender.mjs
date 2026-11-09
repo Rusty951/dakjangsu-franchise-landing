@@ -16,12 +16,14 @@ const [{ render }, template] = await Promise.all([
 ]);
 
 const appHtml = render().replace(/<link rel="preload" as="image" href="[^"]+"(?: fetchPriority="high")?\/>/g, '');
+// The old hero's image preload is unused by the rebrand page in every mode.
+const sharedTemplate = applyRebrandShareMeta(template)
+  .replace(/<link rel="preload"[^>]+as="image"[^>]*>/g, '');
 const reviewTemplate = process.env.VITE_REVIEW_ONLY === 'true'
-  ? applyRebrandShareMeta(template)
+  ? sharedTemplate
     .replace(/<meta name="robots"[^>]+>/, '<meta name="robots" content="noindex,nofollow" />')
-    .replace(/<link rel="preload"[^>]+as="image"[^>]*>/g, '')
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
-  : template;
+  : sharedTemplate;
 const prerenderedHtml = reviewTemplate.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 
 await writeFile(indexPath, prerenderedHtml);

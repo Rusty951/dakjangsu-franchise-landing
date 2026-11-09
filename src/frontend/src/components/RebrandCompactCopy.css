@@ -93,3 +93,16 @@
   .rebrand-page .customer-proof__dots button,
   .rebrand-page .owner-proof__dots button { width: 42px; min-width: 42px; }
 }
+
+/* Brand promise (confirmed 2026-11-07) sits under the signature fried caption. */
+.rebrand-page .customer-proof__product figcaption .customer-proof__promise {
+  display: block;
+  margin-top: 10px;
+  color: #b64826;
+  font: 700 18px/1.4 var(--font-sans);
+  letter-spacing: -.01em;
+  white-space: normal;
+}
+@media (max-width: 700px) {
+  .rebrand-page .customer-proof__product figcaption .customer-proof__promise { margin-top: 6px; font-size: 16px; }
+}

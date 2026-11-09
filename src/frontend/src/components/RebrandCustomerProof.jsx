@@ -70,7 +70,7 @@ export default function RebrandCustomerProof() {
             loading="lazy"
             decoding="async"
           />
-          <figcaption>시그니처 후라이드</figcaption>
+          <figcaption>시그니처 후라이드<span className="customer-proof__promise">후라이드는 대충하지 않습니다.</span></figcaption>
         </figure>
         <ul
           className="customer-proof__reviews"

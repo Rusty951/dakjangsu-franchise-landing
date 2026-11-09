@@ -21,7 +21,9 @@ Studio의 이전 독립 이력 원본은 `/Users/bananabk/Documents/Projects/dak
 
 검토 사이트: https://dakjangsu-client-sample-inky.vercel.app/?concept=rebrand
 
-혜택의 적용 조건은 확인 중입니다. 공개 문구의 수치와 조건은 임의로 확정하지 않습니다.
+2026-11-09 송 대표 컨펌으로 지원 조건 문구를 확정했습니다. 공개 문구의 수치와 조건은 본사 확인 없이 바꾸지 않습니다.
+
+주소에 `?concept=` 값이 없으면 운영과 검토 빌드 모두 리브랜딩 화면을 보여줍니다. 이전 랜딩은 Vercel의 이전 배포본으로 되돌릴 수 있습니다.
 
 ## 실행과 검증
 
@@ -47,6 +49,8 @@ React UI와 현재 GA/Meta 브라우저 추적, Resend 상담 API는 이 저장�
 ## 배포
 
 Vercel Root Directory는 저장소 루트, build command는 `npm run vercel-build`, output은 `src/frontend/dist`입니다. Git push 자동 배포는 꺼져 있으며 배포는 명시적 요청에 따라 CLI로 실행합니다.
+
+공식 사이트 `dakjangsu-franchise.com`은 이 컴퓨터의 Vercel 계정(`rusty951s-projects`)에 연결돼 있지 않습니다. 공식 배포는 도메인이 연결된 계정과 프로젝트에서 실행합니다. 운영 배포는 `VITE_REVIEW_ONLY`를 넣지 않고, `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `VITE_GA_MEASUREMENT_ID`, `VITE_META_PIXEL_ID`가 그 프로젝트에 있는지 먼저 확인합니다. 배포 후 테스트 상담 1건으로 메일 수신과 `Lead` 이벤트를 확인합니다.
 
 샘플 프로젝트는 `dakjangsu-client-sample`입니다. 빌드와 함수 실행 환경 모두 `VITE_REVIEW_ONLY=true`를 유지합니다. 검토 모드에서는 검색 색인을 막고 분석 스크립트와 실제 상담 전송을 비활성화합니다.
 

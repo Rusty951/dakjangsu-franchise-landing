@@ -36,7 +36,7 @@ function App() {
     typeof window !== 'undefined'
       ? new URLSearchParams(window.location.search)
       : new URLSearchParams();
-  const concept = searchParams.get('concept') || (import.meta.env.VITE_REVIEW_ONLY === 'true' ? 'rebrand' : null);
+  const concept = searchParams.get('concept') || 'rebrand';
   const isPopArtConcept = concept === 'popart';
   const isStreetHeroConcept = concept === 'street';
   const isCharacterHeroConcept = concept === 'character';

@@ -28,11 +28,11 @@ const mobileFrames = [
   [73, 44, 35], [85, 30, -2], [18, 26, -2], [85, 30, -2], [18, 26, -2], [85, 30, -2], [78, 46, 20],
 ];
 const benefits = [
-  { id: 'fee', label: ['가맹비와 교육비부터', '줄이고 시작하세요.'], amount: '440', unit: '만원', title: '전액 면제안', compactFacts: '가맹비 275 / 교육비 165만원', note: '부가세 포함, 적용 조건 확인 중' },
+  { id: 'fee', label: ['가맹비와 교육비부터', '줄이고 시작하세요.'], amount: '440', unit: '만원', title: '전액 면제안', compactFacts: '가맹비 275 / 교육비 165만원', note: '부가세 포함, 조건 충족 시 적용' },
   { id: 'opening', label: ['문을 여는 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당', facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']] },
-  { id: 'kitchen', label: ['냉장고와 튀김기,', '주방 준비에 보태세요.'], amount: '500', unit: '만원 상당', compactFacts: '간냉식 냉장고 300 / 튀김기 200만원 상당', note: '조건 충족 매장 중 선착순 5개점 지원 검토 중' },
-  { id: 'royalty', label: ['첫 2년,', '로열티 부담을 덜어보세요.'], amount: '0', unit: '원', prefix: '로열티', title: '면제안', note: '최초 계약 2년간, 적용 조건 확인 중' },
-  { id: 'growth', label: ['매출 기준을 채우면,', '물류대금도 줄여보세요.'], amount: '100', unit: '만원 크레딧', prefix: '월 최대', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], note: '다음 달 물류대금 차감, 지원 기간과 조건 확인 중' },
+  { id: 'kitchen', label: ['냉장고와 튀김기,', '주방 준비에 보태세요.'], amount: '500', unit: '만원 상당', compactFacts: '간냉식 냉장고 300 / 튀김기 200만원 상당', note: '조건 충족 매장 중 선착순 5개점 지원' },
+  { id: 'royalty', label: ['첫 2년,', '로열티 부담을 덜어보세요.'], amount: '0', unit: '원', prefix: '로열티', title: '면제안', note: '최초 계약 2년간, 조건 충족 시 면제' },
+  { id: 'growth', label: ['매출 기준을 채우면,', '물류대금도 줄여보세요.'], amount: '100', unit: '만원 크레딧', prefix: '월 최대', tiers: [{ sales: '3,000만원', credit: '30만원' }, { sales: '4,000만원', credit: '100만원' }], note: '다음 달 물류대금 차감, 세부 조건은 상담 안내' },
 ];
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 // Use the readable, flowing composition for narrow portrait and short viewports.

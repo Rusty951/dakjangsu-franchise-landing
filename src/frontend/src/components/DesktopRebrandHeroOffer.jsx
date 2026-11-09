@@ -28,7 +28,7 @@ export default function DesktopRebrandHeroOffer({ portrait = false, active = fal
       <div className="recruitment-notes">
         {portrait && parts}
         <p>월매출 가정: 첫 12개월 3,000만원,<br />다음 12개월 4,000만원.</p>
-        <p>지원 조건과 기간 확인 중<br />현금 지급액 아님</p>
+        <p>조건 충족 시 지원<br />현금 지급액 아님</p>
       </div>
       <section className="recruitment-zero" aria-label="가맹비와 교육비, 첫 2년 로열티 면제 조건">
         <p className="recruitment-support-label">조건 충족 시 면제</p>
