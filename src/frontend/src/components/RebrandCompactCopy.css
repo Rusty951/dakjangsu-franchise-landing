@@ -65,3 +65,31 @@
 @media (max-width: 700px) {
   .rebrand-page .consultation-host--compact img { width: 100%; height: clamp(300px, 82vw, 400px); }
 }
+
+/* 2026-11-09 final review fixes. */
+/* The recruitment poster is inert while the intro plays, so its button stays hidden until it can be used. */
+.dks-hero-frame:not([data-motion='static']) .dks-hero-recruitment .dks-condition-button { visibility: hidden; }
+
+/* Desktop sections start from the same gutter as the FAQ and consultation. */
+@media (min-width: 1025px) {
+  .rebrand-page .owner-proof { padding-inline: var(--layout-gutter); }
+  .rebrand-page .site-footer .footer-inner { width: calc(100% - 2 * var(--layout-gutter)); max-width: none; }
+}
+
+/* Mobile reading floor: consent, sources and condition status stay at 14px. */
+@media (max-width: 700px) {
+  .rebrand-page .consultation-consent,
+  .rebrand-page .consultation-consent-check,
+  .rebrand-page .consultation-form-card .consultation-privacy-link,
+  .rebrand-page .customer-proof__attribution,
+  .rebrand-page .customer-proof__branch,
+  .rebrand-page .owner-proof__watch,
+  .rebrand-page .rebrand-support-terms > summary small { font-size: 14px; line-height: 1.5; }
+  .rebrand-page .consultation-field > span > em { font-size: 12px; }
+}
+
+/* Carousel dots keep a near-full touch width while the row still fits 350px. */
+@media (max-width: 1024px) {
+  .rebrand-page .customer-proof__dots button,
+  .rebrand-page .owner-proof__dots button { width: 42px; min-width: 42px; }
+}

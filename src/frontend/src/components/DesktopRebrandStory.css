@@ -1,7 +1,7 @@
 /* Desktop-only story. Its selectors never target the existing mobile chapters. */
 @media (min-width: 1025px) {
   .dks-desktop-story { position: relative; font-family: var(--font-sans); background: #241f1b; color: #f7efe4; }
-  .dks-desktop-story .dks-scene { position: relative; min-height: calc(100svh - var(--rebrand-header-height)); padding: 24px clamp(32px, 3.5vw, 80px) 100px; display: grid; align-items: center; scroll-margin-top: var(--rebrand-header-height); overflow: clip; }
+  .dks-desktop-story .dks-scene { position: relative; min-height: calc(100svh - var(--rebrand-header-height)); padding: 24px var(--layout-gutter, clamp(32px, 5vw, 80px)) 100px; display: grid; align-items: center; scroll-margin-top: var(--rebrand-header-height); overflow: clip; }
   .dks-desktop-story .dks-scene--brand, .dks-desktop-story .dks-scene--kitchen { background: #d86535; color: #241f1b; }
   .dks-desktop-story .dks-index { margin: 0 0 24px; font: 750 16px/1.4 var(--font-sans); }
   .dks-desktop-story .dks-condition-button { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: min(100%, 340px); min-height: 52px; margin-top: 28px; padding: 12px 20px; background: #f7efe4; color: #241f1b; border: 1px solid transparent; border-radius: 8px; font: 800 18px/1.35 var(--font-sans); text-decoration: none; }
@@ -109,7 +109,7 @@
   .dks-desktop-story .dks-progress button:hover { background: #e9dfd2; }
   .dks-desktop-story .dks-progress button:focus-visible { outline: 3px solid #a74321; outline-offset: -5px; }
   @keyframes dks-support-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  @media (max-height: 820px) {
+  @media (max-height: 940px) {
     .dks-desktop-story .dks-support { --dks-support-height: calc(100svh - 180px); }
     .dks-desktop-story .dks-scene:is(.dks-scene--opening, .dks-scene--kitchen, .dks-scene--growth) { padding-top: 16px; }
     .dks-desktop-story .dks-support .dks-index { margin-bottom: 8px; }
