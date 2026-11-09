@@ -52,3 +52,16 @@
   }
   .rebrand-page .lead-capture-section--compact-copy .consultation-intro h2 > span { white-space: nowrap; }
 }
+
+/* The closing host is the last character moment, so it stays large on every screen. */
+.rebrand-page .consultation-host--compact img {
+  width: min(100%, 520px);
+  height: clamp(400px, 56svh, 540px);
+  max-height: none;
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .rebrand-page .consultation-host--compact img { width: min(100%, 340px); height: 440px; }
+}
+@media (max-width: 700px) {
+  .rebrand-page .consultation-host--compact img { width: 100%; height: clamp(300px, 82vw, 400px); }
+}
