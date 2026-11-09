@@ -74,18 +74,18 @@ const SiteFooter = ({ socialLinks = {}, onPrivacyClick }) => {
             <p className="footer-company-name">주식회사 주완푸드</p>
             <div className="footer-company-info">
               <p>
-                <a className="footer-phone" href="tel:15882287">대표번호 : 1588-2287</a>
-                <span>팩스 : 02-6954-2217</span>
+                <a className="footer-phone" href="tel:15882287">대표번호: 1588-2287</a>
+                <span>팩스: 02-6954-2217</span>
               </p>
-              <p className="footer-company-address"><span>(04726) 서울특별시 성동구 금호산길 60 3층</span><span className="footer-address-divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span>대표자 : 송민화</span></p>
-              <p>사업자등록번호 : 646-88-01502</p>
+              <p className="footer-company-address"><span>(04726) 서울특별시 성동구 금호산길 60 3층</span><span className="footer-address-divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span>대표자: 송민화</span></p>
+              <p>사업자등록번호: 646-88-01502</p>
             </div>
             {onPrivacyClick && (
               <button className="footer-policy-link" type="button" onClick={onPrivacyClick}>
                 개인정보처리방침
               </button>
             )}
-            <p className="footer-copyright">Copyright@2017 dakjangsu all rights reserved</p>
+            <p className="footer-copyright">Copyright © 2017 dakjangsu. All rights reserved.</p>
           </div>
           <div className="footer-social" aria-label="공식 채널 아이콘">
             {socialChannels.map((channel) => {
