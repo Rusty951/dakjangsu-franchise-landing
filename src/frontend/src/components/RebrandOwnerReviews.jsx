@@ -17,7 +17,7 @@ const stories = [
   },
   {
     id: 'bucheon-jungdong',
-    topic: '혼자 해볼 만한 운영',
+    topic: '아담한 매장이 준 확신',
     heading: <>일보다 사람 관리가<br />더 힘들었습니다.</>,
     quote: '이건 나 혼자 해도 되겠다는 생각이 드는 거예요.',
     branch: '부천중동점 점주',
