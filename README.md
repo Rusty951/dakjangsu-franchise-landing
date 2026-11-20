@@ -8,12 +8,12 @@
 
 | 컴퓨터 | 코드 정본 |
 | --- | --- |
-| Mac Studio | `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing` |
-| MacBook | `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing` |
+| Mac Studio | `/Users/bananabk/Documents/Projects/web-projects/dakjangsu-franchise-landing` |
+| MacBook | `/Users/bananabk/Documents/Projects/web-projects/dakjangsu-franchise-landing` |
 
 MacBook 경로는 사용자 전달 보고서의 2026-10-05 17:29 KST 확인 결과를 기준으로 하며, Studio에서 MacBook 파일시스템을 직접 점검한 것은 아닙니다.
 
-Studio의 이전 독립 이력 원본은 `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing-preserved-legacy-20261005`에 보존합니다. 현재 main에 없는 고유 문서·자료, 독립 로컬 설정과 stash 2개가 남아 있는 정리 예외이며, 정본이나 배포 소스로 사용하지 않습니다. 옛 이력이나 설정을 현재 정본에 자동으로 합치거나 덮어쓰지 않습니다.
+2026-10-05 기록에 따르면 당시 Studio의 독립 이력 원본은 `/Users/bananabk/Documents/Projects/dakjangsu-franchise-landing-preserved-legacy-20261005`에 보관했습니다. 당시 main에 없던 고유 문서·자료, 독립 로컬 설정과 stash 2개를 보존한 이력이며, 정본이나 배포 소스로 사용하지 않습니다. 옛 이력이나 설정을 현재 정본에 자동으로 합치거나 덮어쓰지 않습니다.
 
 ## 화면
 
