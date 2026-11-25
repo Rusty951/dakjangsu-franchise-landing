@@ -14,7 +14,7 @@ const offers = {
   kitchen: {
     title: '주방', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당',
     pose: '/rebrand/poses/kitchen-support-v1/04-rest.png',
-    facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']],
+    facts: [['65간냉식 냉장고', '300만원 상당'], ['2구 린나이 최신형 튀김기', '200만원 상당']],
     note: '20평 이상 기준',
   },
   operating: {
