@@ -15,6 +15,7 @@ const offers = {
     title: '주방', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당',
     pose: '/rebrand/poses/kitchen-support-v1/04-rest.png',
     facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']],
+    note: '20평 이상 기준',
   },
   operating: {
     title: '로열티', heading: ['첫 2년,', '로열티 면제안'], amount: '0', unit: '원',
@@ -78,6 +79,7 @@ export default function MobileSupportPanel({ kind, index, active, reducedMotion,
           {kind === 'growth' && <MobileSupportLift replay={replay} active={active} reducedMotion={reducedMotion} />}
         </div>
         {offer.facts && <dl className="mobile-support-facts" aria-label={kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${offer.title} 지원 구성`}>{offer.facts.map(([label, amount]) => <div key={label}><dt>{label}</dt><dd>{amount}</dd></div>)}</dl>}
+        {offer.note && <p className="mobile-support-note">{offer.note}</p>}
         <a className="mobile-support-link" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
     </article>

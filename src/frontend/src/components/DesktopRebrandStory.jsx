@@ -13,7 +13,7 @@ import { heroIntroTiming, heroOfferFrames, heroRecruitmentFrames } from '../util
 const chapters = ['닭장수', '입소문', '브랜드', '오픈', '주방', '물류'];
 const offers = [
   { kind: 'opening', heading: ['오픈 준비부터', '첫 홍보까지.'], amount: '740', unit: '만원 상당', pose: '/rebrand/poses/opening-package-v1/03-present.png', facts: [['가맹비와 교육비 면제', '440만원'], ['오픈행사 생닭 200수', '100만원 상당'], ['오픈 마케팅', '200만원 상당']] },
-  { kind: 'kitchen', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당', pose: '/rebrand/poses/kitchen-support-v1/04-rest.png', facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']] },
+  { kind: 'kitchen', heading: ['냉장고와 튀김기,', '준비에 보태세요.'], amount: '500', unit: '만원 상당', pose: '/rebrand/poses/kitchen-support-v1/04-rest.png', facts: [['간냉식 냉장고', '300만원 상당'], ['튀김기', '200만원 상당']], note: '20평 이상 기준' },
   { kind: 'growth', heading: ['매달 나가는', '물류비까지 지원.'], prefix: '월 최대', amount: '100', unit: '만원 크레딧', pose: '/rebrand/character-cutout.png', facts: [['월매출 3,000만원 이상', '월 30만원'], ['월매출 4,000만원 이상', '월 100만원']] },
 ];
 
@@ -135,6 +135,7 @@ function DesktopSupport({ offer, index, active, reducedMotion, onConditionsClick
         <h2 tabIndex={-1}>{offer.heading.map(line => <span key={line}>{line}</span>)}</h2>
         <p className="dks-support-amount">{offer.prefix && <span className="dks-amount-prefix">{offer.prefix}</span>}<b><SlotNumber key={replay} value={offer.amount} active={active && offer.kind !== 'growth'} reducedMotion={reducedMotion} delay={offer.kind === 'growth' ? 0 : 1} duration={offer.kind === 'growth' ? 1.6 : 1.06} /></b><span className="dks-unit">{offer.unit}</span></p>
         {offer.facts && <dl className="dks-facts" aria-label={offer.kind === 'growth' ? '월매출별 물류 크레딧 지원 기준' : `${chapters[index]} 지원 구성`}>{offer.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
+        {offer.note && <p className="dks-support-note">{offer.note}</p>}
         <a className="dks-condition-button" href="#rebrand-benefits" onClick={onConditionsClick}>지원 조건 확인하기 <span aria-hidden="true">↗</span></a>
       </div>
       {offer.kind === 'growth'

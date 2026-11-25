@@ -82,6 +82,7 @@
   .dks-desktop-story .dks-facts { margin: 12px 0 0; max-width: 520px; }
   .dks-desktop-story .dks-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 6px; font: 550 19px/1.45 var(--font-sans); }
   .dks-desktop-story .dks-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
+  .dks-desktop-story .dks-support-note { margin: 10px 0 0; font: 700 16px/1.4 var(--font-sans); opacity: .82; }
   .dks-desktop-story .dks-support--kitchen .dks-facts dd { transform: scale(calc(1 + var(--dks-cue, 0) * .12)); transform-origin: right center; }
 
   .dks-desktop-story .dks-lift { display: none; position: absolute; inset: 0; min-height: 0; pointer-events: none; }

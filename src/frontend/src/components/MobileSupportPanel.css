@@ -17,6 +17,7 @@
 .rebrand-page .compact-mobile-benefits .mobile-support-facts { margin: 16px 0 0; }
 .rebrand-page .compact-mobile-benefits .mobile-support-facts > div { display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; font: 550 16px/1.4 var(--font-sans); }
 .rebrand-page .compact-mobile-benefits .mobile-support-facts dd { margin: 0; font-weight: 800; white-space: nowrap; }
+.rebrand-page .compact-mobile-benefits .mobile-support-note { margin: 10px 0 0; font: 700 15px/1.4 var(--font-sans); opacity: .82; }
 .rebrand-page .compact-mobile-benefits .mobile-support-amount > .mobile-support-prefix { margin: 0 0 4px; }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--kitchen .mobile-support-hero { min-height: clamp(240px, 46svh, 450px); }
 .rebrand-page .compact-mobile-benefits .mobile-support-panel--operating .mobile-support-hero { min-height: clamp(300px, 58svh, 520px); }
