@@ -52,6 +52,8 @@ Vercel Root Directory는 저장소 루트, build command는 `npm run vercel-buil
 
 공식 사이트 `dakjangsu-franchise.com`은 이 컴퓨터의 Vercel 계정(`rusty951s-projects`)에 연결돼 있지 않습니다. 공식 배포는 도메인이 연결된 계정과 프로젝트에서 실행합니다. 운영 배포는 `VITE_REVIEW_ONLY`를 넣지 않고, `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `VITE_GA_MEASUREMENT_ID`, `VITE_META_PIXEL_ID`가 그 프로젝트에 있는지 먼저 확인합니다. 배포 후 테스트 상담 1건으로 메일 수신과 `Lead` 이벤트를 확인합니다.
 
+2026-11-25 기준 그 계정(`dakjangsu-s-projects`)은 맥 스튜디오 Vercel CLI에 로그인돼 있습니다. 맥 스튜디오 저장소의 `.vercel`은 샘플 프로젝트에 연결돼 있으므로 건드리지 않고, `/tmp`에 새로 clone한 뒤 `vercel link --project dakjangsu-franchise-landing-main-final --scope dakjangsu-s-projects`, `vercel deploy --prod`로 배포하고 임시 폴더를 지웁니다. link가 만드는 `.env.local`은 배포 전에 지웁니다.
+
 샘플 프로젝트는 `dakjangsu-client-sample`입니다. 빌드와 함수 실행 환경 모두 `VITE_REVIEW_ONLY=true`를 유지합니다. 검토 모드에서는 검색 색인을 막고 분석 스크립트와 실제 상담 전송을 비활성화합니다.
 
 ## 구조
