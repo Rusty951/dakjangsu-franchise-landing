@@ -49,6 +49,31 @@ const optionalLabels = [
   ['submitted_at', '제출 시각']
 ];
 
+// 제출 시각은 브라우저가 세계 표준시(ISO)로 보낸다. 본사가 바로 읽도록 메일에는 한국 시간으로 적는다.
+export const formatKoreanTime = (value) => {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime())) return value;
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: '2-digit',
+      hourCycle: 'h23'
+    })
+      .formatToParts(date)
+      .map(({ type, value: part }) => [type, part])
+  );
+  const hour = Number(parts.hour);
+  const period = hour < 12 ? '오전' : '오후';
+  const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+  return `${parts.year}-${parts.month}-${parts.day} ${period} ${hour12}:${parts.minute} (한국 시간)`;
+};
+
+const displayValue = (key, value) => (key === 'submitted_at' ? formatKoreanTime(value) : value);
+
 const normalizePhone = (phone) => phone.replace(/[^\d]/g, '');
 
 const escapeHtml = (value) =>
@@ -168,7 +193,7 @@ const buildPlainTextEmail = (lead) => {
 
   optionalLabels.forEach(([key, label]) => {
     if (lead[key]) {
-      lines.push(`${label}: ${lead[key]}`);
+      lines.push(`${label}: ${displayValue(key, lead[key])}`);
     }
   });
 
@@ -184,7 +209,7 @@ const buildHtmlEmail = (lead) => {
     ['성함', lead.name],
     ['연락처', lead.phone],
     ['희망 지역', lead.region],
-    ...optionalLabels.filter(([key]) => lead[key]).map(([key, label]) => [label, lead[key]])
+    ...optionalLabels.filter(([key]) => lead[key]).map(([key, label]) => [label, displayValue(key, lead[key])])
   ];
 
   const tableRows = rows

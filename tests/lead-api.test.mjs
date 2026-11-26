@@ -84,13 +84,24 @@ test('valid production lead preserves attribution and escapes email markup', asy
     outbound = JSON.parse(options.body);
     return new Response(JSON.stringify({ id: 'offline-test-id' }), { status: 200 });
   });
-  const response = await request({ ...validLead, name: '<검수>', message: '<script>sample</script>', utm_source: 'test' });
+  const response = await request({ ...validLead, name: '<검수>', message: '<script>sample</script>', utm_source: 'test', submitted_at: '2026-11-26T04:39:21.462Z' });
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.ok, true);
   assert.deepEqual(outbound.to, ['qa@example.invalid']);
   assert.match(outbound.html, /&lt;script&gt;sample&lt;\/script&gt;/);
   assert.doesNotMatch(outbound.html, /<script>/);
   assert.match(outbound.text, /UTM source: test/);
+  assert.match(outbound.text, /제출 시각: 2026-11-26 오후 1:39 \(한국 시간\)/);
+  assert.match(outbound.html, /2026-11-26 오후 1:39 \(한국 시간\)/);
+  assert.doesNotMatch(outbound.html, /04:39:21/);
+});
+
+test('submission time is written in Korean time for the head office', async () => {
+  const { formatKoreanTime } = await import('../src/frontend/api/leads.js');
+  assert.equal(formatKoreanTime('2026-11-26T04:39:21.462Z'), '2026-11-26 오후 1:39 (한국 시간)');
+  assert.equal(formatKoreanTime('2026-11-26T15:05:00Z'), '2026-11-27 오전 12:05 (한국 시간)');
+  assert.equal(formatKoreanTime('2026-11-26T03:00:00Z'), '2026-11-26 오후 12:00 (한국 시간)');
+  assert.equal(formatKoreanTime('not a date'), 'not a date');
 });
 
 test('provider failure never claims success or exposes provider details', async () => {
