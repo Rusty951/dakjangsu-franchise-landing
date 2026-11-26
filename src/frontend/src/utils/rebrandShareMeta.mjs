@@ -1,7 +1,7 @@
 // The review sample and the official site share this page but not their address.
 const reviewOnly = import.meta.env?.VITE_REVIEW_ONLY === 'true'
   || (typeof process !== 'undefined' && process.env?.VITE_REVIEW_ONLY === 'true');
-const siteOrigin = reviewOnly ? 'https://dakjangsu-client-sample-inky.vercel.app' : 'https://dakjangsu-franchise.com';
+const siteOrigin = reviewOnly ? 'https://dakjangsu-client-sample.vercel.app' : 'https://dakjangsu-franchise.com';
 
 export const rebrandShareMeta = {
   title: '닭장수후라이드 창업 | 내 점포 지원 상담',

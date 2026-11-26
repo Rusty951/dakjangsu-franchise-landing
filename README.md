@@ -19,7 +19,7 @@ MacBook 경로는 사용자 전달 보고서의 2026-10-05 17:29 KST 확인 결�
 
 첫 화면 `/`에서 창업 지원 안내, 매장 외관과18평형 실내 시안, 점주 인터뷰4개, 기본 펼침 FAQ와 창업 상담을 제공합니다.
 
-검토 사이트: https://dakjangsu-client-sample-inky.vercel.app/
+검토 사이트: https://dakjangsu-client-sample.vercel.app/
 
 2026-11-09 송 대표 컨펌으로 지원 조건 문구를 확정했습니다. 공개 문구의 수치와 조건은 본사 확인 없이 바꾸지 않습니다.
 
@@ -51,11 +51,21 @@ React UI와 현재 GA/Meta 브라우저 추적, Resend 상담 API는 이 저장�
 
 Vercel Root Directory는 저장소 루트, build command는 `npm run vercel-build`, output은 `src/frontend/dist`입니다. Git push 자동 배포는 꺼져 있으며 배포는 명시적 요청에 따라 CLI로 실행합니다.
 
-공식 사이트 `dakjangsu-franchise.com`은 이 컴퓨터의 Vercel 계정(`rusty951s-projects`)에 연결돼 있지 않습니다. 공식 배포는 도메인이 연결된 계정과 프로젝트에서 실행합니다. 운영 배포는 `VITE_REVIEW_ONLY`를 넣지 않고, `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `VITE_GA_MEASUREMENT_ID`, `VITE_META_PIXEL_ID`가 그 프로젝트에 있는지 먼저 확인합니다. 배포 후 테스트 상담 1건으로 메일 수신과 `Lead` 이벤트를 확인합니다.
+공식 사이트 `dakjangsu-franchise.com`과 검토 사이트는 모두 닭장수 Vercel 계정(`dakjangsu-s-projects`)에서 배포합니다. 2026-11-26 기준 이 계정은 맥 스튜디오 Vercel CLI에 로그인돼 있고, 맥북 CLI는 개인 계정(`rusty951s-projects`)이라 배포하지 않습니다.
 
-2026-11-25 기준 그 계정(`dakjangsu-s-projects`)은 맥 스튜디오 Vercel CLI에 로그인돼 있습니다. 맥 스튜디오 저장소의 `.vercel`은 샘플 프로젝트에 연결돼 있으므로 건드리지 않고, `/tmp`에 새로 clone한 뒤 `vercel link --project dakjangsu-franchise-landing-main-final --scope dakjangsu-s-projects`, `vercel deploy --prod`로 배포하고 임시 폴더를 지웁니다. link가 만드는 `.env.local`은 배포 전에 지웁니다.
+배포는 `/tmp`에 새로 clone한 뒤 아래처럼 link하고, link가 만드는 `.env.local`을 지운 다음 실행합니다. 끝나면 임시 폴더를 지웁니다.
 
-샘플 프로젝트는 `dakjangsu-client-sample`입니다. 빌드와 함수 실행 환경 모두 `VITE_REVIEW_ONLY=true`를 유지합니다. 검토 모드에서는 검색 색인을 막고 분석 스크립트와 실제 상담 전송을 비활성화합니다.
+| 대상 | 프로젝트 | 배포 명령 |
+| --- | --- | --- |
+| 공식 사이트 | `dakjangsu-franchise-landing-main-final` | `vercel deploy --prod` |
+| 검토 사이트 | `dakjangsu-client-sample` | `vercel deploy --prod --build-env VITE_REVIEW_ONLY=true --env VITE_REVIEW_ONLY=true` |
+
+link는 `vercel link --yes --project <프로젝트> --scope dakjangsu-s-projects`로 합니다.\
+맥 스튜디오 저장소의 `.vercel`은 검토 사이트 프로젝트에 연결돼 있습니다.
+
+운영 배포는 `VITE_REVIEW_ONLY`를 넣지 않고, `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `VITE_GA_MEASUREMENT_ID`, `VITE_META_PIXEL_ID`가 그 프로젝트에 있는지 먼저 확인합니다. 배포 후 테스트 상담 1건으로 메일 수신과 `Lead` 이벤트를 확인합니다.
+
+검토 사이트는 빌드와 함수 실행 환경 모두 `VITE_REVIEW_ONLY=true`를 유지합니다. 검토 모드에서는 검색 색인을 막고 분석 스크립트와 실제 상담 전송을 비활성화합니다.
 
 ## 구조
 
