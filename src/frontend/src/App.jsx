@@ -18,6 +18,7 @@ import PopArtConcept from './components/PopArtConcept';
 import StreetHeroConcept from './components/StreetHeroConcept';
 import CharacterHeroConcept from './components/CharacterHeroConcept';
 import RebrandLanding from './components/RebrandLanding';
+import { resolveLandingConcept } from './utils/landingConcept.mjs';
 
 const kakaoConsultationUrl = import.meta.env.VITE_KAKAO_CONSULTATION_URL;
 const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'money8881@hanmail.net';
@@ -32,11 +33,10 @@ const socialLinks = {
 
 function App() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-  const searchParams =
-    typeof window !== 'undefined'
-      ? new URLSearchParams(window.location.search)
-      : new URLSearchParams();
-  const concept = searchParams.get('concept') || 'rebrand';
+  const concept = resolveLandingConcept(
+    typeof window !== 'undefined' ? window.location.search : '',
+    import.meta.env.VITE_REVIEW_ONLY === 'true',
+  );
   const isPopArtConcept = concept === 'popart';
   const isStreetHeroConcept = concept === 'street';
   const isCharacterHeroConcept = concept === 'character';
