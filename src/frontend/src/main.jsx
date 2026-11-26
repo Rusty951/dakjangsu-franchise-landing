@@ -31,15 +31,8 @@ const app = (
     <App />
   </StrictMode>
 )
-const hasPrerenderedMarkup = rootElement.hasChildNodes()
-const shouldHydrate = hasPrerenderedMarkup && !new URLSearchParams(window.location.search).has('concept')
-
-if (shouldHydrate) {
+if (rootElement.hasChildNodes()) {
   hydrateRoot(rootElement, app)
 } else {
-  if (hasPrerenderedMarkup) {
-    rootElement.textContent = ''
-  }
-
   createRoot(rootElement).render(app)
 }
